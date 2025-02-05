@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisSurfaceStatsOutputs.zscore_output">zscore_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisSurfaceStatsParameters">MrisSurfaceStatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.nsmooth">nsmooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.surf_name">surf_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.mask_name">mask_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.out_name">out_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.mean">mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.absmean">absmean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.absstd">absstd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.zscore">zscore</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.first_group_size">first_group_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.src_type">src_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.trg_type">trg_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSurfaceStatsParameters.data_files">data_files</a>
                         </li>
                 </ul>
 
@@ -416,9 +459,10 @@
 </span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="s2">&quot;MRIS_SURFACE_STATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="s2">&quot;MrisSurfaceStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;mris_surface_stats&quot;</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;mris_surface_stats_params&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="p">]</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;MrisSurfaceStatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;mris_surface_stats&quot;</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;mris_surface_stats_params&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -563,6 +607,162 @@
 
                             </div>
                 </section>
+                <section id="MrisSurfaceStatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisSurfaceStatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters"></a>
+    
+    
+
+                            <div id="MrisSurfaceStatsParameters.nsmooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nsmooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.nsmooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.surf_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_name</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.surf_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.mask_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_name</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.mask_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.out_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.out_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.mean"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.absmean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">absmean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.absmean"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.absstd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">absstd</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.absstd"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.zscore" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zscore</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.zscore"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.first_group_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">first_group_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.first_group_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.src_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">src_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.src_type"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.trg_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">trg_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.trg_type"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSurfaceStatsParameters.data_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data_files</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSurfaceStatsParameters.data_files"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mris_surface_stats">
                             <input id="mris_surface_stats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -665,7 +865,7 @@ every vertex of the template surface.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_surface_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">data_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">absmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">absstd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zscore</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">first_group_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">src_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trg_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_surface_stats</span><span class="o">.</span><span class="n">MrisSurfaceStatsParameters</span>:</span></span>
+        <span class="name">mris_surface_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">data_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">absmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">absstd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zscore</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">first_group_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">src_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trg_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisSurfaceStatsParameters">MrisSurfaceStatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_surface_stats_params-view-source"><span>View Source</span></label>
 
@@ -768,186 +968,5 @@ every vertex of the template surface.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

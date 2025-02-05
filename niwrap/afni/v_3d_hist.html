@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -38,6 +36,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dHistOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dHistParameters">V3dHistParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.mask_dset">mask_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.mask_range">mask_range</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.cmask">cmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.hist_file">hist_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.equalized">equalized</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.nbin">nbin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.min">min</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.max">max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.binwidth">binwidth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.ignore_out">ignore_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.range_hist">range_hist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.showhist">showhist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.at_val">at_val</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.get_params">get_params</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.voxvol">voxvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.val_at">val_at</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dHistParameters.quiet">quiet</a>
                         </li>
                 </ul>
 
@@ -453,10 +514,11 @@
 </span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>
 </span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="s2">&quot;V3dHistOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;V_3D_HIST_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;v_3d_hist&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;v_3d_hist_params&quot;</span><span class="p">,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="p">]</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;V3dHistParameters&quot;</span><span class="p">,</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;V_3D_HIST_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;v_3d_hist&quot;</span><span class="p">,</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;v_3d_hist_params&quot;</span><span class="p">,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -510,6 +572,228 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dHistParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dHistParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters"></a>
+    
+    
+
+                            <div id="V3dHistParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.mask_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.mask_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.mask_range" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_range</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.mask_range"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.cmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.cmask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.hist_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hist_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.hist_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.equalized" class="classattr">
+                                <div class="attr variable">
+            <span class="name">equalized</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.equalized"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.nbin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nbin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.nbin"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.min" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.min"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.max"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.binwidth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binwidth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.binwidth"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.ignore_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ignore_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.ignore_out"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.range_hist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">range_hist</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.range_hist"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.showhist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">showhist</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.showhist"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.at_val" class="classattr">
+                                <div class="attr variable">
+            <span class="name">at_val</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.at_val"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.get_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">get_params</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.get_params"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.voxvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxvol</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.voxvol"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.val_at" class="classattr">
+                                <div class="attr variable">
+            <span class="name">val_at</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.val_at"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dHistParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dHistParameters.quiet"></a>
+    
+    
 
                             </div>
                 </section>
@@ -648,7 +932,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_hist_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hist_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">equalized</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nbin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binwidth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignore_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">range_hist</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">showhist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">at_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">get_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxvol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">val_at</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_hist</span><span class="o">.</span><span class="n">V3dHistParameters</span>:</span></span>
+        <span class="name">v_3d_hist_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hist_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">equalized</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nbin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binwidth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignore_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">range_hist</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">showhist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">at_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">get_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxvol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">val_at</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dHistParameters">V3dHistParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_hist_params-view-source"><span>View Source</span></label>
 
@@ -784,186 +1068,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

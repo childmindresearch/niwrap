@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MakeColorMapOutputs.palette_file_output">palette_file_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MakeColorMapParameters">MakeColorMapParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.fiducials_ncol">fiducials_ncol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.fiducials">fiducials</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.num_colors">num_colors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.std_mapname">std_mapname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.palette_file">palette_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.cmap_name">cmap_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.fscolut_labels">fscolut_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.fscolut_file">fscolut_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.afni_hex">afni_hex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.afni_hex_complete">afni_hex_complete</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.suma_colormap">suma_colormap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.user_colut_file">user_colut_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.sdset">sdset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.sdset_prefix">sdset_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.flipupdown">flipupdown</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.skip_last">skip_last</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.show_fscolut">show_fscolut</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.help_full_flag">help_full_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeColorMapParameters.flip_map_updside_down">flip_map_updside_down</a>
                         </li>
                 </ul>
 
@@ -471,9 +535,10 @@
 </span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;MAKE_COLOR_MAP_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;MakeColorMapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="s2">&quot;make_color_map&quot;</span><span class="p">,</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="s2">&quot;make_color_map_params&quot;</span><span class="p">,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="p">]</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="s2">&quot;MakeColorMapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="s2">&quot;make_color_map&quot;</span><span class="p">,</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="s2">&quot;make_color_map_params&quot;</span><span class="p">,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -570,6 +635,239 @@
             <div class="docstring"><p>Example palette file output.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MakeColorMapParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MakeColorMapParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters"></a>
+    
+    
+
+                            <div id="MakeColorMapParameters.fiducials_ncol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiducials_ncol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.fiducials_ncol"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.fiducials" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiducials</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.fiducials"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.num_colors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_colors</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.num_colors"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.std_mapname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">std_mapname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.std_mapname"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.palette_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">palette_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.palette_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.cmap_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmap_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.cmap_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.fscolut_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fscolut_labels</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.fscolut_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.fscolut_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fscolut_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.fscolut_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.afni_hex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">afni_hex</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.afni_hex"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.afni_hex_complete" class="classattr">
+                                <div class="attr variable">
+            <span class="name">afni_hex_complete</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.afni_hex_complete"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.suma_colormap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">suma_colormap</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.suma_colormap"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.user_colut_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">user_colut_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.user_colut_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.sdset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.sdset"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.sdset_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdset_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.sdset_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.flipupdown" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flipupdown</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.flipupdown"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.skip_last" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skip_last</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.skip_last"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.show_fscolut" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_fscolut</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.show_fscolut"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.help_full_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_full_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.help_full_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeColorMapParameters.flip_map_updside_down" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flip_map_updside_down</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeColorMapParameters.flip_map_updside_down"></a>
+    
+    
 
                             </div>
                 </section>
@@ -698,7 +996,7 @@ points.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_color_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fiducials_ncol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fiducials</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_colors</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">std_mapname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">palette_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmap_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fscolut_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fscolut_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">afni_hex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">afni_hex_complete</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">suma_colormap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">user_colut_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdset_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flipupdown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fscolut</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_full_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_map_updside_down</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">make_color_map</span><span class="o">.</span><span class="n">MakeColorMapParameters</span>:</span></span>
+        <span class="name">make_color_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fiducials_ncol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fiducials</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_colors</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">std_mapname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">palette_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmap_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fscolut_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fscolut_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">afni_hex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">afni_hex_complete</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">suma_colormap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">user_colut_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdset_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flipupdown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_last</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fscolut</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_full_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_map_updside_down</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MakeColorMapParameters">MakeColorMapParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="make_color_map_params-view-source"><span>View Source</span></label>
 
@@ -835,186 +1133,5 @@ points.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

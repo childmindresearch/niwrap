@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -62,6 +60,117 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriFwhmOutputs.fwhm_volume_file">fwhm_volume_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriFwhmParameters">MriFwhmParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.inputvol">inputvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.outputvol">outputvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.save_detrended">save_detrended</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.save_unmasked">save_unmasked</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.smooth_only">smooth_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.mask_thresh">mask_thresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.auto_mask">auto_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.nerode">nerode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.mask_inv">mask_inv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.out_mask">out_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.detrend_matrix">detrend_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.detrend_order">detrend_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.square_input">square_input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.smooth_by_fwhm">smooth_by_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.smooth_by_gstd">smooth_by_gstd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.median_filter">median_filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.smooth_to_fwhm">smooth_to_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.to_fwhm_tol">to_fwhm_tol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.to_fwhm_nmax">to_fwhm_nmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.to_fwhm_file">to_fwhm_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.summary_file">summary_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.dat_file">dat_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.fwhm_dat_file">fwhm_dat_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.fwhm_vol_mean_file">fwhm_vol_mean_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.fwhm_vol">fwhm_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.synth">synth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.synth_frames">synth_frames</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.nframes_min">nframes_min</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.ispm">ispm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.nspm_zero_padding">nspm_zero_padding</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.checkopts">checkopts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFwhmParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -657,9 +766,10 @@
 </span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>    <span class="s2">&quot;MRI_FWHM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a>    <span class="s2">&quot;MriFwhmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="s2">&quot;mri_fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="s2">&quot;mri_fwhm_params&quot;</span><span class="p">,</span>
-</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a><span class="p">]</span>
+</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="s2">&quot;MriFwhmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="s2">&quot;mri_fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a>    <span class="s2">&quot;mri_fwhm_params&quot;</span><span class="p">,</span>
+</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -834,6 +944,404 @@
 
                             </div>
                 </section>
+                <section id="MriFwhmParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriFwhmParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters"></a>
+    
+    
+
+                            <div id="MriFwhmParameters.inputvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inputvol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.inputvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.outputvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outputvol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.outputvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.save_detrended" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_detrended</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.save_detrended"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.save_unmasked" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_unmasked</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.save_unmasked"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.smooth_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.smooth_only"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.mask_thresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_thresh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.mask_thresh"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.auto_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">auto_mask</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.auto_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.nerode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nerode</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.nerode"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.mask_inv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_inv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.mask_inv"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.out_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.out_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.detrend_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">detrend_matrix</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.detrend_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.detrend_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">detrend_order</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.detrend_order"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.square_input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">square_input</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.square_input"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.smooth_by_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_by_fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.smooth_by_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.smooth_by_gstd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_by_gstd</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.smooth_by_gstd"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.median_filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">median_filter</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.median_filter"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.smooth_to_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_to_fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.smooth_to_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.to_fwhm_tol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_fwhm_tol</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.to_fwhm_tol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.to_fwhm_nmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_fwhm_nmax</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.to_fwhm_nmax"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.to_fwhm_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_fwhm_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.to_fwhm_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.summary_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">summary_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.summary_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.dat_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dat_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.dat_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.fwhm_dat_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_dat_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.fwhm_dat_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.fwhm_vol_mean_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_vol_mean_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.fwhm_vol_mean_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.fwhm_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_vol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.fwhm_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.synth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">synth</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.synth"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.synth_frames" class="classattr">
+                                <div class="attr variable">
+            <span class="name">synth_frames</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.synth_frames"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.nframes_min" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nframes_min</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.nframes_min"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.ispm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ispm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.ispm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.nspm_zero_padding" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nspm_zero_padding</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.nspm_zero_padding"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.checkopts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checkopts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.checkopts"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFwhmParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFwhmParameters.version"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mri_fwhm">
                             <input id="mri_fwhm-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -1002,7 +1510,7 @@ volume-based data set.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_fwhm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inputvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">save_detrended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_unmasked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">smooth_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">auto_mask</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nerode</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_inv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detrend_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detrend_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">square_input</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">smooth_by_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_by_gstd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">median_filter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_to_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_nmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">summary_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dat_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_dat_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_vol_mean_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synth</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">synth_frames</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nframes_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ispm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nspm_zero_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_fwhm</span><span class="o">.</span><span class="n">MriFwhmParameters</span>:</span></span>
+        <span class="name">mri_fwhm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inputvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">save_detrended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_unmasked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">smooth_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">auto_mask</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nerode</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_inv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detrend_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detrend_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">square_input</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">smooth_by_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_by_gstd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">median_filter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_to_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_nmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fwhm_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">summary_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dat_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_dat_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_vol_mean_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synth</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">synth_frames</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nframes_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ispm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nspm_zero_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriFwhmParameters">MriFwhmParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_fwhm_params-view-source"><span>View Source</span></label>
 
@@ -1206,186 +1714,5 @@ volume-based data set.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

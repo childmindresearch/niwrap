@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FdrOutputs.output_order">output_order</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FdrParameters">FdrParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FdrParameters.infile">infile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.maskfile">maskfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.qvalue">qvalue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.adjustedimage">adjustedimage</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.othresh_flag">othresh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.order_flag">order_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.oneminusp_flag">oneminusp_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.positive_corr_flag">positive_corr_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.independent_flag">independent_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.conservative_flag">conservative_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.debug_flag">debug_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FdrParameters.verbose_flag">verbose_flag</a>
                         </li>
                 </ul>
 
@@ -365,9 +405,10 @@
 </span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;FDR_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="s2">&quot;FdrOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="s2">&quot;fdr&quot;</span><span class="p">,</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="s2">&quot;fdr_params&quot;</span><span class="p">,</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="p">]</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="s2">&quot;FdrParameters&quot;</span><span class="p">,</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="s2">&quot;fdr&quot;</span><span class="p">,</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;fdr_params&quot;</span><span class="p">,</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -482,6 +523,151 @@
 
                             </div>
                 </section>
+                <section id="FdrParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FdrParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters"></a>
+    
+    
+
+                            <div id="FdrParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.infile"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.maskfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.maskfile"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.qvalue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qvalue</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.qvalue"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.adjustedimage" class="classattr">
+                                <div class="attr variable">
+            <span class="name">adjustedimage</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.adjustedimage"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.othresh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">othresh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.othresh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.order_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.order_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.oneminusp_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">oneminusp_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.oneminusp_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.positive_corr_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">positive_corr_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.positive_corr_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.independent_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">independent_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.independent_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.conservative_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">conservative_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.conservative_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.debug_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FdrParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FdrParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fdr">
                             <input id="fdr-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -579,7 +765,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fdr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">adjustedimage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">othresh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">order_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">oneminusp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">positive_corr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">independent_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">conservative_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fdr</span><span class="o">.</span><span class="n">FdrParameters</span>:</span></span>
+        <span class="name">fdr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">adjustedimage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">othresh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">order_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">oneminusp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">positive_corr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">independent_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">conservative_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FdrParameters">FdrParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fdr_params-view-source"><span>View Source</span></label>
 
@@ -671,186 +857,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

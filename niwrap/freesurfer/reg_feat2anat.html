@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -65,6 +63,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#RegFeat2anatOutputs.log_file">log_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#RegFeat2anatParameters">RegFeat2anatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.feat_dir">feat_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.overwrite_exf2std">overwrite_exf2std</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.manual">manual</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.manxfm_type">manxfm_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.dof">dof</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.bins">bins</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.cost">cost</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.max_angle">max_angle</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.bet">bet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.title">title</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.no_bbr">no_bbr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.spm">spm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.no_inorm">no_inorm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.fmov">fmov</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RegFeat2anatParameters.debug">debug</a>
                         </li>
                 </ul>
 
@@ -443,9 +495,10 @@
 </span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="s2">&quot;REG_FEAT2ANAT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;RegFeat2anatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;reg_feat2anat&quot;</span><span class="p">,</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="s2">&quot;reg_feat2anat_params&quot;</span><span class="p">,</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="p">]</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;RegFeat2anatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="s2">&quot;reg_feat2anat&quot;</span><span class="p">,</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="s2">&quot;reg_feat2anat_params&quot;</span><span class="p">,</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -635,6 +688,195 @@
 
                             </div>
                 </section>
+                <section id="RegFeat2anatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">RegFeat2anatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters"></a>
+    
+    
+
+                            <div id="RegFeat2anatParameters.feat_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">feat_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.feat_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.overwrite_exf2std" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overwrite_exf2std</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.overwrite_exf2std"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.manual" class="classattr">
+                                <div class="attr variable">
+            <span class="name">manual</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.manual"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.manxfm_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">manxfm_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.manxfm_type"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.dof" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dof</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.dof"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.bins" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bins</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.bins"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.cost" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.cost"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.max_angle" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_angle</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.max_angle"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.bet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.bet"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.title" class="classattr">
+                                <div class="attr variable">
+            <span class="name">title</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.title"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.no_bbr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_bbr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.no_bbr"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.spm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.spm"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.no_inorm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_inorm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.no_inorm"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.fmov" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fmov</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.fmov"></a>
+    
+    
+
+                            </div>
+                            <div id="RegFeat2anatParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RegFeat2anatParameters.debug"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="reg_feat2anat">
                             <input id="reg_feat2anat-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -743,7 +985,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">reg_feat2anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">feat_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overwrite_exf2std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manxfm_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dof</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_angle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_bbr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">spm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_inorm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmov</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">reg_feat2anat</span><span class="o">.</span><span class="n">RegFeat2anatParameters</span>:</span></span>
+        <span class="name">reg_feat2anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">feat_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overwrite_exf2std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manxfm_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dof</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_angle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_bbr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">spm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_inorm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmov</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#RegFeat2anatParameters">RegFeat2anatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="reg_feat2anat_params-view-source"><span>View Source</span></label>
 
@@ -854,186 +1096,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

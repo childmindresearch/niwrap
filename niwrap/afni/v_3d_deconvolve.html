@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dDeconvolveOutputs.x1d_file">x1d_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dDeconvolveParameters">V3dDeconvolveParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.input_dataset">input_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.mask_dataset">mask_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.num_stimts">num_stimts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.stim_file">stim_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.stim_label">stim_label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.stim_base">stim_base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.stim_times">stim_times</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.iresp">iresp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.fitts">fitts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.fout">fout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.tout">tout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.bucket">bucket</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.cbucket">cbucket</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.x1D">x1D</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dDeconvolveParameters.jobs">jobs</a>
                         </li>
                 </ul>
 
@@ -438,10 +487,11 @@
 </span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>
 </span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="s2">&quot;V3dDeconvolveOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;V_3D_DECONVOLVE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="s2">&quot;v_3d_deconvolve&quot;</span><span class="p">,</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;v_3d_deconvolve_params&quot;</span><span class="p">,</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="p">]</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;V3dDeconvolveParameters&quot;</span><span class="p">,</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="s2">&quot;V_3D_DECONVOLVE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;v_3d_deconvolve&quot;</span><span class="p">,</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;v_3d_deconvolve_params&quot;</span><span class="p">,</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -573,6 +623,184 @@
 
                             </div>
                 </section>
+                <section id="V3dDeconvolveParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dDeconvolveParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters"></a>
+    
+    
+
+                            <div id="V3dDeconvolveParameters.input_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.input_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.mask_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_dataset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.mask_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.num_stimts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_stimts</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.num_stimts"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.stim_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.stim_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.stim_label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_label</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.stim_label"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.stim_base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_base</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.stim_base"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.stim_times" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_times</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.stim_times"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.iresp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iresp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.iresp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.fitts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fitts</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.fitts"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.fout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fout</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.fout"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.tout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tout</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.tout"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.bucket" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bucket</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.bucket"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.cbucket" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cbucket</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.cbucket"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.x1D" class="classattr">
+                                <div class="attr variable">
+            <span class="name">x1D</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.x1D"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dDeconvolveParameters.jobs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jobs</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dDeconvolveParameters.jobs"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_3D_DECONVOLVE_METADATA">
                     <div class="attr variable">
             <span class="name">V_3D_DECONVOLVE_METADATA</span>        =
@@ -696,7 +924,7 @@ specified input stimulus time series.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_deconvolve_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_stimts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_base</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stim_times</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iresp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fitts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">x1_d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_deconvolve</span><span class="o">.</span><span class="n">V3dDeconvolveParameters</span>:</span></span>
+        <span class="name">v_3d_deconvolve_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_stimts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_base</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stim_times</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iresp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fitts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">x1_d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dDeconvolveParameters">V3dDeconvolveParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_deconvolve_params-view-source"><span>View Source</span></label>
 
@@ -810,186 +1038,5 @@ specified input stimulus time series.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

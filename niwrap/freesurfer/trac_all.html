@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TracAllOutputs.default_cmd">default_cmd</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TracAllParameters">TracAllParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TracAllParameters.config_file">config_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracAllParameters.subject_name">subject_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracAllParameters.dicom_file">dicom_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracAllParameters.assemble_measures">assemble_measures</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracAllParameters.no_pathway_priors">no_pathway_priors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracAllParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -307,9 +329,10 @@
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;TRAC_ALL_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="s2">&quot;TracAllOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="s2">&quot;trac_all&quot;</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;trac_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="p">]</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="s2">&quot;TracAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;trac_all&quot;</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;trac_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -409,6 +432,85 @@
 
                             </div>
                 </section>
+                <section id="TracAllParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TracAllParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters"></a>
+    
+    
+
+                            <div id="TracAllParameters.config_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.config_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TracAllParameters.subject_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.subject_name"></a>
+    
+    
+
+                            </div>
+                            <div id="TracAllParameters.dicom_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dicom_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.dicom_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TracAllParameters.assemble_measures" class="classattr">
+                                <div class="attr variable">
+            <span class="name">assemble_measures</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.assemble_measures"></a>
+    
+    
+
+                            </div>
+                            <div id="TracAllParameters.no_pathway_priors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_pathway_priors</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.no_pathway_priors"></a>
+    
+    
+
+                            </div>
+                            <div id="TracAllParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracAllParameters.help"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="trac_all">
                             <input id="trac_all-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -487,7 +589,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">trac_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">config_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dicom_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">assemble_measures</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_pathway_priors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">trac_all</span><span class="o">.</span><span class="n">TracAllParameters</span>:</span></span>
+        <span class="name">trac_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">config_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dicom_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">assemble_measures</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_pathway_priors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#TracAllParameters">TracAllParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="trac_all_params-view-source"><span>View Source</span></label>
 
@@ -554,186 +656,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

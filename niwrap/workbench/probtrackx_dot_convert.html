@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#PROBTRACKX_DOT_CONVERT_METADATA">PROBTRACKX_DOT_CONVERT_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#ProbtrackxDotConvertColCiftiParameters">ProbtrackxDotConvertColCiftiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertColCiftiParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertColCiftiParameters.direction">direction</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ProbtrackxDotConvertColVoxelsParameters">ProbtrackxDotConvertColVoxelsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertColVoxelsParameters.voxel_list_file">voxel_list_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertColVoxelsParameters.label_vol">label_vol</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#ProbtrackxDotConvertOutputs">ProbtrackxDotConvertOutputs</a>
@@ -44,6 +66,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ProbtrackxDotConvertOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ProbtrackxDotConvertParameters">ProbtrackxDotConvertParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.dot_file">dot_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.row_voxels">row_voxels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.opt_row_surface_roi_metric">opt_row_surface_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.row_cifti">row_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.col_voxels">col_voxels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.opt_col_surface_roi_metric">opt_col_surface_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.col_cifti">col_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.opt_transpose">opt_transpose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertParameters.opt_make_symmetric">opt_make_symmetric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ProbtrackxDotConvertRowCiftiParameters">ProbtrackxDotConvertRowCiftiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertRowCiftiParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertRowCiftiParameters.direction">direction</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ProbtrackxDotConvertRowVoxelsParameters">ProbtrackxDotConvertRowVoxelsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertRowVoxelsParameters.voxel_list_file">voxel_list_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ProbtrackxDotConvertRowVoxelsParameters.label_vol">label_vol</a>
                         </li>
                 </ul>
 
@@ -631,14 +713,19 @@
 </span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a>
 </span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;PROBTRACKX_DOT_CONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="s2">&quot;ProbtrackxDotConvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="s2">&quot;probtrackx_dot_convert&quot;</span><span class="p">,</span>
-</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;probtrackx_dot_convert_col_cifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="s2">&quot;probtrackx_dot_convert_col_voxels_params&quot;</span><span class="p">,</span>
-</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="s2">&quot;probtrackx_dot_convert_params&quot;</span><span class="p">,</span>
-</span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="s2">&quot;probtrackx_dot_convert_row_cifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="s2">&quot;probtrackx_dot_convert_row_voxels_params&quot;</span><span class="p">,</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a><span class="p">]</span>
+</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="s2">&quot;ProbtrackxDotConvertColCiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="s2">&quot;ProbtrackxDotConvertColVoxelsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;ProbtrackxDotConvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="s2">&quot;ProbtrackxDotConvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="s2">&quot;ProbtrackxDotConvertRowCiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="s2">&quot;ProbtrackxDotConvertRowVoxelsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="s2">&quot;probtrackx_dot_convert&quot;</span><span class="p">,</span>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="s2">&quot;probtrackx_dot_convert_col_cifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>    <span class="s2">&quot;probtrackx_dot_convert_col_voxels_params&quot;</span><span class="p">,</span>
+</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>    <span class="s2">&quot;probtrackx_dot_convert_params&quot;</span><span class="p">,</span>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>    <span class="s2">&quot;probtrackx_dot_convert_row_cifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;probtrackx_dot_convert_row_voxels_params&quot;</span><span class="p">,</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -655,6 +742,76 @@
     
     
 
+                </section>
+                <section id="ProbtrackxDotConvertColCiftiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ProbtrackxDotConvertColCiftiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColCiftiParameters"></a>
+    
+    
+
+                            <div id="ProbtrackxDotConvertColCiftiParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColCiftiParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertColCiftiParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColCiftiParameters.direction"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ProbtrackxDotConvertColVoxelsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ProbtrackxDotConvertColVoxelsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColVoxelsParameters"></a>
+    
+    
+
+                            <div id="ProbtrackxDotConvertColVoxelsParameters.voxel_list_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel_list_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColVoxelsParameters.voxel_list_file"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertColVoxelsParameters.label_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_vol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertColVoxelsParameters.label_vol"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ProbtrackxDotConvertOutputs">
                             <input id="ProbtrackxDotConvertOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -723,12 +880,205 @@
 
                             </div>
                 </section>
+                <section id="ProbtrackxDotConvertParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ProbtrackxDotConvertParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters"></a>
+    
+    
+
+                            <div id="ProbtrackxDotConvertParameters.dot_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dot_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.dot_file"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.row_voxels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">row_voxels</span><span class="annotation">: NotRequired[<a href="#ProbtrackxDotConvertRowVoxelsParameters">ProbtrackxDotConvertRowVoxelsParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.row_voxels"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.opt_row_surface_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_row_surface_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.opt_row_surface_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.row_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">row_cifti</span><span class="annotation">: NotRequired[<a href="#ProbtrackxDotConvertRowCiftiParameters">ProbtrackxDotConvertRowCiftiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.row_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.col_voxels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">col_voxels</span><span class="annotation">: NotRequired[<a href="#ProbtrackxDotConvertColVoxelsParameters">ProbtrackxDotConvertColVoxelsParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.col_voxels"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.opt_col_surface_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_col_surface_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.opt_col_surface_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.col_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">col_cifti</span><span class="annotation">: NotRequired[<a href="#ProbtrackxDotConvertColCiftiParameters">ProbtrackxDotConvertColCiftiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.col_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.opt_transpose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_transpose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.opt_transpose"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertParameters.opt_make_symmetric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_make_symmetric</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertParameters.opt_make_symmetric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ProbtrackxDotConvertRowCiftiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ProbtrackxDotConvertRowCiftiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowCiftiParameters"></a>
+    
+    
+
+                            <div id="ProbtrackxDotConvertRowCiftiParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowCiftiParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertRowCiftiParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowCiftiParameters.direction"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ProbtrackxDotConvertRowVoxelsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ProbtrackxDotConvertRowVoxelsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowVoxelsParameters"></a>
+    
+    
+
+                            <div id="ProbtrackxDotConvertRowVoxelsParameters.voxel_list_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel_list_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowVoxelsParameters.voxel_list_file"></a>
+    
+    
+
+                            </div>
+                            <div id="ProbtrackxDotConvertRowVoxelsParameters.label_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_vol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ProbtrackxDotConvertRowVoxelsParameters.label_vol"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="probtrackx_dot_convert">
                             <input id="probtrackx_dot_convert-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dot_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">row_voxels</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowVoxelsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_row_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_cifti</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowCiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_voxels</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColVoxelsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_col_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_cifti</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColCiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_transpose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_make_symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertOutputs">ProbtrackxDotConvertOutputs</a></span>:</span></span>
+        <span class="name">probtrackx_dot_convert</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dot_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">row_voxels</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertRowVoxelsParameters">ProbtrackxDotConvertRowVoxelsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_row_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_cifti</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertRowCiftiParameters">ProbtrackxDotConvertRowCiftiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_voxels</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertColVoxelsParameters">ProbtrackxDotConvertColVoxelsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_col_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_cifti</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertColCiftiParameters">ProbtrackxDotConvertColCiftiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_transpose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_make_symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertOutputs">ProbtrackxDotConvertOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert-view-source"><span>View Source</span></label>
 
@@ -907,7 +1257,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert_col_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColCiftiParameters</span>:</span></span>
+        <span class="name">probtrackx_dot_convert_col_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertColCiftiParameters">ProbtrackxDotConvertColCiftiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert_col_cifti_params-view-source"><span>View Source</span></label>
 
@@ -958,7 +1308,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert_col_voxels_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">voxel_list_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColVoxelsParameters</span>:</span></span>
+        <span class="name">probtrackx_dot_convert_col_voxels_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">voxel_list_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertColVoxelsParameters">ProbtrackxDotConvertColVoxelsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert_col_voxels_params-view-source"><span>View Source</span></label>
 
@@ -1010,7 +1360,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dot_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">row_voxels</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowVoxelsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_row_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_cifti</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowCiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_voxels</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColVoxelsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_col_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_cifti</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertColCiftiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_transpose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_make_symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertParameters</span>:</span></span>
+        <span class="name">probtrackx_dot_convert_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dot_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">row_voxels</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertRowVoxelsParameters">ProbtrackxDotConvertRowVoxelsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_row_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_cifti</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertRowCiftiParameters">ProbtrackxDotConvertRowCiftiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_voxels</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertColVoxelsParameters">ProbtrackxDotConvertColVoxelsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_col_surface_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">col_cifti</span><span class="p">:</span> <span class="n"><a href="#ProbtrackxDotConvertColCiftiParameters">ProbtrackxDotConvertColCiftiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_transpose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_make_symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertParameters">ProbtrackxDotConvertParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert_params-view-source"><span>View Source</span></label>
 
@@ -1103,7 +1453,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert_row_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowCiftiParameters</span>:</span></span>
+        <span class="name">probtrackx_dot_convert_row_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertRowCiftiParameters">ProbtrackxDotConvertRowCiftiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert_row_cifti_params-view-source"><span>View Source</span></label>
 
@@ -1154,7 +1504,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">probtrackx_dot_convert_row_voxels_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">voxel_list_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">probtrackx_dot_convert</span><span class="o">.</span><span class="n">ProbtrackxDotConvertRowVoxelsParameters</span>:</span></span>
+        <span class="name">probtrackx_dot_convert_row_voxels_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">voxel_list_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ProbtrackxDotConvertRowVoxelsParameters">ProbtrackxDotConvertRowVoxelsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="probtrackx_dot_convert_row_voxels_params-view-source"><span>View Source</span></label>
 
@@ -1202,186 +1552,5 @@ THALAMUS_RIGHT.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

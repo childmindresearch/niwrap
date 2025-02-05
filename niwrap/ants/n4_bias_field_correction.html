@@ -23,13 +23,50 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
             <h2>API Documentation</h2>
                 <ul class="memberlist">
+            <li>
+                    <a class="class" href="#N4BiasFieldCorrectionBsplineFittingParameters">N4BiasFieldCorrectionBsplineFittingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionBsplineFittingParameters.spline_distance">spline_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionBsplineFittingParameters.spline_order">spline_order</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#N4BiasFieldCorrectionConvergenceParameters">N4BiasFieldCorrectionConvergenceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionConvergenceParameters.convergence">convergence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionConvergenceParameters.convergence_threshold">convergence_threshold</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#N4BiasFieldCorrectionHistogramSharpeningParameters">N4BiasFieldCorrectionHistogramSharpeningParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.fwhm">fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.wiener_noise">wiener_noise</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.number_of_histogram_bins">number_of_histogram_bins</a>
+                        </li>
+                </ul>
+
+            </li>
             <li>
                     <a class="class" href="#N4BiasFieldCorrectionOutputs">N4BiasFieldCorrectionOutputs</a>
                             <ul class="memberlist">
@@ -44,6 +81,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#N4BiasFieldCorrectionOutputs.bias_field">bias_field</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#N4BiasFieldCorrectionParameters">N4BiasFieldCorrectionParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.image_dimensionality">image_dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.shrink_factor">shrink_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.mask_image">mask_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.rescale_intensities">rescale_intensities</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.weight_image">weight_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.convergence">convergence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.bspline_fitting">bspline_fitting</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.histogram_sharpening">histogram_sharpening</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.input_image">input_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.corrected_image_path">corrected_image_path</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N4BiasFieldCorrectionParameters.bias_field_path">bias_field_path</a>
                         </li>
                 </ul>
 
@@ -659,18 +738,138 @@
 </span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a>
 </span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>
 </span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>    <span class="s2">&quot;N4_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a>    <span class="s2">&quot;n4_bias_field_correction&quot;</span><span class="p">,</span>
-</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a>    <span class="s2">&quot;n4_bias_field_correction_bspline_fitting_params&quot;</span><span class="p">,</span>
-</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="s2">&quot;n4_bias_field_correction_convergence_params&quot;</span><span class="p">,</span>
-</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="s2">&quot;n4_bias_field_correction_histogram_sharpening_params&quot;</span><span class="p">,</span>
-</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="s2">&quot;n4_bias_field_correction_params&quot;</span><span class="p">,</span>
-</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a><span class="p">]</span>
+</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionBsplineFittingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionConvergenceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionHistogramSharpeningParameters&quot;</span><span class="p">,</span>
+</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="s2">&quot;N4BiasFieldCorrectionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="s2">&quot;N4_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="s2">&quot;n4_bias_field_correction&quot;</span><span class="p">,</span>
+</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a>    <span class="s2">&quot;n4_bias_field_correction_bspline_fitting_params&quot;</span><span class="p">,</span>
+</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a>    <span class="s2">&quot;n4_bias_field_correction_convergence_params&quot;</span><span class="p">,</span>
+</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a>    <span class="s2">&quot;n4_bias_field_correction_histogram_sharpening_params&quot;</span><span class="p">,</span>
+</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a>    <span class="s2">&quot;n4_bias_field_correction_params&quot;</span><span class="p">,</span>
+</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a><span class="p">]</span>
 </span></pre></div>
 
 
             </section>
+                <section id="N4BiasFieldCorrectionBsplineFittingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">N4BiasFieldCorrectionBsplineFittingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionBsplineFittingParameters"></a>
+    
+    
+
+                            <div id="N4BiasFieldCorrectionBsplineFittingParameters.spline_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spline_distance</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionBsplineFittingParameters.spline_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionBsplineFittingParameters.spline_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spline_order</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionBsplineFittingParameters.spline_order"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="N4BiasFieldCorrectionConvergenceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">N4BiasFieldCorrectionConvergenceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionConvergenceParameters"></a>
+    
+    
+
+                            <div id="N4BiasFieldCorrectionConvergenceParameters.convergence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence</span><span class="annotation">: list[int]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionConvergenceParameters.convergence"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionConvergenceParameters.convergence_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionConvergenceParameters.convergence_threshold"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="N4BiasFieldCorrectionHistogramSharpeningParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">N4BiasFieldCorrectionHistogramSharpeningParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionHistogramSharpeningParameters"></a>
+    
+    
+
+                            <div id="N4BiasFieldCorrectionHistogramSharpeningParameters.fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionHistogramSharpeningParameters.wiener_noise" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wiener_noise</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.wiener_noise"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionHistogramSharpeningParameters.number_of_histogram_bins" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_histogram_bins</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionHistogramSharpeningParameters.number_of_histogram_bins"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="N4BiasFieldCorrectionOutputs">
                             <input id="N4BiasFieldCorrectionOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -753,6 +952,151 @@
 
                             </div>
                 </section>
+                <section id="N4BiasFieldCorrectionParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">N4BiasFieldCorrectionParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters"></a>
+    
+    
+
+                            <div id="N4BiasFieldCorrectionParameters.image_dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3, 4]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.image_dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.shrink_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shrink_factor</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.shrink_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.mask_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.mask_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.rescale_intensities" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rescale_intensities</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.rescale_intensities"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.weight_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.weight_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.convergence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence</span><span class="annotation">: NotRequired[<a href="#N4BiasFieldCorrectionConvergenceParameters">N4BiasFieldCorrectionConvergenceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.convergence"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.bspline_fitting" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bspline_fitting</span><span class="annotation">: NotRequired[<a href="#N4BiasFieldCorrectionBsplineFittingParameters">N4BiasFieldCorrectionBsplineFittingParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.bspline_fitting"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.histogram_sharpening" class="classattr">
+                                <div class="attr variable">
+            <span class="name">histogram_sharpening</span><span class="annotation">: NotRequired[<a href="#N4BiasFieldCorrectionHistogramSharpeningParameters">N4BiasFieldCorrectionHistogramSharpeningParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.histogram_sharpening"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.input_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.input_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.corrected_image_path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">corrected_image_path</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.corrected_image_path"></a>
+    
+    
+
+                            </div>
+                            <div id="N4BiasFieldCorrectionParameters.bias_field_path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_field_path</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N4BiasFieldCorrectionParameters.bias_field_path"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="N4_BIAS_FIELD_CORRECTION_METADATA">
                     <div class="attr variable">
             <span class="name">N4_BIAS_FIELD_CORRECTION_METADATA</span>        =
@@ -771,7 +1115,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n4_bias_field_correction</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">corrected_image_path</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionConvergenceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionBsplineFittingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionHistogramSharpeningParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionOutputs">N4BiasFieldCorrectionOutputs</a></span>:</span></span>
+        <span class="name">n4_bias_field_correction</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">corrected_image_path</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionConvergenceParameters">N4BiasFieldCorrectionConvergenceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionBsplineFittingParameters">N4BiasFieldCorrectionBsplineFittingParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionHistogramSharpeningParameters">N4BiasFieldCorrectionHistogramSharpeningParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionOutputs">N4BiasFieldCorrectionOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="n4_bias_field_correction-view-source"><span>View Source</span></label>
 
@@ -930,7 +1274,7 @@ of the bias field itself.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n4_bias_field_correction_bspline_fitting_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">spline_distance</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">spline_order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionBsplineFittingParameters</span>:</span></span>
+        <span class="name">n4_bias_field_correction_bspline_fitting_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">spline_distance</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">spline_order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionBsplineFittingParameters">N4BiasFieldCorrectionBsplineFittingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="n4_bias_field_correction_bspline_fitting_params-view-source"><span>View Source</span></label>
 
@@ -982,7 +1326,7 @@ of the bias field itself.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n4_bias_field_correction_convergence_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">convergence_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionConvergenceParameters</span>:</span></span>
+        <span class="name">n4_bias_field_correction_convergence_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">convergence_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionConvergenceParameters">N4BiasFieldCorrectionConvergenceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="n4_bias_field_correction_convergence_params-view-source"><span>View Source</span></label>
 
@@ -1034,7 +1378,7 @@ of the bias field itself.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n4_bias_field_correction_histogram_sharpening_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wiener_noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_of_histogram_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionHistogramSharpeningParameters</span>:</span></span>
+        <span class="name">n4_bias_field_correction_histogram_sharpening_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wiener_noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_of_histogram_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionHistogramSharpeningParameters">N4BiasFieldCorrectionHistogramSharpeningParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="n4_bias_field_correction_histogram_sharpening_params-view-source"><span>View Source</span></label>
 
@@ -1092,7 +1436,7 @@ of the bias field itself.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n4_bias_field_correction_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">corrected_image_path</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionConvergenceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionBsplineFittingParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionHistogramSharpeningParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n4_bias_field_correction</span><span class="o">.</span><span class="n">N4BiasFieldCorrectionParameters</span>:</span></span>
+        <span class="name">n4_bias_field_correction_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">corrected_image_path</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionConvergenceParameters">N4BiasFieldCorrectionConvergenceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionBsplineFittingParameters">N4BiasFieldCorrectionBsplineFittingParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="n"><a href="#N4BiasFieldCorrectionHistogramSharpeningParameters">N4BiasFieldCorrectionHistogramSharpeningParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N4BiasFieldCorrectionParameters">N4BiasFieldCorrectionParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="n4_bias_field_correction_params-view-source"><span>View Source</span></label>
 
@@ -1246,186 +1590,5 @@ of the bias field itself.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#DWI2TENSOR_METADATA">DWI2TENSOR_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2tensorConfigParameters">Dwi2tensorConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2tensorConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2tensorFslgradParameters">Dwi2tensorFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2tensorFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Dwi2tensorOutputs">Dwi2tensorOutputs</a>
@@ -53,6 +75,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Dwi2tensorOutputs.predicted_signal">predicted_signal</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2tensorParameters">Dwi2tensorParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.ols">ols</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.b0">b0</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.dkt">dkt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.iter">iter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.predicted_signal">predicted_signal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.dwi">dwi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2tensorParameters.dt">dt</a>
                         </li>
                 </ul>
 
@@ -646,12 +728,15 @@
 </span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>
 </span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;DWI2TENSOR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;Dwi2tensorOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;dwi2tensor&quot;</span><span class="p">,</span>
-</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;dwi2tensor_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;dwi2tensor_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="s2">&quot;dwi2tensor_params&quot;</span><span class="p">,</span>
-</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a><span class="p">]</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;Dwi2tensorConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;Dwi2tensorFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;Dwi2tensorOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;Dwi2tensorParameters&quot;</span><span class="p">,</span>
+</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="s2">&quot;dwi2tensor&quot;</span><span class="p">,</span>
+</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>    <span class="s2">&quot;dwi2tensor_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>    <span class="s2">&quot;dwi2tensor_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a>    <span class="s2">&quot;dwi2tensor_params&quot;</span><span class="p">,</span>
+</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -668,6 +753,76 @@
     
     
 
+                </section>
+                <section id="Dwi2tensorConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2tensorConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorConfigParameters"></a>
+    
+    
+
+                            <div id="Dwi2tensorConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Dwi2tensorFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2tensorFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorFslgradParameters"></a>
+    
+    
+
+                            <div id="Dwi2tensorFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Dwi2tensorOutputs">
                             <input id="Dwi2tensorOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -781,12 +936,223 @@
 
                             </div>
                 </section>
+                <section id="Dwi2tensorParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2tensorParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters"></a>
+    
+    
+
+                            <div id="Dwi2tensorParameters.ols" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ols</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.ols"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.b0" class="classattr">
+                                <div class="attr variable">
+            <span class="name">b0</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.b0"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.dkt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dkt</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.dkt"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.iter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iter</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.iter"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.predicted_signal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">predicted_signal</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.predicted_signal"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#Dwi2tensorFslgradParameters">Dwi2tensorFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Dwi2tensorConfigParameters">Dwi2tensorConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.dwi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dwi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.dwi"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2tensorParameters.dt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dt</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2tensorParameters.dt"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="dwi2tensor">
                             <input id="dwi2tensor-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2tensor</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2tensorOutputs">Dwi2tensorOutputs</a></span>:</span></span>
+        <span class="name">dwi2tensor</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Dwi2tensorFslgradParameters">Dwi2tensorFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Dwi2tensorConfigParameters">Dwi2tensorConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2tensorOutputs">Dwi2tensorOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2tensor-view-source"><span>View Source</span></label>
 
@@ -993,7 +1359,7 @@ limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2tensor_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorConfigParameters</span>:</span></span>
+        <span class="name">dwi2tensor_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2tensorConfigParameters">Dwi2tensorConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2tensor_config_params-view-source"><span>View Source</span></label>
 
@@ -1044,7 +1410,7 @@ limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2tensor_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorFslgradParameters</span>:</span></span>
+        <span class="name">dwi2tensor_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2tensorFslgradParameters">Dwi2tensorFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2tensor_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -1101,7 +1467,7 @@ limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2tensor_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2tensor</span><span class="o">.</span><span class="n">Dwi2tensorParameters</span>:</span></span>
+        <span class="name">dwi2tensor_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dkt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iter_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Dwi2tensorFslgradParameters">Dwi2tensorFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Dwi2tensorConfigParameters">Dwi2tensorConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2tensorParameters">Dwi2tensorParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2tensor_params-view-source"><span>View Source</span></label>
 
@@ -1236,186 +1602,5 @@ limitations, and pitfalls. NeuroImage, 2013, 81, 335-346.</p></li>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

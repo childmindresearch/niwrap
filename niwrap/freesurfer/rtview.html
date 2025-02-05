@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#RtviewOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#RtviewParameters">RtviewParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#RtviewParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.right_hemi">right_hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.polar">polar</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.real_file">real_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.imag_file">imag_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.fsig_file">fsig_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.reg_file">reg_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.flat_display">flat_display</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.patch">patch</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.tcl_file">tcl_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RtviewParameters.no_cleanup">no_cleanup</a>
                         </li>
                 </ul>
 
@@ -349,9 +386,10 @@
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;RTVIEW_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;RtviewOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;rtview&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;rtview_params&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="p">]</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;RtviewParameters&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;rtview&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;rtview_params&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -418,6 +456,140 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="RtviewParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">RtviewParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters"></a>
+    
+    
+
+                            <div id="RtviewParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.right_hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_hemi</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.right_hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.polar" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polar</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.polar"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.real_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">real_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.real_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.imag_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">imag_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.imag_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.fsig_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fsig_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.fsig_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.reg_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reg_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.reg_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.flat_display" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flat_display</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.flat_display"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.patch" class="classattr">
+                                <div class="attr variable">
+            <span class="name">patch</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.patch"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.tcl_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tcl_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.tcl_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RtviewParameters.no_cleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RtviewParameters.no_cleanup"></a>
+    
+    
 
                             </div>
                 </section>
@@ -515,7 +687,7 @@ for tksurfer, setting up the environment for using the color wheel.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">rtview_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_hemi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">polar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">real_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imag_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsig_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flat_display</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">patch</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tcl_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">rtview</span><span class="o">.</span><span class="n">RtviewParameters</span>:</span></span>
+        <span class="name">rtview_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_hemi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">polar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">real_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imag_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsig_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flat_display</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">patch</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tcl_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#RtviewParameters">RtviewParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="rtview_params-view-source"><span>View Source</span></label>
 
@@ -605,186 +777,5 @@ for tksurfer, setting up the environment for using the color wheel.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

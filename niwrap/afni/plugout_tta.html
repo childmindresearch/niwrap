@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#PlugoutTtaOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#PlugoutTtaParameters">PlugoutTtaParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.host">host</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.port">port</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.port_offset">port_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.port_offset_quiet">port_offset_quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.port_offset_bloc">port_offset_bloc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.max_port_bloc">max_port_bloc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.max_port_bloc_quiet">max_port_bloc_quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.num_assigned_ports">num_assigned_ports</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PlugoutTtaParameters.num_assigned_ports_quiet">num_assigned_ports_quiet</a>
                         </li>
                 </ul>
 
@@ -347,9 +381,10 @@
 </span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;PLUGOUT_TTA_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="s2">&quot;PlugoutTtaOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;plugout_tta&quot;</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;plugout_tta_params&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="p">]</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;PlugoutTtaParameters&quot;</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;plugout_tta&quot;</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;plugout_tta_params&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -416,6 +451,129 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="PlugoutTtaParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PlugoutTtaParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters"></a>
+    
+    
+
+                            <div id="PlugoutTtaParameters.host" class="classattr">
+                                <div class="attr variable">
+            <span class="name">host</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.host"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.port" class="classattr">
+                                <div class="attr variable">
+            <span class="name">port</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.port"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.port_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">port_offset</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.port_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.port_offset_quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">port_offset_quiet</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.port_offset_quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.port_offset_bloc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">port_offset_bloc</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.port_offset_bloc"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.max_port_bloc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_port_bloc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.max_port_bloc"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.max_port_bloc_quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_port_bloc_quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.max_port_bloc_quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.num_assigned_ports" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_assigned_ports</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.num_assigned_ports"></a>
+    
+    
+
+                            </div>
+                            <div id="PlugoutTtaParameters.num_assigned_ports_quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_assigned_ports_quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PlugoutTtaParameters.num_assigned_ports_quiet"></a>
+    
+    
 
                             </div>
                 </section>
@@ -518,7 +676,7 @@ Talairach-Tournoux atlas.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">plugout_tta_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">port_offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port_offset_quiet</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port_offset_bloc</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_port_bloc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_port_bloc_quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_assigned_ports</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_assigned_ports_quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">plugout_tta</span><span class="o">.</span><span class="n">PlugoutTtaParameters</span>:</span></span>
+        <span class="name">plugout_tta_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">port_offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port_offset_quiet</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">port_offset_bloc</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_port_bloc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_port_bloc_quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_assigned_ports</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">num_assigned_ports_quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#PlugoutTtaParameters">PlugoutTtaParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="plugout_tta_params-view-source"><span>View Source</span></label>
 
@@ -608,186 +766,5 @@ Talairach-Tournoux atlas.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,33 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CONVERT_FIBER_ORIENTATIONS_METADATA">CONVERT_FIBER_ORIENTATIONS_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#ConvertFiberOrientationsFiberParameters">ConvertFiberOrientationsFiberParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.mean_f">mean_f</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.stdev_f">stdev_f</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.theta">theta</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.phi">phi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.psi">psi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.ka">ka</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsFiberParameters.kb">kb</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#ConvertFiberOrientationsOutputs">ConvertFiberOrientationsOutputs</a>
@@ -44,6 +69,21 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConvertFiberOrientationsOutputs.fiber_out">fiber_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertFiberOrientationsParameters">ConvertFiberOrientationsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsParameters.label_volume">label_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsParameters.fiber_out">fiber_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertFiberOrientationsParameters.fiber">fiber</a>
                         </li>
                 </ul>
 
@@ -415,11 +455,13 @@
 </span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>
 </span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;CONVERT_FIBER_ORIENTATIONS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;ConvertFiberOrientationsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;convert_fiber_orientations&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;convert_fiber_orientations_fiber_params&quot;</span><span class="p">,</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;convert_fiber_orientations_params&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="p">]</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;ConvertFiberOrientationsFiberParameters&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;ConvertFiberOrientationsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;ConvertFiberOrientationsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;convert_fiber_orientations&quot;</span><span class="p">,</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;convert_fiber_orientations_fiber_params&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;convert_fiber_orientations_params&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -436,6 +478,96 @@
     
     
 
+                </section>
+                <section id="ConvertFiberOrientationsFiberParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertFiberOrientationsFiberParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters"></a>
+    
+    
+
+                            <div id="ConvertFiberOrientationsFiberParameters.mean_f" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean_f</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.mean_f"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.stdev_f" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stdev_f</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.stdev_f"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.theta" class="classattr">
+                                <div class="attr variable">
+            <span class="name">theta</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.theta"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.phi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.phi"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.psi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">psi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.psi"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.ka" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ka</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.ka"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsFiberParameters.kb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kb</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsFiberParameters.kb"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ConvertFiberOrientationsOutputs">
                             <input id="ConvertFiberOrientationsOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -504,12 +636,58 @@
 
                             </div>
                 </section>
+                <section id="ConvertFiberOrientationsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertFiberOrientationsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsParameters"></a>
+    
+    
+
+                            <div id="ConvertFiberOrientationsParameters.label_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsParameters.label_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsParameters.fiber_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiber_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsParameters.fiber_out"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertFiberOrientationsParameters.fiber" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiber</span><span class="annotation">: NotRequired[list[<a href="#ConvertFiberOrientationsFiberParameters">ConvertFiberOrientationsFiberParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertFiberOrientationsParameters.fiber"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="convert_fiber_orientations">
                             <input id="convert_fiber_orientations-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_fiber_orientations</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_fiber_orientations</span><span class="o">.</span><span class="n">ConvertFiberOrientationsFiberParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertFiberOrientationsOutputs">ConvertFiberOrientationsOutputs</a></span>:</span></span>
+        <span class="name">convert_fiber_orientations</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertFiberOrientationsFiberParameters">ConvertFiberOrientationsFiberParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertFiberOrientationsOutputs">ConvertFiberOrientationsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_fiber_orientations-view-source"><span>View Source</span></label>
 
@@ -649,7 +827,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_fiber_orientations_fiber_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mean_f</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stdev_f</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">theta</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">phi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">psi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ka</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">kb</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_fiber_orientations</span><span class="o">.</span><span class="n">ConvertFiberOrientationsFiberParameters</span>:</span></span>
+        <span class="name">convert_fiber_orientations_fiber_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mean_f</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stdev_f</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">theta</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">phi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">psi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ka</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">kb</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertFiberOrientationsFiberParameters">ConvertFiberOrientationsFiberParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_fiber_orientations_fiber_params-view-source"><span>View Source</span></label>
 
@@ -720,7 +898,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_fiber_orientations_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_fiber_orientations</span><span class="o">.</span><span class="n">ConvertFiberOrientationsFiberParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_fiber_orientations</span><span class="o">.</span><span class="n">ConvertFiberOrientationsParameters</span>:</span></span>
+        <span class="name">convert_fiber_orientations_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertFiberOrientationsFiberParameters">ConvertFiberOrientationsFiberParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertFiberOrientationsParameters">ConvertFiberOrientationsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_fiber_orientations_params-view-source"><span>View Source</span></label>
 
@@ -772,186 +950,5 @@ THALAMUS_RIGHT.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

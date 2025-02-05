@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SurfPatchOutputs.out_stitched_surface">out_stitched_surface</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SurfPatchParameters">SurfPatchParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.spec_file">spec_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.surf_A">surf_A</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.surf_B">surf_B</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.nodefile">nodefile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.inode">inode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.ilabel">ilabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.hits">hits</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.masklabel">masklabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.vol">vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.vol_only">vol_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.patch2surf">patch2surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.coord_gain">coord_gain</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.check_bowtie">check_bowtie</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.fix_bowtie">fix_bowtie</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.ok_bowtie">ok_bowtie</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.adjust_contour">adjust_contour</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.do_not_adjust_contour">do_not_adjust_contour</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.stitched_surface">stitched_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.flip_orientation">flip_orientation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfPatchParameters.verbosity">verbosity</a>
                         </li>
                 </ul>
 
@@ -468,9 +535,10 @@
 </span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;SURF_PATCH_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;SurfPatchOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;surf_patch&quot;</span><span class="p">,</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="s2">&quot;surf_patch_params&quot;</span><span class="p">,</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="p">]</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;SurfPatchParameters&quot;</span><span class="p">,</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="s2">&quot;surf_patch&quot;</span><span class="p">,</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="s2">&quot;surf_patch_params&quot;</span><span class="p">,</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -582,6 +650,250 @@
             <div class="docstring"><p>Stitched surface file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SurfPatchParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SurfPatchParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters"></a>
+    
+    
+
+                            <div id="SurfPatchParameters.spec_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spec_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.spec_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.surf_A" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_A</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.surf_A"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.surf_B" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_B</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.surf_B"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.nodefile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nodefile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.nodefile"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.inode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inode</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.inode"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.ilabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ilabel</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.ilabel"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.hits" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hits</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.hits"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.masklabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">masklabel</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.masklabel"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.vol"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.vol_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.vol_only"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.patch2surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">patch2surf</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.patch2surf"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.coord_gain" class="classattr">
+                                <div class="attr variable">
+            <span class="name">coord_gain</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.coord_gain"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.check_bowtie" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_bowtie</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.check_bowtie"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.fix_bowtie" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix_bowtie</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.fix_bowtie"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.ok_bowtie" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ok_bowtie</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.ok_bowtie"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.adjust_contour" class="classattr">
+                                <div class="attr variable">
+            <span class="name">adjust_contour</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.adjust_contour"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.do_not_adjust_contour" class="classattr">
+                                <div class="attr variable">
+            <span class="name">do_not_adjust_contour</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.do_not_adjust_contour"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.stitched_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stitched_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.stitched_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.flip_orientation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flip_orientation</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.flip_orientation"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfPatchParameters.verbosity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbosity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfPatchParameters.verbosity"></a>
+    
+    
 
                             </div>
                 </section>
@@ -720,7 +1032,7 @@ calculates the volume between the same patch on two isotopic surfaces.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">surf_patch_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">spec_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inode</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ilabel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hits</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">masklabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vol_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">patch2surf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">coord_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">adjust_contour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">do_not_adjust_contour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stitched_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flip_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">surf_patch</span><span class="o">.</span><span class="n">SurfPatchParameters</span>:</span></span>
+        <span class="name">surf_patch_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">spec_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inode</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ilabel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hits</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">masklabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vol_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">patch2surf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">coord_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok_bowtie</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">adjust_contour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">do_not_adjust_contour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stitched_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flip_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfPatchParameters">SurfPatchParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="surf_patch_params-view-source"><span>View Source</span></label>
 
@@ -859,186 +1171,5 @@ calculates the volume between the same patch on two isotopic surfaces.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

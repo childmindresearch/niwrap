@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MidefaceOutputs.facemask_output">facemask_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MidefaceParameters">MidefaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.output_volume">output_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.facemask">facemask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.exclusion_mask">exclusion_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.samseg_ndilations">samseg_ndilations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.samseg_json">samseg_json</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.init_reg">init_reg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.synthseg_ndilations">synthseg_ndilations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.fill_const">fill_const</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.fhi">fhi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.code">code</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.image_convert">image_convert</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.display_no">display_no</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.apply_volume">apply_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.check_volume">check_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.check_output_file">check_output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MidefaceParameters.output_format">output_format</a>
                         </li>
                 </ul>
 
@@ -469,9 +530,10 @@
 </span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="s2">&quot;MIDEFACE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="s2">&quot;MidefaceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;mideface&quot;</span><span class="p">,</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;mideface_params&quot;</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="p">]</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;MidefaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;mideface&quot;</span><span class="p">,</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="s2">&quot;mideface_params&quot;</span><span class="p">,</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -568,6 +630,228 @@
             <div class="docstring"><p>Applied facemask file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MidefaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MidefaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters"></a>
+    
+    
+
+                            <div id="MidefaceParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.output_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.output_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.facemask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">facemask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.facemask"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.exclusion_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclusion_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.exclusion_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.samseg_ndilations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">samseg_ndilations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.samseg_ndilations"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.samseg_json" class="classattr">
+                                <div class="attr variable">
+            <span class="name">samseg_json</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.samseg_json"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.init_reg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">init_reg</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.init_reg"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.synthseg_ndilations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">synthseg_ndilations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.synthseg_ndilations"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.fill_const" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill_const</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.fill_const"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.fhi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fhi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.fhi"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.code" class="classattr">
+                                <div class="attr variable">
+            <span class="name">code</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.code"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.image_convert" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_convert</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.image_convert"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.display_no" class="classattr">
+                                <div class="attr variable">
+            <span class="name">display_no</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.display_no"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.apply_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apply_volume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.apply_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.check_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.check_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.check_output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_output_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.check_output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MidefaceParameters.output_format" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_format</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MidefaceParameters.output_format"></a>
+    
+    
 
                             </div>
                 </section>
@@ -687,7 +971,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mideface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusion_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">samseg_ndilations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">samseg_json</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_reg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synthseg_ndilations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill_const</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">code_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_convert</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">display_no</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mideface</span><span class="o">.</span><span class="n">MidefaceParameters</span>:</span></span>
+        <span class="name">mideface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusion_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">samseg_ndilations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">samseg_json</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_reg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synthseg_ndilations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill_const</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">code_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_convert</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">display_no</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MidefaceParameters">MidefaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mideface_params-view-source"><span>View Source</span></label>
 
@@ -819,186 +1103,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

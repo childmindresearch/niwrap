@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MetricSmoothingOutputs.metric_out">metric_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MetricSmoothingParameters">MetricSmoothingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.metric_in">metric_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.smoothing_kernel">smoothing_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.metric_out">metric_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.opt_fwhm">opt_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.roi">roi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.opt_fix_zeros">opt_fix_zeros</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.opt_column_column">opt_column_column</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.opt_corrected_areas_area_metric">opt_corrected_areas_area_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingParameters.opt_method_method">opt_method_method</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MetricSmoothingRoiParameters">MetricSmoothingRoiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MetricSmoothingRoiParameters.roi_metric">roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricSmoothingRoiParameters.opt_match_columns">opt_match_columns</a>
                         </li>
                 </ul>
 
@@ -479,10 +525,12 @@
 </span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;METRIC_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;MetricSmoothingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;metric_smoothing&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;metric_smoothing_params&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;metric_smoothing_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="p">]</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;MetricSmoothingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;MetricSmoothingRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;metric_smoothing&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;metric_smoothing_params&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;metric_smoothing_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -567,12 +615,170 @@
 
                             </div>
                 </section>
+                <section id="MetricSmoothingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MetricSmoothingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters"></a>
+    
+    
+
+                            <div id="MetricSmoothingParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.metric_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.metric_in"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.smoothing_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoothing_kernel</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.smoothing_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.metric_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.metric_out"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.opt_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fwhm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.opt_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.roi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi</span><span class="annotation">: NotRequired[<a href="#MetricSmoothingRoiParameters">MetricSmoothingRoiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.roi"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.opt_fix_zeros" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fix_zeros</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.opt_fix_zeros"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.opt_column_column" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_column_column</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.opt_column_column"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.opt_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.opt_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingParameters.opt_method_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_method_method</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingParameters.opt_method_method"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MetricSmoothingRoiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MetricSmoothingRoiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingRoiParameters"></a>
+    
+    
+
+                            <div id="MetricSmoothingRoiParameters.roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi_metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingRoiParameters.roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricSmoothingRoiParameters.opt_match_columns" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_match_columns</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricSmoothingRoiParameters.opt_match_columns"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="metric_smoothing">
                             <input id="metric_smoothing-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_smoothing</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_smoothing</span><span class="o">.</span><span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricSmoothingOutputs">MetricSmoothingOutputs</a></span>:</span></span>
+        <span class="name">metric_smoothing</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#MetricSmoothingRoiParameters">MetricSmoothingRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricSmoothingOutputs">MetricSmoothingOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_smoothing-view-source"><span>View Source</span></label>
 
@@ -749,7 +955,7 @@ replicate methods of studies done with caret5's geodesic smoothing.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_smoothing_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_smoothing</span><span class="o">.</span><span class="n">MetricSmoothingRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_smoothing</span><span class="o">.</span><span class="n">MetricSmoothingParameters</span>:</span></span>
+        <span class="name">metric_smoothing_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smoothing_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#MetricSmoothingRoiParameters">MetricSmoothingRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricSmoothingParameters">MetricSmoothingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_smoothing_params-view-source"><span>View Source</span></label>
 
@@ -841,7 +1047,7 @@ replicate methods of studies done with caret5's geodesic smoothing.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_smoothing_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_columns</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_smoothing</span><span class="o">.</span><span class="n">MetricSmoothingRoiParameters</span>:</span></span>
+        <span class="name">metric_smoothing_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_columns</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricSmoothingRoiParameters">MetricSmoothingRoiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_smoothing_roi_params-view-source"><span>View Source</span></label>
 
@@ -889,186 +1095,5 @@ replicate methods of studies done with caret5's geodesic smoothing.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

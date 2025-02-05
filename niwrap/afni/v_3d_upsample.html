@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dUpsampleOutputs.output_head">output_head</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dUpsampleParameters">V3dUpsampleParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.upsample_factor">upsample_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.input_dataset">input_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.linear_interpolation">linear_interpolation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.output_prefix">output_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dUpsampleParameters.datatype">datatype</a>
                         </li>
                 </ul>
 
@@ -312,10 +334,11 @@
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;V3dUpsampleOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;V_3D_UPSAMPLE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;v_3d_upsample&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;v_3d_upsample_params&quot;</span><span class="p">,</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="p">]</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;V3dUpsampleParameters&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;V_3D_UPSAMPLE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;v_3d_upsample&quot;</span><span class="p">,</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="s2">&quot;v_3d_upsample_params&quot;</span><span class="p">,</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -399,6 +422,85 @@
             <div class="docstring"><p>Header information for the upsampled dataset.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dUpsampleParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dUpsampleParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters"></a>
+    
+    
+
+                            <div id="V3dUpsampleParameters.upsample_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">upsample_factor</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.upsample_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dUpsampleParameters.input_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dataset</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.input_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dUpsampleParameters.linear_interpolation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">linear_interpolation</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.linear_interpolation"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dUpsampleParameters.output_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.output_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dUpsampleParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dUpsampleParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dUpsampleParameters.datatype"></a>
+    
+    
 
                             </div>
                 </section>
@@ -496,7 +598,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_upsample_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">upsample_factor</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">linear_interpolation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_upsample</span><span class="o">.</span><span class="n">V3dUpsampleParameters</span>:</span></span>
+        <span class="name">v_3d_upsample_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">upsample_factor</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">linear_interpolation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dUpsampleParameters">V3dUpsampleParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_upsample_params-view-source"><span>View Source</span></label>
 
@@ -565,186 +667,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

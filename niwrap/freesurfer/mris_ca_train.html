@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,90 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisCaTrainOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisCaTrainParameters">MrisCaTrainParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.canonsurf">canonsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.annot_file">annot_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.subjects">subjects</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.sdir">sdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.nbrs">nbrs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.orig">orig</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.norm1">norm1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.norm2">norm2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.norm3">norm3</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.ic">ic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.sulc">sulc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.sulconly">sulconly</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.a">a</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.parcellation_table">parcellation_table</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.n">n</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.debug_vertex">debug_vertex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.gcs_means">gcs_means</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.gcs_priors">gcs_priors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.gcs_diff">gcs_diff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.nfill">nfill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.no_fill">no_fill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaTrainParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -498,9 +580,10 @@
 </span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;MRIS_CA_TRAIN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;MrisCaTrainOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;mris_ca_train&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;mris_ca_train_params&quot;</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="p">]</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;MrisCaTrainParameters&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;mris_ca_train&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;mris_ca_train_params&quot;</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -582,6 +665,305 @@
             <div class="docstring"><p>Classifier array output file generated by mris_ca_train</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisCaTrainParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisCaTrainParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters"></a>
+    
+    
+
+                            <div id="MrisCaTrainParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.canonsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">canonsurf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.canonsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.annot_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annot_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.annot_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.subjects" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.subjects"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.sdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.sdir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.nbrs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nbrs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.nbrs"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.orig" class="classattr">
+                                <div class="attr variable">
+            <span class="name">orig</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.orig"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.norm1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm1</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.norm1"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.norm2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.norm2"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.norm3" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm3</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.norm3"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.ic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ic</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.ic"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.sulc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sulc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.sulc"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.sulconly" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sulconly</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.sulconly"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.a" class="classattr">
+                                <div class="attr variable">
+            <span class="name">a</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.a"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.parcellation_table" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parcellation_table</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.parcellation_table"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.n" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.n"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.debug_vertex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_vertex</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.debug_vertex"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.gcs_means" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcs_means</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.gcs_means"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.gcs_priors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcs_priors</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.gcs_priors"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.gcs_diff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcs_diff</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.gcs_diff"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.nfill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nfill</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.nfill"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.no_fill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_fill</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.no_fill"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaTrainParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaTrainParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -725,7 +1107,7 @@ subjects using probabilistic information.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_ca_train_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">canonsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">annot_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nbrs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">norm1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm3</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ic</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sulc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sulconly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">parcellation_table</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_vertex</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_means</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_priors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_diff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nfill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_ca_train</span><span class="o">.</span><span class="n">MrisCaTrainParameters</span>:</span></span>
+        <span class="name">mris_ca_train_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">canonsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">annot_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nbrs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">norm1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm3</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ic</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sulc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sulconly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">parcellation_table</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_vertex</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_means</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_priors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_diff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nfill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisCaTrainParameters">MrisCaTrainParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_ca_train_params-view-source"><span>View Source</span></label>
 
@@ -882,186 +1264,5 @@ subjects using probabilistic information.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

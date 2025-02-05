@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#MTNORMALISE_METADATA">MTNORMALISE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#MtnormaliseConfigParameters">MtnormaliseConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MtnormaliseConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#MtnormaliseInputOutputOutputs">MtnormaliseInputOutputOutputs</a>
@@ -44,6 +54,18 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MtnormaliseInputOutputOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MtnormaliseInputOutputParameters">MtnormaliseInputOutputParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MtnormaliseInputOutputParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseInputOutputParameters.output">output</a>
                         </li>
                 </ul>
 
@@ -68,6 +90,63 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MtnormaliseOutputs.input_output">input_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MtnormaliseParameters">MtnormaliseParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.order">order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.niter">niter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.reference">reference</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.balanced">balanced</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.check_norm">check_norm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.check_mask">check_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.check_factors">check_factors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MtnormaliseParameters.input_output">input_output</a>
                         </li>
                 </ul>
 
@@ -505,7 +584,7 @@
 </span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>        <span class="n">check_norm</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_norm&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_norm&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>        <span class="n">check_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_mask&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_mask&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>        <span class="n">check_factors</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_factors&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;check_factors&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">],</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;input_output&quot;</span><span class="p">)],</span>
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="p">)</span>
 </span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>
@@ -670,13 +749,16 @@
 </span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>
 </span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="s2">&quot;MTNORMALISE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="s2">&quot;MtnormaliseInputOutputOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a>    <span class="s2">&quot;MtnormaliseOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a>    <span class="s2">&quot;mtnormalise&quot;</span><span class="p">,</span>
-</span><span id="L-569"><a href="#L-569"><span class="linenos">569</span></a>    <span class="s2">&quot;mtnormalise_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a>    <span class="s2">&quot;mtnormalise_input_output_params&quot;</span><span class="p">,</span>
-</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>    <span class="s2">&quot;mtnormalise_params&quot;</span><span class="p">,</span>
-</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a><span class="p">]</span>
+</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="s2">&quot;MtnormaliseConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a>    <span class="s2">&quot;MtnormaliseInputOutputOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a>    <span class="s2">&quot;MtnormaliseInputOutputParameters&quot;</span><span class="p">,</span>
+</span><span id="L-569"><a href="#L-569"><span class="linenos">569</span></a>    <span class="s2">&quot;MtnormaliseOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-570"><a href="#L-570"><span class="linenos">570</span></a>    <span class="s2">&quot;MtnormaliseParameters&quot;</span><span class="p">,</span>
+</span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>    <span class="s2">&quot;mtnormalise&quot;</span><span class="p">,</span>
+</span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a>    <span class="s2">&quot;mtnormalise_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>    <span class="s2">&quot;mtnormalise_input_output_params&quot;</span><span class="p">,</span>
+</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>    <span class="s2">&quot;mtnormalise_params&quot;</span><span class="p">,</span>
+</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -693,6 +775,41 @@
     
     
 
+                </section>
+                <section id="MtnormaliseConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MtnormaliseConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseConfigParameters"></a>
+    
+    
+
+                            <div id="MtnormaliseConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="MtnormaliseInputOutputOutputs">
                             <input id="MtnormaliseInputOutputOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -758,6 +875,41 @@
             <div class="docstring"><p>output normalised tissue compartment image.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MtnormaliseInputOutputParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MtnormaliseInputOutputParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseInputOutputParameters"></a>
+    
+    
+
+                            <div id="MtnormaliseInputOutputParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseInputOutputParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseInputOutputParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseInputOutputParameters.output"></a>
+    
+    
 
                             </div>
                 </section>
@@ -879,12 +1031,212 @@ with the same length and order as the inputs.</p>
 
                             </div>
                 </section>
+                <section id="MtnormaliseParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MtnormaliseParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters"></a>
+    
+    
+
+                            <div id="MtnormaliseParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.order"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.niter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">niter</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.niter"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.reference" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reference</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.reference"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.balanced" class="classattr">
+                                <div class="attr variable">
+            <span class="name">balanced</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.balanced"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.check_norm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_norm</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.check_norm"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.check_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.check_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.check_factors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_factors</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.check_factors"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#MtnormaliseConfigParameters">MtnormaliseConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MtnormaliseParameters.input_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_output</span><span class="annotation">: list[<a href="#MtnormaliseInputOutputParameters">MtnormaliseInputOutputParameters</a>]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MtnormaliseParameters.input_output"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mtnormalise">
                             <input id="mtnormalise-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mtnormalise</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseInputOutputParameters</span><span class="p">]</span>,</span><span class="param">	<span class="n">order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reference</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">balanced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MtnormaliseOutputs">MtnormaliseOutputs</a></span>:</span></span>
+        <span class="name">mtnormalise</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MtnormaliseInputOutputParameters">MtnormaliseInputOutputParameters</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reference</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">balanced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MtnormaliseConfigParameters">MtnormaliseConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MtnormaliseOutputs">MtnormaliseOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="mtnormalise-view-source"><span>View Source</span></label>
 
@@ -1068,7 +1420,7 @@ Proc. ISMRM, 2021, 29, 2472.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mtnormalise_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseConfigParameters</span>:</span></span>
+        <span class="name">mtnormalise_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MtnormaliseConfigParameters">MtnormaliseConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mtnormalise_config_params-view-source"><span>View Source</span></label>
 
@@ -1119,7 +1471,7 @@ Proc. ISMRM, 2021, 29, 2472.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mtnormalise_input_output_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseInputOutputParameters</span>:</span></span>
+        <span class="name">mtnormalise_input_output_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MtnormaliseInputOutputParameters">MtnormaliseInputOutputParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mtnormalise_input_output_params-view-source"><span>View Source</span></label>
 
@@ -1170,7 +1522,7 @@ Proc. ISMRM, 2021, 29, 2472.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mtnormalise_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseInputOutputParameters</span><span class="p">]</span>,</span><span class="param">	<span class="n">order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reference</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">balanced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mtnormalise</span><span class="o">.</span><span class="n">MtnormaliseParameters</span>:</span></span>
+        <span class="name">mtnormalise_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MtnormaliseInputOutputParameters">MtnormaliseInputOutputParameters</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reference</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">balanced</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MtnormaliseConfigParameters">MtnormaliseConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MtnormaliseParameters">MtnormaliseParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mtnormalise_params-view-source"><span>View Source</span></label>
 
@@ -1306,186 +1658,5 @@ Proc. ISMRM, 2021, 29, 2472.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

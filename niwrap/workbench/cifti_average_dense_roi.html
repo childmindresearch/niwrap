@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,27 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_AVERAGE_DENSE_ROI_METADATA">CIFTI_AVERAGE_DENSE_ROI_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiAverageDenseRoiCiftiParameters">CiftiAverageDenseRoiCiftiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiCiftiParameters.cifti_in">cifti_in</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiAverageDenseRoiCiftiRoiParameters">CiftiAverageDenseRoiCiftiRoiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiCiftiRoiParameters.roi_cifti">roi_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiCiftiRoiParameters.opt_in_memory">opt_in_memory</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiAverageDenseRoiOutputs">CiftiAverageDenseRoiOutputs</a>
@@ -44,6 +63,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiAverageDenseRoiOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiAverageDenseRoiParameters">CiftiAverageDenseRoiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.cifti_roi">cifti_roi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_left_roi_roi_metric">opt_left_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_right_roi_roi_metric">opt_right_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_cerebellum_roi_roi_metric">opt_cerebellum_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_vol_roi_roi_vol">opt_vol_roi_roi_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_left_area_surf_left_surf">opt_left_area_surf_left_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_right_area_surf_right_surf">opt_right_area_surf_right_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.opt_cerebellum_area_surf_cerebellum_surf">opt_cerebellum_area_surf_cerebellum_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiAverageDenseRoiParameters.cifti">cifti</a>
                         </li>
                 </ul>
 
@@ -471,12 +526,15 @@
 </span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>
 </span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="s2">&quot;CIFTI_AVERAGE_DENSE_ROI_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="s2">&quot;CiftiAverageDenseRoiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;cifti_average_dense_roi&quot;</span><span class="p">,</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;cifti_average_dense_roi_cifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="s2">&quot;cifti_average_dense_roi_cifti_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="s2">&quot;cifti_average_dense_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="p">]</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="s2">&quot;CiftiAverageDenseRoiCiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;CiftiAverageDenseRoiCiftiRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;CiftiAverageDenseRoiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="s2">&quot;CiftiAverageDenseRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>    <span class="s2">&quot;cifti_average_dense_roi&quot;</span><span class="p">,</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="s2">&quot;cifti_average_dense_roi_cifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;cifti_average_dense_roi_cifti_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;cifti_average_dense_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -493,6 +551,65 @@
     
     
 
+                </section>
+                <section id="CiftiAverageDenseRoiCiftiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiAverageDenseRoiCiftiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiCiftiParameters"></a>
+    
+    
+
+                            <div id="CiftiAverageDenseRoiCiftiParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiCiftiParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiAverageDenseRoiCiftiRoiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiAverageDenseRoiCiftiRoiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiCiftiRoiParameters"></a>
+    
+    
+
+                            <div id="CiftiAverageDenseRoiCiftiRoiParameters.roi_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi_cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiCiftiRoiParameters.roi_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiCiftiRoiParameters.opt_in_memory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_in_memory</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiCiftiRoiParameters.opt_in_memory"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiAverageDenseRoiOutputs">
                             <input id="CiftiAverageDenseRoiOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -561,12 +678,135 @@
 
                             </div>
                 </section>
+                <section id="CiftiAverageDenseRoiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiAverageDenseRoiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters"></a>
+    
+    
+
+                            <div id="CiftiAverageDenseRoiParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.cifti_roi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_roi</span><span class="annotation">: NotRequired[<a href="#CiftiAverageDenseRoiCiftiRoiParameters">CiftiAverageDenseRoiCiftiRoiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.cifti_roi"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_left_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_left_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_right_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_right_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_cerebellum_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_cerebellum_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_vol_roi_roi_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_vol_roi_roi_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_vol_roi_roi_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_left_area_surf_left_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_area_surf_left_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_left_area_surf_left_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_right_area_surf_right_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_area_surf_right_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_right_area_surf_right_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.opt_cerebellum_area_surf_cerebellum_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_area_surf_cerebellum_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.opt_cerebellum_area_surf_cerebellum_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiAverageDenseRoiParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: NotRequired[list[<a href="#CiftiAverageDenseRoiCiftiParameters">CiftiAverageDenseRoiCiftiParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiAverageDenseRoiParameters.cifti"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_average_dense_roi">
                             <input id="cifti_average_dense_roi-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_average_dense_roi</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiAverageDenseRoiOutputs">CiftiAverageDenseRoiOutputs</a></span>:</span></span>
+        <span class="name">cifti_average_dense_roi</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_roi</span><span class="p">:</span> <span class="n"><a href="#CiftiAverageDenseRoiCiftiRoiParameters">CiftiAverageDenseRoiCiftiRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiAverageDenseRoiCiftiParameters">CiftiAverageDenseRoiCiftiParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiAverageDenseRoiOutputs">CiftiAverageDenseRoiOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_average_dense_roi-view-source"><span>View Source</span></label>
 
@@ -670,7 +910,7 @@ specified, they must have the same number of columns.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_average_dense_roi_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiParameters</span>:</span></span>
+        <span class="name">cifti_average_dense_roi_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiAverageDenseRoiCiftiParameters">CiftiAverageDenseRoiCiftiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_average_dense_roi_cifti_params-view-source"><span>View Source</span></label>
 
@@ -717,7 +957,7 @@ specified, they must have the same number of columns.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_average_dense_roi_cifti_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_in_memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiRoiParameters</span>:</span></span>
+        <span class="name">cifti_average_dense_roi_cifti_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_in_memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiAverageDenseRoiCiftiRoiParameters">CiftiAverageDenseRoiCiftiRoiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_average_dense_roi_cifti_roi_params-view-source"><span>View Source</span></label>
 
@@ -769,7 +1009,7 @@ specified, they must have the same number of columns.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_average_dense_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_average_dense_roi</span><span class="o">.</span><span class="n">CiftiAverageDenseRoiParameters</span>:</span></span>
+        <span class="name">cifti_average_dense_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_roi</span><span class="p">:</span> <span class="n"><a href="#CiftiAverageDenseRoiCiftiRoiParameters">CiftiAverageDenseRoiCiftiRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiAverageDenseRoiCiftiParameters">CiftiAverageDenseRoiCiftiParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiAverageDenseRoiParameters">CiftiAverageDenseRoiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_average_dense_roi_params-view-source"><span>View Source</span></label>
 
@@ -863,186 +1103,5 @@ specified, they must have the same number of columns.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

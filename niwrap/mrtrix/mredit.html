@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#MREDIT_METADATA">MREDIT_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#MreditConfigParameters">MreditConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MreditConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#MreditOutputs">MreditOutputs</a>
@@ -44,6 +54,96 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MreditOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MreditParameters">MreditParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MreditParameters.plane">plane</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.sphere">sphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.voxel">voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.scanner">scanner</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MreditPlaneParameters">MreditPlaneParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MreditPlaneParameters.axis">axis</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditPlaneParameters.coord">coord</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditPlaneParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MreditSphereParameters">MreditSphereParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MreditSphereParameters.position">position</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditSphereParameters.radius">radius</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditSphereParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MreditVoxelParameters">MreditVoxelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MreditVoxelParameters.position">position</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MreditVoxelParameters.value">value</a>
                         </li>
                 </ul>
 
@@ -598,14 +698,19 @@
 </span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>
 </span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>    <span class="s2">&quot;MREDIT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a>    <span class="s2">&quot;MreditOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a>    <span class="s2">&quot;mredit&quot;</span><span class="p">,</span>
-</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a>    <span class="s2">&quot;mredit_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a>    <span class="s2">&quot;mredit_params&quot;</span><span class="p">,</span>
-</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a>    <span class="s2">&quot;mredit_plane_params&quot;</span><span class="p">,</span>
-</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;mredit_sphere_params&quot;</span><span class="p">,</span>
-</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;mredit_voxel_params&quot;</span><span class="p">,</span>
-</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a><span class="p">]</span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a>    <span class="s2">&quot;MreditConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a>    <span class="s2">&quot;MreditOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a>    <span class="s2">&quot;MreditParameters&quot;</span><span class="p">,</span>
+</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a>    <span class="s2">&quot;MreditPlaneParameters&quot;</span><span class="p">,</span>
+</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a>    <span class="s2">&quot;MreditSphereParameters&quot;</span><span class="p">,</span>
+</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;MreditVoxelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;mredit&quot;</span><span class="p">,</span>
+</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a>    <span class="s2">&quot;mredit_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a>    <span class="s2">&quot;mredit_params&quot;</span><span class="p">,</span>
+</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>    <span class="s2">&quot;mredit_plane_params&quot;</span><span class="p">,</span>
+</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a>    <span class="s2">&quot;mredit_sphere_params&quot;</span><span class="p">,</span>
+</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;mredit_voxel_params&quot;</span><span class="p">,</span>
+</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -622,6 +727,41 @@
     
     
 
+                </section>
+                <section id="MreditConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MreditConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MreditConfigParameters"></a>
+    
+    
+
+                            <div id="MreditConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="MreditOutputs">
                             <input id="MreditOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -690,12 +830,306 @@
 
                             </div>
                 </section>
+                <section id="MreditParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MreditParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters"></a>
+    
+    
+
+                            <div id="MreditParameters.plane" class="classattr">
+                                <div class="attr variable">
+            <span class="name">plane</span><span class="annotation">: NotRequired[list[<a href="#MreditPlaneParameters">MreditPlaneParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.plane"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.sphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sphere</span><span class="annotation">: NotRequired[list[<a href="#MreditSphereParameters">MreditSphereParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.sphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel</span><span class="annotation">: NotRequired[list[<a href="#MreditVoxelParameters">MreditVoxelParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.scanner" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scanner</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.scanner"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#MreditConfigParameters">MreditConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MreditPlaneParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MreditPlaneParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MreditPlaneParameters"></a>
+    
+    
+
+                            <div id="MreditPlaneParameters.axis" class="classattr">
+                                <div class="attr variable">
+            <span class="name">axis</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditPlaneParameters.axis"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditPlaneParameters.coord" class="classattr">
+                                <div class="attr variable">
+            <span class="name">coord</span><span class="annotation">: list[int]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditPlaneParameters.coord"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditPlaneParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditPlaneParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MreditSphereParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MreditSphereParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MreditSphereParameters"></a>
+    
+    
+
+                            <div id="MreditSphereParameters.position" class="classattr">
+                                <div class="attr variable">
+            <span class="name">position</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditSphereParameters.position"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditSphereParameters.radius" class="classattr">
+                                <div class="attr variable">
+            <span class="name">radius</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditSphereParameters.radius"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditSphereParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditSphereParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MreditVoxelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MreditVoxelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MreditVoxelParameters"></a>
+    
+    
+
+                            <div id="MreditVoxelParameters.position" class="classattr">
+                                <div class="attr variable">
+            <span class="name">position</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditVoxelParameters.position"></a>
+    
+    
+
+                            </div>
+                            <div id="MreditVoxelParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MreditVoxelParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mredit">
                             <input id="mredit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plane</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditPlaneParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sphere</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditSphereParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditVoxelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scanner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditOutputs">MreditOutputs</a></span>:</span></span>
+        <span class="name">mredit</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plane</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditPlaneParameters">MreditPlaneParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sphere</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditSphereParameters">MreditSphereParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditVoxelParameters">MreditVoxelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scanner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditConfigParameters">MreditConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditOutputs">MreditOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit-view-source"><span>View Source</span></label>
 
@@ -816,7 +1250,7 @@ image, and the original image will not be modified in any way.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditConfigParameters</span>:</span></span>
+        <span class="name">mredit_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditConfigParameters">MreditConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit_config_params-view-source"><span>View Source</span></label>
 
@@ -867,7 +1301,7 @@ image, and the original image will not be modified in any way.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plane</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditPlaneParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sphere</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditSphereParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditVoxelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scanner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditParameters</span>:</span></span>
+        <span class="name">mredit_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plane</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditPlaneParameters">MreditPlaneParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sphere</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditSphereParameters">MreditSphereParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditVoxelParameters">MreditVoxelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scanner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MreditConfigParameters">MreditConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditParameters">MreditParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit_params-view-source"><span>View Source</span></label>
 
@@ -977,7 +1411,7 @@ image, and the original image will not be modified in any way.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit_plane_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">coord</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditPlaneParameters</span>:</span></span>
+        <span class="name">mredit_plane_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">coord</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditPlaneParameters">MreditPlaneParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit_plane_params-view-source"><span>View Source</span></label>
 
@@ -1032,7 +1466,7 @@ image, and the original image will not be modified in any way.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit_sphere_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">position</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">radius</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditSphereParameters</span>:</span></span>
+        <span class="name">mredit_sphere_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">position</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">radius</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditSphereParameters">MreditSphereParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit_sphere_params-view-source"><span>View Source</span></label>
 
@@ -1087,7 +1521,7 @@ image, and the original image will not be modified in any way.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mredit_voxel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">position</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mredit</span><span class="o">.</span><span class="n">MreditVoxelParameters</span>:</span></span>
+        <span class="name">mredit_voxel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">position</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#MreditVoxelParameters">MreditVoxelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mredit_voxel_params-view-source"><span>View Source</span></label>
 
@@ -1134,186 +1568,5 @@ image, and the original image will not be modified in any way.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

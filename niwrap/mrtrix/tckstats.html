@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,27 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#TCKSTATS_METADATA">TCKSTATS_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#TckstatsConfigParameters">TckstatsConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckstatsConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckstatsOutputParameters">TckstatsOutputParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckstatsOutputParameters.field">field</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#TckstatsOutputs">TckstatsOutputs</a>
@@ -47,6 +66,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TckstatsOutputs.dump">dump</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckstatsParameters">TckstatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.histogram">histogram</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.dump">dump</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.ignorezero">ignorezero</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.tck_weights_in">tck_weights_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckstatsParameters.tracks_in">tracks_in</a>
                         </li>
                 </ul>
 
@@ -498,12 +565,15 @@
 </span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>
 </span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;TCKSTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;TckstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;tckstats_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;tckstats_output_params&quot;</span><span class="p">,</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;tckstats_params&quot;</span><span class="p">,</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="p">]</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;TckstatsConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;TckstatsOutputParameters&quot;</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;TckstatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;TckstatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;tckstats_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;tckstats_output_params&quot;</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;tckstats_params&quot;</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -520,6 +590,65 @@
     
     
 
+                </section>
+                <section id="TckstatsConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckstatsConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsConfigParameters"></a>
+    
+    
+
+                            <div id="TckstatsConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TckstatsOutputParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckstatsOutputParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsOutputParameters"></a>
+    
+    
+
+                            <div id="TckstatsOutputParameters.field" class="classattr">
+                                <div class="attr variable">
+            <span class="name">field</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsOutputParameters.field"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="TckstatsOutputs">
                             <input id="TckstatsOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -603,12 +732,179 @@
 
                             </div>
                 </section>
+                <section id="TckstatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckstatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters"></a>
+    
+    
+
+                            <div id="TckstatsParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[list[<a href="#TckstatsOutputParameters">TckstatsOutputParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.histogram" class="classattr">
+                                <div class="attr variable">
+            <span class="name">histogram</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.histogram"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.dump" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.dump"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.ignorezero" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ignorezero</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.ignorezero"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.tck_weights_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tck_weights_in</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.tck_weights_in"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#TckstatsConfigParameters">TckstatsConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="TckstatsParameters.tracks_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tracks_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckstatsParameters.tracks_in"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="tckstats">
                             <input id="tckstats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckstats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsOutputParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignorezero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckstatsOutputs">TckstatsOutputs</a></span>:</span></span>
+        <span class="name">tckstats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckstatsOutputParameters">TckstatsOutputParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignorezero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckstatsConfigParameters">TckstatsConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckstatsOutputs">TckstatsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckstats-view-source"><span>View Source</span></label>
 
@@ -722,7 +1018,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckstats_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsConfigParameters</span>:</span></span>
+        <span class="name">tckstats_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckstatsConfigParameters">TckstatsConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckstats_config_params-view-source"><span>View Source</span></label>
 
@@ -773,7 +1069,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckstats_output_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">field</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsOutputParameters</span>:</span></span>
+        <span class="name">tckstats_output_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">field</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckstatsOutputParameters">TckstatsOutputParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckstats_output_params-view-source"><span>View Source</span></label>
 
@@ -822,7 +1118,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsOutputParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignorezero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckstats</span><span class="o">.</span><span class="n">TckstatsParameters</span>:</span></span>
+        <span class="name">tckstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckstatsOutputParameters">TckstatsOutputParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ignorezero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckstatsConfigParameters">TckstatsConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckstatsParameters">TckstatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckstats_params-view-source"><span>View Source</span></label>
 
@@ -931,186 +1227,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

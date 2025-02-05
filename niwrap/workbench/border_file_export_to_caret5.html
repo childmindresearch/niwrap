@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#BorderFileExportToCaret5Outputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BorderFileExportToCaret5Parameters">BorderFileExportToCaret5Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderFileExportToCaret5Parameters.border_file">border_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderFileExportToCaret5Parameters.output_file_prefix">output_file_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderFileExportToCaret5Parameters.surface">surface</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BorderFileExportToCaret5SurfaceParameters">BorderFileExportToCaret5SurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderFileExportToCaret5SurfaceParameters.surface_in">surface_in</a>
                         </li>
                 </ul>
 
@@ -352,10 +374,12 @@
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;BORDER_FILE_EXPORT_TO_CARET5_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;border_file_export_to_caret5&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;border_file_export_to_caret5_params&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;border_file_export_to_caret5_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="p">]</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;BorderFileExportToCaret5Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;BorderFileExportToCaret5SurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;border_file_export_to_caret5&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;border_file_export_to_caret5_params&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;border_file_export_to_caret5_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -425,12 +449,82 @@
 
                             </div>
                 </section>
+                <section id="BorderFileExportToCaret5Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderFileExportToCaret5Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5Parameters"></a>
+    
+    
+
+                            <div id="BorderFileExportToCaret5Parameters.border_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">border_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5Parameters.border_file"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderFileExportToCaret5Parameters.output_file_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file_prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5Parameters.output_file_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderFileExportToCaret5Parameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: NotRequired[list[<a href="#BorderFileExportToCaret5SurfaceParameters">BorderFileExportToCaret5SurfaceParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5Parameters.surface"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="BorderFileExportToCaret5SurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderFileExportToCaret5SurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5SurfaceParameters"></a>
+    
+    
+
+                            <div id="BorderFileExportToCaret5SurfaceParameters.surface_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderFileExportToCaret5SurfaceParameters.surface_in"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="border_file_export_to_caret5">
                             <input id="border_file_export_to_caret5-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_file_export_to_caret5</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_file_export_to_caret5</span><span class="o">.</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderFileExportToCaret5Outputs">BorderFileExportToCaret5Outputs</a></span>:</span></span>
+        <span class="name">border_file_export_to_caret5</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#BorderFileExportToCaret5SurfaceParameters">BorderFileExportToCaret5SurfaceParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderFileExportToCaret5Outputs">BorderFileExportToCaret5Outputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_file_export_to_caret5-view-source"><span>View Source</span></label>
 
@@ -544,7 +638,7 @@ name. .</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_file_export_to_caret5_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_file_export_to_caret5</span><span class="o">.</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_file_export_to_caret5</span><span class="o">.</span><span class="n">BorderFileExportToCaret5Parameters</span>:</span></span>
+        <span class="name">border_file_export_to_caret5_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#BorderFileExportToCaret5SurfaceParameters">BorderFileExportToCaret5SurfaceParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderFileExportToCaret5Parameters">BorderFileExportToCaret5Parameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_file_export_to_caret5_params-view-source"><span>View Source</span></label>
 
@@ -601,7 +695,7 @@ name. .</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_file_export_to_caret5_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_file_export_to_caret5</span><span class="o">.</span><span class="n">BorderFileExportToCaret5SurfaceParameters</span>:</span></span>
+        <span class="name">border_file_export_to_caret5_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderFileExportToCaret5SurfaceParameters">BorderFileExportToCaret5SurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_file_export_to_caret5_surface_params-view-source"><span>View Source</span></label>
 
@@ -644,186 +738,5 @@ name. .</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

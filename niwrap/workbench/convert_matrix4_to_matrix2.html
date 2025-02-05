@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -55,6 +53,21 @@
 
             </li>
             <li>
+                    <a class="class" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters">ConvertMatrix4ToMatrix2IndividualFibersParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_1">fiber_1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_2">fiber_2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_3">fiber_3</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#ConvertMatrix4ToMatrix2Outputs">ConvertMatrix4ToMatrix2Outputs</a>
                             <ul class="memberlist">
                         <li>
@@ -71,6 +84,24 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConvertMatrix4ToMatrix2Outputs.individual_fibers">individual_fibers</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertMatrix4ToMatrix2Parameters">ConvertMatrix4ToMatrix2Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2Parameters.matrix4_wbsparse">matrix4_wbsparse</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2Parameters.counts_out">counts_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2Parameters.opt_distances_distance_out">opt_distances_distance_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2Parameters.individual_fibers">individual_fibers</a>
                         </li>
                 </ul>
 
@@ -340,7 +371,7 @@
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">counts_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;counts_out&quot;</span><span class="p">)),</span>
 </span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">opt_distances_distance_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_distances_distance_out&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opt_distances_distance_out&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">individual_fibers</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">individual_fibers</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">individual_fibers</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;individual_fibers&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;individual_fibers&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;individual_fibers&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="p">)</span>
 </span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>
@@ -414,11 +445,13 @@
 </span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;CONVERT_MATRIX4_TO_MATRIX2_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibersOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2&quot;</span><span class="p">,</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2_individual_fibers_params&quot;</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2_params&quot;</span><span class="p">,</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="p">]</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibersParameters&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2&quot;</span><span class="p">,</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2_individual_fibers_params&quot;</span><span class="p">,</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2_params&quot;</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -533,6 +566,52 @@
 
                             </div>
                 </section>
+                <section id="ConvertMatrix4ToMatrix2IndividualFibersParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertMatrix4ToMatrix2IndividualFibersParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters"></a>
+    
+    
+
+                            <div id="ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiber_1</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_1"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiber_2</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_2"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_3" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fiber_3</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2IndividualFibersParameters.fiber_3"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="ConvertMatrix4ToMatrix2Outputs">
                             <input id="ConvertMatrix4ToMatrix2Outputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -630,12 +709,69 @@
 
                             </div>
                 </section>
+                <section id="ConvertMatrix4ToMatrix2Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertMatrix4ToMatrix2Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Parameters"></a>
+    
+    
+
+                            <div id="ConvertMatrix4ToMatrix2Parameters.matrix4_wbsparse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix4_wbsparse</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Parameters.matrix4_wbsparse"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertMatrix4ToMatrix2Parameters.counts_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">counts_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Parameters.counts_out"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertMatrix4ToMatrix2Parameters.opt_distances_distance_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_distances_distance_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Parameters.opt_distances_distance_out"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertMatrix4ToMatrix2Parameters.individual_fibers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">individual_fibers</span><span class="annotation">: NotRequired[<a href="#ConvertMatrix4ToMatrix2IndividualFibersParameters">ConvertMatrix4ToMatrix2IndividualFibersParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Parameters.individual_fibers"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="convert_matrix4_to_matrix2">
                             <input id="convert_matrix4_to_matrix2-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_matrix4_to_matrix2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_matrix4_to_matrix2</span><span class="o">.</span><span class="n">ConvertMatrix4ToMatrix2IndividualFibersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2Outputs">ConvertMatrix4ToMatrix2Outputs</a></span>:</span></span>
+        <span class="name">convert_matrix4_to_matrix2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibersParameters">ConvertMatrix4ToMatrix2IndividualFibersParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2Outputs">ConvertMatrix4ToMatrix2Outputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_matrix4_to_matrix2-view-source"><span>View Source</span></label>
 
@@ -714,7 +850,7 @@ nonintegers.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_matrix4_to_matrix2_individual_fibers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fiber_1</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_2</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_3</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_matrix4_to_matrix2</span><span class="o">.</span><span class="n">ConvertMatrix4ToMatrix2IndividualFibersParameters</span>:</span></span>
+        <span class="name">convert_matrix4_to_matrix2_individual_fibers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fiber_1</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_2</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fiber_3</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibersParameters">ConvertMatrix4ToMatrix2IndividualFibersParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_matrix4_to_matrix2_individual_fibers_params-view-source"><span>View Source</span></label>
 
@@ -769,7 +905,7 @@ nonintegers.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_matrix4_to_matrix2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_matrix4_to_matrix2</span><span class="o">.</span><span class="n">ConvertMatrix4ToMatrix2IndividualFibersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_matrix4_to_matrix2</span><span class="o">.</span><span class="n">ConvertMatrix4ToMatrix2Parameters</span>:</span></span>
+        <span class="name">convert_matrix4_to_matrix2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibersParameters">ConvertMatrix4ToMatrix2IndividualFibersParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2Parameters">ConvertMatrix4ToMatrix2Parameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_matrix4_to_matrix2_params-view-source"><span>View Source</span></label>
 
@@ -827,186 +963,5 @@ nonintegers.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

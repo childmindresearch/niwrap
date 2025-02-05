@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,114 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriNormalizeOutputs.controlpoints_output">controlpoints_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriNormalizeParameters">MriNormalizeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.input_vol">input_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.output_vol">output_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.norm_iters">norm_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.disable_1d">disable_1d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.nonmax_suppress">nonmax_suppress</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.conform">conform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.nonconform">nonconform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.gentle">gentle</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.control_points">control_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.fonly_control_points">fonly_control_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.lonly_labels">lonly_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.labels">labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.write_volumes">write_volumes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.intensity_above">intensity_above</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.intensity_below">intensity_below</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.intensity_gradient">intensity_gradient</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.prune">prune</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.no_gentle_cp">no_gentle_cp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.atlas_transform">atlas_transform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.noskull">noskull</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.monkey">monkey</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.nosnr">nosnr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.sigma_smooth">sigma_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.aseg_file">aseg_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.debug_v">debug_v</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.debug_d">debug_d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.renorm_vol">renorm_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.checknorm_vol">checknorm_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.load_read_cp">load_read_cp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.cp_output_vol">cp_output_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.surface_transform">surface_transform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.seed_value">seed_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriNormalizeParameters.print_help">print_help</a>
                         </li>
                 </ul>
 
@@ -623,9 +729,10 @@
 </span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;MRI_NORMALIZE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="s2">&quot;MriNormalizeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="s2">&quot;mri_normalize&quot;</span><span class="p">,</span>
-</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;mri_normalize_params&quot;</span><span class="p">,</span>
-</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a><span class="p">]</span>
+</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="s2">&quot;MriNormalizeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;mri_normalize&quot;</span><span class="p">,</span>
+</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="s2">&quot;mri_normalize_params&quot;</span><span class="p">,</span>
+</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -722,6 +829,393 @@
             <div class="docstring"><p>Output final control points as a volume, applicable only with -aseg</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriNormalizeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriNormalizeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters"></a>
+    
+    
+
+                            <div id="MriNormalizeParameters.input_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_vol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.input_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.output_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_vol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.output_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.norm_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm_iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.norm_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.disable_1d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disable_1d</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.disable_1d"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.nonmax_suppress" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonmax_suppress</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.nonmax_suppress"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.conform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">conform</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.conform"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.nonconform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonconform</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.nonconform"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.gentle" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gentle</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.gentle"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.control_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">control_points</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.control_points"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.fonly_control_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fonly_control_points</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.fonly_control_points"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.lonly_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lonly_labels</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.lonly_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">labels</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.labels"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.write_volumes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">write_volumes</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.write_volumes"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.intensity_above" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_above</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.intensity_above"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.intensity_below" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_below</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.intensity_below"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.intensity_gradient" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_gradient</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.intensity_gradient"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.prune" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prune</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.prune"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.no_gentle_cp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_gentle_cp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.no_gentle_cp"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.atlas_transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">atlas_transform</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.atlas_transform"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.noskull" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noskull</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.noskull"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.monkey" class="classattr">
+                                <div class="attr variable">
+            <span class="name">monkey</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.monkey"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.nosnr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nosnr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.nosnr"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.sigma_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigma_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.sigma_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.aseg_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aseg_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.aseg_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.debug_v" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_v</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.debug_v"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.debug_d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_d</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.debug_d"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.renorm_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">renorm_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.renorm_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.checknorm_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checknorm_vol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.checknorm_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.load_read_cp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">load_read_cp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.load_read_cp"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.cp_output_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cp_output_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.cp_output_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.surface_transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_transform</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.surface_transform"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.seed_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.seed_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriNormalizeParameters.print_help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">print_help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriNormalizeParameters.print_help"></a>
+    
+    
 
                             </div>
                 </section>
@@ -898,7 +1392,7 @@ is converted into a new volume where white matter image values all range around
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_normalize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">norm_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disable_1d</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonmax_suppress</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonconform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gentle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">control_points</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly_control_points</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lonly_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_volumes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_above</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_below</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_gradient</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prune</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_gentle_cp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">atlas_transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noskull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">monkey</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosnr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sigma_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_v</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">renorm_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">checknorm_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_read_cp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cp_output_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">print_help</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_normalize</span><span class="o">.</span><span class="n">MriNormalizeParameters</span>:</span></span>
+        <span class="name">mri_normalize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">norm_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disable_1d</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonmax_suppress</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonconform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gentle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">control_points</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly_control_points</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lonly_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_volumes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_above</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_below</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_gradient</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prune</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_gentle_cp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">atlas_transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noskull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">monkey</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosnr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sigma_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_v</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">renorm_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">checknorm_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_read_cp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cp_output_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">print_help</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriNormalizeParameters">MriNormalizeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_normalize_params-view-source"><span>View Source</span></label>
 
@@ -1103,186 +1597,5 @@ is converted into a new volume where white matter image values all range around
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiRestrictDenseMapOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiRestrictDenseMapParameters">CiftiRestrictDenseMapParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.cifti_in">cifti_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.opt_cifti_roi_roi_cifti">opt_cifti_roi_roi_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.opt_left_roi_roi_metric">opt_left_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.opt_right_roi_roi_metric">opt_right_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.opt_cerebellum_roi_roi_metric">opt_cerebellum_roi_roi_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRestrictDenseMapParameters.opt_vol_roi_roi_vol">opt_vol_roi_roi_vol</a>
                         </li>
                 </ul>
 
@@ -345,9 +373,10 @@
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;CIFTI_RESTRICT_DENSE_MAP_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;CiftiRestrictDenseMapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;cifti_restrict_dense_map&quot;</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;cifti_restrict_dense_map_params&quot;</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="p">]</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;CiftiRestrictDenseMapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;cifti_restrict_dense_map&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;cifti_restrict_dense_map_params&quot;</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -429,6 +458,107 @@
             <div class="docstring"><p>the output cifti</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="CiftiRestrictDenseMapParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiRestrictDenseMapParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters"></a>
+    
+    
+
+                            <div id="CiftiRestrictDenseMapParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.opt_cifti_roi_roi_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cifti_roi_roi_cifti</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.opt_cifti_roi_roi_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.opt_left_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.opt_left_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.opt_right_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.opt_right_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.opt_cerebellum_roi_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_roi_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.opt_cerebellum_roi_roi_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRestrictDenseMapParameters.opt_vol_roi_roi_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_vol_roi_roi_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRestrictDenseMapParameters.opt_vol_roi_roi_vol"></a>
+    
+    
 
                             </div>
                 </section>
@@ -534,7 +664,7 @@ structure, if present in the input file.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_restrict_dense_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_restrict_dense_map</span><span class="o">.</span><span class="n">CiftiRestrictDenseMapParameters</span>:</span></span>
+        <span class="name">cifti_restrict_dense_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_roi_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_vol_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiRestrictDenseMapParameters">CiftiRestrictDenseMapParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_restrict_dense_map_params-view-source"><span>View Source</span></label>
 
@@ -615,186 +745,5 @@ structure, if present in the input file.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

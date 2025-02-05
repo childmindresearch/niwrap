@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisRegisterToLabelOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisRegisterToLabelParameters">MrisRegisterToLabelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.regfile">regfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.mri_reg">mri_reg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.mov_volume">mov_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.resolution">resolution</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.max_rot">max_rot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.max_trans">max_trans</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.out_reg">out_reg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.downsample">downsample</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisRegisterToLabelParameters.cost_file">cost_file</a>
                         </li>
                 </ul>
 
@@ -365,9 +405,10 @@
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;MRIS_REGISTER_TO_LABEL_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;MrisRegisterToLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;mris_register_to_label&quot;</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;mris_register_to_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="p">]</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;MrisRegisterToLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;mris_register_to_label&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;mris_register_to_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -434,6 +475,151 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisRegisterToLabelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisRegisterToLabelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters"></a>
+    
+    
+
+                            <div id="MrisRegisterToLabelParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.regfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">regfile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.regfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.mri_reg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mri_reg</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.mri_reg"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.mov_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mov_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.mov_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.resolution" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resolution</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.resolution"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.max_rot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_rot</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.max_rot"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.max_trans" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_trans</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.max_trans"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.out_reg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_reg</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.out_reg"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.downsample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">downsample</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.downsample"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisRegisterToLabelParameters.cost_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisRegisterToLabelParameters.cost_file"></a>
+    
+    
 
                             </div>
                 </section>
@@ -532,7 +718,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_register_to_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">regfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mri_reg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mov_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">max_rot</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_trans</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_reg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_register_to_label</span><span class="o">.</span><span class="n">MrisRegisterToLabelParameters</span>:</span></span>
+        <span class="name">mris_register_to_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">regfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mri_reg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mov_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">max_rot</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_trans</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_reg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisRegisterToLabelParameters">MrisRegisterToLabelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_register_to_label_params-view-source"><span>View Source</span></label>
 
@@ -626,186 +812,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

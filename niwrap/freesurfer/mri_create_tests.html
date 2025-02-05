@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriCreateTestsOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriCreateTestsParameters">MriCreateTestsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.out_src">out_src</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.out_target">out_target</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.input_target">input_target</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.lta_in">lta_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.noise">noise</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.outlier">outlier</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.outlier_box">outlier_box</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.translation_flag">translation_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.transdist">transdist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.rotation_flag">rotation_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.maxdeg">maxdeg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.intensity_flag">intensity_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.iscale">iscale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.lta_out">lta_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.lta_outs">lta_outs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.lta_outt">lta_outt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCreateTestsParameters.iscale_out">iscale_out</a>
                         </li>
                 </ul>
 
@@ -449,9 +510,10 @@
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;MRI_CREATE_TESTS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;MriCreateTestsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;mri_create_tests&quot;</span><span class="p">,</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mri_create_tests_params&quot;</span><span class="p">,</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="p">]</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;MriCreateTestsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mri_create_tests&quot;</span><span class="p">,</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;mri_create_tests_params&quot;</span><span class="p">,</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -518,6 +580,228 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriCreateTestsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriCreateTestsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters"></a>
+    
+    
+
+                            <div id="MriCreateTestsParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.out_src" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_src</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.out_src"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.out_target" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_target</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.out_target"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.input_target" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_target</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.input_target"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.lta_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lta_in</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.lta_in"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.noise" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noise</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.noise"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.outlier" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outlier</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.outlier"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.outlier_box" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outlier_box</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.outlier_box"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.translation_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">translation_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.translation_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.transdist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transdist</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.transdist"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.rotation_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rotation_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.rotation_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.maxdeg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxdeg</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.maxdeg"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.intensity_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.intensity_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.iscale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iscale</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.iscale"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.lta_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lta_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.lta_out"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.lta_outs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lta_outs</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.lta_outs"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.lta_outt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lta_outt</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.lta_outt"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCreateTestsParameters.iscale_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iscale_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCreateTestsParameters.iscale_out"></a>
+    
+    
 
                             </div>
                 </section>
@@ -642,7 +926,7 @@ way backward) and to a target (half way forward).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_create_tests_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_src</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_target</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_target</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier_box</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">translation_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">transdist</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotation_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">maxdeg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">iscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_outs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_outt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iscale_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_create_tests</span><span class="o">.</span><span class="n">MriCreateTestsParameters</span>:</span></span>
+        <span class="name">mri_create_tests_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_src</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_target</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_target</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier_box</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">translation_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">transdist</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotation_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">maxdeg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">iscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_outs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta_outt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iscale_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriCreateTestsParameters">MriCreateTestsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_create_tests_params-view-source"><span>View Source</span></label>
 
@@ -773,186 +1057,5 @@ way backward) and to a target (half way forward).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dRetinoPhaseOutputs.pol_minus">pol_minus</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dRetinoPhaseParameters">V3dRetinoPhaseParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.dataset">dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.exp">exp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.con">con</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.clw">clw</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.ccw">ccw</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.spectra">spectra</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.tstim">tstim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.nrings">nrings</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.nwedges">nwedges</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.ort_adjust">ort_adjust</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.pre_stim">pre_stim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.sum_adjust">sum_adjust</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.phase_estimate">phase_estimate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.ref_ts">ref_ts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dRetinoPhaseParameters.multi_ref_ts">multi_ref_ts</a>
                         </li>
                 </ul>
 
@@ -442,10 +494,11 @@
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>
 </span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;V3dRetinoPhaseOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;V_3D_RETINO_PHASE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;v_3d_retino_phase&quot;</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;v_3d_retino_phase_params&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="p">]</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;V3dRetinoPhaseParameters&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;V_3D_RETINO_PHASE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;v_3d_retino_phase&quot;</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;v_3d_retino_phase_params&quot;</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -559,6 +612,195 @@
             <div class="docstring"><p>Output file for counterclockwise polar angle mapping</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dRetinoPhaseParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dRetinoPhaseParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters"></a>
+    
+    
+
+                            <div id="V3dRetinoPhaseParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.exp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.exp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.con" class="classattr">
+                                <div class="attr variable">
+            <span class="name">con</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.con"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.clw" class="classattr">
+                                <div class="attr variable">
+            <span class="name">clw</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.clw"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.ccw" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ccw</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.ccw"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.spectra" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spectra</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.spectra"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.tstim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tstim</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.tstim"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.nrings" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nrings</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.nrings"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.nwedges" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nwedges</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.nwedges"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.ort_adjust" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ort_adjust</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.ort_adjust"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.pre_stim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pre_stim</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.pre_stim"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.sum_adjust" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sum_adjust</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.sum_adjust"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.phase_estimate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phase_estimate</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.phase_estimate"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.ref_ts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ref_ts</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.ref_ts"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dRetinoPhaseParameters.multi_ref_ts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_ref_ts</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dRetinoPhaseParameters.multi_ref_ts"></a>
+    
+    
 
                             </div>
                 </section>
@@ -687,7 +929,7 @@ field angle datasets.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_retino_phase_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">exp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">con</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">clw</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ccw</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">spectra</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tstim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nrings</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nwedges</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ort_adjust</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pre_stim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sum_adjust</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phase_estimate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_ref_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_retino_phase</span><span class="o">.</span><span class="n">V3dRetinoPhaseParameters</span>:</span></span>
+        <span class="name">v_3d_retino_phase_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">exp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">con</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">clw</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ccw</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">spectra</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tstim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nrings</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nwedges</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ort_adjust</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pre_stim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sum_adjust</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phase_estimate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_ref_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dRetinoPhaseParameters">V3dRetinoPhaseParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_retino_phase_params-view-source"><span>View Source</span></label>
 
@@ -806,186 +1048,5 @@ field angle datasets.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

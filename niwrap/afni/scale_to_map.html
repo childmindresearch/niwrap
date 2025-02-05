@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,99 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ScaleToMapOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ScaleToMapParameters">ScaleToMapParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.icol">icol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.vcol">vcol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.cmap">cmap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.cmapfile">cmapfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.cmapdb">cmapdb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.frf">frf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.clp">clp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.perc_clp">perc_clp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.apr">apr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.anr">anr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.interp">interp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.nointerp">nointerp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.direct">direct</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.msk_zero">msk_zero</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.msk">msk</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.msk_col">msk_col</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.nomsk_col">nomsk_col</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.br">br</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.showmap">showmap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.showdb">showdb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.novolreg">novolreg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.noxform">noxform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.setenv">setenv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.TRACE">TRACE</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.nomall">nomall</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ScaleToMapParameters.yesmall">yesmall</a>
                         </li>
                 </ul>
 
@@ -518,9 +609,10 @@
 </span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;SCALE_TO_MAP_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;ScaleToMapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;scale_to_map&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;scale_to_map_params&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="p">]</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;ScaleToMapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;scale_to_map&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;scale_to_map_params&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -587,6 +679,338 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="ScaleToMapParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ScaleToMapParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters"></a>
+    
+    
+
+                            <div id="ScaleToMapParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.icol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">icol</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.icol"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.vcol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vcol</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.vcol"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.cmap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmap</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.cmap"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.cmapfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmapfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.cmapfile"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.cmapdb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmapdb</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.cmapdb"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.frf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">frf</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.frf"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.clp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">clp</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.clp"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.perc_clp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">perc_clp</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.perc_clp"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.apr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.apr"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.anr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.anr"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.interp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.interp"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.nointerp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nointerp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.nointerp"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.direct" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direct</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.direct"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.msk_zero" class="classattr">
+                                <div class="attr variable">
+            <span class="name">msk_zero</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.msk_zero"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.msk" class="classattr">
+                                <div class="attr variable">
+            <span class="name">msk</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.msk"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.msk_col" class="classattr">
+                                <div class="attr variable">
+            <span class="name">msk_col</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.msk_col"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.nomsk_col" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nomsk_col</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.nomsk_col"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.br" class="classattr">
+                                <div class="attr variable">
+            <span class="name">br</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.br"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.showmap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">showmap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.showmap"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.showdb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">showdb</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.showdb"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.novolreg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">novolreg</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.novolreg"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.noxform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noxform</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.noxform"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.setenv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">setenv</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.setenv"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.TRACE" class="classattr">
+                                <div class="attr variable">
+            <span class="name">TRACE</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.TRACE"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.nomall" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nomall</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.nomall"></a>
+    
+    
+
+                            </div>
+                            <div id="ScaleToMapParameters.yesmall" class="classattr">
+                                <div class="attr variable">
+            <span class="name">yesmall</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ScaleToMapParameters.yesmall"></a>
+    
+    
 
                             </div>
                 </section>
@@ -742,7 +1166,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scale_to_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">icol</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vcol</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmapfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmapdb</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">frf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">clp</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">perc_clp</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">anr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nointerp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">direct</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">msk_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">msk</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">msk_col</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nomsk_col</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">br</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">showmap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">showdb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">novolreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noxform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setenv</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trace_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trace_2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nomall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">yesmall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">scale_to_map</span><span class="o">.</span><span class="n">ScaleToMapParameters</span>:</span></span>
+        <span class="name">scale_to_map_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">icol</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vcol</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmapfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmapdb</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">frf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">clp</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">perc_clp</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">anr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nointerp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">direct</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">msk_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">msk</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">msk_col</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nomsk_col</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">br</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">showmap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">showdb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">novolreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noxform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setenv</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trace_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trace_2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nomall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">yesmall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ScaleToMapParameters">ScaleToMapParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scale_to_map_params-view-source"><span>View Source</span></label>
 
@@ -915,186 +1339,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SerialHelperOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SerialHelperParameters">SerialHelperParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.serial_port">serial_port</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.sock_num">sock_num</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.mp_max">mp_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.mp_min">mp_min</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.num_extra">num_extra</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.disp_all">disp_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.show_times">show_times</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.hist">hist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.no_serial">no_serial</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SerialHelperParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -353,9 +393,10 @@
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;SERIAL_HELPER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;SerialHelperOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;serial_helper&quot;</span><span class="p">,</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;serial_helper_params&quot;</span><span class="p">,</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="p">]</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;SerialHelperParameters&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;serial_helper&quot;</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="s2">&quot;serial_helper_params&quot;</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -422,6 +463,151 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SerialHelperParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SerialHelperParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters"></a>
+    
+    
+
+                            <div id="SerialHelperParameters.serial_port" class="classattr">
+                                <div class="attr variable">
+            <span class="name">serial_port</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.serial_port"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.sock_num" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sock_num</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.sock_num"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.mp_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mp_max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.mp_max"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.mp_min" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mp_min</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.mp_min"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.num_extra" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_extra</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.num_extra"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.disp_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disp_all</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.disp_all"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.show_times" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_times</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.show_times"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.hist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hist</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.hist"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.no_serial" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_serial</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.no_serial"></a>
+    
+    
+
+                            </div>
+                            <div id="SerialHelperParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SerialHelperParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -520,7 +706,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">serial_helper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">serial_port</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sock_num</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mp_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mp_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_extra</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp_all</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_times</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">hist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_serial</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">serial_helper</span><span class="o">.</span><span class="n">SerialHelperParameters</span>:</span></span>
+        <span class="name">serial_helper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">serial_port</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sock_num</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mp_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mp_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_extra</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp_all</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_times</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">hist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_serial</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#SerialHelperParameters">SerialHelperParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="serial_helper_params-view-source"><span>View Source</span></label>
 
@@ -613,186 +799,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

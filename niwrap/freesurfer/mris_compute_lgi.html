@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisComputeLgiOutputs.output_surface_map">output_surface_map</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisComputeLgiParameters">MrisComputeLgiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.input_surface">input_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.close_sphere_size">close_sphere_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.smooth_iters">smooth_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.step_size">step_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.echo">echo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisComputeLgiParameters.dontrun">dontrun</a>
                         </li>
                 </ul>
 
@@ -309,9 +331,10 @@
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;MRIS_COMPUTE_LGI_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;MrisComputeLgiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;mris_compute_lgi&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;mris_compute_lgi_params&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="p">]</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;MrisComputeLgiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;mris_compute_lgi&quot;</span><span class="p">,</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;mris_compute_lgi_params&quot;</span><span class="p">,</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -393,6 +416,85 @@
             <div class="docstring"><p>Surface map file containing local gyrification measures</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisComputeLgiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisComputeLgiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters"></a>
+    
+    
+
+                            <div id="MrisComputeLgiParameters.input_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.input_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisComputeLgiParameters.close_sphere_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">close_sphere_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.close_sphere_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisComputeLgiParameters.smooth_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.smooth_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisComputeLgiParameters.step_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">step_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.step_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisComputeLgiParameters.echo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">echo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.echo"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisComputeLgiParameters.dontrun" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dontrun</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisComputeLgiParameters.dontrun"></a>
+    
+    
 
                             </div>
                 </section>
@@ -478,7 +580,7 @@ entire cortical surface.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_compute_lgi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">close_sphere_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dontrun</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_compute_lgi</span><span class="o">.</span><span class="n">MrisComputeLgiParameters</span>:</span></span>
+        <span class="name">mris_compute_lgi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">close_sphere_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dontrun</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisComputeLgiParameters">MrisComputeLgiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_compute_lgi_params-view-source"><span>View Source</span></label>
 
@@ -547,186 +649,5 @@ entire cortical surface.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

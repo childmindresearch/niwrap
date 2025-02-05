@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ExtractRegionFromImageOutputs.output_image_file">output_image_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ExtractRegionFromImageParameters">ExtractRegionFromImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageParameters.image_dimension">image_dimension</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageParameters.input_image">input_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageParameters.output_image">output_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageParameters.region_specification">region_specification</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ExtractRegionFromImageRegionDomainImageParameters">ExtractRegionFromImageRegionDomainImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionDomainImageParameters.domain_image">domain_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ExtractRegionFromImageRegionLabelParameters">ExtractRegionFromImageRegionLabelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionLabelParameters.label">label</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ExtractRegionFromImageRegionLabelWithImageParameters">ExtractRegionFromImageRegionLabelWithImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionLabelWithImageParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionLabelWithImageParameters.label_image">label_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ExtractRegionFromImageRegionMinMaxIndexParameters">ExtractRegionFromImageRegionMinMaxIndexParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionMinMaxIndexParameters.min_index">min_index</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ExtractRegionFromImageRegionMinMaxIndexParameters.max_index">max_index</a>
                         </li>
                 </ul>
 
@@ -464,13 +522,18 @@
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;EXTRACT_REGION_FROM_IMAGE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;ExtractRegionFromImageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;extract_region_from_image&quot;</span><span class="p">,</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;extract_region_from_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;extract_region_from_image_region_domain_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="s2">&quot;extract_region_from_image_region_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;extract_region_from_image_region_label_with_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;extract_region_from_image_region_min_max_index_params&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="p">]</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;ExtractRegionFromImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;ExtractRegionFromImageRegionDomainImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;ExtractRegionFromImageRegionLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="s2">&quot;ExtractRegionFromImageRegionLabelWithImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;ExtractRegionFromImageRegionMinMaxIndexParameters&quot;</span><span class="p">,</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;extract_region_from_image&quot;</span><span class="p">,</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;extract_region_from_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;extract_region_from_image_region_domain_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;extract_region_from_image_region_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;extract_region_from_image_region_label_with_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;extract_region_from_image_region_min_max_index_params&quot;</span><span class="p">,</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -555,12 +618,187 @@
 
                             </div>
                 </section>
+                <section id="ExtractRegionFromImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ExtractRegionFromImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageParameters"></a>
+    
+    
+
+                            <div id="ExtractRegionFromImageParameters.image_dimension" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimension</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageParameters.image_dimension"></a>
+    
+    
+
+                            </div>
+                            <div id="ExtractRegionFromImageParameters.input_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageParameters.input_image"></a>
+    
+    
+
+                            </div>
+                            <div id="ExtractRegionFromImageParameters.output_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_image</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageParameters.output_image"></a>
+    
+    
+
+                            </div>
+                            <div id="ExtractRegionFromImageParameters.region_specification" class="classattr">
+                                <div class="attr variable">
+            <span class="name">region_specification</span><span class="annotation">: Union[<a href="#ExtractRegionFromImageRegionMinMaxIndexParameters">ExtractRegionFromImageRegionMinMaxIndexParameters</a>, <a href="#ExtractRegionFromImageRegionLabelParameters">ExtractRegionFromImageRegionLabelParameters</a>, <a href="#ExtractRegionFromImageRegionDomainImageParameters">ExtractRegionFromImageRegionDomainImageParameters</a>, <a href="#ExtractRegionFromImageRegionLabelWithImageParameters">ExtractRegionFromImageRegionLabelWithImageParameters</a>]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageParameters.region_specification"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ExtractRegionFromImageRegionDomainImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ExtractRegionFromImageRegionDomainImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionDomainImageParameters"></a>
+    
+    
+
+                            <div id="ExtractRegionFromImageRegionDomainImageParameters.domain_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">domain_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionDomainImageParameters.domain_image"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ExtractRegionFromImageRegionLabelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ExtractRegionFromImageRegionLabelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionLabelParameters"></a>
+    
+    
+
+                            <div id="ExtractRegionFromImageRegionLabelParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionLabelParameters.label"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ExtractRegionFromImageRegionLabelWithImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ExtractRegionFromImageRegionLabelWithImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionLabelWithImageParameters"></a>
+    
+    
+
+                            <div id="ExtractRegionFromImageRegionLabelWithImageParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionLabelWithImageParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="ExtractRegionFromImageRegionLabelWithImageParameters.label_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionLabelWithImageParameters.label_image"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ExtractRegionFromImageRegionMinMaxIndexParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ExtractRegionFromImageRegionMinMaxIndexParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionMinMaxIndexParameters"></a>
+    
+    
+
+                            <div id="ExtractRegionFromImageRegionMinMaxIndexParameters.min_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_index</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionMinMaxIndexParameters.min_index"></a>
+    
+    
+
+                            </div>
+                            <div id="ExtractRegionFromImageRegionMinMaxIndexParameters.max_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_index</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ExtractRegionFromImageRegionMinMaxIndexParameters.max_index"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="extract_region_from_image">
                             <input id="extract_region_from_image-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">region_specification</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionMinMaxIndexParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionDomainImageParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelWithImageParameters</span><span class="p">]</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageOutputs">ExtractRegionFromImageOutputs</a></span>:</span></span>
+        <span class="name">extract_region_from_image</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">region_specification</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#ExtractRegionFromImageRegionMinMaxIndexParameters">ExtractRegionFromImageRegionMinMaxIndexParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionLabelParameters">ExtractRegionFromImageRegionLabelParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionDomainImageParameters">ExtractRegionFromImageRegionDomainImageParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionLabelWithImageParameters">ExtractRegionFromImageRegionLabelWithImageParameters</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageOutputs">ExtractRegionFromImageOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image-view-source"><span>View Source</span></label>
 
@@ -631,7 +869,7 @@ image. The region can be specified via indices, label, or another domain image.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">region_specification</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionMinMaxIndexParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionDomainImageParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelWithImageParameters</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageParameters</span>:</span></span>
+        <span class="name">extract_region_from_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">region_specification</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#ExtractRegionFromImageRegionMinMaxIndexParameters">ExtractRegionFromImageRegionMinMaxIndexParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionLabelParameters">ExtractRegionFromImageRegionLabelParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionDomainImageParameters">ExtractRegionFromImageRegionDomainImageParameters</a></span><span class="p">,</span> <span class="n"><a href="#ExtractRegionFromImageRegionLabelWithImageParameters">ExtractRegionFromImageRegionLabelWithImageParameters</a></span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageParameters">ExtractRegionFromImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image_params-view-source"><span>View Source</span></label>
 
@@ -693,7 +931,7 @@ image. The region can be specified via indices, label, or another domain image.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image_region_domain_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionDomainImageParameters</span>:</span></span>
+        <span class="name">extract_region_from_image_region_domain_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageRegionDomainImageParameters">ExtractRegionFromImageRegionDomainImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image_region_domain_image_params-view-source"><span>View Source</span></label>
 
@@ -741,7 +979,7 @@ image. The region can be specified via indices, label, or another domain image.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image_region_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelParameters</span>:</span></span>
+        <span class="name">extract_region_from_image_region_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageRegionLabelParameters">ExtractRegionFromImageRegionLabelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image_region_label_params-view-source"><span>View Source</span></label>
 
@@ -789,7 +1027,7 @@ image. The region can be specified via indices, label, or another domain image.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image_region_label_with_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionLabelWithImageParameters</span>:</span></span>
+        <span class="name">extract_region_from_image_region_label_with_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageRegionLabelWithImageParameters">ExtractRegionFromImageRegionLabelWithImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image_region_label_with_image_params-view-source"><span>View Source</span></label>
 
@@ -840,7 +1078,7 @@ image. The region can be specified via indices, label, or another domain image.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">extract_region_from_image_region_min_max_index_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">min_index</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">max_index</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">extract_region_from_image</span><span class="o">.</span><span class="n">ExtractRegionFromImageRegionMinMaxIndexParameters</span>:</span></span>
+        <span class="name">extract_region_from_image_region_min_max_index_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">min_index</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">max_index</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ExtractRegionFromImageRegionMinMaxIndexParameters">ExtractRegionFromImageRegionMinMaxIndexParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="extract_region_from_image_region_min_max_index_params-view-source"><span>View Source</span></label>
 
@@ -887,186 +1125,5 @@ image. The region can be specified via indices, label, or another domain image.<
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

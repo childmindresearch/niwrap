@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,18 @@
                     <a class="variable" href="#FIXELFILTER_METADATA">FIXELFILTER_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#FixelfilterConfigParameters">FixelfilterConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#FixelfilterOutputs">FixelfilterOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +51,99 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FixelfilterOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterParameters">FixelfilterParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.matrix">matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.threshold_value">threshold_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.threshold_connectivity">threshold_connectivity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.fwhm">fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.minweight">minweight</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.filter">filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FixelfilterParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousFileParameters">FixelfilterVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousFileParameters_">FixelfilterVariousFileParameters_</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousFileParameters_.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousStringParameters">FixelfilterVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousStringParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FixelfilterVariousStringParameters_">FixelfilterVariousStringParameters_</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FixelfilterVariousStringParameters_.obj">obj</a>
                         </li>
                 </ul>
 
@@ -660,15 +763,21 @@
 </span><span id="L-571"><a href="#L-571"><span class="linenos">571</span></a>
 </span><span id="L-572"><a href="#L-572"><span class="linenos">572</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-573"><a href="#L-573"><span class="linenos">573</span></a>    <span class="s2">&quot;FIXELFILTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
-</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a>    <span class="s2">&quot;fixelfilter_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="s2">&quot;fixelfilter_params&quot;</span><span class="p">,</span>
-</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="s2">&quot;fixelfilter_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="s2">&quot;fixelfilter_various_file_params_&quot;</span><span class="p">,</span>
-</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a>    <span class="s2">&quot;fixelfilter_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a>    <span class="s2">&quot;fixelfilter_various_string_params_&quot;</span><span class="p">,</span>
-</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a><span class="p">]</span>
+</span><span id="L-574"><a href="#L-574"><span class="linenos">574</span></a>    <span class="s2">&quot;FixelfilterConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-575"><a href="#L-575"><span class="linenos">575</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-576"><a href="#L-576"><span class="linenos">576</span></a>    <span class="s2">&quot;FixelfilterParameters&quot;</span><span class="p">,</span>
+</span><span id="L-577"><a href="#L-577"><span class="linenos">577</span></a>    <span class="s2">&quot;FixelfilterVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-578"><a href="#L-578"><span class="linenos">578</span></a>    <span class="s2">&quot;FixelfilterVariousFileParameters_&quot;</span><span class="p">,</span>
+</span><span id="L-579"><a href="#L-579"><span class="linenos">579</span></a>    <span class="s2">&quot;FixelfilterVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-580"><a href="#L-580"><span class="linenos">580</span></a>    <span class="s2">&quot;FixelfilterVariousStringParameters_&quot;</span><span class="p">,</span>
+</span><span id="L-581"><a href="#L-581"><span class="linenos">581</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
+</span><span id="L-582"><a href="#L-582"><span class="linenos">582</span></a>    <span class="s2">&quot;fixelfilter_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-583"><a href="#L-583"><span class="linenos">583</span></a>    <span class="s2">&quot;fixelfilter_params&quot;</span><span class="p">,</span>
+</span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a>    <span class="s2">&quot;fixelfilter_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a>    <span class="s2">&quot;fixelfilter_various_file_params_&quot;</span><span class="p">,</span>
+</span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a>    <span class="s2">&quot;fixelfilter_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a>    <span class="s2">&quot;fixelfilter_various_string_params_&quot;</span><span class="p">,</span>
+</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -685,6 +794,41 @@
     
     
 
+                </section>
+                <section id="FixelfilterConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterConfigParameters"></a>
+    
+    
+
+                            <div id="FixelfilterConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="FixelfilterOutputs">
                             <input id="FixelfilterOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -738,12 +882,308 @@
 
                             </div>
                 </section>
+                <section id="FixelfilterParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters"></a>
+    
+    
+
+                            <div id="FixelfilterParameters.matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.threshold_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.threshold_value"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.threshold_connectivity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold_connectivity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.threshold_connectivity"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.minweight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">minweight</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.minweight"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#FixelfilterConfigParameters">FixelfilterConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: Union[<a href="#FixelfilterVariousStringParameters">FixelfilterVariousStringParameters</a>, <a href="#FixelfilterVariousFileParameters">FixelfilterVariousFileParameters</a>]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">filter</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.filter"></a>
+    
+    
+
+                            </div>
+                            <div id="FixelfilterParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: Union[<a href="#FixelfilterVariousStringParameters_">FixelfilterVariousStringParameters_</a>, <a href="#FixelfilterVariousFileParameters_">FixelfilterVariousFileParameters_</a>]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFileParameters"></a>
+    
+    
+
+                            <div id="FixelfilterVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousFileParameters_">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousFileParameters_</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFileParameters_"></a>
+    
+    
+
+                            <div id="FixelfilterVariousFileParameters_.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousFileParameters_.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousStringParameters"></a>
+    
+    
+
+                            <div id="FixelfilterVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="FixelfilterVariousStringParameters_">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FixelfilterVariousStringParameters_</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousStringParameters_"></a>
+    
+    
+
+                            <div id="FixelfilterVariousStringParameters_.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FixelfilterVariousStringParameters_.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fixelfilter">
                             <input id="fixelfilter-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters</span><span class="p">]</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters_</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters_</span><span class="p">]</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterOutputs">FixelfilterOutputs</a></span>:</span></span>
+        <span class="name">fixelfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousStringParameters">FixelfilterVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFileParameters">FixelfilterVariousFileParameters</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousStringParameters_">FixelfilterVariousStringParameters_</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFileParameters_">FixelfilterVariousFileParameters_</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#FixelfilterConfigParameters">FixelfilterConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterOutputs">FixelfilterOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter-view-source"><span>View Source</span></label>
 
@@ -880,7 +1320,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterConfigParameters</span>:</span></span>
+        <span class="name">fixelfilter_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterConfigParameters">FixelfilterConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_config_params-view-source"><span>View Source</span></label>
 
@@ -931,7 +1371,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters</span><span class="p">]</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters_</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters_</span><span class="p">]</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterParameters</span>:</span></span>
+        <span class="name">fixelfilter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousStringParameters">FixelfilterVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFileParameters">FixelfilterVariousFileParameters</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#FixelfilterVariousStringParameters_">FixelfilterVariousStringParameters_</a></span><span class="p">,</span> <span class="n"><a href="#FixelfilterVariousFileParameters_">FixelfilterVariousFileParameters_</a></span><span class="p">]</span>,</span><span class="param">	<span class="n">threshold_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_connectivity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minweight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#FixelfilterConfigParameters">FixelfilterConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterParameters">FixelfilterParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_params-view-source"><span>View Source</span></label>
 
@@ -1061,7 +1501,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters</span>:</span></span>
+        <span class="name">fixelfilter_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterVariousFileParameters">FixelfilterVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1108,7 +1548,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_various_file_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousFileParameters_</span>:</span></span>
+        <span class="name">fixelfilter_various_file_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterVariousFileParameters_">FixelfilterVariousFileParameters_</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_various_file_params_-view-source"><span>View Source</span></label>
 
@@ -1155,7 +1595,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters</span>:</span></span>
+        <span class="name">fixelfilter_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterVariousStringParameters">FixelfilterVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1202,7 +1642,7 @@ specified filter operation to all fixel data files within the directory.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixelfilter_various_string_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixelfilter</span><span class="o">.</span><span class="n">FixelfilterVariousStringParameters_</span>:</span></span>
+        <span class="name">fixelfilter_various_string_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#FixelfilterVariousStringParameters_">FixelfilterVariousStringParameters_</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixelfilter_various_string_params_-view-source"><span>View Source</span></label>
 
@@ -1245,186 +1685,5 @@ specified filter operation to all fixel data files within the directory.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

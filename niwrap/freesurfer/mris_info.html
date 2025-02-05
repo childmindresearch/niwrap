@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisInfoOutputs.output_edge_file">output_edge_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisInfoParameters">MrisInfoParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.surfacefile">surfacefile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.outfile">outfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.subject_hemi_surfname">subject_hemi_surfname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.patchfile">patchfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.vertex_number">vertex_number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.extended_vertex_number">extended_vertex_number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.curvfile">curvfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.annotfile">annotfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.edge_stats_id">edge_stats_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.edge_number">edge_number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.vtxno">vtxno</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.matrix_format">matrix_format</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.label_file">label_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.edge_file">edge_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.talairach_xfm_flag">talairach_xfm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.rescale_flag">rescale_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.area_stats_flag">area_stats_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.quality_stats_flag">quality_stats_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.intersections_flag">intersections_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.nogifti_flag">nogifti_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.version_flag">version_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisInfoParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -495,9 +568,10 @@
 </span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;MRIS_INFO_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;MrisInfoOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;mris_info&quot;</span><span class="p">,</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;mris_info_params&quot;</span><span class="p">,</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="p">]</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;MrisInfoParameters&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;mris_info&quot;</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;mris_info_params&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -594,6 +668,272 @@
             <div class="docstring"><p>File containing edge info</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisInfoParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisInfoParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters"></a>
+    
+    
+
+                            <div id="MrisInfoParameters.surfacefile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surfacefile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.surfacefile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.outfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.outfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.subject_hemi_surfname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_hemi_surfname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.subject_hemi_surfname"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.patchfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">patchfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.patchfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.vertex_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vertex_number</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.vertex_number"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.extended_vertex_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extended_vertex_number</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.extended_vertex_number"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.curvfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">curvfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.curvfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.annotfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annotfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.annotfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.edge_stats_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">edge_stats_id</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.edge_stats_id"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.edge_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">edge_number</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.edge_number"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.vtxno" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vtxno</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.vtxno"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.matrix_format" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix_format</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.matrix_format"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.label_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.label_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.edge_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">edge_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.edge_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.talairach_xfm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">talairach_xfm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.talairach_xfm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.rescale_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rescale_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.rescale_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.area_stats_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">area_stats_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.area_stats_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.quality_stats_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quality_stats_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.quality_stats_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.intersections_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intersections_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.intersections_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.nogifti_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nogifti_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.nogifti_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.version_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.version_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisInfoParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisInfoParameters.help_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -730,7 +1070,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_info_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surfacefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_hemi_surfname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patchfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vertex_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extended_vertex_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">curvfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annotfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_stats_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vtxno</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">talairach_xfm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rescale_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">area_stats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quality_stats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">intersections_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nogifti_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_info</span><span class="o">.</span><span class="n">MrisInfoParameters</span>:</span></span>
+        <span class="name">mris_info_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surfacefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_hemi_surfname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patchfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vertex_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extended_vertex_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">curvfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annotfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_stats_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vtxno</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edge_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">talairach_xfm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rescale_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">area_stats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quality_stats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">intersections_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nogifti_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisInfoParameters">MrisInfoParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_info_params-view-source"><span>View Source</span></label>
 
@@ -880,186 +1220,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

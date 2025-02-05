@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VClipVolumeOutputs.output_followers">output_followers</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VClipVolumeParameters">VClipVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.below_zmm">below_zmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.above_zmm">above_zmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.left_xmm">left_xmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.right_xmm">right_xmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.anterior_ymm">anterior_ymm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.posterior_ymm">posterior_ymm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.box">box</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.mask_box">mask_box</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.and_logic">and_logic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.or_logic">or_logic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.verbosity">verbosity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.crop_allzero">crop_allzero</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.crop_greedy">crop_greedy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.crop">crop</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.crop_npad">crop_npad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.output_prefix">output_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VClipVolumeParameters.followers">followers</a>
                         </li>
                 </ul>
 
@@ -443,10 +501,11 @@
 </span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>
 </span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;VClipVolumeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;V__CLIP_VOLUME_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;v__clip_volume&quot;</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;v__clip_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="p">]</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;VClipVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;V__CLIP_VOLUME_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;v__clip_volume&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;v__clip_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -530,6 +589,217 @@
             <div class="docstring"><p>Output for follower datasets after clipping/cropping</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="VClipVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VClipVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters"></a>
+    
+    
+
+                            <div id="VClipVolumeParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.below_zmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">below_zmm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.below_zmm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.above_zmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">above_zmm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.above_zmm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.left_xmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_xmm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.left_xmm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.right_xmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_xmm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.right_xmm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.anterior_ymm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anterior_ymm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.anterior_ymm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.posterior_ymm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">posterior_ymm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.posterior_ymm"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.box" class="classattr">
+                                <div class="attr variable">
+            <span class="name">box</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.box"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.mask_box" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_box</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.mask_box"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.and_logic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">and_logic</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.and_logic"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.or_logic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">or_logic</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.or_logic"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.verbosity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbosity</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.verbosity"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.crop_allzero" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop_allzero</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.crop_allzero"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.crop_greedy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop_greedy</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.crop_greedy"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.crop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.crop"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.crop_npad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop_npad</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.crop_npad"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.output_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.output_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="VClipVolumeParameters.followers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">followers</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VClipVolumeParameters.followers"></a>
+    
+    
 
                             </div>
                 </section>
@@ -666,7 +936,7 @@ coordinates or within a specified box.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__clip_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">below_zmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">above_zmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_xmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_xmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">anterior_ymm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">posterior_ymm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">box</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_box</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">and_logic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">or_logic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_allzero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_greedy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">followers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__clip_volume</span><span class="o">.</span><span class="n">VClipVolumeParameters</span>:</span></span>
+        <span class="name">v__clip_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">below_zmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">above_zmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_xmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_xmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">anterior_ymm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">posterior_ymm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">box</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_box</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">and_logic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">or_logic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_allzero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_greedy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">crop_npad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">followers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VClipVolumeParameters">VClipVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__clip_volume_params-view-source"><span>View Source</span></label>
 
@@ -793,186 +1063,5 @@ coordinates or within a specified box.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

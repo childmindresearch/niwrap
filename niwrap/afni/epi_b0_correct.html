@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#EpiB0CorrectOutputs.qc_image_dir">qc_image_dir</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#EpiB0CorrectParameters">EpiB0CorrectParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_freq">input_freq</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_epi">input_epi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_mask">input_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_magn">input_magn</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_anat">input_anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.input_json">input_json</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.epi_pe_dir">epi_pe_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.epi_pe_bwpp">epi_pe_bwpp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.epi_pe_echo_sp">epi_pe_echo_sp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.epi_pe_vox_dim">epi_pe_vox_dim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.scale_freq">scale_freq</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.out_cmds">out_cmds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.out_pars">out_pars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.wdir_name">wdir_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.blur_sigma">blur_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.do_recenter_freq">do_recenter_freq</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.mask_dilate">mask_dilate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.no_clean">no_clean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.qc_box_focus_ulay">qc_box_focus_ulay</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.no_qc_image">no_qc_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.ver">ver</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EpiB0CorrectParameters.date">date</a>
                         </li>
                 </ul>
 
@@ -544,9 +620,10 @@
 </span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;EPI_B0_CORRECT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;EpiB0CorrectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;epi_b0_correct&quot;</span><span class="p">,</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;epi_b0_correct_params&quot;</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="p">]</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;EpiB0CorrectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;epi_b0_correct&quot;</span><span class="p">,</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;epi_b0_correct_params&quot;</span><span class="p">,</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -688,6 +765,283 @@
             <div class="docstring"><p>Directory containing QC images.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="EpiB0CorrectParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">EpiB0CorrectParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters"></a>
+    
+    
+
+                            <div id="EpiB0CorrectParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_freq" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_freq</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_freq"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_epi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_epi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_epi"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_magn" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_magn</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_magn"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_anat</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_anat"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.input_json" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_json</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.input_json"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.epi_pe_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_pe_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.epi_pe_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.epi_pe_bwpp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_pe_bwpp</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.epi_pe_bwpp"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.epi_pe_echo_sp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_pe_echo_sp</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.epi_pe_echo_sp"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.epi_pe_vox_dim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_pe_vox_dim</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.epi_pe_vox_dim"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.scale_freq" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale_freq</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.scale_freq"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.out_cmds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_cmds</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.out_cmds"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.out_pars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_pars</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.out_pars"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.wdir_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wdir_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.wdir_name"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.blur_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blur_sigma</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.blur_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.do_recenter_freq" class="classattr">
+                                <div class="attr variable">
+            <span class="name">do_recenter_freq</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.do_recenter_freq"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.mask_dilate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_dilate</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.mask_dilate"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.no_clean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_clean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.no_clean"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.qc_box_focus_ulay" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_box_focus_ulay</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.qc_box_focus_ulay"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.no_qc_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_qc_image</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.no_qc_image"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.ver" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ver</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.ver"></a>
+    
+    
+
+                            </div>
+                            <div id="EpiB0CorrectParameters.date" class="classattr">
+                                <div class="attr variable">
+            <span class="name">date</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EpiB0CorrectParameters.date"></a>
+    
+    
 
                             </div>
                 </section>
@@ -836,7 +1190,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">epi_b0_correct_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_freq</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_epi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">epi_pe_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_magn</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_bwpp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_echo_sp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_vox_dim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_cmds</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_pars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wdir_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blur_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_recenter_freq</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_dilate</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qc_box_focus_ulay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_qc_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ver</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">date</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">epi_b0_correct</span><span class="o">.</span><span class="n">EpiB0CorrectParameters</span>:</span></span>
+        <span class="name">epi_b0_correct_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_freq</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_epi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">epi_pe_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_magn</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_bwpp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_echo_sp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_pe_vox_dim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_cmds</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_pars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wdir_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blur_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_recenter_freq</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_dilate</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qc_box_focus_ulay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_qc_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ver</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">date</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#EpiB0CorrectParameters">EpiB0CorrectParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="epi_b0_correct_params-view-source"><span>View Source</span></label>
 
@@ -999,186 +1353,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -86,6 +84,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#BetOutputs.out_outskull_off">out_outskull_off</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BetParameters">BetParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BetParameters.infile">infile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.maskfile">maskfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.fractional_intensity">fractional_intensity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.vg_fractional_intensity">vg_fractional_intensity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.center_of_gravity">center_of_gravity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.overlay">overlay</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.binary_mask">binary_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.approx_skull">approx_skull</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.no_seg_output">no_seg_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.vtk_mesh">vtk_mesh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.head_radius">head_radius</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.thresholding">thresholding</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.robust_iters">robust_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.residual_optic_cleanup">residual_optic_cleanup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.reduce_bias">reduce_bias</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.slice_padding">slice_padding</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.whole_set_mask">whole_set_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.additional_surfaces">additional_surfaces</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.additional_surfaces_t2">additional_surfaces_t2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BetParameters.debug">debug</a>
                         </li>
                 </ul>
 
@@ -573,9 +640,10 @@
 </span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;BET_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;BetOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;bet&quot;</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;bet_params&quot;</span><span class="p">,</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="p">]</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;BetParameters&quot;</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;bet&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;bet_params&quot;</span><span class="p">,</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -870,6 +938,250 @@
 
                             </div>
                 </section>
+                <section id="BetParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BetParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters"></a>
+    
+    
+
+                            <div id="BetParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.infile"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.maskfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskfile</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.maskfile"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.fractional_intensity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fractional_intensity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.fractional_intensity"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.vg_fractional_intensity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vg_fractional_intensity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.vg_fractional_intensity"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.center_of_gravity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_of_gravity</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.center_of_gravity"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.overlay" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overlay</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.overlay"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.binary_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binary_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.binary_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.approx_skull" class="classattr">
+                                <div class="attr variable">
+            <span class="name">approx_skull</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.approx_skull"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.no_seg_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_seg_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.no_seg_output"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.vtk_mesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vtk_mesh</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.vtk_mesh"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.head_radius" class="classattr">
+                                <div class="attr variable">
+            <span class="name">head_radius</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.head_radius"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.thresholding" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresholding</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.thresholding"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.robust_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">robust_iters</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.robust_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.residual_optic_cleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">residual_optic_cleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.residual_optic_cleanup"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.reduce_bias" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reduce_bias</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.reduce_bias"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.slice_padding" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_padding</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.slice_padding"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.whole_set_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">whole_set_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.whole_set_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.additional_surfaces" class="classattr">
+                                <div class="attr variable">
+            <span class="name">additional_surfaces</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.additional_surfaces"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.additional_surfaces_t2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">additional_surfaces_t2</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.additional_surfaces_t2"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="BetParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BetParameters.debug"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="bet">
                             <input id="bet-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -1024,7 +1336,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">bet_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;img_bet&#39;</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vg_fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overlay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">binary_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">approx_skull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_seg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vtk_mesh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">head_radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresholding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">robust_iters</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">residual_optic_cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reduce_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slice_padding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">whole_set_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">additional_surfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">additional_surfaces_t2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">bet</span><span class="o">.</span><span class="n">BetParameters</span>:</span></span>
+        <span class="name">bet_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;img_bet&#39;</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vg_fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overlay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">binary_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">approx_skull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_seg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vtk_mesh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">head_radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresholding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">robust_iters</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">residual_optic_cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reduce_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slice_padding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">whole_set_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">additional_surfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">additional_surfaces_t2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#BetParameters">BetParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="bet_params-view-source"><span>View Source</span></label>
 
@@ -1184,186 +1496,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -59,6 +57,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dNetCorrOutputs.output_binary_mask_nnull">output_binary_mask_nnull</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dNetCorrParameters">V3dNetCorrParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.inset">inset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.in_rois">in_rois</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.fish_z">fish_z</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.part_corr">part_corr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_out">ts_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_label">ts_label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_indiv">ts_indiv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_wb_corr">ts_wb_corr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_wb_Z">ts_wb_Z</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.weight_ts">weight_ts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.weight_corr">weight_corr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ts_wb_strlabel">ts_wb_strlabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.nifti">nifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.output_mask_nonnull">output_mask_nonnull</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.push_thru_many_zeros">push_thru_many_zeros</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.allow_roi_zeros">allow_roi_zeros</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.automask_off">automask_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNetCorrParameters.ignore_LT">ignore_LT</a>
                         </li>
                 </ul>
 
@@ -466,10 +530,11 @@
 </span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>
 </span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;V3dNetCorrOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;V_3D_NET_CORR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;v_3d_net_corr&quot;</span><span class="p">,</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;v_3d_net_corr_params&quot;</span><span class="p">,</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="p">]</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;V3dNetCorrParameters&quot;</span><span class="p">,</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;V_3D_NET_CORR_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;v_3d_net_corr&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;v_3d_net_corr_params&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -633,6 +698,239 @@ network 000</p>
 
                             </div>
                 </section>
+                <section id="V3dNetCorrParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dNetCorrParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters"></a>
+    
+    
+
+                            <div id="V3dNetCorrParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.inset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.inset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.in_rois" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_rois</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.in_rois"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.fish_z" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fish_z</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.fish_z"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.part_corr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">part_corr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.part_corr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_out"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_label</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_label"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_indiv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_indiv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_indiv"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_wb_corr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_wb_corr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_wb_corr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_wb_Z" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_wb_Z</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_wb_Z"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.weight_ts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_ts</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.weight_ts"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.weight_corr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_corr</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.weight_corr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ts_wb_strlabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ts_wb_strlabel</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ts_wb_strlabel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.nifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nifti</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.nifti"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.output_mask_nonnull" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_mask_nonnull</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.output_mask_nonnull"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.push_thru_many_zeros" class="classattr">
+                                <div class="attr variable">
+            <span class="name">push_thru_many_zeros</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.push_thru_many_zeros"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.allow_roi_zeros" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allow_roi_zeros</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.allow_roi_zeros"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.automask_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">automask_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.automask_off"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNetCorrParameters.ignore_LT" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ignore_LT</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNetCorrParameters.ignore_LT"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_3D_NET_CORR_METADATA">
                     <div class="attr variable">
             <span class="name">V_3D_NET_CORR_METADATA</span>        =
@@ -776,7 +1074,7 @@ network 000</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_net_corr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_rois</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fish_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">part_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_label</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_indiv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_wb_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_wb_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_corr</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ts_wb_strlabel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nifti</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_mask_nonnull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">push_thru_many_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allow_roi_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">automask_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ignore_lt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_net_corr</span><span class="o">.</span><span class="n">V3dNetCorrParameters</span>:</span></span>
+        <span class="name">v_3d_net_corr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_rois</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fish_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">part_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_label</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_indiv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_wb_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ts_wb_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight_ts</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_corr</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ts_wb_strlabel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nifti</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_mask_nonnull</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">push_thru_many_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allow_roi_zeros</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">automask_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ignore_lt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dNetCorrParameters">V3dNetCorrParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_net_corr_params-view-source"><span>View Source</span></label>
 
@@ -909,186 +1207,5 @@ network 000</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

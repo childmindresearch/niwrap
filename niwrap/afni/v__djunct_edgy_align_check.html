@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -38,6 +36,63 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VDjunctEdgyAlignCheckOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VDjunctEdgyAlignCheckParameters">VDjunctEdgyAlignCheckParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.ULAY">ULAY</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.OLAY">OLAY</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.PREFIX">PREFIX</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.set_dicom_xyz">set_dicom_xyz</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.box_focus_slices">box_focus_slices</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.montgap">montgap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.montcolor">montcolor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.cbar">cbar</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.save_ftype">save_ftype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.umin_fac">umin_fac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.montx">montx</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.monty">monty</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.use_olay_grid">use_olay_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.label_mode">label_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.ulay_range">ulay_range</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.ulay_range_nz">ulay_range_nz</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VDjunctEdgyAlignCheckParameters.ulay_range_am">ulay_range_am</a>
                         </li>
                 </ul>
 
@@ -388,10 +443,11 @@
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="s2">&quot;VDjunctEdgyAlignCheckOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;V__DJUNCT_EDGY_ALIGN_CHECK_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;v__djunct_edgy_align_check&quot;</span><span class="p">,</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="s2">&quot;v__djunct_edgy_align_check_params&quot;</span><span class="p">,</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="p">]</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;VDjunctEdgyAlignCheckParameters&quot;</span><span class="p">,</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;V__DJUNCT_EDGY_ALIGN_CHECK_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="s2">&quot;v__djunct_edgy_align_check&quot;</span><span class="p">,</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="s2">&quot;v__djunct_edgy_align_check_params&quot;</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -445,6 +501,206 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="VDjunctEdgyAlignCheckParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VDjunctEdgyAlignCheckParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters"></a>
+    
+    
+
+                            <div id="VDjunctEdgyAlignCheckParameters.ULAY" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ULAY</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.ULAY"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.OLAY" class="classattr">
+                                <div class="attr variable">
+            <span class="name">OLAY</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.OLAY"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.PREFIX" class="classattr">
+                                <div class="attr variable">
+            <span class="name">PREFIX</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.PREFIX"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.set_dicom_xyz" class="classattr">
+                                <div class="attr variable">
+            <span class="name">set_dicom_xyz</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.set_dicom_xyz"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.box_focus_slices" class="classattr">
+                                <div class="attr variable">
+            <span class="name">box_focus_slices</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.box_focus_slices"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.montgap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">montgap</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.montgap"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.montcolor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">montcolor</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.montcolor"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.cbar" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cbar</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.cbar"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.save_ftype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_ftype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.save_ftype"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.umin_fac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">umin_fac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.umin_fac"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.montx" class="classattr">
+                                <div class="attr variable">
+            <span class="name">montx</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.montx"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.monty" class="classattr">
+                                <div class="attr variable">
+            <span class="name">monty</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.monty"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.use_olay_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_olay_grid</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.use_olay_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.label_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_mode</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.label_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.ulay_range" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ulay_range</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.ulay_range"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.ulay_range_nz" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ulay_range_nz</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.ulay_range_nz"></a>
+    
+    
+
+                            </div>
+                            <div id="VDjunctEdgyAlignCheckParameters.ulay_range_am" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ulay_range_am</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VDjunctEdgyAlignCheckParameters.ulay_range_am"></a>
+    
+    
 
                             </div>
                 </section>
@@ -573,7 +829,7 @@ script.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__djunct_edgy_align_check_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ulay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">olay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">set_dicom_xyz</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">box_focus_slices</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montgap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montcolor</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_ftype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umin_fac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">monty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_olay_grid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range_nz</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range_am</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__djunct_edgy_align_check</span><span class="o">.</span><span class="n">VDjunctEdgyAlignCheckParameters</span>:</span></span>
+        <span class="name">v__djunct_edgy_align_check_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ulay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">olay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">set_dicom_xyz</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">box_focus_slices</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montgap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montcolor</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_ftype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umin_fac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">montx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">monty</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_olay_grid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range_nz</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ulay_range_am</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VDjunctEdgyAlignCheckParameters">VDjunctEdgyAlignCheckParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__djunct_edgy_align_check_params-view-source"><span>View Source</span></label>
 
@@ -694,186 +950,5 @@ script.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

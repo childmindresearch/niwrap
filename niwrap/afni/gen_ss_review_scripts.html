@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GenSsReviewScriptsOutputs.driver_commands">driver_commands</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GenSsReviewScriptsParameters">GenSsReviewScriptsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.rm_trs">rm_trs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.num_stim">num_stim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.mb_level">mb_level</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.slice_pattern">slice_pattern</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.motion_dset">motion_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.outlier_dset">outlier_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.enorm_dset">enorm_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.mot_limit">mot_limit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.out_limit">out_limit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.xmat_regress">xmat_regress</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.xmat_uncensored">xmat_uncensored</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.stats_dset">stats_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.final_anat">final_anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.final_view">final_view</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.verbosity">verbosity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.uvars_json">uvars_json</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenSsReviewScriptsParameters.init_uvars_json">init_uvars_json</a>
                         </li>
                 </ul>
 
@@ -479,9 +540,10 @@
 </span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;GEN_SS_REVIEW_SCRIPTS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;GenSsReviewScriptsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;gen_ss_review_scripts&quot;</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;gen_ss_review_scripts_params&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="p">]</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;GenSsReviewScriptsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;gen_ss_review_scripts&quot;</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;gen_ss_review_scripts_params&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -593,6 +655,228 @@
             <div class="docstring"><p>Driver commands script output</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GenSsReviewScriptsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GenSsReviewScriptsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters"></a>
+    
+    
+
+                            <div id="GenSsReviewScriptsParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.rm_trs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rm_trs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.rm_trs"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.num_stim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_stim</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.num_stim"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.mb_level" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mb_level</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.mb_level"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.slice_pattern" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_pattern</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.slice_pattern"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.motion_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">motion_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.motion_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.outlier_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outlier_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.outlier_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.enorm_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">enorm_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.enorm_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.mot_limit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mot_limit</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.mot_limit"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.out_limit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_limit</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.out_limit"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.xmat_regress" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xmat_regress</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.xmat_regress"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.xmat_uncensored" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xmat_uncensored</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.xmat_uncensored"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.stats_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stats_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.stats_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.final_anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">final_anat</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.final_anat"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.final_view" class="classattr">
+                                <div class="attr variable">
+            <span class="name">final_view</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.final_view"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.verbosity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbosity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.verbosity"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.uvars_json" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uvars_json</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.uvars_json"></a>
+    
+    
+
+                            </div>
+                            <div id="GenSsReviewScriptsParameters.init_uvars_json" class="classattr">
+                                <div class="attr variable">
+            <span class="name">init_uvars_json</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenSsReviewScriptsParameters.init_uvars_json"></a>
+    
+    
 
                             </div>
                 </section>
@@ -712,7 +996,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">gen_ss_review_scripts_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rm_trs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_stim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mb_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">motion_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">enorm_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mot_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmat_regress</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmat_uncensored</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stats_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">final_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">final_view</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uvars_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_uvars_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">gen_ss_review_scripts</span><span class="o">.</span><span class="n">GenSsReviewScriptsParameters</span>:</span></span>
+        <span class="name">gen_ss_review_scripts_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rm_trs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_stim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mb_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">motion_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outlier_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">enorm_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mot_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmat_regress</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmat_uncensored</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stats_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">final_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">final_view</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uvars_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_uvars_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GenSsReviewScriptsParameters">GenSsReviewScriptsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="gen_ss_review_scripts_params-view-source"><span>View Source</span></label>
 
@@ -846,186 +1130,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

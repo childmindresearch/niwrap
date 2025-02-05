@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#QuickspecSlOutputs.output_spec_file">output_spec_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#QuickspecSlParameters">QuickspecSlParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.surf_A">surf_A</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.surf_B">surf_B</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.surf_intermed_pref">surf_intermed_pref</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.infl_surf_A">infl_surf_A</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.infl_surf_B">infl_surf_B</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.infl_surf_intermed_pref">infl_surf_intermed_pref</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.both_lr_flag">both_lr_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#QuickspecSlParameters.out_spec">out_spec</a>
                         </li>
                 </ul>
 
@@ -345,9 +373,10 @@
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;QUICKSPEC_SL_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;QuickspecSlOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;quickspec_sl&quot;</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;quickspec_sl_params&quot;</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="p">]</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;QuickspecSlParameters&quot;</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;quickspec_sl&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;quickspec_sl_params&quot;</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -429,6 +458,107 @@
             <div class="docstring"><p>Output spec file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="QuickspecSlParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">QuickspecSlParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters"></a>
+    
+    
+
+                            <div id="QuickspecSlParameters.surf_A" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_A</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.surf_A"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.surf_B" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_B</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.surf_B"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.surf_intermed_pref" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_intermed_pref</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.surf_intermed_pref"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.infl_surf_A" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infl_surf_A</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.infl_surf_A"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.infl_surf_B" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infl_surf_B</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.infl_surf_B"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.infl_surf_intermed_pref" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infl_surf_intermed_pref</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.infl_surf_intermed_pref"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.both_lr_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">both_lr_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.both_lr_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="QuickspecSlParameters.out_spec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_spec</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#QuickspecSlParameters.out_spec"></a>
+    
+    
 
                             </div>
                 </section>
@@ -526,7 +656,7 @@ surfaces to anatomically-correct surfaces.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">quickspec_sl_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_intermed_pref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_intermed_pref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">both_lr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">quickspec_sl</span><span class="o">.</span><span class="n">QuickspecSlParameters</span>:</span></span>
+        <span class="name">quickspec_sl_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_intermed_pref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_a</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_b</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infl_surf_intermed_pref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">both_lr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_spec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#QuickspecSlParameters">QuickspecSlParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="quickspec_sl_params-view-source"><span>View Source</span></label>
 
@@ -609,186 +739,5 @@ surfaces to anatomically-correct surfaces.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

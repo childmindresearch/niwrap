@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VRoiModalGrowOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VRoiModalGrowParameters">VRoiModalGrowParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.input_dset">input_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.niters">niters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.outdir">outdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VRoiModalGrowParameters.neighborhood_type">neighborhood_type</a>
                         </li>
                 </ul>
 
@@ -320,10 +342,11 @@
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;VRoiModalGrowOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;V__ROI_MODAL_GROW_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;v__roi_modal_grow&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;v__roi_modal_grow_params&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="p">]</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;VRoiModalGrowParameters&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;V__ROI_MODAL_GROW_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;v__roi_modal_grow&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;v__roi_modal_grow_params&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -392,6 +415,85 @@
             <div class="docstring"><p>Final output dataset</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="VRoiModalGrowParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VRoiModalGrowParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters"></a>
+    
+    
+
+                            <div id="VRoiModalGrowParameters.input_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.input_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="VRoiModalGrowParameters.niters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">niters</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.niters"></a>
+    
+    
+
+                            </div>
+                            <div id="VRoiModalGrowParameters.outdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.outdir"></a>
+    
+    
+
+                            </div>
+                            <div id="VRoiModalGrowParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="VRoiModalGrowParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="VRoiModalGrowParameters.neighborhood_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">neighborhood_type</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VRoiModalGrowParameters.neighborhood_type"></a>
+    
+    
 
                             </div>
                 </section>
@@ -492,7 +594,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__roi_modal_grow_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">niters</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">outdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">neighborhood_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__roi_modal_grow</span><span class="o">.</span><span class="n">VRoiModalGrowParameters</span>:</span></span>
+        <span class="name">v__roi_modal_grow_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">niters</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">outdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">neighborhood_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VRoiModalGrowParameters">VRoiModalGrowParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__roi_modal_grow_params-view-source"><span>View Source</span></label>
 
@@ -566,186 +668,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

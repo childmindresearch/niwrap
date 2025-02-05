@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,33 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AntsN4BiasFieldCorrectionFsOutputs.corrected_output_file">corrected_output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AntsN4BiasFieldCorrectionFsParameters">AntsN4BiasFieldCorrectionFsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.shrink_factor">shrink_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.output_dtype">output_dtype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsN4BiasFieldCorrectionFsParameters.replace_zeros">replace_zeros</a>
                         </li>
                 </ul>
 
@@ -333,9 +358,10 @@
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;AntsN4BiasFieldCorrectionFsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;ants_n4_bias_field_correction_fs&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;ants_n4_bias_field_correction_fs_params&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="p">]</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;AntsN4BiasFieldCorrectionFsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;ants_n4_bias_field_correction_fs&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;ants_n4_bias_field_correction_fs_params&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -417,6 +443,96 @@
             <div class="docstring"><p>Corrected volume output file.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AntsN4BiasFieldCorrectionFsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AntsN4BiasFieldCorrectionFsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters"></a>
+    
+    
+
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.shrink_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shrink_factor</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.shrink_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.output_dtype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dtype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.output_dtype"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsN4BiasFieldCorrectionFsParameters.replace_zeros" class="classattr">
+                                <div class="attr variable">
+            <span class="name">replace_zeros</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsN4BiasFieldCorrectionFsParameters.replace_zeros"></a>
+    
+    
 
                             </div>
                 </section>
@@ -509,7 +625,7 @@ in the ANTs package.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ants_n4_bias_field_correction_fs_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dtype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span>,</span><span class="param">	<span class="n">replace_zeros</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">ants_n4_bias_field_correction_fs</span><span class="o">.</span><span class="n">AntsN4BiasFieldCorrectionFsParameters</span>:</span></span>
+        <span class="name">ants_n4_bias_field_correction_fs_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dtype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span>,</span><span class="param">	<span class="n">replace_zeros</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AntsN4BiasFieldCorrectionFsParameters">AntsN4BiasFieldCorrectionFsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="ants_n4_bias_field_correction_fs_params-view-source"><span>View Source</span></label>
 
@@ -586,186 +702,5 @@ in the ANTs package.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

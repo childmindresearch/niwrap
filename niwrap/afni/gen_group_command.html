@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GenGroupCommandOutputs.output_script">output_script</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GenGroupCommandParameters">GenGroupCommandParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.command_name">command_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.datasets">datasets</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.set_labels">set_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.subj_prefix">subj_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.subj_suffix">subj_suffix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.subs_betas">subs_betas</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.subs_tstats">subs_tstats</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.type">type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.verb">verb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.write_script">write_script</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenGroupCommandParameters.other_options">other_options</a>
                         </li>
                 </ul>
 
@@ -383,9 +423,10 @@
 </span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;GEN_GROUP_COMMAND_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;GenGroupCommandOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;gen_group_command&quot;</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;gen_group_command_params&quot;</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="p">]</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;GenGroupCommandParameters&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;gen_group_command&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;gen_group_command_params&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -467,6 +508,151 @@
             <div class="docstring"><p>The generated command script file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GenGroupCommandParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GenGroupCommandParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters"></a>
+    
+    
+
+                            <div id="GenGroupCommandParameters.command_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">command_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.command_name"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.datasets" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datasets</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.datasets"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.set_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">set_labels</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.set_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.subj_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subj_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.subj_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.subj_suffix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subj_suffix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.subj_suffix"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.subs_betas" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subs_betas</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.subs_betas"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.subs_tstats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subs_tstats</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.subs_tstats"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.type"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.verb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verb</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.verb"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.write_script" class="classattr">
+                                <div class="attr variable">
+            <span class="name">write_script</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.write_script"></a>
+    
+    
+
+                            </div>
+                            <div id="GenGroupCommandParameters.other_options" class="classattr">
+                                <div class="attr variable">
+            <span class="name">other_options</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenGroupCommandParameters.other_options"></a>
+    
+    
 
                             </div>
                 </section>
@@ -568,7 +754,7 @@ datasets.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">gen_group_command_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">command_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">set_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subs_betas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subs_tstats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_script</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">other_options</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">gen_group_command</span><span class="o">.</span><span class="n">GenGroupCommandParameters</span>:</span></span>
+        <span class="name">gen_group_command_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">command_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">set_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subs_betas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subs_tstats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_script</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">other_options</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GenGroupCommandParameters">GenGroupCommandParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="gen_group_command_params-view-source"><span>View Source</span></label>
 
@@ -666,186 +852,5 @@ datasets.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

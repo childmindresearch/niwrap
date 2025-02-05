@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FslRigidRegisterOutputs.fslmat_output">fslmat_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FslRigidRegisterParameters">FslRigidRegisterParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.refvol">refvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.inputvol">inputvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.outputvol">outputvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.fslmat">fslmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.regmat">regmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.xfmmat">xfmmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.ltamat">ltamat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.noinitgeom">noinitgeom</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.applyxfm">applyxfm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.applyinitxfm">applyinitxfm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.initxfm">initxfm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.maxangle">maxangle</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.interp">interp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.dof">dof</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.bins">bins</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.cost">cost</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.tmpdir">tmpdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.nocleanup">nocleanup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.cleanup">cleanup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslRigidRegisterParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -483,9 +553,10 @@
 </span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;FSL_RIGID_REGISTER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;FslRigidRegisterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;fsl_rigid_register&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;fsl_rigid_register_params&quot;</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="p">]</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;FslRigidRegisterParameters&quot;</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;fsl_rigid_register&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;fsl_rigid_register_params&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -567,6 +638,261 @@
             <div class="docstring"><p>The registration matrix in FSL format.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FslRigidRegisterParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FslRigidRegisterParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters"></a>
+    
+    
+
+                            <div id="FslRigidRegisterParameters.refvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">refvol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.refvol"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.inputvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inputvol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.inputvol"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.outputvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outputvol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.outputvol"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.fslmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslmat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.fslmat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.regmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">regmat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.regmat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.xfmmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xfmmat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.xfmmat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.ltamat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ltamat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.ltamat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.noinitgeom" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noinitgeom</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.noinitgeom"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.applyxfm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">applyxfm</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.applyxfm"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.applyinitxfm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">applyinitxfm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.applyinitxfm"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.initxfm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initxfm</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.initxfm"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.maxangle" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxangle</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.maxangle"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.interp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.interp"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.dof" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dof</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.dof"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.bins" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bins</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.bins"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.cost" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.cost"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.tmpdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tmpdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.tmpdir"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.nocleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.nocleanup"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.cleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.cleanup"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="FslRigidRegisterParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslRigidRegisterParameters.help"></a>
+    
+    
 
                             </div>
                 </section>
@@ -701,7 +1027,7 @@ resamples the input volume to the reference volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fsl_rigid_register_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">refvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inputvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fslmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfmmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ltamat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noinitgeom</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">applyxfm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">applyinitxfm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initxfm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxangle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dof</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bins</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tmpdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">fsl_rigid_register</span><span class="o">.</span><span class="n">FslRigidRegisterParameters</span>:</span></span>
+        <span class="name">fsl_rigid_register_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">refvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inputvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fslmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfmmat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ltamat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noinitgeom</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">applyxfm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">applyinitxfm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initxfm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxangle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dof</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bins</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tmpdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FslRigidRegisterParameters">FslRigidRegisterParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fsl_rigid_register_params-view-source"><span>View Source</span></label>
 
@@ -845,186 +1171,5 @@ resamples the input volume to the reference volume.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

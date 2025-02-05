@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,18 @@
                     <a class="variable" href="#SCENE_CAPTURE_IMAGE_METADATA">SCENE_CAPTURE_IMAGE_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#SceneCaptureImageConnDbLoginParameters">SceneCaptureImageConnDbLoginParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageConnDbLoginParameters.username">username</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageConnDbLoginParameters.password">password</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#SceneCaptureImageOutputs">SceneCaptureImageOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +51,99 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SceneCaptureImageOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneCaptureImageParameters">SceneCaptureImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.scene_file">scene_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.scene_name_or_number">scene_name_or_number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.image_file_name">image_file_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_size_window">opt_size_window</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_size_capture">opt_size_capture</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.size_width_height">size_width_height</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_size_width_width">opt_size_width_width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_size_height_height">opt_size_height_height</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_units_units">opt_units_units</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.resolution">resolution</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_margin_size">opt_margin_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_no_scene_colors">opt_no_scene_colors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.set_map_yoke">set_map_yoke</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.conn_db_login">conn_db_login</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_show_capture_settings">opt_show_capture_settings</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_renderer_renderer">opt_renderer_renderer</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageParameters.opt_print_image_info">opt_print_image_info</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneCaptureImageResolutionParameters">SceneCaptureImageResolutionParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageResolutionParameters.number_of_pixels">number_of_pixels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageResolutionParameters.units_name">units_name</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneCaptureImageSetMapYokeParameters">SceneCaptureImageSetMapYokeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageSetMapYokeParameters.map_yoking_roman_numeral">map_yoking_roman_numeral</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageSetMapYokeParameters.map_undex">map_undex</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneCaptureImageSizeWidthHeightParameters">SceneCaptureImageSizeWidthHeightParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageSizeWidthHeightParameters.width">width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneCaptureImageSizeWidthHeightParameters.height">height</a>
                         </li>
                 </ul>
 
@@ -759,14 +862,19 @@
 </span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a>
 </span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a>    <span class="s2">&quot;SCENE_CAPTURE_IMAGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a>    <span class="s2">&quot;SceneCaptureImageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a>    <span class="s2">&quot;scene_capture_image&quot;</span><span class="p">,</span>
-</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a>    <span class="s2">&quot;scene_capture_image_conn_db_login_params&quot;</span><span class="p">,</span>
-</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a>    <span class="s2">&quot;scene_capture_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a>    <span class="s2">&quot;scene_capture_image_resolution_params&quot;</span><span class="p">,</span>
-</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a>    <span class="s2">&quot;scene_capture_image_set_map_yoke_params&quot;</span><span class="p">,</span>
-</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a>    <span class="s2">&quot;scene_capture_image_size_width_height_params&quot;</span><span class="p">,</span>
-</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a><span class="p">]</span>
+</span><span id="L-676"><a href="#L-676"><span class="linenos">676</span></a>    <span class="s2">&quot;SceneCaptureImageConnDbLoginParameters&quot;</span><span class="p">,</span>
+</span><span id="L-677"><a href="#L-677"><span class="linenos">677</span></a>    <span class="s2">&quot;SceneCaptureImageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-678"><a href="#L-678"><span class="linenos">678</span></a>    <span class="s2">&quot;SceneCaptureImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-679"><a href="#L-679"><span class="linenos">679</span></a>    <span class="s2">&quot;SceneCaptureImageResolutionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-680"><a href="#L-680"><span class="linenos">680</span></a>    <span class="s2">&quot;SceneCaptureImageSetMapYokeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-681"><a href="#L-681"><span class="linenos">681</span></a>    <span class="s2">&quot;SceneCaptureImageSizeWidthHeightParameters&quot;</span><span class="p">,</span>
+</span><span id="L-682"><a href="#L-682"><span class="linenos">682</span></a>    <span class="s2">&quot;scene_capture_image&quot;</span><span class="p">,</span>
+</span><span id="L-683"><a href="#L-683"><span class="linenos">683</span></a>    <span class="s2">&quot;scene_capture_image_conn_db_login_params&quot;</span><span class="p">,</span>
+</span><span id="L-684"><a href="#L-684"><span class="linenos">684</span></a>    <span class="s2">&quot;scene_capture_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-685"><a href="#L-685"><span class="linenos">685</span></a>    <span class="s2">&quot;scene_capture_image_resolution_params&quot;</span><span class="p">,</span>
+</span><span id="L-686"><a href="#L-686"><span class="linenos">686</span></a>    <span class="s2">&quot;scene_capture_image_set_map_yoke_params&quot;</span><span class="p">,</span>
+</span><span id="L-687"><a href="#L-687"><span class="linenos">687</span></a>    <span class="s2">&quot;scene_capture_image_size_width_height_params&quot;</span><span class="p">,</span>
+</span><span id="L-688"><a href="#L-688"><span class="linenos">688</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -783,6 +891,41 @@
     
     
 
+                </section>
+                <section id="SceneCaptureImageConnDbLoginParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneCaptureImageConnDbLoginParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageConnDbLoginParameters"></a>
+    
+    
+
+                            <div id="SceneCaptureImageConnDbLoginParameters.username" class="classattr">
+                                <div class="attr variable">
+            <span class="name">username</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageConnDbLoginParameters.username"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageConnDbLoginParameters.password" class="classattr">
+                                <div class="attr variable">
+            <span class="name">password</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageConnDbLoginParameters.password"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="SceneCaptureImageOutputs">
                             <input id="SceneCaptureImageOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -836,12 +979,317 @@
 
                             </div>
                 </section>
+                <section id="SceneCaptureImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneCaptureImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters"></a>
+    
+    
+
+                            <div id="SceneCaptureImageParameters.scene_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scene_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.scene_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.scene_name_or_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scene_name_or_number</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.scene_name_or_number"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.image_file_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_file_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.image_file_name"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_size_window" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_size_window</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_size_window"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_size_capture" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_size_capture</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_size_capture"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.size_width_height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size_width_height</span><span class="annotation">: NotRequired[<a href="#SceneCaptureImageSizeWidthHeightParameters">SceneCaptureImageSizeWidthHeightParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.size_width_height"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_size_width_width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_size_width_width</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_size_width_width"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_size_height_height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_size_height_height</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_size_height_height"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_units_units" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_units_units</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_units_units"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.resolution" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resolution</span><span class="annotation">: NotRequired[<a href="#SceneCaptureImageResolutionParameters">SceneCaptureImageResolutionParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.resolution"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_margin_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_margin_size</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_margin_size"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_no_scene_colors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_no_scene_colors</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_no_scene_colors"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.set_map_yoke" class="classattr">
+                                <div class="attr variable">
+            <span class="name">set_map_yoke</span><span class="annotation">: NotRequired[<a href="#SceneCaptureImageSetMapYokeParameters">SceneCaptureImageSetMapYokeParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.set_map_yoke"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.conn_db_login" class="classattr">
+                                <div class="attr variable">
+            <span class="name">conn_db_login</span><span class="annotation">: NotRequired[<a href="#SceneCaptureImageConnDbLoginParameters">SceneCaptureImageConnDbLoginParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.conn_db_login"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_show_capture_settings" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_show_capture_settings</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_show_capture_settings"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_renderer_renderer" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_renderer_renderer</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_renderer_renderer"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageParameters.opt_print_image_info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_print_image_info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageParameters.opt_print_image_info"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SceneCaptureImageResolutionParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneCaptureImageResolutionParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageResolutionParameters"></a>
+    
+    
+
+                            <div id="SceneCaptureImageResolutionParameters.number_of_pixels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_pixels</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageResolutionParameters.number_of_pixels"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageResolutionParameters.units_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">units_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageResolutionParameters.units_name"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SceneCaptureImageSetMapYokeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneCaptureImageSetMapYokeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSetMapYokeParameters"></a>
+    
+    
+
+                            <div id="SceneCaptureImageSetMapYokeParameters.map_yoking_roman_numeral" class="classattr">
+                                <div class="attr variable">
+            <span class="name">map_yoking_roman_numeral</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSetMapYokeParameters.map_yoking_roman_numeral"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageSetMapYokeParameters.map_undex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">map_undex</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSetMapYokeParameters.map_undex"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SceneCaptureImageSizeWidthHeightParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneCaptureImageSizeWidthHeightParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSizeWidthHeightParameters"></a>
+    
+    
+
+                            <div id="SceneCaptureImageSizeWidthHeightParameters.width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSizeWidthHeightParameters.width"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneCaptureImageSizeWidthHeightParameters.height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">height</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneCaptureImageSizeWidthHeightParameters.height"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="scene_capture_image">
                             <input id="scene_capture_image-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_file_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_size_window</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_size_capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_width_height</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSizeWidthHeightParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_width_width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_height_height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_units_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageResolutionParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_margin_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_no_scene_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">set_map_yoke</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSetMapYokeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conn_db_login</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageConnDbLoginParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_show_capture_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_renderer_renderer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_image_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageOutputs">SceneCaptureImageOutputs</a></span>:</span></span>
+        <span class="name">scene_capture_image</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_file_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_size_window</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_size_capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_width_height</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageSizeWidthHeightParameters">SceneCaptureImageSizeWidthHeightParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_width_width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_height_height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_units_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageResolutionParameters">SceneCaptureImageResolutionParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_margin_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_no_scene_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">set_map_yoke</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageSetMapYokeParameters">SceneCaptureImageSetMapYokeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conn_db_login</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageConnDbLoginParameters">SceneCaptureImageConnDbLoginParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_show_capture_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_renderer_renderer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_image_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageOutputs">SceneCaptureImageOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image-view-source"><span>View Source</span></label>
 
@@ -1078,7 +1526,7 @@ available in the Linux and MacOS versions.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image_conn_db_login_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">username</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">password</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageConnDbLoginParameters</span>:</span></span>
+        <span class="name">scene_capture_image_conn_db_login_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">username</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">password</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageConnDbLoginParameters">SceneCaptureImageConnDbLoginParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image_conn_db_login_params-view-source"><span>View Source</span></label>
 
@@ -1129,7 +1577,7 @@ available in the Linux and MacOS versions.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_file_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_size_window</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_size_capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_width_height</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSizeWidthHeightParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_width_width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_height_height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_units_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageResolutionParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_margin_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_no_scene_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">set_map_yoke</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSetMapYokeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conn_db_login</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageConnDbLoginParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_show_capture_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_renderer_renderer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_image_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageParameters</span>:</span></span>
+        <span class="name">scene_capture_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_file_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_size_window</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_size_capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_width_height</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageSizeWidthHeightParameters">SceneCaptureImageSizeWidthHeightParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_width_width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_size_height_height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_units_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageResolutionParameters">SceneCaptureImageResolutionParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_margin_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_no_scene_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">set_map_yoke</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageSetMapYokeParameters">SceneCaptureImageSetMapYokeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">conn_db_login</span><span class="p">:</span> <span class="n"><a href="#SceneCaptureImageConnDbLoginParameters">SceneCaptureImageConnDbLoginParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_show_capture_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_renderer_renderer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_image_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageParameters">SceneCaptureImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image_params-view-source"><span>View Source</span></label>
 
@@ -1279,7 +1727,7 @@ available in the Linux and MacOS versions.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image_resolution_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">number_of_pixels</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">units_name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageResolutionParameters</span>:</span></span>
+        <span class="name">scene_capture_image_resolution_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">number_of_pixels</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">units_name</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageResolutionParameters">SceneCaptureImageResolutionParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image_resolution_params-view-source"><span>View Source</span></label>
 
@@ -1334,7 +1782,7 @@ available in the Linux and MacOS versions.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image_set_map_yoke_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">map_yoking_roman_numeral</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">map_undex</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSetMapYokeParameters</span>:</span></span>
+        <span class="name">scene_capture_image_set_map_yoke_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">map_yoking_roman_numeral</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">map_undex</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageSetMapYokeParameters">SceneCaptureImageSetMapYokeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image_set_map_yoke_params-view-source"><span>View Source</span></label>
 
@@ -1386,7 +1834,7 @@ available in the Linux and MacOS versions.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_capture_image_size_width_height_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">width</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">height</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_capture_image</span><span class="o">.</span><span class="n">SceneCaptureImageSizeWidthHeightParameters</span>:</span></span>
+        <span class="name">scene_capture_image_size_width_height_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">width</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">height</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneCaptureImageSizeWidthHeightParameters">SceneCaptureImageSizeWidthHeightParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_capture_image_size_width_height_params-view-source"><span>View Source</span></label>
 
@@ -1433,186 +1881,5 @@ available in the Linux and MacOS versions.
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

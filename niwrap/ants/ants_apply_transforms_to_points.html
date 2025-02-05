@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,15 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA">ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#AntsApplyTransformsToPointsInverseTransformParameters">AntsApplyTransformsToPointsInverseTransformParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsInverseTransformParameters.transform_file">transform_file</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#AntsApplyTransformsToPointsOutputs">AntsApplyTransformsToPointsOutputs</a>
@@ -45,6 +52,36 @@
                         <li>
                                 <a class="variable" href="#AntsApplyTransformsToPointsOutputs.warped_points">warped_points</a>
                         </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AntsApplyTransformsToPointsParameters">AntsApplyTransformsToPointsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.dimensionality">dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.precision">precision</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.forantsr">forantsr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AntsApplyTransformsToPointsParameters.transform">transform</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AntsApplyTransformsToPointsSingleTransformParameters">AntsApplyTransformsToPointsSingleTransformParameters</a>
+                            <ul class="memberlist">
                 </ul>
 
             </li>
@@ -404,12 +441,15 @@
 </span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>
 </span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="s2">&quot;ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="s2">&quot;AntsApplyTransformsToPointsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points&quot;</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_inverse_transform_params&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_params&quot;</span><span class="p">,</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_single_transform_params&quot;</span><span class="p">,</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="p">]</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="s2">&quot;AntsApplyTransformsToPointsInverseTransformParameters&quot;</span><span class="p">,</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;AntsApplyTransformsToPointsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;AntsApplyTransformsToPointsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;AntsApplyTransformsToPointsSingleTransformParameters&quot;</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points&quot;</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_inverse_transform_params&quot;</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_params&quot;</span><span class="p">,</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;ants_apply_transforms_to_points_single_transform_params&quot;</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -426,6 +466,30 @@
     
     
 
+                </section>
+                <section id="AntsApplyTransformsToPointsInverseTransformParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AntsApplyTransformsToPointsInverseTransformParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsInverseTransformParameters"></a>
+    
+    
+
+                            <div id="AntsApplyTransformsToPointsInverseTransformParameters.transform_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transform_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsInverseTransformParameters.transform_file"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="AntsApplyTransformsToPointsOutputs">
                             <input id="AntsApplyTransformsToPointsOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -494,12 +558,104 @@
 
                             </div>
                 </section>
+                <section id="AntsApplyTransformsToPointsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AntsApplyTransformsToPointsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters"></a>
+    
+    
+
+                            <div id="AntsApplyTransformsToPointsParameters.dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsApplyTransformsToPointsParameters.precision" class="classattr">
+                                <div class="attr variable">
+            <span class="name">precision</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.precision"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsApplyTransformsToPointsParameters.forantsr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">forantsr</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.forantsr"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsApplyTransformsToPointsParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsApplyTransformsToPointsParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="AntsApplyTransformsToPointsParameters.transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transform</span><span class="annotation">: NotRequired[Union[<a href="#AntsApplyTransformsToPointsSingleTransformParameters">AntsApplyTransformsToPointsSingleTransformParameters</a>, <a href="#AntsApplyTransformsToPointsInverseTransformParameters">AntsApplyTransformsToPointsInverseTransformParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsParameters.transform"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="AntsApplyTransformsToPointsSingleTransformParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AntsApplyTransformsToPointsSingleTransformParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AntsApplyTransformsToPointsSingleTransformParameters"></a>
+    
+    
+
+                </section>
                 <section id="ants_apply_transforms_to_points">
                             <input id="ants_apply_transforms_to_points-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ants_apply_transforms_to_points</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precision</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forantsr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsSingleTransformParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsInverseTransformParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AntsApplyTransformsToPointsOutputs">AntsApplyTransformsToPointsOutputs</a></span>:</span></span>
+        <span class="name">ants_apply_transforms_to_points</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precision</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forantsr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#AntsApplyTransformsToPointsSingleTransformParameters">AntsApplyTransformsToPointsSingleTransformParameters</a></span><span class="p">,</span> <span class="n"><a href="#AntsApplyTransformsToPointsInverseTransformParameters">AntsApplyTransformsToPointsInverseTransformParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AntsApplyTransformsToPointsOutputs">AntsApplyTransformsToPointsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="ants_apply_transforms_to_points-view-source"><span>View Source</span></label>
 
@@ -582,7 +738,7 @@ row.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ants_apply_transforms_to_points_inverse_transform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">transform_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsInverseTransformParameters</span>:</span></span>
+        <span class="name">ants_apply_transforms_to_points_inverse_transform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">transform_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#AntsApplyTransformsToPointsInverseTransformParameters">AntsApplyTransformsToPointsInverseTransformParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="ants_apply_transforms_to_points_inverse_transform_params-view-source"><span>View Source</span></label>
 
@@ -629,7 +785,7 @@ row.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ants_apply_transforms_to_points_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precision</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forantsr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsSingleTransformParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsInverseTransformParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsParameters</span>:</span></span>
+        <span class="name">ants_apply_transforms_to_points_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precision</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forantsr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#AntsApplyTransformsToPointsSingleTransformParameters">AntsApplyTransformsToPointsSingleTransformParameters</a></span><span class="p">,</span> <span class="n"><a href="#AntsApplyTransformsToPointsInverseTransformParameters">AntsApplyTransformsToPointsInverseTransformParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AntsApplyTransformsToPointsParameters">AntsApplyTransformsToPointsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="ants_apply_transforms_to_points_params-view-source"><span>View Source</span></label>
 
@@ -703,7 +859,7 @@ row.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ants_apply_transforms_to_points_single_transform_params</span><span class="signature pdoc-code multiline">(<span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">ants_apply_transforms_to_points</span><span class="o">.</span><span class="n">AntsApplyTransformsToPointsSingleTransformParameters</span>:</span></span>
+        <span class="name">ants_apply_transforms_to_points_single_transform_params</span><span class="signature pdoc-code multiline">(<span class="return-annotation">) -> <span class="n"><a href="#AntsApplyTransformsToPointsSingleTransformParameters">AntsApplyTransformsToPointsSingleTransformParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="ants_apply_transforms_to_points_single_transform_params-view-source"><span>View Source</span></label>
 
@@ -739,186 +895,5 @@ row.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

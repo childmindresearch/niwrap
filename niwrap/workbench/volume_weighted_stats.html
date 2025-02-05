@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeWeightedStatsOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeWeightedStatsParameters">VolumeWeightedStatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.volume_in">volume_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.weight_volume">weight_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.opt_subvolume_subvolume">opt_subvolume_subvolume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.roi">roi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.opt_mean">opt_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.stdev">stdev</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.opt_percentile_percent">opt_percentile_percent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.opt_sum">opt_sum</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsParameters.opt_show_map_name">opt_show_map_name</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeWeightedStatsRoiParameters">VolumeWeightedStatsRoiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsRoiParameters.roi_volume">roi_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsRoiParameters.opt_match_maps">opt_match_maps</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeWeightedStatsStdevParameters">VolumeWeightedStatsStdevParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsStdevParameters.opt_sample">opt_sample</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeWeightedStatsWeightVolumeParameters">VolumeWeightedStatsWeightVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsWeightVolumeParameters.weight_volume">weight_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsWeightVolumeParameters.opt_match_maps">opt_match_maps</a>
                         </li>
                 </ul>
 
@@ -490,12 +554,16 @@
 </span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;VOLUME_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;VolumeWeightedStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;volume_weighted_stats&quot;</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;volume_weighted_stats_params&quot;</span><span class="p">,</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;volume_weighted_stats_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;volume_weighted_stats_stdev_params&quot;</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;volume_weighted_stats_weight_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="p">]</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;VolumeWeightedStatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;VolumeWeightedStatsRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;VolumeWeightedStatsStdevParameters&quot;</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;VolumeWeightedStatsWeightVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;volume_weighted_stats&quot;</span><span class="p">,</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;volume_weighted_stats_params&quot;</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;volume_weighted_stats_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;volume_weighted_stats_stdev_params&quot;</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;volume_weighted_stats_weight_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -565,12 +633,218 @@
 
                             </div>
                 </section>
+                <section id="VolumeWeightedStatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWeightedStatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters"></a>
+    
+    
+
+                            <div id="VolumeWeightedStatsParameters.volume_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.volume_in"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.weight_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_volume</span><span class="annotation">: NotRequired[<a href="#VolumeWeightedStatsWeightVolumeParameters">VolumeWeightedStatsWeightVolumeParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.weight_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.opt_subvolume_subvolume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_subvolume_subvolume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.opt_subvolume_subvolume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.roi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi</span><span class="annotation">: NotRequired[<a href="#VolumeWeightedStatsRoiParameters">VolumeWeightedStatsRoiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.roi"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.opt_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_mean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.opt_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.stdev" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stdev</span><span class="annotation">: NotRequired[<a href="#VolumeWeightedStatsStdevParameters">VolumeWeightedStatsStdevParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.stdev"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.opt_percentile_percent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_percentile_percent</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.opt_percentile_percent"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.opt_sum" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sum</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.opt_sum"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsParameters.opt_show_map_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_show_map_name</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsParameters.opt_show_map_name"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeWeightedStatsRoiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWeightedStatsRoiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsRoiParameters"></a>
+    
+    
+
+                            <div id="VolumeWeightedStatsRoiParameters.roi_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsRoiParameters.roi_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsRoiParameters.opt_match_maps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_match_maps</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsRoiParameters.opt_match_maps"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeWeightedStatsStdevParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWeightedStatsStdevParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdevParameters"></a>
+    
+    
+
+                            <div id="VolumeWeightedStatsStdevParameters.opt_sample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sample</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdevParameters.opt_sample"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeWeightedStatsWeightVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWeightedStatsWeightVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsWeightVolumeParameters"></a>
+    
+    
+
+                            <div id="VolumeWeightedStatsWeightVolumeParameters.weight_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsWeightVolumeParameters.weight_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsWeightVolumeParameters.opt_match_maps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_match_maps</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsWeightVolumeParameters.opt_match_maps"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="volume_weighted_stats">
                             <input id="volume_weighted_stats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsWeightVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsStdevParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsOutputs">VolumeWeightedStatsOutputs</a></span>:</span></span>
+        <span class="name">volume_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsWeightVolumeParameters">VolumeWeightedStatsWeightVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsRoiParameters">VolumeWeightedStatsRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsStdevParameters">VolumeWeightedStatsStdevParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsOutputs">VolumeWeightedStatsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats-view-source"><span>View Source</span></label>
 
@@ -675,7 +949,7 @@ to volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsWeightVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsStdevParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsParameters</span>:</span></span>
+        <span class="name">volume_weighted_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsWeightVolumeParameters">VolumeWeightedStatsWeightVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsRoiParameters">VolumeWeightedStatsRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsStdevParameters">VolumeWeightedStatsStdevParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsParameters">VolumeWeightedStatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats_params-view-source"><span>View Source</span></label>
 
@@ -761,7 +1035,7 @@ to volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsRoiParameters</span>:</span></span>
+        <span class="name">volume_weighted_stats_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsRoiParameters">VolumeWeightedStatsRoiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats_roi_params-view-source"><span>View Source</span></label>
 
@@ -813,7 +1087,7 @@ to volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats_stdev_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsStdevParameters</span>:</span></span>
+        <span class="name">volume_weighted_stats_stdev_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsStdevParameters">VolumeWeightedStatsStdevParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats_stdev_params-view-source"><span>View Source</span></label>
 
@@ -860,7 +1134,7 @@ to volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats_weight_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_weighted_stats</span><span class="o">.</span><span class="n">VolumeWeightedStatsWeightVolumeParameters</span>:</span></span>
+        <span class="name">volume_weighted_stats_weight_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsWeightVolumeParameters">VolumeWeightedStatsWeightVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats_weight_volume_params-view-source"><span>View Source</span></label>
 
@@ -908,186 +1182,5 @@ to volume.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

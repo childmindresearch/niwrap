@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -59,6 +57,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisVolmaskVtkOutputs.dpial_output">dpial_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisVolmaskVtkParameters">MrisVolmaskVtkParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.cap_distance">cap_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.label_background">label_background</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.label_left_white">label_left_white</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.label_left_ribbon">label_left_ribbon</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.label_right_white">label_right_white</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.label_right_ribbon">label_right_ribbon</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.surf_white">surf_white</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.surf_pial">surf_pial</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.aseg_name">aseg_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.out_root">out_root</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.subjects_dir">subjects_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.save_distance">save_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.lh_only">lh_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.rh_only">rh_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.parallel">parallel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.edit_aseg">edit_aseg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.save_ribbon">save_ribbon</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisVolmaskVtkParameters.io_param">io_param</a>
                         </li>
                 </ul>
 
@@ -468,9 +526,10 @@
 </span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;MRIS_VOLMASK_VTK_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;MrisVolmaskVtkOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mris_volmask_vtk&quot;</span><span class="p">,</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;mris_volmask_vtk_params&quot;</span><span class="p">,</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="p">]</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;MrisVolmaskVtkParameters&quot;</span><span class="p">,</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;mris_volmask_vtk&quot;</span><span class="p">,</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="s2">&quot;mris_volmask_vtk_params&quot;</span><span class="p">,</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -630,6 +689,217 @@
 
                             </div>
                 </section>
+                <section id="MrisVolmaskVtkParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisVolmaskVtkParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters"></a>
+    
+    
+
+                            <div id="MrisVolmaskVtkParameters.cap_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cap_distance</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.cap_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.label_background" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_background</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.label_background"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.label_left_white" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_left_white</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.label_left_white"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.label_left_ribbon" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_left_ribbon</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.label_left_ribbon"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.label_right_white" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_right_white</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.label_right_white"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.label_right_ribbon" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_right_ribbon</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.label_right_ribbon"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.surf_white" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_white</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.surf_white"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.surf_pial" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_pial</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.surf_pial"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.aseg_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aseg_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.aseg_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.out_root" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_root</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.out_root"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.subjects_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.save_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_distance</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.save_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.lh_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lh_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.lh_only"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.rh_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rh_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.rh_only"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.parallel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parallel</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.parallel"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.edit_aseg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">edit_aseg</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.edit_aseg"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.save_ribbon" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_ribbon</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.save_ribbon"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisVolmaskVtkParameters.io_param" class="classattr">
+                                <div class="attr variable">
+            <span class="name">io_param</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisVolmaskVtkParameters.io_param"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mris_volmask_vtk">
                             <input id="mris_volmask_vtk-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -750,7 +1020,7 @@ labels for various brain structures using surface files.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_volmask_vtk_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">io_param</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cap_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_left_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_left_ribbon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_right_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_right_ribbon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_white</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_pial</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_distance</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lh_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">edit_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_ribbon</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_volmask_vtk</span><span class="o">.</span><span class="n">MrisVolmaskVtkParameters</span>:</span></span>
+        <span class="name">mris_volmask_vtk_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">io_param</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cap_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_left_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_left_ribbon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_right_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_right_ribbon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_white</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_pial</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_distance</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lh_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">parallel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">edit_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_ribbon</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisVolmaskVtkParameters">MrisVolmaskVtkParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_volmask_vtk_params-view-source"><span>View Source</span></label>
 
@@ -877,186 +1147,5 @@ labels for various brain structures using surface files.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

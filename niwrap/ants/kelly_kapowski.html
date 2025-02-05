@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#KellyKapowskiOutputs.thickness_map">thickness_map</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#KellyKapowskiParameters">KellyKapowskiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.image_dimensionality">image_dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.segmentation_image">segmentation_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.gray_matter_probability_image">gray_matter_probability_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.white_matter_probability_image">white_matter_probability_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.convergence">convergence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.thickness_prior_estimate">thickness_prior_estimate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.thickness_prior_image">thickness_prior_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.gradient_step">gradient_step</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.smoothing_variance">smoothing_variance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.smoothing_velocity_field_parameter">smoothing_velocity_field_parameter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.use_bspline_smoothing">use_bspline_smoothing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.use_masked_smoothing">use_masked_smoothing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.time_points">time_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.restrict_deformation">restrict_deformation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.number_of_integration_points">number_of_integration_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.maximum_number_of_invert_displacement_field_iterations">maximum_number_of_invert_displacement_field_iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KellyKapowskiParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -511,9 +569,10 @@
 </span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;KELLY_KAPOWSKI_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;KellyKapowskiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;kelly_kapowski&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;kelly_kapowski_params&quot;</span><span class="p">,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="p">]</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;KellyKapowskiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;kelly_kapowski&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;kelly_kapowski_params&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -595,6 +654,217 @@
             <div class="docstring"><p>The output is the thickness map defined in the segmented gray matter.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="KellyKapowskiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">KellyKapowskiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters"></a>
+    
+    
+
+                            <div id="KellyKapowskiParameters.image_dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.image_dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.segmentation_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segmentation_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.segmentation_image"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.gray_matter_probability_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gray_matter_probability_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.gray_matter_probability_image"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.white_matter_probability_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">white_matter_probability_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.white_matter_probability_image"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.convergence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.convergence"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.thickness_prior_estimate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness_prior_estimate</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.thickness_prior_estimate"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.thickness_prior_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness_prior_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.thickness_prior_image"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.gradient_step" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gradient_step</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.gradient_step"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.smoothing_variance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoothing_variance</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.smoothing_variance"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.smoothing_velocity_field_parameter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoothing_velocity_field_parameter</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.smoothing_velocity_field_parameter"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.use_bspline_smoothing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_bspline_smoothing</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.use_bspline_smoothing"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.use_masked_smoothing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_masked_smoothing</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.use_masked_smoothing"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.time_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">time_points</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.time_points"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.restrict_deformation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">restrict_deformation</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.restrict_deformation"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.number_of_integration_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_integration_points</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.number_of_integration_points"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.maximum_number_of_invert_displacement_field_iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maximum_number_of_invert_displacement_field_iterations</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.maximum_number_of_invert_displacement_field_iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="KellyKapowskiParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KellyKapowskiParameters.verbose"></a>
+    
+    
 
                             </div>
                 </section>
@@ -742,7 +1012,7 @@ cortical thickness measurement, Neuroimage 2009, 45:867--879.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">kelly_kapowski_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gray_matter_probability_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">white_matter_probability_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_prior_estimate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_prior_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gradient_step</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing_variance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing_velocity_field_parameter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_bspline_smoothing</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_masked_smoothing</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">time_points</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restrict_deformation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_of_integration_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maximum_number_of_invert_displacement_field_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">kelly_kapowski</span><span class="o">.</span><span class="n">KellyKapowskiParameters</span>:</span></span>
+        <span class="name">kelly_kapowski_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gray_matter_probability_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">white_matter_probability_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_prior_estimate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_prior_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gradient_step</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing_variance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing_velocity_field_parameter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_bspline_smoothing</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_masked_smoothing</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">time_points</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restrict_deformation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_of_integration_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maximum_number_of_invert_displacement_field_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#KellyKapowskiParameters">KellyKapowskiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="kelly_kapowski_params-view-source"><span>View Source</span></label>
 
@@ -897,186 +1167,5 @@ cortical thickness measurement, Neuroimage 2009, 45:867--879.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#FOD2FIXEL_METADATA">FOD2FIXEL_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Fod2fixelConfigParameters">Fod2fixelConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fod2fixelConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Fod2fixelOutputs">Fod2fixelOutputs</a>
@@ -53,6 +63,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Fod2fixelOutputs.disp">disp</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Fod2fixelParameters">Fod2fixelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.afd">afd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.peak_amp">peak_amp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.disp">disp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fmls_integral">fmls_integral</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fmls_peak_value">fmls_peak_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fmls_no_thresholds">fmls_no_thresholds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fmls_lobe_merge_ratio">fmls_lobe_merge_ratio</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.maxnum">maxnum</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.nii">nii</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.dirpeak">dirpeak</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fod">fod</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fod2fixelParameters.fixel_directory">fixel_directory</a>
                         </li>
                 </ul>
 
@@ -587,11 +666,13 @@
 </span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a>
 </span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a>    <span class="s2">&quot;FOD2FIXEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a>    <span class="s2">&quot;Fod2fixelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a>    <span class="s2">&quot;fod2fixel&quot;</span><span class="p">,</span>
-</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;fod2fixel_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;fod2fixel_params&quot;</span><span class="p">,</span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a><span class="p">]</span>
+</span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a>    <span class="s2">&quot;Fod2fixelConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a>    <span class="s2">&quot;Fod2fixelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;Fod2fixelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;fod2fixel&quot;</span><span class="p">,</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;fod2fixel_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;fod2fixel_params&quot;</span><span class="p">,</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -608,6 +689,41 @@
     
     
 
+                </section>
+                <section id="Fod2fixelConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fod2fixelConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelConfigParameters"></a>
+    
+    
+
+                            <div id="Fod2fixelConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Fod2fixelOutputs">
                             <input id="Fod2fixelOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -724,12 +840,256 @@ integral and maximal peak amplitude</p>
 
                             </div>
                 </section>
+                <section id="Fod2fixelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fod2fixelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters"></a>
+    
+    
+
+                            <div id="Fod2fixelParameters.afd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">afd</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.afd"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.peak_amp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">peak_amp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.peak_amp"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.disp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.disp"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fmls_integral" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fmls_integral</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fmls_integral"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fmls_peak_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fmls_peak_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fmls_peak_value"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fmls_no_thresholds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fmls_no_thresholds</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fmls_no_thresholds"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fmls_lobe_merge_ratio" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fmls_lobe_merge_ratio</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fmls_lobe_merge_ratio"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.maxnum" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxnum</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.maxnum"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.nii" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nii</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.nii"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.dirpeak" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dirpeak</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.dirpeak"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Fod2fixelConfigParameters">Fod2fixelConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fod" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fod</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fod"></a>
+    
+    
+
+                            </div>
+                            <div id="Fod2fixelParameters.fixel_directory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixel_directory</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fod2fixelParameters.fixel_directory"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fod2fixel">
                             <input id="fod2fixel-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fod2fixel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fod</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fixel_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">afd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak_amp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_integral</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_peak_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_no_thresholds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmls_lobe_merge_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxnum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nii</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dirpeak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fod2fixel</span><span class="o">.</span><span class="n">Fod2fixelConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fod2fixelOutputs">Fod2fixelOutputs</a></span>:</span></span>
+        <span class="name">fod2fixel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fod</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fixel_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">afd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak_amp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_integral</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_peak_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_no_thresholds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmls_lobe_merge_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxnum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nii</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dirpeak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fod2fixelConfigParameters">Fod2fixelConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fod2fixelOutputs">Fod2fixelOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fod2fixel-view-source"><span>View Source</span></label>
 
@@ -899,7 +1259,7 @@ images.Neuroimage, 2012, 15;59(4), 3976-94.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fod2fixel_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fod2fixel</span><span class="o">.</span><span class="n">Fod2fixelConfigParameters</span>:</span></span>
+        <span class="name">fod2fixel_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fod2fixelConfigParameters">Fod2fixelConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fod2fixel_config_params-view-source"><span>View Source</span></label>
 
@@ -950,7 +1310,7 @@ images.Neuroimage, 2012, 15;59(4), 3976-94.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fod2fixel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fod</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fixel_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">afd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak_amp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_integral</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_peak_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_no_thresholds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmls_lobe_merge_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxnum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nii</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dirpeak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fod2fixel</span><span class="o">.</span><span class="n">Fod2fixelConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fod2fixel</span><span class="o">.</span><span class="n">Fod2fixelParameters</span>:</span></span>
+        <span class="name">fod2fixel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fod</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fixel_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">afd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak_amp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">disp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_integral</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_peak_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fmls_no_thresholds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fmls_lobe_merge_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxnum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nii</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dirpeak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fod2fixelConfigParameters">Fod2fixelConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fod2fixelParameters">Fod2fixelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fod2fixel_params-view-source"><span>View Source</span></label>
 
@@ -1105,186 +1465,5 @@ images.Neuroimage, 2012, 15;59(4), 3976-94.</p></li>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

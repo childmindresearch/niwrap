@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#MRAVERAGEHEADER_METADATA">MRAVERAGEHEADER_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#MraverageheaderConfigParameters">MraverageheaderConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MraverageheaderConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#MraverageheaderOutputs">MraverageheaderOutputs</a>
@@ -44,6 +54,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MraverageheaderOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MraverageheaderParameters">MraverageheaderParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.padding">padding</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.resolution">resolution</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.fill">fill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.datatype">datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MraverageheaderParameters.output">output</a>
                         </li>
                 </ul>
 
@@ -451,11 +509,13 @@
 </span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>
 </span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;MRAVERAGEHEADER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;MraverageheaderOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;mraverageheader&quot;</span><span class="p">,</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;mraverageheader_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;mraverageheader_params&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="p">]</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;MraverageheaderConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;MraverageheaderOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;MraverageheaderParameters&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;mraverageheader&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;mraverageheader_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mraverageheader_params&quot;</span><span class="p">,</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -472,6 +532,41 @@
     
     
 
+                </section>
+                <section id="MraverageheaderConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MraverageheaderConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderConfigParameters"></a>
+    
+    
+
+                            <div id="MraverageheaderConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="MraverageheaderOutputs">
                             <input id="MraverageheaderOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -540,12 +635,179 @@
 
                             </div>
                 </section>
+                <section id="MraverageheaderParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MraverageheaderParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters"></a>
+    
+    
+
+                            <div id="MraverageheaderParameters.padding" class="classattr">
+                                <div class="attr variable">
+            <span class="name">padding</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.padding"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.resolution" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resolution</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.resolution"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.fill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.fill"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#MraverageheaderConfigParameters">MraverageheaderConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MraverageheaderParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MraverageheaderParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mraverageheader">
                             <input id="mraverageheader-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mraverageheader</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mraverageheader</span><span class="o">.</span><span class="n">MraverageheaderConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MraverageheaderOutputs">MraverageheaderOutputs</a></span>:</span></span>
+        <span class="name">mraverageheader</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MraverageheaderConfigParameters">MraverageheaderConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MraverageheaderOutputs">MraverageheaderOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="mraverageheader-view-source"><span>View Source</span></label>
 
@@ -663,7 +925,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mraverageheader_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mraverageheader</span><span class="o">.</span><span class="n">MraverageheaderConfigParameters</span>:</span></span>
+        <span class="name">mraverageheader_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MraverageheaderConfigParameters">MraverageheaderConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mraverageheader_config_params-view-source"><span>View Source</span></label>
 
@@ -714,7 +976,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mraverageheader_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mraverageheader</span><span class="o">.</span><span class="n">MraverageheaderConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mraverageheader</span><span class="o">.</span><span class="n">MraverageheaderParameters</span>:</span></span>
+        <span class="name">mraverageheader_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MraverageheaderConfigParameters">MraverageheaderConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MraverageheaderParameters">MraverageheaderParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mraverageheader_params-view-source"><span>View Source</span></label>
 
@@ -826,186 +1088,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

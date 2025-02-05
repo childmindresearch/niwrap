@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#BedpostxOutputs.diff_slices_output">diff_slices_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BedpostxParameters">BedpostxParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.subject_dir">subject_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.num_fibres">num_fibres</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.ard_weight">ard_weight</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.burnin">burnin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.num_jumps">num_jumps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.sample_every">sample_every</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.model_type">model_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BedpostxParameters.grad_nonlinear">grad_nonlinear</a>
                         </li>
                 </ul>
 
@@ -342,9 +370,10 @@
 </span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;BEDPOSTX_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;BedpostxOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="s2">&quot;bedpostx&quot;</span><span class="p">,</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="s2">&quot;bedpostx_params&quot;</span><span class="p">,</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="p">]</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="s2">&quot;BedpostxParameters&quot;</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="s2">&quot;bedpostx&quot;</span><span class="p">,</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="s2">&quot;bedpostx_params&quot;</span><span class="p">,</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -444,6 +473,107 @@
 
                             </div>
                 </section>
+                <section id="BedpostxParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BedpostxParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters"></a>
+    
+    
+
+                            <div id="BedpostxParameters.subject_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.subject_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.num_fibres" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_fibres</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.num_fibres"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.ard_weight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ard_weight</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.ard_weight"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.burnin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">burnin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.burnin"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.num_jumps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_jumps</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.num_jumps"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.sample_every" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sample_every</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.sample_every"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.model_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model_type</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.model_type"></a>
+    
+    
+
+                            </div>
+                            <div id="BedpostxParameters.grad_nonlinear" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad_nonlinear</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BedpostxParameters.grad_nonlinear"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="bedpostx">
                             <input id="bedpostx-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -533,7 +663,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">bedpostx_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">num_fibres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">ard_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1250</span>,</span><span class="param">	<span class="n">sample_every</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">25</span>,</span><span class="param">	<span class="n">model_type</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">grad_nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">bedpostx</span><span class="o">.</span><span class="n">BedpostxParameters</span>:</span></span>
+        <span class="name">bedpostx_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">num_fibres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">ard_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1250</span>,</span><span class="param">	<span class="n">sample_every</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">25</span>,</span><span class="param">	<span class="n">model_type</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">grad_nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#BedpostxParameters">BedpostxParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="bedpostx_params-view-source"><span>View Source</span></label>
 
@@ -614,186 +744,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

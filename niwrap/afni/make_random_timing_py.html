@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,87 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MakeRandomTimingPyOutputs.stim_output">stim_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MakeRandomTimingPyParameters">MakeRandomTimingPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.num_runs">num_runs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.run_time">run_time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.num_stim">num_stim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.num_reps">num_reps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.stim_dur">stim_dur</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.across_runs">across_runs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.max_consec">max_consec</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.max_rest">max_rest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.min_rest">min_rest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.not_first">not_first</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.not_last">not_last</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.offset">offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.ordered_stimuli">ordered_stimuli</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.pre_stim_rest">pre_stim_rest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.post_stim_rest">post_stim_rest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.save_3dd_cmd">save_3dd_cmd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.seed">seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.stim_labels">stim_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.t_digits">t_digits</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.t_gran">t_gran</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.tr">tr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.tr_locked">tr_locked</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.verb">verb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeRandomTimingPyParameters.show_timing_stats">show_timing_stats</a>
                         </li>
                 </ul>
 
@@ -517,9 +596,10 @@
 </span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;MAKE_RANDOM_TIMING_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;MakeRandomTimingPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;make_random_timing_py&quot;</span><span class="p">,</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;make_random_timing_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="p">]</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;MakeRandomTimingPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;make_random_timing_py&quot;</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;make_random_timing_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -601,6 +681,294 @@
             <div class="docstring"><p>Stimulus timing output file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MakeRandomTimingPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MakeRandomTimingPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters"></a>
+    
+    
+
+                            <div id="MakeRandomTimingPyParameters.num_runs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_runs</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.num_runs"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.run_time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">run_time</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.run_time"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.num_stim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_stim</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.num_stim"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.num_reps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_reps</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.num_reps"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.stim_dur" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_dur</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.stim_dur"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.across_runs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">across_runs</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.across_runs"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.max_consec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_consec</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.max_consec"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.max_rest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_rest</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.max_rest"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.min_rest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_rest</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.min_rest"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.not_first" class="classattr">
+                                <div class="attr variable">
+            <span class="name">not_first</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.not_first"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.not_last" class="classattr">
+                                <div class="attr variable">
+            <span class="name">not_last</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.not_last"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">offset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.offset"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.ordered_stimuli" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ordered_stimuli</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.ordered_stimuli"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.pre_stim_rest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pre_stim_rest</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.pre_stim_rest"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.post_stim_rest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">post_stim_rest</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.post_stim_rest"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.save_3dd_cmd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_3dd_cmd</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.save_3dd_cmd"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.seed"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.stim_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_labels</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.stim_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.t_digits" class="classattr">
+                                <div class="attr variable">
+            <span class="name">t_digits</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.t_digits"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.t_gran" class="classattr">
+                                <div class="attr variable">
+            <span class="name">t_gran</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.t_gran"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.tr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.tr"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.tr_locked" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr_locked</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.tr_locked"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.verb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verb</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.verb"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeRandomTimingPyParameters.show_timing_stats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_timing_stats</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeRandomTimingPyParameters.show_timing_stats"></a>
+    
+    
 
                             </div>
                 </section>
@@ -738,7 +1106,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_random_timing_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num_runs</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">run_time</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">num_stim</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">num_reps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stim_dur</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">across_runs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_consec</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">not_first</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">not_last</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ordered_stimuli</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pre_stim_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">post_stim_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_3dd_cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_digits</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_gran</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr_locked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_timing_stats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">make_random_timing_py</span><span class="o">.</span><span class="n">MakeRandomTimingPyParameters</span>:</span></span>
+        <span class="name">make_random_timing_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num_runs</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">run_time</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">num_stim</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">num_reps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stim_dur</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">across_runs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_consec</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">not_first</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">not_last</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ordered_stimuli</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pre_stim_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">post_stim_rest</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_3dd_cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_digits</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_gran</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr_locked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_timing_stats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MakeRandomTimingPyParameters">MakeRandomTimingPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="make_random_timing_py_params-view-source"><span>View Source</span></label>
 
@@ -894,186 +1262,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

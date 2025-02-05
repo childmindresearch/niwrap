@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,27 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AddNoiseToImageOutputs.noise_corrupted_image">noise_corrupted_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AddNoiseToImageParameters">AddNoiseToImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AddNoiseToImageParameters.image_dimensionality">image_dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AddNoiseToImageParameters.input_image">input_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AddNoiseToImageParameters.noise_model">noise_model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AddNoiseToImageParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AddNoiseToImageParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -301,9 +320,10 @@
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;ADD_NOISE_TO_IMAGE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;AddNoiseToImageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;add_noise_to_image&quot;</span><span class="p">,</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;add_noise_to_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="p">]</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;AddNoiseToImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;add_noise_to_image&quot;</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="s2">&quot;add_noise_to_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -388,6 +408,74 @@
 
                             </div>
                 </section>
+                <section id="AddNoiseToImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AddNoiseToImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters"></a>
+    
+    
+
+                            <div id="AddNoiseToImageParameters.image_dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3, 4]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters.image_dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="AddNoiseToImageParameters.input_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters.input_image"></a>
+    
+    
+
+                            </div>
+                            <div id="AddNoiseToImageParameters.noise_model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noise_model</span><span class="annotation">: Literal[&#39;AdditiveGaussian&#39;, &#39;SaltAndPepper&#39;, &#39;Shot&#39;, &#39;Speckle&#39;]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters.noise_model"></a>
+    
+    
+
+                            </div>
+                            <div id="AddNoiseToImageParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="AddNoiseToImageParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AddNoiseToImageParameters.verbose"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="add_noise_to_image">
                             <input id="add_noise_to_image-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -466,7 +554,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">add_noise_to_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">noise_model</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;AdditiveGaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;SaltAndPepper&#39;</span><span class="p">,</span> <span class="s1">&#39;Shot&#39;</span><span class="p">,</span> <span class="s1">&#39;Speckle&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">add_noise_to_image</span><span class="o">.</span><span class="n">AddNoiseToImageParameters</span>:</span></span>
+        <span class="name">add_noise_to_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">noise_model</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;AdditiveGaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;SaltAndPepper&#39;</span><span class="p">,</span> <span class="s1">&#39;Shot&#39;</span><span class="p">,</span> <span class="s1">&#39;Speckle&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AddNoiseToImageParameters">AddNoiseToImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="add_noise_to_image_params-view-source"><span>View Source</span></label>
 
@@ -531,186 +619,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

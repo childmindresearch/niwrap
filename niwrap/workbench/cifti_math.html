@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiMathOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiMathParameters">CiftiMathParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiMathParameters.expression">expression</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathParameters.opt_fixnan_replace">opt_fixnan_replace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathParameters.opt_override_mapping_check">opt_override_mapping_check</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathParameters.var">var</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiMathSelectParameters">CiftiMathSelectParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiMathSelectParameters.dim">dim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathSelectParameters.index">index</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathSelectParameters.opt_repeat">opt_repeat</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiMathVarParameters">CiftiMathVarParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiMathVarParameters.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathVarParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiMathVarParameters.select">select</a>
                         </li>
                 </ul>
 
@@ -547,11 +596,14 @@
 </span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;CIFTI_MATH_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;CiftiMathOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;cifti_math&quot;</span><span class="p">,</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;cifti_math_params&quot;</span><span class="p">,</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;cifti_math_select_params&quot;</span><span class="p">,</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;cifti_math_var_params&quot;</span><span class="p">,</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="p">]</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;CiftiMathParameters&quot;</span><span class="p">,</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;CiftiMathSelectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;CiftiMathVarParameters&quot;</span><span class="p">,</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;cifti_math&quot;</span><span class="p">,</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="s2">&quot;cifti_math_params&quot;</span><span class="p">,</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a>    <span class="s2">&quot;cifti_math_select_params&quot;</span><span class="p">,</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a>    <span class="s2">&quot;cifti_math_var_params&quot;</span><span class="p">,</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -636,12 +688,172 @@
 
                             </div>
                 </section>
+                <section id="CiftiMathParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiMathParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters"></a>
+    
+    
+
+                            <div id="CiftiMathParameters.expression" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expression</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters.expression"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathParameters.opt_fixnan_replace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fixnan_replace</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters.opt_fixnan_replace"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathParameters.opt_override_mapping_check" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_override_mapping_check</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters.opt_override_mapping_check"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathParameters.var" class="classattr">
+                                <div class="attr variable">
+            <span class="name">var</span><span class="annotation">: NotRequired[list[<a href="#CiftiMathVarParameters">CiftiMathVarParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathParameters.var"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiMathSelectParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiMathSelectParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathSelectParameters"></a>
+    
+    
+
+                            <div id="CiftiMathSelectParameters.dim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dim</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathSelectParameters.dim"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathSelectParameters.index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">index</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathSelectParameters.index"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathSelectParameters.opt_repeat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_repeat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathSelectParameters.opt_repeat"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiMathVarParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiMathVarParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathVarParameters"></a>
+    
+    
+
+                            <div id="CiftiMathVarParameters.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathVarParameters.name"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathVarParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathVarParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiMathVarParameters.select" class="classattr">
+                                <div class="attr variable">
+            <span class="name">select</span><span class="annotation">: NotRequired[list[<a href="#CiftiMathSelectParameters">CiftiMathSelectParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiMathVarParameters.select"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_math">
                             <input id="cifti_math-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_math</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">expression</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiMathOutputs">CiftiMathOutputs</a></span>:</span></span>
+        <span class="name">cifti_math</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">expression</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiMathVarParameters">CiftiMathVarParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiMathOutputs">CiftiMathOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_math-view-source"><span>View Source</span></label>
 
@@ -858,7 +1070,7 @@ clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_math_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">expression</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathVarParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathParameters</span>:</span></span>
+        <span class="name">cifti_math_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">expression</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fixnan_replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_override_mapping_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">var</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiMathVarParameters">CiftiMathVarParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiMathParameters">CiftiMathParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_math_params-view-source"><span>View Source</span></label>
 
@@ -925,7 +1137,7 @@ clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_math_select_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dim</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">index</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_repeat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathSelectParameters</span>:</span></span>
+        <span class="name">cifti_math_select_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dim</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">index</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_repeat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiMathSelectParameters">CiftiMathSelectParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_math_select_params-view-source"><span>View Source</span></label>
 
@@ -981,7 +1193,7 @@ clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_math_var_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">select_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathSelectParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_math</span><span class="o">.</span><span class="n">CiftiMathVarParameters</span>:</span></span>
+        <span class="name">cifti_math_var_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">select_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiMathSelectParameters">CiftiMathSelectParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiMathVarParameters">CiftiMathVarParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_math_var_params-view-source"><span>View Source</span></label>
 
@@ -1033,186 +1245,5 @@ clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

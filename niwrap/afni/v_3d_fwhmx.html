@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dFwhmxOutputs.detrended_dataset">detrended_dataset</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dFwhmxParameters">V3dFwhmxParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.automask">automask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.demed">demed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.unif">unif</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.detrend">detrend</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.detprefix">detprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.geom">geom</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.arith">arith</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.combine">combine</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.out">out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.compat">compat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.acf">acf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dFwhmxParameters.infile">infile</a>
                         </li>
                 </ul>
 
@@ -381,10 +424,11 @@
 </span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>
 </span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="s2">&quot;V3dFwhmxOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="s2">&quot;V_3D_FWHMX_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;v_3d_fwhmx&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;v_3d_fwhmx_params&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="p">]</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="s2">&quot;V3dFwhmxParameters&quot;</span><span class="p">,</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;V_3D_FWHMX_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;v_3d_fwhmx&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;v_3d_fwhmx_params&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -468,6 +512,162 @@
             <div class="docstring"><p>Detrended dataset file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dFwhmxParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dFwhmxParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters"></a>
+    
+    
+
+                            <div id="V3dFwhmxParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.automask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">automask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.automask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.demed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">demed</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.demed"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.unif" class="classattr">
+                                <div class="attr variable">
+            <span class="name">unif</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.unif"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.detrend" class="classattr">
+                                <div class="attr variable">
+            <span class="name">detrend</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.detrend"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.detprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">detprefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.detprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.geom" class="classattr">
+                                <div class="attr variable">
+            <span class="name">geom</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.geom"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.arith" class="classattr">
+                                <div class="attr variable">
+            <span class="name">arith</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.arith"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.combine" class="classattr">
+                                <div class="attr variable">
+            <span class="name">combine</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.combine"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.out"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.compat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">compat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.compat"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.acf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">acf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.acf"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dFwhmxParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dFwhmxParameters.infile"></a>
+    
+    
 
                             </div>
                 </section>
@@ -590,7 +790,7 @@ AutoCorrelation Function (ACF).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_fwhmx_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">demed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">unif</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">detrend</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">geom</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">arith</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">combine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">compat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">acf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_fwhmx</span><span class="o">.</span><span class="n">V3dFwhmxParameters</span>:</span></span>
+        <span class="name">v_3d_fwhmx_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">demed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">unif</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">detrend</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">detprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">geom</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">arith</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">combine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">compat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">acf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dFwhmxParameters">V3dFwhmxParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_fwhmx_params-view-source"><span>View Source</span></label>
 
@@ -692,186 +892,5 @@ AutoCorrelation Function (ACF).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

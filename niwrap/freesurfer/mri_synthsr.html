@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriSynthsrOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriSynthsrParameters">MriSynthsrParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.ct">ct</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.disable_sharpening">disable_sharpening</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.disable_flipping">disable_flipping</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.lowfield">lowfield</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.v1">v1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.cpu">cpu</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSynthsrParameters.model">model</a>
                         </li>
                 </ul>
 
@@ -329,9 +363,10 @@
 </span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;MRI_SYNTHSR_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;MriSynthsrOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;mri_synthsr&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;mri_synthsr_params&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="p">]</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;MriSynthsrParameters&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;mri_synthsr&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;mri_synthsr_params&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -398,6 +433,129 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriSynthsrParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriSynthsrParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters"></a>
+    
+    
+
+                            <div id="MriSynthsrParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.ct" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ct</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.ct"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.disable_sharpening" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disable_sharpening</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.disable_sharpening"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.disable_flipping" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disable_flipping</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.disable_flipping"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.lowfield" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lowfield</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.lowfield"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.v1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">v1</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.v1"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.cpu" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cpu</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.cpu"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSynthsrParameters.model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSynthsrParameters.model"></a>
+    
+    
 
                             </div>
                 </section>
@@ -497,7 +655,7 @@ any contrast and resolution.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_synthsr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ct</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">disable_sharpening</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">disable_flipping</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lowfield</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cpu</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_synthsr</span><span class="o">.</span><span class="n">MriSynthsrParameters</span>:</span></span>
+        <span class="name">mri_synthsr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ct</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">disable_sharpening</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">disable_flipping</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lowfield</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cpu</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriSynthsrParameters">MriSynthsrParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_synthsr_params-view-source"><span>View Source</span></label>
 
@@ -583,186 +741,5 @@ any contrast and resolution.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

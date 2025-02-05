@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisAnatomicalStatsOutputs.output_ctab_file">output_ctab_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisAnatomicalStatsParameters">MrisAnatomicalStatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.subjectname">subjectname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.hemisphere">hemisphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.surfacename">surfacename</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.thickness_range">thickness_range</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.label_file">label_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.thickness_file">thickness_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.annotation_file">annotation_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.tabular_output">tabular_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.tablefile">tablefile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.logfile">logfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.nsmooth">nsmooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.color_table">color_table</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.noglobal">noglobal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAnatomicalStatsParameters.th3_computation">th3_computation</a>
                         </li>
                 </ul>
 
@@ -400,9 +446,10 @@
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;MRIS_ANATOMICAL_STATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="s2">&quot;MrisAnatomicalStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="s2">&quot;mris_anatomical_stats&quot;</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;mris_anatomical_stats_params&quot;</span><span class="p">,</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="p">]</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="s2">&quot;MrisAnatomicalStatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;mris_anatomical_stats&quot;</span><span class="p">,</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="s2">&quot;mris_anatomical_stats_params&quot;</span><span class="p">,</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -517,6 +564,173 @@
 
                             </div>
                 </section>
+                <section id="MrisAnatomicalStatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisAnatomicalStatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters"></a>
+    
+    
+
+                            <div id="MrisAnatomicalStatsParameters.subjectname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjectname</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.subjectname"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.hemisphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemisphere</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.hemisphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.surfacename" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surfacename</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.surfacename"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.thickness_range" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness_range</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.thickness_range"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.label_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.label_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.thickness_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.thickness_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.annotation_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annotation_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.annotation_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.tabular_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tabular_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.tabular_output"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.tablefile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tablefile</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.tablefile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.logfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">logfile</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.logfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.nsmooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nsmooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.nsmooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.color_table" class="classattr">
+                                <div class="attr variable">
+            <span class="name">color_table</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.color_table"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.noglobal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noglobal</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.noglobal"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAnatomicalStatsParameters.th3_computation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">th3_computation</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAnatomicalStatsParameters.th3_computation"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mris_anatomical_stats">
                             <input id="mris_anatomical_stats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -621,7 +835,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_anatomical_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjectname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surfacename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annotation_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tabular_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tablefile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">color_table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noglobal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">th3_computation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_anatomical_stats</span><span class="o">.</span><span class="n">MrisAnatomicalStatsParameters</span>:</span></span>
+        <span class="name">mris_anatomical_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjectname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surfacename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annotation_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tabular_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tablefile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">color_table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noglobal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">th3_computation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisAnatomicalStatsParameters">MrisAnatomicalStatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_anatomical_stats_params-view-source"><span>View Source</span></label>
 
@@ -728,186 +942,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

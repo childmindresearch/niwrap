@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,93 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SccanOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SccanParameters">SccanParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SccanParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.n_permutations">n_permutations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.smoother">smoother</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.row_sparseness">row_sparseness</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.n_eigenvectors">n_eigenvectors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.robustify">robustify</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.covering">covering</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.uselong">uselong</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.l1">l1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.pclusterthresh">pclusterthresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.qclusterthresh">qclusterthresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.ridge_cca">ridge_cca</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.initialization">initialization</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.initialization2">initialization2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.mask2">mask2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.partial_scca_option">partial_scca_option</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.prior_weight">prior_weight</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.get_small">get_small</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.imageset_to_matrix">imageset_to_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.timeseriesimage_to_matrix">timeseriesimage_to_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.vector_to_image">vector_to_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.imageset_to_projections">imageset_to_projections</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.scca">scca</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SccanParameters.svd">svd</a>
                         </li>
                 </ul>
 
@@ -577,9 +662,10 @@
 </span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;SCCAN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;SccanOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;sccan&quot;</span><span class="p">,</span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;sccan_params&quot;</span><span class="p">,</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a><span class="p">]</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;SccanParameters&quot;</span><span class="p">,</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;sccan&quot;</span><span class="p">,</span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;sccan_params&quot;</span><span class="p">,</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -646,6 +732,316 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SccanParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SccanParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters"></a>
+    
+    
+
+                            <div id="SccanParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.n_permutations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_permutations</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.n_permutations"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.smoother" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoother</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.smoother"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.row_sparseness" class="classattr">
+                                <div class="attr variable">
+            <span class="name">row_sparseness</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.row_sparseness"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.n_eigenvectors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_eigenvectors</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.n_eigenvectors"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.robustify" class="classattr">
+                                <div class="attr variable">
+            <span class="name">robustify</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.robustify"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.covering" class="classattr">
+                                <div class="attr variable">
+            <span class="name">covering</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.covering"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.uselong" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uselong</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.uselong"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.l1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">l1</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.l1"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.pclusterthresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pclusterthresh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.pclusterthresh"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.qclusterthresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qclusterthresh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.qclusterthresh"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.ridge_cca" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ridge_cca</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.ridge_cca"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.initialization" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initialization</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.initialization"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.initialization2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initialization2</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.initialization2"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.mask2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask2</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.mask2"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.partial_scca_option" class="classattr">
+                                <div class="attr variable">
+            <span class="name">partial_scca_option</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.partial_scca_option"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.prior_weight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prior_weight</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.prior_weight"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.get_small" class="classattr">
+                                <div class="attr variable">
+            <span class="name">get_small</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.get_small"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.imageset_to_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">imageset_to_matrix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.imageset_to_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.timeseriesimage_to_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timeseriesimage_to_matrix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.timeseriesimage_to_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.vector_to_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vector_to_image</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.vector_to_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.imageset_to_projections" class="classattr">
+                                <div class="attr variable">
+            <span class="name">imageset_to_projections</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.imageset_to_projections"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.scca" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scca</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.scca"></a>
+    
+    
+
+                            </div>
+                            <div id="SccanParameters.svd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">svd</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SccanParameters.svd"></a>
+    
+    
 
                             </div>
                 </section>
@@ -801,7 +1197,7 @@ mscca. Can also convert an imagelist/mask pair to a binary matrix image.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sccan_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_permutations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoother</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_sparseness</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">covering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uselong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pclusterthresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qclusterthresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initialization</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initialization2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">get_small</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imageset_to_matrix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_to_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imageset_to_projections</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scca</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">sccan</span><span class="o">.</span><span class="n">SccanParameters</span>:</span></span>
+        <span class="name">sccan_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_permutations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoother</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">row_sparseness</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">covering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uselong</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pclusterthresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qclusterthresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initialization</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initialization2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">get_small</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imageset_to_matrix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_to_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">imageset_to_projections</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scca</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SccanParameters">SccanParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sccan_params-view-source"><span>View Source</span></label>
 
@@ -985,186 +1381,5 @@ mscca. Can also convert an imagelist/mask pair to a binary matrix image.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

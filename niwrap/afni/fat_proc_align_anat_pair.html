@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FatProcAlignAnatPairOutputs.qc_snapshot_t1w_edges_on_t2w">qc_snapshot_t1w_edges_on_t2w</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FatProcAlignAnatPairParameters">FatProcAlignAnatPairParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.input_t1w">input_t1w</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.input_t2w">input_t2w</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.output_prefix">output_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.output_grid">output_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.input_t2w_mask">input_t2w_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.do_ss_tmp_t1w">do_ss_tmp_t1w</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.warp">warp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.matrix">matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.workdir">workdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.no_cmd_out">no_cmd_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcAlignAnatPairParameters.no_clean">no_clean</a>
                         </li>
                 </ul>
 
@@ -373,9 +410,10 @@
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;FAT_PROC_ALIGN_ANAT_PAIR_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;FatProcAlignAnatPairOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;fat_proc_align_anat_pair&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;fat_proc_align_anat_pair_params&quot;</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="p">]</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;FatProcAlignAnatPairParameters&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;fat_proc_align_anat_pair&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;fat_proc_align_anat_pair_params&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -490,6 +528,140 @@
 
                             </div>
                 </section>
+                <section id="FatProcAlignAnatPairParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FatProcAlignAnatPairParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters"></a>
+    
+    
+
+                            <div id="FatProcAlignAnatPairParameters.input_t1w" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_t1w</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.input_t1w"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.input_t2w" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_t2w</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.input_t2w"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.output_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.output_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.output_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_grid</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.output_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.input_t2w_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_t2w_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.input_t2w_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.do_ss_tmp_t1w" class="classattr">
+                                <div class="attr variable">
+            <span class="name">do_ss_tmp_t1w</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.do_ss_tmp_t1w"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.warp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">warp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.warp"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.workdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">workdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.workdir"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.no_cmd_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cmd_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.no_cmd_out"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcAlignAnatPairParameters.no_clean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_clean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcAlignAnatPairParameters.no_clean"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fat_proc_align_anat_pair">
                             <input id="fat_proc_align_anat_pair-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -587,7 +759,7 @@ solid-body parameters (translation and rotation).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fat_proc_align_anat_pair_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_t1w</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_t2w</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_grid</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_t2w_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_ss_tmp_t1w</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">warp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">workdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cmd_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">fat_proc_align_anat_pair</span><span class="o">.</span><span class="n">FatProcAlignAnatPairParameters</span>:</span></span>
+        <span class="name">fat_proc_align_anat_pair_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_t1w</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_t2w</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_grid</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_t2w_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_ss_tmp_t1w</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">warp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">workdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cmd_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FatProcAlignAnatPairParameters">FatProcAlignAnatPairParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fat_proc_align_anat_pair_params-view-source"><span>View Source</span></label>
 
@@ -678,186 +850,5 @@ solid-body parameters (translation and rotation).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

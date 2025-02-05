@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,93 @@
                         </li>
                         <li>
                                 <a class="variable" href="#XfibresOutputs.output_logdir">output_logdir</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#XfibresParameters">XfibresParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#XfibresParameters.datafile">datafile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.maskfile">maskfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.bvals">bvals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.logdir">logdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.forcedir">forcedir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.max_fibres">max_fibres</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.model">model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.fudge">fudge</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.num_jumps">num_jumps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.num_burnin">num_burnin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.burnin_noard">burnin_noard</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.sampleevery">sampleevery</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.updateproposal">updateproposal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.seed">seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.noard">noard</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.allard">allard</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.nospat">nospat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.nonlinear">nonlinear</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.cnonlinear">cnonlinear</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.rician">rician</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.add_f0">add_f0</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.ard_f0">ard_f0</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.rmean">rmean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.rstd">rstd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XfibresParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -521,9 +606,10 @@
 </span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;XFIBRES_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;XfibresOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;xfibres&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;xfibres_params&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a><span class="p">]</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;XfibresParameters&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;xfibres&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;xfibres_params&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -605,6 +691,316 @@
             <div class="docstring"><p>Log directory where output files are saved</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="XfibresParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">XfibresParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters"></a>
+    
+    
+
+                            <div id="XfibresParameters.datafile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datafile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.datafile"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.maskfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskfile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.maskfile"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.bvals"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.logdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">logdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.logdir"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.forcedir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">forcedir</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.forcedir"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.max_fibres" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_fibres</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.max_fibres"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.model"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.fudge" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fudge</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.fudge"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.num_jumps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_jumps</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.num_jumps"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.num_burnin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_burnin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.num_burnin"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.burnin_noard" class="classattr">
+                                <div class="attr variable">
+            <span class="name">burnin_noard</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.burnin_noard"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.sampleevery" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sampleevery</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.sampleevery"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.updateproposal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">updateproposal</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.updateproposal"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.seed"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.noard" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noard</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.noard"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.allard" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allard</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.allard"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.nospat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nospat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.nospat"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.nonlinear" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonlinear</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.nonlinear"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.cnonlinear" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cnonlinear</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.cnonlinear"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.rician" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rician</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.rician"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.add_f0" class="classattr">
+                                <div class="attr variable">
+            <span class="name">add_f0</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.add_f0"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.ard_f0" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ard_f0</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.ard_f0"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.rmean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rmean</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.rmean"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.rstd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rstd</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.rstd"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="XfibresParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XfibresParameters.help_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -753,7 +1149,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">xfibres_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forcedir</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_fibres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fudge</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">burnin_noard</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sampleevery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">updateproposal</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nospat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cnonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">add_f0</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ard_f0</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rmean</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rstd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">xfibres</span><span class="o">.</span><span class="n">XfibresParameters</span>:</span></span>
+        <span class="name">xfibres_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forcedir</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">max_fibres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fudge</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">burnin_noard</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sampleevery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">updateproposal</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nospat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cnonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">add_f0</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ard_f0</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rmean</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rstd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#XfibresParameters">XfibresParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="xfibres_params-view-source"><span>View Source</span></label>
 
@@ -917,186 +1313,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

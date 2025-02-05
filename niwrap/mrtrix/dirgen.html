@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#DIRGEN_METADATA">DIRGEN_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#DirgenConfigParameters">DirgenConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DirgenConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#DirgenOutputs">DirgenOutputs</a>
@@ -44,6 +54,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#DirgenOutputs.dirs">dirs</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DirgenParameters">DirgenParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DirgenParameters.power">power</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.niter">niter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.restarts">restarts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.unipolar">unipolar</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.cartesian">cartesian</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.ndir">ndir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirgenParameters.dirs">dirs</a>
                         </li>
                 </ul>
 
@@ -477,11 +538,13 @@
 </span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>
 </span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;DIRGEN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;DirgenOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;dirgen&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;dirgen_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;dirgen_params&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="p">]</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;DirgenConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;DirgenOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;DirgenParameters&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;dirgen&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;dirgen_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;dirgen_params&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -498,6 +561,41 @@
     
     
 
+                </section>
+                <section id="DirgenConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DirgenConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenConfigParameters"></a>
+    
+    
+
+                            <div id="DirgenConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="DirgenOutputs">
                             <input id="DirgenOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -566,12 +664,190 @@
 
                             </div>
                 </section>
+                <section id="DirgenParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DirgenParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters"></a>
+    
+    
+
+                            <div id="DirgenParameters.power" class="classattr">
+                                <div class="attr variable">
+            <span class="name">power</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.power"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.niter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">niter</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.niter"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.restarts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">restarts</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.restarts"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.unipolar" class="classattr">
+                                <div class="attr variable">
+            <span class="name">unipolar</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.unipolar"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.cartesian" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cartesian</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.cartesian"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#DirgenConfigParameters">DirgenConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.ndir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ndir</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.ndir"></a>
+    
+    
+
+                            </div>
+                            <div id="DirgenParameters.dirs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dirs</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirgenParameters.dirs"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="dirgen">
                             <input id="dirgen-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirgen</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirgen</span><span class="o">.</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirgenOutputs">DirgenOutputs</a></span>:</span></span>
+        <span class="name">dirgen</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#DirgenConfigParameters">DirgenConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirgenOutputs">DirgenOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirgen-view-source"><span>View Source</span></label>
 
@@ -716,7 +992,7 @@ anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirgen_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirgen</span><span class="o">.</span><span class="n">DirgenConfigParameters</span>:</span></span>
+        <span class="name">dirgen_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirgenConfigParameters">DirgenConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirgen_config_params-view-source"><span>View Source</span></label>
 
@@ -767,7 +1043,7 @@ anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirgen_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirgen</span><span class="o">.</span><span class="n">DirgenConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirgen</span><span class="o">.</span><span class="n">DirgenParameters</span>:</span></span>
+        <span class="name">dirgen_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">ndir</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">power</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">niter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restarts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cartesian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#DirgenConfigParameters">DirgenConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirgenParameters">DirgenParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirgen_params-view-source"><span>View Source</span></label>
 
@@ -879,186 +1155,5 @@ anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

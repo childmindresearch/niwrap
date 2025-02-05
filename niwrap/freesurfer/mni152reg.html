@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,27 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Mni152regOutputs.reg_matrix_1mm">reg_matrix_1mm</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Mni152regParameters">Mni152regParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Mni152regParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Mni152regParameters.register_1mm">register_1mm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Mni152regParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Mni152regParameters.symmetric">symmetric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Mni152regParameters.save_volume">save_volume</a>
                         </li>
                 </ul>
 
@@ -293,9 +312,10 @@
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="s2">&quot;MNI152REG_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="s2">&quot;Mni152regOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;mni152reg&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;mni152reg_params&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="p">]</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="s2">&quot;Mni152regParameters&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;mni152reg&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;mni152reg_params&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -395,6 +415,74 @@
 
                             </div>
                 </section>
+                <section id="Mni152regParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Mni152regParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters"></a>
+    
+    
+
+                            <div id="Mni152regParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="Mni152regParameters.register_1mm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">register_1mm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters.register_1mm"></a>
+    
+    
+
+                            </div>
+                            <div id="Mni152regParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="Mni152regParameters.symmetric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">symmetric</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters.symmetric"></a>
+    
+    
+
+                            </div>
+                            <div id="Mni152regParameters.save_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Mni152regParameters.save_volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mni152reg">
                             <input id="mni152reg-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -471,7 +559,7 @@ tkregister-style registration matrix.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mni152reg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">register_1mm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mni152reg</span><span class="o">.</span><span class="n">Mni152regParameters</span>:</span></span>
+        <span class="name">mni152reg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">register_1mm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">symmetric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Mni152regParameters">Mni152regParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mni152reg_params-view-source"><span>View Source</span></label>
 
@@ -531,186 +619,5 @@ tkregister-style registration matrix.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

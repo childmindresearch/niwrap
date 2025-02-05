@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#EddyQuadOutputs.output_dir_qc">output_dir_qc</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#EddyQuadParameters">EddyQuadParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.eddyBase">eddyBase</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.eddyIndex">eddyIndex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.eddyParams">eddyParams</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.bvals">bvals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.field">field</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.slspec">slspec</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EddyQuadParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -346,9 +380,10 @@
 </span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;EDDY_QUAD_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;EddyQuadOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;eddy_quad&quot;</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;eddy_quad_params&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="p">]</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;EddyQuadParameters&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;eddy_quad&quot;</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;eddy_quad_params&quot;</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -430,6 +465,129 @@
             <div class="docstring"><p>Quality control data outputs</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="EddyQuadParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">EddyQuadParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters"></a>
+    
+    
+
+                            <div id="EddyQuadParameters.eddyBase" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eddyBase</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.eddyBase"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.eddyIndex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eddyIndex</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.eddyIndex"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.eddyParams" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eddyParams</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.eddyParams"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.bvals"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.field" class="classattr">
+                                <div class="attr variable">
+            <span class="name">field</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.field"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.slspec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slspec</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.slspec"></a>
+    
+    
+
+                            </div>
+                            <div id="EddyQuadParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EddyQuadParameters.verbose"></a>
+    
+    
 
                             </div>
                 </section>
@@ -524,7 +682,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">eddy_quad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">eddy_base</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eddy_index</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eddy_params</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">field</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slspec</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">eddy_quad</span><span class="o">.</span><span class="n">EddyQuadParameters</span>:</span></span>
+        <span class="name">eddy_quad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">eddy_base</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eddy_index</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eddy_params</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">field</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slspec</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#EddyQuadParameters">EddyQuadParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="eddy_quad_params-view-source"><span>View Source</span></label>
 
@@ -609,186 +767,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

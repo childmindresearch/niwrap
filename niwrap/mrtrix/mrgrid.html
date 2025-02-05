@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#MRGRID_METADATA">MRGRID_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#MrgridAxisParameters">MrgridAxisParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrgridAxisParameters.index">index</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridAxisParameters.spec">spec</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrgridConfigParameters">MrgridConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrgridConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#MrgridOutputs">MrgridOutputs</a>
@@ -44,6 +66,108 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrgridOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrgridParameters">MrgridParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrgridParameters.template">template</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.size">size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.voxel">voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.scale">scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.interp">interp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.oversample">oversample</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.as">as</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.uniform">uniform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.crop_unbound">crop_unbound</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.axis">axis</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.all_axes">all_axes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.fill">fill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.strides">strides</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.datatype">datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.operation">operation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrgridParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrgridVariousFileParameters">MrgridVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrgridVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrgridVariousStringParameters">MrgridVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrgridVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -859,14 +983,19 @@
 </span><span id="L-770"><a href="#L-770"><span class="linenos">770</span></a>
 </span><span id="L-771"><a href="#L-771"><span class="linenos">771</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-772"><a href="#L-772"><span class="linenos">772</span></a>    <span class="s2">&quot;MRGRID_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-773"><a href="#L-773"><span class="linenos">773</span></a>    <span class="s2">&quot;MrgridOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-774"><a href="#L-774"><span class="linenos">774</span></a>    <span class="s2">&quot;mrgrid&quot;</span><span class="p">,</span>
-</span><span id="L-775"><a href="#L-775"><span class="linenos">775</span></a>    <span class="s2">&quot;mrgrid_axis_params&quot;</span><span class="p">,</span>
-</span><span id="L-776"><a href="#L-776"><span class="linenos">776</span></a>    <span class="s2">&quot;mrgrid_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-777"><a href="#L-777"><span class="linenos">777</span></a>    <span class="s2">&quot;mrgrid_params&quot;</span><span class="p">,</span>
-</span><span id="L-778"><a href="#L-778"><span class="linenos">778</span></a>    <span class="s2">&quot;mrgrid_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-779"><a href="#L-779"><span class="linenos">779</span></a>    <span class="s2">&quot;mrgrid_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-780"><a href="#L-780"><span class="linenos">780</span></a><span class="p">]</span>
+</span><span id="L-773"><a href="#L-773"><span class="linenos">773</span></a>    <span class="s2">&quot;MrgridAxisParameters&quot;</span><span class="p">,</span>
+</span><span id="L-774"><a href="#L-774"><span class="linenos">774</span></a>    <span class="s2">&quot;MrgridConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-775"><a href="#L-775"><span class="linenos">775</span></a>    <span class="s2">&quot;MrgridOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-776"><a href="#L-776"><span class="linenos">776</span></a>    <span class="s2">&quot;MrgridParameters&quot;</span><span class="p">,</span>
+</span><span id="L-777"><a href="#L-777"><span class="linenos">777</span></a>    <span class="s2">&quot;MrgridVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-778"><a href="#L-778"><span class="linenos">778</span></a>    <span class="s2">&quot;MrgridVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-779"><a href="#L-779"><span class="linenos">779</span></a>    <span class="s2">&quot;mrgrid&quot;</span><span class="p">,</span>
+</span><span id="L-780"><a href="#L-780"><span class="linenos">780</span></a>    <span class="s2">&quot;mrgrid_axis_params&quot;</span><span class="p">,</span>
+</span><span id="L-781"><a href="#L-781"><span class="linenos">781</span></a>    <span class="s2">&quot;mrgrid_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-782"><a href="#L-782"><span class="linenos">782</span></a>    <span class="s2">&quot;mrgrid_params&quot;</span><span class="p">,</span>
+</span><span id="L-783"><a href="#L-783"><span class="linenos">783</span></a>    <span class="s2">&quot;mrgrid_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-784"><a href="#L-784"><span class="linenos">784</span></a>    <span class="s2">&quot;mrgrid_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-785"><a href="#L-785"><span class="linenos">785</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -883,6 +1012,76 @@
     
     
 
+                </section>
+                <section id="MrgridAxisParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrgridAxisParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridAxisParameters"></a>
+    
+    
+
+                            <div id="MrgridAxisParameters.index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">index</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridAxisParameters.index"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridAxisParameters.spec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spec</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridAxisParameters.spec"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MrgridConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrgridConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridConfigParameters"></a>
+    
+    
+
+                            <div id="MrgridConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="MrgridOutputs">
                             <input id="MrgridOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -951,12 +1150,359 @@
 
                             </div>
                 </section>
+                <section id="MrgridParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrgridParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters"></a>
+    
+    
+
+                            <div id="MrgridParameters.template" class="classattr">
+                                <div class="attr variable">
+            <span class="name">template</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.template"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.size"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.scale"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.interp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.interp"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.oversample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">oversample</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.oversample"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.as" class="classattr">
+                                <div class="attr variable">
+            <span class="name">as</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.as"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.uniform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uniform</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.uniform"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.crop_unbound" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop_unbound</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.crop_unbound"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.axis" class="classattr">
+                                <div class="attr variable">
+            <span class="name">axis</span><span class="annotation">: NotRequired[list[<a href="#MrgridAxisParameters">MrgridAxisParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.axis"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.all_axes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">all_axes</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.all_axes"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.fill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.fill"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.strides" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strides</span><span class="annotation">: NotRequired[Union[<a href="#MrgridVariousStringParameters">MrgridVariousStringParameters</a>, <a href="#MrgridVariousFileParameters">MrgridVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.strides"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#MrgridConfigParameters">MrgridConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.operation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">operation</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.operation"></a>
+    
+    
+
+                            </div>
+                            <div id="MrgridParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MrgridVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrgridVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridVariousFileParameters"></a>
+    
+    
+
+                            <div id="MrgridVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MrgridVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrgridVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridVariousStringParameters"></a>
+    
+    
+
+                            <div id="MrgridVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrgridVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mrgrid">
                             <input id="mrgrid-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">oversample</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">as_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uniform</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop_unbound</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridAxisParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_axes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridOutputs">MrgridOutputs</a></span>:</span></span>
+        <span class="name">mrgrid</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">oversample</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">as_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uniform</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop_unbound</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MrgridAxisParameters">MrgridAxisParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_axes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#MrgridVariousStringParameters">MrgridVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#MrgridVariousFileParameters">MrgridVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MrgridConfigParameters">MrgridConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridOutputs">MrgridOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid-view-source"><span>View Source</span></label>
 
@@ -1195,7 +1741,7 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid_axis_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">index</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">spec</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridAxisParameters</span>:</span></span>
+        <span class="name">mrgrid_axis_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">index</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">spec</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridAxisParameters">MrgridAxisParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid_axis_params-view-source"><span>View Source</span></label>
 
@@ -1264,7 +1810,7 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridConfigParameters</span>:</span></span>
+        <span class="name">mrgrid_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridConfigParameters">MrgridConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid_config_params-view-source"><span>View Source</span></label>
 
@@ -1315,7 +1861,7 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">oversample</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">as_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uniform</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop_unbound</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridAxisParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_axes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridParameters</span>:</span></span>
+        <span class="name">mrgrid_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">oversample</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">as_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uniform</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop_unbound</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">axis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MrgridAxisParameters">MrgridAxisParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_axes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#MrgridVariousStringParameters">MrgridVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#MrgridVariousFileParameters">MrgridVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MrgridConfigParameters">MrgridConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridParameters">MrgridParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid_params-view-source"><span>View Source</span></label>
 
@@ -1526,7 +2072,7 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousFileParameters</span>:</span></span>
+        <span class="name">mrgrid_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridVariousFileParameters">MrgridVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1573,7 +2119,7 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mrgrid_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">mrgrid</span><span class="o">.</span><span class="n">MrgridVariousStringParameters</span>:</span></span>
+        <span class="name">mrgrid_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrgridVariousStringParameters">MrgridVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mrgrid_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1616,186 +2162,5 @@ convention used for 'mrcrop' and 'mrpad' (see -axis option description).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

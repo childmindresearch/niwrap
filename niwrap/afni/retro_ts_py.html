@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,87 @@
                         </li>
                         <li>
                                 <a class="variable" href="#RetroTsPyOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#RetroTsPyParameters">RetroTsPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.resp_file">resp_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.card_file">card_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.phys_fs">phys_fs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.num_slices">num_slices</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.volume_tr">volume_tr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.phys_file">phys_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.phys_json">phys_json</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.rvt_shifts">rvt_shifts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.rvt_out">rvt_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.resp_cutoff_freq">resp_cutoff_freq</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.cardiac_cutoff_freq">cardiac_cutoff_freq</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.cardiac_out">cardiac_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.respiration_out">respiration_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.interp_style">interp_style</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.fir_order">fir_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.demo">demo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.show_graphs">show_graphs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.slice_offset">slice_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.slice_major">slice_major</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.slice_order">slice_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.zero_phase_offset">zero_phase_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RetroTsPyParameters.legacy_transform">legacy_transform</a>
                         </li>
                 </ul>
 
@@ -523,9 +602,10 @@
 </span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;RETRO_TS_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;RetroTsPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;retro_ts_py&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;retro_ts_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="p">]</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;RetroTsPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;retro_ts_py&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;retro_ts_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -607,6 +687,294 @@
             <div class="docstring"><p>Output file containing respiratory and cardiac regressors</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="RetroTsPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">RetroTsPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters"></a>
+    
+    
+
+                            <div id="RetroTsPyParameters.resp_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resp_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.resp_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.card_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">card_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.card_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.phys_fs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phys_fs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.phys_fs"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.num_slices" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_slices</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.num_slices"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.volume_tr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_tr</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.volume_tr"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.phys_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phys_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.phys_file"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.phys_json" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phys_json</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.phys_json"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.rvt_shifts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rvt_shifts</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.rvt_shifts"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.rvt_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rvt_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.rvt_out"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.resp_cutoff_freq" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resp_cutoff_freq</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.resp_cutoff_freq"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.cardiac_cutoff_freq" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cardiac_cutoff_freq</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.cardiac_cutoff_freq"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.cardiac_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cardiac_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.cardiac_out"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.respiration_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">respiration_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.respiration_out"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.interp_style" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp_style</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.interp_style"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.fir_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fir_order</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.fir_order"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.demo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">demo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.demo"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.show_graphs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_graphs</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.show_graphs"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.slice_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_offset</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.slice_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.slice_major" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_major</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.slice_major"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.slice_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_order</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.slice_order"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.zero_phase_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero_phase_offset</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.zero_phase_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="RetroTsPyParameters.legacy_transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">legacy_transform</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RetroTsPyParameters.legacy_transform"></a>
+    
+    
 
                             </div>
                 </section>
@@ -756,7 +1124,7 @@ BIDS formatted files.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">retro_ts_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num_slices</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_tr</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">resp_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">card_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_fs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_shifts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">resp_cutoff_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cardiac_cutoff_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cardiac_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">respiration_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interp_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fir_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">demo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_graphs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slice_offset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_major</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_phase_offset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">legacy_transform</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">retro_ts_py</span><span class="o">.</span><span class="n">RetroTsPyParameters</span>:</span></span>
+        <span class="name">retro_ts_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num_slices</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_tr</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">resp_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">card_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_fs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">phys_json</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_shifts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">resp_cutoff_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cardiac_cutoff_freq</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cardiac_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">respiration_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interp_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fir_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">demo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_graphs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slice_offset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_major</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_phase_offset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">legacy_transform</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#RetroTsPyParameters">RetroTsPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="retro_ts_py_params-view-source"><span>View Source</span></label>
 
@@ -918,186 +1286,5 @@ BIDS formatted files.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

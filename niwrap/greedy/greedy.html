@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.greedy</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#GREEDY_METADATA">GREEDY_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#GreedyInputImagesParameters">GreedyInputImagesParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyInputImagesParameters.fixed">fixed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyInputImagesParameters.moving">moving</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#GreedyInvertOutputs">GreedyInvertOutputs</a>
@@ -49,6 +59,18 @@
 
             </li>
             <li>
+                    <a class="class" href="#GreedyInvertParameters">GreedyInvertParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyInvertParameters.inwarp">inwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyInvertParameters.outwarp">outwarp</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#GreedyJacobianOutputs">GreedyJacobianOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -59,6 +81,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GreedyJacobianOutputs.jacobian_determinant">jacobian_determinant</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedyJacobianParameters">GreedyJacobianParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyJacobianParameters.inwarp">inwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyJacobianParameters.outjac">outjac</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedyMetricParameters">GreedyMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyMetricParameters.metric_type">metric_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyMetricParameters.metric_param">metric_param</a>
                         </li>
                 </ul>
 
@@ -97,6 +143,228 @@
 
             </li>
             <li>
+                    <a class="class" href="#GreedyParameters">GreedyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyParameters.dimensions">dimensions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.input_images">input_images</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.affine">affine</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.brute">brute</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.moments">moments</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice">reslice</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.invert">invert</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.root">root</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.jacobian">jacobian</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.metric_mode">metric_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.defopt">defopt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.weight">weight</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.step_size">step_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.fixed_mask">fixed_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.gm_trim">gm_trim</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.moving_mask">moving_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.wncc_mask_dilate">wncc_mask_dilate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reference_image">reference_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ref_pad">ref_pad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.background">background</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.input_transform">input_transform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.zero_last_dimension">zero_last_dimension</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.time_step_mode">time_step_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.smoothing">smoothing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.inverse_warp">inverse_warp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.root_warp">root_warp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.warp_precision">warp_precision</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.noise">noise</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.exponent">exponent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.svf_mode">svf_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.svlb">svlb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.sv_incompr">sv_incompr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.initial_warp">initial_warp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.tjr">tjr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.wr">wr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.initial_affine">initial_affine</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ia_identity">ia_identity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ia_voxel_grid">ia_voxel_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ia_image_centers">ia_image_centers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ia_image_side">ia_image_side</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.ia_moments">ia_moments</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.affine_dof">affine_dof</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.jitter">jitter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.search">search</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.det">det</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.cov_id">cov_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.fixed_reslicing_image">fixed_reslicing_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_moving_image">reslice_moving_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_surface">reslice_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.interpolation">interpolation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_background">reslice_background</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_datatype">reslice_datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_composite">reslice_composite</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_jacobian">reslice_jacobian</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_simplex_jacobian">reslice_simplex_jacobian</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.reslice_mask">reslice_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.metric_gradient">metric_gradient</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.debug_deriv">debug_deriv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.debug_deriv_eps">debug_deriv_eps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.debug_aff_obj">debug_aff_obj</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.dump_pyramid">dump_pyramid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.dump_moving">dump_moving</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.dump_frequency">dump_frequency</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.dump_prefix">dump_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.powell">powell</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.float">float</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyParameters.verbosity">verbosity</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#GreedyResliceMovingImageOutputs">GreedyResliceMovingImageOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -107,6 +375,18 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GreedyResliceMovingImageOutputs.resliced_image">resliced_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedyResliceMovingImageParameters">GreedyResliceMovingImageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyResliceMovingImageParameters.moving">moving</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyResliceMovingImageParameters.output">output</a>
                         </li>
                 </ul>
 
@@ -127,6 +407,18 @@
 
             </li>
             <li>
+                    <a class="class" href="#GreedyResliceSimplexJacobianParameters">GreedyResliceSimplexJacobianParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyResliceSimplexJacobianParameters.inmesh">inmesh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyResliceSimplexJacobianParameters.outmesh">outmesh</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#GreedyResliceSurfaceOutputs">GreedyResliceSurfaceOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -142,6 +434,18 @@
 
             </li>
             <li>
+                    <a class="class" href="#GreedyResliceSurfaceParameters">GreedyResliceSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyResliceSurfaceParameters.inmesh">inmesh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyResliceSurfaceParameters.outmesh">outmesh</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#GreedyRootOutputs">GreedyRootOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -152,6 +456,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GreedyRootOutputs.root_warp">root_warp</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedyRootParameters">GreedyRootParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyRootParameters.inwarp">inwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyRootParameters.outwarp">outwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyRootParameters.n">n</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedySearchParameters">GreedySearchParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedySearchParameters.n">n</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedySearchParameters.rot">rot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedySearchParameters.tran">tran</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GreedyTjrParameters">GreedyTjrParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GreedyTjrParameters.mesh">mesh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GreedyTjrParameters.weight">weight</a>
                         </li>
                 </ul>
 
@@ -1670,12 +2016,12 @@
 </span><span id="L-1455"><a href="#L-1455"><span class="linenos">1455</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GreedyOutputs</span><span class="p">(</span>
 </span><span id="L-1456"><a href="#L-1456"><span class="linenos">1456</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
 </span><span id="L-1457"><a href="#L-1457"><span class="linenos">1457</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1458"><a href="#L-1458"><span class="linenos">1458</span></a>        <span class="n">invert</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">invert</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">invert</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">invert</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1459"><a href="#L-1459"><span class="linenos">1459</span></a>        <span class="n">root_</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">root</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">root</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">root</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1460"><a href="#L-1460"><span class="linenos">1460</span></a>        <span class="n">jacobian</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">jacobian</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">jacobian</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1461"><a href="#L-1461"><span class="linenos">1461</span></a>        <span class="n">reslice_moving_image</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">reslice_moving_image</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">reslice_moving_image</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">reslice_moving_image</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1462"><a href="#L-1462"><span class="linenos">1462</span></a>        <span class="n">reslice_surface</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">reslice_surface</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">reslice_surface</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">reslice_surface</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-1463"><a href="#L-1463"><span class="linenos">1463</span></a>        <span class="n">reslice_simplex_jacobian</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">reslice_simplex_jacobian</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">reslice_simplex_jacobian</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">reslice_simplex_jacobian</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1458"><a href="#L-1458"><span class="linenos">1458</span></a>        <span class="n">invert</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;invert&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;invert&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;invert&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1459"><a href="#L-1459"><span class="linenos">1459</span></a>        <span class="n">root_</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1460"><a href="#L-1460"><span class="linenos">1460</span></a>        <span class="n">jacobian</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jacobian&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jacobian&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jacobian&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1461"><a href="#L-1461"><span class="linenos">1461</span></a>        <span class="n">reslice_moving_image</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_moving_image&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_moving_image&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_moving_image&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1462"><a href="#L-1462"><span class="linenos">1462</span></a>        <span class="n">reslice_surface</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_surface&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_surface&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_surface&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-1463"><a href="#L-1463"><span class="linenos">1463</span></a>        <span class="n">reslice_simplex_jacobian</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_simplex_jacobian&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_simplex_jacobian&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reslice_simplex_jacobian&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-1464"><a href="#L-1464"><span class="linenos">1464</span></a>    <span class="p">)</span>
 </span><span id="L-1465"><a href="#L-1465"><span class="linenos">1465</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-1466"><a href="#L-1466"><span class="linenos">1466</span></a>
@@ -1903,26 +2249,37 @@
 </span><span id="L-1688"><a href="#L-1688"><span class="linenos">1688</span></a>
 </span><span id="L-1689"><a href="#L-1689"><span class="linenos">1689</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-1690"><a href="#L-1690"><span class="linenos">1690</span></a>    <span class="s2">&quot;GREEDY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-1691"><a href="#L-1691"><span class="linenos">1691</span></a>    <span class="s2">&quot;GreedyInvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1692"><a href="#L-1692"><span class="linenos">1692</span></a>    <span class="s2">&quot;GreedyJacobianOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1693"><a href="#L-1693"><span class="linenos">1693</span></a>    <span class="s2">&quot;GreedyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1694"><a href="#L-1694"><span class="linenos">1694</span></a>    <span class="s2">&quot;GreedyResliceMovingImageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1695"><a href="#L-1695"><span class="linenos">1695</span></a>    <span class="s2">&quot;GreedyResliceSimplexJacobianOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1696"><a href="#L-1696"><span class="linenos">1696</span></a>    <span class="s2">&quot;GreedyResliceSurfaceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1697"><a href="#L-1697"><span class="linenos">1697</span></a>    <span class="s2">&quot;GreedyRootOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-1698"><a href="#L-1698"><span class="linenos">1698</span></a>    <span class="s2">&quot;greedy_&quot;</span><span class="p">,</span>
-</span><span id="L-1699"><a href="#L-1699"><span class="linenos">1699</span></a>    <span class="s2">&quot;greedy_input_images_params&quot;</span><span class="p">,</span>
-</span><span id="L-1700"><a href="#L-1700"><span class="linenos">1700</span></a>    <span class="s2">&quot;greedy_invert_params&quot;</span><span class="p">,</span>
-</span><span id="L-1701"><a href="#L-1701"><span class="linenos">1701</span></a>    <span class="s2">&quot;greedy_jacobian_params&quot;</span><span class="p">,</span>
-</span><span id="L-1702"><a href="#L-1702"><span class="linenos">1702</span></a>    <span class="s2">&quot;greedy_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-1703"><a href="#L-1703"><span class="linenos">1703</span></a>    <span class="s2">&quot;greedy_params&quot;</span><span class="p">,</span>
-</span><span id="L-1704"><a href="#L-1704"><span class="linenos">1704</span></a>    <span class="s2">&quot;greedy_reslice_moving_image_params&quot;</span><span class="p">,</span>
-</span><span id="L-1705"><a href="#L-1705"><span class="linenos">1705</span></a>    <span class="s2">&quot;greedy_reslice_simplex_jacobian_params&quot;</span><span class="p">,</span>
-</span><span id="L-1706"><a href="#L-1706"><span class="linenos">1706</span></a>    <span class="s2">&quot;greedy_reslice_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-1707"><a href="#L-1707"><span class="linenos">1707</span></a>    <span class="s2">&quot;greedy_root_params&quot;</span><span class="p">,</span>
-</span><span id="L-1708"><a href="#L-1708"><span class="linenos">1708</span></a>    <span class="s2">&quot;greedy_search_params&quot;</span><span class="p">,</span>
-</span><span id="L-1709"><a href="#L-1709"><span class="linenos">1709</span></a>    <span class="s2">&quot;greedy_tjr_params&quot;</span><span class="p">,</span>
-</span><span id="L-1710"><a href="#L-1710"><span class="linenos">1710</span></a><span class="p">]</span>
+</span><span id="L-1691"><a href="#L-1691"><span class="linenos">1691</span></a>    <span class="s2">&quot;GreedyInputImagesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1692"><a href="#L-1692"><span class="linenos">1692</span></a>    <span class="s2">&quot;GreedyInvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1693"><a href="#L-1693"><span class="linenos">1693</span></a>    <span class="s2">&quot;GreedyInvertParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1694"><a href="#L-1694"><span class="linenos">1694</span></a>    <span class="s2">&quot;GreedyJacobianOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1695"><a href="#L-1695"><span class="linenos">1695</span></a>    <span class="s2">&quot;GreedyJacobianParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1696"><a href="#L-1696"><span class="linenos">1696</span></a>    <span class="s2">&quot;GreedyMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1697"><a href="#L-1697"><span class="linenos">1697</span></a>    <span class="s2">&quot;GreedyOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1698"><a href="#L-1698"><span class="linenos">1698</span></a>    <span class="s2">&quot;GreedyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1699"><a href="#L-1699"><span class="linenos">1699</span></a>    <span class="s2">&quot;GreedyResliceMovingImageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1700"><a href="#L-1700"><span class="linenos">1700</span></a>    <span class="s2">&quot;GreedyResliceMovingImageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1701"><a href="#L-1701"><span class="linenos">1701</span></a>    <span class="s2">&quot;GreedyResliceSimplexJacobianOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1702"><a href="#L-1702"><span class="linenos">1702</span></a>    <span class="s2">&quot;GreedyResliceSimplexJacobianParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1703"><a href="#L-1703"><span class="linenos">1703</span></a>    <span class="s2">&quot;GreedyResliceSurfaceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1704"><a href="#L-1704"><span class="linenos">1704</span></a>    <span class="s2">&quot;GreedyResliceSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1705"><a href="#L-1705"><span class="linenos">1705</span></a>    <span class="s2">&quot;GreedyRootOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-1706"><a href="#L-1706"><span class="linenos">1706</span></a>    <span class="s2">&quot;GreedyRootParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1707"><a href="#L-1707"><span class="linenos">1707</span></a>    <span class="s2">&quot;GreedySearchParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1708"><a href="#L-1708"><span class="linenos">1708</span></a>    <span class="s2">&quot;GreedyTjrParameters&quot;</span><span class="p">,</span>
+</span><span id="L-1709"><a href="#L-1709"><span class="linenos">1709</span></a>    <span class="s2">&quot;greedy_&quot;</span><span class="p">,</span>
+</span><span id="L-1710"><a href="#L-1710"><span class="linenos">1710</span></a>    <span class="s2">&quot;greedy_input_images_params&quot;</span><span class="p">,</span>
+</span><span id="L-1711"><a href="#L-1711"><span class="linenos">1711</span></a>    <span class="s2">&quot;greedy_invert_params&quot;</span><span class="p">,</span>
+</span><span id="L-1712"><a href="#L-1712"><span class="linenos">1712</span></a>    <span class="s2">&quot;greedy_jacobian_params&quot;</span><span class="p">,</span>
+</span><span id="L-1713"><a href="#L-1713"><span class="linenos">1713</span></a>    <span class="s2">&quot;greedy_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-1714"><a href="#L-1714"><span class="linenos">1714</span></a>    <span class="s2">&quot;greedy_params&quot;</span><span class="p">,</span>
+</span><span id="L-1715"><a href="#L-1715"><span class="linenos">1715</span></a>    <span class="s2">&quot;greedy_reslice_moving_image_params&quot;</span><span class="p">,</span>
+</span><span id="L-1716"><a href="#L-1716"><span class="linenos">1716</span></a>    <span class="s2">&quot;greedy_reslice_simplex_jacobian_params&quot;</span><span class="p">,</span>
+</span><span id="L-1717"><a href="#L-1717"><span class="linenos">1717</span></a>    <span class="s2">&quot;greedy_reslice_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-1718"><a href="#L-1718"><span class="linenos">1718</span></a>    <span class="s2">&quot;greedy_root_params&quot;</span><span class="p">,</span>
+</span><span id="L-1719"><a href="#L-1719"><span class="linenos">1719</span></a>    <span class="s2">&quot;greedy_search_params&quot;</span><span class="p">,</span>
+</span><span id="L-1720"><a href="#L-1720"><span class="linenos">1720</span></a>    <span class="s2">&quot;greedy_tjr_params&quot;</span><span class="p">,</span>
+</span><span id="L-1721"><a href="#L-1721"><span class="linenos">1721</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1939,6 +2296,41 @@
     
     
 
+                </section>
+                <section id="GreedyInputImagesParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyInputImagesParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInputImagesParameters"></a>
+    
+    
+
+                            <div id="GreedyInputImagesParameters.fixed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixed</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInputImagesParameters.fixed"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyInputImagesParameters.moving" class="classattr">
+                                <div class="attr variable">
+            <span class="name">moving</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInputImagesParameters.moving"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="GreedyInvertOutputs">
                             <input id="GreedyInvertOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -2007,6 +2399,41 @@
 
                             </div>
                 </section>
+                <section id="GreedyInvertParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyInvertParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInvertParameters"></a>
+    
+    
+
+                            <div id="GreedyInvertParameters.inwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inwarp</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInvertParameters.inwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyInvertParameters.outwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outwarp</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyInvertParameters.outwarp"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="GreedyJacobianOutputs">
                             <input id="GreedyJacobianOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -2071,6 +2498,76 @@
             <div class="docstring"><p>The Jacobian determinant of the warp</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GreedyJacobianParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyJacobianParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyJacobianParameters"></a>
+    
+    
+
+                            <div id="GreedyJacobianParameters.inwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inwarp</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyJacobianParameters.inwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyJacobianParameters.outjac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outjac</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyJacobianParameters.outjac"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="GreedyMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyMetricParameters"></a>
+    
+    
+
+                            <div id="GreedyMetricParameters.metric_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_type</span><span class="annotation">: Literal[&#39;SSD&#39;, &#39;MI&#39;, &#39;NMI&#39;, &#39;NCC&#39;, &#39;MAHAL&#39;]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyMetricParameters.metric_type"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyMetricParameters.metric_param" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_param</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyMetricParameters.metric_param"></a>
+    
+    
 
                             </div>
                 </section>
@@ -2231,6 +2728,811 @@
 
                             </div>
                 </section>
+                <section id="GreedyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters"></a>
+    
+    
+
+                            <div id="GreedyParameters.dimensions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dimensions</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.dimensions"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.input_images" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_images</span><span class="annotation">: NotRequired[<a href="#GreedyInputImagesParameters">GreedyInputImagesParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.input_images"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.affine" class="classattr">
+                                <div class="attr variable">
+            <span class="name">affine</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.affine"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.brute" class="classattr">
+                                <div class="attr variable">
+            <span class="name">brute</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.brute"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.moments" class="classattr">
+                                <div class="attr variable">
+            <span class="name">moments</span><span class="annotation">: NotRequired[Optional[Literal[1, 2]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.moments"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.invert" class="classattr">
+                                <div class="attr variable">
+            <span class="name">invert</span><span class="annotation">: NotRequired[<a href="#GreedyInvertParameters">GreedyInvertParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.invert"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.root" class="classattr">
+                                <div class="attr variable">
+            <span class="name">root</span><span class="annotation">: NotRequired[<a href="#GreedyRootParameters">GreedyRootParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.root"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.jacobian" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jacobian</span><span class="annotation">: NotRequired[<a href="#GreedyJacobianParameters">GreedyJacobianParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.jacobian"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.metric_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_mode</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.metric_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.defopt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">defopt</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.defopt"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.weight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.weight"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: NotRequired[<a href="#GreedyMetricParameters">GreedyMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.step_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">step_size</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.step_size"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.fixed_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixed_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.fixed_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.gm_trim" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gm_trim</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.gm_trim"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.moving_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">moving_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.moving_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.wncc_mask_dilate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wncc_mask_dilate</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.wncc_mask_dilate"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reference_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reference_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reference_image"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ref_pad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ref_pad</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ref_pad"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.background" class="classattr">
+                                <div class="attr variable">
+            <span class="name">background</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.background"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.input_transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_transform</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.input_transform"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.zero_last_dimension" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero_last_dimension</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.zero_last_dimension"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.time_step_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">time_step_mode</span><span class="annotation">: NotRequired[Optional[Literal[&#39;CONST&#39;, &#39;SCALE&#39;, &#39;SCALEDOWN&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.time_step_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.smoothing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoothing</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.smoothing"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.inverse_warp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inverse_warp</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.inverse_warp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.root_warp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">root_warp</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.root_warp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.warp_precision" class="classattr">
+                                <div class="attr variable">
+            <span class="name">warp_precision</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.warp_precision"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.noise" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noise</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.noise"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.exponent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exponent</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.exponent"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.svf_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">svf_mode</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.svf_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.svlb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">svlb</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.svlb"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.sv_incompr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sv_incompr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.sv_incompr"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.initial_warp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initial_warp</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.initial_warp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.tjr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tjr</span><span class="annotation">: NotRequired[<a href="#GreedyTjrParameters">GreedyTjrParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.tjr"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.wr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.wr"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.initial_affine" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initial_affine</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.initial_affine"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ia_identity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ia_identity</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ia_identity"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ia_voxel_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ia_voxel_grid</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ia_voxel_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ia_image_centers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ia_image_centers</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ia_image_centers"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ia_image_side" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ia_image_side</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ia_image_side"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.ia_moments" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ia_moments</span><span class="annotation">: NotRequired[Optional[Literal[1, 2]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.ia_moments"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.affine_dof" class="classattr">
+                                <div class="attr variable">
+            <span class="name">affine_dof</span><span class="annotation">: NotRequired[Optional[Literal[6, 7, 12]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.affine_dof"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.jitter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jitter</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.jitter"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.search" class="classattr">
+                                <div class="attr variable">
+            <span class="name">search</span><span class="annotation">: NotRequired[<a href="#GreedySearchParameters">GreedySearchParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.search"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.det" class="classattr">
+                                <div class="attr variable">
+            <span class="name">det</span><span class="annotation">: NotRequired[Optional[Literal[-1, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.det"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.cov_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cov_id</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.cov_id"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.fixed_reslicing_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixed_reslicing_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.fixed_reslicing_image"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_moving_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_moving_image</span><span class="annotation">: NotRequired[<a href="#GreedyResliceMovingImageParameters">GreedyResliceMovingImageParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_moving_image"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_surface</span><span class="annotation">: NotRequired[<a href="#GreedyResliceSurfaceParameters">GreedyResliceSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.interpolation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interpolation</span><span class="annotation">: NotRequired[Optional[Literal[&#39;NN&#39;, &#39;LINEAR&#39;, &#39;LABEL&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.interpolation"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_background" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_background</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_background"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_datatype</span><span class="annotation">: NotRequired[Optional[Literal[&#39;auto&#39;, &#39;double&#39;, &#39;float&#39;, &#39;uint&#39;, &#39;int&#39;, &#39;ushort&#39;, &#39;short&#39;, &#39;uchar&#39;, &#39;char&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_composite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_composite</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_composite"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_jacobian" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_jacobian</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_jacobian"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_simplex_jacobian" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_simplex_jacobian</span><span class="annotation">: NotRequired[<a href="#GreedyResliceSimplexJacobianParameters">GreedyResliceSimplexJacobianParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_simplex_jacobian"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.reslice_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.reslice_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.metric_gradient" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_gradient</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.metric_gradient"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.debug_deriv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_deriv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.debug_deriv"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.debug_deriv_eps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_deriv_eps</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.debug_deriv_eps"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.debug_aff_obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_aff_obj</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.debug_aff_obj"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.dump_pyramid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump_pyramid</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.dump_pyramid"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.dump_moving" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump_moving</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.dump_moving"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.dump_frequency" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump_frequency</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.dump_frequency"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.dump_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.dump_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.powell" class="classattr">
+                                <div class="attr variable">
+            <span class="name">powell</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.powell"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.float" class="classattr">
+                                <div class="attr variable">
+            <span class="name">float</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.float"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyParameters.verbosity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbosity</span><span class="annotation">: NotRequired[Optional[Literal[0, 1, 2]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyParameters.verbosity"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="GreedyResliceMovingImageOutputs">
                             <input id="GreedyResliceMovingImageOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -2295,6 +3597,41 @@
             <div class="docstring"><p>The resliced output image</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GreedyResliceMovingImageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyResliceMovingImageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceMovingImageParameters"></a>
+    
+    
+
+                            <div id="GreedyResliceMovingImageParameters.moving" class="classattr">
+                                <div class="attr variable">
+            <span class="name">moving</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceMovingImageParameters.moving"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyResliceMovingImageParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceMovingImageParameters.output"></a>
+    
+    
 
                             </div>
                 </section>
@@ -2365,6 +3702,41 @@
 
                             </div>
                 </section>
+                <section id="GreedyResliceSimplexJacobianParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyResliceSimplexJacobianParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSimplexJacobianParameters"></a>
+    
+    
+
+                            <div id="GreedyResliceSimplexJacobianParameters.inmesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inmesh</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSimplexJacobianParameters.inmesh"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyResliceSimplexJacobianParameters.outmesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outmesh</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSimplexJacobianParameters.outmesh"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="GreedyResliceSurfaceOutputs">
                             <input id="GreedyResliceSurfaceOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -2429,6 +3801,41 @@
             <div class="docstring"><p>The warped output mesh</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GreedyResliceSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyResliceSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSurfaceParameters"></a>
+    
+    
+
+                            <div id="GreedyResliceSurfaceParameters.inmesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inmesh</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSurfaceParameters.inmesh"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyResliceSurfaceParameters.outmesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outmesh</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyResliceSurfaceParameters.outmesh"></a>
+    
+    
 
                             </div>
                 </section>
@@ -2499,12 +3906,139 @@
 
                             </div>
                 </section>
+                <section id="GreedyRootParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyRootParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyRootParameters"></a>
+    
+    
+
+                            <div id="GreedyRootParameters.inwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inwarp</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyRootParameters.inwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyRootParameters.outwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outwarp</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyRootParameters.outwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyRootParameters.n" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyRootParameters.n"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="GreedySearchParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedySearchParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedySearchParameters"></a>
+    
+    
+
+                            <div id="GreedySearchParameters.n" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedySearchParameters.n"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedySearchParameters.rot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rot</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedySearchParameters.rot"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedySearchParameters.tran" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tran</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedySearchParameters.tran"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="GreedyTjrParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GreedyTjrParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyTjrParameters"></a>
+    
+    
+
+                            <div id="GreedyTjrParameters.mesh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mesh</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyTjrParameters.mesh"></a>
+    
+    
+
+                            </div>
+                            <div id="GreedyTjrParameters.weight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GreedyTjrParameters.weight"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="greedy_">
                             <input id="greedy_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_images</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInputImagesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">brute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">invert</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyRootParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyJacobianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defopt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fixed_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gm_trim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moving_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wncc_mask_dilate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_pad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">background</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_last_dimension</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">time_step_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALE&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALEDOWN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warp_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svf_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">svlb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sv_incompr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initial_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tjr</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyTjrParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initial_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_identity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_voxel_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_centers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine_dof</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">search</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedySearchParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">det</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cov_id</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fixed_reslicing_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_moving_image</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceMovingImageParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LABEL&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_datatype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;ushort&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="s1">&#39;uchar&#39;</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_composite</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_jacobian</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_simplex_jacobian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSimplexJacobianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_gradient</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_deriv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_deriv_eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_aff_obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_pyramid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_moving</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">powell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyOutputs">GreedyOutputs</a></span>:</span></span>
+        <span class="name">greedy_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_images</span><span class="p">:</span> <span class="n"><a href="#GreedyInputImagesParameters">GreedyInputImagesParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">brute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">invert</span><span class="p">:</span> <span class="n"><a href="#GreedyInvertParameters">GreedyInvertParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n"><a href="#GreedyRootParameters">GreedyRootParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian</span><span class="p">:</span> <span class="n"><a href="#GreedyJacobianParameters">GreedyJacobianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defopt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n"><a href="#GreedyMetricParameters">GreedyMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fixed_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gm_trim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moving_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wncc_mask_dilate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_pad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">background</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_last_dimension</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">time_step_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALE&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALEDOWN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warp_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svf_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">svlb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sv_incompr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initial_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tjr</span><span class="p">:</span> <span class="n"><a href="#GreedyTjrParameters">GreedyTjrParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initial_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_identity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_voxel_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_centers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine_dof</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">search</span><span class="p">:</span> <span class="n"><a href="#GreedySearchParameters">GreedySearchParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">det</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cov_id</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fixed_reslicing_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_moving_image</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceMovingImageParameters">GreedyResliceMovingImageParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_surface</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceSurfaceParameters">GreedyResliceSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LABEL&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_datatype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;ushort&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="s1">&#39;uchar&#39;</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_composite</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_jacobian</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_simplex_jacobian</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceSimplexJacobianParameters">GreedyResliceSimplexJacobianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_gradient</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_deriv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_deriv_eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_aff_obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_pyramid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_moving</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">powell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyOutputs">GreedyOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_-view-source"><span>View Source</span></label>
 
@@ -2806,7 +4340,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_input_images_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixed</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">moving</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInputImagesParameters</span>:</span></span>
+        <span class="name">greedy_input_images_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixed</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">moving</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyInputImagesParameters">GreedyInputImagesParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_input_images_params-view-source"><span>View Source</span></label>
 
@@ -2857,7 +4391,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_invert_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outwarp</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInvertParameters</span>:</span></span>
+        <span class="name">greedy_invert_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outwarp</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyInvertParameters">GreedyInvertParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_invert_params-view-source"><span>View Source</span></label>
 
@@ -2908,7 +4442,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_jacobian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outjac</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyJacobianParameters</span>:</span></span>
+        <span class="name">greedy_jacobian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outjac</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyJacobianParameters">GreedyJacobianParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_jacobian_params-view-source"><span>View Source</span></label>
 
@@ -2959,7 +4493,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;SSD&#39;</span><span class="p">,</span> <span class="s1">&#39;MI&#39;</span><span class="p">,</span> <span class="s1">&#39;NMI&#39;</span><span class="p">,</span> <span class="s1">&#39;NCC&#39;</span><span class="p">,</span> <span class="s1">&#39;MAHAL&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">metric_param</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyMetricParameters</span>:</span></span>
+        <span class="name">greedy_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;SSD&#39;</span><span class="p">,</span> <span class="s1">&#39;MI&#39;</span><span class="p">,</span> <span class="s1">&#39;NMI&#39;</span><span class="p">,</span> <span class="s1">&#39;NCC&#39;</span><span class="p">,</span> <span class="s1">&#39;MAHAL&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">metric_param</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyMetricParameters">GreedyMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_metric_params-view-source"><span>View Source</span></label>
 
@@ -3011,7 +4545,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_images</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInputImagesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">brute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">invert</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyInvertParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyRootParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyJacobianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defopt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fixed_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gm_trim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moving_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wncc_mask_dilate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_pad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">background</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_last_dimension</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">time_step_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALE&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALEDOWN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warp_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svf_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">svlb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sv_incompr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initial_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tjr</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyTjrParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initial_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_identity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_voxel_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_centers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine_dof</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">search</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedySearchParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">det</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cov_id</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fixed_reslicing_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_moving_image</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceMovingImageParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LABEL&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_datatype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;ushort&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="s1">&#39;uchar&#39;</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_composite</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_jacobian</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_simplex_jacobian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSimplexJacobianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_gradient</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_deriv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_deriv_eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_aff_obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_pyramid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_moving</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">powell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyParameters</span>:</span></span>
+        <span class="name">greedy_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_images</span><span class="p">:</span> <span class="n"><a href="#GreedyInputImagesParameters">GreedyInputImagesParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">brute</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">invert</span><span class="p">:</span> <span class="n"><a href="#GreedyInvertParameters">GreedyInvertParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n"><a href="#GreedyRootParameters">GreedyRootParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian</span><span class="p">:</span> <span class="n"><a href="#GreedyJacobianParameters">GreedyJacobianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defopt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n"><a href="#GreedyMetricParameters">GreedyMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fixed_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gm_trim</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">moving_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wncc_mask_dilate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref_pad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">background</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">zero_last_dimension</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">time_step_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALE&#39;</span><span class="p">,</span> <span class="s1">&#39;SCALEDOWN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smoothing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">warp_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">svf_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">svlb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sv_incompr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">initial_warp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tjr</span><span class="p">:</span> <span class="n"><a href="#GreedyTjrParameters">GreedyTjrParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">initial_affine</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_identity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_voxel_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_centers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ia_image_side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ia_moments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">affine_dof</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">search</span><span class="p">:</span> <span class="n"><a href="#GreedySearchParameters">GreedySearchParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">det</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cov_id</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fixed_reslicing_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_moving_image</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceMovingImageParameters">GreedyResliceMovingImageParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_surface</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceSurfaceParameters">GreedyResliceSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LABEL&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_background</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_datatype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;ushort&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="s1">&#39;uchar&#39;</span><span class="p">,</span> <span class="s1">&#39;char&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_composite</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_jacobian</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_simplex_jacobian</span><span class="p">:</span> <span class="n"><a href="#GreedyResliceSimplexJacobianParameters">GreedyResliceSimplexJacobianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reslice_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric_gradient</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_deriv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_deriv_eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_aff_obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_pyramid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_moving</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dump_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">powell</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyParameters">GreedyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_params-view-source"><span>View Source</span></label>
 
@@ -3426,7 +4960,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_reslice_moving_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">moving</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceMovingImageParameters</span>:</span></span>
+        <span class="name">greedy_reslice_moving_image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">moving</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyResliceMovingImageParameters">GreedyResliceMovingImageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_reslice_moving_image_params-view-source"><span>View Source</span></label>
 
@@ -3477,7 +5011,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_reslice_simplex_jacobian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inmesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outmesh</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSimplexJacobianParameters</span>:</span></span>
+        <span class="name">greedy_reslice_simplex_jacobian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inmesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outmesh</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyResliceSimplexJacobianParameters">GreedyResliceSimplexJacobianParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_reslice_simplex_jacobian_params-view-source"><span>View Source</span></label>
 
@@ -3528,7 +5062,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_reslice_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inmesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outmesh</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyResliceSurfaceParameters</span>:</span></span>
+        <span class="name">greedy_reslice_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inmesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outmesh</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyResliceSurfaceParameters">GreedyResliceSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_reslice_surface_params-view-source"><span>View Source</span></label>
 
@@ -3579,7 +5113,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_root_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outwarp</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyRootParameters</span>:</span></span>
+        <span class="name">greedy_root_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inwarp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outwarp</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyRootParameters">GreedyRootParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_root_params-view-source"><span>View Source</span></label>
 
@@ -3634,7 +5168,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_search_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">rot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tran</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedySearchParameters</span>:</span></span>
+        <span class="name">greedy_search_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">rot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tran</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedySearchParameters">GreedySearchParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_search_params-view-source"><span>View Source</span></label>
 
@@ -3690,7 +5224,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">greedy_tjr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">greedy</span><span class="o">.</span><span class="n">GreedyTjrParameters</span>:</span></span>
+        <span class="name">greedy_tjr_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">mesh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#GreedyTjrParameters">GreedyTjrParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="greedy_tjr_params-view-source"><span>View Source</span></label>
 
@@ -3737,186 +5271,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

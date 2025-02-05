@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#DmriPathstatsOutputs.median_file">median_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DmriPathstatsParameters">DmriPathstatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.intrk">intrk</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.rois">rois</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.intrc">intrc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.meas">meas</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.measname">measname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.dtbase">dtbase</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.path">path</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.subj">subj</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.out">out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.outvox">outvox</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.median">median</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.ends">ends</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.ref">ref</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.pthr">pthr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.fthr">fthr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.checkopts">checkopts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriPathstatsParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -465,9 +526,10 @@
 </span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;DMRI_PATHSTATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;DmriPathstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;dmri_pathstats&quot;</span><span class="p">,</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;dmri_pathstats_params&quot;</span><span class="p">,</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="p">]</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;DmriPathstatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;dmri_pathstats&quot;</span><span class="p">,</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;dmri_pathstats_params&quot;</span><span class="p">,</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -579,6 +641,228 @@
             <div class="docstring"><p>.trk file of median streamline</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="DmriPathstatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DmriPathstatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters"></a>
+    
+    
+
+                            <div id="DmriPathstatsParameters.intrk" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intrk</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.intrk"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.rois" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rois</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.rois"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.intrc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intrc</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.intrc"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.meas" class="classattr">
+                                <div class="attr variable">
+            <span class="name">meas</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.meas"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.measname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">measname</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.measname"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.dtbase" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dtbase</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.dtbase"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.path"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.subj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subj</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.subj"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.out"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.outvox" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outvox</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.outvox"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.median" class="classattr">
+                                <div class="attr variable">
+            <span class="name">median</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.median"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.ends" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ends</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.ends"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.ref" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ref</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.ref"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.pthr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pthr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.pthr"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.fthr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fthr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.fthr"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.checkopts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checkopts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.checkopts"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriPathstatsParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriPathstatsParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -702,7 +986,7 @@ optional various measures.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dmri_pathstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">intrk</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">intrc</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">rois</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">meas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">measname</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dtbase</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outvox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">median</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ends</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">dmri_pathstats</span><span class="o">.</span><span class="n">DmriPathstatsParameters</span>:</span></span>
+        <span class="name">dmri_pathstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">intrk</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">intrc</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">rois</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">meas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">measname</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dtbase</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outvox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">median</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ends</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ref</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#DmriPathstatsParameters">DmriPathstatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dmri_pathstats_params-view-source"><span>View Source</span></label>
 
@@ -832,186 +1116,5 @@ optional various measures.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

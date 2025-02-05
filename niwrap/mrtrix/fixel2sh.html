@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#FIXEL2SH_METADATA">FIXEL2SH_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Fixel2shConfigParameters">Fixel2shConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fixel2shConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Fixel2shOutputs">Fixel2shOutputs</a>
@@ -44,6 +54,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Fixel2shOutputs.sh_out">sh_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Fixel2shParameters">Fixel2shParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.lmax">lmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.fixel_in">fixel_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2shParameters.sh_out">sh_out</a>
                         </li>
                 </ul>
 
@@ -415,11 +464,13 @@
 </span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>
 </span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;FIXEL2SH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;Fixel2shOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;fixel2sh&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;fixel2sh_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;fixel2sh_params&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a><span class="p">]</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;Fixel2shConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;Fixel2shOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;Fixel2shParameters&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;fixel2sh&quot;</span><span class="p">,</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;fixel2sh_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;fixel2sh_params&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -436,6 +487,41 @@
     
     
 
+                </section>
+                <section id="Fixel2shConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fixel2shConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shConfigParameters"></a>
+    
+    
+
+                            <div id="Fixel2shConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Fixel2shOutputs">
                             <input id="Fixel2shOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -504,12 +590,146 @@
 
                             </div>
                 </section>
+                <section id="Fixel2shParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fixel2shParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters"></a>
+    
+    
+
+                            <div id="Fixel2shParameters.lmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lmax</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.lmax"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Fixel2shConfigParameters">Fixel2shConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.fixel_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixel_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.fixel_in"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2shParameters.sh_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sh_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2shParameters.sh_out"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fixel2sh">
                             <input id="fixel2sh-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2sh</span><span class="o">.</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2shOutputs">Fixel2shOutputs</a></span>:</span></span>
+        <span class="name">fixel2sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fixel2shConfigParameters">Fixel2shConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2shOutputs">Fixel2shOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2sh-view-source"><span>View Source</span></label>
 
@@ -624,7 +844,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2sh_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2sh</span><span class="o">.</span><span class="n">Fixel2shConfigParameters</span>:</span></span>
+        <span class="name">fixel2sh_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2shConfigParameters">Fixel2shConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2sh_config_params-view-source"><span>View Source</span></label>
 
@@ -675,7 +895,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2sh_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2sh</span><span class="o">.</span><span class="n">Fixel2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2sh</span><span class="o">.</span><span class="n">Fixel2shParameters</span>:</span></span>
+        <span class="name">fixel2sh_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fixel2shConfigParameters">Fixel2shConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2shParameters">Fixel2shParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2sh_params-view-source"><span>View Source</span></label>
 
@@ -765,186 +985,5 @@ described the main documentation, which can be found at the following link:
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

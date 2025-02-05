@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#DWI2MASK_METADATA">DWI2MASK_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2maskConfigParameters">Dwi2maskConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2maskConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2maskFslgradParameters">Dwi2maskFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2maskFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Dwi2maskOutputs">Dwi2maskOutputs</a>
@@ -44,6 +66,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Dwi2maskOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Dwi2maskParameters">Dwi2maskParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.clean_scale">clean_scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Dwi2maskParameters.output">output</a>
                         </li>
                 </ul>
 
@@ -518,12 +585,15 @@
 </span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>
 </span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;DWI2MASK_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;Dwi2maskOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;dwi2mask&quot;</span><span class="p">,</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;dwi2mask_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;dwi2mask_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;dwi2mask_params&quot;</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="p">]</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;Dwi2maskConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;Dwi2maskFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;Dwi2maskOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;Dwi2maskParameters&quot;</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;dwi2mask&quot;</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;dwi2mask_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;dwi2mask_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;dwi2mask_params&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -540,6 +610,76 @@
     
     
 
+                </section>
+                <section id="Dwi2maskConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2maskConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskConfigParameters"></a>
+    
+    
+
+                            <div id="Dwi2maskConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Dwi2maskFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2maskFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskFslgradParameters"></a>
+    
+    
+
+                            <div id="Dwi2maskFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Dwi2maskOutputs">
                             <input id="Dwi2maskOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -608,12 +748,168 @@
 
                             </div>
                 </section>
+                <section id="Dwi2maskParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Dwi2maskParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters"></a>
+    
+    
+
+                            <div id="Dwi2maskParameters.clean_scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">clean_scale</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.clean_scale"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#Dwi2maskFslgradParameters">Dwi2maskFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Dwi2maskConfigParameters">Dwi2maskConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="Dwi2maskParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Dwi2maskParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="dwi2mask">
                             <input id="dwi2mask-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2mask</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2maskOutputs">Dwi2maskOutputs</a></span>:</span></span>
+        <span class="name">dwi2mask</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Dwi2maskFslgradParameters">Dwi2maskFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Dwi2maskConfigParameters">Dwi2maskConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2maskOutputs">Dwi2maskOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2mask-view-source"><span>View Source</span></label>
 
@@ -749,7 +1045,7 @@ MRI, 2016, 5.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2mask_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskConfigParameters</span>:</span></span>
+        <span class="name">dwi2mask_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2maskConfigParameters">Dwi2maskConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2mask_config_params-view-source"><span>View Source</span></label>
 
@@ -800,7 +1096,7 @@ MRI, 2016, 5.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2mask_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskFslgradParameters</span>:</span></span>
+        <span class="name">dwi2mask_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2maskFslgradParameters">Dwi2maskFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2mask_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -857,7 +1153,7 @@ MRI, 2016, 5.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwi2mask_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwi2mask</span><span class="o">.</span><span class="n">Dwi2maskParameters</span>:</span></span>
+        <span class="name">dwi2mask_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">clean_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Dwi2maskFslgradParameters">Dwi2maskFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Dwi2maskConfigParameters">Dwi2maskConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Dwi2maskParameters">Dwi2maskParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwi2mask_params-view-source"><span>View Source</span></label>
 
@@ -968,186 +1264,5 @@ MRI, 2016, 5.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

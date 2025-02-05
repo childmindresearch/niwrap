@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisTargetPosOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisTargetPosParameters">MrisTargetPosParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.input_surface">input_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.output_surface">output_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.adgws_file">adgws_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.threshold_values">threshold_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.interpolation_method">interpolation_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.debug_vertex">debug_vertex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.cbv_flag">cbv_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.debug_flag">debug_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.check_options">check_options</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisTargetPosParameters.version_flag">version_flag</a>
                         </li>
                 </ul>
 
@@ -363,9 +406,10 @@
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;MRIS_TARGET_POS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;MrisTargetPosOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;mris_target_pos&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;mris_target_pos_params&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="p">]</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;MrisTargetPosParameters&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;mris_target_pos&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;mris_target_pos_params&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -432,6 +476,162 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisTargetPosParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisTargetPosParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters"></a>
+    
+    
+
+                            <div id="MrisTargetPosParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.input_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.input_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.output_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_surface</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.output_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.adgws_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">adgws_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.adgws_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.threshold_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold_values</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.threshold_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.interpolation_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interpolation_method</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.interpolation_method"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.debug_vertex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_vertex</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.debug_vertex"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.cbv_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cbv_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.cbv_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.debug_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.check_options" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_options</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.check_options"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisTargetPosParameters.version_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisTargetPosParameters.version_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -536,7 +736,7 @@ other parameters.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_target_pos_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">adgws_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">threshold_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_vertex</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbv_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_options</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_target_pos</span><span class="o">.</span><span class="n">MrisTargetPosParameters</span>:</span></span>
+        <span class="name">mris_target_pos_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">adgws_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">threshold_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interpolation_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_vertex</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbv_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_options</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisTargetPosParameters">MrisTargetPosParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_target_pos_params-view-source"><span>View Source</span></label>
 
@@ -632,186 +832,5 @@ other parameters.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

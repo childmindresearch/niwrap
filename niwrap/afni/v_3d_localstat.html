@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dLocalstatOutputs.outfile">outfile</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dLocalstatParameters">V3dLocalstatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.dataset">dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.nbhd">nbhd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.stat">stat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.automask">automask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.use_nonmask">use_nonmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.datum">datum</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.label_ext">label_ext</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.reduce_grid">reduce_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.reduce_restore_grid">reduce_restore_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.reduce_max_vox">reduce_max_vox</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.grid_rmode">grid_rmode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.proceed_small_N">proceed_small_N</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.fillvalue">fillvalue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.unfillvalue">unfillvalue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.maskvalue">maskvalue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dLocalstatParameters.maskvalue2">maskvalue2</a>
                         </li>
                 </ul>
 
@@ -477,10 +541,11 @@
 </span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>
 </span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;V3dLocalstatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;V_3D_LOCALSTAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;v_3d_localstat&quot;</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;v_3d_localstat_params&quot;</span><span class="p">,</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="p">]</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;V3dLocalstatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;V_3D_LOCALSTAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;v_3d_localstat&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;v_3d_localstat_params&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -549,6 +614,239 @@
             <div class="docstring"><p>Output dataset</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dLocalstatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dLocalstatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters"></a>
+    
+    
+
+                            <div id="V3dLocalstatParameters.dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.nbhd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nbhd</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.nbhd"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.stat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stat</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.stat"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.automask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">automask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.automask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.use_nonmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_nonmask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.use_nonmask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.datum" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datum</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.datum"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.label_ext" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_ext</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.label_ext"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.reduce_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reduce_grid</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.reduce_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.reduce_restore_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reduce_restore_grid</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.reduce_restore_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.reduce_max_vox" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reduce_max_vox</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.reduce_max_vox"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.grid_rmode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grid_rmode</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.grid_rmode"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.proceed_small_N" class="classattr">
+                                <div class="attr variable">
+            <span class="name">proceed_small_N</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.proceed_small_N"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.fillvalue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fillvalue</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.fillvalue"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.unfillvalue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">unfillvalue</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.unfillvalue"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.maskvalue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskvalue</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.maskvalue"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dLocalstatParameters.maskvalue2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskvalue2</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dLocalstatParameters.maskvalue2"></a>
+    
+    
 
                             </div>
                 </section>
@@ -698,7 +996,7 @@ that voxel.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_localstat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nbhd</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stat_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">use_nonmask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_ext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_restore_grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_max_vox</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grid_rmode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">proceed_small_n</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unfillvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maskvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maskvalue2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_localstat</span><span class="o">.</span><span class="n">V3dLocalstatParameters</span>:</span></span>
+        <span class="name">v_3d_localstat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nbhd</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stat_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">use_nonmask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_ext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_restore_grid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reduce_max_vox</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grid_rmode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">proceed_small_n</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">unfillvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maskvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maskvalue2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dLocalstatParameters">V3dLocalstatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_localstat_params-view-source"><span>View Source</span></label>
 
@@ -842,186 +1140,5 @@ that voxel.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

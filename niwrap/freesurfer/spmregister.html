@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SpmregisterOutputs.resampled_mov">resampled_mov</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SpmregisterParameters">SpmregisterParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.subjid">subjid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.mov">mov</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.reg">reg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.frame">frame</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.mid_frame">mid_frame</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.template_out">template_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.fsvol">fsvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.force_ras">force_ras</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.outvol">outvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.tmpdir">tmpdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.nocleanup">nocleanup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SpmregisterParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -385,9 +428,10 @@
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;SPMREGISTER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;SpmregisterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;spmregister&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;spmregister_params&quot;</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="p">]</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;SpmregisterParameters&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;spmregister&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;spmregister_params&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -484,6 +528,162 @@
             <div class="docstring"><p>Resampled mov volume.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SpmregisterParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SpmregisterParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters"></a>
+    
+    
+
+                            <div id="SpmregisterParameters.subjid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjid</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.subjid"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.mov" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mov</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.mov"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.reg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reg</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.reg"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.frame" class="classattr">
+                                <div class="attr variable">
+            <span class="name">frame</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.frame"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.mid_frame" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mid_frame</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.mid_frame"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.template_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">template_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.template_out"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.fsvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fsvol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.fsvol"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.force_ras" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force_ras</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.force_ras"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.outvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outvol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.outvol"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.tmpdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tmpdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.tmpdir"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.nocleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.nocleanup"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="SpmregisterParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SpmregisterParameters.help"></a>
+    
+    
 
                             </div>
                 </section>
@@ -590,7 +790,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">spmregister_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjid</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mov</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">reg</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">frame</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mid_frame</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">template_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">force_ras</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">outvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tmpdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">spmregister</span><span class="o">.</span><span class="n">SpmregisterParameters</span>:</span></span>
+        <span class="name">spmregister_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjid</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mov</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">reg</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">frame</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mid_frame</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">template_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">force_ras</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">outvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tmpdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#SpmregisterParameters">SpmregisterParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="spmregister_params-view-source"><span>View Source</span></label>
 
@@ -691,186 +891,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

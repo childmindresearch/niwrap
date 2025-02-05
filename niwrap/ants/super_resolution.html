@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,33 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SuperResolutionOutputs.super_resolved_image">super_resolved_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SuperResolutionParameters">SuperResolutionParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.image_dimension">image_dimension</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.output_image">output_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.domain_image">domain_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.gradient_sigma">gradient_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.mesh_size">mesh_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.number_of_levels">number_of_levels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SuperResolutionParameters.input_image_files">input_image_files</a>
                         </li>
                 </ul>
 
@@ -302,9 +327,10 @@
 </span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;SUPER_RESOLUTION_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;SuperResolutionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;super_resolution&quot;</span><span class="p">,</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="s2">&quot;super_resolution_params&quot;</span><span class="p">,</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="p">]</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;SuperResolutionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="s2">&quot;super_resolution&quot;</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="s2">&quot;super_resolution_params&quot;</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -386,6 +412,96 @@
             <div class="docstring"><p>The output super-resolved image file.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SuperResolutionParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SuperResolutionParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters"></a>
+    
+    
+
+                            <div id="SuperResolutionParameters.image_dimension" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimension</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.image_dimension"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.output_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_image</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.output_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.domain_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">domain_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.domain_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.gradient_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gradient_sigma</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.gradient_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.mesh_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mesh_size</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.mesh_size"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.number_of_levels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_levels</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.number_of_levels"></a>
+    
+    
+
+                            </div>
+                            <div id="SuperResolutionParameters.input_image_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image_files</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SuperResolutionParameters.input_image_files"></a>
+    
+    
 
                             </div>
                 </section>
@@ -479,7 +595,7 @@ input images for weighting the voxel points during fitting. If a negative
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">super_resolution_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gradient_sigma</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">mesh_size</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">number_of_levels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">super_resolution</span><span class="o">.</span><span class="n">SuperResolutionParameters</span>:</span></span>
+        <span class="name">super_resolution_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gradient_sigma</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">mesh_size</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">number_of_levels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">input_image_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#SuperResolutionParameters">SuperResolutionParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="super_resolution_params-view-source"><span>View Source</span></label>
 
@@ -550,186 +666,5 @@ input images for weighting the voxel points during fitting. If a negative
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#BORDER_MERGE_METADATA">BORDER_MERGE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#BorderMergeBorderParameters">BorderMergeBorderParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderMergeBorderParameters.border_file_in">border_file_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderMergeBorderParameters.select">select</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#BorderMergeOutputs">BorderMergeOutputs</a>
@@ -44,6 +54,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#BorderMergeOutputs.border_file_out">border_file_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BorderMergeParameters">BorderMergeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderMergeParameters.border_file_out">border_file_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderMergeParameters.border">border</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BorderMergeSelectParameters">BorderMergeSelectParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderMergeSelectParameters.border">border</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderMergeSelectParameters.up_to">up_to</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BorderMergeUpToParameters">BorderMergeUpToParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BorderMergeUpToParameters.last_border">last_border</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BorderMergeUpToParameters.opt_reverse">opt_reverse</a>
                         </li>
                 </ul>
 
@@ -428,13 +474,17 @@
 </span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>
 </span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;BORDER_MERGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;BorderMergeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="s2">&quot;border_merge&quot;</span><span class="p">,</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;border_merge_border_params&quot;</span><span class="p">,</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;border_merge_params&quot;</span><span class="p">,</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="s2">&quot;border_merge_select_params&quot;</span><span class="p">,</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="s2">&quot;border_merge_up_to_params&quot;</span><span class="p">,</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="p">]</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;BorderMergeBorderParameters&quot;</span><span class="p">,</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="s2">&quot;BorderMergeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;BorderMergeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;BorderMergeSelectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="s2">&quot;BorderMergeUpToParameters&quot;</span><span class="p">,</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="s2">&quot;border_merge&quot;</span><span class="p">,</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="s2">&quot;border_merge_border_params&quot;</span><span class="p">,</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;border_merge_params&quot;</span><span class="p">,</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="s2">&quot;border_merge_select_params&quot;</span><span class="p">,</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;border_merge_up_to_params&quot;</span><span class="p">,</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -451,6 +501,41 @@
     
     
 
+                </section>
+                <section id="BorderMergeBorderParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderMergeBorderParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeBorderParameters"></a>
+    
+    
+
+                            <div id="BorderMergeBorderParameters.border_file_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">border_file_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeBorderParameters.border_file_in"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderMergeBorderParameters.select" class="classattr">
+                                <div class="attr variable">
+            <span class="name">select</span><span class="annotation">: NotRequired[list[<a href="#BorderMergeSelectParameters">BorderMergeSelectParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeBorderParameters.select"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="BorderMergeOutputs">
                             <input id="BorderMergeOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -519,12 +604,117 @@
 
                             </div>
                 </section>
+                <section id="BorderMergeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderMergeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeParameters"></a>
+    
+    
+
+                            <div id="BorderMergeParameters.border_file_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">border_file_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeParameters.border_file_out"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderMergeParameters.border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">border</span><span class="annotation">: NotRequired[list[<a href="#BorderMergeBorderParameters">BorderMergeBorderParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeParameters.border"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="BorderMergeSelectParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderMergeSelectParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeSelectParameters"></a>
+    
+    
+
+                            <div id="BorderMergeSelectParameters.border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">border</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeSelectParameters.border"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderMergeSelectParameters.up_to" class="classattr">
+                                <div class="attr variable">
+            <span class="name">up_to</span><span class="annotation">: NotRequired[<a href="#BorderMergeUpToParameters">BorderMergeUpToParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeSelectParameters.up_to"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="BorderMergeUpToParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BorderMergeUpToParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeUpToParameters"></a>
+    
+    
+
+                            <div id="BorderMergeUpToParameters.last_border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">last_border</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeUpToParameters.last_border"></a>
+    
+    
+
+                            </div>
+                            <div id="BorderMergeUpToParameters.opt_reverse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_reverse</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BorderMergeUpToParameters.opt_reverse"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="border_merge">
                             <input id="border_merge-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeBorderParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeOutputs">BorderMergeOutputs</a></span>:</span></span>
+        <span class="name">border_merge</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#BorderMergeBorderParameters">BorderMergeBorderParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeOutputs">BorderMergeOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_merge-view-source"><span>View Source</span></label>
 
@@ -602,7 +792,7 @@ borders from second.border, and write these to out.border.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_merge_border_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">select_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeSelectParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeBorderParameters</span>:</span></span>
+        <span class="name">border_merge_border_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">select_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#BorderMergeSelectParameters">BorderMergeSelectParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeBorderParameters">BorderMergeBorderParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_merge_border_params-view-source"><span>View Source</span></label>
 
@@ -654,7 +844,7 @@ borders from second.border, and write these to out.border.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_merge_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeBorderParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeParameters</span>:</span></span>
+        <span class="name">border_merge_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border_file_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#BorderMergeBorderParameters">BorderMergeBorderParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeParameters">BorderMergeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_merge_params-view-source"><span>View Source</span></label>
 
@@ -706,7 +896,7 @@ borders from second.border, and write these to out.border.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_merge_select_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">up_to</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeUpToParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeSelectParameters</span>:</span></span>
+        <span class="name">border_merge_select_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">up_to</span><span class="p">:</span> <span class="n"><a href="#BorderMergeUpToParameters">BorderMergeUpToParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeSelectParameters">BorderMergeSelectParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_merge_select_params-view-source"><span>View Source</span></label>
 
@@ -758,7 +948,7 @@ borders from second.border, and write these to out.border.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">border_merge_up_to_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">last_border</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">border_merge</span><span class="o">.</span><span class="n">BorderMergeUpToParameters</span>:</span></span>
+        <span class="name">border_merge_up_to_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">last_border</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#BorderMergeUpToParameters">BorderMergeUpToParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="border_merge_up_to_params-view-source"><span>View Source</span></label>
 
@@ -805,186 +995,5 @@ borders from second.border, and write these to out.border.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

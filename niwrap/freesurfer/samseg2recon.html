@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Samseg2reconOutputs.orig_mgz">orig_mgz</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Samseg2reconParameters">Samseg2reconParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.samseg_dir">samseg_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.no_cc">no_cc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.fill">fill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.normalization2">normalization2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.uchar">uchar</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.no_keep_exc">no_keep_exc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.long_tp">long_tp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.base">base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.from_recon_all">from_recon_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Samseg2reconParameters.force_update">force_update</a>
                         </li>
                 </ul>
 
@@ -368,9 +408,10 @@
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="s2">&quot;SAMSEG2RECON_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;Samseg2reconOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;samseg2recon&quot;</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;samseg2recon_params&quot;</span><span class="p">,</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="p">]</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;Samseg2reconParameters&quot;</span><span class="p">,</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;samseg2recon&quot;</span><span class="p">,</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;samseg2recon_params&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -487,6 +528,151 @@ used.</p>
 
                             </div>
                 </section>
+                <section id="Samseg2reconParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Samseg2reconParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters"></a>
+    
+    
+
+                            <div id="Samseg2reconParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.samseg_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">samseg_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.samseg_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.no_cc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.no_cc"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.fill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.fill"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.normalization2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normalization2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.normalization2"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.uchar" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uchar</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.uchar"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.no_keep_exc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_keep_exc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.no_keep_exc"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.long_tp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">long_tp</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.long_tp"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.base"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.from_recon_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">from_recon_all</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.from_recon_all"></a>
+    
+    
+
+                            </div>
+                            <div id="Samseg2reconParameters.force_update" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force_update</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Samseg2reconParameters.force_update"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="samseg2recon">
                             <input id="samseg2recon-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -586,7 +772,7 @@ outputs.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">samseg2recon_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">samseg_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">normalization2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uchar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_keep_exc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">long_tp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_recon_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">samseg2recon</span><span class="o">.</span><span class="n">Samseg2reconParameters</span>:</span></span>
+        <span class="name">samseg2recon_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">samseg_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">normalization2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uchar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_keep_exc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">long_tp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_recon_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Samseg2reconParameters">Samseg2reconParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="samseg2recon_params-view-source"><span>View Source</span></label>
 
@@ -678,186 +864,5 @@ outputs.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

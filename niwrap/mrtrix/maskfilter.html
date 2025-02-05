@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#MASKFILTER_METADATA">MASKFILTER_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#MaskfilterConfigParameters">MaskfilterConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MaskfilterConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#MaskfilterOutputs">MaskfilterOutputs</a>
@@ -44,6 +54,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MaskfilterOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MaskfilterParameters">MaskfilterParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.scale">scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.axes">axes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.largest">largest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.connectivity">connectivity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.npass">npass</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.extent">extent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.strides">strides</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.filter">filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MaskfilterParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MaskfilterVariousFileParameters">MaskfilterVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MaskfilterVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MaskfilterVariousStringParameters">MaskfilterVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MaskfilterVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -586,13 +674,17 @@
 </span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a>
 </span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a>    <span class="s2">&quot;MASKFILTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;MaskfilterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;maskfilter&quot;</span><span class="p">,</span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;maskfilter_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;maskfilter_params&quot;</span><span class="p">,</span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;maskfilter_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;maskfilter_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="p">]</span>
+</span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;MaskfilterConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;MaskfilterOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;MaskfilterParameters&quot;</span><span class="p">,</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;MaskfilterVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;MaskfilterVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;maskfilter&quot;</span><span class="p">,</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>    <span class="s2">&quot;maskfilter_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a>    <span class="s2">&quot;maskfilter_params&quot;</span><span class="p">,</span>
+</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>    <span class="s2">&quot;maskfilter_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a>    <span class="s2">&quot;maskfilter_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -609,6 +701,41 @@
     
     
 
+                </section>
+                <section id="MaskfilterConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MaskfilterConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterConfigParameters"></a>
+    
+    
+
+                            <div id="MaskfilterConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="MaskfilterOutputs">
                             <input id="MaskfilterOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -677,12 +804,271 @@
 
                             </div>
                 </section>
+                <section id="MaskfilterParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MaskfilterParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters"></a>
+    
+    
+
+                            <div id="MaskfilterParameters.scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.scale"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.axes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">axes</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.axes"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.largest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">largest</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.largest"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.connectivity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">connectivity</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.connectivity"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.npass" class="classattr">
+                                <div class="attr variable">
+            <span class="name">npass</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.npass"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.extent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extent</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.extent"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.strides" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strides</span><span class="annotation">: NotRequired[Union[<a href="#MaskfilterVariousStringParameters">MaskfilterVariousStringParameters</a>, <a href="#MaskfilterVariousFileParameters">MaskfilterVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.strides"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#MaskfilterConfigParameters">MaskfilterConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">filter</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.filter"></a>
+    
+    
+
+                            </div>
+                            <div id="MaskfilterParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MaskfilterVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MaskfilterVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterVariousFileParameters"></a>
+    
+    
+
+                            <div id="MaskfilterVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MaskfilterVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MaskfilterVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterVariousStringParameters"></a>
+    
+    
+
+                            <div id="MaskfilterVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MaskfilterVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="maskfilter">
                             <input id="maskfilter-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">maskfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">axes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">largest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connectivity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">npass</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extent</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterOutputs">MaskfilterOutputs</a></span>:</span></span>
+        <span class="name">maskfilter</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">axes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">largest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connectivity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">npass</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extent</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#MaskfilterVariousStringParameters">MaskfilterVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#MaskfilterVariousFileParameters">MaskfilterVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MaskfilterConfigParameters">MaskfilterConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterOutputs">MaskfilterOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="maskfilter-view-source"><span>View Source</span></label>
 
@@ -820,7 +1206,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">maskfilter_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterConfigParameters</span>:</span></span>
+        <span class="name">maskfilter_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterConfigParameters">MaskfilterConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="maskfilter_config_params-view-source"><span>View Source</span></label>
 
@@ -871,7 +1257,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">maskfilter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">axes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">largest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connectivity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">npass</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extent</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterParameters</span>:</span></span>
+        <span class="name">maskfilter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">axes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">largest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connectivity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">npass</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extent</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#MaskfilterVariousStringParameters">MaskfilterVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#MaskfilterVariousFileParameters">MaskfilterVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MaskfilterConfigParameters">MaskfilterConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterParameters">MaskfilterParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="maskfilter_params-view-source"><span>View Source</span></label>
 
@@ -1007,7 +1393,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">maskfilter_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousFileParameters</span>:</span></span>
+        <span class="name">maskfilter_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterVariousFileParameters">MaskfilterVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="maskfilter_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1054,7 +1440,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">maskfilter_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">maskfilter</span><span class="o">.</span><span class="n">MaskfilterVariousStringParameters</span>:</span></span>
+        <span class="name">maskfilter_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#MaskfilterVariousStringParameters">MaskfilterVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="maskfilter_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1097,186 +1483,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

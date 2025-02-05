@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#SHCONV_METADATA">SHCONV_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#ShconvConfigParameters">ShconvConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ShconvConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#ShconvOutputs">ShconvOutputs</a>
@@ -44,6 +54,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ShconvOutputs.sh_out">sh_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ShconvParameters">ShconvParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ShconvParameters.datatype">datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.strides">strides</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.odf_response">odf_response</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ShconvParameters.SH_out">SH_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ShconvVariousFileParameters">ShconvVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ShconvVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ShconvVariousStringParameters">ShconvVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ShconvVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -553,13 +623,17 @@
 </span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>
 </span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;SHCONV_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;ShconvOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="s2">&quot;shconv&quot;</span><span class="p">,</span>
-</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a>    <span class="s2">&quot;shconv_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a>    <span class="s2">&quot;shconv_params&quot;</span><span class="p">,</span>
-</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a>    <span class="s2">&quot;shconv_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a>    <span class="s2">&quot;shconv_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a><span class="p">]</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;ShconvConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="s2">&quot;ShconvOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a>    <span class="s2">&quot;ShconvParameters&quot;</span><span class="p">,</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a>    <span class="s2">&quot;ShconvVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a>    <span class="s2">&quot;ShconvVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a>    <span class="s2">&quot;shconv&quot;</span><span class="p">,</span>
+</span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a>    <span class="s2">&quot;shconv_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a>    <span class="s2">&quot;shconv_params&quot;</span><span class="p">,</span>
+</span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a>    <span class="s2">&quot;shconv_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a>    <span class="s2">&quot;shconv_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -576,6 +650,41 @@
     
     
 
+                </section>
+                <section id="ShconvConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ShconvConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvConfigParameters"></a>
+    
+    
+
+                            <div id="ShconvConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ShconvOutputs">
                             <input id="ShconvOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -644,12 +753,205 @@
 
                             </div>
                 </section>
+                <section id="ShconvParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ShconvParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters"></a>
+    
+    
+
+                            <div id="ShconvParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.strides" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strides</span><span class="annotation">: NotRequired[Union[<a href="#ShconvVariousStringParameters">ShconvVariousStringParameters</a>, <a href="#ShconvVariousFileParameters">ShconvVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.strides"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#ShconvConfigParameters">ShconvConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.odf_response" class="classattr">
+                                <div class="attr variable">
+            <span class="name">odf_response</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.odf_response"></a>
+    
+    
+
+                            </div>
+                            <div id="ShconvParameters.SH_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">SH_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvParameters.SH_out"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ShconvVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ShconvVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvVariousFileParameters"></a>
+    
+    
+
+                            <div id="ShconvVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ShconvVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ShconvVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvVariousStringParameters"></a>
+    
+    
+
+                            <div id="ShconvVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ShconvVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="shconv">
                             <input id="shconv-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">shconv</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">odf_response</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvOutputs">ShconvOutputs</a></span>:</span></span>
+        <span class="name">shconv</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">odf_response</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#ShconvVariousStringParameters">ShconvVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#ShconvVariousFileParameters">ShconvVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ShconvConfigParameters">ShconvConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvOutputs">ShconvOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="shconv-view-source"><span>View Source</span></label>
 
@@ -797,7 +1099,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">shconv_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvConfigParameters</span>:</span></span>
+        <span class="name">shconv_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvConfigParameters">ShconvConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="shconv_config_params-view-source"><span>View Source</span></label>
 
@@ -848,7 +1150,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">shconv_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">odf_response</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvParameters</span>:</span></span>
+        <span class="name">shconv_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">odf_response</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">sh_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#ShconvVariousStringParameters">ShconvVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#ShconvVariousFileParameters">ShconvVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ShconvConfigParameters">ShconvConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvParameters">ShconvParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="shconv_params-view-source"><span>View Source</span></label>
 
@@ -955,7 +1257,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">shconv_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousFileParameters</span>:</span></span>
+        <span class="name">shconv_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvVariousFileParameters">ShconvVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="shconv_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1002,7 +1304,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">shconv_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">shconv</span><span class="o">.</span><span class="n">ShconvVariousStringParameters</span>:</span></span>
+        <span class="name">shconv_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ShconvVariousStringParameters">ShconvVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="shconv_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1045,186 +1347,5 @@ described the main documentation, which can be found at the following link:
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

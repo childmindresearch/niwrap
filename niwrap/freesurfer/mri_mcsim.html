@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriMcsimOutputs.log_output">log_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriMcsimParameters">MriMcsimParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.top_output_dir">top_output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.base_name">base_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.num_repetitions">num_repetitions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.fwhm_values">fwhm_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.fwhm_max">fwhm_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.avg_vertex_area">avg_vertex_area</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.random_seed">random_seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.label_file">label_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.no_label">no_label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.no_save_mask">no_save_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.surface_name">surface_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.log_file">log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.done_file">done_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.stop_file">stop_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.save_file">save_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.save_iter">save_iter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.subjects_dir">subjects_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.check_opts">check_opts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriMcsimParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -495,9 +568,10 @@
 </span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;MRI_MCSIM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;MriMcsimOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;mri_mcsim&quot;</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;mri_mcsim_params&quot;</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="p">]</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;MriMcsimParameters&quot;</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;mri_mcsim&quot;</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;mri_mcsim_params&quot;</span><span class="p">,</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -624,6 +698,272 @@
             <div class="docstring"><p>Log file generated during execution</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriMcsimParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriMcsimParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters"></a>
+    
+    
+
+                            <div id="MriMcsimParameters.top_output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">top_output_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.top_output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.base_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.base_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.num_repetitions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_repetitions</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.num_repetitions"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.fwhm_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_values</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.fwhm_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.fwhm_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.fwhm_max"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.avg_vertex_area" class="classattr">
+                                <div class="attr variable">
+            <span class="name">avg_vertex_area</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.avg_vertex_area"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.random_seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">random_seed</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.random_seed"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.label_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.label_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.no_label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_label</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.no_label"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.no_save_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_save_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.no_save_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.surface_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.surface_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.done_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">done_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.done_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.stop_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stop_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.stop_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.save_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.save_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.save_iter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_iter</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.save_iter"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.subjects_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.check_opts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_opts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.check_opts"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MriMcsimParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriMcsimParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -756,7 +1096,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_mcsim_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">top_output_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">num_repetitions</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">fwhm_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">avg_vertex_area</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">random_seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_label</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_save_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">surface_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stop_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_iter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_mcsim</span><span class="o">.</span><span class="n">MriMcsimParameters</span>:</span></span>
+        <span class="name">mri_mcsim_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">top_output_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">num_repetitions</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">fwhm_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">avg_vertex_area</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">random_seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_label</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_save_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">surface_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stop_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_iter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriMcsimParameters">MriMcsimParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_mcsim_params-view-source"><span>View Source</span></label>
 
@@ -899,186 +1239,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

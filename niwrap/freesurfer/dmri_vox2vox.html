@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#DmriVox2voxOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DmriVox2voxParameters">DmriVox2voxParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.input_files">input_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.input_directory">input_directory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.output_files">output_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.output_directory">output_directory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.input_reference">input_reference</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.output_reference">output_reference</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.affine_registration">affine_registration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.nonlinear_registration">nonlinear_registration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.inverse_nonlinear">inverse_nonlinear</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.check_options">check_options</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DmriVox2voxParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -363,9 +406,10 @@
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;DMRI_VOX2VOX_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;DmriVox2voxOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;dmri_vox2vox&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;dmri_vox2vox_params&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="p">]</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;DmriVox2voxParameters&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;dmri_vox2vox&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;dmri_vox2vox_params&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -432,6 +476,162 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="DmriVox2voxParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DmriVox2voxParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters"></a>
+    
+    
+
+                            <div id="DmriVox2voxParameters.input_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_files</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.input_files"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.input_directory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_directory</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.input_directory"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.output_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_files</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.output_files"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.output_directory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_directory</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.output_directory"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.input_reference" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_reference</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.input_reference"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.output_reference" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_reference</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.output_reference"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.affine_registration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">affine_registration</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.affine_registration"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.nonlinear_registration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonlinear_registration</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.nonlinear_registration"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.inverse_nonlinear" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inverse_nonlinear</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.inverse_nonlinear"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.check_options" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_options</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.check_options"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="DmriVox2voxParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DmriVox2voxParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -537,7 +737,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dmri_vox2vox_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">input_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_registration</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonlinear_registration</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_options</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">dmri_vox2vox</span><span class="o">.</span><span class="n">DmriVox2voxParameters</span>:</span></span>
+        <span class="name">dmri_vox2vox_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">input_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_registration</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonlinear_registration</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inverse_nonlinear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_options</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#DmriVox2voxParameters">DmriVox2voxParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dmri_vox2vox_params-view-source"><span>View Source</span></label>
 
@@ -634,186 +834,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

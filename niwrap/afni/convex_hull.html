@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConvexHullOutputs.out_surf">out_surf</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvexHullParameters">ConvexHullParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.vol">vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.isoval">isoval</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.isorange">isorange</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.isocmask">isocmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.xform">xform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.surface_input">surface_input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.surf_vol">surf_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.input_1d">input_1d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.q_opt">q_opt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.proj_xy">proj_xy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.orig_coord">orig_coord</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.these_coords">these_coords</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.output_prefix">output_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.novolreg">novolreg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvexHullParameters.setenv">setenv</a>
                         </li>
                 </ul>
 
@@ -441,9 +493,10 @@
 </span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;CONVEX_HULL_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;ConvexHullOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;convex_hull&quot;</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;convex_hull_params&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="p">]</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;ConvexHullParameters&quot;</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;convex_hull&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;convex_hull_params&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -525,6 +578,195 @@
             <div class="docstring"><p>Output surface file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="ConvexHullParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvexHullParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters"></a>
+    
+    
+
+                            <div id="ConvexHullParameters.vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.vol"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.isoval" class="classattr">
+                                <div class="attr variable">
+            <span class="name">isoval</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.isoval"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.isorange" class="classattr">
+                                <div class="attr variable">
+            <span class="name">isorange</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.isorange"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.isocmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">isocmask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.isocmask"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.xform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xform</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.xform"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.surface_input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_input</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.surface_input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.surf_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.surf_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.input_1d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_1d</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.input_1d"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.q_opt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">q_opt</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.q_opt"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.proj_xy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">proj_xy</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.proj_xy"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.orig_coord" class="classattr">
+                                <div class="attr variable">
+            <span class="name">orig_coord</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.orig_coord"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.these_coords" class="classattr">
+                                <div class="attr variable">
+            <span class="name">these_coords</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.these_coords"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.output_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.output_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.novolreg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">novolreg</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.novolreg"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvexHullParameters.setenv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">setenv</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvexHullParameters.setenv"></a>
+    
+    
 
                             </div>
                 </section>
@@ -647,7 +889,7 @@ of points.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convex_hull_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isoval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isorange</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isocmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_input</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_1d</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_opt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proj_xy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">orig_coord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">these_coords</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">novolreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setenv</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">ConvexHullParameters</span>:</span></span>
+        <span class="name">convex_hull_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isoval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isorange</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">isocmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_input</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_1d</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_opt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proj_xy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">orig_coord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">these_coords</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">novolreg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setenv</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvexHullParameters">ConvexHullParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convex_hull_params-view-source"><span>View Source</span></label>
 
@@ -773,186 +1015,5 @@ of points.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisCaLabelOutputs.labeled_surface">labeled_surface</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisCaLabelParameters">MrisCaLabelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.canonsurf">canonsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.classifier">classifier</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.outputfile">outputfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.seed">seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.sdir">sdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.orig">orig</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.long_flag">long_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.r">r</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.novar_flag">novar_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.nbrs">nbrs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.f">f</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.t">t</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.p">p</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.v">v</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.w">w</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCaLabelParameters.version_flag">version_flag</a>
                         </li>
                 </ul>
 
@@ -440,9 +501,10 @@
 </span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="s2">&quot;MRIS_CA_LABEL_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;MrisCaLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;mris_ca_label&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;mris_ca_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="p">]</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;MrisCaLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;mris_ca_label&quot;</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;mris_ca_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -524,6 +586,228 @@
             <div class="docstring"><p>Labeled cortical surface model</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisCaLabelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisCaLabelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters"></a>
+    
+    
+
+                            <div id="MrisCaLabelParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.canonsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">canonsurf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.canonsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.classifier" class="classattr">
+                                <div class="attr variable">
+            <span class="name">classifier</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.classifier"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.outputfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outputfile</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.outputfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.seed"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.sdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.sdir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.orig" class="classattr">
+                                <div class="attr variable">
+            <span class="name">orig</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.orig"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.long_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">long_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.long_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.r" class="classattr">
+                                <div class="attr variable">
+            <span class="name">r</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.r"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.novar_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">novar_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.novar_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.nbrs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nbrs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.nbrs"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.f" class="classattr">
+                                <div class="attr variable">
+            <span class="name">f</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.f"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.t" class="classattr">
+                                <div class="attr variable">
+            <span class="name">t</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.t"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.p" class="classattr">
+                                <div class="attr variable">
+            <span class="name">p</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.p"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.v" class="classattr">
+                                <div class="attr variable">
+            <span class="name">v</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.v"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.w" class="classattr">
+                                <div class="attr variable">
+            <span class="name">w</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.w"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCaLabelParameters.version_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCaLabelParameters.version_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -651,7 +935,7 @@ neuroanatomical label using a previously-prepared atlas file.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_ca_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">canonsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">classifier</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">long_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">r</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">novar_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nbrs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">f</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">p</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">w</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_ca_label</span><span class="o">.</span><span class="n">MrisCaLabelParameters</span>:</span></span>
+        <span class="name">mris_ca_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">canonsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">classifier</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outputfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">long_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">r</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">novar_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nbrs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">f</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">p</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">w</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisCaLabelParameters">MrisCaLabelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_ca_label_params-view-source"><span>View Source</span></label>
 
@@ -782,186 +1066,5 @@ neuroanatomical label using a previously-prepared atlas file.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

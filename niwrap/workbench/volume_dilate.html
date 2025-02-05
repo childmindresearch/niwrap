@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,15 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#VOLUME_DILATE_METADATA">VOLUME_DILATE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#VolumeDilateGradExtrapolateParameters">VolumeDilateGradExtrapolateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeDilateGradExtrapolateParameters.presmooth">presmooth</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#VolumeDilateOutputs">VolumeDilateOutputs</a>
@@ -44,6 +51,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeDilateOutputs.volume_out">volume_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeDilateParameters">VolumeDilateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.volume">volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.distance">distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.method">method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.volume_out">volume_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.opt_exponent_exponent">opt_exponent_exponent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.opt_bad_voxel_roi_roi_volume">opt_bad_voxel_roi_roi_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.opt_data_roi_roi_volume">opt_data_roi_roi_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.opt_subvolume_subvol">opt_subvolume_subvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.opt_legacy_cutoff">opt_legacy_cutoff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilateParameters.grad_extrapolate">grad_extrapolate</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeDilatePresmoothParameters">VolumeDilatePresmoothParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeDilatePresmoothParameters.kernel">kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeDilatePresmoothParameters.opt_fwhm">opt_fwhm</a>
                         </li>
                 </ul>
 
@@ -484,12 +539,15 @@
 </span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;VOLUME_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;VolumeDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;volume_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;volume_dilate_grad_extrapolate_params&quot;</span><span class="p">,</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;volume_dilate_params&quot;</span><span class="p">,</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;volume_dilate_presmooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="p">]</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;VolumeDilateGradExtrapolateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;VolumeDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;VolumeDilateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;VolumeDilatePresmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;volume_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;volume_dilate_grad_extrapolate_params&quot;</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;volume_dilate_params&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;volume_dilate_presmooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -506,6 +564,30 @@
     
     
 
+                </section>
+                <section id="VolumeDilateGradExtrapolateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeDilateGradExtrapolateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateGradExtrapolateParameters"></a>
+    
+    
+
+                            <div id="VolumeDilateGradExtrapolateParameters.presmooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">presmooth</span><span class="annotation">: NotRequired[<a href="#VolumeDilatePresmoothParameters">VolumeDilatePresmoothParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateGradExtrapolateParameters.presmooth"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="VolumeDilateOutputs">
                             <input id="VolumeDilateOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -574,12 +656,170 @@
 
                             </div>
                 </section>
+                <section id="VolumeDilateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeDilateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters"></a>
+    
+    
+
+                            <div id="VolumeDilateParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">distance</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.distance"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">method</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.method"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.volume_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.volume_out"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.opt_exponent_exponent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_exponent_exponent</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.opt_exponent_exponent"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.opt_bad_voxel_roi_roi_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_bad_voxel_roi_roi_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.opt_bad_voxel_roi_roi_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.opt_data_roi_roi_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_data_roi_roi_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.opt_data_roi_roi_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.opt_subvolume_subvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_subvolume_subvol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.opt_subvolume_subvol"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.opt_legacy_cutoff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_legacy_cutoff</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.opt_legacy_cutoff"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilateParameters.grad_extrapolate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad_extrapolate</span><span class="annotation">: NotRequired[<a href="#VolumeDilateGradExtrapolateParameters">VolumeDilateGradExtrapolateParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilateParameters.grad_extrapolate"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeDilatePresmoothParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeDilatePresmoothParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilatePresmoothParameters"></a>
+    
+    
+
+                            <div id="VolumeDilatePresmoothParameters.kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kernel</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilatePresmoothParameters.kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeDilatePresmoothParameters.opt_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fwhm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeDilatePresmoothParameters.opt_fwhm"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="volume_dilate">
                             <input id="volume_dilate-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_dilate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_data_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad_extrapolate</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilateGradExtrapolateParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeDilateOutputs">VolumeDilateOutputs</a></span>:</span></span>
+        <span class="name">volume_dilate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_data_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad_extrapolate</span><span class="p">:</span> <span class="n"><a href="#VolumeDilateGradExtrapolateParameters">VolumeDilateGradExtrapolateParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeDilateOutputs">VolumeDilateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_dilate-view-source"><span>View Source</span></label>
 
@@ -707,7 +947,7 @@ WEIGHTED - use a weighted average based on distance.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_dilate_grad_extrapolate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">presmooth</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilatePresmoothParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilateGradExtrapolateParameters</span>:</span></span>
+        <span class="name">volume_dilate_grad_extrapolate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">presmooth</span><span class="p">:</span> <span class="n"><a href="#VolumeDilatePresmoothParameters">VolumeDilatePresmoothParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeDilateGradExtrapolateParameters">VolumeDilateGradExtrapolateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_dilate_grad_extrapolate_params-view-source"><span>View Source</span></label>
 
@@ -756,7 +996,7 @@ WEIGHTED - use a weighted average based on distance.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_dilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_data_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad_extrapolate</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilateGradExtrapolateParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilateParameters</span>:</span></span>
+        <span class="name">volume_dilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_data_roi_roi_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad_extrapolate</span><span class="p">:</span> <span class="n"><a href="#VolumeDilateGradExtrapolateParameters">VolumeDilateGradExtrapolateParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeDilateParameters">VolumeDilateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_dilate_params-view-source"><span>View Source</span></label>
 
@@ -852,7 +1092,7 @@ WEIGHTED - use a weighted average based on distance.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_dilate_presmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_dilate</span><span class="o">.</span><span class="n">VolumeDilatePresmoothParameters</span>:</span></span>
+        <span class="name">volume_dilate_presmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeDilatePresmoothParameters">VolumeDilatePresmoothParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_dilate_presmooth_params-view-source"><span>View Source</span></label>
 
@@ -900,186 +1140,5 @@ WEIGHTED - use a weighted average based on distance.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

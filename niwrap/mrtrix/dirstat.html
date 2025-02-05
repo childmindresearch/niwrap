@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,30 @@
                     <a class="variable" href="#DIRSTAT_METADATA">DIRSTAT_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#DirstatConfigParameters">DirstatConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DirstatConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DirstatFslgradParameters">DirstatFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DirstatFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#DirstatOutputs">DirstatOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +63,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#DirstatOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DirstatParameters">DirstatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DirstatParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.shells">shells</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DirstatParameters.dirs">dirs</a>
                         </li>
                 </ul>
 
@@ -581,12 +648,15 @@
 </span><span id="L-501"><a href="#L-501"><span class="linenos">501</span></a>
 </span><span id="L-502"><a href="#L-502"><span class="linenos">502</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-503"><a href="#L-503"><span class="linenos">503</span></a>    <span class="s2">&quot;DIRSTAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;DirstatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;dirstat&quot;</span><span class="p">,</span>
-</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;dirstat_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;dirstat_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;dirstat_params&quot;</span><span class="p">,</span>
-</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a><span class="p">]</span>
+</span><span id="L-504"><a href="#L-504"><span class="linenos">504</span></a>    <span class="s2">&quot;DirstatConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-505"><a href="#L-505"><span class="linenos">505</span></a>    <span class="s2">&quot;DirstatFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-506"><a href="#L-506"><span class="linenos">506</span></a>    <span class="s2">&quot;DirstatOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-507"><a href="#L-507"><span class="linenos">507</span></a>    <span class="s2">&quot;DirstatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-508"><a href="#L-508"><span class="linenos">508</span></a>    <span class="s2">&quot;dirstat&quot;</span><span class="p">,</span>
+</span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>    <span class="s2">&quot;dirstat_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a>    <span class="s2">&quot;dirstat_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>    <span class="s2">&quot;dirstat_params&quot;</span><span class="p">,</span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -603,6 +673,76 @@
     
     
 
+                </section>
+                <section id="DirstatConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DirstatConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatConfigParameters"></a>
+    
+    
+
+                            <div id="DirstatConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="DirstatFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DirstatFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatFslgradParameters"></a>
+    
+    
+
+                            <div id="DirstatFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="DirstatOutputs">
                             <input id="DirstatOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -656,12 +796,168 @@
 
                             </div>
                 </section>
+                <section id="DirstatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DirstatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters"></a>
+    
+    
+
+                            <div id="DirstatParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.shells" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shells</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.shells"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#DirstatFslgradParameters">DirstatFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#DirstatConfigParameters">DirstatConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="DirstatParameters.dirs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dirs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DirstatParameters.dirs"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="dirstat">
                             <input id="dirstat-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirstat</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirstatOutputs">DirstatOutputs</a></span>:</span></span>
+        <span class="name">dirstat</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#DirstatFslgradParameters">DirstatFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#DirstatConfigParameters">DirstatConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirstatOutputs">DirstatOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirstat-view-source"><span>View Source</span></label>
 
@@ -854,7 +1150,7 @@ N for the number of directions.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirstat_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatConfigParameters</span>:</span></span>
+        <span class="name">dirstat_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirstatConfigParameters">DirstatConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirstat_config_params-view-source"><span>View Source</span></label>
 
@@ -905,7 +1201,7 @@ N for the number of directions.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirstat_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatFslgradParameters</span>:</span></span>
+        <span class="name">dirstat_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirstatFslgradParameters">DirstatFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirstat_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -962,7 +1258,7 @@ N for the number of directions.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dirstat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dirstat</span><span class="o">.</span><span class="n">DirstatParameters</span>:</span></span>
+        <span class="name">dirstat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dirs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#DirstatFslgradParameters">DirstatFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#DirstatConfigParameters">DirstatConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#DirstatParameters">DirstatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dirstat_params-view-source"><span>View Source</span></label>
 
@@ -1082,186 +1378,5 @@ N for the number of directions.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

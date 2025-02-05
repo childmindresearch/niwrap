@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,33 @@
                     <a class="variable" href="#SCENE_FILE_UPDATE_METADATA">SCENE_FILE_UPDATE_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#SceneFileUpdateCopyMapOnePaletteParameters">SceneFileUpdateCopyMapOnePaletteParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateCopyMapOnePaletteParameters.data_file_name_suffix">data_file_name_suffix</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneFileUpdateDataFileAddParameters">SceneFileUpdateDataFileAddParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateDataFileAddParameters.name_of_data_file">name_of_data_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneFileUpdateDataFileRemoveParameters">SceneFileUpdateDataFileRemoveParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateDataFileRemoveParameters.name_of_data_file">name_of_data_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#SceneFileUpdateOutputs">SceneFileUpdateOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +66,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SceneFileUpdateOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SceneFileUpdateParameters">SceneFileUpdateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.input_scene_file">input_scene_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.output_scene_file">output_scene_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.scene_name_or_number">scene_name_or_number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.opt_fix_map_palette_settings">opt_fix_map_palette_settings</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.opt_remove_missing_files">opt_remove_missing_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.opt_error">opt_error</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.opt_verbose">opt_verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.copy_map_one_palette">copy_map_one_palette</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.data_file_add">data_file_add</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SceneFileUpdateParameters.data_file_remove">data_file_remove</a>
                         </li>
                 </ul>
 
@@ -525,13 +586,17 @@
 </span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>
 </span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;SCENE_FILE_UPDATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;SceneFileUpdateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;scene_file_update&quot;</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;scene_file_update_copy_map_one_palette_params&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;scene_file_update_data_file_add_params&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;scene_file_update_data_file_remove_params&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;scene_file_update_params&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="p">]</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;SceneFileUpdateCopyMapOnePaletteParameters&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;SceneFileUpdateDataFileAddParameters&quot;</span><span class="p">,</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;SceneFileUpdateDataFileRemoveParameters&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;SceneFileUpdateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;SceneFileUpdateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;scene_file_update&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;scene_file_update_copy_map_one_palette_params&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;scene_file_update_data_file_add_params&quot;</span><span class="p">,</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;scene_file_update_data_file_remove_params&quot;</span><span class="p">,</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;scene_file_update_params&quot;</span><span class="p">,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -548,6 +613,78 @@
     
     
 
+                </section>
+                <section id="SceneFileUpdateCopyMapOnePaletteParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneFileUpdateCopyMapOnePaletteParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateCopyMapOnePaletteParameters"></a>
+    
+    
+
+                            <div id="SceneFileUpdateCopyMapOnePaletteParameters.data_file_name_suffix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data_file_name_suffix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateCopyMapOnePaletteParameters.data_file_name_suffix"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SceneFileUpdateDataFileAddParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneFileUpdateDataFileAddParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateDataFileAddParameters"></a>
+    
+    
+
+                            <div id="SceneFileUpdateDataFileAddParameters.name_of_data_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name_of_data_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateDataFileAddParameters.name_of_data_file"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SceneFileUpdateDataFileRemoveParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneFileUpdateDataFileRemoveParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateDataFileRemoveParameters"></a>
+    
+    
+
+                            <div id="SceneFileUpdateDataFileRemoveParameters.name_of_data_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name_of_data_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateDataFileRemoveParameters.name_of_data_file"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="SceneFileUpdateOutputs">
                             <input id="SceneFileUpdateOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -601,12 +738,135 @@
 
                             </div>
                 </section>
+                <section id="SceneFileUpdateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SceneFileUpdateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters"></a>
+    
+    
+
+                            <div id="SceneFileUpdateParameters.input_scene_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_scene_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.input_scene_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.output_scene_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_scene_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.output_scene_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.scene_name_or_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scene_name_or_number</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.scene_name_or_number"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.opt_fix_map_palette_settings" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fix_map_palette_settings</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.opt_fix_map_palette_settings"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.opt_remove_missing_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_remove_missing_files</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.opt_remove_missing_files"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.opt_error" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_error</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.opt_error"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.opt_verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.opt_verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.copy_map_one_palette" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copy_map_one_palette</span><span class="annotation">: NotRequired[list[<a href="#SceneFileUpdateCopyMapOnePaletteParameters">SceneFileUpdateCopyMapOnePaletteParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.copy_map_one_palette"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.data_file_add" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data_file_add</span><span class="annotation">: NotRequired[list[<a href="#SceneFileUpdateDataFileAddParameters">SceneFileUpdateDataFileAddParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.data_file_add"></a>
+    
+    
+
+                            </div>
+                            <div id="SceneFileUpdateParameters.data_file_remove" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data_file_remove</span><span class="annotation">: NotRequired[list[<a href="#SceneFileUpdateDataFileRemoveParameters">SceneFileUpdateDataFileRemoveParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SceneFileUpdateParameters.data_file_remove"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="scene_file_update">
                             <input id="scene_file_update-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_update</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fix_map_palette_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_remove_missing_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copy_map_one_palette</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateCopyMapOnePaletteParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileAddParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileRemoveParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateOutputs">SceneFileUpdateOutputs</a></span>:</span></span>
+        <span class="name">scene_file_update</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fix_map_palette_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_remove_missing_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copy_map_one_palette</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateCopyMapOnePaletteParameters">SceneFileUpdateCopyMapOnePaletteParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateDataFileAddParameters">SceneFileUpdateDataFileAddParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateDataFileRemoveParameters">SceneFileUpdateDataFileRemoveParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateOutputs">SceneFileUpdateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_update-view-source"><span>View Source</span></label>
 
@@ -750,7 +1010,7 @@ listed after the command finishes.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_update_copy_map_one_palette_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">data_file_name_suffix</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateCopyMapOnePaletteParameters</span>:</span></span>
+        <span class="name">scene_file_update_copy_map_one_palette_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">data_file_name_suffix</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateCopyMapOnePaletteParameters">SceneFileUpdateCopyMapOnePaletteParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_update_copy_map_one_palette_params-view-source"><span>View Source</span></label>
 
@@ -798,7 +1058,7 @@ listed after the command finishes.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_update_data_file_add_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name_of_data_file</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileAddParameters</span>:</span></span>
+        <span class="name">scene_file_update_data_file_add_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name_of_data_file</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateDataFileAddParameters">SceneFileUpdateDataFileAddParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_update_data_file_add_params-view-source"><span>View Source</span></label>
 
@@ -852,7 +1112,7 @@ listed after the command finishes.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_update_data_file_remove_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name_of_data_file</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileRemoveParameters</span>:</span></span>
+        <span class="name">scene_file_update_data_file_remove_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name_of_data_file</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateDataFileRemoveParameters">SceneFileUpdateDataFileRemoveParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_update_data_file_remove_params-view-source"><span>View Source</span></label>
 
@@ -906,7 +1166,7 @@ listed after the command finishes.
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">scene_file_update_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fix_map_palette_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_remove_missing_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copy_map_one_palette</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateCopyMapOnePaletteParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileAddParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateDataFileRemoveParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">scene_file_update</span><span class="o">.</span><span class="n">SceneFileUpdateParameters</span>:</span></span>
+        <span class="name">scene_file_update_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_scene_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">scene_name_or_number</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fix_map_palette_settings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_remove_missing_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copy_map_one_palette</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateCopyMapOnePaletteParameters">SceneFileUpdateCopyMapOnePaletteParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_add</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateDataFileAddParameters">SceneFileUpdateDataFileAddParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_file_remove</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SceneFileUpdateDataFileRemoveParameters">SceneFileUpdateDataFileRemoveParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SceneFileUpdateParameters">SceneFileUpdateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="scene_file_update_params-view-source"><span>View Source</span></label>
 
@@ -992,186 +1252,5 @@ listed after the command finishes.
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,18 @@
                     <a class="variable" href="#CONNECTOME2TCK_METADATA">CONNECTOME2TCK_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#Connectome2tckConfigParameters">Connectome2tckConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Connectome2tckConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#Connectome2tckOutputs">Connectome2tckOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +51,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Connectome2tckOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Connectome2tckParameters">Connectome2tckParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.nodes">nodes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.exclusive">exclusive</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.files">files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.exemplars">exemplars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.keep_unassigned">keep_unassigned</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.keep_self">keep_self</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.tck_weights_in">tck_weights_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.prefix_tck_weights_out">prefix_tck_weights_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.tracks_in">tracks_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.assignments_in">assignments_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Connectome2tckParameters.prefix_out">prefix_out</a>
                         </li>
                 </ul>
 
@@ -516,11 +589,13 @@
 </span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>
 </span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;CONNECTOME2TCK_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;Connectome2tckOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;connectome2tck&quot;</span><span class="p">,</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;connectome2tck_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;connectome2tck_params&quot;</span><span class="p">,</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="p">]</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;Connectome2tckConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;Connectome2tckOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;Connectome2tckParameters&quot;</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;connectome2tck&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;connectome2tck_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;connectome2tck_params&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -537,6 +612,41 @@
     
     
 
+                </section>
+                <section id="Connectome2tckConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Connectome2tckConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckConfigParameters"></a>
+    
+    
+
+                            <div id="Connectome2tckConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Connectome2tckOutputs">
                             <input id="Connectome2tckOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -590,12 +700,234 @@
 
                             </div>
                 </section>
+                <section id="Connectome2tckParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Connectome2tckParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters"></a>
+    
+    
+
+                            <div id="Connectome2tckParameters.nodes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nodes</span><span class="annotation">: NotRequired[list[int] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.nodes"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.exclusive" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclusive</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.exclusive"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">files</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.files"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.exemplars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exemplars</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.exemplars"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.keep_unassigned" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_unassigned</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.keep_unassigned"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.keep_self" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_self</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.keep_self"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.tck_weights_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tck_weights_in</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.tck_weights_in"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.prefix_tck_weights_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix_tck_weights_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.prefix_tck_weights_out"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Connectome2tckConfigParameters">Connectome2tckConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.tracks_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tracks_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.tracks_in"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.assignments_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">assignments_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.assignments_in"></a>
+    
+    
+
+                            </div>
+                            <div id="Connectome2tckParameters.prefix_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Connectome2tckParameters.prefix_out"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="connectome2tck">
                             <input id="connectome2tck-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectome2tck</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">assignments_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">files</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exemplars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_unassigned</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_tck_weights_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectome2tck</span><span class="o">.</span><span class="n">Connectome2tckConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Connectome2tckOutputs">Connectome2tckOutputs</a></span>:</span></span>
+        <span class="name">connectome2tck</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">assignments_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">files</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exemplars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_unassigned</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_tck_weights_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Connectome2tckConfigParameters">Connectome2tckConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Connectome2tckOutputs">Connectome2tckOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectome2tck-view-source"><span>View Source</span></label>
 
@@ -750,7 +1082,7 @@ typically be generated using the tck2connectome command with the
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectome2tck_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectome2tck</span><span class="o">.</span><span class="n">Connectome2tckConfigParameters</span>:</span></span>
+        <span class="name">connectome2tck_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Connectome2tckConfigParameters">Connectome2tckConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectome2tck_config_params-view-source"><span>View Source</span></label>
 
@@ -801,7 +1133,7 @@ typically be generated using the tck2connectome command with the
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectome2tck_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">assignments_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">files</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exemplars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_unassigned</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_tck_weights_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectome2tck</span><span class="o">.</span><span class="n">Connectome2tckConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectome2tck</span><span class="o">.</span><span class="n">Connectome2tckParameters</span>:</span></span>
+        <span class="name">connectome2tck_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">assignments_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">files</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exemplars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_unassigned</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_tck_weights_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Connectome2tckConfigParameters">Connectome2tckConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Connectome2tckParameters">Connectome2tckParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectome2tck_params-view-source"><span>View Source</span></label>
 
@@ -941,186 +1273,5 @@ typically be generated using the tck2connectome command with the
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

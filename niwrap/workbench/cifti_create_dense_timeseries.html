@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_CREATE_DENSE_TIMESERIES_METADATA">CIFTI_CREATE_DENSE_TIMESERIES_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters">CiftiCreateDenseTimeseriesCerebellumMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters.opt_roi_cerebellum_roi_metric">opt_roi_cerebellum_roi_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseTimeseriesLeftMetricParameters">CiftiCreateDenseTimeseriesLeftMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesLeftMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesLeftMetricParameters.opt_roi_left_roi_metric">opt_roi_left_roi_metric</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiCreateDenseTimeseriesOutputs">CiftiCreateDenseTimeseriesOutputs</a>
@@ -44,6 +66,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiCreateDenseTimeseriesOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseTimeseriesParameters">CiftiCreateDenseTimeseriesParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.volume">volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.left_metric">left_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.right_metric">right_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.cerebellum_metric">cerebellum_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.opt_timestep_interval">opt_timestep_interval</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.opt_timestart_start">opt_timestart_start</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesParameters.opt_unit_unit">opt_unit_unit</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseTimeseriesRightMetricParameters">CiftiCreateDenseTimeseriesRightMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesRightMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesRightMetricParameters.opt_roi_right_roi_metric">opt_roi_right_roi_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseTimeseriesVolumeParameters">CiftiCreateDenseTimeseriesVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesVolumeParameters.volume_data">volume_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseTimeseriesVolumeParameters.structure_label_volume">structure_label_volume</a>
                         </li>
                 </ul>
 
@@ -642,14 +718,19 @@
 </span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>
 </span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_TIMESERIES_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries&quot;</span><span class="p">,</span>
-</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_cerebellum_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_left_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_params&quot;</span><span class="p">,</span>
-</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_right_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a><span class="p">]</span>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesCerebellumMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesLeftMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-559"><a href="#L-559"><span class="linenos">559</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-560"><a href="#L-560"><span class="linenos">560</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesRightMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-561"><a href="#L-561"><span class="linenos">561</span></a>    <span class="s2">&quot;CiftiCreateDenseTimeseriesVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-562"><a href="#L-562"><span class="linenos">562</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries&quot;</span><span class="p">,</span>
+</span><span id="L-563"><a href="#L-563"><span class="linenos">563</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_cerebellum_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-564"><a href="#L-564"><span class="linenos">564</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_left_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-565"><a href="#L-565"><span class="linenos">565</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_params&quot;</span><span class="p">,</span>
+</span><span id="L-566"><a href="#L-566"><span class="linenos">566</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_right_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-567"><a href="#L-567"><span class="linenos">567</span></a>    <span class="s2">&quot;cifti_create_dense_timeseries_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-568"><a href="#L-568"><span class="linenos">568</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -666,6 +747,76 @@
     
     
 
+                </section>
+                <section id="CiftiCreateDenseTimeseriesCerebellumMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseTimeseriesCerebellumMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseTimeseriesCerebellumMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesCerebellumMetricParameters.opt_roi_cerebellum_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_cerebellum_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters.opt_roi_cerebellum_roi_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseTimeseriesLeftMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseTimeseriesLeftMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesLeftMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseTimeseriesLeftMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesLeftMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesLeftMetricParameters.opt_roi_left_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_left_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesLeftMetricParameters.opt_roi_left_roi_metric"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiCreateDenseTimeseriesOutputs">
                             <input id="CiftiCreateDenseTimeseriesOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -734,12 +885,183 @@
 
                             </div>
                 </section>
+                <section id="CiftiCreateDenseTimeseriesParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseTimeseriesParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseTimeseriesParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseTimeseriesVolumeParameters">CiftiCreateDenseTimeseriesVolumeParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.volume"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.left_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseTimeseriesLeftMetricParameters">CiftiCreateDenseTimeseriesLeftMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.left_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.right_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseTimeseriesRightMetricParameters">CiftiCreateDenseTimeseriesRightMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.right_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.cerebellum_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cerebellum_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters">CiftiCreateDenseTimeseriesCerebellumMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.cerebellum_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.opt_timestep_interval" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_timestep_interval</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.opt_timestep_interval"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.opt_timestart_start" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_timestart_start</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.opt_timestart_start"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesParameters.opt_unit_unit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesParameters.opt_unit_unit"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseTimeseriesRightMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseTimeseriesRightMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesRightMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseTimeseriesRightMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesRightMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesRightMetricParameters.opt_roi_right_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_right_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesRightMetricParameters.opt_roi_right_roi_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseTimeseriesVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseTimeseriesVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesVolumeParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseTimeseriesVolumeParameters.volume_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_data</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesVolumeParameters.volume_data"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseTimeseriesVolumeParameters.structure_label_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure_label_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseTimeseriesVolumeParameters.structure_label_volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_create_dense_timeseries">
                             <input id="cifti_create_dense_timeseries-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesLeftMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesRightMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesCerebellumMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestep_interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestart_start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesOutputs">CiftiCreateDenseTimeseriesOutputs</a></span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesVolumeParameters">CiftiCreateDenseTimeseriesVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesLeftMetricParameters">CiftiCreateDenseTimeseriesLeftMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesRightMetricParameters">CiftiCreateDenseTimeseriesRightMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters">CiftiCreateDenseTimeseriesCerebellumMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestep_interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestart_start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesOutputs">CiftiCreateDenseTimeseriesOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries-view-source"><span>View Source</span></label>
 
@@ -918,7 +1240,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries_cerebellum_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_cerebellum_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesCerebellumMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries_cerebellum_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_cerebellum_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters">CiftiCreateDenseTimeseriesCerebellumMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries_cerebellum_metric_params-view-source"><span>View Source</span></label>
 
@@ -971,7 +1293,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries_left_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_left_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesLeftMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries_left_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_left_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesLeftMetricParameters">CiftiCreateDenseTimeseriesLeftMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries_left_metric_params-view-source"><span>View Source</span></label>
 
@@ -1024,7 +1346,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesLeftMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesRightMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesCerebellumMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestep_interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestart_start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesVolumeParameters">CiftiCreateDenseTimeseriesVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesLeftMetricParameters">CiftiCreateDenseTimeseriesLeftMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesRightMetricParameters">CiftiCreateDenseTimeseriesRightMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseTimeseriesCerebellumMetricParameters">CiftiCreateDenseTimeseriesCerebellumMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestep_interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_timestart_start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesParameters">CiftiCreateDenseTimeseriesParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries_params-view-source"><span>View Source</span></label>
 
@@ -1109,7 +1431,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries_right_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_right_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesRightMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries_right_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_right_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesRightMetricParameters">CiftiCreateDenseTimeseriesRightMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries_right_metric_params-view-source"><span>View Source</span></label>
 
@@ -1162,7 +1484,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_timeseries_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">structure_label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_timeseries</span><span class="o">.</span><span class="n">CiftiCreateDenseTimeseriesVolumeParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_timeseries_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">structure_label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseTimeseriesVolumeParameters">CiftiCreateDenseTimeseriesVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_timeseries_volume_params-view-source"><span>View Source</span></label>
 
@@ -1211,186 +1533,5 @@ RADIAN.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SlicerOutputs.all_axial_slices_outfile">all_axial_slices_outfile</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SlicerParameters">SlicerParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SlicerParameters.in_file">in_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.overlay_file">overlay_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.label_slices">label_slices</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.colour_map">colour_map</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.scaling">scaling</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.intensity_range">intensity_range</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.threshold_edges">threshold_edges</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.dither_edges">dither_edges</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.nearest_neighbour">nearest_neighbour</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.show_orientation">show_orientation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.red_dot_marker">red_dot_marker</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_single_image">output_single_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_sagittal_slice">output_sagittal_slice</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_sagittal_slice_fname">output_sagittal_slice_fname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_axial_slice">output_axial_slice</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_axial_slice_fname">output_axial_slice_fname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_coronal_slice">output_coronal_slice</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_coronal_slice_fname">output_coronal_slice_fname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_all_axial_slices">output_all_axial_slices</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_all_axial_slices_fname">output_all_axial_slices_fname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_sample_axial_slices">output_sample_axial_slices</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_sample_axial_slices_width">output_sample_axial_slices_width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicerParameters.output_sample_axial_slices_fname">output_sample_axial_slices_fname</a>
                         </li>
                 </ul>
 
@@ -496,9 +569,10 @@
 </span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;SLICER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;SlicerOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;slicer&quot;</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;slicer_params&quot;</span><span class="p">,</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="p">]</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;SlicerParameters&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;slicer&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;slicer_params&quot;</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -640,6 +714,272 @@
             <div class="docstring"><p>File name of every <sample'th> axial slice output image.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SlicerParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SlicerParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters"></a>
+    
+    
+
+                            <div id="SlicerParameters.in_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.in_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.overlay_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overlay_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.overlay_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.label_slices" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_slices</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.label_slices"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.colour_map" class="classattr">
+                                <div class="attr variable">
+            <span class="name">colour_map</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.colour_map"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.scaling" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scaling</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.scaling"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.intensity_range" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_range</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.intensity_range"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.threshold_edges" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold_edges</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.threshold_edges"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.dither_edges" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dither_edges</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.dither_edges"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.nearest_neighbour" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nearest_neighbour</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.nearest_neighbour"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.show_orientation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_orientation</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.show_orientation"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.red_dot_marker" class="classattr">
+                                <div class="attr variable">
+            <span class="name">red_dot_marker</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.red_dot_marker"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_single_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_single_image</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_single_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_sagittal_slice" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sagittal_slice</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_sagittal_slice"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_sagittal_slice_fname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sagittal_slice_fname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_sagittal_slice_fname"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_axial_slice" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_axial_slice</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_axial_slice"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_axial_slice_fname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_axial_slice_fname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_axial_slice_fname"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_coronal_slice" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_coronal_slice</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_coronal_slice"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_coronal_slice_fname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_coronal_slice_fname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_coronal_slice_fname"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_all_axial_slices" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_all_axial_slices</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_all_axial_slices"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_all_axial_slices_fname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_all_axial_slices_fname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_all_axial_slices_fname"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_sample_axial_slices" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sample_axial_slices</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_sample_axial_slices"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_sample_axial_slices_width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sample_axial_slices_width</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_sample_axial_slices_width"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicerParameters.output_sample_axial_slices_fname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sample_axial_slices_fname</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicerParameters.output_sample_axial_slices_fname"></a>
+    
+    
 
                             </div>
                 </section>
@@ -785,7 +1125,7 @@ and -S) produce montages of various slices. slicer outputs PPM format pictures.<
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">slicer_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overlay_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">colour_map</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scaling</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_edges</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dither_edges</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nearest_neighbour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">red_dot_marker</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_single_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sagittal_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_sagittal_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_axial_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_axial_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_coronal_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_coronal_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_all_axial_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_all_axial_slices_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sample_axial_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_sample_axial_slices_width</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sample_axial_slices_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">slicer</span><span class="o">.</span><span class="n">SlicerParameters</span>:</span></span>
+        <span class="name">slicer_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overlay_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">colour_map</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scaling</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intensity_range</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_edges</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dither_edges</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nearest_neighbour</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">red_dot_marker</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_single_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sagittal_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_sagittal_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_axial_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_axial_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_coronal_slice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_coronal_slice_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_all_axial_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_all_axial_slices_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sample_axial_slices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_sample_axial_slices_width</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_sample_axial_slices_fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SlicerParameters">SlicerParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="slicer_params-view-source"><span>View Source</span></label>
 
@@ -936,186 +1276,5 @@ and -S) produce montages of various slices. slicer outputs PPM format pictures.<
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

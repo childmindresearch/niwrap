@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#SH2RESPONSE_METADATA">SH2RESPONSE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Sh2responseConfigParameters">Sh2responseConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2responseConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Sh2responseOutputs">Sh2responseOutputs</a>
@@ -47,6 +57,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Sh2responseOutputs.dump">dump</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Sh2responseParameters">Sh2responseParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.lmax">lmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.dump">dump</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.SH">SH</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.directions">directions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2responseParameters.response">response</a>
                         </li>
                 </ul>
 
@@ -452,11 +510,13 @@
 </span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>
 </span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;SH2RESPONSE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;Sh2responseOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;sh2response&quot;</span><span class="p">,</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;sh2response_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;sh2response_params&quot;</span><span class="p">,</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="p">]</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;Sh2responseConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;Sh2responseOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;Sh2responseParameters&quot;</span><span class="p">,</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;sh2response&quot;</span><span class="p">,</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;sh2response_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;sh2response_params&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -473,6 +533,41 @@
     
     
 
+                </section>
+                <section id="Sh2responseConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2responseConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseConfigParameters"></a>
+    
+    
+
+                            <div id="Sh2responseConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Sh2responseOutputs">
                             <input id="Sh2responseOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -558,12 +653,179 @@ file, rather than their mean</p>
 
                             </div>
                 </section>
+                <section id="Sh2responseParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2responseParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters"></a>
+    
+    
+
+                            <div id="Sh2responseParameters.lmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lmax</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.lmax"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.dump" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.dump"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Sh2responseConfigParameters">Sh2responseConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.SH" class="classattr">
+                                <div class="attr variable">
+            <span class="name">SH</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.SH"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.directions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">directions</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.directions"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2responseParameters.response" class="classattr">
+                                <div class="attr variable">
+            <span class="name">response</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2responseParameters.response"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="sh2response">
                             <input id="sh2response-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2response</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">response</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2response</span><span class="o">.</span><span class="n">Sh2responseConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2responseOutputs">Sh2responseOutputs</a></span>:</span></span>
+        <span class="name">sh2response</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">response</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Sh2responseConfigParameters">Sh2responseConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2responseOutputs">Sh2responseOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2response-view-source"><span>View Source</span></label>
 
@@ -686,7 +948,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2response_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2response</span><span class="o">.</span><span class="n">Sh2responseConfigParameters</span>:</span></span>
+        <span class="name">sh2response_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2responseConfigParameters">Sh2responseConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2response_config_params-view-source"><span>View Source</span></label>
 
@@ -737,7 +999,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2response_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">response</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2response</span><span class="o">.</span><span class="n">Sh2responseConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2response</span><span class="o">.</span><span class="n">Sh2responseParameters</span>:</span></span>
+        <span class="name">sh2response_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">response</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Sh2responseConfigParameters">Sh2responseConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2responseParameters">Sh2responseParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2response_params-view-source"><span>View Source</span></label>
 
@@ -845,186 +1107,5 @@ described the main documentation, which can be found at the following link:
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

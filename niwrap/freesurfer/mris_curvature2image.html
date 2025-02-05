@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisCurvature2imageOutputs.output_distance_img">output_distance_img</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisCurvature2imageParameters">MrisCurvature2imageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.output_overlay">output_overlay</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.output_distance">output_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.overlay">overlay</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.invert_flag">invert_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisCurvature2imageParameters.radius">radius</a>
                         </li>
                 </ul>
 
@@ -323,9 +351,10 @@
 </span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;MRIS_CURVATURE2IMAGE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;MrisCurvature2imageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;mris_curvature2image&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;mris_curvature2image_params&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="p">]</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;MrisCurvature2imageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;mris_curvature2image&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;mris_curvature2image_params&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -425,6 +454,107 @@
 
                             </div>
                 </section>
+                <section id="MrisCurvature2imageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisCurvature2imageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters"></a>
+    
+    
+
+                            <div id="MrisCurvature2imageParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.output_overlay" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_overlay</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.output_overlay"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.output_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_distance</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.output_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.overlay" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overlay</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.overlay"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.invert_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">invert_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.invert_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisCurvature2imageParameters.radius" class="classattr">
+                                <div class="attr variable">
+            <span class="name">radius</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisCurvature2imageParameters.radius"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mris_curvature2image">
                             <input id="mris_curvature2image-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -508,7 +638,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_curvature2image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overlay</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">radius</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_curvature2image</span><span class="o">.</span><span class="n">MrisCurvature2imageParameters</span>:</span></span>
+        <span class="name">mris_curvature2image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">overlay</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">radius</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisCurvature2imageParameters">MrisCurvature2imageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_curvature2image_params-view-source"><span>View Source</span></label>
 
@@ -579,186 +709,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

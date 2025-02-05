@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#WarpTensorImageMultiTransformOutputs.output_image_file">output_image_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#WarpTensorImageMultiTransformParameters">WarpTensorImageMultiTransformParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.image_dimension">image_dimension</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.moving_image">moving_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.output_image">output_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.reference_image">reference_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.tightest_bounding_box">tightest_bounding_box</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.reslice_by_header">reslice_by_header</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.use_nearest_neighbor">use_nearest_neighbor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WarpTensorImageMultiTransformParameters.transforms">transforms</a>
                         </li>
                 </ul>
 
@@ -317,9 +345,10 @@
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;WarpTensorImageMultiTransformOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;warp_tensor_image_multi_transform&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;warp_tensor_image_multi_transform_params&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="p">]</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;WarpTensorImageMultiTransformParameters&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;warp_tensor_image_multi_transform&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;warp_tensor_image_multi_transform_params&quot;</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -401,6 +430,107 @@
             <div class="docstring"><p>The resultant transformed output image.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="WarpTensorImageMultiTransformParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">WarpTensorImageMultiTransformParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters"></a>
+    
+    
+
+                            <div id="WarpTensorImageMultiTransformParameters.image_dimension" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimension</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.image_dimension"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.moving_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">moving_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.moving_image"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.output_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_image</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.output_image"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.reference_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reference_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.reference_image"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.tightest_bounding_box" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tightest_bounding_box</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.tightest_bounding_box"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.reslice_by_header" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reslice_by_header</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.reslice_by_header"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.use_nearest_neighbor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_nearest_neighbor</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.use_nearest_neighbor"></a>
+    
+    
+
+                            </div>
+                            <div id="WarpTensorImageMultiTransformParameters.transforms" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transforms</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WarpTensorImageMultiTransformParameters.transforms"></a>
+    
+    
 
                             </div>
                 </section>
@@ -496,7 +626,7 @@ image header reslicing, and compatibility with ANTS-generated transformations.</
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">warp_tensor_image_multi_transform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">moving_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">transforms</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tightest_bounding_box</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reslice_by_header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">use_nearest_neighbor</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">warp_tensor_image_multi_transform</span><span class="o">.</span><span class="n">WarpTensorImageMultiTransformParameters</span>:</span></span>
+        <span class="name">warp_tensor_image_multi_transform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">moving_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">transforms</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">reference_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tightest_bounding_box</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reslice_by_header</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">use_nearest_neighbor</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#WarpTensorImageMultiTransformParameters">WarpTensorImageMultiTransformParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="warp_tensor_image_multi_transform_params-view-source"><span>View Source</span></label>
 
@@ -573,186 +703,5 @@ image header reslicing, and compatibility with ANTS-generated transformations.</
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

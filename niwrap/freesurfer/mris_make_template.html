@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisMakeTemplateOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisMakeTemplateParameters">MrisMakeTemplateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.surface_name">surface_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.subjects">subjects</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.output_name">output_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.addframe_parameters">addframe_parameters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.vector">vector</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.norot">norot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.rot">rot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.annot">annot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.overlay_parameters">overlay_parameters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.overlay_dir">overlay_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.scale">scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.surf_dir">surf_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.smooth_iterations">smooth_iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMakeTemplateParameters.subjects_dir">subjects_dir</a>
                         </li>
                 </ul>
 
@@ -377,9 +426,10 @@
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="s2">&quot;MRIS_MAKE_TEMPLATE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;MrisMakeTemplateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;mris_make_template&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;mris_make_template_params&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="p">]</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;MrisMakeTemplateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;mris_make_template&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;mris_make_template_params&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -446,6 +496,184 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisMakeTemplateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisMakeTemplateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters"></a>
+    
+    
+
+                            <div id="MrisMakeTemplateParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.surface_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.surface_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.subjects" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.subjects"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.output_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.output_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.addframe_parameters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">addframe_parameters</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.addframe_parameters"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.vector" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vector</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.vector"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.norot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norot</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.norot"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.rot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rot</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.rot"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.annot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annot</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.annot"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.overlay_parameters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overlay_parameters</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.overlay_parameters"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.overlay_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overlay_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.overlay_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.scale"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.surf_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.surf_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.smooth_iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_iterations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.smooth_iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMakeTemplateParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMakeTemplateParameters.subjects_dir"></a>
+    
+    
 
                             </div>
                 </section>
@@ -554,7 +782,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_make_template_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">addframe_parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overlay_parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overlay_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_make_template</span><span class="o">.</span><span class="n">MrisMakeTemplateParameters</span>:</span></span>
+        <span class="name">mris_make_template_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">addframe_parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overlay_parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overlay_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisMakeTemplateParameters">MrisMakeTemplateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_make_template_params-view-source"><span>View Source</span></label>
 
@@ -661,186 +889,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

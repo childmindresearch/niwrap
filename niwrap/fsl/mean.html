@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MeanOutputs.output_log">output_log</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MeanParameters">MeanParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MeanParameters.datafile">datafile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.maskfile">maskfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.debug_level">debug_level</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.timing_flag">timing_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.log_dir">log_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.forcedir_flag">forcedir_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.inference_tech">inference_tech</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.num_jumps">num_jumps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.num_burnin">num_burnin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.num_sample_every">num_sample_every</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.num_update_proposalevery">num_update_proposalevery</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.acceptance_rate">acceptance_rate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.seed">seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.error_precision">error_precision</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.noamp_flag">noamp_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.prior_mean">prior_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MeanParameters.prior_std">prior_std</a>
                         </li>
                 </ul>
 
@@ -443,9 +501,10 @@
 </span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;MEAN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;MeanOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;mean_params&quot;</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="p">]</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;MeanParameters&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;mean_params&quot;</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -527,6 +586,217 @@
             <div class="docstring"><p>Output log of mean computation</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MeanParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MeanParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters"></a>
+    
+    
+
+                            <div id="MeanParameters.datafile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datafile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.datafile"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.maskfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maskfile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.maskfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.debug_level" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_level</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.debug_level"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.timing_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timing_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.timing_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.log_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.log_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.forcedir_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">forcedir_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.forcedir_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.inference_tech" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inference_tech</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.inference_tech"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.num_jumps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_jumps</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.num_jumps"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.num_burnin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_burnin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.num_burnin"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.num_sample_every" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_sample_every</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.num_sample_every"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.num_update_proposalevery" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_update_proposalevery</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.num_update_proposalevery"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.acceptance_rate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">acceptance_rate</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.acceptance_rate"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.seed"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.error_precision" class="classattr">
+                                <div class="attr variable">
+            <span class="name">error_precision</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.error_precision"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.noamp_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noamp_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.noamp_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.prior_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prior_mean</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.prior_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="MeanParameters.prior_std" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prior_std</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MeanParameters.prior_std"></a>
+    
+    
 
                             </div>
                 </section>
@@ -647,7 +917,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mean_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forcedir_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">inference_tech</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_sample_every</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_update_proposalevery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">acceptance_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">error_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noamp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prior_mean</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">MeanParameters</span>:</span></span>
+        <span class="name">mean_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">maskfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">forcedir_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">inference_tech</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_jumps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_burnin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_sample_every</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_update_proposalevery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">acceptance_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">error_precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noamp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prior_mean</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MeanParameters">MeanParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mean_params-view-source"><span>View Source</span></label>
 
@@ -774,186 +1044,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriExvivoNormOutputs.output_volume">output_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriExvivoNormParameters">MriExvivoNormParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.output_volume">output_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.prediction_volume">prediction_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.normalized_volume">normalized_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.freeview">freeview</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.normalize_output_mean">normalize_output_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.write_normalization_rounds">write_normalization_rounds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.upper_threshold">upper_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.bias_field_sigma">bias_field_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.normalization_rounds">normalization_rounds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.multichannel">multichannel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.model_file">model_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.weights_file">weights_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriExvivoNormParameters.gpu_number">gpu_number</a>
                         </li>
                 </ul>
 
@@ -401,9 +450,10 @@
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;MRI_EXVIVO_NORM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;MriExvivoNormOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;mri_exvivo_norm&quot;</span><span class="p">,</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="s2">&quot;mri_exvivo_norm_params&quot;</span><span class="p">,</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="p">]</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;MriExvivoNormParameters&quot;</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="s2">&quot;mri_exvivo_norm&quot;</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="s2">&quot;mri_exvivo_norm_params&quot;</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -485,6 +535,184 @@
             <div class="docstring"><p>Output MRI volume</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriExvivoNormParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriExvivoNormParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters"></a>
+    
+    
+
+                            <div id="MriExvivoNormParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.output_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.output_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.prediction_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prediction_volume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.prediction_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.normalized_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normalized_volume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.normalized_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.freeview" class="classattr">
+                                <div class="attr variable">
+            <span class="name">freeview</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.freeview"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.normalize_output_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normalize_output_mean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.normalize_output_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.write_normalization_rounds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">write_normalization_rounds</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.write_normalization_rounds"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.upper_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">upper_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.upper_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.bias_field_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_field_sigma</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.bias_field_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.normalization_rounds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normalization_rounds</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.normalization_rounds"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.multichannel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multichannel</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.multichannel"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.model_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.model_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.weights_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weights_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.weights_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriExvivoNormParameters.gpu_number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gpu_number</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriExvivoNormParameters.gpu_number"></a>
+    
+    
 
                             </div>
                 </section>
@@ -594,7 +822,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_exvivo_norm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prediction_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalized_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">freeview</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">normalize_output_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">write_normalization_rounds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upper_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalization_rounds</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multichannel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">model_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weights_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gpu_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_exvivo_norm</span><span class="o">.</span><span class="n">MriExvivoNormParameters</span>:</span></span>
+        <span class="name">mri_exvivo_norm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prediction_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalized_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">freeview</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">normalize_output_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">write_normalization_rounds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upper_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_field_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalization_rounds</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multichannel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">model_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weights_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gpu_number</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriExvivoNormParameters">MriExvivoNormParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_exvivo_norm_params-view-source"><span>View Source</span></label>
 
@@ -703,186 +931,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

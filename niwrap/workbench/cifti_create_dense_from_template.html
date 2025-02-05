@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,39 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA">CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateCiftiParameters">CiftiCreateDenseFromTemplateCiftiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateCiftiParameters.cifti_in">cifti_in</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateLabelParameters">CiftiCreateDenseFromTemplateLabelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateLabelParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateLabelParameters.label_in">label_in</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateMetricParameters">CiftiCreateDenseFromTemplateMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateMetricParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateMetricParameters.metric_in">metric_in</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiCreateDenseFromTemplateOutputs">CiftiCreateDenseFromTemplateOutputs</a>
@@ -44,6 +75,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiCreateDenseFromTemplateOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateParameters">CiftiCreateDenseFromTemplateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.template_cifti">template_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.series">series</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.volume_all">volume_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.opt_label_collision_action">opt_label_collision_action</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateParameters.volume">volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateSeriesParameters">CiftiCreateDenseFromTemplateSeriesParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateSeriesParameters.step">step</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateSeriesParameters.start">start</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateSeriesParameters.opt_unit_unit">opt_unit_unit</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateVolumeAllParameters">CiftiCreateDenseFromTemplateVolumeAllParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateVolumeAllParameters.volume_in">volume_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateVolumeAllParameters.opt_from_cropped">opt_from_cropped</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseFromTemplateVolumeParameters">CiftiCreateDenseFromTemplateVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateVolumeParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateVolumeParameters.volume_in">volume_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseFromTemplateVolumeParameters.opt_from_cropped">opt_from_cropped</a>
                         </li>
                 </ul>
 
@@ -751,16 +857,23 @@
 </span><span id="L-656"><a href="#L-656"><span class="linenos">656</span></a>
 </span><span id="L-657"><a href="#L-657"><span class="linenos">657</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-658"><a href="#L-658"><span class="linenos">658</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a>    <span class="s2">&quot;cifti_create_dense_from_template&quot;</span><span class="p">,</span>
-</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_cifti_params&quot;</span><span class="p">,</span>
-</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_params&quot;</span><span class="p">,</span>
-</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_series_params&quot;</span><span class="p">,</span>
-</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a><span class="p">]</span>
+</span><span id="L-659"><a href="#L-659"><span class="linenos">659</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateCiftiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-660"><a href="#L-660"><span class="linenos">660</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-661"><a href="#L-661"><span class="linenos">661</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-662"><a href="#L-662"><span class="linenos">662</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateSeriesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>    <span class="s2">&quot;CiftiCreateDenseFromTemplateVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a>    <span class="s2">&quot;cifti_create_dense_from_template&quot;</span><span class="p">,</span>
+</span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_cifti_params&quot;</span><span class="p">,</span>
+</span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-670"><a href="#L-670"><span class="linenos">670</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-671"><a href="#L-671"><span class="linenos">671</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_params&quot;</span><span class="p">,</span>
+</span><span id="L-672"><a href="#L-672"><span class="linenos">672</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_series_params&quot;</span><span class="p">,</span>
+</span><span id="L-673"><a href="#L-673"><span class="linenos">673</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-674"><a href="#L-674"><span class="linenos">674</span></a>    <span class="s2">&quot;cifti_create_dense_from_template_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-675"><a href="#L-675"><span class="linenos">675</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -777,6 +890,100 @@
     
     
 
+                </section>
+                <section id="CiftiCreateDenseFromTemplateCiftiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateCiftiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateCiftiParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateCiftiParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateCiftiParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseFromTemplateLabelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateLabelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateLabelParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateLabelParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateLabelParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateLabelParameters.label_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateLabelParameters.label_in"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseFromTemplateMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateMetricParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateMetricParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateMetricParameters.metric_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateMetricParameters.metric_in"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiCreateDenseFromTemplateOutputs">
                             <input id="CiftiCreateDenseFromTemplateOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -845,12 +1052,251 @@
 
                             </div>
                 </section>
+                <section id="CiftiCreateDenseFromTemplateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateParameters.template_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">template_cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.template_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.series" class="classattr">
+                                <div class="attr variable">
+            <span class="name">series</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseFromTemplateSeriesParameters">CiftiCreateDenseFromTemplateSeriesParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.series"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.volume_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_all</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseFromTemplateVolumeAllParameters">CiftiCreateDenseFromTemplateVolumeAllParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.volume_all"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.opt_label_collision_action" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_label_collision_action</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.opt_label_collision_action"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: NotRequired[list[<a href="#CiftiCreateDenseFromTemplateCiftiParameters">CiftiCreateDenseFromTemplateCiftiParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: NotRequired[list[<a href="#CiftiCreateDenseFromTemplateMetricParameters">CiftiCreateDenseFromTemplateMetricParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: NotRequired[list[<a href="#CiftiCreateDenseFromTemplateLabelParameters">CiftiCreateDenseFromTemplateLabelParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: NotRequired[list[<a href="#CiftiCreateDenseFromTemplateVolumeParameters">CiftiCreateDenseFromTemplateVolumeParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateParameters.volume"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseFromTemplateSeriesParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateSeriesParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateSeriesParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateSeriesParameters.step" class="classattr">
+                                <div class="attr variable">
+            <span class="name">step</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateSeriesParameters.step"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateSeriesParameters.start" class="classattr">
+                                <div class="attr variable">
+            <span class="name">start</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateSeriesParameters.start"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateSeriesParameters.opt_unit_unit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateSeriesParameters.opt_unit_unit"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseFromTemplateVolumeAllParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateVolumeAllParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeAllParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateVolumeAllParameters.volume_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeAllParameters.volume_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateVolumeAllParameters.opt_from_cropped" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_from_cropped</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeAllParameters.opt_from_cropped"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseFromTemplateVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseFromTemplateVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseFromTemplateVolumeParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateVolumeParameters.volume_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeParameters.volume_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseFromTemplateVolumeParameters.opt_from_cropped" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_from_cropped</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseFromTemplateVolumeParameters.opt_from_cropped"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_create_dense_from_template">
                             <input id="cifti_create_dense_from_template-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">template_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">series</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateOutputs">CiftiCreateDenseFromTemplateOutputs</a></span>:</span></span>
+        <span class="name">cifti_create_dense_from_template</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">template_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">series</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseFromTemplateSeriesParameters">CiftiCreateDenseFromTemplateSeriesParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeAllParameters">CiftiCreateDenseFromTemplateVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateCiftiParameters">CiftiCreateDenseFromTemplateCiftiParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateMetricParameters">CiftiCreateDenseFromTemplateMetricParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateLabelParameters">CiftiCreateDenseFromTemplateLabelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeParameters">CiftiCreateDenseFromTemplateVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateOutputs">CiftiCreateDenseFromTemplateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template-view-source"><span>View Source</span></label>
 
@@ -1047,7 +1493,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_cifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateCiftiParameters">CiftiCreateDenseFromTemplateCiftiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_cifti_params-view-source"><span>View Source</span></label>
 
@@ -1094,7 +1540,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateLabelParameters">CiftiCreateDenseFromTemplateLabelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_label_params-view-source"><span>View Source</span></label>
 
@@ -1145,7 +1591,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateMetricParameters">CiftiCreateDenseFromTemplateMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_metric_params-view-source"><span>View Source</span></label>
 
@@ -1196,7 +1642,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">template_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">series</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateCiftiParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">template_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">series</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseFromTemplateSeriesParameters">CiftiCreateDenseFromTemplateSeriesParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeAllParameters">CiftiCreateDenseFromTemplateVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_collision_action</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateCiftiParameters">CiftiCreateDenseFromTemplateCiftiParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateMetricParameters">CiftiCreateDenseFromTemplateMetricParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateLabelParameters">CiftiCreateDenseFromTemplateLabelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeParameters">CiftiCreateDenseFromTemplateVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateParameters">CiftiCreateDenseFromTemplateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_params-view-source"><span>View Source</span></label>
 
@@ -1284,7 +1730,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_series_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">step</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateSeriesParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_series_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">step</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateSeriesParameters">CiftiCreateDenseFromTemplateSeriesParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_series_params-view-source"><span>View Source</span></label>
 
@@ -1340,7 +1786,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_from_cropped</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeAllParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_from_cropped</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeAllParameters">CiftiCreateDenseFromTemplateVolumeAllParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_volume_all_params-view-source"><span>View Source</span></label>
 
@@ -1392,7 +1838,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_from_template_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_from_cropped</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_from_template</span><span class="o">.</span><span class="n">CiftiCreateDenseFromTemplateVolumeParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_from_template_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_from_cropped</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseFromTemplateVolumeParameters">CiftiCreateDenseFromTemplateVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_from_template_volume_params-view-source"><span>View Source</span></label>
 
@@ -1444,186 +1890,5 @@ RADIAN.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

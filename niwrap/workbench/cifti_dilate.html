@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_DILATE_METADATA">CIFTI_DILATE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiDilateCerebellumSurfaceParameters">CiftiDilateCerebellumSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiDilateCerebellumSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric">opt_cerebellum_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiDilateLeftSurfaceParameters">CiftiDilateLeftSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiDilateLeftSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateLeftSurfaceParameters.opt_left_corrected_areas_area_metric">opt_left_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiDilateOutputs">CiftiDilateOutputs</a>
@@ -44,6 +66,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiDilateOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiDilateParameters">CiftiDilateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.cifti_in">cifti_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.surface_distance">surface_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.volume_distance">volume_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.left_surface">left_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.right_surface">right_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.cerebellum_surface">cerebellum_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.opt_bad_brainordinate_roi_roi_cifti">opt_bad_brainordinate_roi_roi_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.opt_nearest">opt_nearest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.opt_merged_volume">opt_merged_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateParameters.opt_legacy_mode">opt_legacy_mode</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiDilateRightSurfaceParameters">CiftiDilateRightSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiDilateRightSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiDilateRightSurfaceParameters.opt_right_corrected_areas_area_metric">opt_right_corrected_areas_area_metric</a>
                         </li>
                 </ul>
 
@@ -548,13 +624,17 @@
 </span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>
 </span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a>    <span class="s2">&quot;CIFTI_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;CiftiDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;cifti_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;cifti_dilate_cerebellum_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;cifti_dilate_left_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;cifti_dilate_params&quot;</span><span class="p">,</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;cifti_dilate_right_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="p">]</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;CiftiDilateCerebellumSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;CiftiDilateLeftSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;CiftiDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;CiftiDilateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;CiftiDilateRightSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;cifti_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="s2">&quot;cifti_dilate_cerebellum_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a>    <span class="s2">&quot;cifti_dilate_left_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a>    <span class="s2">&quot;cifti_dilate_params&quot;</span><span class="p">,</span>
+</span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a>    <span class="s2">&quot;cifti_dilate_right_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-475"><a href="#L-475"><span class="linenos">475</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -571,6 +651,76 @@
     
     
 
+                </section>
+                <section id="CiftiDilateCerebellumSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiDilateCerebellumSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateCerebellumSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiDilateCerebellumSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateCerebellumSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiDilateLeftSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiDilateLeftSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateLeftSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiDilateLeftSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateLeftSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateLeftSurfaceParameters.opt_left_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateLeftSurfaceParameters.opt_left_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiDilateOutputs">
                             <input id="CiftiDilateOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -639,12 +789,192 @@
 
                             </div>
                 </section>
+                <section id="CiftiDilateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiDilateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters"></a>
+    
+    
+
+                            <div id="CiftiDilateParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.surface_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_distance</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.surface_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.volume_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_distance</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.volume_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.left_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_surface</span><span class="annotation">: NotRequired[<a href="#CiftiDilateLeftSurfaceParameters">CiftiDilateLeftSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.left_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.right_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_surface</span><span class="annotation">: NotRequired[<a href="#CiftiDilateRightSurfaceParameters">CiftiDilateRightSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.right_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.cerebellum_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cerebellum_surface</span><span class="annotation">: NotRequired[<a href="#CiftiDilateCerebellumSurfaceParameters">CiftiDilateCerebellumSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.cerebellum_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.opt_bad_brainordinate_roi_roi_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_bad_brainordinate_roi_roi_cifti</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.opt_bad_brainordinate_roi_roi_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.opt_nearest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_nearest</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.opt_nearest"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.opt_merged_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_merged_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.opt_merged_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateParameters.opt_legacy_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_legacy_mode</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateParameters.opt_legacy_mode"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiDilateRightSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiDilateRightSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateRightSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiDilateRightSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateRightSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiDilateRightSurfaceParameters.opt_right_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiDilateRightSurfaceParameters.opt_right_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_dilate">
                             <input id="cifti_dilate-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_dilate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateOutputs">CiftiDilateOutputs</a></span>:</span></span>
+        <span class="name">cifti_dilate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateLeftSurfaceParameters">CiftiDilateLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateRightSurfaceParameters">CiftiDilateRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateCerebellumSurfaceParameters">CiftiDilateCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateOutputs">CiftiDilateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_dilate-view-source"><span>View Source</span></label>
 
@@ -770,7 +1100,7 @@ If it is not specified, only values equal to zero are bad.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_dilate_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateCerebellumSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_dilate_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateCerebellumSurfaceParameters">CiftiDilateCerebellumSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_dilate_cerebellum_surface_params-view-source"><span>View Source</span></label>
 
@@ -824,7 +1154,7 @@ If it is not specified, only values equal to zero are bad.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_dilate_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateLeftSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_dilate_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateLeftSurfaceParameters">CiftiDilateLeftSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_dilate_left_surface_params-view-source"><span>View Source</span></label>
 
@@ -878,7 +1208,7 @@ If it is not specified, only values equal to zero are bad.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_dilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateParameters</span>:</span></span>
+        <span class="name">cifti_dilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateLeftSurfaceParameters">CiftiDilateLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateRightSurfaceParameters">CiftiDilateRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiDilateCerebellumSurfaceParameters">CiftiDilateCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateParameters">CiftiDilateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_dilate_params-view-source"><span>View Source</span></label>
 
@@ -977,7 +1307,7 @@ If it is not specified, only values equal to zero are bad.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_dilate_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_dilate</span><span class="o">.</span><span class="n">CiftiDilateRightSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_dilate_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiDilateRightSurfaceParameters">CiftiDilateRightSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_dilate_right_surface_params-view-source"><span>View Source</span></label>
 
@@ -1027,186 +1357,5 @@ If it is not specified, only values equal to zero are bad.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

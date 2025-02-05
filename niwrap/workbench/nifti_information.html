@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#NiftiInformationOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#NiftiInformationParameters">NiftiInformationParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#NiftiInformationParameters.nifti_file">nifti_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#NiftiInformationParameters.print_header">print_header</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#NiftiInformationParameters.opt_print_matrix">opt_print_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#NiftiInformationParameters.print_xml">print_xml</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#NiftiInformationPrintHeaderParameters">NiftiInformationPrintHeaderParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#NiftiInformationPrintHeaderParameters.opt_allow_truncated">opt_allow_truncated</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#NiftiInformationPrintXmlParameters">NiftiInformationPrintXmlParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#NiftiInformationPrintXmlParameters.opt_version_version">opt_version_version</a>
                         </li>
                 </ul>
 
@@ -366,11 +400,14 @@
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;NIFTI_INFORMATION_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;NiftiInformationOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;nifti_information&quot;</span><span class="p">,</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;nifti_information_params&quot;</span><span class="p">,</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;nifti_information_print_header_params&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;nifti_information_print_xml_params&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="p">]</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;NiftiInformationParameters&quot;</span><span class="p">,</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;NiftiInformationPrintHeaderParameters&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;NiftiInformationPrintXmlParameters&quot;</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;nifti_information&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;nifti_information_params&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;nifti_information_print_header_params&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;nifti_information_print_xml_params&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -440,12 +477,117 @@
 
                             </div>
                 </section>
+                <section id="NiftiInformationParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">NiftiInformationParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationParameters"></a>
+    
+    
+
+                            <div id="NiftiInformationParameters.nifti_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nifti_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationParameters.nifti_file"></a>
+    
+    
+
+                            </div>
+                            <div id="NiftiInformationParameters.print_header" class="classattr">
+                                <div class="attr variable">
+            <span class="name">print_header</span><span class="annotation">: NotRequired[<a href="#NiftiInformationPrintHeaderParameters">NiftiInformationPrintHeaderParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationParameters.print_header"></a>
+    
+    
+
+                            </div>
+                            <div id="NiftiInformationParameters.opt_print_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_print_matrix</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationParameters.opt_print_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="NiftiInformationParameters.print_xml" class="classattr">
+                                <div class="attr variable">
+            <span class="name">print_xml</span><span class="annotation">: NotRequired[<a href="#NiftiInformationPrintXmlParameters">NiftiInformationPrintXmlParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationParameters.print_xml"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="NiftiInformationPrintHeaderParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">NiftiInformationPrintHeaderParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationPrintHeaderParameters"></a>
+    
+    
+
+                            <div id="NiftiInformationPrintHeaderParameters.opt_allow_truncated" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_allow_truncated</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationPrintHeaderParameters.opt_allow_truncated"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="NiftiInformationPrintXmlParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">NiftiInformationPrintXmlParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationPrintXmlParameters"></a>
+    
+    
+
+                            <div id="NiftiInformationPrintXmlParameters.opt_version_version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_version_version</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#NiftiInformationPrintXmlParameters.opt_version_version"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="nifti_information">
                             <input id="nifti_information-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">nifti_information</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">print_header</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintHeaderParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_matrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_xml</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintXmlParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#NiftiInformationOutputs">NiftiInformationOutputs</a></span>:</span></span>
+        <span class="name">nifti_information</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">print_header</span><span class="p">:</span> <span class="n"><a href="#NiftiInformationPrintHeaderParameters">NiftiInformationPrintHeaderParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_matrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_xml</span><span class="p">:</span> <span class="n"><a href="#NiftiInformationPrintXmlParameters">NiftiInformationPrintXmlParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#NiftiInformationOutputs">NiftiInformationOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="nifti_information-view-source"><span>View Source</span></label>
 
@@ -515,7 +657,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">nifti_information_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">print_header</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintHeaderParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_matrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_xml</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintXmlParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationParameters</span>:</span></span>
+        <span class="name">nifti_information_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">print_header</span><span class="p">:</span> <span class="n"><a href="#NiftiInformationPrintHeaderParameters">NiftiInformationPrintHeaderParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_print_matrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_xml</span><span class="p">:</span> <span class="n"><a href="#NiftiInformationPrintXmlParameters">NiftiInformationPrintXmlParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#NiftiInformationParameters">NiftiInformationParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="nifti_information_params-view-source"><span>View Source</span></label>
 
@@ -576,7 +718,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">nifti_information_print_header_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_allow_truncated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintHeaderParameters</span>:</span></span>
+        <span class="name">nifti_information_print_header_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_allow_truncated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#NiftiInformationPrintHeaderParameters">NiftiInformationPrintHeaderParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="nifti_information_print_header_params-view-source"><span>View Source</span></label>
 
@@ -623,7 +765,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">nifti_information_print_xml_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_version_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">nifti_information</span><span class="o">.</span><span class="n">NiftiInformationPrintXmlParameters</span>:</span></span>
+        <span class="name">nifti_information_print_xml_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_version_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#NiftiInformationPrintXmlParameters">NiftiInformationPrintXmlParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="nifti_information_print_xml_params-view-source"><span>View Source</span></label>
 
@@ -668,186 +810,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,93 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dsvmOutputs.out_predictions">out_predictions</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dsvmParameters">V3dsvmParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.train_vol">train_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.train_labels">train_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.no_model_mask">no_model_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.model">model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.alpha">alpha</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.bucket">bucket</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.type">type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.c_value">c_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.epsilon">epsilon</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.kernel">kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.d_value">d_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.gamma">gamma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.s_value">s_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.r_value">r_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.max_iterations">max_iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.wout">wout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.test_vol">test_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.predictions">predictions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.classout">classout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.nopred_censored">nopred_censored</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.nodetrend">nodetrend</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.nopred_scale">nopred_scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.test_labels">test_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.multiclass">multiclass</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dsvmParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -570,10 +655,11 @@
 </span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>
 </span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;V3dsvmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;V_3DSVM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;v_3dsvm&quot;</span><span class="p">,</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;v_3dsvm_params&quot;</span><span class="p">,</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="p">]</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;V3dsvmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;V_3DSVM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;v_3dsvm&quot;</span><span class="p">,</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;v_3dsvm_params&quot;</span><span class="p">,</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -687,6 +773,316 @@
             <div class="docstring"><p>Output predictions file in .1D format.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dsvmParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dsvmParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters"></a>
+    
+    
+
+                            <div id="V3dsvmParameters.train_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">train_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.train_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.train_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">train_labels</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.train_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.no_model_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_model_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.no_model_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.model"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.alpha"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.bucket" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bucket</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.bucket"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">type</span><span class="annotation">: NotRequired[Optional[Literal[&#39;classification&#39;, &#39;regression&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.type"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.c_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">c_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.c_value"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.epsilon" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epsilon</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.epsilon"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kernel</span><span class="annotation">: NotRequired[Optional[Literal[&#39;linear&#39;, &#39;polynomial&#39;, &#39;rbf&#39;, &#39;sigmoid&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.d_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">d_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.d_value"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.gamma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gamma</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.gamma"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.s_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">s_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.s_value"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.r_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">r_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.r_value"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.max_iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_iterations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.max_iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.wout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wout</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.wout"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.test_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">test_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.test_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.predictions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">predictions</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.predictions"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.classout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">classout</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.classout"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.nopred_censored" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nopred_censored</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.nopred_censored"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.nodetrend" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nodetrend</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.nodetrend"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.nopred_scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nopred_scale</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.nopred_scale"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.test_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">test_labels</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.test_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.multiclass" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multiclass</span><span class="annotation">: NotRequired[Optional[Literal[&#39;DAG&#39;, &#39;vote&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.multiclass"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dsvmParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dsvmParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -855,7 +1251,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3dsvm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">train_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">train_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_model_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">alpha</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;classification&#39;</span><span class="p">,</span> <span class="s1">&#39;regression&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">c_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">kernel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;polynomial&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">d_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">s_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">r_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predictions</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">classout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nopred_censored</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nodetrend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nopred_scale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiclass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;DAG&#39;</span><span class="p">,</span> <span class="s1">&#39;vote&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3dsvm</span><span class="o">.</span><span class="n">V3dsvmParameters</span>:</span></span>
+        <span class="name">v_3dsvm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">train_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">train_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_model_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">alpha</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;classification&#39;</span><span class="p">,</span> <span class="s1">&#39;regression&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">c_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">kernel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;polynomial&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">d_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">s_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">r_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">predictions</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">classout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nopred_censored</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nodetrend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nopred_scale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test_labels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiclass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;DAG&#39;</span><span class="p">,</span> <span class="s1">&#39;vote&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dsvmParameters">V3dsvmParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3dsvm_params-view-source"><span>View Source</span></label>
 
@@ -1032,186 +1428,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

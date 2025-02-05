@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -80,6 +78,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VSswarperOutputs.init_overlap_qc">init_overlap_qc</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VSswarperParameters">VSswarperParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.base_template">base_template</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.min_patch_size">min_patch_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.no_lite">no_lite</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.skip_warp">skip_warp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.unifize_off">unifize_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.init_skullstr_off">init_skullstr_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.extra_qc_off">extra_qc_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.jump_to_extra_qc">jump_to_extra_qc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.cost_nl_init">cost_nl_init</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.cost_nl_final">cost_nl_final</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.deoblique">deoblique</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.deoblique_refitly">deoblique_refitly</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.warp_scale">warp_scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.ssopt_flag">ssopt_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.aniso_off">aniso_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.ceil_off">ceil_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.tmp_name_nice">tmp_name_nice</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.echo">echo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VSswarperParameters.noclean">noclean</a>
                         </li>
                 </ul>
 
@@ -551,10 +624,11 @@
 </span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>
 </span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;VSswarperOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;V__SSWARPER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;v__sswarper&quot;</span><span class="p">,</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;v__sswarper_params&quot;</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a><span class="p">]</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;VSswarperParameters&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;V__SSWARPER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;v__sswarper&quot;</span><span class="p">,</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;v__sswarper_params&quot;</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -827,6 +901,272 @@ dataset reversed</p>
 
                             </div>
                 </section>
+                <section id="VSswarperParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VSswarperParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters"></a>
+    
+    
+
+                            <div id="VSswarperParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.base_template" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base_template</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.base_template"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.min_patch_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_patch_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.min_patch_size"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.no_lite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_lite</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.no_lite"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.skip_warp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skip_warp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.skip_warp"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.unifize_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">unifize_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.unifize_off"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.init_skullstr_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">init_skullstr_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.init_skullstr_off"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.extra_qc_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extra_qc_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.extra_qc_off"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.jump_to_extra_qc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jump_to_extra_qc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.jump_to_extra_qc"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.cost_nl_init" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost_nl_init</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.cost_nl_init"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.cost_nl_final" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost_nl_final</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.cost_nl_final"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.deoblique" class="classattr">
+                                <div class="attr variable">
+            <span class="name">deoblique</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.deoblique"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.deoblique_refitly" class="classattr">
+                                <div class="attr variable">
+            <span class="name">deoblique_refitly</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.deoblique_refitly"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.warp_scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">warp_scale</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.warp_scale"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.ssopt_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ssopt_flag</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.ssopt_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.aniso_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aniso_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.aniso_off"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.ceil_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ceil_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.ceil_off"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.tmp_name_nice" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tmp_name_nice</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.tmp_name_nice"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.echo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">echo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.echo"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="VSswarperParameters.noclean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noclean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VSswarperParameters.noclean"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V__SSWARPER_METADATA">
                     <div class="attr variable">
             <span class="name">V__SSWARPER_METADATA</span>        =
@@ -978,7 +1318,7 @@ the brain and calculate the warp to a reference template/standard space.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__sswarper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_patch_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_warp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">unifize_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">init_skullstr_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">extra_qc_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">jump_to_extra_qc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cost_nl_init</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost_nl_final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">deoblique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">deoblique_refitly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">warp_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ssopt_flag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aniso_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ceil_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tmp_name_nice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noclean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__sswarper</span><span class="o">.</span><span class="n">VSswarperParameters</span>:</span></span>
+        <span class="name">v__sswarper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_patch_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_warp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">unifize_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">init_skullstr_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">extra_qc_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">jump_to_extra_qc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cost_nl_init</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cost_nl_final</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">deoblique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">deoblique_refitly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">warp_scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ssopt_flag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aniso_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ceil_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tmp_name_nice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noclean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VSswarperParameters">VSswarperParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__sswarper_params-view-source"><span>View Source</span></label>
 
@@ -1123,186 +1463,5 @@ the brain and calculate the warp to a reference template/standard space.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

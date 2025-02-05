@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiExportDenseMappingOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExportDenseMappingParameters">CiftiExportDenseMappingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingParameters.volume_all">volume_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingParameters.volume">volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExportDenseMappingSurfaceParameters">CiftiExportDenseMappingSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingSurfaceParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingSurfaceParameters.text_out">text_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingSurfaceParameters.opt_no_cifti_index">opt_no_cifti_index</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExportDenseMappingVolumeAllParameters">CiftiExportDenseMappingVolumeAllParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeAllParameters.text_out">text_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeAllParameters.opt_no_cifti_index">opt_no_cifti_index</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeAllParameters.opt_structure">opt_structure</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExportDenseMappingVolumeParameters">CiftiExportDenseMappingVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeParameters.text_out">text_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExportDenseMappingVolumeParameters.opt_no_cifti_index">opt_no_cifti_index</a>
                         </li>
                 </ul>
 
@@ -535,12 +599,16 @@
 </span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;CIFTI_EXPORT_DENSE_MAPPING_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;CiftiExportDenseMappingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;cifti_export_dense_mapping&quot;</span><span class="p">,</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_params&quot;</span><span class="p">,</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_volume_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="p">]</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;CiftiExportDenseMappingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;CiftiExportDenseMappingSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolumeAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;CiftiExportDenseMappingVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;cifti_export_dense_mapping&quot;</span><span class="p">,</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_params&quot;</span><span class="p">,</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_volume_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a>    <span class="s2">&quot;cifti_export_dense_mapping_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -610,12 +678,218 @@
 
                             </div>
                 </section>
+                <section id="CiftiExportDenseMappingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExportDenseMappingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters"></a>
+    
+    
+
+                            <div id="CiftiExportDenseMappingParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingParameters.volume_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_all</span><span class="annotation">: NotRequired[<a href="#CiftiExportDenseMappingVolumeAllParameters">CiftiExportDenseMappingVolumeAllParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters.volume_all"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: NotRequired[list[<a href="#CiftiExportDenseMappingSurfaceParameters">CiftiExportDenseMappingSurfaceParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: NotRequired[list[<a href="#CiftiExportDenseMappingVolumeParameters">CiftiExportDenseMappingVolumeParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingParameters.volume"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiExportDenseMappingSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExportDenseMappingSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiExportDenseMappingSurfaceParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingSurfaceParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingSurfaceParameters.text_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">text_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingSurfaceParameters.text_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingSurfaceParameters.opt_no_cifti_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_no_cifti_index</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingSurfaceParameters.opt_no_cifti_index"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiExportDenseMappingVolumeAllParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExportDenseMappingVolumeAllParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeAllParameters"></a>
+    
+    
+
+                            <div id="CiftiExportDenseMappingVolumeAllParameters.text_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">text_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeAllParameters.text_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingVolumeAllParameters.opt_no_cifti_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_no_cifti_index</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeAllParameters.opt_no_cifti_index"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingVolumeAllParameters.opt_structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_structure</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeAllParameters.opt_structure"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiExportDenseMappingVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExportDenseMappingVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeParameters"></a>
+    
+    
+
+                            <div id="CiftiExportDenseMappingVolumeParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingVolumeParameters.text_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">text_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeParameters.text_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExportDenseMappingVolumeParameters.opt_no_cifti_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_no_cifti_index</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExportDenseMappingVolumeParameters.opt_no_cifti_index"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_export_dense_mapping">
                             <input id="cifti_export_dense_mapping-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_export_dense_mapping</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingSurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingOutputs">CiftiExportDenseMappingOutputs</a></span>:</span></span>
+        <span class="name">cifti_export_dense_mapping</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiExportDenseMappingVolumeAllParameters">CiftiExportDenseMappingVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiExportDenseMappingSurfaceParameters">CiftiExportDenseMappingSurfaceParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiExportDenseMappingVolumeParameters">CiftiExportDenseMappingVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingOutputs">CiftiExportDenseMappingOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_export_dense_mapping-view-source"><span>View Source</span></label>
 
@@ -776,7 +1050,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_export_dense_mapping_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingSurfaceParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingParameters</span>:</span></span>
+        <span class="name">cifti_export_dense_mapping_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiExportDenseMappingVolumeAllParameters">CiftiExportDenseMappingVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiExportDenseMappingSurfaceParameters">CiftiExportDenseMappingSurfaceParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiExportDenseMappingVolumeParameters">CiftiExportDenseMappingVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingParameters">CiftiExportDenseMappingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_export_dense_mapping_params-view-source"><span>View Source</span></label>
 
@@ -842,7 +1116,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_export_dense_mapping_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_export_dense_mapping_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingSurfaceParameters">CiftiExportDenseMappingSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_export_dense_mapping_surface_params-view-source"><span>View Source</span></label>
 
@@ -897,7 +1171,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_export_dense_mapping_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_structure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeAllParameters</span>:</span></span>
+        <span class="name">cifti_export_dense_mapping_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_structure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingVolumeAllParameters">CiftiExportDenseMappingVolumeAllParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_export_dense_mapping_volume_all_params-view-source"><span>View Source</span></label>
 
@@ -953,7 +1227,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_export_dense_mapping_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_export_dense_mapping</span><span class="o">.</span><span class="n">CiftiExportDenseMappingVolumeParameters</span>:</span></span>
+        <span class="name">cifti_export_dense_mapping_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">text_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_no_cifti_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExportDenseMappingVolumeParameters">CiftiExportDenseMappingVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_export_dense_mapping_volume_params-view-source"><span>View Source</span></label>
 
@@ -1004,186 +1278,5 @@ THALAMUS_RIGHT.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

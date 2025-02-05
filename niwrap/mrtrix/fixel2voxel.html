@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#FIXEL2VOXEL_METADATA">FIXEL2VOXEL_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Fixel2voxelConfigParameters">Fixel2voxelConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fixel2voxelConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Fixel2voxelOutputs">Fixel2voxelOutputs</a>
@@ -44,6 +54,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Fixel2voxelOutputs.image_out">image_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Fixel2voxelParameters">Fixel2voxelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.number">number</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.fill">fill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.weighted">weighted</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.fixel_in">fixel_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.operation">operation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Fixel2voxelParameters.image_out">image_out</a>
                         </li>
                 </ul>
 
@@ -492,11 +550,13 @@
 </span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>
 </span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="s2">&quot;FIXEL2VOXEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;Fixel2voxelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;fixel2voxel&quot;</span><span class="p">,</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;fixel2voxel_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;fixel2voxel_params&quot;</span><span class="p">,</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="p">]</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="s2">&quot;Fixel2voxelConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="s2">&quot;Fixel2voxelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;Fixel2voxelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;fixel2voxel&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;fixel2voxel_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;fixel2voxel_params&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -513,6 +573,41 @@
     
     
 
+                </section>
+                <section id="Fixel2voxelConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fixel2voxelConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelConfigParameters"></a>
+    
+    
+
+                            <div id="Fixel2voxelConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Fixel2voxelOutputs">
                             <input id="Fixel2voxelOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -581,12 +676,179 @@
 
                             </div>
                 </section>
+                <section id="Fixel2voxelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Fixel2voxelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters"></a>
+    
+    
+
+                            <div id="Fixel2voxelParameters.number" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.number"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.fill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.fill"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.weighted" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weighted</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.weighted"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Fixel2voxelConfigParameters">Fixel2voxelConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.fixel_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fixel_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.fixel_in"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.operation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">operation</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.operation"></a>
+    
+    
+
+                            </div>
+                            <div id="Fixel2voxelParameters.image_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Fixel2voxelParameters.image_out"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fixel2voxel">
                             <input id="fixel2voxel-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2voxel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2voxel</span><span class="o">.</span><span class="n">Fixel2voxelConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2voxelOutputs">Fixel2voxelOutputs</a></span>:</span></span>
+        <span class="name">fixel2voxel</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fixel2voxelConfigParameters">Fixel2voxelConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2voxelOutputs">Fixel2voxelOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2voxel-view-source"><span>View Source</span></label>
 
@@ -751,7 +1013,7 @@ crossing fibre models. NeuroImage, 2014, 100, 176-191.</li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2voxel_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2voxel</span><span class="o">.</span><span class="n">Fixel2voxelConfigParameters</span>:</span></span>
+        <span class="name">fixel2voxel_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2voxelConfigParameters">Fixel2voxelConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2voxel_config_params-view-source"><span>View Source</span></label>
 
@@ -802,7 +1064,7 @@ crossing fibre models. NeuroImage, 2014, 100, 176-191.</li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fixel2voxel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2voxel</span><span class="o">.</span><span class="n">Fixel2voxelConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">fixel2voxel</span><span class="o">.</span><span class="n">Fixel2voxelParameters</span>:</span></span>
+        <span class="name">fixel2voxel_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fixel_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">operation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Fixel2voxelConfigParameters">Fixel2voxelConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Fixel2voxelParameters">Fixel2voxelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fixel2voxel_params-view-source"><span>View Source</span></label>
 
@@ -911,186 +1173,5 @@ crossing fibre models. NeuroImage, 2014, 100, 176-191.</li>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,90 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dGenPriorsOutputs.out_pprefix">out_pprefix</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dGenPriorsParameters">V3dGenPriorsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.sigs">sigs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.tdist">tdist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.cprefix">cprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.pprefix">pprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.labeltable">labeltable</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.do">do</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.cmask">cmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.mrange">mrange</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.vox_debug">vox_debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.vox_debug_file">vox_debug_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.uid">uid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.use_tmp">use_tmp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.no_tmp">no_tmp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.pset">pset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.cset">cset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.regroup_classes">regroup_classes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.classes">classes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.features">features</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.strict_feature_match">strict_feature_match</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.featgroups">featgroups</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.show_this_dist">show_this_dist</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.fast">fast</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dGenPriorsParameters.slow">slow</a>
                         </li>
                 </ul>
 
@@ -534,10 +616,11 @@
 </span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>
 </span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;V3dGenPriorsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;V_3D_GEN_PRIORS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;v_3d_gen_priors&quot;</span><span class="p">,</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;v_3d_gen_priors_params&quot;</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a><span class="p">]</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;V3dGenPriorsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;V_3D_GEN_PRIORS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;v_3d_gen_priors&quot;</span><span class="p">,</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;v_3d_gen_priors_params&quot;</span><span class="p">,</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -621,6 +704,305 @@
             <div class="docstring"><p>Main probability output</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dGenPriorsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dGenPriorsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters"></a>
+    
+    
+
+                            <div id="V3dGenPriorsParameters.sigs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.sigs"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.tdist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tdist</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.tdist"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.cprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cprefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.cprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.pprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pprefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.pprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.labeltable" class="classattr">
+                                <div class="attr variable">
+            <span class="name">labeltable</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.labeltable"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.do" class="classattr">
+                                <div class="attr variable">
+            <span class="name">do</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.do"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.cmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.cmask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.mrange" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mrange</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.mrange"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.vox_debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vox_debug</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.vox_debug"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.vox_debug_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vox_debug_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.vox_debug_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.uid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uid</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.uid"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.use_tmp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_tmp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.use_tmp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.no_tmp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_tmp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.no_tmp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.pset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pset</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.pset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.cset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cset</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.cset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.regroup_classes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">regroup_classes</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.regroup_classes"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.classes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">classes</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.classes"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.features" class="classattr">
+                                <div class="attr variable">
+            <span class="name">features</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.features"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.strict_feature_match" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strict_feature_match</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.strict_feature_match"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.featgroups" class="classattr">
+                                <div class="attr variable">
+            <span class="name">featgroups</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.featgroups"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.show_this_dist" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_this_dist</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.show_this_dist"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.fast" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fast</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.fast"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dGenPriorsParameters.slow" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slow</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dGenPriorsParameters.slow"></a>
+    
+    
 
                             </div>
                 </section>
@@ -779,7 +1161,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_gen_priors_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sigs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tdist</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cprefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pprefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">labeltable</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">do</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mrange</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox_debug</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox_debug_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_tmp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_tmp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regroup_classes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">classes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">features</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strict_feature_match</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">featgroups</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_this_dist</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fast</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slow</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_gen_priors</span><span class="o">.</span><span class="n">V3dGenPriorsParameters</span>:</span></span>
+        <span class="name">v_3d_gen_priors_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sigs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tdist</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cprefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pprefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">labeltable</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">do</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mrange</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox_debug</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox_debug_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_tmp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_tmp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cset</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regroup_classes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">classes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">features</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strict_feature_match</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">featgroups</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_this_dist</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fast</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">slow</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dGenPriorsParameters">V3dGenPriorsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_gen_priors_params-view-source"><span>View Source</span></label>
 
@@ -942,186 +1324,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

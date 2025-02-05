@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriFieldsignOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriFieldsignParameters">MriFieldsignParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.fieldsign_file">fieldsign_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.eccen_values">eccen_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.polar_values">polar_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.hemisphere">hemisphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.patch_file">patch_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.occip_flag">occip_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.sphere_flag">sphere_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.fwhm">fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.nsmooth">nsmooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.reverse_flag">reverse_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.old_flag">old_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.eccen_rotation">eccen_rotation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.polar_rotation">polar_rotation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.eccen_output">eccen_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.polar_output">polar_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.eccen_sfa_file">eccen_sfa_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.polar_sfa_file">polar_sfa_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.sfa_dir">sfa_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.sfa_true_flag">sfa_true_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.debug_flag">debug_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.checkopts_flag">checkopts_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFieldsignParameters.version_flag">version_flag</a>
                         </li>
                 </ul>
 
@@ -473,9 +549,10 @@
 </span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;MRI_FIELDSIGN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;MriFieldsignOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;mri_fieldsign&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;mri_fieldsign_params&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="p">]</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;MriFieldsignParameters&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;mri_fieldsign&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;mri_fieldsign_params&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -542,6 +619,283 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriFieldsignParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriFieldsignParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters"></a>
+    
+    
+
+                            <div id="MriFieldsignParameters.fieldsign_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fieldsign_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.fieldsign_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.eccen_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eccen_values</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.eccen_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.polar_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polar_values</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.polar_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.hemisphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemisphere</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.hemisphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.patch_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">patch_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.patch_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.occip_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">occip_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.occip_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.sphere_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sphere_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.sphere_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.nsmooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nsmooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.nsmooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.reverse_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reverse_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.reverse_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.old_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">old_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.old_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.eccen_rotation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eccen_rotation</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.eccen_rotation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.polar_rotation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polar_rotation</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.polar_rotation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.eccen_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eccen_output</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.eccen_output"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.polar_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polar_output</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.polar_output"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.eccen_sfa_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eccen_sfa_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.eccen_sfa_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.polar_sfa_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polar_sfa_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.polar_sfa_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.sfa_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sfa_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.sfa_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.sfa_true_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sfa_true_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.sfa_true_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.debug_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.checkopts_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checkopts_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.checkopts_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFieldsignParameters.version_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFieldsignParameters.version_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -676,7 +1030,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_fieldsign_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fieldsign_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eccen_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">polar_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">patch_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">occip_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sphere_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reverse_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">old_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">eccen_rotation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_rotation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">eccen_output</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_output</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">eccen_sfa_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_sfa_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sfa_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sfa_true_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_fieldsign</span><span class="o">.</span><span class="n">MriFieldsignParameters</span>:</span></span>
+        <span class="name">mri_fieldsign_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fieldsign_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">eccen_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">polar_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">patch_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">occip_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sphere_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reverse_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">old_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">eccen_rotation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_rotation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">eccen_output</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_output</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">eccen_sfa_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polar_sfa_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sfa_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sfa_true_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriFieldsignParameters">MriFieldsignParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_fieldsign_params-view-source"><span>View Source</span></label>
 
@@ -821,186 +1175,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

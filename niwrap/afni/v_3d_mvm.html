@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dMvmOutputs.outfile_brik">outfile_brik</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dMvmParameters">V3dMvmParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.dbgArgs">dbgArgs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.jobs">jobs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.bsVars">bsVars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.wsVars">wsVars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.qVars">qVars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.qVarCenters">qVarCenters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.num_glt">num_glt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.gltLabel">gltLabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.gltCode">gltCode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.num_glf">num_glf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.glfLabel">glfLabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.glfCode">glfCode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dMvmParameters.dataTable">dataTable</a>
                         </li>
                 </ul>
 
@@ -417,10 +466,11 @@
 </span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>
 </span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;V3dMvmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;V_3D_MVM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;v_3d_mvm&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;v_3d_mvm_params&quot;</span><span class="p">,</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="p">]</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;V3dMvmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;V_3D_MVM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;v_3d_mvm&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;v_3d_mvm_params&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -504,6 +554,184 @@
             <div class="docstring"><p>Output BRIK file in AFNI format</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dMvmParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dMvmParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters"></a>
+    
+    
+
+                            <div id="V3dMvmParameters.dbgArgs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dbgArgs</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.dbgArgs"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.jobs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jobs</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.jobs"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.bsVars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bsVars</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.bsVars"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.wsVars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wsVars</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.wsVars"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.qVars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qVars</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.qVars"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.qVarCenters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qVarCenters</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.qVarCenters"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.num_glt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_glt</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.num_glt"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.gltLabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gltLabel</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.gltLabel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.gltCode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gltCode</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.gltCode"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.num_glf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_glf</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.num_glf"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.glfLabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">glfLabel</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.glfLabel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.glfCode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">glfCode</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.glfCode"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dMvmParameters.dataTable" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataTable</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dMvmParameters.dataTable"></a>
+    
+    
 
                             </div>
                 </section>
@@ -625,7 +853,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_mvm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bs_vars</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">data_table</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dbg_args</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ws_vars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_vars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_var_centers</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_glt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glt_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glt_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_glf</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glf_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glf_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_mvm</span><span class="o">.</span><span class="n">V3dMvmParameters</span>:</span></span>
+        <span class="name">v_3d_mvm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bs_vars</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">data_table</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dbg_args</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ws_vars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_vars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">q_var_centers</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_glt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glt_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glt_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_glf</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glf_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">glf_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dMvmParameters">V3dMvmParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_mvm_params-view-source"><span>View Source</span></label>
 
@@ -737,186 +965,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

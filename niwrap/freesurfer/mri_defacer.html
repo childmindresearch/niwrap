@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriDefacerOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriDefacerParameters">MriDefacerParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.headmask">headmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.tempsurf">tempsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.templabel">templabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.watermark">watermark</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.defaced_volume">defaced_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.facemask">facemask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.fill_constants">fill_constants</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.exclude_mask">exclude_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.tempreg">tempreg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.minsurfpath">minsurfpath</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.maxsurfpath">maxsurfpath</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.distbounds">distbounds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.distoverlay">distoverlay</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.distdat">distdat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.statspath">statspath</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.output_tempsurf">output_tempsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.apply_to_volume">apply_to_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.ripple_center">ripple_center</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.apply_ripple">apply_ripple</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.diagnostic_level">diagnostic_level</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.checkopts">checkopts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriDefacerParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -499,9 +575,10 @@
 </span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;MRI_DEFACER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;MriDefacerOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;mri_defacer&quot;</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;mri_defacer_params&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="p">]</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;MriDefacerParameters&quot;</span><span class="p">,</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;mri_defacer&quot;</span><span class="p">,</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;mri_defacer_params&quot;</span><span class="p">,</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -568,6 +645,283 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriDefacerParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriDefacerParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters"></a>
+    
+    
+
+                            <div id="MriDefacerParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.headmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">headmask</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.headmask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.tempsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tempsurf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.tempsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.templabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">templabel</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.templabel"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.watermark" class="classattr">
+                                <div class="attr variable">
+            <span class="name">watermark</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.watermark"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.defaced_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">defaced_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.defaced_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.facemask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">facemask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.facemask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.fill_constants" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill_constants</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.fill_constants"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.exclude_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclude_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.exclude_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.tempreg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tempreg</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.tempreg"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.minsurfpath" class="classattr">
+                                <div class="attr variable">
+            <span class="name">minsurfpath</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.minsurfpath"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.maxsurfpath" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxsurfpath</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.maxsurfpath"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.distbounds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">distbounds</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.distbounds"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.distoverlay" class="classattr">
+                                <div class="attr variable">
+            <span class="name">distoverlay</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.distoverlay"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.distdat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">distdat</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.distdat"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.statspath" class="classattr">
+                                <div class="attr variable">
+            <span class="name">statspath</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.statspath"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.output_tempsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_tempsurf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.output_tempsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.apply_to_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apply_to_volume</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.apply_to_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.ripple_center" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ripple_center</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.ripple_center"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.apply_ripple" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apply_ripple</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.apply_ripple"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.diagnostic_level" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diagnostic_level</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.diagnostic_level"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.checkopts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checkopts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.checkopts"></a>
+    
+    
+
+                            </div>
+                            <div id="MriDefacerParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriDefacerParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -702,7 +1056,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_defacer_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">headmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">defaced_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill_constants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tempreg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minsurfpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxsurfpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distbounds</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distoverlay</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distdat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">statspath</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_to_volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ripple_center</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_ripple</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diagnostic_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_defacer</span><span class="o">.</span><span class="n">MriDefacerParameters</span>:</span></span>
+        <span class="name">mri_defacer_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">headmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">defaced_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">templabel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">watermark</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">facemask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fill_constants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tempreg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minsurfpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxsurfpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distbounds</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distoverlay</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">distdat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">statspath</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_tempsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_to_volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ripple_center</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apply_ripple</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diagnostic_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriDefacerParameters">MriDefacerParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_defacer_params-view-source"><span>View Source</span></label>
 
@@ -854,186 +1208,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

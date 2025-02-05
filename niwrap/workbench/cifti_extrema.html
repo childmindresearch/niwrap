@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiExtremaOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExtremaParameters">CiftiExtremaParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.surface_distance">surface_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.volume_distance">volume_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_left_surface_surface">opt_left_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_right_surface_surface">opt_right_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_cerebellum_surface_surface">opt_cerebellum_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_surface_presmooth_surface_kernel">opt_surface_presmooth_surface_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_volume_presmooth_volume_kernel">opt_volume_presmooth_volume_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_presmooth_fwhm">opt_presmooth_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_merged_volume">opt_merged_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_sum_maps">opt_sum_maps</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_consolidate_mode">opt_consolidate_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_only_maxima">opt_only_maxima</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaParameters.opt_only_minima">opt_only_minima</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiExtremaThresholdParameters">CiftiExtremaThresholdParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiExtremaThresholdParameters.low">low</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiExtremaThresholdParameters.high">high</a>
                         </li>
                 </ul>
 
@@ -478,10 +545,12 @@
 </span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;CIFTI_EXTREMA_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;CiftiExtremaOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;cifti_extrema&quot;</span><span class="p">,</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;cifti_extrema_params&quot;</span><span class="p">,</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;cifti_extrema_threshold_params&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a><span class="p">]</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;CiftiExtremaParameters&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;CiftiExtremaThresholdParameters&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;cifti_extrema&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;cifti_extrema_params&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;cifti_extrema_threshold_params&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -566,12 +635,247 @@
 
                             </div>
                 </section>
+                <section id="CiftiExtremaParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExtremaParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters"></a>
+    
+    
+
+                            <div id="CiftiExtremaParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.surface_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_distance</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.surface_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.volume_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_distance</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.volume_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_left_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_left_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_right_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_right_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_cerebellum_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_cerebellum_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_surface_presmooth_surface_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_surface_presmooth_surface_kernel</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_surface_presmooth_surface_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_volume_presmooth_volume_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_volume_presmooth_volume_kernel</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_volume_presmooth_volume_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_presmooth_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_presmooth_fwhm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_presmooth_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: NotRequired[<a href="#CiftiExtremaThresholdParameters">CiftiExtremaThresholdParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_merged_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_merged_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_merged_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_sum_maps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sum_maps</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_sum_maps"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_consolidate_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_consolidate_mode</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_consolidate_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_only_maxima" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_only_maxima</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_only_maxima"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaParameters.opt_only_minima" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_only_minima</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaParameters.opt_only_minima"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiExtremaThresholdParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiExtremaThresholdParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaThresholdParameters"></a>
+    
+    
+
+                            <div id="CiftiExtremaThresholdParameters.low" class="classattr">
+                                <div class="attr variable">
+            <span class="name">low</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaThresholdParameters.low"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiExtremaThresholdParameters.high" class="classattr">
+                                <div class="attr variable">
+            <span class="name">high</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiExtremaThresholdParameters.high"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_extrema">
                             <input id="cifti_extrema-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_extrema</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_extrema</span><span class="o">.</span><span class="n">CiftiExtremaThresholdParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_sum_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_consolidate_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_maxima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_minima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExtremaOutputs">CiftiExtremaOutputs</a></span>:</span></span>
+        <span class="name">cifti_extrema</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="n"><a href="#CiftiExtremaThresholdParameters">CiftiExtremaThresholdParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_sum_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_consolidate_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_maxima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_minima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExtremaOutputs">CiftiExtremaOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_extrema-view-source"><span>View Source</span></label>
 
@@ -700,7 +1004,7 @@ dconn, if it is symmetric use COLUMN, otherwise use ROW.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_extrema_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_extrema</span><span class="o">.</span><span class="n">CiftiExtremaThresholdParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_sum_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_consolidate_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_maxima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_minima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_extrema</span><span class="o">.</span><span class="n">CiftiExtremaParameters</span>:</span></span>
+        <span class="name">cifti_extrema_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_distance</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="n"><a href="#CiftiExtremaThresholdParameters">CiftiExtremaThresholdParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_sum_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_consolidate_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_maxima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_only_minima</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExtremaParameters">CiftiExtremaParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_extrema_params-view-source"><span>View Source</span></label>
 
@@ -829,7 +1133,7 @@ dconn, if it is symmetric use COLUMN, otherwise use ROW.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_extrema_threshold_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">low</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">high</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_extrema</span><span class="o">.</span><span class="n">CiftiExtremaThresholdParameters</span>:</span></span>
+        <span class="name">cifti_extrema_threshold_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">low</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">high</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiExtremaThresholdParameters">CiftiExtremaThresholdParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_extrema_threshold_params-view-source"><span>View Source</span></label>
 
@@ -876,186 +1180,5 @@ dconn, if it is symmetric use COLUMN, otherwise use ROW.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

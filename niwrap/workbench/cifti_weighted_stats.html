@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,87 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiWeightedStatsOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiWeightedStatsParameters">CiftiWeightedStatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.cifti_in">cifti_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.spatial_weights">spatial_weights</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_cifti_weights_weight_cifti">opt_cifti_weights_weight_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_column_column">opt_column_column</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.roi">roi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_mean">opt_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.stdev">stdev</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_percentile_percent">opt_percentile_percent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_sum">opt_sum</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsParameters.opt_show_map_name">opt_show_map_name</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiWeightedStatsRoiParameters">CiftiWeightedStatsRoiParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsRoiParameters.roi_cifti">roi_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsRoiParameters.opt_match_maps">opt_match_maps</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiWeightedStatsSpatialWeightsParameters">CiftiWeightedStatsSpatialWeightsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_surf_left_surf">opt_left_area_surf_left_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_surf_right_surf">opt_right_area_surf_right_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf">opt_cerebellum_area_surf_cerebellum_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_metric_left_metric">opt_left_area_metric_left_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_metric_right_metric">opt_right_area_metric_right_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric">opt_cerebellum_area_metric_cerebellum_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiWeightedStatsStdevParameters">CiftiWeightedStatsStdevParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiWeightedStatsStdevParameters.opt_sample">opt_sample</a>
                         </li>
                 </ul>
 
@@ -566,12 +645,16 @@
 </span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>    <span class="s2">&quot;CIFTI_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a>    <span class="s2">&quot;CiftiWeightedStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;cifti_weighted_stats&quot;</span><span class="p">,</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;cifti_weighted_stats_params&quot;</span><span class="p">,</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;cifti_weighted_stats_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;cifti_weighted_stats_spatial_weights_params&quot;</span><span class="p">,</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;cifti_weighted_stats_stdev_params&quot;</span><span class="p">,</span>
-</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="p">]</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;CiftiWeightedStatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;CiftiWeightedStatsRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;CiftiWeightedStatsSpatialWeightsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;CiftiWeightedStatsStdevParameters&quot;</span><span class="p">,</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;cifti_weighted_stats&quot;</span><span class="p">,</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a>    <span class="s2">&quot;cifti_weighted_stats_params&quot;</span><span class="p">,</span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a>    <span class="s2">&quot;cifti_weighted_stats_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a>    <span class="s2">&quot;cifti_weighted_stats_spatial_weights_params&quot;</span><span class="p">,</span>
+</span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a>    <span class="s2">&quot;cifti_weighted_stats_stdev_params&quot;</span><span class="p">,</span>
+</span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -641,12 +724,273 @@
 
                             </div>
                 </section>
+                <section id="CiftiWeightedStatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiWeightedStatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters"></a>
+    
+    
+
+                            <div id="CiftiWeightedStatsParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.spatial_weights" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spatial_weights</span><span class="annotation">: NotRequired[<a href="#CiftiWeightedStatsSpatialWeightsParameters">CiftiWeightedStatsSpatialWeightsParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.spatial_weights"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_cifti_weights_weight_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cifti_weights_weight_cifti</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_cifti_weights_weight_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_column_column" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_column_column</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_column_column"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.roi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi</span><span class="annotation">: NotRequired[<a href="#CiftiWeightedStatsRoiParameters">CiftiWeightedStatsRoiParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.roi"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_mean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.stdev" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stdev</span><span class="annotation">: NotRequired[<a href="#CiftiWeightedStatsStdevParameters">CiftiWeightedStatsStdevParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.stdev"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_percentile_percent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_percentile_percent</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_percentile_percent"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_sum" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sum</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_sum"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsParameters.opt_show_map_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_show_map_name</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsParameters.opt_show_map_name"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiWeightedStatsRoiParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiWeightedStatsRoiParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsRoiParameters"></a>
+    
+    
+
+                            <div id="CiftiWeightedStatsRoiParameters.roi_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">roi_cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsRoiParameters.roi_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsRoiParameters.opt_match_maps" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_match_maps</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsRoiParameters.opt_match_maps"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiWeightedStatsSpatialWeightsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiWeightedStatsSpatialWeightsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters"></a>
+    
+    
+
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_surf_left_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_area_surf_left_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_surf_left_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_surf_right_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_area_surf_right_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_surf_right_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_area_surf_cerebellum_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_metric_left_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_area_metric_left_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_left_area_metric_left_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_metric_right_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_area_metric_right_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_right_area_metric_right_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_area_metric_cerebellum_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiWeightedStatsStdevParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiWeightedStatsStdevParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsStdevParameters"></a>
+    
+    
+
+                            <div id="CiftiWeightedStatsStdevParameters.opt_sample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sample</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiWeightedStatsStdevParameters.opt_sample"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_weighted_stats">
                             <input id="cifti_weighted_stats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsSpatialWeightsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsStdevParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsOutputs">CiftiWeightedStatsOutputs</a></span>:</span></span>
+        <span class="name">cifti_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsSpatialWeightsParameters">CiftiWeightedStatsSpatialWeightsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsRoiParameters">CiftiWeightedStatsRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsStdevParameters">CiftiWeightedStatsStdevParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsOutputs">CiftiWeightedStatsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_weighted_stats-view-source"><span>View Source</span></label>
 
@@ -763,7 +1107,7 @@ therefore output the area or volume of each ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_weighted_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsSpatialWeightsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsRoiParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsStdevParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsParameters</span>:</span></span>
+        <span class="name">cifti_weighted_stats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsSpatialWeightsParameters">CiftiWeightedStatsSpatialWeightsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsRoiParameters">CiftiWeightedStatsRoiParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n"><a href="#CiftiWeightedStatsStdevParameters">CiftiWeightedStatsStdevParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsParameters">CiftiWeightedStatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_weighted_stats_params-view-source"><span>View Source</span></label>
 
@@ -855,7 +1199,7 @@ therefore output the area or volume of each ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_weighted_stats_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsRoiParameters</span>:</span></span>
+        <span class="name">cifti_weighted_stats_roi_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_match_maps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsRoiParameters">CiftiWeightedStatsRoiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_weighted_stats_roi_params-view-source"><span>View Source</span></label>
 
@@ -907,7 +1251,7 @@ therefore output the area or volume of each ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_weighted_stats_spatial_weights_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_metric_left_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_metric_right_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_metric_cerebellum_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsSpatialWeightsParameters</span>:</span></span>
+        <span class="name">cifti_weighted_stats_spatial_weights_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_metric_left_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_metric_right_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_metric_cerebellum_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsSpatialWeightsParameters">CiftiWeightedStatsSpatialWeightsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_weighted_stats_spatial_weights_params-view-source"><span>View Source</span></label>
 
@@ -986,7 +1330,7 @@ therefore output the area or volume of each ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_weighted_stats_stdev_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_weighted_stats</span><span class="o">.</span><span class="n">CiftiWeightedStatsStdevParameters</span>:</span></span>
+        <span class="name">cifti_weighted_stats_stdev_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiWeightedStatsStdevParameters">CiftiWeightedStatsStdevParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_weighted_stats_stdev_params-view-source"><span>View Source</span></label>
 
@@ -1029,186 +1373,5 @@ therefore output the area or volume of each ROI.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GenEpiReviewPyOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GenEpiReviewPyParameters">GenEpiReviewPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.datasets">datasets</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.script_name">script_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.windows">windows</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.verbosity">verbosity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.image_size">image_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.image_xoffset">image_xoffset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.image_yoffset">image_yoffset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.graph_size">graph_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.graph_xoffset">graph_xoffset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GenEpiReviewPyParameters.graph_yoffset">graph_yoffset</a>
                         </li>
                 </ul>
 
@@ -349,9 +383,10 @@
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;GEN_EPI_REVIEW_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;GenEpiReviewPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;gen_epi_review_py&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;gen_epi_review_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="p">]</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;GenEpiReviewPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;gen_epi_review_py&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;gen_epi_review_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -418,6 +453,129 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="GenEpiReviewPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GenEpiReviewPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters"></a>
+    
+    
+
+                            <div id="GenEpiReviewPyParameters.datasets" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datasets</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.datasets"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.script_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">script_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.script_name"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.windows" class="classattr">
+                                <div class="attr variable">
+            <span class="name">windows</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.windows"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.verbosity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbosity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.verbosity"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.image_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_size</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.image_size"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.image_xoffset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_xoffset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.image_xoffset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.image_yoffset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_yoffset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.image_yoffset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.graph_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">graph_size</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.graph_size"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.graph_xoffset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">graph_xoffset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.graph_xoffset"></a>
+    
+    
+
+                            </div>
+                            <div id="GenEpiReviewPyParameters.graph_yoffset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">graph_yoffset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GenEpiReviewPyParameters.graph_yoffset"></a>
+    
+    
 
                             </div>
                 </section>
@@ -510,7 +668,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">gen_epi_review_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">script_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">windows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_xoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_yoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_xoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_yoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">gen_epi_review_py</span><span class="o">.</span><span class="n">GenEpiReviewPyParameters</span>:</span></span>
+        <span class="name">gen_epi_review_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">script_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">windows</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbosity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_xoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_yoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_size</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_xoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">graph_yoffset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GenEpiReviewPyParameters">GenEpiReviewPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="gen_epi_review_py_params-view-source"><span>View Source</span></label>
 
@@ -598,186 +756,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

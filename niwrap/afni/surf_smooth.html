@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SurfSmoothOutputs.out_file">out_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SurfSmoothParameters">SurfSmoothParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.method">method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.input_data">input_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.target_fwhm">target_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.fwhm">fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.number_iterations">number_iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.band_pass_frequency">band_pass_frequency</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.lambda_mu">lambda_mu</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.interp_weights">interp_weights</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.node_mask">node_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.surface_output">surface_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.dbg_node">dbg_node</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.use_neighbors_outside_mask">use_neighbors_outside_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.talk_suma">talk_suma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfSmoothParameters.refresh_rate">refresh_rate</a>
                         </li>
                 </ul>
 
@@ -443,9 +495,10 @@
 </span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;SURF_SMOOTH_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;SurfSmoothOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;surf_smooth&quot;</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;surf_smooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="p">]</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;SurfSmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;surf_smooth&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;surf_smooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -527,6 +580,195 @@
             <div class="docstring"><p>Name of the output file.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="SurfSmoothParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SurfSmoothParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters"></a>
+    
+    
+
+                            <div id="SurfSmoothParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">method</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.method"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.input_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_data</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.input_data"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.target_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.target_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.number_iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_iterations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.number_iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.band_pass_frequency" class="classattr">
+                                <div class="attr variable">
+            <span class="name">band_pass_frequency</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.band_pass_frequency"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.lambda_mu" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lambda_mu</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.lambda_mu"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.interp_weights" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp_weights</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.interp_weights"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.node_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">node_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.node_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.surface_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_output</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.surface_output"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.dbg_node" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dbg_node</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.dbg_node"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.use_neighbors_outside_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_neighbors_outside_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.use_neighbors_outside_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.talk_suma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">talk_suma</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.talk_suma"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfSmoothParameters.refresh_rate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">refresh_rate</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfSmoothParameters.refresh_rate"></a>
+    
+    
 
                             </div>
                 </section>
@@ -649,7 +891,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">surf_smooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">target_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">band_pass_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lambda_mu</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp_weights</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">node_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dbg_node</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_neighbors_outside_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">talk_suma</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">refresh_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">surf_smooth</span><span class="o">.</span><span class="n">SurfSmoothParameters</span>:</span></span>
+        <span class="name">surf_smooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">target_fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">number_iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">band_pass_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lambda_mu</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp_weights</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">node_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dbg_node</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_neighbors_outside_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">talk_suma</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">refresh_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfSmoothParameters">SurfSmoothParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="surf_smooth_params-view-source"><span>View Source</span></label>
 
@@ -776,186 +1018,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

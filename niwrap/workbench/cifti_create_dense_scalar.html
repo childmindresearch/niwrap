@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_CREATE_DENSE_SCALAR_METADATA">CIFTI_CREATE_DENSE_SCALAR_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseScalarCerebellumMetricParameters">CiftiCreateDenseScalarCerebellumMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarCerebellumMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarCerebellumMetricParameters.opt_roi_cerebellum_roi_metric">opt_roi_cerebellum_roi_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseScalarLeftMetricParameters">CiftiCreateDenseScalarLeftMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarLeftMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarLeftMetricParameters.opt_roi_left_roi_metric">opt_roi_left_roi_metric</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiCreateDenseScalarOutputs">CiftiCreateDenseScalarOutputs</a>
@@ -44,6 +66,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiCreateDenseScalarOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseScalarParameters">CiftiCreateDenseScalarParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.volume">volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.left_metric">left_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.right_metric">right_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.cerebellum_metric">cerebellum_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarParameters.opt_name_file_file">opt_name_file_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseScalarRightMetricParameters">CiftiCreateDenseScalarRightMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarRightMetricParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarRightMetricParameters.opt_roi_right_roi_metric">opt_roi_right_roi_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiCreateDenseScalarVolumeParameters">CiftiCreateDenseScalarVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarVolumeParameters.volume_data">volume_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiCreateDenseScalarVolumeParameters.structure_label_volume">structure_label_volume</a>
                         </li>
                 </ul>
 
@@ -600,14 +670,19 @@
 </span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a>
 </span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_SCALAR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a>    <span class="s2">&quot;cifti_create_dense_scalar&quot;</span><span class="p">,</span>
-</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_cerebellum_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_left_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_params&quot;</span><span class="p">,</span>
-</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_right_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a><span class="p">]</span>
+</span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarCerebellumMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarLeftMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarParameters&quot;</span><span class="p">,</span>
+</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarRightMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a>    <span class="s2">&quot;cifti_create_dense_scalar&quot;</span><span class="p">,</span>
+</span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_cerebellum_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_left_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_params&quot;</span><span class="p">,</span>
+</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_right_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a>    <span class="s2">&quot;cifti_create_dense_scalar_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -624,6 +699,76 @@
     
     
 
+                </section>
+                <section id="CiftiCreateDenseScalarCerebellumMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseScalarCerebellumMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarCerebellumMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseScalarCerebellumMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarCerebellumMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarCerebellumMetricParameters.opt_roi_cerebellum_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_cerebellum_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarCerebellumMetricParameters.opt_roi_cerebellum_roi_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseScalarLeftMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseScalarLeftMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarLeftMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseScalarLeftMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarLeftMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarLeftMetricParameters.opt_roi_left_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_left_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarLeftMetricParameters.opt_roi_left_roi_metric"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiCreateDenseScalarOutputs">
                             <input id="CiftiCreateDenseScalarOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -692,12 +837,161 @@
 
                             </div>
                 </section>
+                <section id="CiftiCreateDenseScalarParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseScalarParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseScalarParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseScalarVolumeParameters">CiftiCreateDenseScalarVolumeParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.volume"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarParameters.left_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseScalarLeftMetricParameters">CiftiCreateDenseScalarLeftMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.left_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarParameters.right_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseScalarRightMetricParameters">CiftiCreateDenseScalarRightMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.right_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarParameters.cerebellum_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cerebellum_metric</span><span class="annotation">: NotRequired[<a href="#CiftiCreateDenseScalarCerebellumMetricParameters">CiftiCreateDenseScalarCerebellumMetricParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.cerebellum_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarParameters.opt_name_file_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_name_file_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarParameters.opt_name_file_file"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseScalarRightMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseScalarRightMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarRightMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseScalarRightMetricParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarRightMetricParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarRightMetricParameters.opt_roi_right_roi_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_right_roi_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarRightMetricParameters.opt_roi_right_roi_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiCreateDenseScalarVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiCreateDenseScalarVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarVolumeParameters"></a>
+    
+    
+
+                            <div id="CiftiCreateDenseScalarVolumeParameters.volume_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_data</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarVolumeParameters.volume_data"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiCreateDenseScalarVolumeParameters.structure_label_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure_label_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiCreateDenseScalarVolumeParameters.structure_label_volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_create_dense_scalar">
                             <input id="cifti_create_dense_scalar-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarLeftMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarRightMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarCerebellumMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarOutputs">CiftiCreateDenseScalarOutputs</a></span>:</span></span>
+        <span class="name">cifti_create_dense_scalar</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarVolumeParameters">CiftiCreateDenseScalarVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarLeftMetricParameters">CiftiCreateDenseScalarLeftMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarRightMetricParameters">CiftiCreateDenseScalarRightMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarCerebellumMetricParameters">CiftiCreateDenseScalarCerebellumMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarOutputs">CiftiCreateDenseScalarOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar-view-source"><span>View Source</span></label>
 
@@ -854,7 +1148,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar_cerebellum_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_cerebellum_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarCerebellumMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_scalar_cerebellum_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_cerebellum_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarCerebellumMetricParameters">CiftiCreateDenseScalarCerebellumMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar_cerebellum_metric_params-view-source"><span>View Source</span></label>
 
@@ -907,7 +1201,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar_left_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_left_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarLeftMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_scalar_left_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_left_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarLeftMetricParameters">CiftiCreateDenseScalarLeftMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar_left_metric_params-view-source"><span>View Source</span></label>
 
@@ -960,7 +1254,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarVolumeParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarLeftMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarRightMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarCerebellumMetricParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_scalar_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarVolumeParameters">CiftiCreateDenseScalarVolumeParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">left_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarLeftMetricParameters">CiftiCreateDenseScalarLeftMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarRightMetricParameters">CiftiCreateDenseScalarRightMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_metric</span><span class="p">:</span> <span class="n"><a href="#CiftiCreateDenseScalarCerebellumMetricParameters">CiftiCreateDenseScalarCerebellumMetricParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_name_file_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarParameters">CiftiCreateDenseScalarParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar_params-view-source"><span>View Source</span></label>
 
@@ -1033,7 +1327,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar_right_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_right_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarRightMetricParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_scalar_right_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_right_roi_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarRightMetricParameters">CiftiCreateDenseScalarRightMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar_right_metric_params-view-source"><span>View Source</span></label>
 
@@ -1086,7 +1380,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_create_dense_scalar_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">structure_label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_create_dense_scalar</span><span class="o">.</span><span class="n">CiftiCreateDenseScalarVolumeParameters</span>:</span></span>
+        <span class="name">cifti_create_dense_scalar_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">structure_label_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiCreateDenseScalarVolumeParameters">CiftiCreateDenseScalarVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_create_dense_scalar_volume_params-view-source"><span>View Source</span></label>
 
@@ -1135,186 +1429,5 @@ THALAMUS_RIGHT.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

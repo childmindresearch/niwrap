@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MakeAverageSubjectOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MakeAverageSubjectParameters">MakeAverageSubjectParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.subjects">subjects</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.fsgd_file">fsgd_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.subject_list_file">subject_list_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.average_subject_name">average_subject_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.sd_out">sd_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_link">no_link</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.sdir">sdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.ico_order">ico_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.transform_file">transform_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.surface_registration">surface_registration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_surfaces">no_surfaces</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_volumes">no_volumes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.keep_all_orig">keep_all_orig</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_symlink">no_symlink</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_ribbon">no_ribbon</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.no_surf2surf">no_surf2surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.rca_threads">rca_threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.echo">echo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MakeAverageSubjectParameters.debug">debug</a>
                         </li>
                 </ul>
 
@@ -447,9 +517,10 @@
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;MAKE_AVERAGE_SUBJECT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;MakeAverageSubjectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;make_average_subject&quot;</span><span class="p">,</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;make_average_subject_params&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="p">]</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;MakeAverageSubjectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;make_average_subject&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;make_average_subject_params&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -516,6 +587,261 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MakeAverageSubjectParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MakeAverageSubjectParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters"></a>
+    
+    
+
+                            <div id="MakeAverageSubjectParameters.subjects" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.subjects"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.fsgd_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fsgd_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.fsgd_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.subject_list_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_list_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.subject_list_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.average_subject_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">average_subject_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.average_subject_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.sd_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sd_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.sd_out"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_link" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_link</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_link"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.sdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.sdir"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.ico_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ico_order</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.ico_order"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.transform_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transform_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.transform_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.surface_registration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_registration</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.surface_registration"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_surfaces" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_surfaces</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_surfaces"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_volumes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_volumes</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_volumes"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.keep_all_orig" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_all_orig</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.keep_all_orig"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_symlink" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_symlink</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_symlink"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_ribbon" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_ribbon</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_ribbon"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.no_surf2surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_surf2surf</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.no_surf2surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.rca_threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rca_threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.rca_threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.echo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">echo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.echo"></a>
+    
+    
+
+                            </div>
+                            <div id="MakeAverageSubjectParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MakeAverageSubjectParameters.debug"></a>
+    
+    
 
                             </div>
                 </section>
@@ -647,7 +973,7 @@ set of subjects.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">make_average_subject_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">average_subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fsgd_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_list_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sd_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_link</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ico_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">7</span>,</span><span class="param">	<span class="n">transform_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_registration</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;sphere.reg&#39;</span>,</span><span class="param">	<span class="n">no_surfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_volumes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_all_orig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_symlink</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_ribbon</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_surf2surf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rca_threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">make_average_subject</span><span class="o">.</span><span class="n">MakeAverageSubjectParameters</span>:</span></span>
+        <span class="name">make_average_subject_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">average_subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fsgd_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subject_list_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sd_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_link</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ico_order</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">7</span>,</span><span class="param">	<span class="n">transform_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surface_registration</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;sphere.reg&#39;</span>,</span><span class="param">	<span class="n">no_surfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_volumes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_all_orig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_symlink</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_ribbon</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_surf2surf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rca_threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MakeAverageSubjectParameters">MakeAverageSubjectParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="make_average_subject_params-view-source"><span>View Source</span></label>
 
@@ -783,186 +1109,5 @@ set of subjects.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

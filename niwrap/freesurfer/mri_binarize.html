@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,114 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriBinarizeOutputs.out_volume">out_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriBinarizeParameters">MriBinarizeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.output_volume">output_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.min_threshold">min_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.max_threshold">max_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.pct_threshold">pct_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.rmin">rmin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.rmax">rmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.fdr_threshold">fdr_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.match_values">match_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.replace_values">replace_values</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.binval">binval</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.binval_not">binval_not</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.frame">frame</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.merge_volume">merge_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.mask_volume">mask_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.mask_threshold">mask_threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.surf_name">surf_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.surf_smooth">surf_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.ctx_wm_flag">ctx_wm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.all_wm_flag">all_wm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.ventricles_flag">ventricles_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.wm_vcsf_flag">wm_vcsf_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.gm_flag">gm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.subcort_gm_flag">subcort_gm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.scm_lh_flag">scm_lh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.scm_rh_flag">scm_rh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.zero_edges_flag">zero_edges_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.zero_slice_edges_flag">zero_slice_edges_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.dilate_vertex">dilate_vertex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.remove_islands_flag">remove_islands_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.fill_holes_flag">fill_holes_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.noverbose_flag">noverbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriBinarizeParameters.debug_flag">debug_flag</a>
                         </li>
                 </ul>
 
@@ -597,9 +703,10 @@
 </span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>    <span class="s2">&quot;MRI_BINARIZE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a>    <span class="s2">&quot;MriBinarizeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;mri_binarize&quot;</span><span class="p">,</span>
-</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;mri_binarize_params&quot;</span><span class="p">,</span>
-</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a><span class="p">]</span>
+</span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a>    <span class="s2">&quot;MriBinarizeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;mri_binarize&quot;</span><span class="p">,</span>
+</span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a>    <span class="s2">&quot;mri_binarize_params&quot;</span><span class="p">,</span>
+</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -681,6 +788,393 @@
             <div class="docstring"><p>The resulting binarized volume.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriBinarizeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriBinarizeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters"></a>
+    
+    
+
+                            <div id="MriBinarizeParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.output_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.output_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.min_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.min_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.max_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.max_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.pct_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pct_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.pct_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.rmin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rmin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.rmin"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.rmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rmax</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.rmax"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.fdr_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fdr_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.fdr_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.match_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">match_values</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.match_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.replace_values" class="classattr">
+                                <div class="attr variable">
+            <span class="name">replace_values</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.replace_values"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.binval" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binval</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.binval"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.binval_not" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binval_not</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.binval_not"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.frame" class="classattr">
+                                <div class="attr variable">
+            <span class="name">frame</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.frame"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.merge_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">merge_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.merge_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.mask_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.mask_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.mask_threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.mask_threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.surf_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.surf_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.surf_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.surf_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.ctx_wm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ctx_wm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.ctx_wm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.all_wm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">all_wm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.all_wm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.ventricles_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ventricles_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.ventricles_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.wm_vcsf_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_vcsf_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.wm_vcsf_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.gm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.gm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.subcort_gm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subcort_gm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.subcort_gm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.scm_lh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scm_lh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.scm_lh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.scm_rh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scm_rh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.scm_rh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.zero_edges_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero_edges_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.zero_edges_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.zero_slice_edges_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero_slice_edges_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.zero_slice_edges_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.dilate_vertex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dilate_vertex</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.dilate_vertex"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.remove_islands_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">remove_islands_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.remove_islands_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.fill_holes_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill_holes_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.fill_holes_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.noverbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noverbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.noverbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriBinarizeParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriBinarizeParameters.debug_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -851,7 +1345,7 @@ merge and manipulate binarized output.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_binarize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">min_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pct_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fdr_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">match_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">replace_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binval_not</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">frame</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">merge_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ctx_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ventricles_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wm_vcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subcort_gm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scm_lh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scm_rh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_edges_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_slice_edges_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dilate_vertex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">remove_islands_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill_holes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noverbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_binarize</span><span class="o">.</span><span class="n">MriBinarizeParameters</span>:</span></span>
+        <span class="name">mri_binarize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">min_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pct_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fdr_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">match_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">replace_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">binval_not</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">frame</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">merge_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ctx_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ventricles_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wm_vcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subcort_gm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scm_lh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scm_rh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_edges_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_slice_edges_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dilate_vertex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">remove_islands_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill_holes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noverbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriBinarizeParameters">MriBinarizeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_binarize_params-view-source"><span>View Source</span></label>
 
@@ -1048,186 +1542,5 @@ merge and manipulate binarized output.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

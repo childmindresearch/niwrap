@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,39 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriPretessOutputs.out_newfilledvol">out_newfilledvol</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriPretessParameters">MriPretessParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.filledvol">filledvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.labelstring">labelstring</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.normvol">normvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.newfilledvol">newfilledvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.debug_voxel">debug_voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.nocorners">nocorners</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.write">write</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.keep">keep</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriPretessParameters.test">test</a>
                         </li>
                 </ul>
 
@@ -315,9 +346,10 @@
 </span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="s2">&quot;MRI_PRETESS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;MriPretessOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;mri_pretess&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;mri_pretess_params&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="p">]</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;MriPretessParameters&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;mri_pretess&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;mri_pretess_params&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -399,6 +431,118 @@
             <div class="docstring"><p>Output new filled volume</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriPretessParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriPretessParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters"></a>
+    
+    
+
+                            <div id="MriPretessParameters.filledvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">filledvol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.filledvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.labelstring" class="classattr">
+                                <div class="attr variable">
+            <span class="name">labelstring</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.labelstring"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.normvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normvol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.normvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.newfilledvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">newfilledvol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.newfilledvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.debug_voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_voxel</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.debug_voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.nocorners" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocorners</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.nocorners"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.write" class="classattr">
+                                <div class="attr variable">
+            <span class="name">write</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.write"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.keep" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.keep"></a>
+    
+    
+
+                            </div>
+                            <div id="MriPretessParameters.test" class="classattr">
+                                <div class="attr variable">
+            <span class="name">test</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriPretessParameters.test"></a>
+    
+    
 
                             </div>
                 </section>
@@ -491,7 +635,7 @@ face.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_pretess_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">filledvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">labelstring</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">normvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">newfilledvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocorners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_pretess</span><span class="o">.</span><span class="n">MriPretessParameters</span>:</span></span>
+        <span class="name">mri_pretess_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">filledvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">labelstring</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">normvol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">newfilledvol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocorners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">test</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriPretessParameters">MriPretessParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_pretess_params-view-source"><span>View Source</span></label>
 
@@ -568,186 +712,5 @@ face.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

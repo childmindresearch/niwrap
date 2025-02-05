@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,51 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#TCKRESAMPLE_METADATA">TCKRESAMPLE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#TckresampleArcParameters">TckresampleArcParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckresampleArcParameters.num">num</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleArcParameters.start">start</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleArcParameters.mid">mid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleArcParameters.end">end</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckresampleConfigParameters">TckresampleConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckresampleConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckresampleLineParameters">TckresampleLineParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckresampleLineParameters.num">num</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleLineParameters.start">start</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleLineParameters.end">end</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#TckresampleOutputs">TckresampleOutputs</a>
@@ -44,6 +87,63 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TckresampleOutputs.out_tracks">out_tracks</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckresampleParameters">TckresampleParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.upsample">upsample</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.downsample">downsample</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.step_size">step_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.num_points">num_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.endpoints">endpoints</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.line">line</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.arc">arc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.in_tracks">in_tracks</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckresampleParameters.out_tracks">out_tracks</a>
                         </li>
                 </ul>
 
@@ -630,13 +730,17 @@
 </span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>
 </span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a>    <span class="s2">&quot;TCKRESAMPLE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;TckresampleOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="s2">&quot;tckresample&quot;</span><span class="p">,</span>
-</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="s2">&quot;tckresample_arc_params&quot;</span><span class="p">,</span>
-</span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="s2">&quot;tckresample_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="s2">&quot;tckresample_line_params&quot;</span><span class="p">,</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="s2">&quot;tckresample_params&quot;</span><span class="p">,</span>
-</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a><span class="p">]</span>
+</span><span id="L-547"><a href="#L-547"><span class="linenos">547</span></a>    <span class="s2">&quot;TckresampleArcParameters&quot;</span><span class="p">,</span>
+</span><span id="L-548"><a href="#L-548"><span class="linenos">548</span></a>    <span class="s2">&quot;TckresampleConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a>    <span class="s2">&quot;TckresampleLineParameters&quot;</span><span class="p">,</span>
+</span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="s2">&quot;TckresampleOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>    <span class="s2">&quot;TckresampleParameters&quot;</span><span class="p">,</span>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>    <span class="s2">&quot;tckresample&quot;</span><span class="p">,</span>
+</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>    <span class="s2">&quot;tckresample_arc_params&quot;</span><span class="p">,</span>
+</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>    <span class="s2">&quot;tckresample_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>    <span class="s2">&quot;tckresample_line_params&quot;</span><span class="p">,</span>
+</span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="s2">&quot;tckresample_params&quot;</span><span class="p">,</span>
+</span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -653,6 +757,144 @@
     
     
 
+                </section>
+                <section id="TckresampleArcParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckresampleArcParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleArcParameters"></a>
+    
+    
+
+                            <div id="TckresampleArcParameters.num" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleArcParameters.num"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleArcParameters.start" class="classattr">
+                                <div class="attr variable">
+            <span class="name">start</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleArcParameters.start"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleArcParameters.mid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mid</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleArcParameters.mid"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleArcParameters.end" class="classattr">
+                                <div class="attr variable">
+            <span class="name">end</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleArcParameters.end"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TckresampleConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckresampleConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleConfigParameters"></a>
+    
+    
+
+                            <div id="TckresampleConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TckresampleLineParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckresampleLineParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleLineParameters"></a>
+    
+    
+
+                            <div id="TckresampleLineParameters.num" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleLineParameters.num"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleLineParameters.start" class="classattr">
+                                <div class="attr variable">
+            <span class="name">start</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleLineParameters.start"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleLineParameters.end" class="classattr">
+                                <div class="attr variable">
+            <span class="name">end</span><span class="annotation">: list[float]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleLineParameters.end"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="TckresampleOutputs">
                             <input id="TckresampleOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -721,12 +963,212 @@
 
                             </div>
                 </section>
+                <section id="TckresampleParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckresampleParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters"></a>
+    
+    
+
+                            <div id="TckresampleParameters.upsample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">upsample</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.upsample"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.downsample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">downsample</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.downsample"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.step_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">step_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.step_size"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.num_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_points</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.num_points"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.endpoints" class="classattr">
+                                <div class="attr variable">
+            <span class="name">endpoints</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.endpoints"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.line" class="classattr">
+                                <div class="attr variable">
+            <span class="name">line</span><span class="annotation">: NotRequired[<a href="#TckresampleLineParameters">TckresampleLineParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.line"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.arc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">arc</span><span class="annotation">: NotRequired[<a href="#TckresampleArcParameters">TckresampleArcParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.arc"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#TckresampleConfigParameters">TckresampleConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.in_tracks" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_tracks</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.in_tracks"></a>
+    
+    
+
+                            </div>
+                            <div id="TckresampleParameters.out_tracks" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_tracks</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckresampleParameters.out_tracks"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="tckresample">
                             <input id="tckresample-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckresample</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_tracks</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">endpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">line</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleLineParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">arc</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleArcParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleOutputs">TckresampleOutputs</a></span>:</span></span>
+        <span class="name">tckresample</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_tracks</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">endpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">line</span><span class="p">:</span> <span class="n"><a href="#TckresampleLineParameters">TckresampleLineParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">arc</span><span class="p">:</span> <span class="n"><a href="#TckresampleArcParameters">TckresampleArcParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckresampleConfigParameters">TckresampleConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleOutputs">TckresampleOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckresample-view-source"><span>View Source</span></label>
 
@@ -876,7 +1318,7 @@ to taking chordal lengths of curved trajectories).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckresample_arc_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">mid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">end</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleArcParameters</span>:</span></span>
+        <span class="name">tckresample_arc_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">mid</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">end</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleArcParameters">TckresampleArcParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckresample_arc_params-view-source"><span>View Source</span></label>
 
@@ -943,7 +1385,7 @@ to taking chordal lengths of curved trajectories).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckresample_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleConfigParameters</span>:</span></span>
+        <span class="name">tckresample_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleConfigParameters">TckresampleConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckresample_config_params-view-source"><span>View Source</span></label>
 
@@ -994,7 +1436,7 @@ to taking chordal lengths of curved trajectories).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckresample_line_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">end</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleLineParameters</span>:</span></span>
+        <span class="name">tckresample_line_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">num</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">start</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">end</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleLineParameters">TckresampleLineParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckresample_line_params-view-source"><span>View Source</span></label>
 
@@ -1055,7 +1497,7 @@ to taking chordal lengths of curved trajectories).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckresample_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_tracks</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">endpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">line</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleLineParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">arc</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleArcParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckresample</span><span class="o">.</span><span class="n">TckresampleParameters</span>:</span></span>
+        <span class="name">tckresample_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_tracks</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">downsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">endpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">line</span><span class="p">:</span> <span class="n"><a href="#TckresampleLineParameters">TckresampleLineParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">arc</span><span class="p">:</span> <span class="n"><a href="#TckresampleArcParameters">TckresampleArcParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckresampleConfigParameters">TckresampleConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckresampleParameters">TckresampleParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckresample_params-view-source"><span>View Source</span></label>
 
@@ -1181,186 +1623,5 @@ to taking chordal lengths of curved trajectories).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

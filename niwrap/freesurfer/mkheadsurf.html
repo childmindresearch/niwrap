@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,93 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MkheadsurfOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MkheadsurfParameters">MkheadsurfParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.input_vol">input_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.output_vol">output_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.output_surf">output_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.nsmooth">nsmooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.noseghead">noseghead</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.thresh1">thresh1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.thresh2">thresh2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.nhitsmin">nhitsmin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.ndilate">ndilate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.nerode">nerode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.fillval">fillval</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.fhi">fhi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.no_rescale">no_rescale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.no_fill_holes_islands">no_fill_holes_islands</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.or_mask">or_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.tessellation_method">tessellation_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.inflate">inflate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.curv">curv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.srcvol">srcvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.headvol">headvol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.headsurf">headsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.smheadsurf">smheadsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.subjects_dir">subjects_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.umask">umask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MkheadsurfParameters.logfile">logfile</a>
                         </li>
                 </ul>
 
@@ -531,9 +616,10 @@
 </span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;MKHEADSURF_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;MkheadsurfOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;mkheadsurf&quot;</span><span class="p">,</span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;mkheadsurf_params&quot;</span><span class="p">,</span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="p">]</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;MkheadsurfParameters&quot;</span><span class="p">,</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;mkheadsurf&quot;</span><span class="p">,</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>    <span class="s2">&quot;mkheadsurf_params&quot;</span><span class="p">,</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -600,6 +686,316 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MkheadsurfParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MkheadsurfParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters"></a>
+    
+    
+
+                            <div id="MkheadsurfParameters.input_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_vol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.input_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.output_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_vol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.output_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.output_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_surf</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.output_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.nsmooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nsmooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.nsmooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.noseghead" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noseghead</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.noseghead"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.thresh1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh1</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.thresh1"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.thresh2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh2</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.thresh2"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.nhitsmin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nhitsmin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.nhitsmin"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.ndilate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ndilate</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.ndilate"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.nerode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nerode</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.nerode"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.fillval" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fillval</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.fillval"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.fhi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fhi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.fhi"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.no_rescale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_rescale</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.no_rescale"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.no_fill_holes_islands" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_fill_holes_islands</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.no_fill_holes_islands"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.or_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">or_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.or_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.tessellation_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tessellation_method</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.tessellation_method"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.inflate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inflate</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.inflate"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.curv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">curv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.curv"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.srcvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">srcvol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.srcvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.headvol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">headvol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.headvol"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.headsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">headsurf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.headsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.smheadsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smheadsurf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.smheadsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.subjects_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.umask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">umask</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.umask"></a>
+    
+    
+
+                            </div>
+                            <div id="MkheadsurfParameters.logfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">logfile</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MkheadsurfParameters.logfile"></a>
+    
+    
 
                             </div>
                 </section>
@@ -746,7 +1142,7 @@ further processing.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mkheadsurf_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_surf</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noseghead</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nhitsmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ndilate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nerode</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fillval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_rescale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_fill_holes_islands</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">or_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tessellation_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inflate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">curv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">srcvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">headvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">headsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smheadsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mkheadsurf</span><span class="o">.</span><span class="n">MkheadsurfParameters</span>:</span></span>
+        <span class="name">mkheadsurf_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_surf</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nsmooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">noseghead</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nhitsmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ndilate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nerode</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fillval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_rescale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_fill_holes_islands</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">or_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tessellation_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inflate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">curv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">srcvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">headvol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">headsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smheadsurf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MkheadsurfParameters">MkheadsurfParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mkheadsurf_params-view-source"><span>View Source</span></label>
 
@@ -912,186 +1308,5 @@ further processing.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#UberAlignTestPyOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#UberAlignTestPyParameters">UberAlignTestPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.no_gui">no_gui</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.print_script">print_script</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.save_script">save_script</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.user_variable">user_variable</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.qt_opts">qt_opts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.help_gui">help_gui</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.history">history</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.show_valid_opts">show_valid_opts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#UberAlignTestPyParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -323,9 +357,10 @@
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;UBER_ALIGN_TEST_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;UberAlignTestPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;uber_align_test_py&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;uber_align_test_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="p">]</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;UberAlignTestPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;uber_align_test_py&quot;</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;uber_align_test_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -392,6 +427,129 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="UberAlignTestPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">UberAlignTestPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters"></a>
+    
+    
+
+                            <div id="UberAlignTestPyParameters.no_gui" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_gui</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.no_gui"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.print_script" class="classattr">
+                                <div class="attr variable">
+            <span class="name">print_script</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.print_script"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.save_script" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_script</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.save_script"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.user_variable" class="classattr">
+                                <div class="attr variable">
+            <span class="name">user_variable</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.user_variable"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.qt_opts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qt_opts</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.qt_opts"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.help_gui" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_gui</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.help_gui"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.history" class="classattr">
+                                <div class="attr variable">
+            <span class="name">history</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.history"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.show_valid_opts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_valid_opts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.show_valid_opts"></a>
+    
+    
+
+                            </div>
+                            <div id="UberAlignTestPyParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#UberAlignTestPyParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -484,7 +642,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">uber_align_test_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">no_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_script</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_script</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">user_variable</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qt_opts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">history</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_valid_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">uber_align_test_py</span><span class="o">.</span><span class="n">UberAlignTestPyParameters</span>:</span></span>
+        <span class="name">uber_align_test_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">no_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">print_script</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_script</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">user_variable</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qt_opts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">history</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_valid_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#UberAlignTestPyParameters">UberAlignTestPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="uber_align_test_py_params-view-source"><span>View Source</span></label>
 
@@ -566,186 +724,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

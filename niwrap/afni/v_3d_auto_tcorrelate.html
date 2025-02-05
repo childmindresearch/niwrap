@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dAutoTcorrelateOutputs.out1d_file">out1d_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dAutoTcorrelateParameters">V3dAutoTcorrelateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.input_dataset">input_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.pearson">pearson</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.eta2">eta2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.polort">polort</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.autoclip">autoclip</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.automask">automask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.mask_only_targets">mask_only_targets</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.mask_source">mask_source</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.out1d">out1d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.time">time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAutoTcorrelateParameters.mmap">mmap</a>
                         </li>
                 </ul>
 
@@ -377,10 +420,11 @@
 </span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>
 </span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;V3dAutoTcorrelateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;V_3D_AUTO_TCORRELATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;v_3d_auto_tcorrelate&quot;</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;v_3d_auto_tcorrelate_params&quot;</span><span class="p">,</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="p">]</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;V3dAutoTcorrelateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;V_3D_AUTO_TCORRELATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;v_3d_auto_tcorrelate&quot;</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;v_3d_auto_tcorrelate_params&quot;</span><span class="p">,</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -479,6 +523,162 @@
             <div class="docstring"><p>Output in 1D text format</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dAutoTcorrelateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dAutoTcorrelateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters"></a>
+    
+    
+
+                            <div id="V3dAutoTcorrelateParameters.input_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.input_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.pearson" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pearson</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.pearson"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.eta2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">eta2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.eta2"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.polort" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polort</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.polort"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.autoclip" class="classattr">
+                                <div class="attr variable">
+            <span class="name">autoclip</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.autoclip"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.automask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">automask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.automask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.mask_only_targets" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_only_targets</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.mask_only_targets"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.mask_source" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_source</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.mask_source"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.out1d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out1d</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.out1d"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">time</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.time"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAutoTcorrelateParameters.mmap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mmap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAutoTcorrelateParameters.mmap"></a>
+    
+    
 
                             </div>
                 </section>
@@ -596,7 +796,7 @@ voxels in the input dataset.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_auto_tcorrelate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pearson</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">eta2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">polort</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autoclip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_only_targets</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_source</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out1d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mmap_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_auto_tcorrelate</span><span class="o">.</span><span class="n">V3dAutoTcorrelateParameters</span>:</span></span>
+        <span class="name">v_3d_auto_tcorrelate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pearson</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">eta2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">polort</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autoclip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">automask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_only_targets</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_source</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out1d</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mmap_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dAutoTcorrelateParameters">V3dAutoTcorrelateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_auto_tcorrelate_params-view-source"><span>View Source</span></label>
 
@@ -693,186 +893,5 @@ voxels in the input dataset.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

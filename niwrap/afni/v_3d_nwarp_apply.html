@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dNwarpApplyOutputs.generated_warp">generated_warp</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dNwarpApplyParameters">V3dNwarpApplyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.nwarp">nwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.iwarp">iwarp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.source">source</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.master">master</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.newgrid">newgrid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.dxyz">dxyz</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.interp">interp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.ainterp">ainterp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.suffix">suffix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.short">short</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.wprefix">wprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dNwarpApplyParameters.verb">verb</a>
                         </li>
                 </ul>
 
@@ -408,10 +454,11 @@
 </span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;V3dNwarpApplyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;V_3D_NWARP_APPLY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;v_3d_nwarp_apply&quot;</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;v_3d_nwarp_apply_params&quot;</span><span class="p">,</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="p">]</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;V3dNwarpApplyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;V_3D_NWARP_APPLY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;v_3d_nwarp_apply&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;v_3d_nwarp_apply_params&quot;</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -495,6 +542,173 @@
             <div class="docstring"><p>Warp dataset generated during application</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dNwarpApplyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dNwarpApplyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters"></a>
+    
+    
+
+                            <div id="V3dNwarpApplyParameters.nwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nwarp</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.nwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.iwarp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iwarp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.iwarp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.source" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.source"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.master" class="classattr">
+                                <div class="attr variable">
+            <span class="name">master</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.master"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.newgrid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">newgrid</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.newgrid"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.dxyz" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dxyz</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.dxyz"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.interp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.interp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.ainterp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ainterp</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.ainterp"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.suffix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">suffix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.suffix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.short" class="classattr">
+                                <div class="attr variable">
+            <span class="name">short</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.short"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.wprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wprefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.wprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dNwarpApplyParameters.verb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verb</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dNwarpApplyParameters.verb"></a>
+    
+    
 
                             </div>
                 </section>
@@ -621,7 +835,7 @@ a 3D dataset, to produce a warped version of the source dataset.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_nwarp_apply_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nwarp</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">iwarp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">master</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">newgrid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dxyz</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ainterp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">short</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_nwarp_apply</span><span class="o">.</span><span class="n">V3dNwarpApplyParameters</span>:</span></span>
+        <span class="name">v_3d_nwarp_apply_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nwarp</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">iwarp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">master</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">newgrid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dxyz</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">interp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ainterp</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">short</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dNwarpApplyParameters">V3dNwarpApplyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_nwarp_apply_params-view-source"><span>View Source</span></label>
 
@@ -731,186 +945,5 @@ a 3D dataset, to produce a warped version of the source dataset.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

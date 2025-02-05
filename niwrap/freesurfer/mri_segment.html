@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,114 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriSegmentOutputs.log_file">log_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriSegmentParameters">MriSegmentParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.in_vol">in_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.out_vol">out_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.no1d_remove">no1d_remove</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.slope">slope</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.pslope">pslope</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.nslope">nslope</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.debug_voxel">debug_voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.auto">auto</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.noauto">noauto</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.log">log</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.keep">keep</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.gray_hi">gray_hi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.wm_low">wm_low</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.wm_low_factor">wm_low_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.wm_hi">wm_hi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.nseg">nseg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.thicken">thicken</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.fillbg">fillbg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.fillv">fillv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.blur_sigma">blur_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.thin_strand_limit">thin_strand_limit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.extract_options">extract_options</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.wsize">wsize</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.wsizemm">wsizemm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.polvw_size">polvw_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.polv_len">polv_len</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.datfile">datfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.segmentation">segmentation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.diagno">diagno</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.diag_write">diag_write</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegmentParameters.diag_verbose">diag_verbose</a>
                         </li>
                 </ul>
 
@@ -603,9 +709,10 @@
 </span><span id="L-523"><a href="#L-523"><span class="linenos">523</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-524"><a href="#L-524"><span class="linenos">524</span></a>    <span class="s2">&quot;MRI_SEGMENT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a>    <span class="s2">&quot;MriSegmentOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a>    <span class="s2">&quot;mri_segment&quot;</span><span class="p">,</span>
-</span><span id="L-527"><a href="#L-527"><span class="linenos">527</span></a>    <span class="s2">&quot;mri_segment_params&quot;</span><span class="p">,</span>
-</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a><span class="p">]</span>
+</span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a>    <span class="s2">&quot;MriSegmentParameters&quot;</span><span class="p">,</span>
+</span><span id="L-527"><a href="#L-527"><span class="linenos">527</span></a>    <span class="s2">&quot;mri_segment&quot;</span><span class="p">,</span>
+</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a>    <span class="s2">&quot;mri_segment_params&quot;</span><span class="p">,</span>
+</span><span id="L-529"><a href="#L-529"><span class="linenos">529</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -702,6 +809,393 @@
             <div class="docstring"><p>Log file from segmentation process</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriSegmentParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriSegmentParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters"></a>
+    
+    
+
+                            <div id="MriSegmentParameters.in_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_vol</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.in_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.out_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_vol</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.out_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.no1d_remove" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no1d_remove</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.no1d_remove"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.slope" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slope</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.slope"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.pslope" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pslope</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.pslope"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.nslope" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nslope</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.nslope"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.debug_voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_voxel</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.debug_voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.auto" class="classattr">
+                                <div class="attr variable">
+            <span class="name">auto</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.auto"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.noauto" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noauto</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.noauto"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.log" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.log"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.keep" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.keep"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.gray_hi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gray_hi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.gray_hi"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.wm_low" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_low</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.wm_low"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.wm_low_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_low_factor</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.wm_low_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.wm_hi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_hi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.wm_hi"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.nseg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nseg</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.nseg"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.thicken" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thicken</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.thicken"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.fillbg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fillbg</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.fillbg"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.fillv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fillv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.fillv"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.blur_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blur_sigma</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.blur_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.thin_strand_limit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thin_strand_limit</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.thin_strand_limit"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.extract_options" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extract_options</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.extract_options"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.wsize" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wsize</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.wsize"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.wsizemm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wsizemm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.wsizemm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.polvw_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polvw_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.polvw_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.polv_len" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polv_len</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.polv_len"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.datfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.datfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.segmentation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segmentation</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.segmentation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.diagno" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diagno</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.diagno"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.diag_write" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diag_write</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.diag_write"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegmentParameters.diag_verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diag_verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegmentParameters.diag_verbose"></a>
+    
+    
 
                             </div>
                 </section>
@@ -866,7 +1360,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_segment_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">no1d_remove</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pslope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">1.0</span>,</span><span class="param">	<span class="n">nslope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">1.0</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">auto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noauto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gray_hi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">100.0</span>,</span><span class="param">	<span class="n">wm_low</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">80.0</span>,</span><span class="param">	<span class="n">wm_low_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wm_hi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">125.0</span>,</span><span class="param">	<span class="n">nseg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">thicken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillbg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">blur_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.25</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">thin_strand_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.8</span>,</span><span class="param">	<span class="n">extract_options</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wsize</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">11</span>,</span><span class="param">	<span class="n">wsizemm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polvw_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span>,</span><span class="param">	<span class="n">polv_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">datfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diagno</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diag_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">diag_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_segment</span><span class="o">.</span><span class="n">MriSegmentParameters</span>:</span></span>
+        <span class="name">mri_segment_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_vol</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">no1d_remove</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pslope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">1.0</span>,</span><span class="param">	<span class="n">nslope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">1.0</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">auto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noauto</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gray_hi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">100.0</span>,</span><span class="param">	<span class="n">wm_low</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">80.0</span>,</span><span class="param">	<span class="n">wm_low_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wm_hi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">125.0</span>,</span><span class="param">	<span class="n">nseg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">thicken</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillbg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fillv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">blur_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.25</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">thin_strand_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.8</span>,</span><span class="param">	<span class="n">extract_options</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wsize</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">11</span>,</span><span class="param">	<span class="n">wsizemm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polvw_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">5</span>,</span><span class="param">	<span class="n">polv_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">datfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diagno</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diag_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">diag_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriSegmentParameters">MriSegmentParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_segment_params-view-source"><span>View Source</span></label>
 
@@ -1063,186 +1557,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

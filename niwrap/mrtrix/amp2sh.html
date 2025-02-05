@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#AMP2SH_METADATA">AMP2SH_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Amp2shConfigParameters">Amp2shConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Amp2shConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Amp2shFslgradParameters">Amp2shFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Amp2shFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Amp2shOutputs">Amp2shOutputs</a>
@@ -44,6 +66,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Amp2shOutputs.sh">sh</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Amp2shParameters">Amp2shParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.lmax">lmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.normalise">normalise</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.directions">directions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.rician">rician</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.shells">shells</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.strides">strides</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.amp">amp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Amp2shParameters.SH">SH</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Amp2shVariousFileParameters">Amp2shVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Amp2shVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Amp2shVariousStringParameters">Amp2shVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Amp2shVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -704,14 +804,19 @@
 </span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a>
 </span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a>    <span class="s2">&quot;AMP2SH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a>    <span class="s2">&quot;Amp2shOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a>    <span class="s2">&quot;amp2sh&quot;</span><span class="p">,</span>
-</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a>    <span class="s2">&quot;amp2sh_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>    <span class="s2">&quot;amp2sh_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>    <span class="s2">&quot;amp2sh_params&quot;</span><span class="p">,</span>
-</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>    <span class="s2">&quot;amp2sh_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a>    <span class="s2">&quot;amp2sh_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a><span class="p">]</span>
+</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a>    <span class="s2">&quot;Amp2shConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a>    <span class="s2">&quot;Amp2shFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a>    <span class="s2">&quot;Amp2shOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>    <span class="s2">&quot;Amp2shParameters&quot;</span><span class="p">,</span>
+</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>    <span class="s2">&quot;Amp2shVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>    <span class="s2">&quot;Amp2shVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a>    <span class="s2">&quot;amp2sh&quot;</span><span class="p">,</span>
+</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a>    <span class="s2">&quot;amp2sh_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a>    <span class="s2">&quot;amp2sh_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a>    <span class="s2">&quot;amp2sh_params&quot;</span><span class="p">,</span>
+</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a>    <span class="s2">&quot;amp2sh_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="s2">&quot;amp2sh_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -728,6 +833,76 @@
     
     
 
+                </section>
+                <section id="Amp2shConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Amp2shConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shConfigParameters"></a>
+    
+    
+
+                            <div id="Amp2shConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Amp2shFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Amp2shFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shFslgradParameters"></a>
+    
+    
+
+                            <div id="Amp2shFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Amp2shOutputs">
                             <input id="Amp2shOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -796,12 +971,271 @@
 
                             </div>
                 </section>
+                <section id="Amp2shParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Amp2shParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters"></a>
+    
+    
+
+                            <div id="Amp2shParameters.lmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lmax</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.lmax"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.normalise" class="classattr">
+                                <div class="attr variable">
+            <span class="name">normalise</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.normalise"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.directions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">directions</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.directions"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.rician" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rician</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.rician"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#Amp2shFslgradParameters">Amp2shFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.shells" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shells</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.shells"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.strides" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strides</span><span class="annotation">: NotRequired[Union[<a href="#Amp2shVariousStringParameters">Amp2shVariousStringParameters</a>, <a href="#Amp2shVariousFileParameters">Amp2shVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.strides"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Amp2shConfigParameters">Amp2shConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.amp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">amp</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.amp"></a>
+    
+    
+
+                            </div>
+                            <div id="Amp2shParameters.SH" class="classattr">
+                                <div class="attr variable">
+            <span class="name">SH</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shParameters.SH"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Amp2shVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Amp2shVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shVariousFileParameters"></a>
+    
+    
+
+                            <div id="Amp2shVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Amp2shVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Amp2shVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shVariousStringParameters"></a>
+    
+    
+
+                            <div id="Amp2shVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Amp2shVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="amp2sh">
                             <input id="amp2sh-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">amp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shOutputs">Amp2shOutputs</a></span>:</span></span>
+        <span class="name">amp2sh</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">amp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Amp2shFslgradParameters">Amp2shFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#Amp2shVariousStringParameters">Amp2shVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#Amp2shVariousFileParameters">Amp2shVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Amp2shConfigParameters">Amp2shConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shOutputs">Amp2shOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh-view-source"><span>View Source</span></label>
 
@@ -979,7 +1413,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shConfigParameters</span>:</span></span>
+        <span class="name">amp2sh_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shConfigParameters">Amp2shConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh_config_params-view-source"><span>View Source</span></label>
 
@@ -1030,7 +1464,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shFslgradParameters</span>:</span></span>
+        <span class="name">amp2sh_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shFslgradParameters">Amp2shFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -1087,7 +1521,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">amp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shParameters</span>:</span></span>
+        <span class="name">amp2sh_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">amp</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sh</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lmax</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">normalise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rician</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Amp2shFslgradParameters">Amp2shFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#Amp2shVariousStringParameters">Amp2shVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#Amp2shVariousFileParameters">Amp2shVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Amp2shConfigParameters">Amp2shConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shParameters">Amp2shParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh_params-view-source"><span>View Source</span></label>
 
@@ -1241,7 +1675,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousFileParameters</span>:</span></span>
+        <span class="name">amp2sh_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shVariousFileParameters">Amp2shVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1288,7 +1722,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">amp2sh_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">amp2sh</span><span class="o">.</span><span class="n">Amp2shVariousStringParameters</span>:</span></span>
+        <span class="name">amp2sh_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Amp2shVariousStringParameters">Amp2shVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="amp2sh_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1331,186 +1765,5 @@ described the main documentation, which can be found at the following link:
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

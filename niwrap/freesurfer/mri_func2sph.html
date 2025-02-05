@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriFunc2sphOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriFunc2sphParameters">MriFunc2sphParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.instem">instem</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.outstem">outstem</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.hemisphere">hemisphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.fvitdir">fvitdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.hole_filling_iters">hole_filling_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.icosahedron_size">icosahedron_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.input_type">input_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriFunc2sphParameters.umask">umask</a>
                         </li>
                 </ul>
 
@@ -319,9 +347,10 @@
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;MRI_FUNC2SPH_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;MriFunc2sphOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;mri_func2sph&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;mri_func2sph_params&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="p">]</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;MriFunc2sphParameters&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;mri_func2sph&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;mri_func2sph_params&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -388,6 +417,107 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriFunc2sphParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriFunc2sphParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters"></a>
+    
+    
+
+                            <div id="MriFunc2sphParameters.instem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">instem</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.instem"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.outstem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outstem</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.outstem"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.hemisphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemisphere</span><span class="annotation">: Literal[&#39;lh&#39;, &#39;rh&#39;]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.hemisphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.fvitdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fvitdir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.fvitdir"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.hole_filling_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hole_filling_iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.hole_filling_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.icosahedron_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">icosahedron_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.icosahedron_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.input_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.input_type"></a>
+    
+    
+
+                            </div>
+                            <div id="MriFunc2sphParameters.umask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">umask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriFunc2sphParameters.umask"></a>
+    
+    
 
                             </div>
                 </section>
@@ -474,7 +604,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_func2sph_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">instem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outstem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span> <span class="s1">&#39;rh&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">fvitdir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hole_filling_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span>,</span><span class="param">	<span class="n">icosahedron_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10242</span>,</span><span class="param">	<span class="n">input_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_func2sph</span><span class="o">.</span><span class="n">MriFunc2sphParameters</span>:</span></span>
+        <span class="name">mri_func2sph_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">instem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outstem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;lh&#39;</span><span class="p">,</span> <span class="s1">&#39;rh&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">fvitdir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hole_filling_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span>,</span><span class="param">	<span class="n">icosahedron_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10242</span>,</span><span class="param">	<span class="n">input_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriFunc2sphParameters">MriFunc2sphParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_func2sph_params-view-source"><span>View Source</span></label>
 
@@ -549,186 +679,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#PossumOutputs.output_matrix">output_matrix</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#PossumParameters">PossumParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#PossumParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.mr_parameters">mr_parameters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.motion_matrix">motion_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.pulse_sequence">pulse_sequence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.rf_slice_profile">rf_slice_profile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.output_signal">output_signal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.event_matrix">event_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.kcoord">kcoord</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.b0_inhomogeneities">b0_inhomogeneities</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.extra_b0_inhomogeneities">extra_b0_inhomogeneities</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.b0_inhomogeneities_timecourse">b0_inhomogeneities_timecourse</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.rf_inhomogeneity_receive">rf_inhomogeneity_receive</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.rf_inhomogeneity_transmit">rf_inhomogeneity_transmit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.activation_volume">activation_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.activation_timecourse">activation_timecourse</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.activation_4d_volume">activation_4d_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.activation_4d_timecourse">activation_4d_timecourse</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.level">level</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.num_procs">num_procs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.proc_id">proc_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.no_speedup">no_speedup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PossumParameters.rf_average">rf_average</a>
                         </li>
                 </ul>
 
@@ -505,9 +581,10 @@
 </span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;POSSUM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;PossumOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;possum&quot;</span><span class="p">,</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;possum_params&quot;</span><span class="p">,</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="p">]</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;PossumParameters&quot;</span><span class="p">,</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;possum&quot;</span><span class="p">,</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;possum_params&quot;</span><span class="p">,</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -589,6 +666,283 @@
             <div class="docstring"><p>Output matrix file generated by possum</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="PossumParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PossumParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters"></a>
+    
+    
+
+                            <div id="PossumParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.mr_parameters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mr_parameters</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.mr_parameters"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.motion_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">motion_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.motion_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.pulse_sequence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pulse_sequence</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.pulse_sequence"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.rf_slice_profile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rf_slice_profile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.rf_slice_profile"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.output_signal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_signal</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.output_signal"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.event_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">event_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.event_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.kcoord" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kcoord</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.kcoord"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.b0_inhomogeneities" class="classattr">
+                                <div class="attr variable">
+            <span class="name">b0_inhomogeneities</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.b0_inhomogeneities"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.extra_b0_inhomogeneities" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extra_b0_inhomogeneities</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.extra_b0_inhomogeneities"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.b0_inhomogeneities_timecourse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">b0_inhomogeneities_timecourse</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.b0_inhomogeneities_timecourse"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.rf_inhomogeneity_receive" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rf_inhomogeneity_receive</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.rf_inhomogeneity_receive"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.rf_inhomogeneity_transmit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rf_inhomogeneity_transmit</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.rf_inhomogeneity_transmit"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.activation_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">activation_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.activation_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.activation_timecourse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">activation_timecourse</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.activation_timecourse"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.activation_4d_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">activation_4d_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.activation_4d_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.activation_4d_timecourse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">activation_4d_timecourse</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.activation_4d_timecourse"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.level" class="classattr">
+                                <div class="attr variable">
+            <span class="name">level</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.level"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.num_procs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_procs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.num_procs"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.proc_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">proc_id</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.proc_id"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.no_speedup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_speedup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.no_speedup"></a>
+    
+    
+
+                            </div>
+                            <div id="PossumParameters.rf_average" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rf_average</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PossumParameters.rf_average"></a>
+    
+    
 
                             </div>
                 </section>
@@ -729,7 +1083,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">possum_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mr_parameters</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">motion_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pulse_sequence</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">rf_slice_profile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_signal</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">event_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">kcoord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">b0_inhomogeneities</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extra_b0_inhomogeneities</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0_inhomogeneities_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rf_inhomogeneity_receive</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rf_inhomogeneity_transmit</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_4d_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_4d_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_procs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proc_id</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_speedup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rf_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">possum</span><span class="o">.</span><span class="n">PossumParameters</span>:</span></span>
+        <span class="name">possum_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mr_parameters</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">motion_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pulse_sequence</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">rf_slice_profile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_signal</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">event_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">kcoord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">b0_inhomogeneities</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extra_b0_inhomogeneities</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b0_inhomogeneities_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rf_inhomogeneity_receive</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rf_inhomogeneity_transmit</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_4d_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">activation_4d_timecourse</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_procs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proc_id</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_speedup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rf_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#PossumParameters">PossumParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="possum_params-view-source"><span>View Source</span></label>
 
@@ -882,186 +1236,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#PnmEvsOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#PnmEvsParameters">PnmEvsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.tr_value">tr_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.cardiac_file">cardiac_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.respiratory_file">respiratory_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.order_cardiac">order_cardiac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.order_respiratory">order_respiratory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.order_mult_cardiac">order_mult_cardiac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.order_mult_respiratory">order_mult_respiratory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.csf_mask">csf_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.rvt_file">rvt_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.heartrate_file">heartrate_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.rvt_smooth">rvt_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.heartrate_smooth">heartrate_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.slice_direction">slice_direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.slice_order">slice_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.slice_timing_file">slice_timing_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.debug_flag">debug_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PnmEvsParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -479,9 +543,10 @@
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;PNM_EVS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;PnmEvsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;pnm_evs&quot;</span><span class="p">,</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;pnm_evs_params&quot;</span><span class="p">,</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a><span class="p">]</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;PnmEvsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;pnm_evs&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;pnm_evs_params&quot;</span><span class="p">,</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -563,6 +628,239 @@
             <div class="docstring"><p>Output confound/EV matrix file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="PnmEvsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PnmEvsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters"></a>
+    
+    
+
+                            <div id="PnmEvsParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.tr_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr_value</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.tr_value"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.cardiac_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cardiac_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.cardiac_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.respiratory_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">respiratory_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.respiratory_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.order_cardiac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order_cardiac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.order_cardiac"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.order_respiratory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order_respiratory</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.order_respiratory"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.order_mult_cardiac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order_mult_cardiac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.order_mult_cardiac"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.order_mult_respiratory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">order_mult_respiratory</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.order_mult_respiratory"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.csf_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">csf_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.csf_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.rvt_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rvt_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.rvt_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.heartrate_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">heartrate_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.heartrate_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.rvt_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rvt_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.rvt_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.heartrate_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">heartrate_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.heartrate_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.slice_direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_direction</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.slice_direction"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.slice_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_order</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.slice_order"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.slice_timing_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">slice_timing_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.slice_timing_file"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.debug_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="PnmEvsParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PnmEvsParameters.help_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -694,7 +992,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">pnm_evs_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tr_value</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cardiac_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">respiratory_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">order_cardiac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">order_respiratory</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">order_mult_cardiac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">order_mult_respiratory</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">csf_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">heartrate_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">heartrate_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>,</span><span class="param">	<span class="n">slice_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_timing_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">pnm_evs</span><span class="o">.</span><span class="n">PnmEvsParameters</span>:</span></span>
+        <span class="name">pnm_evs_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">tr_value</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cardiac_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">respiratory_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">order_cardiac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">order_respiratory</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">order_mult_cardiac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">order_mult_respiratory</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">csf_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">heartrate_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rvt_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">heartrate_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>,</span><span class="param">	<span class="n">slice_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">slice_timing_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#PnmEvsParameters">PnmEvsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="pnm_evs_params-view-source"><span>View Source</span></label>
 
@@ -836,186 +1134,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

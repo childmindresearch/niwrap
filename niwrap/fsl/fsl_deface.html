@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -65,6 +63,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FslDefaceOutputs.qc_image_cropped">qc_image_cropped</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FslDefaceParameters">FslDefaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.infile">infile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.outfile">outfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.cropped_defacing_flag">cropped_defacing_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.defacing_mask">defacing_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.cropped_struc">cropped_struc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.orig_to_std_mat">orig_to_std_mat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.orig_to_cropped_mat">orig_to_cropped_mat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.cropped_to_std_mat">cropped_to_std_mat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.shift_nud">shift_nud</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.fractional_intensity">fractional_intensity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.bias_correct_flag">bias_correct_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.center_of_gravity">center_of_gravity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslDefaceParameters.qc_images">qc_images</a>
                         </li>
                 </ul>
 
@@ -433,9 +476,10 @@
 </span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;FSL_DEFACE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;FslDefaceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;fsl_deface&quot;</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;fsl_deface_params&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="p">]</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;FslDefaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;fsl_deface&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;fsl_deface_params&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -625,6 +669,162 @@
 
                             </div>
                 </section>
+                <section id="FslDefaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FslDefaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters"></a>
+    
+    
+
+                            <div id="FslDefaceParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.infile"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.outfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outfile</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.outfile"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.cropped_defacing_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cropped_defacing_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.cropped_defacing_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.defacing_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">defacing_mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.defacing_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.cropped_struc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cropped_struc</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.cropped_struc"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.orig_to_std_mat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">orig_to_std_mat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.orig_to_std_mat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.orig_to_cropped_mat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">orig_to_cropped_mat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.orig_to_cropped_mat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.cropped_to_std_mat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cropped_to_std_mat</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.cropped_to_std_mat"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.shift_nud" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shift_nud</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.shift_nud"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.fractional_intensity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fractional_intensity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.fractional_intensity"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.bias_correct_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_correct_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.bias_correct_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.center_of_gravity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_of_gravity</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.center_of_gravity"></a>
+    
+    
+
+                            </div>
+                            <div id="FslDefaceParameters.qc_images" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_images</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslDefaceParameters.qc_images"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fsl_deface">
                             <input id="fsl_deface-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -730,7 +930,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fsl_deface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cropped_defacing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defacing_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cropped_struc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig_to_std_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig_to_cropped_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cropped_to_std_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_nud</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_correct_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_images</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fsl_deface</span><span class="o">.</span><span class="n">FslDefaceParameters</span>:</span></span>
+        <span class="name">fsl_deface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cropped_defacing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">defacing_mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cropped_struc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig_to_std_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">orig_to_cropped_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cropped_to_std_mat</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_nud</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_correct_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_images</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FslDefaceParameters">FslDefaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fsl_deface_params-view-source"><span>View Source</span></label>
 
@@ -837,186 +1037,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

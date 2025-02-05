@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dZeropadOutputs.output_dataset_head">output_dataset_head</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dZeropadParameters">V3dZeropadParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.dataset">dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.I">I</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.S">S</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.A">A</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.P">P</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.L">L</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.R">R</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.z">z</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.RL">RL</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.AP">AP</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.IS">IS</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.pad2even">pad2even</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.mm_flag">mm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.master_dataset">master_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZeropadParameters.prefix">prefix</a>
                         </li>
                 </ul>
 
@@ -429,10 +478,11 @@
 </span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>
 </span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="s2">&quot;V3dZeropadOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;V_3D_ZEROPAD_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="s2">&quot;v_3d_zeropad&quot;</span><span class="p">,</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;v_3d_zeropad_params&quot;</span><span class="p">,</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="p">]</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="s2">&quot;V3dZeropadParameters&quot;</span><span class="p">,</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="s2">&quot;V_3D_ZEROPAD_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="s2">&quot;v_3d_zeropad&quot;</span><span class="p">,</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;v_3d_zeropad_params&quot;</span><span class="p">,</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -516,6 +566,184 @@
             <div class="docstring"><p>Output dataset (HEAD format)</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dZeropadParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dZeropadParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters"></a>
+    
+    
+
+                            <div id="V3dZeropadParameters.dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.I" class="classattr">
+                                <div class="attr variable">
+            <span class="name">I</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.I"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.S" class="classattr">
+                                <div class="attr variable">
+            <span class="name">S</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.S"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.A" class="classattr">
+                                <div class="attr variable">
+            <span class="name">A</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.A"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.P" class="classattr">
+                                <div class="attr variable">
+            <span class="name">P</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.P"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.L" class="classattr">
+                                <div class="attr variable">
+            <span class="name">L</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.L"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.R" class="classattr">
+                                <div class="attr variable">
+            <span class="name">R</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.R"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.z" class="classattr">
+                                <div class="attr variable">
+            <span class="name">z</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.z"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.RL" class="classattr">
+                                <div class="attr variable">
+            <span class="name">RL</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.RL"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.AP" class="classattr">
+                                <div class="attr variable">
+            <span class="name">AP</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.AP"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.IS" class="classattr">
+                                <div class="attr variable">
+            <span class="name">IS</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.IS"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.pad2even" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pad2even</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.pad2even"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.mm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.mm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.master_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">master_dataset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.master_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZeropadParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZeropadParameters.prefix"></a>
+    
+    
 
                             </div>
                 </section>
@@ -646,7 +874,7 @@ means to cut a dataset down in size.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_zeropad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">i</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">r</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rl</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">is_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pad2even</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">master_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_zeropad</span><span class="o">.</span><span class="n">V3dZeropadParameters</span>:</span></span>
+        <span class="name">v_3d_zeropad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">i</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">r</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rl</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">is_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pad2even</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">master_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dZeropadParameters">V3dZeropadParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_zeropad_params-view-source"><span>View Source</span></label>
 
@@ -765,186 +993,5 @@ means to cut a dataset down in size.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

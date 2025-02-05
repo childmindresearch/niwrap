@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -74,6 +72,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#BrainSkinOutputs.segments_display">segments_display</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#BrainSkinParameters">BrainSkinParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.skingrid_volume">skingrid_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.plimit">plimit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.dlimit">dlimit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.segdo">segdo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.voxelize">voxelize</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.infill">infill</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.out_file">out_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.vol_hull">vol_hull</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.no_zero_attraction">no_zero_attraction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BrainSkinParameters.node_dbg">node_dbg</a>
                         </li>
                 </ul>
 
@@ -447,9 +487,10 @@
 </span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;BRAIN_SKIN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;BrainSkinOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;brain_skin&quot;</span><span class="p">,</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;brain_skin_params&quot;</span><span class="p">,</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="p">]</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;BrainSkinParameters&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;brain_skin&quot;</span><span class="p">,</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;brain_skin_params&quot;</span><span class="p">,</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -686,6 +727,151 @@ surface.</p>
 
                             </div>
                 </section>
+                <section id="BrainSkinParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BrainSkinParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters"></a>
+    
+    
+
+                            <div id="BrainSkinParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.skingrid_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skingrid_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.skingrid_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.plimit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">plimit</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.plimit"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.dlimit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dlimit</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.dlimit"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.segdo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segdo</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.segdo"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.voxelize" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxelize</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.voxelize"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.infill" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infill</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.infill"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.out_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.out_file"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.vol_hull" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol_hull</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.vol_hull"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.no_zero_attraction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_zero_attraction</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.no_zero_attraction"></a>
+    
+    
+
+                            </div>
+                            <div id="BrainSkinParameters.node_dbg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">node_dbg</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BrainSkinParameters.node_dbg"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="brain_skin">
                             <input id="brain_skin-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -790,7 +976,7 @@ Gyrification Indices.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brain_skin_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">skingrid_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segdo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxelize</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infill</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vol_hull</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_zero_attraction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">node_dbg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">brain_skin</span><span class="o">.</span><span class="n">BrainSkinParameters</span>:</span></span>
+        <span class="name">brain_skin_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">skingrid_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dlimit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segdo</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxelize</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">infill</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vol_hull</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_zero_attraction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">node_dbg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#BrainSkinParameters">BrainSkinParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="brain_skin_params-view-source"><span>View Source</span></label>
 
@@ -892,186 +1078,5 @@ Gyrification Indices.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

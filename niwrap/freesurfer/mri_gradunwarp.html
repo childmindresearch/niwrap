@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriGradunwarpOutputs.output_transform_table">output_transform_table</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriGradunwarpParameters">MriGradunwarpParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.gradient_coeff">gradient_coeff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.load_transtbl">load_transtbl</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.out_transtbl">out_transtbl</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.save_transtbl_only">save_transtbl_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.interpolation_type">interpolation_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.checkopts">checkopts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGradunwarpParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -367,9 +404,10 @@
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;MRI_GRADUNWARP_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;MriGradunwarpOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;mri_gradunwarp&quot;</span><span class="p">,</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;mri_gradunwarp_params&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="p">]</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;MriGradunwarpParameters&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;mri_gradunwarp&quot;</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;mri_gradunwarp_params&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -469,6 +507,140 @@
 
                             </div>
                 </section>
+                <section id="MriGradunwarpParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriGradunwarpParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters"></a>
+    
+    
+
+                            <div id="MriGradunwarpParameters.gradient_coeff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gradient_coeff</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.gradient_coeff"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.load_transtbl" class="classattr">
+                                <div class="attr variable">
+            <span class="name">load_transtbl</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.load_transtbl"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.out_transtbl" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_transtbl</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.out_transtbl"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.save_transtbl_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_transtbl_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.save_transtbl_only"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.interpolation_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interpolation_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.interpolation_type"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.checkopts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">checkopts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.checkopts"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGradunwarpParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGradunwarpParameters.help"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="mri_gradunwarp">
                             <input id="mri_gradunwarp-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -565,7 +737,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_gradunwarp_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gradient_coeff</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_transtbl</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_transtbl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_transtbl_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interpolation_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;trilinear&#39;</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_gradunwarp</span><span class="o">.</span><span class="n">MriGradunwarpParameters</span>:</span></span>
+        <span class="name">mri_gradunwarp_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gradient_coeff</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_transtbl</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_transtbl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">save_transtbl_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interpolation_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;trilinear&#39;</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">checkopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriGradunwarpParameters">MriGradunwarpParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_gradunwarp_params-view-source"><span>View Source</span></label>
 
@@ -658,186 +830,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

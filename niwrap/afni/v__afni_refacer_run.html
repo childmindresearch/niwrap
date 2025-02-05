@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VAfniRefacerRunOutputs.output_face_plus">output_face_plus</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VAfniRefacerRunParameters">VAfniRefacerRunParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.mode_all">mode_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.anonymize_output">anonymize_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.cost_function">cost_function</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.shell_option">shell_option</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.no_clean">no_clean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.no_images">no_images</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.overwrite">overwrite</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAfniRefacerRunParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -376,10 +410,11 @@
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>
 </span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;VAfniRefacerRunOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;V__AFNI_REFACER_RUN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;v__afni_refacer_run&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;v__afni_refacer_run_params&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="p">]</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;VAfniRefacerRunParameters&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;V__AFNI_REFACER_RUN_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;v__afni_refacer_run&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;v__afni_refacer_run_params&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -511,6 +546,129 @@
 
                             </div>
                 </section>
+                <section id="VAfniRefacerRunParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VAfniRefacerRunParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters"></a>
+    
+    
+
+                            <div id="VAfniRefacerRunParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.mode_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mode_all</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.mode_all"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.anonymize_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anonymize_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.anonymize_output"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.cost_function" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cost_function</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.cost_function"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.shell_option" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shell_option</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.shell_option"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.no_clean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_clean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.no_clean"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.no_images" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_images</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.no_images"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.overwrite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overwrite</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.overwrite"></a>
+    
+    
+
+                            </div>
+                            <div id="VAfniRefacerRunParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAfniRefacerRunParameters.verbose"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V__AFNI_REFACER_RUN_METADATA">
                     <div class="attr variable">
             <span class="name">V__AFNI_REFACER_RUN_METADATA</span>        =
@@ -625,7 +783,7 @@ over the subject's 'face' region.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__afni_refacer_run_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mode_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">anonymize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cost_function</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shell_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_images</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__afni_refacer_run</span><span class="o">.</span><span class="n">VAfniRefacerRunParameters</span>:</span></span>
+        <span class="name">v__afni_refacer_run_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mode_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">anonymize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cost_function</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shell_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_images</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VAfniRefacerRunParameters">VAfniRefacerRunParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__afni_refacer_run_params-view-source"><span>View Source</span></label>
 
@@ -716,186 +874,5 @@ over the subject's 'face' region.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

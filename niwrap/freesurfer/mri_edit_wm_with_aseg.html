@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriEditWmWithAsegOutputs.output_wm_file">output_wm_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriEditWmWithAsegParameters">MriEditWmWithAsegParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.input_wm">input_wm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.input_t1_brain">input_t1_brain</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.aseg">aseg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.output_wm">output_wm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.fillven">fillven</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.fix_scm_ha">fix_scm_ha</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.fix_scm_ha_only">fix_scm_ha_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.keep">keep</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.keep_in">keep_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.lh">lh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.rh">rh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.fix_ento_wm">fix_ento_wm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.sa_fix_ento_wm">sa_fix_ento_wm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriEditWmWithAsegParameters.debug_voxel">debug_voxel</a>
                         </li>
                 </ul>
 
@@ -369,9 +415,10 @@
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;MRI_EDIT_WM_WITH_ASEG_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;MriEditWmWithAsegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;mri_edit_wm_with_aseg&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;mri_edit_wm_with_aseg_params&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="p">]</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;MriEditWmWithAsegParameters&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;mri_edit_wm_with_aseg&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;mri_edit_wm_with_aseg_params&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -453,6 +500,173 @@
             <div class="docstring"><p>Edited white matter output file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriEditWmWithAsegParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriEditWmWithAsegParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters"></a>
+    
+    
+
+                            <div id="MriEditWmWithAsegParameters.input_wm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_wm</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.input_wm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.input_t1_brain" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_t1_brain</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.input_t1_brain"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.aseg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aseg</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.aseg"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.output_wm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_wm</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.output_wm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.fillven" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fillven</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.fillven"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.fix_scm_ha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix_scm_ha</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.fix_scm_ha"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.fix_scm_ha_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix_scm_ha_only</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.fix_scm_ha_only"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.keep" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.keep"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.keep_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_in</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.keep_in"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.lh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lh</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.lh"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.rh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rh</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.rh"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.fix_ento_wm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix_ento_wm</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.fix_ento_wm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.sa_fix_ento_wm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sa_fix_ento_wm</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.sa_fix_ento_wm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriEditWmWithAsegParameters.debug_voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_voxel</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriEditWmWithAsegParameters.debug_voxel"></a>
+    
+    
 
                             </div>
                 </section>
@@ -558,7 +772,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_edit_wm_with_aseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_wm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_t1_brain</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">aseg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_wm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fillven</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_scm_ha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix_scm_ha_only</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_in</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_ento_wm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sa_fix_ento_wm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_edit_wm_with_aseg</span><span class="o">.</span><span class="n">MriEditWmWithAsegParameters</span>:</span></span>
+        <span class="name">mri_edit_wm_with_aseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_wm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_t1_brain</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">aseg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_wm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fillven</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_scm_ha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix_scm_ha_only</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_in</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fix_ento_wm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sa_fix_ento_wm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug_voxel</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriEditWmWithAsegParameters">MriEditWmWithAsegParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_edit_wm_with_aseg_params-view-source"><span>View Source</span></label>
 
@@ -659,186 +873,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dTfitterOutputs.error_sums">error_sums</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dTfitterParameters">V3dTfitterParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.RHS">RHS</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.LHS">LHS</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.polort">polort</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.vthr">vthr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.FALTUNG">FALTUNG</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.lsqfit">lsqfit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.l1fit">l1fit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.l2lasso">l2lasso</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.lasso_centro_block">lasso_centro_block</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.l2sqrtlasso">l2sqrtlasso</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.consign">consign</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.consFAL">consFAL</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.fitts">fitts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.errsum">errsum</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTfitterParameters.quiet">quiet</a>
                         </li>
                 </ul>
 
@@ -488,10 +546,11 @@
 </span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>
 </span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;V3dTfitterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;V_3D_TFITTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;v_3d_tfitter&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;v_3d_tfitter_params&quot;</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a><span class="p">]</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;V3dTfitterParameters&quot;</span><span class="p">,</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;V_3D_TFITTER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;v_3d_tfitter&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;v_3d_tfitter_params&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -590,6 +649,217 @@
             <div class="docstring"><p>Output error sums dataset.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dTfitterParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dTfitterParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters"></a>
+    
+    
+
+                            <div id="V3dTfitterParameters.RHS" class="classattr">
+                                <div class="attr variable">
+            <span class="name">RHS</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.RHS"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.LHS" class="classattr">
+                                <div class="attr variable">
+            <span class="name">LHS</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.LHS"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.polort" class="classattr">
+                                <div class="attr variable">
+            <span class="name">polort</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.polort"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.vthr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vthr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.vthr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.FALTUNG" class="classattr">
+                                <div class="attr variable">
+            <span class="name">FALTUNG</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.FALTUNG"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.lsqfit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lsqfit</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.lsqfit"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.l1fit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">l1fit</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.l1fit"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.l2lasso" class="classattr">
+                                <div class="attr variable">
+            <span class="name">l2lasso</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.l2lasso"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.lasso_centro_block" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lasso_centro_block</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.lasso_centro_block"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.l2sqrtlasso" class="classattr">
+                                <div class="attr variable">
+            <span class="name">l2sqrtlasso</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.l2sqrtlasso"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.consign" class="classattr">
+                                <div class="attr variable">
+            <span class="name">consign</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.consign"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.consFAL" class="classattr">
+                                <div class="attr variable">
+            <span class="name">consFAL</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.consFAL"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.fitts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fitts</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.fitts"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.errsum" class="classattr">
+                                <div class="attr variable">
+            <span class="name">errsum</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.errsum"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTfitterParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTfitterParameters.quiet"></a>
+    
+    
 
                             </div>
                 </section>
@@ -745,7 +1015,7 @@ to impose sign constraints on the solution parameters.</li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_tfitter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">rhs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lhs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polort</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">faltung</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lsqfit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">l1fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">l2lasso</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lasso_centro_block</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l2sqrtlasso</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">consign</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cons_fal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fitts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">errsum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_tfitter</span><span class="o">.</span><span class="n">V3dTfitterParameters</span>:</span></span>
+        <span class="name">v_3d_tfitter_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">rhs</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lhs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">polort</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vthr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">faltung</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lsqfit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">l1fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">l2lasso</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lasso_centro_block</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">l2sqrtlasso</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">consign</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cons_fal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fitts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">errsum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dTfitterParameters">V3dTfitterParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_tfitter_params-view-source"><span>View Source</span></label>
 
@@ -882,186 +1152,5 @@ to impose sign constraints on the solution parameters.</li>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

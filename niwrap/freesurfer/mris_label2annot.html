@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisLabel2annotOutputs.annot_file">annot_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisLabel2annotParameters">MrisLabel2annotParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.hemi">hemi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.ctabfile">ctabfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.annotname">annotname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.index_offset">index_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.label_files">label_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.annot_path">annot_path</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.labeldir">labeldir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.ldir_default">ldir_default</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.no_unknown">no_unknown</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.thresh">thresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.maxstatwinner">maxstatwinner</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.surf">surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisLabel2annotParameters.subjects_dir">subjects_dir</a>
                         </li>
                 </ul>
 
@@ -387,9 +433,10 @@
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;MRIS_LABEL2ANNOT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;MrisLabel2annotOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;mris_label2annot&quot;</span><span class="p">,</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;mris_label2annot_params&quot;</span><span class="p">,</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="p">]</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;MrisLabel2annotParameters&quot;</span><span class="p">,</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;mris_label2annot&quot;</span><span class="p">,</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;mris_label2annot_params&quot;</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -471,6 +518,173 @@
             <div class="docstring"><p>Generated annotation file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisLabel2annotParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisLabel2annotParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters"></a>
+    
+    
+
+                            <div id="MrisLabel2annotParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.hemi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.hemi"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.ctabfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ctabfile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.ctabfile"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.annotname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annotname</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.annotname"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.index_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">index_offset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.index_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.label_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_files</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.label_files"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.annot_path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">annot_path</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.annot_path"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.labeldir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">labeldir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.labeldir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.ldir_default" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ldir_default</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.ldir_default"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.no_unknown" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_unknown</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.no_unknown"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.thresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.thresh"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.maxstatwinner" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxstatwinner</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.maxstatwinner"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisLabel2annotParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisLabel2annotParameters.subjects_dir"></a>
+    
+    
 
                             </div>
                 </section>
@@ -575,7 +789,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_label2annot_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ctabfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">annotname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">index_offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annot_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labeldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ldir_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_unknown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxstatwinner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_label2annot</span><span class="o">.</span><span class="n">MrisLabel2annotParameters</span>:</span></span>
+        <span class="name">mris_label2annot_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemi</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ctabfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">annotname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">index_offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">annot_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labeldir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ldir_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_unknown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxstatwinner</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisLabel2annotParameters">MrisLabel2annotParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_label2annot_params-view-source"><span>View Source</span></label>
 
@@ -677,186 +891,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

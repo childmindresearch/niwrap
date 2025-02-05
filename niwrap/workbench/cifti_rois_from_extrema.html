@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_ROIS_FROM_EXTREMA_METADATA">CIFTI_ROIS_FROM_EXTREMA_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiRoisFromExtremaGaussianParameters">CiftiRoisFromExtremaGaussianParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaGaussianParameters.surf_sigma">surf_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaGaussianParameters.vol_sigma">vol_sigma</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiRoisFromExtremaOutputs">CiftiRoisFromExtremaOutputs</a>
@@ -44,6 +54,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiRoisFromExtremaOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiRoisFromExtremaParameters">CiftiRoisFromExtremaParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.surf_limit">surf_limit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.vol_limit">vol_limit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.opt_left_surface_surface">opt_left_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.opt_right_surface_surface">opt_right_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.opt_cerebellum_surface_surface">opt_cerebellum_surface_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.gaussian">gaussian</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.opt_overlap_logic_method">opt_overlap_logic_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiRoisFromExtremaParameters.opt_merged_volume">opt_merged_volume</a>
                         </li>
                 </ul>
 
@@ -417,11 +466,13 @@
 </span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>
 </span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;CIFTI_ROIS_FROM_EXTREMA_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;CiftiRoisFromExtremaOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;cifti_rois_from_extrema&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;cifti_rois_from_extrema_gaussian_params&quot;</span><span class="p">,</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;cifti_rois_from_extrema_params&quot;</span><span class="p">,</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="p">]</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;CiftiRoisFromExtremaGaussianParameters&quot;</span><span class="p">,</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;CiftiRoisFromExtremaOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;CiftiRoisFromExtremaParameters&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;cifti_rois_from_extrema&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;cifti_rois_from_extrema_gaussian_params&quot;</span><span class="p">,</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;cifti_rois_from_extrema_params&quot;</span><span class="p">,</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -438,6 +489,41 @@
     
     
 
+                </section>
+                <section id="CiftiRoisFromExtremaGaussianParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiRoisFromExtremaGaussianParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaGaussianParameters"></a>
+    
+    
+
+                            <div id="CiftiRoisFromExtremaGaussianParameters.surf_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_sigma</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaGaussianParameters.surf_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaGaussianParameters.vol_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol_sigma</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaGaussianParameters.vol_sigma"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiRoisFromExtremaOutputs">
                             <input id="CiftiRoisFromExtremaOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -506,12 +592,146 @@
 
                             </div>
                 </section>
+                <section id="CiftiRoisFromExtremaParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiRoisFromExtremaParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters"></a>
+    
+    
+
+                            <div id="CiftiRoisFromExtremaParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.surf_limit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf_limit</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.surf_limit"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.vol_limit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vol_limit</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.vol_limit"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.opt_left_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.opt_left_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.opt_right_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.opt_right_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.opt_cerebellum_surface_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_surface_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.opt_cerebellum_surface_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.gaussian" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gaussian</span><span class="annotation">: NotRequired[<a href="#CiftiRoisFromExtremaGaussianParameters">CiftiRoisFromExtremaGaussianParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.gaussian"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.opt_overlap_logic_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_overlap_logic_method</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.opt_overlap_logic_method"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiRoisFromExtremaParameters.opt_merged_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_merged_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiRoisFromExtremaParameters.opt_merged_volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_rois_from_extrema">
                             <input id="cifti_rois_from_extrema-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_rois_from_extrema</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gaussian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_rois_from_extrema</span><span class="o">.</span><span class="n">CiftiRoisFromExtremaGaussianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_overlap_logic_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiRoisFromExtremaOutputs">CiftiRoisFromExtremaOutputs</a></span>:</span></span>
+        <span class="name">cifti_rois_from_extrema</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gaussian</span><span class="p">:</span> <span class="n"><a href="#CiftiRoisFromExtremaGaussianParameters">CiftiRoisFromExtremaGaussianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_overlap_logic_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiRoisFromExtremaOutputs">CiftiRoisFromExtremaOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_rois_from_extrema-view-source"><span>View Source</span></label>
 
@@ -621,7 +841,7 @@ vertex within range of more than one ROI does not belong to any ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_rois_from_extrema_gaussian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_sigma</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_sigma</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_rois_from_extrema</span><span class="o">.</span><span class="n">CiftiRoisFromExtremaGaussianParameters</span>:</span></span>
+        <span class="name">cifti_rois_from_extrema_gaussian_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surf_sigma</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_sigma</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiRoisFromExtremaGaussianParameters">CiftiRoisFromExtremaGaussianParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_rois_from_extrema_gaussian_params-view-source"><span>View Source</span></label>
 
@@ -672,7 +892,7 @@ vertex within range of more than one ROI does not belong to any ROI.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_rois_from_extrema_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gaussian</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_rois_from_extrema</span><span class="o">.</span><span class="n">CiftiRoisFromExtremaGaussianParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_overlap_logic_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_rois_from_extrema</span><span class="o">.</span><span class="n">CiftiRoisFromExtremaParameters</span>:</span></span>
+        <span class="name">cifti_rois_from_extrema_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">vol_limit</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_surface_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gaussian</span><span class="p">:</span> <span class="n"><a href="#CiftiRoisFromExtremaGaussianParameters">CiftiRoisFromExtremaGaussianParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_overlap_logic_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiRoisFromExtremaParameters">CiftiRoisFromExtremaParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_rois_from_extrema_params-view-source"><span>View Source</span></label>
 
@@ -765,186 +985,5 @@ vertex within range of more than one ROI does not belong to any ROI.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

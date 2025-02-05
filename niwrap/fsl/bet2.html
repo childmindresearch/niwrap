@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Bet2Outputs.output_overlay">output_overlay</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Bet2Parameters">Bet2Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.input_fileroot">input_fileroot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.output_fileroot">output_fileroot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.fractional_intensity">fractional_intensity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.vertical_gradient">vertical_gradient</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.center_of_gravity">center_of_gravity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.outline_flag">outline_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.mask_flag">mask_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.skull_flag">skull_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.no_output_flag">no_output_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.mesh_flag">mesh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.head_radius">head_radius</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.smooth_factor">smooth_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.threshold_flag">threshold_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Bet2Parameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -414,9 +463,10 @@
 </span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="s2">&quot;BET2_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;Bet2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;bet2&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;bet2_params&quot;</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="p">]</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;Bet2Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;bet2&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;bet2_params&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -548,6 +598,184 @@ set)</p>
 
                             </div>
                 </section>
+                <section id="Bet2Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Bet2Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters"></a>
+    
+    
+
+                            <div id="Bet2Parameters.input_fileroot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_fileroot</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.input_fileroot"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.output_fileroot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_fileroot</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.output_fileroot"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.fractional_intensity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fractional_intensity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.fractional_intensity"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.vertical_gradient" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vertical_gradient</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.vertical_gradient"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.center_of_gravity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_of_gravity</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.center_of_gravity"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.outline_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outline_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.outline_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.mask_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.mask_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.skull_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skull_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.skull_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.no_output_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_output_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.no_output_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.mesh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mesh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.mesh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.head_radius" class="classattr">
+                                <div class="attr variable">
+            <span class="name">head_radius</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.head_radius"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.smooth_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth_factor</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.smooth_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.threshold_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.threshold_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Bet2Parameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Bet2Parameters.help_flag"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="bet2">
                             <input id="bet2-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -661,7 +889,7 @@ set)</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">bet2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_fileroot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_fileroot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vertical_gradient</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outline_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skull_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_output_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mesh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">head_radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">bet2</span><span class="o">.</span><span class="n">Bet2Parameters</span>:</span></span>
+        <span class="name">bet2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_fileroot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_fileroot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fractional_intensity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vertical_gradient</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">center_of_gravity</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">outline_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skull_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_output_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mesh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">head_radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Bet2Parameters">Bet2Parameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="bet2_params-view-source"><span>View Source</span></label>
 
@@ -774,186 +1002,5 @@ set)</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

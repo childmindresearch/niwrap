@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AtroposOutputs.posterior_probability_images">posterior_probability_images</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AtroposParameters">AtroposParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AtroposParameters.image_dimensionality">image_dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.intensity_image">intensity_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.bspline">bspline</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.initialization">initialization</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.partial_volume_label_set">partial_volume_label_set</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.use_partial_volume_likelihoods">use_partial_volume_likelihoods</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.posterior_formulation">posterior_formulation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.mask_image">mask_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.convergence">convergence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.likelihood_model">likelihood_model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.mrf">mrf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.icm">icm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.use_random_seed">use_random_seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.minimize_memory_usage">minimize_memory_usage</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.winsorize_outliers">winsorize_outliers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.use_euclidean_distance">use_euclidean_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.label_propagation">label_propagation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AtroposParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -514,9 +575,10 @@
 </span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;ATROPOS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;AtroposOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;atropos&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;atropos_params&quot;</span><span class="p">,</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="p">]</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;AtroposParameters&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;atropos&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;atropos_params&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -615,6 +677,228 @@ masked region.</p>
             <div class="docstring"><p>Output posterior probability images in specified format.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AtroposParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AtroposParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters"></a>
+    
+    
+
+                            <div id="AtroposParameters.image_dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3, 4]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.image_dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.intensity_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intensity_image</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.intensity_image"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.bspline" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bspline</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.bspline"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.initialization" class="classattr">
+                                <div class="attr variable">
+            <span class="name">initialization</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.initialization"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.partial_volume_label_set" class="classattr">
+                                <div class="attr variable">
+            <span class="name">partial_volume_label_set</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.partial_volume_label_set"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.use_partial_volume_likelihoods" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_partial_volume_likelihoods</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.use_partial_volume_likelihoods"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.posterior_formulation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">posterior_formulation</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.posterior_formulation"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.mask_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.mask_image"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.convergence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.convergence"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.likelihood_model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">likelihood_model</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.likelihood_model"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.mrf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mrf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.mrf"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.icm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">icm</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.icm"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.use_random_seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_random_seed</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.use_random_seed"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.minimize_memory_usage" class="classattr">
+                                <div class="attr variable">
+            <span class="name">minimize_memory_usage</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.minimize_memory_usage"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.winsorize_outliers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">winsorize_outliers</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.winsorize_outliers"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.use_euclidean_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_euclidean_distance</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.use_euclidean_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.label_propagation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_propagation</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.label_propagation"></a>
+    
+    
+
+                            </div>
+                            <div id="AtroposParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AtroposParameters.verbose"></a>
+    
+    
 
                             </div>
                 </section>
@@ -762,7 +1046,7 @@ and/or an MRF prior to enforce spatial smoothing of the labels.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">atropos_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">intensity_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">initialization</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">likelihood_model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">partial_volume_label_set</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_partial_volume_likelihoods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">posterior_formulation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mrf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">icm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minimize_memory_usage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">winsorize_outliers</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_euclidean_distance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_propagation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">atropos</span><span class="o">.</span><span class="n">AtroposParameters</span>:</span></span>
+        <span class="name">atropos_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">intensity_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">initialization</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">likelihood_model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">partial_volume_label_set</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_partial_volume_likelihoods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">posterior_formulation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mrf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">icm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">minimize_memory_usage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">winsorize_outliers</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">use_euclidean_distance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label_propagation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AtroposParameters">AtroposParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="atropos_params-view-source"><span>View Source</span></label>
 
@@ -914,186 +1198,5 @@ and/or an MRF prior to enforce spatial smoothing of the labels.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,27 @@
                     <a class="variable" href="#CONNECTOMESTATS_METADATA">CONNECTOMESTATS_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#ConnectomestatsColumnParameters">ConnectomestatsColumnParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConnectomestatsColumnParameters.path">path</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConnectomestatsConfigParameters">ConnectomestatsConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConnectomestatsConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#ConnectomestatsOutputs">ConnectomestatsOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +60,108 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConnectomestatsOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConnectomestatsParameters">ConnectomestatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.notest">notest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.errors">errors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.exchange_within">exchange_within</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.exchange_whole">exchange_whole</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.strong">strong</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.nshuffles">nshuffles</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.permutations">permutations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.nonstationarity">nonstationarity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.skew_nonstationarity">skew_nonstationarity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.nshuffles_nonstationarity">nshuffles_nonstationarity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.permutations_nonstationarity">permutations_nonstationarity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.tfce_dh">tfce_dh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.tfce_e">tfce_e</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.tfce_h">tfce_h</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.variance">variance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.ftests">ftests</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.fonly">fonly</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.column">column</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.algorithm">algorithm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.design">design</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.contrast">contrast</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConnectomestatsParameters.output">output</a>
                         </li>
                 </ul>
 
@@ -799,12 +920,15 @@
 </span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>
 </span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a>    <span class="s2">&quot;CONNECTOMESTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a>    <span class="s2">&quot;ConnectomestatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-723"><a href="#L-723"><span class="linenos">723</span></a>    <span class="s2">&quot;connectomestats&quot;</span><span class="p">,</span>
-</span><span id="L-724"><a href="#L-724"><span class="linenos">724</span></a>    <span class="s2">&quot;connectomestats_column_params&quot;</span><span class="p">,</span>
-</span><span id="L-725"><a href="#L-725"><span class="linenos">725</span></a>    <span class="s2">&quot;connectomestats_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-726"><a href="#L-726"><span class="linenos">726</span></a>    <span class="s2">&quot;connectomestats_params&quot;</span><span class="p">,</span>
-</span><span id="L-727"><a href="#L-727"><span class="linenos">727</span></a><span class="p">]</span>
+</span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a>    <span class="s2">&quot;ConnectomestatsColumnParameters&quot;</span><span class="p">,</span>
+</span><span id="L-723"><a href="#L-723"><span class="linenos">723</span></a>    <span class="s2">&quot;ConnectomestatsConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-724"><a href="#L-724"><span class="linenos">724</span></a>    <span class="s2">&quot;ConnectomestatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-725"><a href="#L-725"><span class="linenos">725</span></a>    <span class="s2">&quot;ConnectomestatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-726"><a href="#L-726"><span class="linenos">726</span></a>    <span class="s2">&quot;connectomestats&quot;</span><span class="p">,</span>
+</span><span id="L-727"><a href="#L-727"><span class="linenos">727</span></a>    <span class="s2">&quot;connectomestats_column_params&quot;</span><span class="p">,</span>
+</span><span id="L-728"><a href="#L-728"><span class="linenos">728</span></a>    <span class="s2">&quot;connectomestats_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-729"><a href="#L-729"><span class="linenos">729</span></a>    <span class="s2">&quot;connectomestats_params&quot;</span><span class="p">,</span>
+</span><span id="L-730"><a href="#L-730"><span class="linenos">730</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -821,6 +945,65 @@
     
     
 
+                </section>
+                <section id="ConnectomestatsColumnParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConnectomestatsColumnParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsColumnParameters"></a>
+    
+    
+
+                            <div id="ConnectomestatsColumnParameters.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsColumnParameters.path"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConnectomestatsConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConnectomestatsConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsConfigParameters"></a>
+    
+    
+
+                            <div id="ConnectomestatsConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ConnectomestatsOutputs">
                             <input id="ConnectomestatsOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -874,12 +1057,377 @@
 
                             </div>
                 </section>
+                <section id="ConnectomestatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConnectomestatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters"></a>
+    
+    
+
+                            <div id="ConnectomestatsParameters.notest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">notest</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.notest"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.errors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">errors</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.errors"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.exchange_within" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exchange_within</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.exchange_within"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.exchange_whole" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exchange_whole</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.exchange_whole"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.strong" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strong</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.strong"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.nshuffles" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nshuffles</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.nshuffles"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.permutations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">permutations</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.permutations"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.nonstationarity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonstationarity</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.nonstationarity"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.skew_nonstationarity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skew_nonstationarity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.skew_nonstationarity"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.nshuffles_nonstationarity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nshuffles_nonstationarity</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.nshuffles_nonstationarity"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.permutations_nonstationarity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">permutations_nonstationarity</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.permutations_nonstationarity"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.tfce_dh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tfce_dh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.tfce_dh"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.tfce_e" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tfce_e</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.tfce_e"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.tfce_h" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tfce_h</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.tfce_h"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.variance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">variance</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.variance"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.ftests" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ftests</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.ftests"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.fonly" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fonly</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.fonly"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.column" class="classattr">
+                                <div class="attr variable">
+            <span class="name">column</span><span class="annotation">: NotRequired[list[<a href="#ConnectomestatsColumnParameters">ConnectomestatsColumnParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.column"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#ConnectomestatsConfigParameters">ConnectomestatsConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.algorithm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">algorithm</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.algorithm"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.design" class="classattr">
+                                <div class="attr variable">
+            <span class="name">design</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.design"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.contrast" class="classattr">
+                                <div class="attr variable">
+            <span class="name">contrast</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.contrast"></a>
+    
+    
+
+                            </div>
+                            <div id="ConnectomestatsParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConnectomestatsParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="connectomestats">
                             <input id="connectomestats-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectomestats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">design</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">notest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_within</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_whole</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strong</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nshuffles</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nonstationarity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skew_nonstationarity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nshuffles_nonstationarity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations_nonstationarity</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_dh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">variance</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftests</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsColumnParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConnectomestatsOutputs">ConnectomestatsOutputs</a></span>:</span></span>
+        <span class="name">connectomestats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">design</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">notest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_within</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_whole</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strong</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nshuffles</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nonstationarity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skew_nonstationarity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nshuffles_nonstationarity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations_nonstationarity</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_dh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">variance</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftests</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConnectomestatsColumnParameters">ConnectomestatsColumnParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConnectomestatsConfigParameters">ConnectomestatsConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConnectomestatsOutputs">ConnectomestatsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectomestats-view-source"><span>View Source</span></label>
 
@@ -1152,7 +1700,7 @@ Neuroimage, 2011, 54(3), 2006-19.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectomestats_column_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsColumnParameters</span>:</span></span>
+        <span class="name">connectomestats_column_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConnectomestatsColumnParameters">ConnectomestatsColumnParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectomestats_column_params-view-source"><span>View Source</span></label>
 
@@ -1202,7 +1750,7 @@ Neuroimage, 2011, 54(3), 2006-19.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectomestats_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsConfigParameters</span>:</span></span>
+        <span class="name">connectomestats_config_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">key</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConnectomestatsConfigParameters">ConnectomestatsConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectomestats_config_params-view-source"><span>View Source</span></label>
 
@@ -1253,7 +1801,7 @@ Neuroimage, 2011, 54(3), 2006-19.</p></li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">connectomestats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">design</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">notest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_within</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_whole</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strong</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nshuffles</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nonstationarity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skew_nonstationarity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nshuffles_nonstationarity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations_nonstationarity</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_dh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">variance</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftests</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsColumnParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">connectomestats</span><span class="o">.</span><span class="n">ConnectomestatsParameters</span>:</span></span>
+        <span class="name">connectomestats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">design</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">notest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_within</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exchange_whole</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strong</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nshuffles</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nonstationarity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skew_nonstationarity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nshuffles_nonstationarity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">permutations_nonstationarity</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_dh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tfce_h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">variance</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftests</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">column</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConnectomestatsColumnParameters">ConnectomestatsColumnParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConnectomestatsConfigParameters">ConnectomestatsConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConnectomestatsParameters">ConnectomestatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="connectomestats_params-view-source"><span>View Source</span></label>
 
@@ -1472,186 +2020,5 @@ Neuroimage, 2011, 54(3), 2006-19.</p></li>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

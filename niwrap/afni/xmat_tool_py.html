@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#XmatToolPyOutputs.output_fitts">output_fitts</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#XmatToolPyParameters">XmatToolPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.no_gui">no_gui</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.load_xmat">load_xmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.load_1d">load_1d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.choose_cols">choose_cols</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.choose_nonzero_cols">choose_nonzero_cols</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.chrono">chrono</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.cormat_cutoff">cormat_cutoff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.cosmat_cutoff">cosmat_cutoff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.cosmat_motion">cosmat_motion</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.verb">verb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_col_types">show_col_types</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_conds">show_conds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_cormat">show_cormat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_cormat_warnings">show_cormat_warnings</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_cosmat">show_cosmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_cosmat_warnings">show_cosmat_warnings</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_fit_betas">show_fit_betas</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_fit_ts">show_fit_ts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_xmat">show_xmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.show_1d">show_1d</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#XmatToolPyParameters.gui_plot_xmat_as_one">gui_plot_xmat_as_one</a>
                         </li>
                 </ul>
 
@@ -431,9 +498,10 @@
 </span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;XMAT_TOOL_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;XmatToolPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;xmat_tool_py&quot;</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;xmat_tool_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="p">]</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;XmatToolPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;xmat_tool_py&quot;</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;xmat_tool_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -515,6 +583,250 @@
             <div class="docstring"><p>Output fit time series</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="XmatToolPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">XmatToolPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters"></a>
+    
+    
+
+                            <div id="XmatToolPyParameters.no_gui" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_gui</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.no_gui"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.load_xmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">load_xmat</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.load_xmat"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.load_1d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">load_1d</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.load_1d"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.choose_cols" class="classattr">
+                                <div class="attr variable">
+            <span class="name">choose_cols</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.choose_cols"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.choose_nonzero_cols" class="classattr">
+                                <div class="attr variable">
+            <span class="name">choose_nonzero_cols</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.choose_nonzero_cols"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.chrono" class="classattr">
+                                <div class="attr variable">
+            <span class="name">chrono</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.chrono"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.cormat_cutoff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cormat_cutoff</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.cormat_cutoff"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.cosmat_cutoff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cosmat_cutoff</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.cosmat_cutoff"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.cosmat_motion" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cosmat_motion</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.cosmat_motion"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.verb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verb</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.verb"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_col_types" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_col_types</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_col_types"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_conds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_conds</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_conds"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_cormat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_cormat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_cormat"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_cormat_warnings" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_cormat_warnings</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_cormat_warnings"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_cosmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_cosmat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_cosmat"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_cosmat_warnings" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_cosmat_warnings</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_cosmat_warnings"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_fit_betas" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_fit_betas</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_fit_betas"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_fit_ts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_fit_ts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_fit_ts"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_xmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_xmat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_xmat"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.show_1d" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_1d</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.show_1d"></a>
+    
+    
+
+                            </div>
+                            <div id="XmatToolPyParameters.gui_plot_xmat_as_one" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gui_plot_xmat_as_one</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#XmatToolPyParameters.gui_plot_xmat_as_one"></a>
+    
+    
 
                             </div>
                 </section>
@@ -640,7 +952,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">xmat_tool_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">no_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">load_xmat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_1d</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">choose_cols</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">choose_nonzero_cols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">chrono</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cormat_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cosmat_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cosmat_motion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_col_types</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_conds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cormat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cormat_warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cosmat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cosmat_warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fit_betas</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fit_ts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_xmat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_1d</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gui_plot_xmat_as_one</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">xmat_tool_py</span><span class="o">.</span><span class="n">XmatToolPyParameters</span>:</span></span>
+        <span class="name">xmat_tool_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">no_gui</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">load_xmat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">load_1d</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">choose_cols</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">choose_nonzero_cols</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">chrono</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cormat_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cosmat_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cosmat_motion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">show_col_types</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_conds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cormat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cormat_warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cosmat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_cosmat_warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fit_betas</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_fit_ts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_xmat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_1d</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gui_plot_xmat_as_one</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#XmatToolPyParameters">XmatToolPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="xmat_tool_py_params-view-source"><span>View Source</span></label>
 
@@ -769,186 +1081,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

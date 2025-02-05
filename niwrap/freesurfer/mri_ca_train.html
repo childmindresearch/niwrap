@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriCaTrainOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriCaTrainParameters">MriCaTrainParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.subjects">subjects</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.output_gca">output_gca</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.segmentation">segmentation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.transform">transform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.mask_volume">mask_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.node_spacing">node_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.prior_spacing">prior_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.input_training">input_training</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.makesym">makesym</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.check_symmetry">check_symmetry</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.sanity_check">sanity_check</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriCaTrainParameters.done_file">done_file</a>
                         </li>
                 </ul>
 
@@ -387,9 +430,10 @@
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;MRI_CA_TRAIN_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;MriCaTrainOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="s2">&quot;mri_ca_train&quot;</span><span class="p">,</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;mri_ca_train_params&quot;</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="p">]</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="s2">&quot;MriCaTrainParameters&quot;</span><span class="p">,</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;mri_ca_train&quot;</span><span class="p">,</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;mri_ca_train_params&quot;</span><span class="p">,</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -456,6 +500,162 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriCaTrainParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriCaTrainParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters"></a>
+    
+    
+
+                            <div id="MriCaTrainParameters.subjects" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.subjects"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.output_gca" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_gca</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.output_gca"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.segmentation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segmentation</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.segmentation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transform</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.transform"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.mask_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_volume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.mask_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.node_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">node_spacing</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.node_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.prior_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prior_spacing</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.prior_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.input_training" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_training</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.input_training"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.makesym" class="classattr">
+                                <div class="attr variable">
+            <span class="name">makesym</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.makesym"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.check_symmetry" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_symmetry</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.check_symmetry"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.sanity_check" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sanity_check</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.sanity_check"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriCaTrainParameters.done_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">done_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriCaTrainParameters.done_file"></a>
+    
+    
 
                             </div>
                 </section>
@@ -566,7 +766,7 @@ other configuration.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_ca_train_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_gca</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segmentation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">node_spacing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_spacing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_training</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">makesym</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_symmetry</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sanity_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_ca_train</span><span class="o">.</span><span class="n">MriCaTrainParameters</span>:</span></span>
+        <span class="name">mri_ca_train_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_gca</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segmentation</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">transform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">node_spacing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prior_spacing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_training</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">makesym</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_symmetry</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sanity_check</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">done_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriCaTrainParameters">MriCaTrainParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_ca_train_params-view-source"><span>View Source</span></label>
 
@@ -673,186 +873,5 @@ other configuration.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

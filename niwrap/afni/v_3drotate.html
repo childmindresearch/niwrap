@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,87 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3drotateOutputs.out_brick">out_brick</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3drotateParameters">V3drotateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.dataset">dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.ashift">ashift</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.bshift">bshift</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.rotate">rotate</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.rotparent">rotparent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.gridparent">gridparent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.matvec_dicom">matvec_dicom</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.matvec_order">matvec_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.matvec_dset">matvec_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.dfile">dfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.1Dfile">1Dfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.points">points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.origin">origin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.Fourier">Fourier</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.NN">NN</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.linear">linear</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.cubic">cubic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.quintic">quintic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.heptic">heptic</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.Fourier_nopad">Fourier_nopad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.clipit">clipit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.noclip">noclip</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3drotateParameters.zpad">zpad</a>
                         </li>
                 </ul>
 
@@ -525,10 +604,11 @@
 </span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>
 </span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;V3drotateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;V_3DROTATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;v_3drotate&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;v_3drotate_params&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a><span class="p">]</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;V3drotateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;V_3DROTATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;v_3drotate&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;v_3drotate_params&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -612,6 +692,294 @@
             <div class="docstring"><p>Output dataset brick file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3drotateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3drotateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters"></a>
+    
+    
+
+                            <div id="V3drotateParameters.dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.ashift" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ashift</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.ashift"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.bshift" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bshift</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.bshift"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.rotate" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rotate</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.rotate"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.rotparent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rotparent</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.rotparent"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.gridparent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gridparent</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.gridparent"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.matvec_dicom" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matvec_dicom</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.matvec_dicom"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.matvec_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matvec_order</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.matvec_order"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.matvec_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matvec_dset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.matvec_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.dfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.dfile"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.1Dfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">1Dfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.1Dfile"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">points</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.points"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.origin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">origin</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.origin"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.Fourier" class="classattr">
+                                <div class="attr variable">
+            <span class="name">Fourier</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.Fourier"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.NN" class="classattr">
+                                <div class="attr variable">
+            <span class="name">NN</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.NN"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.linear" class="classattr">
+                                <div class="attr variable">
+            <span class="name">linear</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.linear"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.cubic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cubic</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.cubic"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.quintic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quintic</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.quintic"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.heptic" class="classattr">
+                                <div class="attr variable">
+            <span class="name">heptic</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.heptic"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.Fourier_nopad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">Fourier_nopad</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.Fourier_nopad"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.clipit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">clipit</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.clipit"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.noclip" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noclip</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.noclip"></a>
+    
+    
+
+                            </div>
+                            <div id="V3drotateParameters.zpad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zpad</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3drotateParameters.zpad"></a>
+    
+    
 
                             </div>
                 </section>
@@ -777,7 +1145,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3drotate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ashift</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bshift</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotate</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotparent</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gridparent</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_dicom</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_order</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_1_dfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">origin</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fourier</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cubic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quintic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">heptic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fourier_nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">clipit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noclip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zpad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3drotate</span><span class="o">.</span><span class="n">V3drotateParameters</span>:</span></span>
+        <span class="name">v_3drotate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ashift</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bshift</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotate</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rotparent</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gridparent</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_dicom</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_order</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matvec_dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_1_dfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">origin</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fourier</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cubic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quintic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">heptic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fourier_nopad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">clipit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noclip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zpad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3drotateParameters">V3drotateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3drotate_params-view-source"><span>View Source</span></label>
 
@@ -944,186 +1312,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

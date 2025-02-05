@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,30 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisMefSurfacesOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisMefSurfacesParameters">MrisMefSurfacesParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.subject_name">subject_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.hemisphere">hemisphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.omit_self_intersection">omit_self_intersection</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.curvature">curvature</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.average_curvature">average_curvature</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisMefSurfacesParameters.white_only">white_only</a>
                         </li>
                 </ul>
 
@@ -293,9 +315,10 @@
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;MRIS_MEF_SURFACES_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;MrisMefSurfacesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;mris_mef_surfaces&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;mris_mef_surfaces_params&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">]</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;MrisMefSurfacesParameters&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;mris_mef_surfaces&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;mris_mef_surfaces_params&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -362,6 +385,85 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisMefSurfacesParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisMefSurfacesParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters"></a>
+    
+    
+
+                            <div id="MrisMefSurfacesParameters.subject_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.subject_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMefSurfacesParameters.hemisphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemisphere</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.hemisphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMefSurfacesParameters.omit_self_intersection" class="classattr">
+                                <div class="attr variable">
+            <span class="name">omit_self_intersection</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.omit_self_intersection"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMefSurfacesParameters.curvature" class="classattr">
+                                <div class="attr variable">
+            <span class="name">curvature</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.curvature"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMefSurfacesParameters.average_curvature" class="classattr">
+                                <div class="attr variable">
+            <span class="name">average_curvature</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.average_curvature"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisMefSurfacesParameters.white_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">white_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisMefSurfacesParameters.white_only"></a>
+    
+    
 
                             </div>
                 </section>
@@ -451,7 +553,7 @@ approximating layer IV of the cortical sheet.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_mef_surfaces_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">omit_self_intersection</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">curvature</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">average_curvature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">white_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_mef_surfaces</span><span class="o">.</span><span class="n">MrisMefSurfacesParameters</span>:</span></span>
+        <span class="name">mris_mef_surfaces_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">omit_self_intersection</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">curvature</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">average_curvature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">white_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisMefSurfacesParameters">MrisMefSurfacesParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_mef_surfaces_params-view-source"><span>View Source</span></label>
 
@@ -518,186 +620,5 @@ approximating layer IV of the cortical sheet.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

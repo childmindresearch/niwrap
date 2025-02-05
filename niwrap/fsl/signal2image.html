@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Signal2imageOutputs.kspace_outfile">kspace_outfile</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Signal2imageParameters">Signal2imageParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.pulse_sequence">pulse_sequence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.input_signal">input_signal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.output_image">output_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.kspace_coordinates">kspace_coordinates</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.output_kspace">output_kspace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.abs_flag">abs_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.homodyne_flag">homodyne_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.apodize_flag">apodize_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.cutoff">cutoff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.rolloff">rolloff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Signal2imageParameters.save_flag">save_flag</a>
                         </li>
                 </ul>
 
@@ -371,9 +411,10 @@
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;SIGNAL2IMAGE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;Signal2imageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;signal2image&quot;</span><span class="p">,</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;signal2image_params&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="p">]</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;Signal2imageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;signal2image&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;signal2image_params&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -470,6 +511,151 @@
             <div class="docstring"><p>The resultant k-space file.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="Signal2imageParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Signal2imageParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters"></a>
+    
+    
+
+                            <div id="Signal2imageParameters.pulse_sequence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pulse_sequence</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.pulse_sequence"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.input_signal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_signal</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.input_signal"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.output_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_image</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.output_image"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.kspace_coordinates" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kspace_coordinates</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.kspace_coordinates"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.output_kspace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_kspace</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.output_kspace"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.abs_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">abs_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.abs_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.homodyne_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">homodyne_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.homodyne_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.apodize_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apodize_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.apodize_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.cutoff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cutoff</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.cutoff"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.rolloff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rolloff</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.rolloff"></a>
+    
+    
+
+                            </div>
+                            <div id="Signal2imageParameters.save_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Signal2imageParameters.save_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -571,7 +757,7 @@ coordinates and pulse sequences.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">signal2image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">pulse_sequence</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_signal</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">kspace_coordinates</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_kspace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">abs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">homodyne_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">apodize_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span>,</span><span class="param">	<span class="n">rolloff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">save_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">signal2image</span><span class="o">.</span><span class="n">Signal2imageParameters</span>:</span></span>
+        <span class="name">signal2image_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">pulse_sequence</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_signal</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">kspace_coordinates</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_kspace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">abs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">homodyne_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">apodize_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">100</span>,</span><span class="param">	<span class="n">rolloff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">save_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Signal2imageParameters">Signal2imageParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="signal2image_params-view-source"><span>View Source</span></label>
 
@@ -665,186 +851,5 @@ coordinates and pulse sequences.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

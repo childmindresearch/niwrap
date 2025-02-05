@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriSegheadOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriSegheadParameters">MriSegheadParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.output_volume">output_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.fill_value">fill_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.fhi_value">fhi_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.thresh1_value">thresh1_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.thresh2_value">thresh2_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.nhitsmin_value">nhitsmin_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.hvoldat_file">hvoldat_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.signal_behind_head">signal_behind_head</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.rescale">rescale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.fill_holes_islands">fill_holes_islands</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.seed_point">seed_point</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.or_mask_file">or_mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriSegheadParameters.gdiag_option">gdiag_option</a>
                         </li>
                 </ul>
 
@@ -403,9 +452,10 @@
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="s2">&quot;MRI_SEGHEAD_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;MriSegheadOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;mri_seghead&quot;</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;mri_seghead_params&quot;</span><span class="p">,</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="p">]</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;MriSegheadParameters&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;mri_seghead&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;mri_seghead_params&quot;</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -472,6 +522,184 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriSegheadParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriSegheadParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters"></a>
+    
+    
+
+                            <div id="MriSegheadParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.output_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.output_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.fill_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.fill_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.fhi_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fhi_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.fhi_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.thresh1_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh1_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.thresh1_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.thresh2_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh2_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.thresh2_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.nhitsmin_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nhitsmin_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.nhitsmin_value"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.hvoldat_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hvoldat_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.hvoldat_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.signal_behind_head" class="classattr">
+                                <div class="attr variable">
+            <span class="name">signal_behind_head</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.signal_behind_head"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.rescale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rescale</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.rescale"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.fill_holes_islands" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fill_holes_islands</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.fill_holes_islands"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.seed_point" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seed_point</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.seed_point"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.or_mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">or_mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.or_mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriSegheadParameters.gdiag_option" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gdiag_option</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriSegheadParameters.gdiag_option"></a>
+    
+    
 
                             </div>
                 </section>
@@ -583,7 +811,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_seghead_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fill_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh1_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh2_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nhitsmin_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hvoldat_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">signal_behind_head</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rescale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill_holes_islands</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">seed_point</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">or_mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gdiag_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_seghead</span><span class="o">.</span><span class="n">MriSegheadParameters</span>:</span></span>
+        <span class="name">mri_seghead_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fill_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fhi_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh1_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thresh2_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nhitsmin_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hvoldat_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">signal_behind_head</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rescale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fill_holes_islands</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">seed_point</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">or_mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gdiag_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriSegheadParameters">MriSegheadParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_seghead_params-view-source"><span>View Source</span></label>
 
@@ -696,186 +924,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FatMatSelPyOutputs.v_1_d_dsets">v_1_d_dsets</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FatMatSelPyParameters">FatMatSelPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.parameters">parameters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.matr_in">matr_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.list_match">list_match</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.out_ind_matr">out_ind_matr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.out_ind_1ddset">out_ind_1ddset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.hold_image">hold_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.extern_labs_no">extern_labs_no</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.type_file">type_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.dpi_file">dpi_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.xlen_file">xlen_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.ylen_file">ylen_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.tight_layout_on">tight_layout_on</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.fig_off">fig_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.size_font">size_font</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.lab_size_font">lab_size_font</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.a_plotmin">a_plotmin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.b_plotmax">b_plotmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.cbar_off">cbar_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.map_of_colors">map_of_colors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.cbar_int_num">cbar_int_num</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.width_cbar_perc">width_cbar_perc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.specifier">specifier</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatMatSelPyParameters.xtick_lab_off">xtick_lab_off</a>
                         </li>
                 </ul>
 
@@ -523,9 +596,10 @@
 </span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;FAT_MAT_SEL_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;FatMatSelPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;fat_mat_sel_py&quot;</span><span class="p">,</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;fat_mat_sel_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="p">]</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;FatMatSelPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="s2">&quot;fat_mat_sel_py&quot;</span><span class="p">,</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>    <span class="s2">&quot;fat_mat_sel_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -637,6 +711,272 @@
             <div class="docstring"><p>Output 1D dataset files.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FatMatSelPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FatMatSelPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters"></a>
+    
+    
+
+                            <div id="FatMatSelPyParameters.parameters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parameters</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.parameters"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.matr_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matr_in</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.matr_in"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.list_match" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_match</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.list_match"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.out_ind_matr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_ind_matr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.out_ind_matr"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.out_ind_1ddset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_ind_1ddset</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.out_ind_1ddset"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.hold_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hold_image</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.hold_image"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.extern_labs_no" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extern_labs_no</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.extern_labs_no"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.type_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">type_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.type_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.dpi_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dpi_file</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.dpi_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.xlen_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xlen_file</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.xlen_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.ylen_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ylen_file</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.ylen_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.tight_layout_on" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tight_layout_on</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.tight_layout_on"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.fig_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fig_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.fig_off"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.size_font" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size_font</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.size_font"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.lab_size_font" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lab_size_font</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.lab_size_font"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.a_plotmin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">a_plotmin</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.a_plotmin"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.b_plotmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">b_plotmax</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.b_plotmax"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.cbar_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cbar_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.cbar_off"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.map_of_colors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">map_of_colors</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.map_of_colors"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.cbar_int_num" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cbar_int_num</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.cbar_int_num"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.width_cbar_perc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width_cbar_perc</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.width_cbar_perc"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.specifier" class="classattr">
+                                <div class="attr variable">
+            <span class="name">specifier</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.specifier"></a>
+    
+    
+
+                            </div>
+                            <div id="FatMatSelPyParameters.xtick_lab_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xtick_lab_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatMatSelPyParameters.xtick_lab_off"></a>
+    
+    
 
                             </div>
                 </section>
@@ -784,7 +1124,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fat_mat_sel_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">parameters</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">matr_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">list_match</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_ind_matr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_ind_1ddset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">hold_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">extern_labs_no</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">type_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dpi_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xlen_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylen_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tight_layout_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fig_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_font</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lab_size_font</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">a_plotmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b_plotmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">map_of_colors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar_int_num</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">width_cbar_perc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">specifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xtick_lab_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">fat_mat_sel_py</span><span class="o">.</span><span class="n">FatMatSelPyParameters</span>:</span></span>
+        <span class="name">fat_mat_sel_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">parameters</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">matr_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">list_match</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_ind_matr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">out_ind_1ddset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">hold_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">extern_labs_no</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">type_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dpi_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xlen_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylen_file</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tight_layout_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fig_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">size_font</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lab_size_font</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">a_plotmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">b_plotmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">map_of_colors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cbar_int_num</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">width_cbar_perc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">specifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xtick_lab_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FatMatSelPyParameters">FatMatSelPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fat_mat_sel_py_params-view-source"><span>View Source</span></label>
 
@@ -943,186 +1283,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

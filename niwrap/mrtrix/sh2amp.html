@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#SH2AMP_METADATA">SH2AMP_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#Sh2ampConfigParameters">Sh2ampConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2ampConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Sh2ampFslgradParameters">Sh2ampFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2ampFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#Sh2ampOutputs">Sh2ampOutputs</a>
@@ -44,6 +66,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Sh2ampOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Sh2ampParameters">Sh2ampParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.nonnegative">nonnegative</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.strides">strides</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.datatype">datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.directions">directions</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Sh2ampParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Sh2ampVariousFileParameters">Sh2ampVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2ampVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Sh2ampVariousStringParameters">Sh2ampVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Sh2ampVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -690,14 +784,19 @@
 </span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a>
 </span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a>    <span class="s2">&quot;SH2AMP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a>    <span class="s2">&quot;Sh2ampOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a>    <span class="s2">&quot;sh2amp&quot;</span><span class="p">,</span>
-</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a>    <span class="s2">&quot;sh2amp_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a>    <span class="s2">&quot;sh2amp_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a>    <span class="s2">&quot;sh2amp_params&quot;</span><span class="p">,</span>
-</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a>    <span class="s2">&quot;sh2amp_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a>    <span class="s2">&quot;sh2amp_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="p">]</span>
+</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a>    <span class="s2">&quot;Sh2ampConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a>    <span class="s2">&quot;Sh2ampFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a>    <span class="s2">&quot;Sh2ampOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a>    <span class="s2">&quot;Sh2ampParameters&quot;</span><span class="p">,</span>
+</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a>    <span class="s2">&quot;Sh2ampVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a>    <span class="s2">&quot;Sh2ampVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a>    <span class="s2">&quot;sh2amp&quot;</span><span class="p">,</span>
+</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a>    <span class="s2">&quot;sh2amp_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a>    <span class="s2">&quot;sh2amp_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a>    <span class="s2">&quot;sh2amp_params&quot;</span><span class="p">,</span>
+</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a>    <span class="s2">&quot;sh2amp_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a>    <span class="s2">&quot;sh2amp_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -714,6 +813,76 @@
     
     
 
+                </section>
+                <section id="Sh2ampConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2ampConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampConfigParameters"></a>
+    
+    
+
+                            <div id="Sh2ampConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampConfigParameters.value"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Sh2ampFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2ampFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampFslgradParameters"></a>
+    
+    
+
+                            <div id="Sh2ampFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="Sh2ampOutputs">
                             <input id="Sh2ampOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -784,12 +953,249 @@ the specified directions.</p>
 
                             </div>
                 </section>
+                <section id="Sh2ampParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2ampParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters"></a>
+    
+    
+
+                            <div id="Sh2ampParameters.nonnegative" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nonnegative</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.nonnegative"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#Sh2ampFslgradParameters">Sh2ampFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.strides" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strides</span><span class="annotation">: NotRequired[Union[<a href="#Sh2ampVariousStringParameters">Sh2ampVariousStringParameters</a>, <a href="#Sh2ampVariousFileParameters">Sh2ampVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.strides"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#Sh2ampConfigParameters">Sh2ampConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.directions" class="classattr">
+                                <div class="attr variable">
+            <span class="name">directions</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.directions"></a>
+    
+    
+
+                            </div>
+                            <div id="Sh2ampParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Sh2ampVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2ampVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampVariousFileParameters"></a>
+    
+    
+
+                            <div id="Sh2ampVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="Sh2ampVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Sh2ampVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampVariousStringParameters"></a>
+    
+    
+
+                            <div id="Sh2ampVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Sh2ampVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="sh2amp">
                             <input id="sh2amp-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonnegative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampOutputs">Sh2ampOutputs</a></span>:</span></span>
+        <span class="name">sh2amp</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonnegative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Sh2ampFslgradParameters">Sh2ampFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#Sh2ampVariousStringParameters">Sh2ampVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#Sh2ampVariousFileParameters">Sh2ampVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Sh2ampConfigParameters">Sh2ampConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampOutputs">Sh2ampOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp-view-source"><span>View Source</span></label>
 
@@ -985,7 +1391,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampConfigParameters</span>:</span></span>
+        <span class="name">sh2amp_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampConfigParameters">Sh2ampConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp_config_params-view-source"><span>View Source</span></label>
 
@@ -1036,7 +1442,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampFslgradParameters</span>:</span></span>
+        <span class="name">sh2amp_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampFslgradParameters">Sh2ampFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -1093,7 +1499,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonnegative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampParameters</span>:</span></span>
+        <span class="name">sh2amp_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">directions</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nonnegative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#Sh2ampFslgradParameters">Sh2ampFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">strides</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#Sh2ampVariousStringParameters">Sh2ampVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#Sh2ampVariousFileParameters">Sh2ampVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Sh2ampConfigParameters">Sh2ampConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampParameters">Sh2ampParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp_params-view-source"><span>View Source</span></label>
 
@@ -1229,7 +1635,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousFileParameters</span>:</span></span>
+        <span class="name">sh2amp_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampVariousFileParameters">Sh2ampVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1276,7 +1682,7 @@ described the main documentation, which can be found at the following link:
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">sh2amp_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">sh2amp</span><span class="o">.</span><span class="n">Sh2ampVariousStringParameters</span>:</span></span>
+        <span class="name">sh2amp_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#Sh2ampVariousStringParameters">Sh2ampVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="sh2amp_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1319,186 +1725,5 @@ described the main documentation, which can be found at the following link:
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

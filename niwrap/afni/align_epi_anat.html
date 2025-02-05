@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,63 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AlignEpiAnatOutputs.epi_aligned">epi_aligned</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AlignEpiAnatParameters">AlignEpiAnatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.epi">epi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.anat">anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.epi_base">epi_base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.anat2epi">anat2epi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.epi2anat">epi2anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.suffix">suffix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.AddEdge">AddEdge</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.big_move">big_move</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.giant_move">giant_move</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.ginormous_move">ginormous_move</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.keep_rm_files">keep_rm_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.prep_only">prep_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.ana_has_skull">ana_has_skull</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.epi_strip">epi_strip</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.volreg_method">volreg_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.ex_mode">ex_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AlignEpiAnatParameters.overwrite">overwrite</a>
                         </li>
                 </ul>
 
@@ -413,9 +468,10 @@
 </span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;ALIGN_EPI_ANAT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;AlignEpiAnatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;align_epi_anat&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;align_epi_anat_params&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="p">]</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;AlignEpiAnatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;align_epi_anat&quot;</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;align_epi_anat_params&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -512,6 +568,206 @@
             <div class="docstring"><p>A version of the EPI dataset aligned to the Anatomy</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AlignEpiAnatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AlignEpiAnatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters"></a>
+    
+    
+
+                            <div id="AlignEpiAnatParameters.epi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.epi"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anat</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.anat"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.epi_base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_base</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.epi_base"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.anat2epi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anat2epi</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.anat2epi"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.epi2anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi2anat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.epi2anat"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.suffix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">suffix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.suffix"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.AddEdge" class="classattr">
+                                <div class="attr variable">
+            <span class="name">AddEdge</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.AddEdge"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.big_move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">big_move</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.big_move"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.giant_move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">giant_move</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.giant_move"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.ginormous_move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ginormous_move</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.ginormous_move"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.keep_rm_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_rm_files</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.keep_rm_files"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.prep_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prep_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.prep_only"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.ana_has_skull" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ana_has_skull</span><span class="annotation">: NotRequired[Optional[Literal[&#39;yes&#39;, &#39;no&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.ana_has_skull"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.epi_strip" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epi_strip</span><span class="annotation">: NotRequired[Optional[Literal[&#39;3dSkullStrip&#39;, &#39;3dAutomask&#39;, &#39;None&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.epi_strip"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.volreg_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volreg_method</span><span class="annotation">: NotRequired[Optional[Literal[&#39;3dvolreg&#39;, &#39;3dWarpDrive&#39;, &#39;3dAllineate&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.volreg_method"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.ex_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ex_mode</span><span class="annotation">: NotRequired[Optional[Literal[&#39;quiet&#39;, &#39;echo&#39;, &#39;dry_run&#39;, &#39;script&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.ex_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="AlignEpiAnatParameters.overwrite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overwrite</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AlignEpiAnatParameters.overwrite"></a>
+    
+    
 
                             </div>
                 </section>
@@ -628,7 +884,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">align_epi_anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">epi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">epi_base</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat2epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">epi2anat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">add_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">big_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">giant_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ginormous_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_rm_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prep_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ana_has_skull</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_strip</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;3dSkullStrip&#39;</span><span class="p">,</span> <span class="s1">&#39;3dAutomask&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volreg_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;3dvolreg&#39;</span><span class="p">,</span> <span class="s1">&#39;3dWarpDrive&#39;</span><span class="p">,</span> <span class="s1">&#39;3dAllineate&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ex_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;quiet&#39;</span><span class="p">,</span> <span class="s1">&#39;echo&#39;</span><span class="p">,</span> <span class="s1">&#39;dry_run&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">align_epi_anat</span><span class="o">.</span><span class="n">AlignEpiAnatParameters</span>:</span></span>
+        <span class="name">align_epi_anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">epi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">epi_base</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat2epi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">epi2anat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">add_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">big_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">giant_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ginormous_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_rm_files</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prep_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ana_has_skull</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epi_strip</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;3dSkullStrip&#39;</span><span class="p">,</span> <span class="s1">&#39;3dAutomask&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volreg_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;3dvolreg&#39;</span><span class="p">,</span> <span class="s1">&#39;3dWarpDrive&#39;</span><span class="p">,</span> <span class="s1">&#39;3dAllineate&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ex_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;quiet&#39;</span><span class="p">,</span> <span class="s1">&#39;echo&#39;</span><span class="p">,</span> <span class="s1">&#39;dry_run&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#AlignEpiAnatParameters">AlignEpiAnatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="align_epi_anat_params-view-source"><span>View Source</span></label>
 
@@ -743,186 +999,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

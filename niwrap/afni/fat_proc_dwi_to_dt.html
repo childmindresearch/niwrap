@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,99 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FatProcDwiToDtOutputs.output_files">output_files</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FatProcDwiToDtParameters">FatProcDwiToDtParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.in_dwi">in_dwi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.in_gradmat">in_gradmat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.in_bvals">in_bvals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.mask_from_struc">mask_from_struc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.in_struc_res">in_struc_res</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.in_ref_orig">in_ref_orig</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.prefix_dti">prefix_dti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.flip_x">flip_x</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.flip_y">flip_y</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.flip_z">flip_z</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_flip">no_flip</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_scale_out_1000">no_scale_out_1000</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_reweight">no_reweight</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_cumulative_wts">no_cumulative_wts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.qc_fa_thr">qc_fa_thr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.qc_fa_max">qc_fa_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.qc_fa_unc_max">qc_fa_unc_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.qc_v12_unc_max">qc_v12_unc_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.qc_prefix">qc_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_qc_view">no_qc_view</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_cmd_out">no_cmd_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.workdir">workdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.no_clean">no_clean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.uncert_off">uncert_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.uncert_iters">uncert_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.uncert_extra_cmds">uncert_extra_cmds</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FatProcDwiToDtParameters.check_abs_min">check_abs_min</a>
                         </li>
                 </ul>
 
@@ -564,9 +655,10 @@
 </span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;FAT_PROC_DWI_TO_DT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;FatProcDwiToDtOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">,</span>
-</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt_params&quot;</span><span class="p">,</span>
-</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a><span class="p">]</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;FatProcDwiToDtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">,</span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt_params&quot;</span><span class="p">,</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -648,6 +740,338 @@
             <div class="docstring"><p>Output files generated with the specified prefix.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FatProcDwiToDtParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FatProcDwiToDtParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters"></a>
+    
+    
+
+                            <div id="FatProcDwiToDtParameters.in_dwi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_dwi</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.in_dwi"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.in_gradmat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_gradmat</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.in_gradmat"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.in_bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_bvals</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.in_bvals"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.mask_from_struc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_from_struc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.mask_from_struc"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.in_struc_res" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_struc_res</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.in_struc_res"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.in_ref_orig" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_ref_orig</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.in_ref_orig"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.prefix_dti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix_dti</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.prefix_dti"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.flip_x" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flip_x</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.flip_x"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.flip_y" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flip_y</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.flip_y"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.flip_z" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flip_z</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.flip_z"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_flip" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_flip</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_flip"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_scale_out_1000" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_scale_out_1000</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_scale_out_1000"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_reweight" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_reweight</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_reweight"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_cumulative_wts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cumulative_wts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_cumulative_wts"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.qc_fa_thr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_fa_thr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.qc_fa_thr"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.qc_fa_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_fa_max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.qc_fa_max"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.qc_fa_unc_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_fa_unc_max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.qc_fa_unc_max"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.qc_v12_unc_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_v12_unc_max</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.qc_v12_unc_max"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.qc_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qc_prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.qc_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_qc_view" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_qc_view</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_qc_view"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_cmd_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cmd_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_cmd_out"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.workdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">workdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.workdir"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.no_clean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_clean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.no_clean"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.uncert_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uncert_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.uncert_off"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.uncert_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uncert_iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.uncert_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.uncert_extra_cmds" class="classattr">
+                                <div class="attr variable">
+            <span class="name">uncert_extra_cmds</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.uncert_extra_cmds"></a>
+    
+    
+
+                            </div>
+                            <div id="FatProcDwiToDtParameters.check_abs_min" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_abs_min</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FatProcDwiToDtParameters.check_abs_min"></a>
+    
+    
 
                             </div>
                 </section>
@@ -815,7 +1239,7 @@ parameters needed for tractography.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fat_proc_dwi_to_dt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_gradmat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_from_struc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">in_struc_res</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">in_ref_orig</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_dti</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flip_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_flip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_scale_out_1000</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_reweight</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cumulative_wts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qc_fa_thr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_fa_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_fa_unc_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_v12_unc_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_qc_view</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cmd_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">workdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uncert_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uncert_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uncert_extra_cmds</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_abs_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">fat_proc_dwi_to_dt</span><span class="o">.</span><span class="n">FatProcDwiToDtParameters</span>:</span></span>
+        <span class="name">fat_proc_dwi_to_dt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_dwi</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_gradmat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">in_bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_from_struc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">in_struc_res</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">in_ref_orig</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">prefix_dti</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flip_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">flip_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_flip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_scale_out_1000</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_reweight</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cumulative_wts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qc_fa_thr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_fa_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_fa_unc_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_v12_unc_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qc_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_qc_view</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cmd_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">workdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uncert_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">uncert_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">uncert_extra_cmds</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_abs_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FatProcDwiToDtParameters">FatProcDwiToDtParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fat_proc_dwi_to_dt_params-view-source"><span>View Source</span></label>
 
@@ -1000,186 +1424,5 @@ parameters needed for tractography.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

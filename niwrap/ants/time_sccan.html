@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#TIME_SCCAN_METADATA">TIME_SCCAN_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#TimeSccanNetworkRegionAveragingParameters">TimeSccanNetworkRegionAveragingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TimeSccanNetworkRegionAveragingParameters.time_matrix">time_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanNetworkRegionAveragingParameters.label_matrix">label_matrix</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TimeSccanNetworkSccaParameters">TimeSccanNetworkSccaParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TimeSccanNetworkSccaParameters.time_matrix">time_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanNetworkSccaParameters.label_matrix">label_matrix</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#TimeSccanOutputs">TimeSccanOutputs</a>
@@ -44,6 +66,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TimeSccanOutputs.correlation_matrix">correlation_matrix</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TimeSccanParameters">TimeSccanParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.number_consecutive_labels">number_consecutive_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.minimum_region_size">minimum_region_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.sparsity">sparsity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.n_eigenvectors">n_eigenvectors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.robustify">robustify</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.l1">l1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.cluster_thresh">cluster_thresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.ridge_cca">ridge_cca</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.partial_scca_option">partial_scca_option</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.timeseriesimage_to_matrix">timeseriesimage_to_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.labelsimage_to_matrix">labelsimage_to_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanParameters.network">network</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TimeSccanTimeseriesimageToMatrixParameters">TimeSccanTimeseriesimageToMatrixParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TimeSccanTimeseriesimageToMatrixParameters.timeseries_image">timeseries_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimeSccanTimeseriesimageToMatrixParameters.mask_image">mask_image</a>
                         </li>
                 </ul>
 
@@ -566,13 +648,17 @@
 </span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a>
 </span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a>    <span class="s2">&quot;TIME_SCCAN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a>    <span class="s2">&quot;TimeSccanOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>    <span class="s2">&quot;time_sccan&quot;</span><span class="p">,</span>
-</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a>    <span class="s2">&quot;time_sccan_network_region_averaging_params&quot;</span><span class="p">,</span>
-</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;time_sccan_network_scca_params&quot;</span><span class="p">,</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;time_sccan_params&quot;</span><span class="p">,</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;time_sccan_timeseriesimage_to_matrix_params&quot;</span><span class="p">,</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="p">]</span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a>    <span class="s2">&quot;TimeSccanNetworkRegionAveragingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>    <span class="s2">&quot;TimeSccanNetworkSccaParameters&quot;</span><span class="p">,</span>
+</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a>    <span class="s2">&quot;TimeSccanOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;TimeSccanParameters&quot;</span><span class="p">,</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;TimeSccanTimeseriesimageToMatrixParameters&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;time_sccan&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;time_sccan_network_region_averaging_params&quot;</span><span class="p">,</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;time_sccan_network_scca_params&quot;</span><span class="p">,</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a>    <span class="s2">&quot;time_sccan_params&quot;</span><span class="p">,</span>
+</span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a>    <span class="s2">&quot;time_sccan_timeseriesimage_to_matrix_params&quot;</span><span class="p">,</span>
+</span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -589,6 +675,76 @@
     
     
 
+                </section>
+                <section id="TimeSccanNetworkRegionAveragingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeSccanNetworkRegionAveragingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkRegionAveragingParameters"></a>
+    
+    
+
+                            <div id="TimeSccanNetworkRegionAveragingParameters.time_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">time_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkRegionAveragingParameters.time_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanNetworkRegionAveragingParameters.label_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkRegionAveragingParameters.label_matrix"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TimeSccanNetworkSccaParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeSccanNetworkSccaParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkSccaParameters"></a>
+    
+    
+
+                            <div id="TimeSccanNetworkSccaParameters.time_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">time_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkSccaParameters.time_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanNetworkSccaParameters.label_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanNetworkSccaParameters.label_matrix"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="TimeSccanOutputs">
                             <input id="TimeSccanOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -657,12 +813,214 @@
 
                             </div>
                 </section>
+                <section id="TimeSccanParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeSccanParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters"></a>
+    
+    
+
+                            <div id="TimeSccanParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.number_consecutive_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_consecutive_labels</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.number_consecutive_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.minimum_region_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">minimum_region_size</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.minimum_region_size"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.sparsity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sparsity</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.sparsity"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.n_eigenvectors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_eigenvectors</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.n_eigenvectors"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.robustify" class="classattr">
+                                <div class="attr variable">
+            <span class="name">robustify</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.robustify"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.l1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">l1</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.l1"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.cluster_thresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cluster_thresh</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.cluster_thresh"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.ridge_cca" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ridge_cca</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.ridge_cca"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.partial_scca_option" class="classattr">
+                                <div class="attr variable">
+            <span class="name">partial_scca_option</span><span class="annotation">: NotRequired[Optional[Literal[&#39;PQ&#39;, &#39;PminusRQ&#39;, &#39;PQminusR&#39;, &#39;PminusRQminusR&#39;]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.partial_scca_option"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.timeseriesimage_to_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timeseriesimage_to_matrix</span><span class="annotation">: NotRequired[<a href="#TimeSccanTimeseriesimageToMatrixParameters">TimeSccanTimeseriesimageToMatrixParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.timeseriesimage_to_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.labelsimage_to_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">labelsimage_to_matrix</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.labelsimage_to_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanParameters.network" class="classattr">
+                                <div class="attr variable">
+            <span class="name">network</span><span class="annotation">: NotRequired[Union[<a href="#TimeSccanNetworkSccaParameters">TimeSccanNetworkSccaParameters</a>, <a href="#TimeSccanNetworkRegionAveragingParameters">TimeSccanNetworkRegionAveragingParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanParameters.network"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TimeSccanTimeseriesimageToMatrixParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimeSccanTimeseriesimageToMatrixParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanTimeseriesimageToMatrixParameters"></a>
+    
+    
+
+                            <div id="TimeSccanTimeseriesimageToMatrixParameters.timeseries_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timeseries_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanTimeseriesimageToMatrixParameters.timeseries_image"></a>
+    
+    
+
+                            </div>
+                            <div id="TimeSccanTimeseriesimageToMatrixParameters.mask_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimeSccanTimeseriesimageToMatrixParameters.mask_image"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="time_sccan">
                             <input id="time_sccan-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">time_sccan</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_consecutive_labels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">minimum_region_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">sparsity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">cluster_thresh</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;PQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PQminusR&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQminusR&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanTimeseriesimageToMatrixParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labelsimage_to_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">network</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkSccaParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkRegionAveragingParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanOutputs">TimeSccanOutputs</a></span>:</span></span>
+        <span class="name">time_sccan</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_consecutive_labels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">minimum_region_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">sparsity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">cluster_thresh</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;PQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PQminusR&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQminusR&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="n"><a href="#TimeSccanTimeseriesimageToMatrixParameters">TimeSccanTimeseriesimageToMatrixParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labelsimage_to_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">network</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#TimeSccanNetworkSccaParameters">TimeSccanNetworkSccaParameters</a></span><span class="p">,</span> <span class="n"><a href="#TimeSccanNetworkRegionAveragingParameters">TimeSccanNetworkRegionAveragingParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanOutputs">TimeSccanOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="time_sccan-view-source"><span>View Source</span></label>
 
@@ -767,7 +1125,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">time_sccan_network_region_averaging_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">time_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkRegionAveragingParameters</span>:</span></span>
+        <span class="name">time_sccan_network_region_averaging_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">time_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanNetworkRegionAveragingParameters">TimeSccanNetworkRegionAveragingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="time_sccan_network_region_averaging_params-view-source"><span>View Source</span></label>
 
@@ -818,7 +1176,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">time_sccan_network_scca_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">time_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkSccaParameters</span>:</span></span>
+        <span class="name">time_sccan_network_scca_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">time_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanNetworkSccaParameters">TimeSccanNetworkSccaParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="time_sccan_network_scca_params-view-source"><span>View Source</span></label>
 
@@ -869,7 +1227,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">time_sccan_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_consecutive_labels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">minimum_region_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">sparsity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">cluster_thresh</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;PQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PQminusR&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQminusR&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanTimeseriesimageToMatrixParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labelsimage_to_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">network</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkSccaParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanNetworkRegionAveragingParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanParameters</span>:</span></span>
+        <span class="name">time_sccan_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_consecutive_labels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">minimum_region_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">20</span>,</span><span class="param">	<span class="n">sparsity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_eigenvectors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2</span>,</span><span class="param">	<span class="n">robustify</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">l1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">cluster_thresh</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">ridge_cca</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">partial_scca_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;PQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQ&#39;</span><span class="p">,</span> <span class="s1">&#39;PQminusR&#39;</span><span class="p">,</span> <span class="s1">&#39;PminusRQminusR&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timeseriesimage_to_matrix</span><span class="p">:</span> <span class="n"><a href="#TimeSccanTimeseriesimageToMatrixParameters">TimeSccanTimeseriesimageToMatrixParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">labelsimage_to_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">network</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#TimeSccanNetworkSccaParameters">TimeSccanNetworkSccaParameters</a></span><span class="p">,</span> <span class="n"><a href="#TimeSccanNetworkRegionAveragingParameters">TimeSccanNetworkRegionAveragingParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanParameters">TimeSccanParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="time_sccan_params-view-source"><span>View Source</span></label>
 
@@ -990,7 +1348,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">time_sccan_timeseriesimage_to_matrix_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timeseries_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">time_sccan</span><span class="o">.</span><span class="n">TimeSccanTimeseriesimageToMatrixParameters</span>:</span></span>
+        <span class="name">time_sccan_timeseriesimage_to_matrix_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timeseries_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimeSccanTimeseriesimageToMatrixParameters">TimeSccanTimeseriesimageToMatrixParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="time_sccan_timeseriesimage_to_matrix_params-view-source"><span>View Source</span></label>
 
@@ -1037,186 +1395,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

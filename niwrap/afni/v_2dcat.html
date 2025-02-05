@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,87 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V2dcatOutputs.output_1_d">output_1_d</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V2dcatParameters">V2dcatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.filenames">filenames</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.scale_image">scale_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.scale_pixels">scale_pixels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.scale_intensity">scale_intensity</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.gscale">gscale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.rgb_out">rgb_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.res_in">res_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.respad_in">respad_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.pad_val">pad_val</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.crop">crop</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.autocrop_ctol">autocrop_ctol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.autocrop_atol">autocrop_atol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.autocrop">autocrop</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.zero_wrap">zero_wrap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.white_wrap">white_wrap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.gray_wrap">gray_wrap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.image_wrap">image_wrap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.rand_wrap">rand_wrap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.matrix">matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.nx">nx</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.ny">ny</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.matrix_from_scale">matrix_from_scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.gap">gap</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dcatParameters.gap_col">gap_col</a>
                         </li>
                 </ul>
 
@@ -544,10 +623,11 @@
 </span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a>
 </span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a>    <span class="s2">&quot;V2dcatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;V_2DCAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;v_2dcat&quot;</span><span class="p">,</span>
-</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;v_2dcat_params&quot;</span><span class="p">,</span>
-</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a><span class="p">]</span>
+</span><span id="L-467"><a href="#L-467"><span class="linenos">467</span></a>    <span class="s2">&quot;V2dcatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="s2">&quot;V_2DCAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="s2">&quot;v_2dcat&quot;</span><span class="p">,</span>
+</span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>    <span class="s2">&quot;v_2dcat_params&quot;</span><span class="p">,</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -633,6 +713,294 @@
 .1D.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V2dcatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V2dcatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters"></a>
+    
+    
+
+                            <div id="V2dcatParameters.filenames" class="classattr">
+                                <div class="attr variable">
+            <span class="name">filenames</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.filenames"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.scale_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.scale_image"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.scale_pixels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale_pixels</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.scale_pixels"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.scale_intensity" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale_intensity</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.scale_intensity"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.gscale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gscale</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.gscale"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.rgb_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rgb_out</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.rgb_out"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.res_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">res_in</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.res_in"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.respad_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">respad_in</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.respad_in"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.pad_val" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pad_val</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.pad_val"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.crop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">crop</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.crop"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.autocrop_ctol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">autocrop_ctol</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.autocrop_ctol"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.autocrop_atol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">autocrop_atol</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.autocrop_atol"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.autocrop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">autocrop</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.autocrop"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.zero_wrap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero_wrap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.zero_wrap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.white_wrap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">white_wrap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.white_wrap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.gray_wrap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gray_wrap</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.gray_wrap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.image_wrap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_wrap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.image_wrap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.rand_wrap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rand_wrap</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.rand_wrap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.nx" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nx</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.nx"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.ny" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ny</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.ny"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.matrix_from_scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix_from_scale</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.matrix_from_scale"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.gap" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gap</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.gap"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dcatParameters.gap_col" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gap_col</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dcatParameters.gap_col"></a>
+    
+    
 
                             </div>
                 </section>
@@ -801,7 +1169,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_2dcat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">scale_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_pixels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_intensity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rgb_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">res_in</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">respad_in</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pad_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop_ctol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop_atol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">white_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gray_wrap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rand_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ny</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_from_scale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gap_col</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_2dcat</span><span class="o">.</span><span class="n">V2dcatParameters</span>:</span></span>
+        <span class="name">v_2dcat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">scale_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_pixels</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale_intensity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rgb_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">res_in</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">respad_in</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">pad_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">crop</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop_ctol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop_atol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">autocrop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">white_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gray_wrap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rand_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ny</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_from_scale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gap_col</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V2dcatParameters">V2dcatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_2dcat_params-view-source"><span>View Source</span></label>
 
@@ -974,186 +1342,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

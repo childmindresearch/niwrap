@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FirstOutputs.segmented_output_image">segmented_output_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FirstParameters">FirstParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FirstParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.output_name">output_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.input_model">input_model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.flirt_matrix">flirt_matrix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.input_model2">input_model2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.nmodes">nmodes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.intref">intref</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.multi_image_input">multi_image_input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.binary_surface_output">binary_surface_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.bmap_name">bmap_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.bvars">bvars</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.shcond">shcond</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FirstParameters.loadbvars">loadbvars</a>
                         </li>
                 </ul>
 
@@ -399,9 +448,10 @@
 </span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="s2">&quot;FIRST_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="s2">&quot;FirstOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;first&quot;</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;first_params&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="p">]</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="s2">&quot;FirstParameters&quot;</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="s2">&quot;first&quot;</span><span class="p">,</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="s2">&quot;first_params&quot;</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -483,6 +533,184 @@
             <div class="docstring"><p>Segmented output image</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FirstParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FirstParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters"></a>
+    
+    
+
+                            <div id="FirstParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.output_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.output_name"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.input_model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_model</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.input_model"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.flirt_matrix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flirt_matrix</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.flirt_matrix"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.input_model2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_model2</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.input_model2"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.nmodes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nmodes</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.nmodes"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.intref" class="classattr">
+                                <div class="attr variable">
+            <span class="name">intref</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.intref"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.multi_image_input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_image_input</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.multi_image_input"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.binary_surface_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binary_surface_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.binary_surface_output"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.bmap_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bmap_name</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.bmap_name"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.bvars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvars</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.bvars"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.shcond" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shcond</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.shcond"></a>
+    
+    
+
+                            </div>
+                            <div id="FirstParameters.loadbvars" class="classattr">
+                                <div class="attr variable">
+            <span class="name">loadbvars</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FirstParameters.loadbvars"></a>
+    
+    
 
                             </div>
                 </section>
@@ -599,7 +827,7 @@ models and transformations.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">first_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_model</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">flirt_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">input_model2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nmodes</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intref</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_image_input</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">binary_surface_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bmap_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bvars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shcond</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">loadbvars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">FirstParameters</span>:</span></span>
+        <span class="name">first_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_model</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">flirt_matrix</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">input_model2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nmodes</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">intref</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_image_input</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">binary_surface_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bmap_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bvars</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shcond</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">loadbvars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FirstParameters">FirstParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="first_params-view-source"><span>View Source</span></label>
 
@@ -709,186 +937,5 @@ models and transformations.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,120 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FabberDceOutputs.output_files">output_files</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FabberDceParameters">FabberDceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.output_directory">output_directory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.inference_method">inference_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.forward_model">forward_model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.input_data">input_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.list_methods">list_methods</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.list_models">list_models</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.list_params">list_params</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.describe_params">describe_params</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.list_outputs">list_outputs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.evaluate_model">evaluate_model</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.evaluate_params">evaluate_params</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.evaluate_nt">evaluate_nt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.simple_output">simple_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.overwrite">overwrite</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.link_to_latest">link_to_latest</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.load_models">load_models</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.multiple_data">multiple_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.data_order">data_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.masked_time_points">masked_time_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.supplemental_data">supplemental_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.dump_param_names">dump_param_names</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_model_fit">save_model_fit</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_residuals">save_residuals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_model_extras">save_model_extras</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_mvn">save_mvn</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_mean">save_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_std">save_std</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_variances">save_variances</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_zstat">save_zstat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_noise_mean">save_noise_mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_noise_std">save_noise_std</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.save_free_energy">save_free_energy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.option_file">option_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FabberDceParameters.debug">debug</a>
                         </li>
                 </ul>
 
@@ -617,9 +729,10 @@
 </span><span id="L-540"><a href="#L-540"><span class="linenos">540</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-541"><a href="#L-541"><span class="linenos">541</span></a>    <span class="s2">&quot;FABBER_DCE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a>    <span class="s2">&quot;FabberDceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a>    <span class="s2">&quot;fabber_dce&quot;</span><span class="p">,</span>
-</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;fabber_dce_params&quot;</span><span class="p">,</span>
-</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a><span class="p">]</span>
+</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a>    <span class="s2">&quot;FabberDceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;fabber_dce&quot;</span><span class="p">,</span>
+</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="s2">&quot;fabber_dce_params&quot;</span><span class="p">,</span>
+</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -701,6 +814,415 @@
             <div class="docstring"><p>Files generated by Fabber DCE</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FabberDceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FabberDceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters"></a>
+    
+    
+
+                            <div id="FabberDceParameters.output_directory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_directory</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.output_directory"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.inference_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inference_method</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.inference_method"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.forward_model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">forward_model</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.forward_model"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.input_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_data</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.input_data"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.list_methods" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_methods</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.list_methods"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.list_models" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_models</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.list_models"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.list_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_params</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.list_params"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.describe_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">describe_params</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.describe_params"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.list_outputs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_outputs</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.list_outputs"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.evaluate_model" class="classattr">
+                                <div class="attr variable">
+            <span class="name">evaluate_model</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.evaluate_model"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.evaluate_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">evaluate_params</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.evaluate_params"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.evaluate_nt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">evaluate_nt</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.evaluate_nt"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.simple_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">simple_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.simple_output"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.overwrite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overwrite</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.overwrite"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.link_to_latest" class="classattr">
+                                <div class="attr variable">
+            <span class="name">link_to_latest</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.link_to_latest"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.load_models" class="classattr">
+                                <div class="attr variable">
+            <span class="name">load_models</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.load_models"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.multiple_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multiple_data</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.multiple_data"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.data_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data_order</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.data_order"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.masked_time_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">masked_time_points</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.masked_time_points"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.supplemental_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">supplemental_data</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.supplemental_data"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.dump_param_names" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dump_param_names</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.dump_param_names"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_model_fit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_model_fit</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_model_fit"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_residuals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_residuals</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_residuals"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_model_extras" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_model_extras</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_model_extras"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_mvn" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_mvn</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_mvn"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_mean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_std" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_std</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_std"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_variances" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_variances</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_variances"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_zstat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_zstat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_zstat"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_noise_mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_noise_mean</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_noise_mean"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_noise_std" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_noise_std</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_noise_std"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.save_free_energy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_free_energy</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.save_free_energy"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.option_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">option_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.option_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FabberDceParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FabberDceParameters.debug"></a>
+    
+    
 
                             </div>
                 </section>
@@ -893,7 +1415,7 @@ imaging data.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fabber_dce_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inference_method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">forward_model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_methods</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_models</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_params</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">describe_params</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_outputs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">evaluate_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">evaluate_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">evaluate_nt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">simple_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">link_to_latest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">load_models</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiple_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;interleave&#39;</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">masked_time_points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">supplemental_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_param_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_model_fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_residuals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_model_extras</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_mvn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_variances</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_zstat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_noise_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_noise_std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_free_energy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">option_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fabber_dce</span><span class="o">.</span><span class="n">FabberDceParameters</span>:</span></span>
+        <span class="name">fabber_dce_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">inference_method</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">forward_model</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_methods</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_models</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_params</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">describe_params</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">list_outputs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">evaluate_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">evaluate_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">evaluate_nt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">simple_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">link_to_latest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">load_models</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiple_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">data_order</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;interleave&#39;</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">masked_time_points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">supplemental_data</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dump_param_names</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_model_fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_residuals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_model_extras</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_mvn</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_variances</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_zstat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_noise_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_noise_std</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_free_energy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">option_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FabberDceParameters">FabberDceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fabber_dce_params-view-source"><span>View Source</span></label>
 
@@ -1106,186 +1628,5 @@ imaging data.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

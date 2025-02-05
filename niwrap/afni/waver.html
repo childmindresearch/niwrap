@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#WaverOutputs.output_filename">output_filename</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#WaverParameters">WaverParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#WaverParameters.wav">wav</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.gam">gam</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.expr">expr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.file_opt">file_opt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.delay_time">delay_time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.rise_time">rise_time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.fall_time">fall_time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.undershoot">undershoot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.restore_time">restore_time</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.gamb">gamb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.gamc">gamc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.gamd">gamd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.peak">peak</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.dt">dt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.tr">tr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.xyout">xyout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.inline_data">inline_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.tstim_data">tstim_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.when_data">when_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.numout">numout</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#WaverParameters.ver_flag">ver_flag</a>
                         </li>
                 </ul>
 
@@ -507,9 +577,10 @@
 </span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;WAVER_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;WaverOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;waver&quot;</span><span class="p">,</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;waver_params&quot;</span><span class="p">,</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a><span class="p">]</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;WaverParameters&quot;</span><span class="p">,</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;waver&quot;</span><span class="p">,</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;waver_params&quot;</span><span class="p">,</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -591,6 +662,261 @@
             <div class="docstring"><p>The output filename for the result of the waveform.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="WaverParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">WaverParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters"></a>
+    
+    
+
+                            <div id="WaverParameters.wav" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wav</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.wav"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.gam" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gam</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.gam"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.expr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.expr"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.file_opt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">file_opt</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.file_opt"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.delay_time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">delay_time</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.delay_time"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.rise_time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rise_time</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.rise_time"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.fall_time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fall_time</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.fall_time"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.undershoot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">undershoot</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.undershoot"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.restore_time" class="classattr">
+                                <div class="attr variable">
+            <span class="name">restore_time</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.restore_time"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.gamb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gamb</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.gamb"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.gamc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gamc</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.gamc"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.gamd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gamd</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.gamd"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.peak" class="classattr">
+                                <div class="attr variable">
+            <span class="name">peak</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.peak"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.dt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dt</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.dt"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.tr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.tr"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.xyout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xyout</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.xyout"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.inline_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inline_data</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.inline_data"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.tstim_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tstim_data</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.tstim_data"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.when_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">when_data</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.when_data"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.numout" class="classattr">
+                                <div class="attr variable">
+            <span class="name">numout</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.numout"></a>
+    
+    
+
+                            </div>
+                            <div id="WaverParameters.ver_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ver_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#WaverParameters.ver_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -729,7 +1055,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">waver_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">wav</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gam</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file_opt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">delay_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rise_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fall_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">undershoot</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restore_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xyout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inline_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tstim_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">when_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">numout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ver_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">waver</span><span class="o">.</span><span class="n">WaverParameters</span>:</span></span>
+        <span class="name">waver_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">wav</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gam</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file_opt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">delay_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rise_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fall_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">undershoot</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">restore_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gamd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">peak</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xyout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inline_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tstim_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">when_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">numout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ver_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#WaverParameters">WaverParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="waver_params-view-source"><span>View Source</span></label>
 
@@ -884,186 +1210,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

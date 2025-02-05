@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CcopsOutputs.outfile">outfile</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CcopsParameters">CcopsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CcopsParameters.basename">basename</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.infile">infile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.tract_dir">tract_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.exclusion_mask">exclusion_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.reorder_seedspace">reorder_seedspace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.reorder_tractspace">reorder_tractspace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.tract_reord">tract_reord</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.connexity_constraint">connexity_constraint</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.binarise_val">binarise_val</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.matrix_power">matrix_power</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.brain_mask">brain_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.scheme">scheme</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.nclusters">nclusters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CcopsParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -395,9 +441,10 @@
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="s2">&quot;CCOPS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="s2">&quot;CcopsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;ccops&quot;</span><span class="p">,</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="s2">&quot;ccops_params&quot;</span><span class="p">,</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="p">]</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="s2">&quot;CcopsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="s2">&quot;ccops&quot;</span><span class="p">,</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="s2">&quot;ccops_params&quot;</span><span class="p">,</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -479,6 +526,173 @@
             <div class="docstring"><p>Output clustered ROI mask</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="CcopsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CcopsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters"></a>
+    
+    
+
+                            <div id="CcopsParameters.basename" class="classattr">
+                                <div class="attr variable">
+            <span class="name">basename</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.basename"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.infile"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.tract_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tract_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.tract_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.exclusion_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclusion_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.exclusion_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.reorder_seedspace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reorder_seedspace</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.reorder_seedspace"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.reorder_tractspace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reorder_tractspace</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.reorder_tractspace"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.tract_reord" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tract_reord</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.tract_reord"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.connexity_constraint" class="classattr">
+                                <div class="attr variable">
+            <span class="name">connexity_constraint</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.connexity_constraint"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.binarise_val" class="classattr">
+                                <div class="attr variable">
+            <span class="name">binarise_val</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.binarise_val"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.matrix_power" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix_power</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.matrix_power"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.brain_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">brain_mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.brain_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.scheme" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scheme</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.scheme"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.nclusters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nclusters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.nclusters"></a>
+    
+    
+
+                            </div>
+                            <div id="CcopsParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CcopsParameters.help"></a>
+    
+    
 
                             </div>
                 </section>
@@ -586,7 +800,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">ccops_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">basename</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tract_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusion_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reorder_seedspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reorder_tractspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tract_reord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connexity_constraint</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">binarise_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">matrix_power</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">brain_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;spectral&#39;</span>,</span><span class="param">	<span class="n">nclusters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">ccops</span><span class="o">.</span><span class="n">CcopsParameters</span>:</span></span>
+        <span class="name">ccops_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">basename</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tract_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclusion_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reorder_seedspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">reorder_tractspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tract_reord</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">connexity_constraint</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">binarise_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">matrix_power</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">brain_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;spectral&#39;</span>,</span><span class="param">	<span class="n">nclusters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CcopsParameters">CcopsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="ccops_params-view-source"><span>View Source</span></label>
 
@@ -693,186 +907,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

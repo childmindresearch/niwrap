@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Conf2hiresOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Conf2hiresParameters">Conf2hiresParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.no_t2">no_t2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.mm_norm_sigma">mm_norm_sigma</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.no_flair">no_flair</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.copy_bias_from_conf">copy_bias_from_conf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.norm_opts_rca">norm_opts_rca</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.trilin">trilin</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.no_dev">no_dev</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.bbr_t2">bbr_t2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.first_peak_d1">first_peak_d1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.first_peak_d2">first_peak_d2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.stopmask">stopmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.expert">expert</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Conf2hiresParameters.force_update">force_update</a>
                         </li>
                 </ul>
 
@@ -381,9 +430,10 @@
 </span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;CONF2HIRES_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;Conf2hiresOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;conf2hires&quot;</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;conf2hires_params&quot;</span><span class="p">,</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="p">]</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;Conf2hiresParameters&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="s2">&quot;conf2hires&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;conf2hires_params&quot;</span><span class="p">,</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -450,6 +500,184 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="Conf2hiresParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Conf2hiresParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters"></a>
+    
+    
+
+                            <div id="Conf2hiresParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.no_t2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_t2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.no_t2"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.mm_norm_sigma" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mm_norm_sigma</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.mm_norm_sigma"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.no_flair" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_flair</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.no_flair"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.copy_bias_from_conf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copy_bias_from_conf</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.copy_bias_from_conf"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.norm_opts_rca" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm_opts_rca</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.norm_opts_rca"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.trilin" class="classattr">
+                                <div class="attr variable">
+            <span class="name">trilin</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.trilin"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.no_dev" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_dev</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.no_dev"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.bbr_t2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bbr_t2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.bbr_t2"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.first_peak_d1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">first_peak_d1</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.first_peak_d1"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.first_peak_d2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">first_peak_d2</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.first_peak_d2"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.stopmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stopmask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.stopmask"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.expert" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expert</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.expert"></a>
+    
+    
+
+                            </div>
+                            <div id="Conf2hiresParameters.force_update" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force_update</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Conf2hiresParameters.force_update"></a>
+    
+    
 
                             </div>
                 </section>
@@ -564,7 +792,7 @@ initial placement on a conformed volume.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">conf2hires_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">no_t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mm_norm_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">8</span>,</span><span class="param">	<span class="n">no_flair</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_bias_from_conf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm_opts_rca</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trilin</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_dev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bbr_t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">first_peak_d1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">first_peak_d2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stopmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">conf2hires</span><span class="o">.</span><span class="n">Conf2hiresParameters</span>:</span></span>
+        <span class="name">conf2hires_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">no_t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mm_norm_sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">8</span>,</span><span class="param">	<span class="n">no_flair</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_bias_from_conf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">norm_opts_rca</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trilin</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_dev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bbr_t2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">first_peak_d1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">first_peak_d2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stopmask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Conf2hiresParameters">Conf2hiresParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="conf2hires_params-view-source"><span>View Source</span></label>
 
@@ -672,186 +900,5 @@ initial placement on a conformed volume.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VAlignCentersOutputs.shifted_child_dsets">shifted_child_dsets</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VAlignCentersParameters">VAlignCentersParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.base">base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.dset">dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.children">children</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.echo">echo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.overwrite">overwrite</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.matrix_only">matrix_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.matrix_only_no_dset">matrix_only_no_dset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.no_cp">no_cp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.center_grid">center_grid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.center_cm">center_cm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.center_cm_no_amask">center_cm_no_amask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.shift_xform">shift_xform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VAlignCentersParameters.shift_xform_inv">shift_xform_inv</a>
                         </li>
                 </ul>
 
@@ -386,10 +432,11 @@
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;VAlignCentersOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;V__ALIGN_CENTERS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;v__align_centers&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;v__align_centers_params&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="p">]</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;VAlignCentersParameters&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;V__ALIGN_CENTERS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;v__align_centers&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;v__align_centers_params&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -488,6 +535,173 @@
             <div class="docstring"><p>Shifted child datasets aligned with the base volume.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="VAlignCentersParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VAlignCentersParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters"></a>
+    
+    
+
+                            <div id="VAlignCentersParameters.base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.base"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.dset"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.children" class="classattr">
+                                <div class="attr variable">
+            <span class="name">children</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.children"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.echo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">echo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.echo"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.overwrite" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overwrite</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.overwrite"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.matrix_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.matrix_only"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.matrix_only_no_dset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matrix_only_no_dset</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.matrix_only_no_dset"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.no_cp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cp</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.no_cp"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.center_grid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_grid</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.center_grid"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.center_cm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_cm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.center_cm"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.center_cm_no_amask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">center_cm_no_amask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.center_cm_no_amask"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.shift_xform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shift_xform</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.shift_xform"></a>
+    
+    
+
+                            </div>
+                            <div id="VAlignCentersParameters.shift_xform_inv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shift_xform_inv</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VAlignCentersParameters.shift_xform_inv"></a>
+    
+    
 
                             </div>
                 </section>
@@ -611,7 +825,7 @@ optionally creates a transform matrix.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v__align_centers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">base</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">matrix_only_no_dset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_cm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_cm_no_amask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">shift_xform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_xform_inv</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v__align_centers</span><span class="o">.</span><span class="n">VAlignCentersParameters</span>:</span></span>
+        <span class="name">v__align_centers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">base</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matrix_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">matrix_only_no_dset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_grid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_cm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">center_cm_no_amask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">shift_xform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_xform_inv</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VAlignCentersParameters">VAlignCentersParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v__align_centers_params-view-source"><span>View Source</span></label>
 
@@ -714,186 +928,5 @@ optionally creates a transform matrix.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

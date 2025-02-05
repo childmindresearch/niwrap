@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_GRADIENT_METADATA">CIFTI_GRADIENT_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiGradientCerebellumSurfaceParameters">CiftiGradientCerebellumSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiGradientCerebellumSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric">opt_cerebellum_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiGradientLeftSurfaceParameters">CiftiGradientLeftSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiGradientLeftSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientLeftSurfaceParameters.opt_left_corrected_areas_area_metric">opt_left_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiGradientOutputs">CiftiGradientOutputs</a>
@@ -47,6 +69,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiGradientOutputs.opt_vectors_vectors_out">opt_vectors_vectors_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiGradientParameters">CiftiGradientParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.left_surface">left_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.right_surface">right_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.cerebellum_surface">cerebellum_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.opt_surface_presmooth_surface_kernel">opt_surface_presmooth_surface_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.opt_volume_presmooth_volume_kernel">opt_volume_presmooth_volume_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.opt_presmooth_fwhm">opt_presmooth_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.opt_average_output">opt_average_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientParameters.opt_vectors_vectors_out">opt_vectors_vectors_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiGradientRightSurfaceParameters">CiftiGradientRightSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiGradientRightSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiGradientRightSurfaceParameters.opt_right_corrected_areas_area_metric">opt_right_corrected_areas_area_metric</a>
                         </li>
                 </ul>
 
@@ -542,13 +615,17 @@
 </span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>
 </span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;CIFTI_GRADIENT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;CiftiGradientOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;cifti_gradient&quot;</span><span class="p">,</span>
-</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;cifti_gradient_cerebellum_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;cifti_gradient_left_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;cifti_gradient_params&quot;</span><span class="p">,</span>
-</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;cifti_gradient_right_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a><span class="p">]</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;CiftiGradientCerebellumSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;CiftiGradientLeftSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;CiftiGradientOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a>    <span class="s2">&quot;CiftiGradientParameters&quot;</span><span class="p">,</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos">460</span></a>    <span class="s2">&quot;CiftiGradientRightSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-461"><a href="#L-461"><span class="linenos">461</span></a>    <span class="s2">&quot;cifti_gradient&quot;</span><span class="p">,</span>
+</span><span id="L-462"><a href="#L-462"><span class="linenos">462</span></a>    <span class="s2">&quot;cifti_gradient_cerebellum_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-463"><a href="#L-463"><span class="linenos">463</span></a>    <span class="s2">&quot;cifti_gradient_left_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-464"><a href="#L-464"><span class="linenos">464</span></a>    <span class="s2">&quot;cifti_gradient_params&quot;</span><span class="p">,</span>
+</span><span id="L-465"><a href="#L-465"><span class="linenos">465</span></a>    <span class="s2">&quot;cifti_gradient_right_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-466"><a href="#L-466"><span class="linenos">466</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -565,6 +642,76 @@
     
     
 
+                </section>
+                <section id="CiftiGradientCerebellumSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiGradientCerebellumSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientCerebellumSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiGradientCerebellumSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientCerebellumSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiGradientLeftSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiGradientLeftSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientLeftSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiGradientLeftSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientLeftSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientLeftSurfaceParameters.opt_left_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientLeftSurfaceParameters.opt_left_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiGradientOutputs">
                             <input id="CiftiGradientOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -648,12 +795,181 @@
 
                             </div>
                 </section>
+                <section id="CiftiGradientParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiGradientParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters"></a>
+    
+    
+
+                            <div id="CiftiGradientParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.left_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_surface</span><span class="annotation">: NotRequired[<a href="#CiftiGradientLeftSurfaceParameters">CiftiGradientLeftSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.left_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.right_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_surface</span><span class="annotation">: NotRequired[<a href="#CiftiGradientRightSurfaceParameters">CiftiGradientRightSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.right_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.cerebellum_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cerebellum_surface</span><span class="annotation">: NotRequired[<a href="#CiftiGradientCerebellumSurfaceParameters">CiftiGradientCerebellumSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.cerebellum_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.opt_surface_presmooth_surface_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_surface_presmooth_surface_kernel</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.opt_surface_presmooth_surface_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.opt_volume_presmooth_volume_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_volume_presmooth_volume_kernel</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.opt_volume_presmooth_volume_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.opt_presmooth_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_presmooth_fwhm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.opt_presmooth_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.opt_average_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_average_output</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.opt_average_output"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientParameters.opt_vectors_vectors_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_vectors_vectors_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientParameters.opt_vectors_vectors_out"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiGradientRightSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiGradientRightSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientRightSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiGradientRightSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientRightSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiGradientRightSurfaceParameters.opt_right_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiGradientRightSurfaceParameters.opt_right_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_gradient">
                             <input id="cifti_gradient-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_gradient</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_average_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_vectors_vectors_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientOutputs">CiftiGradientOutputs</a></span>:</span></span>
+        <span class="name">cifti_gradient</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientLeftSurfaceParameters">CiftiGradientLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientRightSurfaceParameters">CiftiGradientRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientCerebellumSurfaceParameters">CiftiGradientCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_average_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_vectors_vectors_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientOutputs">CiftiGradientOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_gradient-view-source"><span>View Source</span></label>
 
@@ -760,7 +1076,7 @@ want ROW, unless you are using -average-output.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_gradient_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientCerebellumSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_gradient_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientCerebellumSurfaceParameters">CiftiGradientCerebellumSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_gradient_cerebellum_surface_params-view-source"><span>View Source</span></label>
 
@@ -814,7 +1130,7 @@ want ROW, unless you are using -average-output.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_gradient_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientLeftSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_gradient_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientLeftSurfaceParameters">CiftiGradientLeftSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_gradient_left_surface_params-view-source"><span>View Source</span></label>
 
@@ -868,7 +1184,7 @@ want ROW, unless you are using -average-output.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_gradient_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_average_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_vectors_vectors_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientParameters</span>:</span></span>
+        <span class="name">cifti_gradient_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientLeftSurfaceParameters">CiftiGradientLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientRightSurfaceParameters">CiftiGradientRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiGradientCerebellumSurfaceParameters">CiftiGradientCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_presmooth_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_average_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_vectors_vectors_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientParameters">CiftiGradientParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_gradient_params-view-source"><span>View Source</span></label>
 
@@ -967,7 +1283,7 @@ want ROW, unless you are using -average-output.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_gradient_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_gradient</span><span class="o">.</span><span class="n">CiftiGradientRightSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_gradient_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiGradientRightSurfaceParameters">CiftiGradientRightSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_gradient_right_surface_params-view-source"><span>View Source</span></label>
 
@@ -1017,186 +1333,5 @@ want ROW, unless you are using -average-output.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

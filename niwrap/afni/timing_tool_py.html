@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TimingToolPyOutputs.timing_to_1_d_output">timing_to_1_d_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TimingToolPyParameters">TimingToolPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.timing_file">timing_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.run_length">run_length</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.tr">tr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.offset">offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.extend_file">extend_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.sort">sort</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.scale_data">scale_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.shift_to_run_offset">shift_to_run_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.timing_to_1D_file">timing_to_1D_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.stim_duration">stim_duration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.multi_timing_files">multi_timing_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.multi_show_isi_stats">multi_show_isi_stats</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.multi_show_timing">multi_show_timing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.show_timing">show_timing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.multi_stim_duration">multi_stim_duration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.round_times_frac">round_times_frac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.truncate_times">truncate_times</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TimingToolPyParameters.multi_timing_event_list">multi_timing_event_list</a>
                         </li>
                 </ul>
 
@@ -461,9 +522,10 @@
 </span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;TIMING_TOOL_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;TimingToolPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;timing_tool_py&quot;</span><span class="p">,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;timing_tool_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="p">]</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;TimingToolPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;timing_tool_py&quot;</span><span class="p">,</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;timing_tool_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -560,6 +622,228 @@
             <div class="docstring"><p>Output 1D formatted stimulus data</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="TimingToolPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TimingToolPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters"></a>
+    
+    
+
+                            <div id="TimingToolPyParameters.timing_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timing_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.timing_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.run_length" class="classattr">
+                                <div class="attr variable">
+            <span class="name">run_length</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.run_length"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.tr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.tr"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">offset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.offset"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.extend_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extend_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.extend_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.sort" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sort</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.sort"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.scale_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale_data</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.scale_data"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.shift_to_run_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shift_to_run_offset</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.shift_to_run_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.timing_to_1D_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timing_to_1D_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.timing_to_1D_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.stim_duration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_duration</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.stim_duration"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.multi_timing_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_timing_files</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.multi_timing_files"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.multi_show_isi_stats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_show_isi_stats</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.multi_show_isi_stats"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.multi_show_timing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_show_timing</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.multi_show_timing"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.show_timing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">show_timing</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.show_timing"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.multi_stim_duration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_stim_duration</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.multi_stim_duration"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.round_times_frac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">round_times_frac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.round_times_frac"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.truncate_times" class="classattr">
+                                <div class="attr variable">
+            <span class="name">truncate_times</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.truncate_times"></a>
+    
+    
+
+                            </div>
+                            <div id="TimingToolPyParameters.multi_timing_event_list" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multi_timing_event_list</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TimingToolPyParameters.multi_timing_event_list"></a>
+    
+    
 
                             </div>
                 </section>
@@ -683,7 +967,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">timing_tool_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timing_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">run_length</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extend_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scale_data</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_to_run_offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_to_1_d_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_duration</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_timing_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_show_isi_stats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_show_timing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_timing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_stim_duration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">round_times_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">truncate_times</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_timing_event_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">timing_tool_py</span><span class="o">.</span><span class="n">TimingToolPyParameters</span>:</span></span>
+        <span class="name">timing_tool_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timing_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">run_length</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extend_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scale_data</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shift_to_run_offset</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_to_1_d_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_duration</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_timing_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multi_show_isi_stats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_show_timing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">show_timing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_stim_duration</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">round_times_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">truncate_times</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">multi_timing_event_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TimingToolPyParameters">TimingToolPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="timing_tool_py_params-view-source"><span>View Source</span></label>
 
@@ -816,186 +1100,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

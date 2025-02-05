@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,108 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V1dplotPyOutputs.output_image">output_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V1dplotPyParameters">V1dplotPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.infiles">infiles</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.boxplot_on">boxplot_on</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.bplot_view">bplot_view</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.margin_off">margin_off</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.scale">scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.xfile">xfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.xvals">xvals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.yaxis">yaxis</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.ylabels">ylabels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.ylabels_maxlen">ylabels_maxlen</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.legend_on">legend_on</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.legend_labels">legend_labels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.legend_locs">legend_locs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.xlabel">xlabel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.title">title</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.reverse_order">reverse_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.sepscl">sepscl</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.one_graph">one_graph</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.dpi">dpi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.figsize">figsize</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.fontsize">fontsize</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.fontfamily">fontfamily</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.fontstyles">fontstyles</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.colors">colors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.patches">patches</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.censor_trs">censor_trs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.censor_files">censor_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.censor_hline">censor_hline</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.censor_rgb">censor_rgb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V1dplotPyParameters.bkgd_color">bkgd_color</a>
                         </li>
                 </ul>
 
@@ -616,10 +716,11 @@
 </span><span id="L-539"><a href="#L-539"><span class="linenos">539</span></a>
 </span><span id="L-540"><a href="#L-540"><span class="linenos">540</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-541"><a href="#L-541"><span class="linenos">541</span></a>    <span class="s2">&quot;V1dplotPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a>    <span class="s2">&quot;V_1DPLOT_PY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a>    <span class="s2">&quot;v_1dplot_py&quot;</span><span class="p">,</span>
-</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;v_1dplot_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a><span class="p">]</span>
+</span><span id="L-542"><a href="#L-542"><span class="linenos">542</span></a>    <span class="s2">&quot;V1dplotPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-543"><a href="#L-543"><span class="linenos">543</span></a>    <span class="s2">&quot;V_1DPLOT_PY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-544"><a href="#L-544"><span class="linenos">544</span></a>    <span class="s2">&quot;v_1dplot_py&quot;</span><span class="p">,</span>
+</span><span id="L-545"><a href="#L-545"><span class="linenos">545</span></a>    <span class="s2">&quot;v_1dplot_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-546"><a href="#L-546"><span class="linenos">546</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -688,6 +789,371 @@
             <div class="docstring"><p>Output image file, default to .jpg</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V1dplotPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V1dplotPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters"></a>
+    
+    
+
+                            <div id="V1dplotPyParameters.infiles" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infiles</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.infiles"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.boxplot_on" class="classattr">
+                                <div class="attr variable">
+            <span class="name">boxplot_on</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.boxplot_on"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.bplot_view" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bplot_view</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.bplot_view"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.margin_off" class="classattr">
+                                <div class="attr variable">
+            <span class="name">margin_off</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.margin_off"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.scale"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.xfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.xfile"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.xvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xvals</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.xvals"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.yaxis" class="classattr">
+                                <div class="attr variable">
+            <span class="name">yaxis</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.yaxis"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.ylabels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ylabels</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.ylabels"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.ylabels_maxlen" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ylabels_maxlen</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.ylabels_maxlen"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.legend_on" class="classattr">
+                                <div class="attr variable">
+            <span class="name">legend_on</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.legend_on"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.legend_labels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">legend_labels</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.legend_labels"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.legend_locs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">legend_locs</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.legend_locs"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.xlabel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xlabel</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.xlabel"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.title" class="classattr">
+                                <div class="attr variable">
+            <span class="name">title</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.title"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.reverse_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reverse_order</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.reverse_order"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.sepscl" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sepscl</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.sepscl"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.one_graph" class="classattr">
+                                <div class="attr variable">
+            <span class="name">one_graph</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.one_graph"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.dpi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dpi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.dpi"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.figsize" class="classattr">
+                                <div class="attr variable">
+            <span class="name">figsize</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.figsize"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.fontsize" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fontsize</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.fontsize"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.fontfamily" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fontfamily</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.fontfamily"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.fontstyles" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fontstyles</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.fontstyles"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.colors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">colors</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.colors"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.patches" class="classattr">
+                                <div class="attr variable">
+            <span class="name">patches</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.patches"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.censor_trs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">censor_trs</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.censor_trs"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.censor_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">censor_files</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.censor_files"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.censor_hline" class="classattr">
+                                <div class="attr variable">
+            <span class="name">censor_hline</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.censor_hline"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.censor_rgb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">censor_rgb</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.censor_rgb"></a>
+    
+    
+
+                            </div>
+                            <div id="V1dplotPyParameters.bkgd_color" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bkgd_color</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V1dplotPyParameters.bkgd_color"></a>
+    
+    
 
                             </div>
                 </section>
@@ -873,7 +1339,7 @@ files. It uses Python, particularly matplotlib, to create plots.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_1dplot_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infiles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">boxplot_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bplot_view</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">margin_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xvals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">yaxis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylabels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylabels_maxlen</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">legend_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">legend_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">legend_locs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xlabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reverse_order</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sepscl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">one_graph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dpi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">figsize</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontsize</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontfamily</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontstyles</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">colors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patches</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_trs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_hline</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_rgb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bkgd_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_1dplot_py</span><span class="o">.</span><span class="n">V1dplotPyParameters</span>:</span></span>
+        <span class="name">v_1dplot_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infiles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">boxplot_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bplot_view</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">margin_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xvals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">yaxis</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylabels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ylabels_maxlen</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">legend_on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">legend_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">legend_locs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xlabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reverse_order</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sepscl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">one_graph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dpi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">figsize</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontsize</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontfamily</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fontstyles</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">colors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">patches</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_trs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_hline</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">censor_rgb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bkgd_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V1dplotPyParameters">V1dplotPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_1dplot_py_params-view-source"><span>View Source</span></label>
 
@@ -1075,186 +1541,5 @@ files. It uses Python, particularly matplotlib, to create plots.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

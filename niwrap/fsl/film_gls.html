@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FilmGlsOutputs.results_data">results_data</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FilmGlsParameters">FilmGlsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.infile">infile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.ac_flag">ac_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.ar_flag">ar_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.noest_flag">noest_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.outputPW_flag">outputPW_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.pava_flag">pava_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.sa_flag">sa_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.results_dir">results_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.mode">mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.input_surface">input_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.mean_func_file">mean_func_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.min_timepoint_file">min_timepoint_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.paradigm_file">paradigm_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.t_contrasts_file">t_contrasts_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.f_contrasts_file">f_contrasts_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.epith">epith</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.ms">ms</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.tukey">tukey</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.mt">mt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.ven">ven</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FilmGlsParameters.vef">vef</a>
                         </li>
                 </ul>
 
@@ -520,9 +593,10 @@
 </span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;FILM_GLS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;FilmGlsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;film_gls&quot;</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;film_gls_params&quot;</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a><span class="p">]</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;FilmGlsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;film_gls&quot;</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;film_gls_params&quot;</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -634,6 +708,272 @@
             <div class="docstring"><p>Results output</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FilmGlsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FilmGlsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters"></a>
+    
+    
+
+                            <div id="FilmGlsParameters.infile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">infile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.infile"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.ac_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ac_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.ac_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.ar_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ar_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.ar_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.noest_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noest_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.noest_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.outputPW_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outputPW_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.outputPW_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.pava_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pava_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.pava_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.sa_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sa_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.sa_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.results_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">results_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.results_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mode</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.mode"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.input_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_surface</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.input_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.mean_func_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean_func_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.mean_func_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.min_timepoint_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_timepoint_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.min_timepoint_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.paradigm_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">paradigm_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.paradigm_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.t_contrasts_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">t_contrasts_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.t_contrasts_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.f_contrasts_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">f_contrasts_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.f_contrasts_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.epith" class="classattr">
+                                <div class="attr variable">
+            <span class="name">epith</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.epith"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.ms" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ms</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.ms"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.tukey" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tukey</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.tukey"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.mt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mt</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.mt"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.ven" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ven</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.ven"></a>
+    
+    
+
+                            </div>
+                            <div id="FilmGlsParameters.vef" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vef</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FilmGlsParameters.vef"></a>
+    
+    
 
                             </div>
                 </section>
@@ -778,7 +1118,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">film_gls_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ac_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ar_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noest_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_pw_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pava_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sa_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">results_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_func_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_timepoint_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">paradigm_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_contrasts_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">f_contrasts_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epith</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ms</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tukey</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ven</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vef</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">film_gls</span><span class="o">.</span><span class="n">FilmGlsParameters</span>:</span></span>
+        <span class="name">film_gls_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ac_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ar_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noest_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_pw_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pava_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sa_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">results_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_func_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_timepoint_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">paradigm_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">t_contrasts_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">f_contrasts_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">epith</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ms</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tukey</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ven</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vef</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FilmGlsParameters">FilmGlsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="film_gls_params-view-source"><span>View Source</span></label>
 
@@ -937,186 +1277,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

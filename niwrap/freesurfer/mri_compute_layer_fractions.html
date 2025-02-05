@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriComputeLayerFractionsOutputs.synth_output">synth_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriComputeLayerFractionsParameters">MriComputeLayerFractionsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.reg_file">reg_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.output_stem">output_stem</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.output_directory">output_directory</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.aseg_file">aseg_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.target_volume">target_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.hemi_flag">hemi_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.fs_names_flag">fs_names_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.n_layers">n_layers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.synth_flag">synth_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.thickness">thickness</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.random_file">random_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeLayerFractionsParameters.identity_file">identity_file</a>
                         </li>
                 </ul>
 
@@ -384,9 +430,10 @@
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;MRI_COMPUTE_LAYER_FRACTIONS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;MriComputeLayerFractionsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;mri_compute_layer_fractions&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;mri_compute_layer_fractions_params&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="p">]</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;MriComputeLayerFractionsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;mri_compute_layer_fractions&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;mri_compute_layer_fractions_params&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -483,6 +530,173 @@
             <div class="docstring"><p>Synthesized output volume combining layers and aseg</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriComputeLayerFractionsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriComputeLayerFractionsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters"></a>
+    
+    
+
+                            <div id="MriComputeLayerFractionsParameters.reg_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">reg_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.reg_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.output_stem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_stem</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.output_stem"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.output_directory" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_directory</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.output_directory"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.aseg_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aseg_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.aseg_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.target_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.target_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.hemi_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemi_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.hemi_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.fs_names_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fs_names_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.fs_names_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.n_layers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_layers</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.n_layers"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.synth_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">synth_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.synth_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.thickness" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.thickness"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.random_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">random_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.random_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeLayerFractionsParameters.identity_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">identity_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeLayerFractionsParameters.identity_file"></a>
+    
+    
 
                             </div>
                 </section>
@@ -590,7 +804,7 @@ using FreeSurfer.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_compute_layer_fractions_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_stem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hemi_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fs_names_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_layers</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synth_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">random_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">identity_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_compute_layer_fractions</span><span class="o">.</span><span class="n">MriComputeLayerFractionsParameters</span>:</span></span>
+        <span class="name">mri_compute_layer_fractions_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">reg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_stem</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hemi_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fs_names_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">n_layers</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">synth_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">random_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">identity_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriComputeLayerFractionsParameters">MriComputeLayerFractionsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_compute_layer_fractions_params-view-source"><span>View Source</span></label>
 
@@ -694,186 +908,5 @@ using FreeSurfer.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

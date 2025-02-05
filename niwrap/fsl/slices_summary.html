@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -47,6 +45,39 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SlicesSummaryOutputs.combined_summary_image">combined_summary_image</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SlicesSummaryParameters">SlicesSummaryParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.4d_input_file">4d_input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.threshold">threshold</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.background_image">background_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.pictures_sum_second">pictures_sum_second</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.single_slice_flag">single_slice_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.darker_background_flag">darker_background_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.dumb_rule_flag">dumb_rule_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.output_png">output_png</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SlicesSummaryParameters.timepoints">timepoints</a>
                         </li>
                 </ul>
 
@@ -326,9 +357,10 @@
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;SLICES_SUMMARY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;SlicesSummaryOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;slices_summary&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;slices_summary_params&quot;</span><span class="p">,</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="p">]</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;SlicesSummaryParameters&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;slices_summary&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;slices_summary_params&quot;</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -428,6 +460,118 @@
 
                             </div>
                 </section>
+                <section id="SlicesSummaryParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SlicesSummaryParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters"></a>
+    
+    
+
+                            <div id="SlicesSummaryParameters.4d_input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">4d_input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.4d_input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.threshold" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threshold</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.threshold"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.background_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">background_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.background_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.pictures_sum_second" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pictures_sum_second</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.pictures_sum_second"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.single_slice_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">single_slice_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.single_slice_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.darker_background_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">darker_background_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.darker_background_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.dumb_rule_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dumb_rule_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.dumb_rule_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.output_png" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_png</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.output_png"></a>
+    
+    
+
+                            </div>
+                            <div id="SlicesSummaryParameters.timepoints" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timepoints</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SlicesSummaryParameters.timepoints"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="slices_summary">
                             <input id="slices_summary-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -520,7 +664,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">slices_summary_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">v_4d_input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">background_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pictures_sum_second</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pictures_sum_second_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_png</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">timepoints</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">single_slice_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">darker_background_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dumb_rule_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">slices_summary</span><span class="o">.</span><span class="n">SlicesSummaryParameters</span>:</span></span>
+        <span class="name">slices_summary_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">v_4d_input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">background_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pictures_sum_second</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">pictures_sum_second_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_png</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">timepoints</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">single_slice_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">darker_background_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dumb_rule_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#SlicesSummaryParameters">SlicesSummaryParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="slices_summary_params-view-source"><span>View Source</span></label>
 
@@ -602,186 +746,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

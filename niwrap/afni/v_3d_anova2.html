@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -80,6 +78,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dAnova2Outputs.output_bucket">output_bucket</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dAnova2Parameters">V3dAnova2Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.type">type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.alevels">alevels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.blevels">blevels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.dataset">dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.voxel">voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.diskspace">diskspace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.ftr">ftr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.fa">fa</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.fb">fb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.fab">fab</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.amean">amean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.bmean">bmean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.xmean">xmean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.adiff">adiff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.bdiff">bdiff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.xdiff">xdiff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.acontr">acontr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.bcontr">bcontr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.xcontr">xcontr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.bucket">bucket</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.old_method">old_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.ok">ok</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnova2Parameters.assume_sph">assume_sph</a>
                         </li>
                 </ul>
 
@@ -600,10 +676,11 @@
 </span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>
 </span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;V3dAnova2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;V_3D_ANOVA2_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;v_3d_anova2&quot;</span><span class="p">,</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;v_3d_anova2_params&quot;</span><span class="p">,</span>
-</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a><span class="p">]</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;V3dAnova2Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;V_3D_ANOVA2_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;v_3d_anova2&quot;</span><span class="p">,</span>
+</span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;v_3d_anova2_params&quot;</span><span class="p">,</span>
+</span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -874,6 +951,283 @@ file</p>
 
                             </div>
                 </section>
+                <section id="V3dAnova2Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dAnova2Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters"></a>
+    
+    
+
+                            <div id="V3dAnova2Parameters.type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">type</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.type"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.alevels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alevels</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.alevels"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.blevels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blevels</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.blevels"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dataset</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.diskspace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diskspace</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.diskspace"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.ftr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ftr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.ftr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.fa" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fa</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.fa"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.fb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fb</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.fb"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.fab" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fab</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.fab"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.amean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">amean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.amean"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.bmean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bmean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.bmean"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.xmean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xmean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.xmean"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.adiff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">adiff</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.adiff"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.bdiff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bdiff</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.bdiff"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.xdiff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xdiff</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.xdiff"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.acontr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">acontr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.acontr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.bcontr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bcontr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.bcontr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.xcontr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xcontr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.xcontr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.bucket" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bucket</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.bucket"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.old_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">old_method</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.old_method"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.ok" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ok</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.ok"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnova2Parameters.assume_sph" class="classattr">
+                                <div class="attr variable">
+            <span class="name">assume_sph</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnova2Parameters.assume_sph"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_3D_ANOVA2_METADATA">
                     <div class="attr variable">
             <span class="name">V_3D_ANOVA2_METADATA</span>        =
@@ -1026,7 +1380,7 @@ file</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_anova2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">alevels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">blevels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diskspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fa</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">amean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">adiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bdiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xdiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">acontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bcontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xcontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">old_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">assume_sph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_anova2</span><span class="o">.</span><span class="n">V3dAnova2Parameters</span>:</span></span>
+        <span class="name">v_3d_anova2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">type_</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">alevels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">blevels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">dataset</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diskspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fa</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fab</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">amean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xmean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">adiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bdiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xdiff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">acontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bcontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xcontr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">old_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">assume_sph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dAnova2Parameters">V3dAnova2Parameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_anova2_params-view-source"><span>View Source</span></label>
 
@@ -1186,186 +1540,5 @@ file</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,30 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_SMOOTHING_METADATA">CIFTI_SMOOTHING_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSmoothingCerebellumSurfaceParameters">CiftiSmoothingCerebellumSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingCerebellumSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric">opt_cerebellum_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSmoothingLeftSurfaceParameters">CiftiSmoothingLeftSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingLeftSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingLeftSurfaceParameters.opt_left_corrected_areas_area_metric">opt_left_corrected_areas_area_metric</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiSmoothingOutputs">CiftiSmoothingOutputs</a>
@@ -44,6 +66,63 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiSmoothingOutputs.cifti_out">cifti_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSmoothingParameters">CiftiSmoothingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.cifti">cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.surface_kernel">surface_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.volume_kernel">volume_kernel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.opt_fwhm">opt_fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.left_surface">left_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.right_surface">right_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.cerebellum_surface">cerebellum_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.opt_cifti_roi_roi_cifti">opt_cifti_roi_roi_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.opt_fix_zeros_volume">opt_fix_zeros_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.opt_fix_zeros_surface">opt_fix_zeros_surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingParameters.opt_merged_volume">opt_merged_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSmoothingRightSurfaceParameters">CiftiSmoothingRightSurfaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingRightSurfaceParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSmoothingRightSurfaceParameters.opt_right_corrected_areas_area_metric">opt_right_corrected_areas_area_metric</a>
                         </li>
                 </ul>
 
@@ -562,13 +641,17 @@
 </span><span id="L-476"><a href="#L-476"><span class="linenos">476</span></a>
 </span><span id="L-477"><a href="#L-477"><span class="linenos">477</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-478"><a href="#L-478"><span class="linenos">478</span></a>    <span class="s2">&quot;CIFTI_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a>    <span class="s2">&quot;CiftiSmoothingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a>    <span class="s2">&quot;cifti_smoothing&quot;</span><span class="p">,</span>
-</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a>    <span class="s2">&quot;cifti_smoothing_cerebellum_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a>    <span class="s2">&quot;cifti_smoothing_left_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a>    <span class="s2">&quot;cifti_smoothing_params&quot;</span><span class="p">,</span>
-</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>    <span class="s2">&quot;cifti_smoothing_right_surface_params&quot;</span><span class="p">,</span>
-</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a><span class="p">]</span>
+</span><span id="L-479"><a href="#L-479"><span class="linenos">479</span></a>    <span class="s2">&quot;CiftiSmoothingCerebellumSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-480"><a href="#L-480"><span class="linenos">480</span></a>    <span class="s2">&quot;CiftiSmoothingLeftSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-481"><a href="#L-481"><span class="linenos">481</span></a>    <span class="s2">&quot;CiftiSmoothingOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-482"><a href="#L-482"><span class="linenos">482</span></a>    <span class="s2">&quot;CiftiSmoothingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos">483</span></a>    <span class="s2">&quot;CiftiSmoothingRightSurfaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-484"><a href="#L-484"><span class="linenos">484</span></a>    <span class="s2">&quot;cifti_smoothing&quot;</span><span class="p">,</span>
+</span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a>    <span class="s2">&quot;cifti_smoothing_cerebellum_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;cifti_smoothing_left_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;cifti_smoothing_params&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;cifti_smoothing_right_surface_params&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -585,6 +668,76 @@
     
     
 
+                </section>
+                <section id="CiftiSmoothingCerebellumSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSmoothingCerebellumSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingCerebellumSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiSmoothingCerebellumSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingCerebellumSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingCerebellumSurfaceParameters.opt_cerebellum_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiSmoothingLeftSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSmoothingLeftSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingLeftSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiSmoothingLeftSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingLeftSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingLeftSurfaceParameters.opt_left_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingLeftSurfaceParameters.opt_left_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiSmoothingOutputs">
                             <input id="CiftiSmoothingOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -653,12 +806,203 @@
 
                             </div>
                 </section>
+                <section id="CiftiSmoothingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSmoothingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters"></a>
+    
+    
+
+                            <div id="CiftiSmoothingParameters.cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.surface_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface_kernel</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.surface_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.volume_kernel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_kernel</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.volume_kernel"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.opt_fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fwhm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.opt_fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.left_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left_surface</span><span class="annotation">: NotRequired[<a href="#CiftiSmoothingLeftSurfaceParameters">CiftiSmoothingLeftSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.left_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.right_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right_surface</span><span class="annotation">: NotRequired[<a href="#CiftiSmoothingRightSurfaceParameters">CiftiSmoothingRightSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.right_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.cerebellum_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cerebellum_surface</span><span class="annotation">: NotRequired[<a href="#CiftiSmoothingCerebellumSurfaceParameters">CiftiSmoothingCerebellumSurfaceParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.cerebellum_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.opt_cifti_roi_roi_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cifti_roi_roi_cifti</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.opt_cifti_roi_roi_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.opt_fix_zeros_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fix_zeros_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.opt_fix_zeros_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.opt_fix_zeros_surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fix_zeros_surface</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.opt_fix_zeros_surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingParameters.opt_merged_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_merged_volume</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingParameters.opt_merged_volume"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiSmoothingRightSurfaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSmoothingRightSurfaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingRightSurfaceParameters"></a>
+    
+    
+
+                            <div id="CiftiSmoothingRightSurfaceParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingRightSurfaceParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSmoothingRightSurfaceParameters.opt_right_corrected_areas_area_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_corrected_areas_area_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSmoothingRightSurfaceParameters.opt_right_corrected_areas_area_metric"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_smoothing">
                             <input id="cifti_smoothing-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_smoothing</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fix_zeros_surface</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingOutputs">CiftiSmoothingOutputs</a></span>:</span></span>
+        <span class="name">cifti_smoothing</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingLeftSurfaceParameters">CiftiSmoothingLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingRightSurfaceParameters">CiftiSmoothingRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingCerebellumSurfaceParameters">CiftiSmoothingCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fix_zeros_surface</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingOutputs">CiftiSmoothingOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_smoothing-view-source"><span>View Source</span></label>
 
@@ -792,7 +1136,7 @@ file. Data outside the ROI is ignored.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_smoothing_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingCerebellumSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_smoothing_cerebellum_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_cerebellum_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingCerebellumSurfaceParameters">CiftiSmoothingCerebellumSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_smoothing_cerebellum_surface_params-view-source"><span>View Source</span></label>
 
@@ -846,7 +1190,7 @@ file. Data outside the ROI is ignored.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_smoothing_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingLeftSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_smoothing_left_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_left_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingLeftSurfaceParameters">CiftiSmoothingLeftSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_smoothing_left_surface_params-view-source"><span>View Source</span></label>
 
@@ -900,7 +1244,7 @@ file. Data outside the ROI is ignored.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_smoothing_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingLeftSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingRightSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingCerebellumSurfaceParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fix_zeros_surface</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingParameters</span>:</span></span>
+        <span class="name">cifti_smoothing_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">volume_kernel</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_fwhm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">left_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingLeftSurfaceParameters">CiftiSmoothingLeftSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">right_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingRightSurfaceParameters">CiftiSmoothingRightSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cerebellum_surface</span><span class="p">:</span> <span class="n"><a href="#CiftiSmoothingCerebellumSurfaceParameters">CiftiSmoothingCerebellumSurfaceParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_roi_roi_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fix_zeros_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fix_zeros_surface</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_merged_volume</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingParameters">CiftiSmoothingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_smoothing_params-view-source"><span>View Source</span></label>
 
@@ -1004,7 +1348,7 @@ file. Data outside the ROI is ignored.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_smoothing_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_smoothing</span><span class="o">.</span><span class="n">CiftiSmoothingRightSurfaceParameters</span>:</span></span>
+        <span class="name">cifti_smoothing_right_surface_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_right_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSmoothingRightSurfaceParameters">CiftiSmoothingRightSurfaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_smoothing_right_surface_params-view-source"><span>View Source</span></label>
 
@@ -1054,186 +1398,5 @@ file. Data outside the ROI is ignored.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

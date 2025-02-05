@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,69 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriGtmsegOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriGtmsegParameters">MriGtmsegParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.output_volume">output_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.source_subject">source_subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.internal_usf">internal_usf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.apas_file">apas_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.context_annotation">context_annotation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.subseg_wm">subseg_wm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.wm_annotation">wm_annotation</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.dmax">dmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.keep_hypo">keep_hypo</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.keep_cc">keep_cc</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.ctab">ctab</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.lhminmax">lhminmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.rhminmax">rhminmax</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.output_usf">output_usf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.threads">threads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.threads_max">threads_max</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.threads_max_1">threads_max_1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriGtmsegParameters.check_opts">check_opts</a>
                         </li>
                 </ul>
 
@@ -449,9 +510,10 @@
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;MRI_GTMSEG_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;MriGtmsegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;mri_gtmseg&quot;</span><span class="p">,</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mri_gtmseg_params&quot;</span><span class="p">,</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="p">]</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;MriGtmsegParameters&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="s2">&quot;mri_gtmseg&quot;</span><span class="p">,</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="s2">&quot;mri_gtmseg_params&quot;</span><span class="p">,</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -518,6 +580,228 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriGtmsegParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriGtmsegParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters"></a>
+    
+    
+
+                            <div id="MriGtmsegParameters.output_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.output_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.source_subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.source_subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.internal_usf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">internal_usf</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.internal_usf"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.apas_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">apas_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.apas_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.context_annotation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">context_annotation</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.context_annotation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.subseg_wm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subseg_wm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.subseg_wm"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.wm_annotation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_annotation</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.wm_annotation"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.dmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dmax</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.dmax"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.keep_hypo" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_hypo</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.keep_hypo"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.keep_cc" class="classattr">
+                                <div class="attr variable">
+            <span class="name">keep_cc</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.keep_cc"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.ctab" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ctab</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.ctab"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.lhminmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lhminmax</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.lhminmax"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.rhminmax" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rhminmax</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.rhminmax"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.output_usf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_usf</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.output_usf"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.threads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.threads"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.threads_max" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads_max</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.threads_max"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.threads_max_1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">threads_max_1</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.threads_max_1"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="MriGtmsegParameters.check_opts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">check_opts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriGtmsegParameters.check_opts"></a>
+    
+    
 
                             </div>
                 </section>
@@ -649,7 +933,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_gtmseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">internal_usf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apas_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">context_annotation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subseg_wm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wm_annotation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_hypo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_cc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ctab</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lhminmax</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rhminmax</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_usf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads_max</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads_max_1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_gtmseg</span><span class="o">.</span><span class="n">MriGtmsegParameters</span>:</span></span>
+        <span class="name">mri_gtmseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">internal_usf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">apas_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">context_annotation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subseg_wm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">wm_annotation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">keep_hypo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">keep_cc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ctab</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lhminmax</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rhminmax</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_usf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">threads_max</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">threads_max_1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">check_opts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriGtmsegParameters">MriGtmsegParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_gtmseg_params-view-source"><span>View Source</span></label>
 
@@ -784,186 +1068,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

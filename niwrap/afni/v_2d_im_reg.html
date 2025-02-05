@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,48 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V2dImRegOutputs.newrms_file">newrms_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V2dImRegParameters">V2dImRegParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.base_file">base_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.base">base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.nofine">nofine</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.fine_blur">fine_blur</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.fine_dxy">fine_dxy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.fine_dphi">fine_dphi</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.dprefix">dprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.dmm">dmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.rprefix">rprefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V2dImRegParameters.debug">debug</a>
                         </li>
                 </ul>
 
@@ -385,10 +425,11 @@
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>
 </span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;V2dImRegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;V_2D_IM_REG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;v_2d_im_reg&quot;</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;v_2d_im_reg_params&quot;</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="p">]</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;V2dImRegParameters&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;V_2D_IM_REG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;v_2d_im_reg&quot;</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;v_2d_im_reg_params&quot;</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -535,6 +576,151 @@
 
                             </div>
                 </section>
+                <section id="V2dImRegParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V2dImRegParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters"></a>
+    
+    
+
+                            <div id="V2dImRegParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.base_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.base_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.base"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.nofine" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nofine</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.nofine"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.fine_blur" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fine_blur</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.fine_blur"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.fine_dxy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fine_dxy</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.fine_dxy"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.fine_dphi" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fine_dphi</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.fine_dphi"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.dprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dprefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.dprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.dmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dmm</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.dmm"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.rprefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rprefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.rprefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V2dImRegParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V2dImRegParameters.debug"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_2D_IM_REG_METADATA">
                     <div class="attr variable">
             <span class="name">V_2D_IM_REG_METADATA</span>        =
@@ -652,7 +838,7 @@ slice-by-slice basis to a specified base image.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_2d_im_reg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nofine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fine_blur</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fine_dxy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fine_dphi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dmm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_2d_im_reg</span><span class="o">.</span><span class="n">V2dImRegParameters</span>:</span></span>
+        <span class="name">v_2d_im_reg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">base_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nofine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">fine_blur</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fine_dxy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fine_dphi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dmm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rprefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V2dImRegParameters">V2dImRegParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_2d_im_reg_params-view-source"><span>View Source</span></label>
 
@@ -753,186 +939,5 @@ slice-by-slice basis to a specified base image.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

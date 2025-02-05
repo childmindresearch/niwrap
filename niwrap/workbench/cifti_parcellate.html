@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#CIFTI_PARCELLATE_METADATA">CIFTI_PARCELLATE_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#CiftiParcellateExcludeOutliersParameters">CiftiParcellateExcludeOutliersParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiParcellateExcludeOutliersParameters.sigma_below">sigma_below</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateExcludeOutliersParameters.sigma_above">sigma_above</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#CiftiParcellateOutputs">CiftiParcellateOutputs</a>
@@ -47,6 +57,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiParcellateOutputs.opt_nonempty_mask_out_mask_out">opt_nonempty_mask_out_mask_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiParcellateParameters">CiftiParcellateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.cifti_in">cifti_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.cifti_label">cifti_label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.cifti_out">cifti_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.spatial_weights">spatial_weights</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_cifti_weights_weight_cifti">opt_cifti_weights_weight_cifti</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_method_method">opt_method_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.exclude_outliers">exclude_outliers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_only_numeric">opt_only_numeric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_fill_value_value">opt_fill_value_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_nonempty_mask_out_mask_out">opt_nonempty_mask_out_mask_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_legacy_mode">opt_legacy_mode</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateParameters.opt_include_empty">opt_include_empty</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiParcellateSpatialWeightsParameters">CiftiParcellateSpatialWeightsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_left_area_surf_left_surf">opt_left_area_surf_left_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_right_area_surf_right_surf">opt_right_area_surf_right_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf">opt_cerebellum_area_surf_cerebellum_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_left_area_metric_left_metric">opt_left_area_metric_left_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_right_area_metric_right_metric">opt_right_area_metric_right_metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric">opt_cerebellum_area_metric_cerebellum_metric</a>
                         </li>
                 </ul>
 
@@ -611,12 +690,15 @@
 </span><span id="L-525"><a href="#L-525"><span class="linenos">525</span></a>
 </span><span id="L-526"><a href="#L-526"><span class="linenos">526</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-527"><a href="#L-527"><span class="linenos">527</span></a>    <span class="s2">&quot;CIFTI_PARCELLATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a>    <span class="s2">&quot;CiftiParcellateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-529"><a href="#L-529"><span class="linenos">529</span></a>    <span class="s2">&quot;cifti_parcellate&quot;</span><span class="p">,</span>
-</span><span id="L-530"><a href="#L-530"><span class="linenos">530</span></a>    <span class="s2">&quot;cifti_parcellate_exclude_outliers_params&quot;</span><span class="p">,</span>
-</span><span id="L-531"><a href="#L-531"><span class="linenos">531</span></a>    <span class="s2">&quot;cifti_parcellate_params&quot;</span><span class="p">,</span>
-</span><span id="L-532"><a href="#L-532"><span class="linenos">532</span></a>    <span class="s2">&quot;cifti_parcellate_spatial_weights_params&quot;</span><span class="p">,</span>
-</span><span id="L-533"><a href="#L-533"><span class="linenos">533</span></a><span class="p">]</span>
+</span><span id="L-528"><a href="#L-528"><span class="linenos">528</span></a>    <span class="s2">&quot;CiftiParcellateExcludeOutliersParameters&quot;</span><span class="p">,</span>
+</span><span id="L-529"><a href="#L-529"><span class="linenos">529</span></a>    <span class="s2">&quot;CiftiParcellateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-530"><a href="#L-530"><span class="linenos">530</span></a>    <span class="s2">&quot;CiftiParcellateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-531"><a href="#L-531"><span class="linenos">531</span></a>    <span class="s2">&quot;CiftiParcellateSpatialWeightsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-532"><a href="#L-532"><span class="linenos">532</span></a>    <span class="s2">&quot;cifti_parcellate&quot;</span><span class="p">,</span>
+</span><span id="L-533"><a href="#L-533"><span class="linenos">533</span></a>    <span class="s2">&quot;cifti_parcellate_exclude_outliers_params&quot;</span><span class="p">,</span>
+</span><span id="L-534"><a href="#L-534"><span class="linenos">534</span></a>    <span class="s2">&quot;cifti_parcellate_params&quot;</span><span class="p">,</span>
+</span><span id="L-535"><a href="#L-535"><span class="linenos">535</span></a>    <span class="s2">&quot;cifti_parcellate_spatial_weights_params&quot;</span><span class="p">,</span>
+</span><span id="L-536"><a href="#L-536"><span class="linenos">536</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -633,6 +715,41 @@
     
     
 
+                </section>
+                <section id="CiftiParcellateExcludeOutliersParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiParcellateExcludeOutliersParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateExcludeOutliersParameters"></a>
+    
+    
+
+                            <div id="CiftiParcellateExcludeOutliersParameters.sigma_below" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigma_below</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateExcludeOutliersParameters.sigma_below"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateExcludeOutliersParameters.sigma_above" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigma_above</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateExcludeOutliersParameters.sigma_above"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="CiftiParcellateOutputs">
                             <input id="CiftiParcellateOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -718,12 +835,247 @@ elsewhere: the output mask file</p>
 
                             </div>
                 </section>
+                <section id="CiftiParcellateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiParcellateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters"></a>
+    
+    
+
+                            <div id="CiftiParcellateParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.cifti_label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_label</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.cifti_label"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.cifti_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.cifti_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.spatial_weights" class="classattr">
+                                <div class="attr variable">
+            <span class="name">spatial_weights</span><span class="annotation">: NotRequired[<a href="#CiftiParcellateSpatialWeightsParameters">CiftiParcellateSpatialWeightsParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.spatial_weights"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_cifti_weights_weight_cifti" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cifti_weights_weight_cifti</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_cifti_weights_weight_cifti"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_method_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_method_method</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_method_method"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.exclude_outliers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclude_outliers</span><span class="annotation">: NotRequired[<a href="#CiftiParcellateExcludeOutliersParameters">CiftiParcellateExcludeOutliersParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.exclude_outliers"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_only_numeric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_only_numeric</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_only_numeric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_fill_value_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fill_value_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_fill_value_value"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_nonempty_mask_out_mask_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_nonempty_mask_out_mask_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_nonempty_mask_out_mask_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_legacy_mode" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_legacy_mode</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_legacy_mode"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateParameters.opt_include_empty" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_include_empty</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateParameters.opt_include_empty"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiParcellateSpatialWeightsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiParcellateSpatialWeightsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters"></a>
+    
+    
+
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_left_area_surf_left_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_area_surf_left_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_left_area_surf_left_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_right_area_surf_right_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_area_surf_right_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_right_area_surf_right_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_area_surf_cerebellum_surf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_surf_cerebellum_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_left_area_metric_left_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_left_area_metric_left_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_left_area_metric_left_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_right_area_metric_right_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_right_area_metric_right_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_right_area_metric_right_metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_cerebellum_area_metric_cerebellum_metric</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiParcellateSpatialWeightsParameters.opt_cerebellum_area_metric_cerebellum_metric"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_parcellate">
                             <input id="cifti_parcellate-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_parcellate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateSpatialWeightsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fill_value_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nonempty_mask_out_mask_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_include_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiParcellateOutputs">CiftiParcellateOutputs</a></span>:</span></span>
+        <span class="name">cifti_parcellate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n"><a href="#CiftiParcellateSpatialWeightsParameters">CiftiParcellateSpatialWeightsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_outliers</span><span class="p">:</span> <span class="n"><a href="#CiftiParcellateExcludeOutliersParameters">CiftiParcellateExcludeOutliersParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fill_value_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nonempty_mask_out_mask_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_include_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiParcellateOutputs">CiftiParcellateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_parcellate-view-source"><span>View Source</span></label>
 
@@ -897,7 +1249,7 @@ label data).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_parcellate_exclude_outliers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sigma_below</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">sigma_above</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateExcludeOutliersParameters</span>:</span></span>
+        <span class="name">cifti_parcellate_exclude_outliers_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sigma_below</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">sigma_above</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiParcellateExcludeOutliersParameters">CiftiParcellateExcludeOutliersParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_parcellate_exclude_outliers_params-view-source"><span>View Source</span></label>
 
@@ -948,7 +1300,7 @@ label data).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_parcellate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateSpatialWeightsParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_outliers</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateExcludeOutliersParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fill_value_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nonempty_mask_out_mask_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_include_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateParameters</span>:</span></span>
+        <span class="name">cifti_parcellate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_label</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">spatial_weights</span><span class="p">:</span> <span class="n"><a href="#CiftiParcellateSpatialWeightsParameters">CiftiParcellateSpatialWeightsParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cifti_weights_weight_cifti</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_method_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">exclude_outliers</span><span class="p">:</span> <span class="n"><a href="#CiftiParcellateExcludeOutliersParameters">CiftiParcellateExcludeOutliersParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_only_numeric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_fill_value_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_nonempty_mask_out_mask_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_include_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiParcellateParameters">CiftiParcellateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_parcellate_params-view-source"><span>View Source</span></label>
 
@@ -1058,7 +1410,7 @@ label data).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_parcellate_spatial_weights_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_metric_left_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_metric_right_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_metric_cerebellum_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_parcellate</span><span class="o">.</span><span class="n">CiftiParcellateSpatialWeightsParameters</span>:</span></span>
+        <span class="name">cifti_parcellate_spatial_weights_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_left_area_surf_left_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_surf_right_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_surf_cerebellum_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_left_area_metric_left_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_right_area_metric_right_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_cerebellum_area_metric_cerebellum_metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiParcellateSpatialWeightsParameters">CiftiParcellateSpatialWeightsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_parcellate_spatial_weights_params-view-source"><span>View Source</span></label>
 
@@ -1134,186 +1486,5 @@ label data).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

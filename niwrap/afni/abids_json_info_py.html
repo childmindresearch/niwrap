@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AbidsJsonInfoPyOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AbidsJsonInfoPyParameters">AbidsJsonInfoPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.json_files">json_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.tr_flag">tr_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.te_flag">te_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.te_sec_flag">te_sec_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.match_nii_flag">match_nii_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.field_list">field_list</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.list_fields_flag">list_fields_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AbidsJsonInfoPyParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -306,9 +334,10 @@
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;ABIDS_JSON_INFO_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;AbidsJsonInfoPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;abids_json_info_py&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;abids_json_info_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="p">]</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;AbidsJsonInfoPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;abids_json_info_py&quot;</span><span class="p">,</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="s2">&quot;abids_json_info_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -375,6 +404,107 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AbidsJsonInfoPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AbidsJsonInfoPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters"></a>
+    
+    
+
+                            <div id="AbidsJsonInfoPyParameters.json_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">json_files</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.json_files"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.tr_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tr_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.tr_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.te_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">te_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.te_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.te_sec_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">te_sec_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.te_sec_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.match_nii_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">match_nii_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.match_nii_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.field_list" class="classattr">
+                                <div class="attr variable">
+            <span class="name">field_list</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.field_list"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.list_fields_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">list_fields_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.list_fields_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AbidsJsonInfoPyParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AbidsJsonInfoPyParameters.help_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -465,7 +595,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">abids_json_info_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">json_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">tr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">te_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">te_sec_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">match_nii_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">field_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">list_fields_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">abids_json_info_py</span><span class="o">.</span><span class="n">AbidsJsonInfoPyParameters</span>:</span></span>
+        <span class="name">abids_json_info_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">json_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">tr_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">te_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">te_sec_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">match_nii_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">field_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">list_fields_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#AbidsJsonInfoPyParameters">AbidsJsonInfoPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="abids_json_info_py_params-view-source"><span>View Source</span></label>
 
@@ -541,186 +671,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

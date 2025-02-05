@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,33 @@
                     <a class="variable" href="#CONVERT_WARPFIELD_METADATA">CONVERT_WARPFIELD_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#ConvertWarpfieldFromFnirtParameters">ConvertWarpfieldFromFnirtParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldFromFnirtParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldFromFnirtParameters.source_volume">source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldFromFnirtParameters.opt_absolute">opt_absolute</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertWarpfieldFromWorldParameters">ConvertWarpfieldFromWorldParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldFromWorldParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldFromWorldParameters.opt_absolute">opt_absolute</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#ConvertWarpfieldOutputs">ConvertWarpfieldOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +66,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConvertWarpfieldOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertWarpfieldParameters">ConvertWarpfieldParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.from_world">from_world</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.opt_from_itk_input">opt_from_itk_input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.from_fnirt">from_fnirt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.opt_to_world_output">opt_to_world_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.opt_to_itk_output">opt_to_itk_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldParameters.to_fnirt">to_fnirt</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertWarpfieldToFnirtParameters">ConvertWarpfieldToFnirtParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldToFnirtParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertWarpfieldToFnirtParameters.source_volume">source_volume</a>
                         </li>
                 </ul>
 
@@ -484,13 +545,17 @@
 </span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>
 </span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;CONVERT_WARPFIELD_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;ConvertWarpfieldOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;convert_warpfield&quot;</span><span class="p">,</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;convert_warpfield_from_fnirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;convert_warpfield_from_world_params&quot;</span><span class="p">,</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;convert_warpfield_params&quot;</span><span class="p">,</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;convert_warpfield_to_fnirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="p">]</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;ConvertWarpfieldFromFnirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;ConvertWarpfieldFromWorldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;ConvertWarpfieldOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;ConvertWarpfieldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;ConvertWarpfieldToFnirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;convert_warpfield&quot;</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;convert_warpfield_from_fnirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;convert_warpfield_from_world_params&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;convert_warpfield_params&quot;</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;convert_warpfield_to_fnirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -507,6 +572,87 @@
     
     
 
+                </section>
+                <section id="ConvertWarpfieldFromFnirtParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertWarpfieldFromFnirtParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromFnirtParameters"></a>
+    
+    
+
+                            <div id="ConvertWarpfieldFromFnirtParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromFnirtParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldFromFnirtParameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromFnirtParameters.source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldFromFnirtParameters.opt_absolute" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_absolute</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromFnirtParameters.opt_absolute"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConvertWarpfieldFromWorldParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertWarpfieldFromWorldParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromWorldParameters"></a>
+    
+    
+
+                            <div id="ConvertWarpfieldFromWorldParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromWorldParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldFromWorldParameters.opt_absolute" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_absolute</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldFromWorldParameters.opt_absolute"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ConvertWarpfieldOutputs">
                             <input id="ConvertWarpfieldOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -560,12 +706,126 @@
 
                             </div>
                 </section>
+                <section id="ConvertWarpfieldParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertWarpfieldParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters"></a>
+    
+    
+
+                            <div id="ConvertWarpfieldParameters.from_world" class="classattr">
+                                <div class="attr variable">
+            <span class="name">from_world</span><span class="annotation">: NotRequired[<a href="#ConvertWarpfieldFromWorldParameters">ConvertWarpfieldFromWorldParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.from_world"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldParameters.opt_from_itk_input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_from_itk_input</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.opt_from_itk_input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldParameters.from_fnirt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">from_fnirt</span><span class="annotation">: NotRequired[<a href="#ConvertWarpfieldFromFnirtParameters">ConvertWarpfieldFromFnirtParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.from_fnirt"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldParameters.opt_to_world_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_to_world_output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.opt_to_world_output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldParameters.opt_to_itk_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_to_itk_output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.opt_to_itk_output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldParameters.to_fnirt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_fnirt</span><span class="annotation">: NotRequired[list[<a href="#ConvertWarpfieldToFnirtParameters">ConvertWarpfieldToFnirtParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldParameters.to_fnirt"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConvertWarpfieldToFnirtParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertWarpfieldToFnirtParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldToFnirtParameters"></a>
+    
+    
+
+                            <div id="ConvertWarpfieldToFnirtParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldToFnirtParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertWarpfieldToFnirtParameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertWarpfieldToFnirtParameters.source_volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="convert_warpfield">
                             <input id="convert_warpfield-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_warpfield</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_fnirt</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromFnirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_world_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fnirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldToFnirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldOutputs">ConvertWarpfieldOutputs</a></span>:</span></span>
+        <span class="name">convert_warpfield</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n"><a href="#ConvertWarpfieldFromWorldParameters">ConvertWarpfieldFromWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_fnirt</span><span class="p">:</span> <span class="n"><a href="#ConvertWarpfieldFromFnirtParameters">ConvertWarpfieldFromFnirtParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_world_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fnirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertWarpfieldToFnirtParameters">ConvertWarpfieldToFnirtParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldOutputs">ConvertWarpfieldOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_warpfield-view-source"><span>View Source</span></label>
 
@@ -665,7 +925,7 @@ options, and -to-fnirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_warpfield_from_fnirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromFnirtParameters</span>:</span></span>
+        <span class="name">convert_warpfield_from_fnirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldFromFnirtParameters">ConvertWarpfieldFromFnirtParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_warpfield_from_fnirt_params-view-source"><span>View Source</span></label>
 
@@ -722,7 +982,7 @@ options, and -to-fnirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_warpfield_from_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromWorldParameters</span>:</span></span>
+        <span class="name">convert_warpfield_from_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_absolute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldFromWorldParameters">ConvertWarpfieldFromWorldParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_warpfield_from_world_params-view-source"><span>View Source</span></label>
 
@@ -774,7 +1034,7 @@ options, and -to-fnirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_warpfield_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_fnirt</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldFromFnirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_world_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fnirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldToFnirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldParameters</span>:</span></span>
+        <span class="name">convert_warpfield_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n"><a href="#ConvertWarpfieldFromWorldParameters">ConvertWarpfieldFromWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_fnirt</span><span class="p">:</span> <span class="n"><a href="#ConvertWarpfieldFromFnirtParameters">ConvertWarpfieldFromFnirtParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_world_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_fnirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertWarpfieldToFnirtParameters">ConvertWarpfieldToFnirtParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldParameters">ConvertWarpfieldParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_warpfield_params-view-source"><span>View Source</span></label>
 
@@ -849,7 +1109,7 @@ options, and -to-fnirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_warpfield_to_fnirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_warpfield</span><span class="o">.</span><span class="n">ConvertWarpfieldToFnirtParameters</span>:</span></span>
+        <span class="name">convert_warpfield_to_fnirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertWarpfieldToFnirtParameters">ConvertWarpfieldToFnirtParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_warpfield_to_fnirt_params-view-source"><span>View Source</span></label>
 
@@ -896,186 +1156,5 @@ options, and -to-fnirt may be specified more than once.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,18 @@
                     <a class="variable" href="#VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA">VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters">VolumeWarpfieldAffineRegressionFlirtOutParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters.source_volume">source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters.target_volume">target_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +51,27 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeWarpfieldAffineRegressionOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeWarpfieldAffineRegressionParameters">VolumeWarpfieldAffineRegressionParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionParameters.warpfield">warpfield</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionParameters.affine_out">affine_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionParameters.opt_roi_roi_vol">opt_roi_roi_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionParameters.opt_fnirt_source_volume">opt_fnirt_source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWarpfieldAffineRegressionParameters.flirt_out">flirt_out</a>
                         </li>
                 </ul>
 
@@ -353,11 +384,13 @@
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression&quot;</span><span class="p">,</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_flirt_out_params&quot;</span><span class="p">,</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_params&quot;</span><span class="p">,</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="p">]</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionFlirtOutParameters&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;VolumeWarpfieldAffineRegressionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_flirt_out_params&quot;</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="s2">&quot;volume_warpfield_affine_regression_params&quot;</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -374,6 +407,41 @@
     
     
 
+                </section>
+                <section id="VolumeWarpfieldAffineRegressionFlirtOutParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWarpfieldAffineRegressionFlirtOutParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters"></a>
+    
+    
+
+                            <div id="VolumeWarpfieldAffineRegressionFlirtOutParameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters.source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWarpfieldAffineRegressionFlirtOutParameters.target_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionFlirtOutParameters.target_volume"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="VolumeWarpfieldAffineRegressionOutputs">
                             <input id="VolumeWarpfieldAffineRegressionOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -427,12 +495,80 @@
 
                             </div>
                 </section>
+                <section id="VolumeWarpfieldAffineRegressionParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeWarpfieldAffineRegressionParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters"></a>
+    
+    
+
+                            <div id="VolumeWarpfieldAffineRegressionParameters.warpfield" class="classattr">
+                                <div class="attr variable">
+            <span class="name">warpfield</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters.warpfield"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWarpfieldAffineRegressionParameters.affine_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">affine_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters.affine_out"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWarpfieldAffineRegressionParameters.opt_roi_roi_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_roi_vol</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters.opt_roi_roi_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWarpfieldAffineRegressionParameters.opt_fnirt_source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_fnirt_source_volume</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters.opt_fnirt_source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWarpfieldAffineRegressionParameters.flirt_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">flirt_out</span><span class="annotation">: NotRequired[<a href="#VolumeWarpfieldAffineRegressionFlirtOutParameters">VolumeWarpfieldAffineRegressionFlirtOutParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWarpfieldAffineRegressionParameters.flirt_out"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="volume_warpfield_affine_regression">
                             <input id="volume_warpfield_affine_regression-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_warpfield_affine_regression</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a></span>:</span></span>
+        <span class="name">volume_warpfield_affine_regression</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n"><a href="#VolumeWarpfieldAffineRegressionFlirtOutParameters">VolumeWarpfieldAffineRegressionFlirtOutParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionOutputs">VolumeWarpfieldAffineRegressionOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_warpfield_affine_regression-view-source"><span>View Source</span></label>
 
@@ -522,7 +658,7 @@ space). If you are using FSL-created files and utilities, specify -fnirt and
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_warpfield_affine_regression_flirt_out_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span>:</span></span>
+        <span class="name">volume_warpfield_affine_regression_flirt_out_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionFlirtOutParameters">VolumeWarpfieldAffineRegressionFlirtOutParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_warpfield_affine_regression_flirt_out_params-view-source"><span>View Source</span></label>
 
@@ -574,7 +710,7 @@ space). If you are using FSL-created files and utilities, specify -fnirt and
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_warpfield_affine_regression_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionFlirtOutParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_warpfield_affine_regression</span><span class="o">.</span><span class="n">VolumeWarpfieldAffineRegressionParameters</span>:</span></span>
+        <span class="name">volume_warpfield_affine_regression_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">affine_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_vol</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">flirt_out</span><span class="p">:</span> <span class="n"><a href="#VolumeWarpfieldAffineRegressionFlirtOutParameters">VolumeWarpfieldAffineRegressionFlirtOutParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWarpfieldAffineRegressionParameters">VolumeWarpfieldAffineRegressionParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_warpfield_affine_regression_params-view-source"><span>View Source</span></label>
 
@@ -639,186 +775,5 @@ space). If you are using FSL-created files and utilities, specify -fnirt and
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

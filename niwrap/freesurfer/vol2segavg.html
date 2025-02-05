@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Vol2segavgOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Vol2segavgParameters">Vol2segavgParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.registration">registration</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.segmentation_file">segmentation_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.aparc_aseg_flag">aparc_aseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.subject_id">subject_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.segmentation_id">segmentation_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.multiply_value">multiply_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.no_bb_flag">no_bb_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.erode_value">erode_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.dilate_value">dilate_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.wm_flag">wm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.vcsf_flag">vcsf_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.xcsf_flag">xcsf_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2segavgParameters.remove_mean_flag">remove_mean_flag</a>
                         </li>
                 </ul>
 
@@ -391,9 +440,10 @@
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;VOL2SEGAVG_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="s2">&quot;Vol2segavgOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;vol2segavg&quot;</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;vol2segavg_params&quot;</span><span class="p">,</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="p">]</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="s2">&quot;Vol2segavgParameters&quot;</span><span class="p">,</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="s2">&quot;vol2segavg&quot;</span><span class="p">,</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="s2">&quot;vol2segavg_params&quot;</span><span class="p">,</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -475,6 +525,184 @@
             <div class="docstring"><p>Output file containing the computed average</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="Vol2segavgParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Vol2segavgParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters"></a>
+    
+    
+
+                            <div id="Vol2segavgParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.registration" class="classattr">
+                                <div class="attr variable">
+            <span class="name">registration</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.registration"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.segmentation_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segmentation_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.segmentation_file"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.aparc_aseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aparc_aseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.aparc_aseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.subject_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_id</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.subject_id"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.segmentation_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segmentation_id</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.segmentation_id"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.multiply_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">multiply_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.multiply_value"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.no_bb_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_bb_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.no_bb_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.erode_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">erode_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.erode_value"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.dilate_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dilate_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.dilate_value"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.wm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.wm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.vcsf_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vcsf_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.vcsf_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.xcsf_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xcsf_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.xcsf_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2segavgParameters.remove_mean_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">remove_mean_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2segavgParameters.remove_mean_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -585,7 +813,7 @@ resampling the input volume to the segmentation space.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">vol2segavg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">registration</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segmentation_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">aparc_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation_id</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiply_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_bb_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">erode_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dilate_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">xcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">remove_mean_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">vol2segavg</span><span class="o">.</span><span class="n">Vol2segavgParameters</span>:</span></span>
+        <span class="name">vol2segavg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">registration</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segmentation_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">aparc_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segmentation_id</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">multiply_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_bb_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">erode_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dilate_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">vcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">xcsf_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">remove_mean_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Vol2segavgParameters">Vol2segavgParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="vol2segavg_params-view-source"><span>View Source</span></label>
 
@@ -690,186 +918,5 @@ resampling the input volume to the segmentation space.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

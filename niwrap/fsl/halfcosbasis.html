@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,39 @@
                         </li>
                         <li>
                                 <a class="variable" href="#HalfcosbasisOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#HalfcosbasisParameters">HalfcosbasisParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.hrf_param_file_hf">hrf_param_file_hf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.debug_level_debuglevel">debug_level_debuglevel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.timing_on_flag">timing_on_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.log_dir_logdir">log_dir_logdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.num_hrf_samples">num_hrf_samples</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.num_hrf_basis_funcs">num_hrf_basis_funcs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.num_secs_nsecs">num_secs_nsecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#HalfcosbasisParameters.temp_res">temp_res</a>
                         </li>
                 </ul>
 
@@ -331,9 +362,10 @@
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;HALFCOSBASIS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;HalfcosbasisOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;halfcosbasis&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;halfcosbasis_params&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="p">]</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;HalfcosbasisParameters&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;halfcosbasis&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;halfcosbasis_params&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -400,6 +432,118 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="HalfcosbasisParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">HalfcosbasisParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters"></a>
+    
+    
+
+                            <div id="HalfcosbasisParameters.hrf_param_file_hf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hrf_param_file_hf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.hrf_param_file_hf"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.debug_level_debuglevel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_level_debuglevel</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.debug_level_debuglevel"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.timing_on_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timing_on_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.timing_on_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.log_dir_logdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_dir_logdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.log_dir_logdir"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.num_hrf_samples" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_hrf_samples</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.num_hrf_samples"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.num_hrf_basis_funcs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_hrf_basis_funcs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.num_hrf_basis_funcs"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.num_secs_nsecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">num_secs_nsecs</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.num_secs_nsecs"></a>
+    
+    
+
+                            </div>
+                            <div id="HalfcosbasisParameters.temp_res" class="classattr">
+                                <div class="attr variable">
+            <span class="name">temp_res</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#HalfcosbasisParameters.temp_res"></a>
+    
+    
 
                             </div>
                 </section>
@@ -490,7 +634,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">halfcosbasis_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hrf_param_file_hf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_level_debuglevel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_on_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log_dir_logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_hrf_samples</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">num_hrf_basis_funcs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">num_secs_nsecs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">40</span>,</span><span class="param">	<span class="n">temp_res</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.05</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">halfcosbasis</span><span class="o">.</span><span class="n">HalfcosbasisParameters</span>:</span></span>
+        <span class="name">halfcosbasis_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">hrf_param_file_hf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_level_debuglevel</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">timing_on_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">log_dir_logdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">num_hrf_samples</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">num_hrf_basis_funcs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">3</span>,</span><span class="param">	<span class="n">num_secs_nsecs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">40</span>,</span><span class="param">	<span class="n">temp_res</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.05</span></span><span class="return-annotation">) -> <span class="n"><a href="#HalfcosbasisParameters">HalfcosbasisParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="halfcosbasis_params-view-source"><span>View Source</span></label>
 
@@ -572,186 +716,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,81 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisSampleParcOutputs.outfile">outfile</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisSampleParcParameters">MrisSampleParcParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.subject_name">subject_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.hemisphere">hemisphere</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.parc_name">parc_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.output_annot">output_annot</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.sdir">sdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.surf">surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.fix">fix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.replace">replace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.trans">trans</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.cortex">cortex</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.projmm">projmm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.proj">proj</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.projfrac">projfrac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.file">file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.ct">ct</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.v_level">v_level</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.filter">filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.smooth">smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.w_size">w_size</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.thickness">thickness</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.change_unknown">change_unknown</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisSampleParcParameters.version">version</a>
                         </li>
                 </ul>
 
@@ -497,9 +570,10 @@
 </span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;MRIS_SAMPLE_PARC_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;MrisSampleParcOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;mris_sample_parc&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;mris_sample_parc_params&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="p">]</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;MrisSampleParcParameters&quot;</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;mris_sample_parc&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;mris_sample_parc_params&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -581,6 +655,272 @@
             <div class="docstring"><p>Output annotation file.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisSampleParcParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisSampleParcParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters"></a>
+    
+    
+
+                            <div id="MrisSampleParcParameters.subject_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.subject_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.hemisphere" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hemisphere</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.hemisphere"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.parc_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parc_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.parc_name"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.output_annot" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_annot</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.output_annot"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.sdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.sdir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.fix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.fix"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.replace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">replace</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.replace"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.trans" class="classattr">
+                                <div class="attr variable">
+            <span class="name">trans</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.trans"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.cortex" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cortex</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.cortex"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.projmm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">projmm</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.projmm"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.proj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">proj</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.proj"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.projfrac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">projfrac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.projfrac"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.ct" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ct</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.ct"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.v_level" class="classattr">
+                                <div class="attr variable">
+            <span class="name">v_level</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.v_level"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">filter</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.filter"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.w_size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">w_size</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.w_size"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.thickness" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thickness</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.thickness"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.change_unknown" class="classattr">
+                                <div class="attr variable">
+            <span class="name">change_unknown</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.change_unknown"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisSampleParcParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisSampleParcParameters.version"></a>
+    
+    
 
                             </div>
                 </section>
@@ -717,7 +1057,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_sample_parc_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">parc_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_annot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cortex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proj</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projfrac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ct</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">w_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">change_unknown</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_sample_parc</span><span class="o">.</span><span class="n">MrisSampleParcParameters</span>:</span></span>
+        <span class="name">mris_sample_parc_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">hemisphere</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">parc_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_annot</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">replace</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">trans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">cortex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projmm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">proj</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projfrac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ct</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">filter_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">w_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">thickness</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">change_unknown</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisSampleParcParameters">MrisSampleParcParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_sample_parc_params-view-source"><span>View Source</span></label>
 
@@ -870,186 +1210,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

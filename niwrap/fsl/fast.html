@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FastOutputs.tissue_class_map">tissue_class_map</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FastParameters">FastParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FastParameters.number_classes">number_classes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.bias_iters">bias_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.bias_lowpass">bias_lowpass</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.img_type">img_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.init_seg_smooth">init_seg_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.segments">segments</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.init_transform">init_transform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.other_priors">other_priors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.output_biasfield">output_biasfield</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.output_biascorrected">output_biascorrected</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.no_bias">no_bias</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.channels">channels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.out_basename">out_basename</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.use_priors">use_priors</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.no_pve">no_pve</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.segment_iters">segment_iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.mixel_smooth">mixel_smooth</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.hyper">hyper</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.verbose">verbose</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.manual_seg">manual_seg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.iters_afterbias">iters_afterbias</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FastParameters.in_files">in_files</a>
                         </li>
                 </ul>
 
@@ -522,9 +592,10 @@
 </span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;FAST_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;FastOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;fast&quot;</span><span class="p">,</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;fast_params&quot;</span><span class="p">,</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="p">]</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;FastParameters&quot;</span><span class="p">,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;fast&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;fast_params&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -666,6 +737,261 @@
             <div class="docstring"><p>Path/name of binary segmented volume file one val for each class _seg.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FastParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FastParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters"></a>
+    
+    
+
+                            <div id="FastParameters.number_classes" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_classes</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.number_classes"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.bias_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_iters</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.bias_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.bias_lowpass" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_lowpass</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.bias_lowpass"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.img_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">img_type</span><span class="annotation">: NotRequired[Optional[Literal[1, 2, 3]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.img_type"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.init_seg_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">init_seg_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.init_seg_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.segments" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segments</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.segments"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.init_transform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">init_transform</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.init_transform"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.other_priors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">other_priors</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.other_priors"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.output_biasfield" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_biasfield</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.output_biasfield"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.output_biascorrected" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_biascorrected</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.output_biascorrected"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.no_bias" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_bias</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.no_bias"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.channels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">channels</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.channels"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.out_basename" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_basename</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.out_basename"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.use_priors" class="classattr">
+                                <div class="attr variable">
+            <span class="name">use_priors</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.use_priors"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.no_pve" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_pve</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.no_pve"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.segment_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segment_iters</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.segment_iters"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.mixel_smooth" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mixel_smooth</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.mixel_smooth"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.hyper" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hyper</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.hyper"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.verbose"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.manual_seg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">manual_seg</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.manual_seg"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.iters_afterbias" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iters_afterbias</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.iters_afterbias"></a>
+    
+    
+
+                            </div>
+                            <div id="FastParameters.in_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">in_files</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FastParameters.in_files"></a>
+    
+    
 
                             </div>
                 </section>
@@ -816,7 +1142,7 @@ sensitive to noise.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fast_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">number_classes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_lowpass</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">img_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_seg_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segments</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">init_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">other_priors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_biasfield</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_biascorrected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_basename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;fast_out&#39;</span>,</span><span class="param">	<span class="n">use_priors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_pve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">segment_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mixel_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hyper</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manual_seg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iters_afterbias</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fast</span><span class="o">.</span><span class="n">FastParameters</span>:</span></span>
+        <span class="name">fast_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">in_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">number_classes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_lowpass</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">img_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">init_seg_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segments</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">init_transform</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">other_priors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_biasfield</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">output_biascorrected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_basename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;fast_out&#39;</span>,</span><span class="param">	<span class="n">use_priors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_pve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">segment_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mixel_smooth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hyper</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">manual_seg</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iters_afterbias</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FastParameters">FastParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fast_params-view-source"><span>View Source</span></label>
 
@@ -963,186 +1289,5 @@ sensitive to noise.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

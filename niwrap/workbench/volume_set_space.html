@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,18 @@
                     <a class="variable" href="#VOLUME_SET_SPACE_METADATA">VOLUME_SET_SPACE_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#VolumeSetSpaceFileParameters">VolumeSetSpaceFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceFileParameters.volume_ref">volume_ref</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceFileParameters.opt_ignore_dims">opt_ignore_dims</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#VolumeSetSpaceOutputs">VolumeSetSpaceOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +51,96 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeSetSpaceOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeSetSpaceParameters">VolumeSetSpaceParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceParameters.volume_in">volume_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceParameters.volume_out">volume_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceParameters.plumb">plumb</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceParameters.sform">sform</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceParameters.file">file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeSetSpacePlumbParameters">VolumeSetSpacePlumbParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.axis_order">axis_order</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.x_spacing">x_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.y_spacing">y_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.z_spacing">z_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.x_offset">x_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.y_offset">y_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpacePlumbParameters.z_offset">z_offset</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#VolumeSetSpaceSformParameters">VolumeSetSpaceSformParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.xi_spacing">xi_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.xj_spacing">xj_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.xk_spacing">xk_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.x_offset">x_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.yi_spacing">yi_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.yj_spacing">yj_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.yk_spacing">yk_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.y_offset">y_offset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.zi_spacing">zi_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.zj_spacing">zj_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.zk_spacing">zk_spacing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeSetSpaceSformParameters.z_offset">z_offset</a>
                         </li>
                 </ul>
 
@@ -510,13 +610,17 @@
 </span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>
 </span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;VOLUME_SET_SPACE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;VolumeSetSpaceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;volume_set_space&quot;</span><span class="p">,</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;volume_set_space_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;volume_set_space_params&quot;</span><span class="p">,</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;volume_set_space_plumb_params&quot;</span><span class="p">,</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;volume_set_space_sform_params&quot;</span><span class="p">,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="p">]</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;VolumeSetSpaceFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;VolumeSetSpaceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;VolumeSetSpaceParameters&quot;</span><span class="p">,</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;VolumeSetSpacePlumbParameters&quot;</span><span class="p">,</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;VolumeSetSpaceSformParameters&quot;</span><span class="p">,</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;volume_set_space&quot;</span><span class="p">,</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;volume_set_space_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>    <span class="s2">&quot;volume_set_space_params&quot;</span><span class="p">,</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>    <span class="s2">&quot;volume_set_space_plumb_params&quot;</span><span class="p">,</span>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;volume_set_space_sform_params&quot;</span><span class="p">,</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -533,6 +637,41 @@
     
     
 
+                </section>
+                <section id="VolumeSetSpaceFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeSetSpaceFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceFileParameters"></a>
+    
+    
+
+                            <div id="VolumeSetSpaceFileParameters.volume_ref" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_ref</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceFileParameters.volume_ref"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceFileParameters.opt_ignore_dims" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_ignore_dims</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceFileParameters.opt_ignore_dims"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="VolumeSetSpaceOutputs">
                             <input id="VolumeSetSpaceOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -586,12 +725,315 @@
 
                             </div>
                 </section>
+                <section id="VolumeSetSpaceParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeSetSpaceParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters"></a>
+    
+    
+
+                            <div id="VolumeSetSpaceParameters.volume_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters.volume_in"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceParameters.volume_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters.volume_out"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceParameters.plumb" class="classattr">
+                                <div class="attr variable">
+            <span class="name">plumb</span><span class="annotation">: NotRequired[<a href="#VolumeSetSpacePlumbParameters">VolumeSetSpacePlumbParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters.plumb"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceParameters.sform" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sform</span><span class="annotation">: NotRequired[<a href="#VolumeSetSpaceSformParameters">VolumeSetSpaceSformParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters.sform"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceParameters.file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">file</span><span class="annotation">: NotRequired[<a href="#VolumeSetSpaceFileParameters">VolumeSetSpaceFileParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceParameters.file"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeSetSpacePlumbParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeSetSpacePlumbParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters"></a>
+    
+    
+
+                            <div id="VolumeSetSpacePlumbParameters.axis_order" class="classattr">
+                                <div class="attr variable">
+            <span class="name">axis_order</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.axis_order"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.x_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">x_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.x_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.y_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">y_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.y_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.z_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">z_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.z_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.x_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">x_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.x_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.y_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">y_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.y_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpacePlumbParameters.z_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">z_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpacePlumbParameters.z_offset"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeSetSpaceSformParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeSetSpaceSformParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters"></a>
+    
+    
+
+                            <div id="VolumeSetSpaceSformParameters.xi_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xi_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.xi_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.xj_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xj_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.xj_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.xk_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xk_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.xk_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.x_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">x_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.x_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.yi_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">yi_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.yi_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.yj_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">yj_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.yj_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.yk_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">yk_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.yk_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.y_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">y_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.y_offset"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.zi_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zi_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.zi_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.zj_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zj_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.zj_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.zk_spacing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zk_spacing</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.zk_spacing"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeSetSpaceSformParameters.z_offset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">z_offset</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeSetSpaceSformParameters.z_offset"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="volume_set_space">
                             <input id="volume_set_space-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_set_space</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plumb</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sform</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpaceOutputs">VolumeSetSpaceOutputs</a></span>:</span></span>
+        <span class="name">volume_set_space</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plumb</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpacePlumbParameters">VolumeSetSpacePlumbParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sform</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpaceSformParameters">VolumeSetSpaceSformParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpaceFileParameters">VolumeSetSpaceFileParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpaceOutputs">VolumeSetSpaceOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_set_space-view-source"><span>View Source</span></label>
 
@@ -670,7 +1112,7 @@ one of -plumb, -sform, or -file must be specified.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_set_space_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_ref</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_ignore_dims</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceFileParameters</span>:</span></span>
+        <span class="name">volume_set_space_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_ref</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_ignore_dims</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpaceFileParameters">VolumeSetSpaceFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_set_space_file_params-view-source"><span>View Source</span></label>
 
@@ -722,7 +1164,7 @@ one of -plumb, -sform, or -file must be specified.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_set_space_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plumb</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpacePlumbParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sform</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceSformParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceFileParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceParameters</span>:</span></span>
+        <span class="name">volume_set_space_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">plumb</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpacePlumbParameters">VolumeSetSpacePlumbParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sform</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpaceSformParameters">VolumeSetSpaceSformParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">file</span><span class="p">:</span> <span class="n"><a href="#VolumeSetSpaceFileParameters">VolumeSetSpaceFileParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpaceParameters">VolumeSetSpaceParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_set_space_params-view-source"><span>View Source</span></label>
 
@@ -788,7 +1230,7 @@ one of -plumb, -sform, or -file must be specified.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_set_space_plumb_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">axis_order</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">x_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">x_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_offset</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpacePlumbParameters</span>:</span></span>
+        <span class="name">volume_set_space_plumb_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">axis_order</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">x_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">x_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_offset</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpacePlumbParameters">VolumeSetSpacePlumbParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_set_space_plumb_params-view-source"><span>View Source</span></label>
 
@@ -860,7 +1302,7 @@ one of -plumb, -sform, or -file must be specified.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_set_space_sform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">xi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">xj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">xk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">x_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_offset</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">volume_set_space</span><span class="o">.</span><span class="n">VolumeSetSpaceSformParameters</span>:</span></span>
+        <span class="name">volume_set_space_sform_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">xi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">xj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">xk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">x_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">yk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">y_offset</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zi_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zj_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">zk_spacing</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">z_offset</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeSetSpaceSformParameters">VolumeSetSpaceSformParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_set_space_sform_params-view-source"><span>View Source</span></label>
 
@@ -947,186 +1389,5 @@ one of -plumb, -sform, or -file must be specified.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -56,6 +54,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#GcaApplyOutputs.stats_output">stats_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#GcaApplyParameters">GcaApplyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.gcafile">gcafile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.base">base</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.no_segstats">no_segstats</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.subjects_dir">subjects_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.dice_seg">dice_seg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.dice_file">dice_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.lta">lta</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.norm">norm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.input_mgz">input_mgz</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.brainmask">brainmask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.no_v6labopts">no_v6labopts</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.m3z_file">m3z_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.gca_rb_2016">gca_rb_2016</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.force_update">force_update</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#GcaApplyParameters.gcareg_iters">gcareg_iters</a>
                         </li>
                 </ul>
 
@@ -458,9 +516,10 @@
 </span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;GCA_APPLY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;GcaApplyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;gca_apply&quot;</span><span class="p">,</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;gca_apply_params&quot;</span><span class="p">,</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="p">]</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;GcaApplyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;gca_apply&quot;</span><span class="p">,</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;gca_apply_params&quot;</span><span class="p">,</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -605,6 +664,217 @@
 
                             </div>
                 </section>
+                <section id="GcaApplyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">GcaApplyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters"></a>
+    
+    
+
+                            <div id="GcaApplyParameters.gcafile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcafile</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.gcafile"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.base" class="classattr">
+                                <div class="attr variable">
+            <span class="name">base</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.base"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.no_segstats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_segstats</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.no_segstats"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.subjects_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.dice_seg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dice_seg</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.dice_seg"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.dice_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dice_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.dice_file"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.lta" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lta</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.lta"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.norm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">norm</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.norm"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.input_mgz" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_mgz</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.input_mgz"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.brainmask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">brainmask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.brainmask"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.no_v6labopts" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_v6labopts</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.no_v6labopts"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.m3z_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">m3z_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.m3z_file"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.gca_rb_2016" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gca_rb_2016</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.gca_rb_2016"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.force_update" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force_update</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.force_update"></a>
+    
+    
+
+                            </div>
+                            <div id="GcaApplyParameters.gcareg_iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcareg_iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GcaApplyParameters.gcareg_iters"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="gca_apply">
                             <input id="gca_apply-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -723,7 +993,7 @@ recon-all without overwriting files.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">gca_apply_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">gcafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_segstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dice_seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dice_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">norm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_mgz</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">brainmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_v6labopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">m3z_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gca_rb_2016</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gcareg_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">gca_apply</span><span class="o">.</span><span class="n">GcaApplyParameters</span>:</span></span>
+        <span class="name">gca_apply_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">gcafile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">base</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_segstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dice_seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dice_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lta</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">norm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_mgz</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">brainmask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_v6labopts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">m3z_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gca_rb_2016</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">gcareg_iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#GcaApplyParameters">GcaApplyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="gca_apply_params-view-source"><span>View Source</span></label>
 
@@ -847,186 +1117,5 @@ recon-all without overwriting files.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#DWIBIASCORRECT_METADATA">DWIBIASCORRECT_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#DwibiascorrectFslgradParameters">DwibiascorrectFslgradParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DwibiascorrectFslgradParameters.bvecs">bvecs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectFslgradParameters.bvals">bvals</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a>
@@ -47,6 +57,75 @@
                         </li>
                         <li>
                                 <a class="variable" href="#DwibiascorrectOutputs.bias_image_file">bias_image_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DwibiascorrectParameters">DwibiascorrectParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.algorithm">algorithm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.input_image">input_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.output_image">output_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.grad">grad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.fslgrad">fslgrad</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.mask_image">mask_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.bias_image">bias_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.nocleanup">nocleanup</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.scratch_dir">scratch_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.continue_scratch_dir">continue_scratch_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.ants_b">ants_b</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.ants_c">ants_c</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DwibiascorrectParameters.ants_s">ants_s</a>
                         </li>
                 </ul>
 
@@ -530,11 +609,13 @@
 </span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>
 </span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;DWIBIASCORRECT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;DwibiascorrectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">,</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;dwibiascorrect_fslgrad_params&quot;</span><span class="p">,</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;dwibiascorrect_params&quot;</span><span class="p">,</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="p">]</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;DwibiascorrectFslgradParameters&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;DwibiascorrectOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;DwibiascorrectParameters&quot;</span><span class="p">,</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;dwibiascorrect&quot;</span><span class="p">,</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;dwibiascorrect_fslgrad_params&quot;</span><span class="p">,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;dwibiascorrect_params&quot;</span><span class="p">,</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -551,6 +632,41 @@
     
     
 
+                </section>
+                <section id="DwibiascorrectFslgradParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DwibiascorrectFslgradParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgradParameters"></a>
+    
+    
+
+                            <div id="DwibiascorrectFslgradParameters.bvecs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvecs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgradParameters.bvecs"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectFslgradParameters.bvals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bvals</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectFslgradParameters.bvals"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="DwibiascorrectOutputs">
                             <input id="DwibiascorrectOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -634,12 +750,256 @@
 
                             </div>
                 </section>
+                <section id="DwibiascorrectParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DwibiascorrectParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters"></a>
+    
+    
+
+                            <div id="DwibiascorrectParameters.algorithm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">algorithm</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.algorithm"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.input_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.input_image"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.output_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_image</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.output_image"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.grad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">grad</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.grad"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.fslgrad" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fslgrad</span><span class="annotation">: NotRequired[<a href="#DwibiascorrectFslgradParameters">DwibiascorrectFslgradParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.fslgrad"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.mask_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.mask_image"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.bias_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.bias_image"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.nocleanup" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocleanup</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.nocleanup"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.scratch_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scratch_dir</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.scratch_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.continue_scratch_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">continue_scratch_dir</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.continue_scratch_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.ants_b" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ants_b</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.ants_b"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.ants_c" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ants_c</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.ants_c"></a>
+    
+    
+
+                            </div>
+                            <div id="DwibiascorrectParameters.ants_s" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ants_s</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DwibiascorrectParameters.ants_s"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="dwibiascorrect">
                             <input id="dwibiascorrect-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwibiascorrect</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwibiascorrect</span><span class="o">.</span><span class="n">DwibiascorrectFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a></span>:</span></span>
+        <span class="name">dwibiascorrect</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#DwibiascorrectFslgradParameters">DwibiascorrectFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectOutputs">DwibiascorrectOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwibiascorrect-view-source"><span>View Source</span></label>
 
@@ -769,7 +1129,7 @@ ANTs or FSL.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwibiascorrect_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwibiascorrect</span><span class="o">.</span><span class="n">DwibiascorrectFslgradParameters</span>:</span></span>
+        <span class="name">dwibiascorrect_fslgrad_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">bvecs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">bvals</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectFslgradParameters">DwibiascorrectFslgradParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwibiascorrect_fslgrad_params-view-source"><span>View Source</span></label>
 
@@ -826,7 +1186,7 @@ ANTs or FSL.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">dwibiascorrect_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwibiascorrect</span><span class="o">.</span><span class="n">DwibiascorrectFslgradParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">dwibiascorrect</span><span class="o">.</span><span class="n">DwibiascorrectParameters</span>:</span></span>
+        <span class="name">dwibiascorrect_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_image</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">grad</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fslgrad</span><span class="p">:</span> <span class="n"><a href="#DwibiascorrectFslgradParameters">DwibiascorrectFslgradParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bias_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">scratch_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">continue_scratch_dir</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ants_b</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ants_s</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#DwibiascorrectParameters">DwibiascorrectParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="dwibiascorrect_params-view-source"><span>View Source</span></label>
 
@@ -971,186 +1331,5 @@ ANTs or FSL.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

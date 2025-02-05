@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -52,6 +50,21 @@
 
             </li>
             <li>
+                    <a class="class" href="#CiftiSeparateLabelParameters">CiftiSeparateLabelParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSeparateLabelParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateLabelParameters.label_out">label_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateLabelParameters.opt_roi_roi_out">opt_roi_roi_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#CiftiSeparateMetricOutputs">CiftiSeparateMetricOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -65,6 +78,21 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiSeparateMetricOutputs.opt_roi_roi_out">opt_roi_roi_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSeparateMetricParameters">CiftiSeparateMetricParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSeparateMetricParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateMetricParameters.metric_out">metric_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateMetricParameters.opt_roi_roi_out">opt_roi_roi_out</a>
                         </li>
                 </ul>
 
@@ -94,6 +122,30 @@
 
             </li>
             <li>
+                    <a class="class" href="#CiftiSeparateParameters">CiftiSeparateParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.cifti_in">cifti_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.direction">direction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.volume_all">volume_all</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.label">label</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateParameters.volume">volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#CiftiSeparateVolumeAllOutputs">CiftiSeparateVolumeAllOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -115,6 +167,24 @@
 
             </li>
             <li>
+                    <a class="class" href="#CiftiSeparateVolumeAllParameters">CiftiSeparateVolumeAllParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeAllParameters.volume_out">volume_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeAllParameters.opt_roi_roi_out">opt_roi_roi_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeAllParameters.opt_label_label_out">opt_label_label_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeAllParameters.opt_crop">opt_crop</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#CiftiSeparateVolumeOutputs">CiftiSeparateVolumeOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -128,6 +198,24 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiSeparateVolumeOutputs.opt_roi_roi_out">opt_roi_roi_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiSeparateVolumeParameters">CiftiSeparateVolumeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeParameters.structure">structure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeParameters.volume_out">volume_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeParameters.opt_roi_roi_out">opt_roi_roi_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiSeparateVolumeParameters.opt_crop">opt_crop</a>
                         </li>
                 </ul>
 
@@ -722,10 +810,10 @@
 </span><span id="L-549"><a href="#L-549"><span class="linenos">549</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-550"><a href="#L-550"><span class="linenos">550</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiSeparateOutputs</span><span class="p">(</span>
 </span><span id="L-551"><a href="#L-551"><span class="linenos">551</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>        <span class="n">volume_all</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">volume_all</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">volume_all</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">volume_all</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>        <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span> <span class="k">if</span> <span class="n">label</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>        <span class="n">metric</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">metric</span><span class="p">]</span> <span class="k">if</span> <span class="n">metric</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>        <span class="n">volume</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">volume</span><span class="p">]</span> <span class="k">if</span> <span class="n">volume</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-552"><a href="#L-552"><span class="linenos">552</span></a>        <span class="n">volume_all</span><span class="o">=</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;volume_all&quot;</span><span class="p">)[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;volume_all&quot;</span><span class="p">),</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;volume_all&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-553"><a href="#L-553"><span class="linenos">553</span></a>        <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)]</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-554"><a href="#L-554"><span class="linenos">554</span></a>        <span class="n">metric</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metric&quot;</span><span class="p">)]</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metric&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-555"><a href="#L-555"><span class="linenos">555</span></a>        <span class="n">volume</span><span class="o">=</span><span class="p">[</span><span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])(</span><span class="n">i</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">dyn_outputs</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;volume&quot;</span><span class="p">)]</span> <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;volume&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-556"><a href="#L-556"><span class="linenos">556</span></a>    <span class="p">)</span>
 </span><span id="L-557"><a href="#L-557"><span class="linenos">557</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-558"><a href="#L-558"><span class="linenos">558</span></a>
@@ -880,17 +968,22 @@
 </span><span id="L-707"><a href="#L-707"><span class="linenos">707</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-708"><a href="#L-708"><span class="linenos">708</span></a>    <span class="s2">&quot;CIFTI_SEPARATE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-709"><a href="#L-709"><span class="linenos">709</span></a>    <span class="s2">&quot;CiftiSeparateLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;CiftiSeparateMetricOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;CiftiSeparateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;CiftiSeparateVolumeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;cifti_separate&quot;</span><span class="p">,</span>
-</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;cifti_separate_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;cifti_separate_metric_params&quot;</span><span class="p">,</span>
-</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;cifti_separate_params&quot;</span><span class="p">,</span>
-</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;cifti_separate_volume_all_params&quot;</span><span class="p">,</span>
-</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;cifti_separate_volume_params&quot;</span><span class="p">,</span>
-</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a><span class="p">]</span>
+</span><span id="L-710"><a href="#L-710"><span class="linenos">710</span></a>    <span class="s2">&quot;CiftiSeparateLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-711"><a href="#L-711"><span class="linenos">711</span></a>    <span class="s2">&quot;CiftiSeparateMetricOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-712"><a href="#L-712"><span class="linenos">712</span></a>    <span class="s2">&quot;CiftiSeparateMetricParameters&quot;</span><span class="p">,</span>
+</span><span id="L-713"><a href="#L-713"><span class="linenos">713</span></a>    <span class="s2">&quot;CiftiSeparateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-714"><a href="#L-714"><span class="linenos">714</span></a>    <span class="s2">&quot;CiftiSeparateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-715"><a href="#L-715"><span class="linenos">715</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="s2">&quot;CiftiSeparateVolumeAllParameters&quot;</span><span class="p">,</span>
+</span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a>    <span class="s2">&quot;CiftiSeparateVolumeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="s2">&quot;CiftiSeparateVolumeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a>    <span class="s2">&quot;cifti_separate&quot;</span><span class="p">,</span>
+</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a>    <span class="s2">&quot;cifti_separate_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a>    <span class="s2">&quot;cifti_separate_metric_params&quot;</span><span class="p">,</span>
+</span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a>    <span class="s2">&quot;cifti_separate_params&quot;</span><span class="p">,</span>
+</span><span id="L-723"><a href="#L-723"><span class="linenos">723</span></a>    <span class="s2">&quot;cifti_separate_volume_all_params&quot;</span><span class="p">,</span>
+</span><span id="L-724"><a href="#L-724"><span class="linenos">724</span></a>    <span class="s2">&quot;cifti_separate_volume_params&quot;</span><span class="p">,</span>
+</span><span id="L-725"><a href="#L-725"><span class="linenos">725</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -990,6 +1083,52 @@
 
                             </div>
                 </section>
+                <section id="CiftiSeparateLabelParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSeparateLabelParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateLabelParameters"></a>
+    
+    
+
+                            <div id="CiftiSeparateLabelParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateLabelParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateLabelParameters.label_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateLabelParameters.label_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateLabelParameters.opt_roi_roi_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_roi_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateLabelParameters.opt_roi_roi_out"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="CiftiSeparateMetricOutputs">
                             <input id="CiftiSeparateMetricOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -1069,6 +1208,52 @@
             <div class="docstring"><p>also output the roi of which vertices have data: the roi output metric</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="CiftiSeparateMetricParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSeparateMetricParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateMetricParameters"></a>
+    
+    
+
+                            <div id="CiftiSeparateMetricParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateMetricParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateMetricParameters.metric_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateMetricParameters.metric_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateMetricParameters.opt_roi_roi_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_roi_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateMetricParameters.opt_roi_roi_out"></a>
+    
+    
 
                             </div>
                 </section>
@@ -1190,6 +1375,85 @@ with the same length and order as the inputs.</p>
 
                             </div>
                 </section>
+                <section id="CiftiSeparateParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSeparateParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters"></a>
+    
+    
+
+                            <div id="CiftiSeparateParameters.cifti_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cifti_in</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.cifti_in"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateParameters.direction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">direction</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.direction"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateParameters.volume_all" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_all</span><span class="annotation">: NotRequired[<a href="#CiftiSeparateVolumeAllParameters">CiftiSeparateVolumeAllParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.volume_all"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateParameters.label" class="classattr">
+                                <div class="attr variable">
+            <span class="name">label</span><span class="annotation">: NotRequired[list[<a href="#CiftiSeparateLabelParameters">CiftiSeparateLabelParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.label"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: NotRequired[list[<a href="#CiftiSeparateMetricParameters">CiftiSeparateMetricParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateParameters.volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume</span><span class="annotation">: NotRequired[list[<a href="#CiftiSeparateVolumeParameters">CiftiSeparateVolumeParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateParameters.volume"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="CiftiSeparateVolumeAllOutputs">
                             <input id="CiftiSeparateVolumeAllOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -1289,6 +1553,63 @@ label output volume</p>
 
                             </div>
                 </section>
+                <section id="CiftiSeparateVolumeAllParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSeparateVolumeAllParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeAllParameters"></a>
+    
+    
+
+                            <div id="CiftiSeparateVolumeAllParameters.volume_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeAllParameters.volume_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeAllParameters.opt_roi_roi_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_roi_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeAllParameters.opt_roi_roi_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeAllParameters.opt_label_label_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_label_label_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeAllParameters.opt_label_label_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeAllParameters.opt_crop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_crop</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeAllParameters.opt_crop"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="CiftiSeparateVolumeOutputs">
                             <input id="CiftiSeparateVolumeOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -1371,12 +1692,69 @@ label output volume</p>
 
                             </div>
                 </section>
+                <section id="CiftiSeparateVolumeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiSeparateVolumeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeParameters"></a>
+    
+    
+
+                            <div id="CiftiSeparateVolumeParameters.structure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structure</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeParameters.structure"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeParameters.volume_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeParameters.volume_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeParameters.opt_roi_roi_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_roi_roi_out</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeParameters.opt_roi_roi_out"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiSeparateVolumeParameters.opt_crop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_crop</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiSeparateVolumeParameters.opt_crop"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="cifti_separate">
                             <input id="cifti_separate-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateOutputs">CiftiSeparateOutputs</a></span>:</span></span>
+        <span class="name">cifti_separate</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiSeparateVolumeAllParameters">CiftiSeparateVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateLabelParameters">CiftiSeparateLabelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateMetricParameters">CiftiSeparateMetricParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateVolumeParameters">CiftiSeparateVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateOutputs">CiftiSeparateOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate-view-source"><span>View Source</span></label>
 
@@ -1538,7 +1916,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateLabelParameters</span>:</span></span>
+        <span class="name">cifti_separate_label_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateLabelParameters">CiftiSeparateLabelParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate_label_params-view-source"><span>View Source</span></label>
 
@@ -1595,7 +1973,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateMetricParameters</span>:</span></span>
+        <span class="name">cifti_separate_metric_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateMetricParameters">CiftiSeparateMetricParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate_metric_params-view-source"><span>View Source</span></label>
 
@@ -1652,7 +2030,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeAllParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateLabelParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateMetricParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateParameters</span>:</span></span>
+        <span class="name">cifti_separate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">cifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">direction</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_all</span><span class="p">:</span> <span class="n"><a href="#CiftiSeparateVolumeAllParameters">CiftiSeparateVolumeAllParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">label</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateLabelParameters">CiftiSeparateLabelParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateMetricParameters">CiftiSeparateMetricParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">volume</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiSeparateVolumeParameters">CiftiSeparateVolumeParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateParameters">CiftiSeparateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate_params-view-source"><span>View Source</span></label>
 
@@ -1723,7 +2101,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_label_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeAllParameters</span>:</span></span>
+        <span class="name">cifti_separate_volume_all_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_label_label_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateVolumeAllParameters">CiftiSeparateVolumeAllParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate_volume_all_params-view-source"><span>View Source</span></label>
 
@@ -1787,7 +2165,7 @@ THALAMUS_RIGHT.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_separate_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">cifti_separate</span><span class="o">.</span><span class="n">CiftiSeparateVolumeParameters</span>:</span></span>
+        <span class="name">cifti_separate_volume_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structure</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_roi_roi_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_crop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiSeparateVolumeParameters">CiftiSeparateVolumeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_separate_volume_params-view-source"><span>View Source</span></label>
 
@@ -1845,186 +2223,5 @@ THALAMUS_RIGHT.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

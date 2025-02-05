@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -68,6 +66,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dAnovaOutputs.bucket_brick_output">bucket_brick_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dAnovaParameters">V3dAnovaParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.levels">levels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.datasets">datasets</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.voxel">voxel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.diskspace">diskspace</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.ftr">ftr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.mean">mean</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.diff">diff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.contr">contr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.old_method">old_method</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.ok">ok</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.assume_sph">assume_sph</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dAnovaParameters.bucket">bucket</a>
                         </li>
                 </ul>
 
@@ -442,10 +488,11 @@
 </span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>
 </span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="s2">&quot;V3dAnovaOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;V_3D_ANOVA_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;v_3d_anova&quot;</span><span class="p">,</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;v_3d_anova_params&quot;</span><span class="p">,</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="p">]</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="s2">&quot;V3dAnovaParameters&quot;</span><span class="p">,</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="s2">&quot;V_3D_ANOVA_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="s2">&quot;v_3d_anova&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;v_3d_anova_params&quot;</span><span class="p">,</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -652,6 +699,173 @@
 
                             </div>
                 </section>
+                <section id="V3dAnovaParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dAnovaParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters"></a>
+    
+    
+
+                            <div id="V3dAnovaParameters.levels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">levels</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.levels"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.datasets" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datasets</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.datasets"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.voxel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">voxel</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.voxel"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.diskspace" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diskspace</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.diskspace"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.ftr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ftr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.ftr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.mean" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.mean"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.diff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">diff</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.diff"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.contr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">contr</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.contr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.old_method" class="classattr">
+                                <div class="attr variable">
+            <span class="name">old_method</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.old_method"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.ok" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ok</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.ok"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.assume_sph" class="classattr">
+                                <div class="attr variable">
+            <span class="name">assume_sph</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.assume_sph"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dAnovaParameters.bucket" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bucket</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dAnovaParameters.bucket"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_3D_ANOVA_METADATA">
                     <div class="attr variable">
             <span class="name">V_3D_ANOVA_METADATA</span>        =
@@ -767,7 +981,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_anova_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">levels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diskspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">old_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">assume_sph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_anova</span><span class="o">.</span><span class="n">V3dAnovaParameters</span>:</span></span>
+        <span class="name">v_3d_anova_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">levels</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">voxel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diskspace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ftr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">diff</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">old_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">assume_sph</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dAnovaParameters">V3dAnovaParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_anova_params-view-source"><span>View Source</span></label>
 
@@ -871,186 +1085,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

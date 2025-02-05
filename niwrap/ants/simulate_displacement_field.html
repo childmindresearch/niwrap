@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,27 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#SIMULATE_DISPLACEMENT_FIELD_METADATA">SIMULATE_DISPLACEMENT_FIELD_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#SimulateDisplacementFieldBsplineOptionsParameters">SimulateDisplacementFieldBsplineOptionsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldBsplineOptionsParameters.number_of_fitting_levels">number_of_fitting_levels</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldBsplineOptionsParameters.number_of_control_points">number_of_control_points</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SimulateDisplacementFieldExponentialOptionsParameters">SimulateDisplacementFieldExponentialOptionsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldExponentialOptionsParameters.smoothing_standard_deviation">smoothing_standard_deviation</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#SimulateDisplacementFieldOutputs">SimulateDisplacementFieldOutputs</a>
@@ -44,6 +63,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SimulateDisplacementFieldOutputs.output_displacement_field">output_displacement_field</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#SimulateDisplacementFieldParameters">SimulateDisplacementFieldParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.image_dimension">image_dimension</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.displacement_field_type">displacement_field_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.domain_image">domain_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.output_field">output_field</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.number_of_random_points">number_of_random_points</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.standard_deviation_displacement_field">standard_deviation_displacement_field</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.enforce_stationary_boundary">enforce_stationary_boundary</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SimulateDisplacementFieldParameters.displacement_specific_options">displacement_specific_options</a>
                         </li>
                 </ul>
 
@@ -412,12 +461,15 @@
 </span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>
 </span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="s2">&quot;SIMULATE_DISPLACEMENT_FIELD_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;SimulateDisplacementFieldOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;simulate_displacement_field&quot;</span><span class="p">,</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;simulate_displacement_field_bspline_options_params&quot;</span><span class="p">,</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;simulate_displacement_field_exponential_options_params&quot;</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;simulate_displacement_field_params&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="p">]</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="s2">&quot;SimulateDisplacementFieldBsplineOptionsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="s2">&quot;SimulateDisplacementFieldExponentialOptionsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;SimulateDisplacementFieldOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;SimulateDisplacementFieldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;simulate_displacement_field&quot;</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;simulate_displacement_field_bspline_options_params&quot;</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;simulate_displacement_field_exponential_options_params&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;simulate_displacement_field_params&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -434,6 +486,65 @@
     
     
 
+                </section>
+                <section id="SimulateDisplacementFieldBsplineOptionsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SimulateDisplacementFieldBsplineOptionsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldBsplineOptionsParameters"></a>
+    
+    
+
+                            <div id="SimulateDisplacementFieldBsplineOptionsParameters.number_of_fitting_levels" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_fitting_levels</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldBsplineOptionsParameters.number_of_fitting_levels"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldBsplineOptionsParameters.number_of_control_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_control_points</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldBsplineOptionsParameters.number_of_control_points"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="SimulateDisplacementFieldExponentialOptionsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SimulateDisplacementFieldExponentialOptionsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldExponentialOptionsParameters"></a>
+    
+    
+
+                            <div id="SimulateDisplacementFieldExponentialOptionsParameters.smoothing_standard_deviation" class="classattr">
+                                <div class="attr variable">
+            <span class="name">smoothing_standard_deviation</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldExponentialOptionsParameters.smoothing_standard_deviation"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="SimulateDisplacementFieldOutputs">
                             <input id="SimulateDisplacementFieldOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -502,12 +613,113 @@
 
                             </div>
                 </section>
+                <section id="SimulateDisplacementFieldParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SimulateDisplacementFieldParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters"></a>
+    
+    
+
+                            <div id="SimulateDisplacementFieldParameters.image_dimension" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimension</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.image_dimension"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.displacement_field_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">displacement_field_type</span><span class="annotation">: Literal[&#39;BSpline&#39;, &#39;Exponential&#39;]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.displacement_field_type"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.domain_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">domain_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.domain_image"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.output_field" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_field</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.output_field"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.number_of_random_points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">number_of_random_points</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.number_of_random_points"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.standard_deviation_displacement_field" class="classattr">
+                                <div class="attr variable">
+            <span class="name">standard_deviation_displacement_field</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.standard_deviation_displacement_field"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.enforce_stationary_boundary" class="classattr">
+                                <div class="attr variable">
+            <span class="name">enforce_stationary_boundary</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.enforce_stationary_boundary"></a>
+    
+    
+
+                            </div>
+                            <div id="SimulateDisplacementFieldParameters.displacement_specific_options" class="classattr">
+                                <div class="attr variable">
+            <span class="name">displacement_specific_options</span><span class="annotation">: NotRequired[Union[<a href="#SimulateDisplacementFieldBsplineOptionsParameters">SimulateDisplacementFieldBsplineOptionsParameters</a>, <a href="#SimulateDisplacementFieldExponentialOptionsParameters">SimulateDisplacementFieldExponentialOptionsParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SimulateDisplacementFieldParameters.displacement_specific_options"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="simulate_displacement_field">
                             <input id="simulate_displacement_field-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">simulate_displacement_field</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">displacement_field_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;BSpline&#39;</span><span class="p">,</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_field</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_of_random_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">standard_deviation_displacement_field</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">enforce_stationary_boundary</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">displacement_specific_options</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldBsplineOptionsParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldExponentialOptionsParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SimulateDisplacementFieldOutputs">SimulateDisplacementFieldOutputs</a></span>:</span></span>
+        <span class="name">simulate_displacement_field</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">displacement_field_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;BSpline&#39;</span><span class="p">,</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_field</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_of_random_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">standard_deviation_displacement_field</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">enforce_stationary_boundary</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">displacement_specific_options</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#SimulateDisplacementFieldBsplineOptionsParameters">SimulateDisplacementFieldBsplineOptionsParameters</a></span><span class="p">,</span> <span class="n"><a href="#SimulateDisplacementFieldExponentialOptionsParameters">SimulateDisplacementFieldExponentialOptionsParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SimulateDisplacementFieldOutputs">SimulateDisplacementFieldOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="simulate_displacement_field-view-source"><span>View Source</span></label>
 
@@ -591,7 +803,7 @@ Exponential.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">simulate_displacement_field_bspline_options_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">number_of_fitting_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">number_of_control_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldBsplineOptionsParameters</span>:</span></span>
+        <span class="name">simulate_displacement_field_bspline_options_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">number_of_fitting_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span>,</span><span class="param">	<span class="n">number_of_control_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span></span><span class="return-annotation">) -> <span class="n"><a href="#SimulateDisplacementFieldBsplineOptionsParameters">SimulateDisplacementFieldBsplineOptionsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="simulate_displacement_field_bspline_options_params-view-source"><span>View Source</span></label>
 
@@ -644,7 +856,7 @@ Exponential.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">simulate_displacement_field_exponential_options_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">smoothing_standard_deviation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldExponentialOptionsParameters</span>:</span></span>
+        <span class="name">simulate_displacement_field_exponential_options_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">smoothing_standard_deviation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4</span></span><span class="return-annotation">) -> <span class="n"><a href="#SimulateDisplacementFieldExponentialOptionsParameters">SimulateDisplacementFieldExponentialOptionsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="simulate_displacement_field_exponential_options_params-view-source"><span>View Source</span></label>
 
@@ -693,7 +905,7 @@ Exponential.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">simulate_displacement_field_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">displacement_field_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;BSpline&#39;</span><span class="p">,</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_field</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_of_random_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">standard_deviation_displacement_field</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">enforce_stationary_boundary</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">displacement_specific_options</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldBsplineOptionsParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldExponentialOptionsParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">simulate_displacement_field</span><span class="o">.</span><span class="n">SimulateDisplacementFieldParameters</span>:</span></span>
+        <span class="name">simulate_displacement_field_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">image_dimension</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">displacement_field_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;BSpline&#39;</span><span class="p">,</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">]</span>,</span><span class="param">	<span class="n">domain_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_field</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">number_of_random_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1000</span>,</span><span class="param">	<span class="n">standard_deviation_displacement_field</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">enforce_stationary_boundary</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span>,</span><span class="param">	<span class="n">displacement_specific_options</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#SimulateDisplacementFieldBsplineOptionsParameters">SimulateDisplacementFieldBsplineOptionsParameters</a></span><span class="p">,</span> <span class="n"><a href="#SimulateDisplacementFieldExponentialOptionsParameters">SimulateDisplacementFieldExponentialOptionsParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SimulateDisplacementFieldParameters">SimulateDisplacementFieldParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="simulate_displacement_field_params-view-source"><span>View Source</span></label>
 
@@ -772,186 +984,5 @@ Exponential.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

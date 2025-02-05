@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MetricToVolumeMappingOutputs.volume_out">volume_out</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MetricToVolumeMappingParameters">MetricToVolumeMappingParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.metric">metric</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.surface">surface</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.volume_space">volume_space</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.volume_out">volume_out</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.opt_nearest_vertex_distance">opt_nearest_vertex_distance</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingParameters.ribbon_constrained">ribbon_constrained</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MetricToVolumeMappingRibbonConstrainedParameters">MetricToVolumeMappingRibbonConstrainedParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingRibbonConstrainedParameters.inner_surf">inner_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingRibbonConstrainedParameters.outer_surf">outer_surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_voxel_subdiv_subdiv_num">opt_voxel_subdiv_subdiv_num</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_greedy">opt_greedy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_thick_columns">opt_thick_columns</a>
                         </li>
                 </ul>
 
@@ -383,10 +426,12 @@
 </span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="s2">&quot;METRIC_TO_VOLUME_MAPPING_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="s2">&quot;MetricToVolumeMappingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;metric_to_volume_mapping&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;metric_to_volume_mapping_params&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;metric_to_volume_mapping_ribbon_constrained_params&quot;</span><span class="p">,</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="p">]</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="s2">&quot;MetricToVolumeMappingParameters&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="s2">&quot;MetricToVolumeMappingRibbonConstrainedParameters&quot;</span><span class="p">,</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="s2">&quot;metric_to_volume_mapping&quot;</span><span class="p">,</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="s2">&quot;metric_to_volume_mapping_params&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="s2">&quot;metric_to_volume_mapping_ribbon_constrained_params&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -471,12 +516,159 @@
 
                             </div>
                 </section>
+                <section id="MetricToVolumeMappingParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MetricToVolumeMappingParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters"></a>
+    
+    
+
+                            <div id="MetricToVolumeMappingParameters.metric" class="classattr">
+                                <div class="attr variable">
+            <span class="name">metric</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.metric"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingParameters.surface" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surface</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.surface"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingParameters.volume_space" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_space</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.volume_space"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingParameters.volume_out" class="classattr">
+                                <div class="attr variable">
+            <span class="name">volume_out</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.volume_out"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingParameters.opt_nearest_vertex_distance" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_nearest_vertex_distance</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.opt_nearest_vertex_distance"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingParameters.ribbon_constrained" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ribbon_constrained</span><span class="annotation">: NotRequired[<a href="#MetricToVolumeMappingRibbonConstrainedParameters">MetricToVolumeMappingRibbonConstrainedParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingParameters.ribbon_constrained"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="MetricToVolumeMappingRibbonConstrainedParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MetricToVolumeMappingRibbonConstrainedParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters"></a>
+    
+    
+
+                            <div id="MetricToVolumeMappingRibbonConstrainedParameters.inner_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inner_surf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters.inner_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingRibbonConstrainedParameters.outer_surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">outer_surf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters.outer_surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingRibbonConstrainedParameters.opt_voxel_subdiv_subdiv_num" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_voxel_subdiv_subdiv_num</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_voxel_subdiv_subdiv_num"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingRibbonConstrainedParameters.opt_greedy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_greedy</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_greedy"></a>
+    
+    
+
+                            </div>
+                            <div id="MetricToVolumeMappingRibbonConstrainedParameters.opt_thick_columns" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_thick_columns</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MetricToVolumeMappingRibbonConstrainedParameters.opt_thick_columns"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="metric_to_volume_mapping">
                             <input id="metric_to_volume_mapping-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_to_volume_mapping</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_space</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_nearest_vertex_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ribbon_constrained</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_to_volume_mapping</span><span class="o">.</span><span class="n">MetricToVolumeMappingRibbonConstrainedParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricToVolumeMappingOutputs">MetricToVolumeMappingOutputs</a></span>:</span></span>
+        <span class="name">metric_to_volume_mapping</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_space</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_nearest_vertex_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ribbon_constrained</span><span class="p">:</span> <span class="n"><a href="#MetricToVolumeMappingRibbonConstrainedParameters">MetricToVolumeMappingRibbonConstrainedParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricToVolumeMappingOutputs">MetricToVolumeMappingOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_to_volume_mapping-view-source"><span>View Source</span></label>
 
@@ -566,7 +758,7 @@ order to have all of the surface data participate.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_to_volume_mapping_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_space</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_nearest_vertex_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ribbon_constrained</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_to_volume_mapping</span><span class="o">.</span><span class="n">MetricToVolumeMappingRibbonConstrainedParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_to_volume_mapping</span><span class="o">.</span><span class="n">MetricToVolumeMappingParameters</span>:</span></span>
+        <span class="name">metric_to_volume_mapping_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">metric</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_space</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_nearest_vertex_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">ribbon_constrained</span><span class="p">:</span> <span class="n"><a href="#MetricToVolumeMappingRibbonConstrainedParameters">MetricToVolumeMappingRibbonConstrainedParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricToVolumeMappingParameters">MetricToVolumeMappingParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_to_volume_mapping_params-view-source"><span>View Source</span></label>
 
@@ -637,7 +829,7 @@ order to have all of the surface data participate.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">metric_to_volume_mapping_ribbon_constrained_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inner_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outer_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_voxel_subdiv_subdiv_num</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_greedy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_thick_columns</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">metric_to_volume_mapping</span><span class="o">.</span><span class="n">MetricToVolumeMappingRibbonConstrainedParameters</span>:</span></span>
+        <span class="name">metric_to_volume_mapping_ribbon_constrained_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">inner_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outer_surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_voxel_subdiv_subdiv_num</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_greedy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_thick_columns</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#MetricToVolumeMappingRibbonConstrainedParameters">MetricToVolumeMappingRibbonConstrainedParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="metric_to_volume_mapping_ribbon_constrained_params-view-source"><span>View Source</span></label>
 
@@ -699,186 +891,5 @@ order to have all of the surface data participate.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AparcStatsAsegOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AparcStatsAsegParameters">AparcStatsAsegParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.subject_name">subject_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.gcs_name">gcs_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.subject_dir">subject_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.gcs_dir">gcs_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.parc_name">parc_name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.log_file">log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.lh_flag">lh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.rh_flag">rh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.a2009s_flag">a2009s_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.no_aseg_flag">no_aseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.no_cortparc_flag">no_cortparc_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.no_parcstats_flag">no_parcstats_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.no_aparc2aseg_flag">no_aparc2aseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.random_seed">random_seed</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.th3_flag">th3_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.no_th3_flag">no_th3_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.longitudinal">longitudinal</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.expert_file">expert_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.expert_use_flag">expert_use_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.expert_clean_flag">expert_clean_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AparcStatsAsegParameters.expert_overwrite_flag">expert_overwrite_flag</a>
                         </li>
                 </ul>
 
@@ -447,9 +517,10 @@
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;APARC_STATS_ASEG_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="s2">&quot;AparcStatsAsegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;aparc_stats_aseg&quot;</span><span class="p">,</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;aparc_stats_aseg_params&quot;</span><span class="p">,</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="p">]</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="s2">&quot;AparcStatsAsegParameters&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="s2">&quot;aparc_stats_aseg&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="s2">&quot;aparc_stats_aseg_params&quot;</span><span class="p">,</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -516,6 +587,261 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AparcStatsAsegParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AparcStatsAsegParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters"></a>
+    
+    
+
+                            <div id="AparcStatsAsegParameters.subject_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.subject_name"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.gcs_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcs_name</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.gcs_name"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.subject_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.subject_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.gcs_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">gcs_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.gcs_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.parc_name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">parc_name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.parc_name"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.lh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.lh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.rh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.rh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.a2009s_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">a2009s_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.a2009s_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.no_aseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_aseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.no_aseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.no_cortparc_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cortparc_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.no_cortparc_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.no_parcstats_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_parcstats_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.no_parcstats_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.no_aparc2aseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_aparc2aseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.no_aparc2aseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.random_seed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">random_seed</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.random_seed"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.th3_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">th3_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.th3_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.no_th3_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_th3_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.no_th3_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.longitudinal" class="classattr">
+                                <div class="attr variable">
+            <span class="name">longitudinal</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.longitudinal"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.expert_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expert_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.expert_file"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.expert_use_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expert_use_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.expert_use_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.expert_clean_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expert_clean_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.expert_clean_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="AparcStatsAsegParameters.expert_overwrite_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">expert_overwrite_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AparcStatsAsegParameters.expert_overwrite_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -646,7 +972,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">aparc_stats_aseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gcs_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">parc_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cortparc_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_parcstats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_aparc2aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">random_seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">th3_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_th3_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">longitudinal</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert_use_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expert_clean_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expert_overwrite_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">aparc_stats_aseg</span><span class="o">.</span><span class="n">AparcStatsAsegParameters</span>:</span></span>
+        <span class="name">aparc_stats_aseg_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">subject_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">gcs_name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">gcs_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">parc_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">a2009s_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_cortparc_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_parcstats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_aparc2aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">random_seed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">th3_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_th3_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">longitudinal</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">expert_use_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expert_clean_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">expert_overwrite_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#AparcStatsAsegParameters">AparcStatsAsegParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="aparc_stats_aseg_params-view-source"><span>View Source</span></label>
 
@@ -783,186 +1109,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

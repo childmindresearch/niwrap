@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,42 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MriComputeSegOverlapOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MriComputeSegOverlapParameters">MriComputeSegOverlapParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.segvol1">segvol1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.segvol2">segvol2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.log_file">log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.mean_log_file">mean_log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.std_log_file">std_log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.overall_log_flag">overall_log_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.exclude_cortex_flag">exclude_cortex_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.exclude_wm_flag">exclude_wm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.all_labels_flag">all_labels_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MriComputeSegOverlapParameters.dice_params">dice_params</a>
                         </li>
                 </ul>
 
@@ -339,9 +373,10 @@
 </span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="s2">&quot;MRI_COMPUTE_SEG_OVERLAP_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="s2">&quot;MriComputeSegOverlapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;mri_compute_seg_overlap&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;mri_compute_seg_overlap_params&quot;</span><span class="p">,</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="p">]</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;MriComputeSegOverlapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;mri_compute_seg_overlap&quot;</span><span class="p">,</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;mri_compute_seg_overlap_params&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -408,6 +443,129 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MriComputeSegOverlapParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MriComputeSegOverlapParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters"></a>
+    
+    
+
+                            <div id="MriComputeSegOverlapParameters.segvol1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segvol1</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.segvol1"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.segvol2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segvol2</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.segvol2"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.mean_log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean_log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.mean_log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.std_log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">std_log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.std_log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.overall_log_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">overall_log_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.overall_log_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.exclude_cortex_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclude_cortex_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.exclude_cortex_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.exclude_wm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">exclude_wm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.exclude_wm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.all_labels_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">all_labels_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.all_labels_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="MriComputeSegOverlapParameters.dice_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dice_params</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MriComputeSegOverlapParameters.dice_params"></a>
+    
+    
 
                             </div>
                 </section>
@@ -507,7 +665,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mri_compute_seg_overlap_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">segvol1</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segvol2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">std_log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overall_log_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_cortex_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_labels_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dice_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mri_compute_seg_overlap</span><span class="o">.</span><span class="n">MriComputeSegOverlapParameters</span>:</span></span>
+        <span class="name">mri_compute_seg_overlap_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">segvol1</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">segvol2</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">std_log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">overall_log_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_cortex_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">exclude_wm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_labels_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dice_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MriComputeSegOverlapParameters">MriComputeSegOverlapParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mri_compute_seg_overlap_params-view-source"><span>View Source</span></label>
 
@@ -597,186 +755,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

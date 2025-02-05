@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -65,6 +63,78 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3danisosmoothOutputs.diff_measures_data">diff_measures_data</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3danisosmoothParameters">V3danisosmoothParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.input_dataset">input_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.iterations">iterations</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.2d_flag">2d_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.3d_flag">3d_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.mask_dataset">mask_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.automask_flag">automask_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.viewer_flag">viewer_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.nosmooth_flag">nosmooth_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.sigma1">sigma1</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.sigma2">sigma2</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.deltat">deltat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.savetempdata_flag">savetempdata_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.save_temp_with_diff_measures_flag">save_temp_with_diff_measures_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.phiding_flag">phiding_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.phiexp_flag">phiexp_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.noneg_flag">noneg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.setneg_value">setneg_value</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.edgefraction">edgefraction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.datum_type">datum_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.matchorig_flag">matchorig_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3danisosmoothParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -508,10 +578,11 @@
 </span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;V3danisosmoothOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;V_3DANISOSMOOTH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;v_3danisosmooth&quot;</span><span class="p">,</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;v_3danisosmooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a><span class="p">]</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="s2">&quot;V3danisosmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="s2">&quot;V_3DANISOSMOOTH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="s2">&quot;v_3danisosmooth&quot;</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="s2">&quot;v_3danisosmooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -705,6 +776,261 @@ iteration</p>
 
                             </div>
                 </section>
+                <section id="V3danisosmoothParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3danisosmoothParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters"></a>
+    
+    
+
+                            <div id="V3danisosmoothParameters.input_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.input_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.iterations" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iterations</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.iterations"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.2d_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">2d_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.2d_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.3d_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">3d_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.3d_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.mask_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_dataset</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.mask_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.automask_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">automask_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.automask_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.viewer_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">viewer_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.viewer_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.nosmooth_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nosmooth_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.nosmooth_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.sigma1" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigma1</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.sigma1"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.sigma2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sigma2</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.sigma2"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.deltat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">deltat</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.deltat"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.savetempdata_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">savetempdata_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.savetempdata_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.save_temp_with_diff_measures_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save_temp_with_diff_measures_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.save_temp_with_diff_measures_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.phiding_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phiding_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.phiding_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.phiexp_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">phiexp_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.phiexp_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.noneg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noneg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.noneg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.setneg_value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">setneg_value</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.setneg_value"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.edgefraction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">edgefraction</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.edgefraction"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.datum_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datum_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.datum_type"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.matchorig_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">matchorig_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.matchorig_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="V3danisosmoothParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3danisosmoothParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="V_3DANISOSMOOTH_METADATA">
                     <div class="attr variable">
             <span class="name">V_3DANISOSMOOTH_METADATA</span>        =
@@ -848,7 +1174,7 @@ iteration</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3danisosmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_2d_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_3d_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">viewer_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosmooth_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sigma1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sigma2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">deltat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">savetempdata_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_temp_with_diff_measures_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">phiding_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">phiexp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noneg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setneg_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edgefraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matchorig_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3danisosmooth</span><span class="o">.</span><span class="n">V3danisosmoothParameters</span>:</span></span>
+        <span class="name">v_3danisosmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iterations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">v_2d_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_3d_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">mask_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">automask_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">viewer_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosmooth_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">sigma1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sigma2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">deltat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">savetempdata_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">save_temp_with_diff_measures_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">phiding_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">phiexp_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noneg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">setneg_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">edgefraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">matchorig_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3danisosmoothParameters">V3danisosmoothParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3danisosmooth_params-view-source"><span>View Source</span></label>
 
@@ -989,186 +1315,5 @@ iteration</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

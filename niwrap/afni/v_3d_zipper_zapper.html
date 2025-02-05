@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,60 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dZipperZapperOutputs.good_volumes_selector">good_volumes_selector</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dZipperZapperParameters">V3dZipperZapperParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.input_file">input_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.output_prefix">output_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_slice_nvox">min_slice_nvox</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_streak_len">min_streak_len</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.do_out_slice_param">do_out_slice_param</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.no_out_bad_mask">no_out_bad_mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.no_out_text_vals">no_out_text_vals</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.dont_use_streak">dont_use_streak</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.dont_use_drop">dont_use_drop</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.dont_use_corr">dont_use_corr</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_streak_val">min_streak_val</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_drop_frac">min_drop_frac</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_drop_diff">min_drop_diff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_corr_len">min_corr_len</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dZipperZapperParameters.min_corr_corr">min_corr_corr</a>
                         </li>
                 </ul>
 
@@ -454,10 +506,11 @@
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>
 </span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;V3dZipperZapperOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;V_3D_ZIPPER_ZAPPER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;v_3d_zipper_zapper&quot;</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;v_3d_zipper_zapper_params&quot;</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a><span class="p">]</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;V3dZipperZapperParameters&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;V_3D_ZIPPER_ZAPPER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;v_3d_zipper_zapper&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;v_3d_zipper_zapper_params&quot;</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -586,6 +639,195 @@
             <div class="docstring"><p>Text file with the selector string of <em>good</em> volumes.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dZipperZapperParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dZipperZapperParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters"></a>
+    
+    
+
+                            <div id="V3dZipperZapperParameters.input_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.input_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.output_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.output_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_slice_nvox" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_slice_nvox</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_slice_nvox"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_streak_len" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_streak_len</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_streak_len"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.do_out_slice_param" class="classattr">
+                                <div class="attr variable">
+            <span class="name">do_out_slice_param</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.do_out_slice_param"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.no_out_bad_mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_out_bad_mask</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.no_out_bad_mask"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.no_out_text_vals" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_out_text_vals</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.no_out_text_vals"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.dont_use_streak" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dont_use_streak</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.dont_use_streak"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.dont_use_drop" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dont_use_drop</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.dont_use_drop"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.dont_use_corr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dont_use_corr</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.dont_use_corr"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_streak_val" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_streak_val</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_streak_val"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_drop_frac" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_drop_frac</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_drop_frac"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_drop_diff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_drop_diff</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_drop_diff"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_corr_len" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_corr_len</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_corr_len"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dZipperZapperParameters.min_corr_corr" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_corr_corr</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dZipperZapperParameters.min_corr_corr"></a>
+    
+    
 
                             </div>
                 </section>
@@ -724,7 +966,7 @@ EPI/DWI data sets with interleaved acquisition.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_zipper_zapper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_slice_nvox</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_streak_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_out_slice_param</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_out_bad_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_out_text_vals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_streak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_drop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">min_streak_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_drop_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_drop_diff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_corr_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_corr_corr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_zipper_zapper</span><span class="o">.</span><span class="n">V3dZipperZapperParameters</span>:</span></span>
+        <span class="name">v_3d_zipper_zapper_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_slice_nvox</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_streak_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">do_out_slice_param</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_out_bad_mask</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_out_text_vals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_streak</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_drop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dont_use_corr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">min_streak_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_drop_frac</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_drop_diff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_corr_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_corr_corr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dZipperZapperParameters">V3dZipperZapperParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_zipper_zapper_params-view-source"><span>View Source</span></label>
 
@@ -848,186 +1090,5 @@ EPI/DWI data sets with interleaved acquisition.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

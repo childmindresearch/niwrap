@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,51 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TracPathsOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TracPathsParameters">TracPathsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.dmrirc_file">dmrirc_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.log_file">log_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.no_log">no_log</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.cmd_file">cmd_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.no_cmd">no_cmd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.no_isrunning">no_isrunning</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.umask">umask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.group_id">group_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.allow_core_dump">allow_core_dump</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.dontrun">dontrun</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TracPathsParameters.help">help</a>
                         </li>
                 </ul>
 
@@ -359,9 +402,10 @@
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="s2">&quot;TRAC_PATHS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;TracPathsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;trac_paths&quot;</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;trac_paths_params&quot;</span><span class="p">,</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="p">]</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;TracPathsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;trac_paths&quot;</span><span class="p">,</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;trac_paths_params&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -428,6 +472,162 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="TracPathsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TracPathsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters"></a>
+    
+    
+
+                            <div id="TracPathsParameters.dmrirc_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dmrirc_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.dmrirc_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.log_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">log_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.log_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.no_log" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_log</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.no_log"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.cmd_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cmd_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.cmd_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.no_cmd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_cmd</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.no_cmd"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.no_isrunning" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_isrunning</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.no_isrunning"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.umask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">umask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.umask"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.group_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">group_id</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.group_id"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.allow_core_dump" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allow_core_dump</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.allow_core_dump"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.dontrun" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dontrun</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.dontrun"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="TracPathsParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TracPathsParameters.help"></a>
+    
+    
 
                             </div>
                 </section>
@@ -532,7 +732,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">trac_paths_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dmrirc_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cmd_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cmd</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_isrunning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">group_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">allow_core_dump</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dontrun</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">trac_paths</span><span class="o">.</span><span class="n">TracPathsParameters</span>:</span></span>
+        <span class="name">trac_paths_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dmrirc_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">cmd_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">no_cmd</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_isrunning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">umask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">group_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">allow_core_dump</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dontrun</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#TracPathsParameters">TracPathsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="trac_paths_params-view-source"><span>View Source</span></label>
 
@@ -630,186 +830,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

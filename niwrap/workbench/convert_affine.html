@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.workbench</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -34,6 +32,33 @@
                     <a class="variable" href="#CONVERT_AFFINE_METADATA">CONVERT_AFFINE_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#ConvertAffineFromFlirtParameters">ConvertAffineFromFlirtParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertAffineFromFlirtParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineFromFlirtParameters.source_volume">source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineFromFlirtParameters.target_volume">target_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertAffineFromWorldParameters">ConvertAffineFromWorldParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertAffineFromWorldParameters.input">input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineFromWorldParameters.opt_inverse">opt_inverse</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#ConvertAffineOutputs">ConvertAffineOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -41,6 +66,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#ConvertAffineOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertAffineParameters">ConvertAffineParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.from_world">from_world</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.opt_from_itk_input">opt_from_itk_input</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.from_flirt">from_flirt</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.to_world">to_world</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.opt_to_itk_output">opt_to_itk_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineParameters.to_flirt">to_flirt</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertAffineToFlirtParameters">ConvertAffineToFlirtParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertAffineToFlirtParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineToFlirtParameters.source_volume">source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineToFlirtParameters.target_volume">target_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ConvertAffineToWorldParameters">ConvertAffineToWorldParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ConvertAffineToWorldParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ConvertAffineToWorldParameters.opt_inverse">opt_inverse</a>
                         </li>
                 </ul>
 
@@ -530,14 +606,19 @@
 </span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>
 </span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>    <span class="s2">&quot;CONVERT_AFFINE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;convert_affine_from_flirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;convert_affine_from_world_params&quot;</span><span class="p">,</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;convert_affine_params&quot;</span><span class="p">,</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;convert_affine_to_flirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;convert_affine_to_world_params&quot;</span><span class="p">,</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a><span class="p">]</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>    <span class="s2">&quot;ConvertAffineFromFlirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>    <span class="s2">&quot;ConvertAffineFromWorldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>    <span class="s2">&quot;ConvertAffineParameters&quot;</span><span class="p">,</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>    <span class="s2">&quot;ConvertAffineToFlirtParameters&quot;</span><span class="p">,</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>    <span class="s2">&quot;ConvertAffineToWorldParameters&quot;</span><span class="p">,</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="s2">&quot;convert_affine_from_flirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="s2">&quot;convert_affine_from_world_params&quot;</span><span class="p">,</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos">456</span></a>    <span class="s2">&quot;convert_affine_params&quot;</span><span class="p">,</span>
+</span><span id="L-457"><a href="#L-457"><span class="linenos">457</span></a>    <span class="s2">&quot;convert_affine_to_flirt_params&quot;</span><span class="p">,</span>
+</span><span id="L-458"><a href="#L-458"><span class="linenos">458</span></a>    <span class="s2">&quot;convert_affine_to_world_params&quot;</span><span class="p">,</span>
+</span><span id="L-459"><a href="#L-459"><span class="linenos">459</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -554,6 +635,87 @@
     
     
 
+                </section>
+                <section id="ConvertAffineFromFlirtParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertAffineFromFlirtParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromFlirtParameters"></a>
+    
+    
+
+                            <div id="ConvertAffineFromFlirtParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromFlirtParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineFromFlirtParameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromFlirtParameters.source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineFromFlirtParameters.target_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromFlirtParameters.target_volume"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConvertAffineFromWorldParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertAffineFromWorldParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromWorldParameters"></a>
+    
+    
+
+                            <div id="ConvertAffineFromWorldParameters.input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromWorldParameters.input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineFromWorldParameters.opt_inverse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_inverse</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineFromWorldParameters.opt_inverse"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="ConvertAffineOutputs">
                             <input id="ConvertAffineOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -607,12 +769,172 @@
 
                             </div>
                 </section>
+                <section id="ConvertAffineParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertAffineParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters"></a>
+    
+    
+
+                            <div id="ConvertAffineParameters.from_world" class="classattr">
+                                <div class="attr variable">
+            <span class="name">from_world</span><span class="annotation">: NotRequired[<a href="#ConvertAffineFromWorldParameters">ConvertAffineFromWorldParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.from_world"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineParameters.opt_from_itk_input" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_from_itk_input</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.opt_from_itk_input"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineParameters.from_flirt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">from_flirt</span><span class="annotation">: NotRequired[<a href="#ConvertAffineFromFlirtParameters">ConvertAffineFromFlirtParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.from_flirt"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineParameters.to_world" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_world</span><span class="annotation">: NotRequired[<a href="#ConvertAffineToWorldParameters">ConvertAffineToWorldParameters</a> | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.to_world"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineParameters.opt_to_itk_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_to_itk_output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.opt_to_itk_output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineParameters.to_flirt" class="classattr">
+                                <div class="attr variable">
+            <span class="name">to_flirt</span><span class="annotation">: NotRequired[list[<a href="#ConvertAffineToFlirtParameters">ConvertAffineToFlirtParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineParameters.to_flirt"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConvertAffineToFlirtParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertAffineToFlirtParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToFlirtParameters"></a>
+    
+    
+
+                            <div id="ConvertAffineToFlirtParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToFlirtParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineToFlirtParameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToFlirtParameters.source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineToFlirtParameters.target_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToFlirtParameters.target_volume"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="ConvertAffineToWorldParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ConvertAffineToWorldParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToWorldParameters"></a>
+    
+    
+
+                            <div id="ConvertAffineToWorldParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToWorldParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="ConvertAffineToWorldParameters.opt_inverse" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_inverse</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ConvertAffineToWorldParameters.opt_inverse"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="convert_affine">
                             <input id="convert_affine-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_flirt</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineOutputs">ConvertAffineOutputs</a></span>:</span></span>
+        <span class="name">convert_affine</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineFromWorldParameters">ConvertAffineFromWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_flirt</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineFromFlirtParameters">ConvertAffineFromFlirtParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_world</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineToWorldParameters">ConvertAffineToWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertAffineToFlirtParameters">ConvertAffineToFlirtParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineOutputs">ConvertAffineOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine-view-source"><span>View Source</span></label>
 
@@ -709,7 +1031,7 @@ options, and -to-flirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine_from_flirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromFlirtParameters</span>:</span></span>
+        <span class="name">convert_affine_from_flirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineFromFlirtParameters">ConvertAffineFromFlirtParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine_from_flirt_params-view-source"><span>View Source</span></label>
 
@@ -764,7 +1086,7 @@ options, and -to-flirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine_from_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromWorldParameters</span>:</span></span>
+        <span class="name">convert_affine_from_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineFromWorldParameters">ConvertAffineFromWorldParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine_from_world_params-view-source"><span>View Source</span></label>
 
@@ -815,7 +1137,7 @@ options, and -to-flirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_flirt</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineFromFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_world</span><span class="p">:</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToWorldParameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToFlirtParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineParameters</span>:</span></span>
+        <span class="name">convert_affine_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">from_world</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineFromWorldParameters">ConvertAffineFromWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_from_itk_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">from_flirt</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineFromFlirtParameters">ConvertAffineFromFlirtParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_world</span><span class="p">:</span> <span class="n"><a href="#ConvertAffineToWorldParameters">ConvertAffineToWorldParameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_to_itk_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">to_flirt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#ConvertAffineToFlirtParameters">ConvertAffineToFlirtParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineParameters">ConvertAffineParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine_params-view-source"><span>View Source</span></label>
 
@@ -889,7 +1211,7 @@ options, and -to-flirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine_to_flirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToFlirtParameters</span>:</span></span>
+        <span class="name">convert_affine_to_flirt_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineToFlirtParameters">ConvertAffineToFlirtParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine_to_flirt_params-view-source"><span>View Source</span></label>
 
@@ -945,7 +1267,7 @@ options, and -to-flirt may be specified more than once.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_affine_to_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">workbench</span><span class="o">.</span><span class="n">convert_affine</span><span class="o">.</span><span class="n">ConvertAffineToWorldParameters</span>:</span></span>
+        <span class="name">convert_affine_to_world_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertAffineToWorldParameters">ConvertAffineToWorldParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_affine_to_world_params-view-source"><span>View Source</span></label>
 
@@ -992,186 +1314,5 @@ options, and -to-flirt may be specified more than once.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

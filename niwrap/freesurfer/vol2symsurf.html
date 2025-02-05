@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -53,6 +51,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Vol2symsurfOutputs.output_li_difference">output_li_difference</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Vol2symsurfParameters">Vol2symsurfParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.registration_file">registration_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.input_volume">input_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.fwhm">fwhm</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.output_stem">output_stem</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.regheader">regheader</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.projection_fraction">projection_fraction</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.no_diff">no_diff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Vol2symsurfParameters.laterality_index">laterality_index</a>
                         </li>
                 </ul>
 
@@ -341,9 +369,10 @@
 </span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;VOL2SYMSURF_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;Vol2symsurfOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;vol2symsurf&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;vol2symsurf_params&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="p">]</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;Vol2symsurfParameters&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;vol2symsurf&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;vol2symsurf_params&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -473,6 +502,107 @@
 
                             </div>
                 </section>
+                <section id="Vol2symsurfParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Vol2symsurfParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters"></a>
+    
+    
+
+                            <div id="Vol2symsurfParameters.registration_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">registration_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.registration_file"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.input_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.input_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.fwhm" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.fwhm"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.output_stem" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_stem</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.output_stem"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.regheader" class="classattr">
+                                <div class="attr variable">
+            <span class="name">regheader</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.regheader"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.projection_fraction" class="classattr">
+                                <div class="attr variable">
+            <span class="name">projection_fraction</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.projection_fraction"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.no_diff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_diff</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.no_diff"></a>
+    
+    
+
+                            </div>
+                            <div id="Vol2symsurfParameters.laterality_index" class="classattr">
+                                <div class="attr variable">
+            <span class="name">laterality_index</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Vol2symsurfParameters.laterality_index"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="vol2symsurf">
                             <input id="vol2symsurf-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -558,7 +688,7 @@ subject (fsaverage_sym).</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">vol2symsurf_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">registration_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">output_stem</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;instem.fsaverage_sym.smFWHM.lh.hemi&#39;</span>,</span><span class="param">	<span class="n">regheader</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projection_fraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.5</span>,</span><span class="param">	<span class="n">no_diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">laterality_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">vol2symsurf</span><span class="o">.</span><span class="n">Vol2symsurfParameters</span>:</span></span>
+        <span class="name">vol2symsurf_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">registration_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">input_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">output_stem</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;instem.fsaverage_sym.smFWHM.lh.hemi&#39;</span>,</span><span class="param">	<span class="n">regheader</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">projection_fraction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.5</span>,</span><span class="param">	<span class="n">no_diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">laterality_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Vol2symsurfParameters">Vol2symsurfParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="vol2symsurf_params-view-source"><span>View Source</span></label>
 
@@ -632,186 +762,5 @@ subject (fsaverage_sym).</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#AfniProcPyOutputs.output_files">output_files</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#AfniProcPyParameters">AfniProcPyParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.dsets">dsets</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.subj_id">subj_id</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.out_dir">out_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.blocks">blocks</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.anat">anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.echo_times">echo_times</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.stim_times">stim_times</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.stim_files">stim_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.copy_files">copy_files</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.copy_anat">copy_anat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#AfniProcPyParameters.regress_params">regress_params</a>
                         </li>
                 </ul>
 
@@ -343,9 +380,10 @@
 </span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="s2">&quot;AFNI_PROC_PY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;AfniProcPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;afni_proc_py&quot;</span><span class="p">,</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;afni_proc_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="p">]</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="s2">&quot;AfniProcPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="s2">&quot;afni_proc_py&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;afni_proc_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -427,6 +465,140 @@
             <div class="docstring"><p>All output files stored in the specified output directory.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="AfniProcPyParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">AfniProcPyParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters"></a>
+    
+    
+
+                            <div id="AfniProcPyParameters.dsets" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dsets</span><span class="annotation">: list[pathlib._local.Path | str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.dsets"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.subj_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subj_id</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.subj_id"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.out_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.out_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.blocks" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blocks</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.blocks"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">anat</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.anat"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.echo_times" class="classattr">
+                                <div class="attr variable">
+            <span class="name">echo_times</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.echo_times"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.stim_times" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_times</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.stim_times"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.stim_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stim_files</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.stim_files"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.copy_files" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copy_files</span><span class="annotation">: NotRequired[list[pathlib._local.Path | str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.copy_files"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.copy_anat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copy_anat</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.copy_anat"></a>
+    
+    
+
+                            </div>
+                            <div id="AfniProcPyParameters.regress_params" class="classattr">
+                                <div class="attr variable">
+            <span class="name">regress_params</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#AfniProcPyParameters.regress_params"></a>
+    
+    
 
                             </div>
                 </section>
@@ -526,7 +698,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">afni_proc_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dsets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">subj_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blocks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo_times</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_times</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regress_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">afni_proc_py</span><span class="o">.</span><span class="n">AfniProcPyParameters</span>:</span></span>
+        <span class="name">afni_proc_py_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dsets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">subj_id</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">out_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blocks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">echo_times</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_times</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stim_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">copy_anat</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">regress_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#AfniProcPyParameters">AfniProcPyParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="afni_proc_py_params-view-source"><span>View Source</span></label>
 
@@ -621,186 +793,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

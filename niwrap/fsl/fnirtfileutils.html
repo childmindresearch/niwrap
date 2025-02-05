@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -50,6 +48,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FnirtfileutilsOutputs.jacobian_matrix_file">jacobian_matrix_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FnirtfileutilsParameters">FnirtfileutilsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.input_coefs">input_coefs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.ref_volume">ref_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.out_field">out_field</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.output_format">output_format</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.warp_res">warp_res</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.knot_space">knot_space</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.jacobian_output">jacobian_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.jacobian_matrix_output">jacobian_matrix_output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.with_aff">with_aff</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.verbose_flag">verbose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FnirtfileutilsParameters.help_flag">help_flag</a>
                         </li>
                 </ul>
 
@@ -379,9 +416,10 @@
 </span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;FNIRTFILEUTILS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;FnirtfileutilsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;fnirtfileutils_params&quot;</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="p">]</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;FnirtfileutilsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="s2">&quot;fnirtfileutils_params&quot;</span><span class="p">,</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -496,6 +534,140 @@
 
                             </div>
                 </section>
+                <section id="FnirtfileutilsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FnirtfileutilsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters"></a>
+    
+    
+
+                            <div id="FnirtfileutilsParameters.input_coefs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_coefs</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.input_coefs"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.ref_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ref_volume</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.ref_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.out_field" class="classattr">
+                                <div class="attr variable">
+            <span class="name">out_field</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.out_field"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.output_format" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_format</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.output_format"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.warp_res" class="classattr">
+                                <div class="attr variable">
+            <span class="name">warp_res</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.warp_res"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.knot_space" class="classattr">
+                                <div class="attr variable">
+            <span class="name">knot_space</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.knot_space"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.jacobian_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jacobian_output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.jacobian_output"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.jacobian_matrix_output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">jacobian_matrix_output</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.jacobian_matrix_output"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.with_aff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">with_aff</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.with_aff"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.verbose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.verbose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FnirtfileutilsParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FnirtfileutilsParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="fnirtfileutils">
                             <input id="fnirtfileutils-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -594,7 +766,7 @@ formats.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fnirtfileutils_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_coefs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ref_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;field&#39;</span>,</span><span class="param">	<span class="n">warp_res</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">knot_space</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_matrix_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">with_aff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fnirtfileutils</span><span class="o">.</span><span class="n">FnirtfileutilsParameters</span>:</span></span>
+        <span class="name">fnirtfileutils_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_coefs</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">ref_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">out_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;field&#39;</span>,</span><span class="param">	<span class="n">warp_res</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">knot_space</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">jacobian_matrix_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">with_aff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FnirtfileutilsParameters">FnirtfileutilsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fnirtfileutils_params-view-source"><span>View Source</span></label>
 
@@ -688,186 +860,5 @@ formats.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

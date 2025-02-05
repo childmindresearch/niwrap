@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,36 @@
                         </li>
                         <li>
                                 <a class="variable" href="#StatNormalizeOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#StatNormalizeParameters">StatNormalizeParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.input_sv_prefix">input_sv_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.output_sv_prefix">output_sv_prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.resolution">resolution</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.field_of_view">field_of_view</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.sph_avg">sph_avg</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.xfm_file">xfm_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.fix_xfm_flag">fix_xfm_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#StatNormalizeParameters.float2int_option">float2int_option</a>
                         </li>
                 </ul>
 
@@ -319,9 +347,10 @@
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;STAT_NORMALIZE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;StatNormalizeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;stat_normalize&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;stat_normalize_params&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="p">]</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;StatNormalizeParameters&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;stat_normalize&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;stat_normalize_params&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -388,6 +417,107 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="StatNormalizeParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">StatNormalizeParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters"></a>
+    
+    
+
+                            <div id="StatNormalizeParameters.input_sv_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_sv_prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.input_sv_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.output_sv_prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_sv_prefix</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.output_sv_prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.resolution" class="classattr">
+                                <div class="attr variable">
+            <span class="name">resolution</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.resolution"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.field_of_view" class="classattr">
+                                <div class="attr variable">
+            <span class="name">field_of_view</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.field_of_view"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.sph_avg" class="classattr">
+                                <div class="attr variable">
+            <span class="name">sph_avg</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.sph_avg"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.xfm_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">xfm_file</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.xfm_file"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.fix_xfm_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fix_xfm_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.fix_xfm_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="StatNormalizeParameters.float2int_option" class="classattr">
+                                <div class="attr variable">
+            <span class="name">float2int_option</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#StatNormalizeParameters.float2int_option"></a>
+    
+    
 
                             </div>
                 </section>
@@ -478,7 +608,7 @@ Talairach space.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">stat_normalize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_sv_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_sv_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">field_of_view</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sph_avg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfm_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix_xfm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float2int_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">stat_normalize</span><span class="o">.</span><span class="n">StatNormalizeParameters</span>:</span></span>
+        <span class="name">stat_normalize_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_sv_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output_sv_prefix</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">resolution</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">field_of_view</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">sph_avg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">xfm_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fix_xfm_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">float2int_option</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#StatNormalizeParameters">StatNormalizeParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="stat_normalize_params-view-source"><span>View Source</span></label>
 
@@ -556,186 +686,5 @@ Talairach space.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

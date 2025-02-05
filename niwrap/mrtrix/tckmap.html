@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.mrtrix</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -32,6 +30,18 @@
                 <ul class="memberlist">
             <li>
                     <a class="variable" href="#TCKMAP_METADATA">TCKMAP_METADATA</a>
+            </li>
+            <li>
+                    <a class="class" href="#TckmapConfigParameters">TckmapConfigParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckmapConfigParameters.key">key</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapConfigParameters.value">value</a>
+                        </li>
+                </ul>
+
             </li>
             <li>
                     <a class="class" href="#TckmapOutputs">TckmapOutputs</a>
@@ -44,6 +54,114 @@
                         </li>
                         <li>
                                 <a class="variable" href="#TckmapOutputs.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckmapParameters">TckmapParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckmapParameters.template">template</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.vox">vox</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.datatype">datatype</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.dec">dec</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.dixel">dixel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.tod">tod</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.contrast">contrast</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.image">image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.vector_file">vector_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.stat_vox">stat_vox</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.stat_tck">stat_tck</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.fwhm_tck">fwhm_tck</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.map_zero">map_zero</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.backtrack">backtrack</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.upsample">upsample</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.precise">precise</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.ends_only">ends_only</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.tck_weights_in">tck_weights_in</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.info">info</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.quiet">quiet</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.force">force</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.nthreads">nthreads</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.config">config</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.version">version</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.tracks">tracks</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#TckmapParameters.output">output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckmapVariousFileParameters">TckmapVariousFileParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckmapVariousFileParameters.obj">obj</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#TckmapVariousStringParameters">TckmapVariousStringParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#TckmapVariousStringParameters.obj">obj</a>
                         </li>
                 </ul>
 
@@ -811,13 +929,17 @@
 </span><span id="L-725"><a href="#L-725"><span class="linenos">725</span></a>
 </span><span id="L-726"><a href="#L-726"><span class="linenos">726</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-727"><a href="#L-727"><span class="linenos">727</span></a>    <span class="s2">&quot;TCKMAP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-728"><a href="#L-728"><span class="linenos">728</span></a>    <span class="s2">&quot;TckmapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-729"><a href="#L-729"><span class="linenos">729</span></a>    <span class="s2">&quot;tckmap&quot;</span><span class="p">,</span>
-</span><span id="L-730"><a href="#L-730"><span class="linenos">730</span></a>    <span class="s2">&quot;tckmap_config_params&quot;</span><span class="p">,</span>
-</span><span id="L-731"><a href="#L-731"><span class="linenos">731</span></a>    <span class="s2">&quot;tckmap_params&quot;</span><span class="p">,</span>
-</span><span id="L-732"><a href="#L-732"><span class="linenos">732</span></a>    <span class="s2">&quot;tckmap_various_file_params&quot;</span><span class="p">,</span>
-</span><span id="L-733"><a href="#L-733"><span class="linenos">733</span></a>    <span class="s2">&quot;tckmap_various_string_params&quot;</span><span class="p">,</span>
-</span><span id="L-734"><a href="#L-734"><span class="linenos">734</span></a><span class="p">]</span>
+</span><span id="L-728"><a href="#L-728"><span class="linenos">728</span></a>    <span class="s2">&quot;TckmapConfigParameters&quot;</span><span class="p">,</span>
+</span><span id="L-729"><a href="#L-729"><span class="linenos">729</span></a>    <span class="s2">&quot;TckmapOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-730"><a href="#L-730"><span class="linenos">730</span></a>    <span class="s2">&quot;TckmapParameters&quot;</span><span class="p">,</span>
+</span><span id="L-731"><a href="#L-731"><span class="linenos">731</span></a>    <span class="s2">&quot;TckmapVariousFileParameters&quot;</span><span class="p">,</span>
+</span><span id="L-732"><a href="#L-732"><span class="linenos">732</span></a>    <span class="s2">&quot;TckmapVariousStringParameters&quot;</span><span class="p">,</span>
+</span><span id="L-733"><a href="#L-733"><span class="linenos">733</span></a>    <span class="s2">&quot;tckmap&quot;</span><span class="p">,</span>
+</span><span id="L-734"><a href="#L-734"><span class="linenos">734</span></a>    <span class="s2">&quot;tckmap_config_params&quot;</span><span class="p">,</span>
+</span><span id="L-735"><a href="#L-735"><span class="linenos">735</span></a>    <span class="s2">&quot;tckmap_params&quot;</span><span class="p">,</span>
+</span><span id="L-736"><a href="#L-736"><span class="linenos">736</span></a>    <span class="s2">&quot;tckmap_various_file_params&quot;</span><span class="p">,</span>
+</span><span id="L-737"><a href="#L-737"><span class="linenos">737</span></a>    <span class="s2">&quot;tckmap_various_string_params&quot;</span><span class="p">,</span>
+</span><span id="L-738"><a href="#L-738"><span class="linenos">738</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -834,6 +956,41 @@
     
     
 
+                </section>
+                <section id="TckmapConfigParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckmapConfigParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapConfigParameters"></a>
+    
+    
+
+                            <div id="TckmapConfigParameters.key" class="classattr">
+                                <div class="attr variable">
+            <span class="name">key</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapConfigParameters.key"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapConfigParameters.value" class="classattr">
+                                <div class="attr variable">
+            <span class="name">value</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapConfigParameters.value"></a>
+    
+    
+
+                            </div>
                 </section>
                 <section id="TckmapOutputs">
                             <input id="TckmapOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -902,12 +1059,381 @@
 
                             </div>
                 </section>
+                <section id="TckmapParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckmapParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters"></a>
+    
+    
+
+                            <div id="TckmapParameters.template" class="classattr">
+                                <div class="attr variable">
+            <span class="name">template</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.template"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.vox" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vox</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.vox"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.datatype" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datatype</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.datatype"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.dec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dec</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.dec"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.dixel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dixel</span><span class="annotation">: NotRequired[Union[<a href="#TckmapVariousStringParameters">TckmapVariousStringParameters</a>, <a href="#TckmapVariousFileParameters">TckmapVariousFileParameters</a>, NoneType]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.dixel"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.tod" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tod</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.tod"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.contrast" class="classattr">
+                                <div class="attr variable">
+            <span class="name">contrast</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.contrast"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.image"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.vector_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">vector_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.vector_file"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.stat_vox" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stat_vox</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.stat_vox"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.stat_tck" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stat_tck</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.stat_tck"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.fwhm_tck" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fwhm_tck</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.fwhm_tck"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.map_zero" class="classattr">
+                                <div class="attr variable">
+            <span class="name">map_zero</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.map_zero"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.backtrack" class="classattr">
+                                <div class="attr variable">
+            <span class="name">backtrack</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.backtrack"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.upsample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">upsample</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.upsample"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.precise" class="classattr">
+                                <div class="attr variable">
+            <span class="name">precise</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.precise"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.ends_only" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ends_only</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.ends_only"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.tck_weights_in" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tck_weights_in</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.tck_weights_in"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.info" class="classattr">
+                                <div class="attr variable">
+            <span class="name">info</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.info"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.quiet" class="classattr">
+                                <div class="attr variable">
+            <span class="name">quiet</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.quiet"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.force" class="classattr">
+                                <div class="attr variable">
+            <span class="name">force</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.force"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.nthreads" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nthreads</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.nthreads"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">config</span><span class="annotation">: NotRequired[list[<a href="#TckmapConfigParameters">TckmapConfigParameters</a>] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.config"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.help"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.version"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.tracks" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tracks</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.tracks"></a>
+    
+    
+
+                            </div>
+                            <div id="TckmapParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapParameters.output"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TckmapVariousFileParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckmapVariousFileParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapVariousFileParameters"></a>
+    
+    
+
+                            <div id="TckmapVariousFileParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapVariousFileParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="TckmapVariousStringParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TckmapVariousStringParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapVariousStringParameters"></a>
+    
+    
+
+                            <div id="TckmapVariousStringParameters.obj" class="classattr">
+                                <div class="attr variable">
+            <span class="name">obj</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#TckmapVariousStringParameters.obj"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="tckmap">
                             <input id="tckmap-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckmap</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dec</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dixel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tod</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_tck</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_tck</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">map_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ends_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapOutputs">TckmapOutputs</a></span>:</span></span>
+        <span class="name">tckmap</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dec</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dixel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#TckmapVariousStringParameters">TckmapVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#TckmapVariousFileParameters">TckmapVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tod</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_tck</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_tck</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">map_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ends_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckmapConfigParameters">TckmapConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapOutputs">TckmapOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckmap-view-source"><span>View Source</span></label>
 
@@ -1160,7 +1686,7 @@ Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckmap_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapConfigParameters</span>:</span></span>
+        <span class="name">tckmap_config_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">key</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapConfigParameters">TckmapConfigParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckmap_config_params-view-source"><span>View Source</span></label>
 
@@ -1211,7 +1737,7 @@ Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckmap_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dec</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dixel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousStringParameters</span><span class="p">,</span> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousFileParameters</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tod</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_tck</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_tck</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">map_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ends_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapConfigParameters</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapParameters</span>:</span></span>
+        <span class="name">tckmap_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tracks</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vox</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datatype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">dec</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">dixel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n"><a href="#TckmapVariousStringParameters">TckmapVariousStringParameters</a></span><span class="p">,</span> <span class="n"><a href="#TckmapVariousFileParameters">TckmapVariousFileParameters</a></span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">tod</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">contrast</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">vector_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_vox</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">stat_tck</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fwhm_tck</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">map_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">backtrack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">upsample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">precise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ends_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">tck_weights_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#TckmapConfigParameters">TckmapConfigParameters</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapParameters">TckmapParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckmap_params-view-source"><span>View Source</span></label>
 
@@ -1418,7 +1944,7 @@ Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckmap_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousFileParameters</span>:</span></span>
+        <span class="name">tckmap_various_file_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapVariousFileParameters">TckmapVariousFileParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckmap_various_file_params-view-source"><span>View Source</span></label>
 
@@ -1465,7 +1991,7 @@ Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">tckmap_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">mrtrix</span><span class="o">.</span><span class="n">tckmap</span><span class="o">.</span><span class="n">TckmapVariousStringParameters</span>:</span></span>
+        <span class="name">tckmap_various_string_params</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#TckmapVariousStringParameters">TckmapVariousStringParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="tckmap_various_string_params-view-source"><span>View Source</span></label>
 
@@ -1508,186 +2034,5 @@ Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

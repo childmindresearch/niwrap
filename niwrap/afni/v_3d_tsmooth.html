@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.afni</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#V3dTsmoothOutputs.output_dataset">output_dataset</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#V3dTsmoothParameters">V3dTsmoothParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.input_dataset">input_dataset</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.prefix">prefix</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.datum_type">datum_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.lin_filter">lin_filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.med_filter">med_filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.osf_filter">osf_filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.lin_filter_custom">lin_filter_custom</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.hamming">hamming</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.blackman">blackman</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.custom_filter">custom_filter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.extend">extend</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.zero">zero</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.trend">trend</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#V3dTsmoothParameters.adaptive">adaptive</a>
                         </li>
                 </ul>
 
@@ -387,10 +433,11 @@
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="s2">&quot;V3dTsmoothOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;V_3D_TSMOOTH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;v_3d_tsmooth&quot;</span><span class="p">,</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;v_3d_tsmooth_params&quot;</span><span class="p">,</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="p">]</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="s2">&quot;V3dTsmoothParameters&quot;</span><span class="p">,</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="s2">&quot;V_3D_TSMOOTH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="s2">&quot;v_3d_tsmooth&quot;</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="s2">&quot;v_3d_tsmooth_params&quot;</span><span class="p">,</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -459,6 +506,173 @@
             <div class="docstring"><p>Smoothed 3D+time dataset</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="V3dTsmoothParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">V3dTsmoothParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters"></a>
+    
+    
+
+                            <div id="V3dTsmoothParameters.input_dataset" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_dataset</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.input_dataset"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.prefix" class="classattr">
+                                <div class="attr variable">
+            <span class="name">prefix</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.prefix"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.datum_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">datum_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.datum_type"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.lin_filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lin_filter</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.lin_filter"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.med_filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">med_filter</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.med_filter"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.osf_filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">osf_filter</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.osf_filter"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.lin_filter_custom" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lin_filter_custom</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.lin_filter_custom"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.hamming" class="classattr">
+                                <div class="attr variable">
+            <span class="name">hamming</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.hamming"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.blackman" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blackman</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.blackman"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.custom_filter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">custom_filter</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.custom_filter"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.extend" class="classattr">
+                                <div class="attr variable">
+            <span class="name">extend</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.extend"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.zero" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zero</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.zero"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.trend" class="classattr">
+                                <div class="attr variable">
+            <span class="name">trend</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.trend"></a>
+    
+    
+
+                            </div>
+                            <div id="V3dTsmoothParameters.adaptive" class="classattr">
+                                <div class="attr variable">
+            <span class="name">adaptive</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#V3dTsmoothParameters.adaptive"></a>
+    
+    
 
                             </div>
                 </section>
@@ -582,7 +796,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_tsmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lin_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">med_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">osf_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lin_filter_custom</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hamming</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blackman</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">custom_filter</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">adaptive</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">afni</span><span class="o">.</span><span class="n">v_3d_tsmooth</span><span class="o">.</span><span class="n">V3dTsmoothParameters</span>:</span></span>
+        <span class="name">v_3d_tsmooth_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_dataset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">datum_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">lin_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">med_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">osf_filter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">lin_filter_custom</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">hamming</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">blackman</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">custom_filter</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">trend</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">adaptive</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dTsmoothParameters">V3dTsmoothParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_tsmooth_params-view-source"><span>View Source</span></label>
 
@@ -688,186 +902,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

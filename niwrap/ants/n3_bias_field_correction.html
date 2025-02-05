@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.ants</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,45 @@
                         </li>
                         <li>
                                 <a class="variable" href="#N3BiasFieldCorrectionOutputs.bias_field">bias_field</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#N3BiasFieldCorrectionParameters">N3BiasFieldCorrectionParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.image_dimensionality">image_dimensionality</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.input_image">input_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.mask_image">mask_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.rescale_intensities">rescale_intensities</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.weight_image">weight_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.shrink_factor">shrink_factor</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.convergence">convergence</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.bspline_fitting">bspline_fitting</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.histogram_sharpening">histogram_sharpening</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.output">output</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#N3BiasFieldCorrectionParameters.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -412,10 +449,11 @@
 </span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>
 </span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="s2">&quot;N3BiasFieldCorrectionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;N3_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;n3_bias_field_correction&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;n3_bias_field_correction_params&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="p">]</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;N3BiasFieldCorrectionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;N3_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;n3_bias_field_correction&quot;</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;n3_bias_field_correction_params&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -499,6 +537,140 @@
             <div class="docstring"><p>The estimated bias field, if specified in the output.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="N3BiasFieldCorrectionParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">N3BiasFieldCorrectionParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters"></a>
+    
+    
+
+                            <div id="N3BiasFieldCorrectionParameters.image_dimensionality" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_dimensionality</span><span class="annotation">: NotRequired[Optional[Literal[2, 3, 4]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.image_dimensionality"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.input_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">input_image</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.input_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.mask_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.mask_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.rescale_intensities" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rescale_intensities</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.rescale_intensities"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.weight_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.weight_image"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.shrink_factor" class="classattr">
+                                <div class="attr variable">
+            <span class="name">shrink_factor</span><span class="annotation">: NotRequired[int | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.shrink_factor"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.convergence" class="classattr">
+                                <div class="attr variable">
+            <span class="name">convergence</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.convergence"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.bspline_fitting" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bspline_fitting</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.bspline_fitting"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.histogram_sharpening" class="classattr">
+                                <div class="attr variable">
+            <span class="name">histogram_sharpening</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.histogram_sharpening"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.output" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.output"></a>
+    
+    
+
+                            </div>
+                            <div id="N3BiasFieldCorrectionParameters.verbose" class="classattr">
+                                <div class="attr variable">
+            <span class="name">verbose</span><span class="annotation">: NotRequired[Optional[Literal[0, 1]]]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#N3BiasFieldCorrectionParameters.verbose"></a>
+    
+    
 
                             </div>
                 </section>
@@ -633,7 +805,7 @@ of the bias field itself.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">n3_bias_field_correction_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">ants</span><span class="o">.</span><span class="n">n3_bias_field_correction</span><span class="o">.</span><span class="n">N3BiasFieldCorrectionParameters</span>:</span></span>
+        <span class="name">n3_bias_field_correction_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">input_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">output</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">image_dimensionality</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rescale_intensities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">weight_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">shrink_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">convergence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">bspline_fitting</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">histogram_sharpening</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#N3BiasFieldCorrectionParameters">N3BiasFieldCorrectionParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="n3_bias_field_correction_params-view-source"><span>View Source</span></label>
 
@@ -739,186 +911,5 @@ of the bias field itself.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FeatqueryOutputs.query_report">query_report</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FeatqueryParameters">FeatqueryParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.n_featdirs">n_featdirs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.featdirs">featdirs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.n_stats">n_stats</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.stats">stats</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.output_rootname">output_rootname</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.atlas_flag">atlas_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.percent_convert_flag">percent_convert_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.thresh_flag">thresh_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.interp_thresh">interp_thresh</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.timeseries_flag">timeseries_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.weight_flag">weight_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.browser_flag">browser_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.mask_file">mask_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FeatqueryParameters.coords">coords</a>
                         </li>
                 </ul>
 
@@ -361,9 +407,10 @@
 </span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="s2">&quot;FEATQUERY_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="s2">&quot;FeatqueryOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;featquery&quot;</span><span class="p">,</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;featquery_params&quot;</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="p">]</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="s2">&quot;FeatqueryParameters&quot;</span><span class="p">,</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="s2">&quot;featquery&quot;</span><span class="p">,</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="s2">&quot;featquery_params&quot;</span><span class="p">,</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -445,6 +492,173 @@
             <div class="docstring"><p>Generated query report file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FeatqueryParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FeatqueryParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters"></a>
+    
+    
+
+                            <div id="FeatqueryParameters.n_featdirs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_featdirs</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.n_featdirs"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.featdirs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">featdirs</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.featdirs"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.n_stats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">n_stats</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.n_stats"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.stats" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stats</span><span class="annotation">: list[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.stats"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.output_rootname" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_rootname</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.output_rootname"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.atlas_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">atlas_flag</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.atlas_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.percent_convert_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">percent_convert_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.percent_convert_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.thresh_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">thresh_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.thresh_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.interp_thresh" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interp_thresh</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.interp_thresh"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.timeseries_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timeseries_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.timeseries_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.weight_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weight_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.weight_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.browser_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">browser_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.browser_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.mask_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask_file</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.mask_file"></a>
+    
+    
+
+                            </div>
+                            <div id="FeatqueryParameters.coords" class="classattr">
+                                <div class="attr variable">
+            <span class="name">coords</span><span class="annotation">: NotRequired[list[float] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FeatqueryParameters.coords"></a>
+    
+    
 
                             </div>
                 </section>
@@ -551,7 +765,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">featquery_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n_featdirs</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">featdirs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">n_stats</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">stats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_rootname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">atlas_flag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">percent_convert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interp_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.5</span>,</span><span class="param">	<span class="n">timeseries_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">browser_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">coords</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">featquery</span><span class="o">.</span><span class="n">FeatqueryParameters</span>:</span></span>
+        <span class="name">featquery_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">n_featdirs</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">featdirs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">n_stats</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">stats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>,</span><span class="param">	<span class="n">output_rootname</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">mask_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">atlas_flag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">percent_convert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">thresh_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">interp_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mf">0.5</span>,</span><span class="param">	<span class="n">timeseries_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weight_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">browser_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">coords</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FeatqueryParameters">FeatqueryParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="featquery_params-view-source"><span>View Source</span></label>
 
@@ -651,186 +865,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.fsl</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,66 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FslAnatOutputs.output_anat_dir">output_anat_dir</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FslAnatParameters">FslAnatParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.structural_image">structural_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.existing_anat_dir">existing_anat_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.output_dir">output_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.clobber_flag">clobber_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.strongbias_flag">strongbias_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.weakbias_flag">weakbias_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.noreorient_flag">noreorient_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nocrop_flag">nocrop_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nobias_flag">nobias_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.noreg_flag">noreg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nononlinreg_flag">nononlinreg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.noseg_flag">noseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nosubcortseg_flag">nosubcortseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.bias_smoothing">bias_smoothing</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.image_type">image_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nosearch_flag">nosearch_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.bet_f_param">bet_f_param</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FslAnatParameters.nocleanup_flag">nocleanup_flag</a>
                         </li>
                 </ul>
 
@@ -431,9 +489,10 @@
 </span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="s2">&quot;FSL_ANAT_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="s2">&quot;FslAnatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;fsl_anat&quot;</span><span class="p">,</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;fsl_anat_params&quot;</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="p">]</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="s2">&quot;FslAnatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="s2">&quot;fsl_anat&quot;</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;fsl_anat_params&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -515,6 +574,217 @@
             <div class="docstring"><p>Output anatomical directory</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FslAnatParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FslAnatParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters"></a>
+    
+    
+
+                            <div id="FslAnatParameters.structural_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">structural_image</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.structural_image"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.existing_anat_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">existing_anat_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.existing_anat_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.output_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_dir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.output_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.clobber_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">clobber_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.clobber_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.strongbias_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">strongbias_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.strongbias_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.weakbias_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">weakbias_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.weakbias_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.noreorient_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noreorient_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.noreorient_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nocrop_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocrop_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nocrop_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nobias_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nobias_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nobias_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.noreg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noreg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.noreg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nononlinreg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nononlinreg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nononlinreg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.noseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">noseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.noseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nosubcortseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nosubcortseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nosubcortseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.bias_smoothing" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bias_smoothing</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.bias_smoothing"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.image_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">image_type</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.image_type"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nosearch_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nosearch_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nosearch_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.bet_f_param" class="classattr">
+                                <div class="attr variable">
+            <span class="name">bet_f_param</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.bet_f_param"></a>
+    
+    
+
+                            </div>
+                            <div id="FslAnatParameters.nocleanup_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nocleanup_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FslAnatParameters.nocleanup_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -643,7 +913,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fsl_anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structural_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">existing_anat_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">clobber_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">strongbias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weakbias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noreorient_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nocrop_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nobias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noreg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nononlinreg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosubcortseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bias_smoothing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nosearch_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bet_f_param</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">fsl</span><span class="o">.</span><span class="n">fsl_anat</span><span class="o">.</span><span class="n">FslAnatParameters</span>:</span></span>
+        <span class="name">fsl_anat_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">structural_image</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">existing_anat_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">clobber_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">strongbias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weakbias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noreorient_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nocrop_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nobias_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noreg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nononlinreg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">noseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nosubcortseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bias_smoothing</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">image_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nosearch_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">bet_f_param</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">nocleanup_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#FslAnatParameters">FslAnatParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fsl_anat_params-view-source"><span>View Source</span></label>
 
@@ -772,186 +1042,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

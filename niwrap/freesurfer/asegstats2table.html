@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,84 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Asegstats2tableOutputs.output_table">output_table</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Asegstats2tableParameters">Asegstats2tableParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.subjects">subjects</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.inputs">inputs</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.tablefile">tablefile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.subjectsfile">subjectsfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.qdec">qdec</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.qdec_long">qdec_long</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.fsgd">fsgd</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.maxsegno">maxsegno</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.segids_from_file">segids_from_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.segno_include">segno_include</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.segno_exclude">segno_exclude</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.measure">measure</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.delimiter">delimiter</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.statsfile">statsfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.subdir">subdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.scale">scale</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.write_etiv">write_etiv</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.debug">debug</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.transpose_flag">transpose_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.common_segs_flag">common_segs_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.all_segs_flag">all_segs_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.no_vol_extras_flag">no_vol_extras_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.skip_missing_flag">skip_missing_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Asegstats2tableParameters.replace53_flag">replace53_flag</a>
                         </li>
                 </ul>
 
@@ -515,9 +591,10 @@
 </span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="s2">&quot;ASEGSTATS2TABLE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="s2">&quot;Asegstats2tableOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;asegstats2table&quot;</span><span class="p">,</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;asegstats2table_params&quot;</span><span class="p">,</span>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a><span class="p">]</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="s2">&quot;Asegstats2tableParameters&quot;</span><span class="p">,</span>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="s2">&quot;asegstats2table&quot;</span><span class="p">,</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="s2">&quot;asegstats2table_params&quot;</span><span class="p">,</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -599,6 +676,283 @@
             <div class="docstring"><p>The resulting table file with segmentation data.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="Asegstats2tableParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Asegstats2tableParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters"></a>
+    
+    
+
+                            <div id="Asegstats2tableParameters.subjects" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.subjects"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.inputs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">inputs</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.inputs"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.tablefile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">tablefile</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.tablefile"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.subjectsfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjectsfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.subjectsfile"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.qdec" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qdec</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.qdec"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.qdec_long" class="classattr">
+                                <div class="attr variable">
+            <span class="name">qdec_long</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.qdec_long"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.fsgd" class="classattr">
+                                <div class="attr variable">
+            <span class="name">fsgd</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.fsgd"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.maxsegno" class="classattr">
+                                <div class="attr variable">
+            <span class="name">maxsegno</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.maxsegno"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.segids_from_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segids_from_file</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.segids_from_file"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.segno_include" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segno_include</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.segno_include"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.segno_exclude" class="classattr">
+                                <div class="attr variable">
+            <span class="name">segno_exclude</span><span class="annotation">: NotRequired[list[str] | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.segno_exclude"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.measure" class="classattr">
+                                <div class="attr variable">
+            <span class="name">measure</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.measure"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.delimiter" class="classattr">
+                                <div class="attr variable">
+            <span class="name">delimiter</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.delimiter"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.statsfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">statsfile</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.statsfile"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.subdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subdir</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.subdir"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.scale" class="classattr">
+                                <div class="attr variable">
+            <span class="name">scale</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.scale"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.write_etiv" class="classattr">
+                                <div class="attr variable">
+            <span class="name">write_etiv</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.write_etiv"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.debug" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.debug"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.transpose_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">transpose_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.transpose_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.common_segs_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">common_segs_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.common_segs_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.all_segs_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">all_segs_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.all_segs_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.no_vol_extras_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">no_vol_extras_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.no_vol_extras_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.skip_missing_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">skip_missing_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.skip_missing_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Asegstats2tableParameters.replace53_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">replace53_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Asegstats2tableParameters.replace53_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -745,7 +1099,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">asegstats2table_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tablefile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjectsfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qdec</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qdec_long</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsgd</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxsegno</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segids_from_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segno_include</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segno_exclude</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">measure</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">statsfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_etiv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">transpose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">common_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_vol_extras_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_missing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">replace53_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">asegstats2table</span><span class="o">.</span><span class="n">Asegstats2tableParameters</span>:</span></span>
+        <span class="name">asegstats2table_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">tablefile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subjectsfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qdec</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">qdec_long</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">fsgd</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">maxsegno</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segids_from_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segno_include</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">segno_exclude</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">measure</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">statsfile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">subdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">write_etiv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">transpose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">common_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">all_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">no_vol_extras_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">skip_missing_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">replace53_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Asegstats2tableParameters">Asegstats2tableParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="asegstats2table_params-view-source"><span>View Source</span></label>
 
@@ -905,186 +1259,5 @@
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

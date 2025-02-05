@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,72 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Feat2segstatsOutputs.segstats_output">segstats_output</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Feat2segstatsParameters">Feat2segstatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.feat_dir">feat_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.featdirfile">featdirfile</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.seg_vol">seg_vol</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.aseg_flag">aseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.aparc_aseg_flag">aparc_aseg_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.ctab">ctab</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.all_segs_flag">all_segs_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.copes_flag">copes_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.varcopes_flag">varcopes_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.zstats_flag">zstats_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.pes_flag">pes_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.rvar">rvar</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.example_func">example_func</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.mask">mask</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.mean_func">mean_func</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.stat">stat</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.version_flag">version_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.help_flag">help_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.debug_flag">debug_flag</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Feat2segstatsParameters.nolog_flag">nolog_flag</a>
                         </li>
                 </ul>
 
@@ -435,9 +499,10 @@
 </span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="s2">&quot;FEAT2SEGSTATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;Feat2segstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;feat2segstats&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;feat2segstats_params&quot;</span><span class="p">,</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="p">]</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;Feat2segstatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;feat2segstats&quot;</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;feat2segstats_params&quot;</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -519,6 +584,239 @@
             <div class="docstring"><p>Output segmentation statistics file</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="Feat2segstatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Feat2segstatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters"></a>
+    
+    
+
+                            <div id="Feat2segstatsParameters.feat_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">feat_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.feat_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.featdirfile" class="classattr">
+                                <div class="attr variable">
+            <span class="name">featdirfile</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.featdirfile"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.seg_vol" class="classattr">
+                                <div class="attr variable">
+            <span class="name">seg_vol</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.seg_vol"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.aseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.aseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.aparc_aseg_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">aparc_aseg_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.aparc_aseg_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.ctab" class="classattr">
+                                <div class="attr variable">
+            <span class="name">ctab</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.ctab"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.all_segs_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">all_segs_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.all_segs_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.copes_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copes_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.copes_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.varcopes_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">varcopes_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.varcopes_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.zstats_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">zstats_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.zstats_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.pes_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pes_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.pes_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.rvar" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rvar</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.rvar"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.example_func" class="classattr">
+                                <div class="attr variable">
+            <span class="name">example_func</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.example_func"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.mask" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mask</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.mask"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.mean_func" class="classattr">
+                                <div class="attr variable">
+            <span class="name">mean_func</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.mean_func"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.stat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">stat</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.stat"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.version_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.version_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.help_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.help_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.debug_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">debug_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.debug_flag"></a>
+    
+    
+
+                            </div>
+                            <div id="Feat2segstatsParameters.nolog_flag" class="classattr">
+                                <div class="attr variable">
+            <span class="name">nolog_flag</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Feat2segstatsParameters.nolog_flag"></a>
+    
+    
 
                             </div>
                 </section>
@@ -644,7 +942,7 @@ featdir/freesurfer/segstats/segvol/statname.dat.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">feat2segstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">feat_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stat_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">featdirfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seg_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">aparc_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ctab</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">varcopes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zstats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rvar</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">example_func</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_func</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nolog_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">feat2segstats</span><span class="o">.</span><span class="n">Feat2segstatsParameters</span>:</span></span>
+        <span class="name">feat2segstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">feat_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stat_</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">featdirfile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seg_vol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">aparc_aseg_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ctab</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">all_segs_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">copes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">varcopes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">zstats_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pes_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">rvar</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">example_func</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mask</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">mean_func</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">version_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">help_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">debug_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">nolog_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#Feat2segstatsParameters">Feat2segstatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="feat2segstats_params-view-source"><span>View Source</span></label>
 
@@ -771,186 +1069,5 @@ featdir/freesurfer/segstats/segvol/statname.dat.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

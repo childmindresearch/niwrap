@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -41,6 +39,54 @@
                         </li>
                         <li>
                                 <a class="variable" href="#FspalmOutputs.root">root</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#FspalmParameters">FspalmParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#FspalmParameters.glmdir">glmdir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.cft">cft</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.cwp">cwp</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.onetail">onetail</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.twotail">twotail</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.iters">iters</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.monly">monly</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.pponly">pponly</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.octave">octave</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.centroid">centroid</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.2spaces">2spaces</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.3spaces">3spaces</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#FspalmParameters.pargs">pargs</a>
                         </li>
                 </ul>
 
@@ -363,9 +409,10 @@
 </span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="s2">&quot;FSPALM_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="s2">&quot;FspalmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;fspalm&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;fspalm_params&quot;</span><span class="p">,</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="p">]</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;FspalmParameters&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;fspalm&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;fspalm_params&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -432,6 +479,173 @@
             <div class="docstring"><p>Output root folder. This is the root folder for all outputs.</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="FspalmParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">FspalmParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters"></a>
+    
+    
+
+                            <div id="FspalmParameters.glmdir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">glmdir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.glmdir"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.cft" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cft</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.cft"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.cwp" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cwp</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.cwp"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.onetail" class="classattr">
+                                <div class="attr variable">
+            <span class="name">onetail</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.onetail"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.twotail" class="classattr">
+                                <div class="attr variable">
+            <span class="name">twotail</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.twotail"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.name"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.iters" class="classattr">
+                                <div class="attr variable">
+            <span class="name">iters</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.iters"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.monly" class="classattr">
+                                <div class="attr variable">
+            <span class="name">monly</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.monly"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.pponly" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pponly</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.pponly"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.octave" class="classattr">
+                                <div class="attr variable">
+            <span class="name">octave</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.octave"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.centroid" class="classattr">
+                                <div class="attr variable">
+            <span class="name">centroid</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.centroid"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.2spaces" class="classattr">
+                                <div class="attr variable">
+            <span class="name">2spaces</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.2spaces"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.3spaces" class="classattr">
+                                <div class="attr variable">
+            <span class="name">3spaces</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.3spaces"></a>
+    
+    
+
+                            </div>
+                            <div id="FspalmParameters.pargs" class="classattr">
+                                <div class="attr variable">
+            <span class="name">pargs</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#FspalmParameters.pargs"></a>
+    
+    
 
                             </div>
                 </section>
@@ -538,7 +752,7 @@ Linear Models (PALM) to correct for multiple comparisons.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fspalm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">glmdir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cft</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cwp</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">onetail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">twotail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">monly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pponly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">octave</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">centroid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_2spaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_3spaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pargs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">fspalm</span><span class="o">.</span><span class="n">FspalmParameters</span>:</span></span>
+        <span class="name">fspalm_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">glmdir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cft</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">cwp</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">onetail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">twotail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">iters</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">monly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pponly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">octave</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">centroid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_2spaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">v_3spaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">pargs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FspalmParameters">FspalmParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="fspalm_params-view-source"><span>View Source</span></label>
 
@@ -636,186 +850,5 @@ Linear Models (PALM) to correct for multiple comparisons.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>

@@ -23,8 +23,6 @@
 </svg>                &nbsp;niwrap.freesurfer</a>
 
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
 
@@ -44,6 +42,57 @@
                         </li>
                         <li>
                                 <a class="variable" href="#MrisAutodetGwstatsOutputs.output_file">output_file</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#MrisAutodetGwstatsParameters">MrisAutodetGwstatsParameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.output_file">output_file</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.t1w_volume">t1w_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.wm_volume">wm_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.surf">surf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.lhsurf">lhsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.rhsurf">rhsurf</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.subject">subject</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.subjects_dir">subjects_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.min_border_white">min_border_white</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.max_border_white">max_border_white</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.min_gray_at_white_border">min_gray_at_white_border</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.max_gray">max_gray</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.max_gray_at_csf_border">max_gray_at_csf_border</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.min_gray_at_csf_border">min_gray_at_csf_border</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#MrisAutodetGwstatsParameters.max_csf">max_csf</a>
                         </li>
                 </ul>
 
@@ -411,9 +460,10 @@
 </span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="s2">&quot;MRIS_AUTODET_GWSTATS_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="s2">&quot;MrisAutodetGwstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;mris_autodet_gwstats&quot;</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;mris_autodet_gwstats_params&quot;</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="p">]</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="s2">&quot;MrisAutodetGwstatsParameters&quot;</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="s2">&quot;mris_autodet_gwstats&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="s2">&quot;mris_autodet_gwstats_params&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -495,6 +545,184 @@
             <div class="docstring"><p>Output text file with gray/white statistics</p>
 </div>
 
+
+                            </div>
+                </section>
+                <section id="MrisAutodetGwstatsParameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MrisAutodetGwstatsParameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters"></a>
+    
+    
+
+                            <div id="MrisAutodetGwstatsParameters.output_file" class="classattr">
+                                <div class="attr variable">
+            <span class="name">output_file</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.output_file"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.t1w_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">t1w_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.t1w_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.wm_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">wm_volume</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.wm_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.surf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">surf</span><span class="annotation">: pathlib._local.Path | str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.surf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.lhsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">lhsurf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.lhsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.rhsurf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">rhsurf</span><span class="annotation">: NotRequired[pathlib._local.Path | str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.rhsurf"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.subject" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subject</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.subject"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.subjects_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">subjects_dir</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.subjects_dir"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.min_border_white" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_border_white</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.min_border_white"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.max_border_white" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_border_white</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.max_border_white"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.min_gray_at_white_border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_gray_at_white_border</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.min_gray_at_white_border"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.max_gray" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_gray</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.max_gray"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.max_gray_at_csf_border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_gray_at_csf_border</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.max_gray_at_csf_border"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.min_gray_at_csf_border" class="classattr">
+                                <div class="attr variable">
+            <span class="name">min_gray_at_csf_border</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.min_gray_at_csf_border"></a>
+    
+    
+
+                            </div>
+                            <div id="MrisAutodetGwstatsParameters.max_csf" class="classattr">
+                                <div class="attr variable">
+            <span class="name">max_csf</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#MrisAutodetGwstatsParameters.max_csf"></a>
+    
+    
 
                             </div>
                 </section>
@@ -605,7 +833,7 @@ pial surfaces.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mris_autodet_gwstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">t1w_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">wm_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lhsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rhsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_border_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_border_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_gray_at_white_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_gray</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_gray_at_csf_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_gray_at_csf_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_csf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">niwrap</span><span class="o">.</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">mris_autodet_gwstats</span><span class="o">.</span><span class="n">MrisAutodetGwstatsParameters</span>:</span></span>
+        <span class="name">mris_autodet_gwstats_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">t1w_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">wm_volume</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">subjects_dir</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">lhsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">rhsurf</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_border_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_border_white</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_gray_at_white_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_gray</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_gray_at_csf_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">min_gray_at_csf_border</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">max_csf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#MrisAutodetGwstatsParameters">MrisAutodetGwstatsParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="mris_autodet_gwstats_params-view-source"><span>View Source</span></label>
 
@@ -714,186 +942,5 @@ pial surfaces.</p>
 
                 </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>
