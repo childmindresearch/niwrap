@@ -38,7 +38,7 @@ jobs:
       - name: Compile
         run: |
             cd python
-            poetry run pdoc niwrap -o docs_build -t docs/pdoc-theme --docformat google
+            poetry run pdoc niwrap -o docs_build -t docs/pdoc-theme --docformat google --no-search
             touch docs_build/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
