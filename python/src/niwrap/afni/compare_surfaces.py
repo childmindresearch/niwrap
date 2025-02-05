@@ -323,6 +323,7 @@ def compare_surfaces(
 __all__ = [
     "COMPARE_SURFACES_METADATA",
     "CompareSurfacesOutputs",
+    "CompareSurfacesParameters",
     "compare_surfaces",
     "compare_surfaces_params",
 ]

@@ -407,6 +407,7 @@ def slicer(
 __all__ = [
     "SLICER_METADATA",
     "SlicerOutputs",
+    "SlicerParameters",
     "slicer",
     "slicer_params",
 ]

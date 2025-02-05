@@ -447,7 +447,9 @@ def dwibiascorrect(
 
 __all__ = [
     "DWIBIASCORRECT_METADATA",
+    "DwibiascorrectFslgradParameters",
     "DwibiascorrectOutputs",
+    "DwibiascorrectParameters",
     "dwibiascorrect",
     "dwibiascorrect_fslgrad_params",
     "dwibiascorrect_params",

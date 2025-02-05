@@ -320,6 +320,7 @@ def mris_volsmooth(
 __all__ = [
     "MRIS_VOLSMOOTH_METADATA",
     "MrisVolsmoothOutputs",
+    "MrisVolsmoothParameters",
     "mris_volsmooth",
     "mris_volsmooth_params",
 ]

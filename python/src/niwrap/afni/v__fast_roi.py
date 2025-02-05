@@ -273,6 +273,7 @@ def v__fast_roi(
 
 __all__ = [
     "VFastRoiOutputs",
+    "VFastRoiParameters",
     "V__FAST_ROI_METADATA",
     "v__fast_roi",
     "v__fast_roi_params",

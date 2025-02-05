@@ -169,6 +169,7 @@ def reg2subject(
 __all__ = [
     "REG2SUBJECT_METADATA",
     "Reg2subjectOutputs",
+    "Reg2subjectParameters",
     "reg2subject",
     "reg2subject_params",
 ]

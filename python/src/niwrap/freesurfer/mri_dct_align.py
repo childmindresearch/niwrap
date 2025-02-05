@@ -183,6 +183,7 @@ def mri_dct_align(
 __all__ = [
     "MRI_DCT_ALIGN_METADATA",
     "MriDctAlignOutputs",
+    "MriDctAlignParameters",
     "mri_dct_align",
     "mri_dct_align_params",
 ]

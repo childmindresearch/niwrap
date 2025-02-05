@@ -311,6 +311,7 @@ def rsfgen(
 __all__ = [
     "RSFGEN_METADATA",
     "RsfgenOutputs",
+    "RsfgenParameters",
     "rsfgen",
     "rsfgen_params",
 ]

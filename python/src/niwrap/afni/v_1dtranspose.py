@@ -179,6 +179,7 @@ def v_1dtranspose(
 
 __all__ = [
     "V1dtransposeOutputs",
+    "V1dtransposeParameters",
     "V_1DTRANSPOSE_METADATA",
     "v_1dtranspose",
     "v_1dtranspose_params",

@@ -176,6 +176,7 @@ def dmri_colored_fa(
 __all__ = [
     "DMRI_COLORED_FA_METADATA",
     "DmriColoredFaOutputs",
+    "DmriColoredFaParameters",
     "dmri_colored_fa",
     "dmri_colored_fa_params",
 ]

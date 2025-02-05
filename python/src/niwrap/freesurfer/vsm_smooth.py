@@ -214,6 +214,7 @@ def vsm_smooth(
 __all__ = [
     "VSM_SMOOTH_METADATA",
     "VsmSmoothOutputs",
+    "VsmSmoothParameters",
     "vsm_smooth",
     "vsm_smooth_params",
 ]

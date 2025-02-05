@@ -288,6 +288,7 @@ def vecreg(
 __all__ = [
     "VECREG_METADATA",
     "VecregOutputs",
+    "VecregParameters",
     "vecreg",
     "vecreg_params",
 ]

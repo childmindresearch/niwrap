@@ -284,6 +284,8 @@ def cifti_create_scalar_series(
 __all__ = [
     "CIFTI_CREATE_SCALAR_SERIES_METADATA",
     "CiftiCreateScalarSeriesOutputs",
+    "CiftiCreateScalarSeriesParameters",
+    "CiftiCreateScalarSeriesSeriesParameters",
     "cifti_create_scalar_series",
     "cifti_create_scalar_series_params",
     "cifti_create_scalar_series_series_params",

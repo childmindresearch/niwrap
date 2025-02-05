@@ -190,6 +190,7 @@ def mri_head(
 __all__ = [
     "MRI_HEAD_METADATA",
     "MriHeadOutputs",
+    "MriHeadParameters",
     "mri_head",
     "mri_head_params",
 ]

@@ -388,7 +388,9 @@ def mrmath(
 
 __all__ = [
     "MRMATH_METADATA",
+    "MrmathConfigParameters",
     "MrmathOutputs",
+    "MrmathParameters",
     "mrmath",
     "mrmath_config_params",
     "mrmath_params",

@@ -224,6 +224,7 @@ def samseg_long(
 __all__ = [
     "SAMSEG_LONG_METADATA",
     "SamsegLongOutputs",
+    "SamsegLongParameters",
     "samseg_long",
     "samseg_long_params",
 ]

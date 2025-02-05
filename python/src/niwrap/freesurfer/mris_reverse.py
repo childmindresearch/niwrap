@@ -176,6 +176,7 @@ def mris_reverse(
 __all__ = [
     "MRIS_REVERSE_METADATA",
     "MrisReverseOutputs",
+    "MrisReverseParameters",
     "mris_reverse",
     "mris_reverse_params",
 ]

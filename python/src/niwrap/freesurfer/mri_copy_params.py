@@ -193,6 +193,7 @@ def mri_copy_params(
 __all__ = [
     "MRI_COPY_PARAMS_METADATA",
     "MriCopyParamsOutputs",
+    "MriCopyParamsParameters",
     "mri_copy_params",
     "mri_copy_params_params",
 ]

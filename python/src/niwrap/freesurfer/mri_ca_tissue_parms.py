@@ -192,6 +192,7 @@ def mri_ca_tissue_parms(
 __all__ = [
     "MRI_CA_TISSUE_PARMS_METADATA",
     "MriCaTissueParmsOutputs",
+    "MriCaTissueParmsParameters",
     "mri_ca_tissue_parms",
     "mri_ca_tissue_parms_params",
 ]

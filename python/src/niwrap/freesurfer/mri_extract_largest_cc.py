@@ -236,6 +236,7 @@ def mri_extract_largest_cc(
 __all__ = [
     "MRI_EXTRACT_LARGEST_CC_METADATA",
     "MriExtractLargestCcOutputs",
+    "MriExtractLargestCcParameters",
     "mri_extract_largest_cc",
     "mri_extract_largest_cc_params",
 ]

@@ -221,6 +221,7 @@ def register_subject(
 __all__ = [
     "REGISTER_SUBJECT_METADATA",
     "RegisterSubjectOutputs",
+    "RegisterSubjectParameters",
     "register_subject",
     "register_subject_params",
 ]

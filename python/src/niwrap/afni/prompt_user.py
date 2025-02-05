@@ -181,6 +181,7 @@ def prompt_user(
 __all__ = [
     "PROMPT_USER_METADATA",
     "PromptUserOutputs",
+    "PromptUserParameters",
     "prompt_user",
     "prompt_user_params",
 ]

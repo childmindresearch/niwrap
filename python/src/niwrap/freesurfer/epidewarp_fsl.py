@@ -411,6 +411,7 @@ def epidewarp_fsl(
 __all__ = [
     "EPIDEWARP_FSL_METADATA",
     "EpidewarpFslOutputs",
+    "EpidewarpFslParameters",
     "epidewarp_fsl",
     "epidewarp_fsl_params",
 ]

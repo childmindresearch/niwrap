@@ -253,6 +253,7 @@ def v_3d_brain_sync(
 
 __all__ = [
     "V3dBrainSyncOutputs",
+    "V3dBrainSyncParameters",
     "V_3D_BRAIN_SYNC_METADATA",
     "v_3d_brain_sync",
     "v_3d_brain_sync_params",

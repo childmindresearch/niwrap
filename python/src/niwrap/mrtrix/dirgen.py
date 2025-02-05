@@ -397,7 +397,9 @@ def dirgen(
 
 __all__ = [
     "DIRGEN_METADATA",
+    "DirgenConfigParameters",
     "DirgenOutputs",
+    "DirgenParameters",
     "dirgen",
     "dirgen_config_params",
     "dirgen_params",

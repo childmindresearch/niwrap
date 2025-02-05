@@ -194,6 +194,7 @@ def fs_run_from_mcr(
 __all__ = [
     "FS_RUN_FROM_MCR_METADATA",
     "FsRunFromMcrOutputs",
+    "FsRunFromMcrParameters",
     "fs_run_from_mcr",
     "fs_run_from_mcr_params",
 ]

@@ -310,6 +310,7 @@ def metric_find_clusters(
 __all__ = [
     "METRIC_FIND_CLUSTERS_METADATA",
     "MetricFindClustersOutputs",
+    "MetricFindClustersParameters",
     "metric_find_clusters",
     "metric_find_clusters_params",
 ]

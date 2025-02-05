@@ -204,6 +204,7 @@ def mris_annot_to_segmentation(
 __all__ = [
     "MRIS_ANNOT_TO_SEGMENTATION_METADATA",
     "MrisAnnotToSegmentationOutputs",
+    "MrisAnnotToSegmentationParameters",
     "mris_annot_to_segmentation",
     "mris_annot_to_segmentation_params",
 ]

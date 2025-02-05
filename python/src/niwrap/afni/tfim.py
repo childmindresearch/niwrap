@@ -254,6 +254,7 @@ def tfim(
 __all__ = [
     "TFIM_METADATA",
     "TfimOutputs",
+    "TfimParameters",
     "tfim",
     "tfim_params",
 ]

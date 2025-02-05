@@ -252,6 +252,7 @@ def vecwarp(
 __all__ = [
     "VECWARP_METADATA",
     "VecwarpOutputs",
+    "VecwarpParameters",
     "vecwarp",
     "vecwarp_params",
 ]

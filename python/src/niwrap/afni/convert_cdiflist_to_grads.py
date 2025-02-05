@@ -238,6 +238,7 @@ def convert_cdiflist_to_grads(
 __all__ = [
     "CONVERT_CDIFLIST_TO_GRADS_METADATA",
     "ConvertCdiflistToGradsOutputs",
+    "ConvertCdiflistToGradsParameters",
     "convert_cdiflist_to_grads",
     "convert_cdiflist_to_grads_params",
 ]

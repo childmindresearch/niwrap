@@ -220,6 +220,7 @@ def segpons(
 __all__ = [
     "SEGPONS_METADATA",
     "SegponsOutputs",
+    "SegponsParameters",
     "segpons",
     "segpons_params",
 ]

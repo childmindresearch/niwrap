@@ -170,6 +170,7 @@ def morph_tables_rh(
 __all__ = [
     "MORPH_TABLES_RH_METADATA",
     "MorphTablesRhOutputs",
+    "MorphTablesRhParameters",
     "morph_tables_rh",
     "morph_tables_rh_params",
 ]

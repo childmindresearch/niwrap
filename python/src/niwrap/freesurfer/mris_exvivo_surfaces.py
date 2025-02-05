@@ -243,6 +243,7 @@ def mris_exvivo_surfaces(
 __all__ = [
     "MRIS_EXVIVO_SURFACES_METADATA",
     "MrisExvivoSurfacesOutputs",
+    "MrisExvivoSurfacesParameters",
     "mris_exvivo_surfaces",
     "mris_exvivo_surfaces_params",
 ]

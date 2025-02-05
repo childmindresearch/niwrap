@@ -274,6 +274,7 @@ def analyze_trace(
 __all__ = [
     "ANALYZE_TRACE_METADATA",
     "AnalyzeTraceOutputs",
+    "AnalyzeTraceParameters",
     "analyze_trace",
     "analyze_trace_params",
 ]

@@ -314,7 +314,9 @@ def v_5ttcheck(
 
 
 __all__ = [
+    "V5ttcheckConfigParameters",
     "V5ttcheckOutputs",
+    "V5ttcheckParameters",
     "V_5TTCHECK_METADATA",
     "v_5ttcheck",
     "v_5ttcheck_config_params",

@@ -221,6 +221,7 @@ def mri_create_t2combined(
 __all__ = [
     "MRI_CREATE_T2COMBINED_METADATA",
     "MriCreateT2combinedOutputs",
+    "MriCreateT2combinedParameters",
     "mri_create_t2combined",
     "mri_create_t2combined_params",
 ]

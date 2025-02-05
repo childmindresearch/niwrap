@@ -308,6 +308,7 @@ def vol2subfield(
 __all__ = [
     "VOL2SUBFIELD_METADATA",
     "Vol2subfieldOutputs",
+    "Vol2subfieldParameters",
     "vol2subfield",
     "vol2subfield_params",
 ]

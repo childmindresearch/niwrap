@@ -327,6 +327,7 @@ def clust_exp_stat_parse_py(
 __all__ = [
     "CLUST_EXP_STAT_PARSE_PY_METADATA",
     "ClustExpStatParsePyOutputs",
+    "ClustExpStatParsePyParameters",
     "clust_exp_stat_parse_py",
     "clust_exp_stat_parse_py_params",
 ]

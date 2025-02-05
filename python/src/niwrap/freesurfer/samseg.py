@@ -633,6 +633,7 @@ def samseg(
 __all__ = [
     "SAMSEG_METADATA",
     "SamsegOutputs",
+    "SamsegParameters",
     "samseg",
     "samseg_params",
 ]

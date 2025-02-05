@@ -176,6 +176,7 @@ def mri_or(
 __all__ = [
     "MRI_OR_METADATA",
     "MriOrOutputs",
+    "MriOrParameters",
     "mri_or",
     "mri_or_params",
 ]

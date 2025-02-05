@@ -171,6 +171,7 @@ def reinflate_subject_lh(
 __all__ = [
     "REINFLATE_SUBJECT_LH_METADATA",
     "ReinflateSubjectLhOutputs",
+    "ReinflateSubjectLhParameters",
     "reinflate_subject_lh",
     "reinflate_subject_lh_params",
 ]

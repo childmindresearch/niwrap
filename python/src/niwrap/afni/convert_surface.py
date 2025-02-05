@@ -234,6 +234,7 @@ def convert_surface(
 __all__ = [
     "CONVERT_SURFACE_METADATA",
     "ConvertSurfaceOutputs",
+    "ConvertSurfaceParameters",
     "convert_surface",
     "convert_surface_params",
 ]

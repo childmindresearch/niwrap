@@ -329,7 +329,9 @@ def label2colour(
 
 __all__ = [
     "LABEL2COLOUR_METADATA",
+    "Label2colourConfigParameters",
     "Label2colourOutputs",
+    "Label2colourParameters",
     "label2colour",
     "label2colour_config_params",
     "label2colour_params",

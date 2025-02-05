@@ -219,6 +219,7 @@ def v_3d_nwarp_funcs(
 
 __all__ = [
     "V3dNwarpFuncsOutputs",
+    "V3dNwarpFuncsParameters",
     "V_3D_NWARP_FUNCS_METADATA",
     "v_3d_nwarp_funcs",
     "v_3d_nwarp_funcs_params",

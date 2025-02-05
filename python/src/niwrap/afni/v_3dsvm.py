@@ -484,6 +484,7 @@ def v_3dsvm(
 
 __all__ = [
     "V3dsvmOutputs",
+    "V3dsvmParameters",
     "V_3DSVM_METADATA",
     "v_3dsvm",
     "v_3dsvm_params",

@@ -220,6 +220,7 @@ def split_parts_gpu(
 __all__ = [
     "SPLIT_PARTS_GPU_METADATA",
     "SplitPartsGpuOutputs",
+    "SplitPartsGpuParameters",
     "split_parts_gpu",
     "split_parts_gpu_params",
 ]

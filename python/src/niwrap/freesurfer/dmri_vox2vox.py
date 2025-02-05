@@ -289,6 +289,7 @@ def dmri_vox2vox(
 __all__ = [
     "DMRI_VOX2VOX_METADATA",
     "DmriVox2voxOutputs",
+    "DmriVox2voxParameters",
     "dmri_vox2vox",
     "dmri_vox2vox_params",
 ]

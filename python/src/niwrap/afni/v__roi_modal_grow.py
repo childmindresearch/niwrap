@@ -243,6 +243,7 @@ def v__roi_modal_grow(
 
 __all__ = [
     "VRoiModalGrowOutputs",
+    "VRoiModalGrowParameters",
     "V__ROI_MODAL_GROW_METADATA",
     "v__roi_modal_grow",
     "v__roi_modal_grow_params",

@@ -304,6 +304,7 @@ def mri_compute_layer_fractions(
 __all__ = [
     "MRI_COMPUTE_LAYER_FRACTIONS_METADATA",
     "MriComputeLayerFractionsOutputs",
+    "MriComputeLayerFractionsParameters",
     "mri_compute_layer_fractions",
     "mri_compute_layer_fractions_params",
 ]

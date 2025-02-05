@@ -728,7 +728,7 @@ def mrtransform_outputs(
         root=execution.output_file("."),
         output=execution.output_file(params.get("output")),
         export_grad_mrtrix=execution.output_file(params.get("export_grad_mrtrix")) if (params.get("export_grad_mrtrix") is not None) else None,
-        export_grad_fsl=dyn_outputs(export_grad_fsl["__STYXTYPE__"])(export_grad_fsl, execution) if export_grad_fsl else None,
+        export_grad_fsl=dyn_outputs(params.get("export_grad_fsl")["__STYXTYPE__"])(params.get("export_grad_fsl"), execution) if params.get("export_grad_fsl") else None,
     )
     return ret
 
@@ -999,8 +999,14 @@ def mrtransform(
 
 __all__ = [
     "MRTRANSFORM_METADATA",
+    "MrtransformConfigParameters",
     "MrtransformExportGradFslOutputs",
+    "MrtransformExportGradFslParameters",
+    "MrtransformFslgradParameters",
     "MrtransformOutputs",
+    "MrtransformParameters",
+    "MrtransformVariousFileParameters",
+    "MrtransformVariousStringParameters",
     "mrtransform",
     "mrtransform_config_params",
     "mrtransform_export_grad_fsl_params",

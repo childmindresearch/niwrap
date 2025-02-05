@@ -192,6 +192,7 @@ def mri_fuse_intensity_images(
 __all__ = [
     "MRI_FUSE_INTENSITY_IMAGES_METADATA",
     "MriFuseIntensityImagesOutputs",
+    "MriFuseIntensityImagesParameters",
     "mri_fuse_intensity_images",
     "mri_fuse_intensity_images_params",
 ]

@@ -299,6 +299,8 @@ def label_to_volume_mapping(
 __all__ = [
     "LABEL_TO_VOLUME_MAPPING_METADATA",
     "LabelToVolumeMappingOutputs",
+    "LabelToVolumeMappingParameters",
+    "LabelToVolumeMappingRibbonConstrainedParameters",
     "label_to_volume_mapping",
     "label_to_volume_mapping_params",
     "label_to_volume_mapping_ribbon_constrained_params",

@@ -292,6 +292,7 @@ def mri_edit_wm_with_aseg(
 __all__ = [
     "MRI_EDIT_WM_WITH_ASEG_METADATA",
     "MriEditWmWithAsegOutputs",
+    "MriEditWmWithAsegParameters",
     "mri_edit_wm_with_aseg",
     "mri_edit_wm_with_aseg_params",
 ]

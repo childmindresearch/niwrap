@@ -186,6 +186,7 @@ def rca_base_init(
 __all__ = [
     "RCA_BASE_INIT_METADATA",
     "RcaBaseInitOutputs",
+    "RcaBaseInitParameters",
     "rca_base_init",
     "rca_base_init_params",
 ]

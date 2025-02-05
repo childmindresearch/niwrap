@@ -178,6 +178,7 @@ def mri_segreg(
 __all__ = [
     "MRI_SEGREG_METADATA",
     "MriSegregOutputs",
+    "MriSegregParameters",
     "mri_segreg",
     "mri_segreg_params",
 ]

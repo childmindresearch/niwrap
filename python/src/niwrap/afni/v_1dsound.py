@@ -274,6 +274,7 @@ def v_1dsound(
 
 __all__ = [
     "V1dsoundOutputs",
+    "V1dsoundParameters",
     "V_1DSOUND_METADATA",
     "v_1dsound",
     "v_1dsound_params",

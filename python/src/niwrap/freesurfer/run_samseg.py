@@ -505,6 +505,7 @@ def run_samseg(
 __all__ = [
     "RUN_SAMSEG_METADATA",
     "RunSamsegOutputs",
+    "RunSamsegParameters",
     "run_samseg",
     "run_samseg_params",
 ]

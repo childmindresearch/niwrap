@@ -327,6 +327,7 @@ def v__simulate_motion(
 
 __all__ = [
     "VSimulateMotionOutputs",
+    "VSimulateMotionParameters",
     "V__SIMULATE_MOTION_METADATA",
     "v__simulate_motion",
     "v__simulate_motion_params",

@@ -339,7 +339,9 @@ def fixelreorient(
 
 __all__ = [
     "FIXELREORIENT_METADATA",
+    "FixelreorientConfigParameters",
     "FixelreorientOutputs",
+    "FixelreorientParameters",
     "fixelreorient",
     "fixelreorient_config_params",
     "fixelreorient_params",

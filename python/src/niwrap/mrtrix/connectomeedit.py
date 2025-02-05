@@ -315,7 +315,9 @@ def connectomeedit(
 
 __all__ = [
     "CONNECTOMEEDIT_METADATA",
+    "ConnectomeeditConfigParameters",
     "ConnectomeeditOutputs",
+    "ConnectomeeditParameters",
     "connectomeedit",
     "connectomeedit_config_params",
     "connectomeedit_params",

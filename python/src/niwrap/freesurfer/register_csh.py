@@ -185,6 +185,7 @@ def register_csh(
 __all__ = [
     "REGISTER_CSH_METADATA",
     "RegisterCshOutputs",
+    "RegisterCshParameters",
     "register_csh",
     "register_csh_params",
 ]

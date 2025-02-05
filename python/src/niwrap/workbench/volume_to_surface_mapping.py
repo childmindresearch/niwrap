@@ -344,7 +344,7 @@ def volume_to_surface_mapping_ribbon_constrained_outputs(
     """
     ret = VolumeToSurfaceMappingRibbonConstrainedOutputs(
         root=execution.output_file("."),
-        output_weights=dyn_outputs(output_weights["__STYXTYPE__"])(output_weights, execution) if output_weights else None,
+        output_weights=dyn_outputs(params.get("output_weights")["__STYXTYPE__"])(params.get("output_weights"), execution) if params.get("output_weights") else None,
     )
     return ret
 
@@ -511,7 +511,7 @@ def volume_to_surface_mapping_outputs(
     ret = VolumeToSurfaceMappingOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(params.get("metric_out")),
-        ribbon_constrained=dyn_outputs(ribbon_constrained["__STYXTYPE__"])(ribbon_constrained, execution) if ribbon_constrained else None,
+        ribbon_constrained=dyn_outputs(params.get("ribbon_constrained")["__STYXTYPE__"])(params.get("ribbon_constrained"), execution) if params.get("ribbon_constrained") else None,
     )
     return ret
 
@@ -658,9 +658,14 @@ def volume_to_surface_mapping(
 
 __all__ = [
     "VOLUME_TO_SURFACE_MAPPING_METADATA",
+    "VolumeToSurfaceMappingMyelinStyleParameters",
     "VolumeToSurfaceMappingOutputWeightsOutputs",
+    "VolumeToSurfaceMappingOutputWeightsParameters",
     "VolumeToSurfaceMappingOutputs",
+    "VolumeToSurfaceMappingParameters",
     "VolumeToSurfaceMappingRibbonConstrainedOutputs",
+    "VolumeToSurfaceMappingRibbonConstrainedParameters",
+    "VolumeToSurfaceMappingVolumeRoiParameters",
     "volume_to_surface_mapping",
     "volume_to_surface_mapping_myelin_style_params",
     "volume_to_surface_mapping_output_weights_params",

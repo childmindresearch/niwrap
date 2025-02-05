@@ -197,6 +197,7 @@ def mris_rf_train(
 __all__ = [
     "MRIS_RF_TRAIN_METADATA",
     "MrisRfTrainOutputs",
+    "MrisRfTrainParameters",
     "mris_rf_train",
     "mris_rf_train_params",
 ]

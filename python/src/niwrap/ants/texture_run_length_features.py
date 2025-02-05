@@ -230,6 +230,7 @@ def texture_run_length_features(
 __all__ = [
     "TEXTURE_RUN_LENGTH_FEATURES_METADATA",
     "TextureRunLengthFeaturesOutputs",
+    "TextureRunLengthFeaturesParameters",
     "texture_run_length_features",
     "texture_run_length_features_params",
 ]

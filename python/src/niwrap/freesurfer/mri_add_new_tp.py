@@ -173,6 +173,7 @@ def mri_add_new_tp(
 __all__ = [
     "MRI_ADD_NEW_TP_METADATA",
     "MriAddNewTpOutputs",
+    "MriAddNewTpParameters",
     "mri_add_new_tp",
     "mri_add_new_tp_params",
 ]

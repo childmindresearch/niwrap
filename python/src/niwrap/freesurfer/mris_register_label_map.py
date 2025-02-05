@@ -263,6 +263,7 @@ def mris_register_label_map(
 __all__ = [
     "MRIS_REGISTER_LABEL_MAP_METADATA",
     "MrisRegisterLabelMapOutputs",
+    "MrisRegisterLabelMapParameters",
     "mris_register_label_map",
     "mris_register_label_map_params",
 ]

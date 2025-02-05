@@ -266,6 +266,7 @@ def examine_xmat(
 __all__ = [
     "EXAMINE_XMAT_METADATA",
     "ExamineXmatOutputs",
+    "ExamineXmatParameters",
     "examine_xmat",
     "examine_xmat_params",
 ]

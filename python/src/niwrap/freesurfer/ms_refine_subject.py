@@ -166,6 +166,7 @@ def ms_refine_subject(
 __all__ = [
     "MS_REFINE_SUBJECT_METADATA",
     "MsRefineSubjectOutputs",
+    "MsRefineSubjectParameters",
     "ms_refine_subject",
     "ms_refine_subject_params",
 ]

@@ -209,6 +209,7 @@ def extract_region_from_image_by_mask(
 __all__ = [
     "EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA",
     "ExtractRegionFromImageByMaskOutputs",
+    "ExtractRegionFromImageByMaskParameters",
     "extract_region_from_image_by_mask",
     "extract_region_from_image_by_mask_params",
 ]

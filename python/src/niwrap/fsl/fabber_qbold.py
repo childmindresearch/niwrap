@@ -566,6 +566,7 @@ def fabber_qbold(
 __all__ = [
     "FABBER_QBOLD_METADATA",
     "FabberQboldOutputs",
+    "FabberQboldParameters",
     "fabber_qbold",
     "fabber_qbold_params",
 ]

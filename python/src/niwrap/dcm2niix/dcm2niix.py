@@ -511,6 +511,7 @@ def dcm2niix_(
 __all__ = [
     "DCM2NIIX_METADATA",
     "Dcm2niixOutputs",
+    "Dcm2niixParameters",
     "dcm2niix_",
     "dcm2niix_params",
 ]

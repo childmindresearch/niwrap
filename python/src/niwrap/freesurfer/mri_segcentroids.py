@@ -234,6 +234,7 @@ def mri_segcentroids(
 __all__ = [
     "MRI_SEGCENTROIDS_METADATA",
     "MriSegcentroidsOutputs",
+    "MriSegcentroidsParameters",
     "mri_segcentroids",
     "mri_segcentroids_params",
 ]

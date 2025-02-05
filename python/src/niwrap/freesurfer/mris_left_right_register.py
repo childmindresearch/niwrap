@@ -197,6 +197,7 @@ def mris_left_right_register(
 __all__ = [
     "MRIS_LEFT_RIGHT_REGISTER_METADATA",
     "MrisLeftRightRegisterOutputs",
+    "MrisLeftRightRegisterParameters",
     "mris_left_right_register",
     "mris_left_right_register_params",
 ]

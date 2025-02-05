@@ -634,6 +634,7 @@ def eddy(
 __all__ = [
     "EDDY_METADATA",
     "EddyOutputs",
+    "EddyParameters",
     "eddy",
     "eddy_params",
 ]

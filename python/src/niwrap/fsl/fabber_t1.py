@@ -508,6 +508,7 @@ def fabber_t1(
 __all__ = [
     "FABBER_T1_METADATA",
     "FabberT1Outputs",
+    "FabberT1Parameters",
     "fabber_t1",
     "fabber_t1_params",
 ]

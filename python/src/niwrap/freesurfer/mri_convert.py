@@ -179,6 +179,7 @@ def mri_convert(
 __all__ = [
     "MRI_CONVERT_METADATA",
     "MriConvertOutputs",
+    "MriConvertParameters",
     "mri_convert",
     "mri_convert_params",
 ]

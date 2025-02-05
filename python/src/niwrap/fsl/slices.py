@@ -213,6 +213,7 @@ def slices(
 __all__ = [
     "SLICES_METADATA",
     "SlicesOutputs",
+    "SlicesParameters",
     "slices",
     "slices_params",
 ]

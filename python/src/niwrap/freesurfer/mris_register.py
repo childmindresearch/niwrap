@@ -858,6 +858,7 @@ def mris_register(
 __all__ = [
     "MRIS_REGISTER_METADATA",
     "MrisRegisterOutputs",
+    "MrisRegisterParameters",
     "mris_register",
     "mris_register_params",
 ]

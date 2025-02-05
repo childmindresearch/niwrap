@@ -209,6 +209,7 @@ def fsr_import(
 __all__ = [
     "FSR_IMPORT_METADATA",
     "FsrImportOutputs",
+    "FsrImportParameters",
     "fsr_import",
     "fsr_import_params",
 ]

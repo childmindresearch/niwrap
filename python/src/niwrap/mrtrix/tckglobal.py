@@ -711,7 +711,10 @@ def tckglobal(
 
 __all__ = [
     "TCKGLOBAL_METADATA",
+    "TckglobalConfigParameters",
     "TckglobalOutputs",
+    "TckglobalParameters",
+    "TckglobalRisoParameters",
     "tckglobal",
     "tckglobal_config_params",
     "tckglobal_params",

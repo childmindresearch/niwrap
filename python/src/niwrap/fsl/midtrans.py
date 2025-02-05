@@ -222,6 +222,7 @@ def midtrans(
 __all__ = [
     "MIDTRANS_METADATA",
     "MidtransOutputs",
+    "MidtransParameters",
     "midtrans",
     "midtrans_params",
 ]

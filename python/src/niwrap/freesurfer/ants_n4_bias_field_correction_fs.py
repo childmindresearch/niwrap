@@ -256,6 +256,7 @@ def ants_n4_bias_field_correction_fs(
 __all__ = [
     "ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA",
     "AntsN4BiasFieldCorrectionFsOutputs",
+    "AntsN4BiasFieldCorrectionFsParameters",
     "ants_n4_bias_field_correction_fs",
     "ants_n4_bias_field_correction_fs_params",
 ]

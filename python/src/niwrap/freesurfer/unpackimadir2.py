@@ -164,6 +164,7 @@ def unpackimadir2(
 __all__ = [
     "UNPACKIMADIR2_METADATA",
     "Unpackimadir2Outputs",
+    "Unpackimadir2Parameters",
     "unpackimadir2",
     "unpackimadir2_params",
 ]

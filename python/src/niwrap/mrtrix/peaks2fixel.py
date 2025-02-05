@@ -327,7 +327,9 @@ def peaks2fixel(
 
 __all__ = [
     "PEAKS2FIXEL_METADATA",
+    "Peaks2fixelConfigParameters",
     "Peaks2fixelOutputs",
+    "Peaks2fixelParameters",
     "peaks2fixel",
     "peaks2fixel_config_params",
     "peaks2fixel_params",

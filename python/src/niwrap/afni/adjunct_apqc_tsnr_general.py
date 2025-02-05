@@ -417,6 +417,7 @@ def adjunct_apqc_tsnr_general(
 __all__ = [
     "ADJUNCT_APQC_TSNR_GENERAL_METADATA",
     "AdjunctApqcTsnrGeneralOutputs",
+    "AdjunctApqcTsnrGeneralParameters",
     "adjunct_apqc_tsnr_general",
     "adjunct_apqc_tsnr_general_params",
 ]

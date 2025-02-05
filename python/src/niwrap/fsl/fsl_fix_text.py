@@ -176,6 +176,7 @@ def fsl_fix_text(
 __all__ = [
     "FSL_FIX_TEXT_METADATA",
     "FslFixTextOutputs",
+    "FslFixTextParameters",
     "fsl_fix_text",
     "fsl_fix_text_params",
 ]

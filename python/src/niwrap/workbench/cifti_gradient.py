@@ -453,7 +453,11 @@ def cifti_gradient(
 
 __all__ = [
     "CIFTI_GRADIENT_METADATA",
+    "CiftiGradientCerebellumSurfaceParameters",
+    "CiftiGradientLeftSurfaceParameters",
     "CiftiGradientOutputs",
+    "CiftiGradientParameters",
+    "CiftiGradientRightSurfaceParameters",
     "cifti_gradient",
     "cifti_gradient_cerebellum_surface_params",
     "cifti_gradient_left_surface_params",

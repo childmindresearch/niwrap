@@ -232,6 +232,7 @@ def v_3d_upsample(
 
 __all__ = [
     "V3dUpsampleOutputs",
+    "V3dUpsampleParameters",
     "V_3D_UPSAMPLE_METADATA",
     "v_3d_upsample",
     "v_3d_upsample_params",

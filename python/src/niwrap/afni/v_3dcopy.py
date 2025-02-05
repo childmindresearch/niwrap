@@ -174,6 +174,7 @@ def v_3dcopy(
 
 __all__ = [
     "V3dcopyOutputs",
+    "V3dcopyParameters",
     "V_3DCOPY_METADATA",
     "v_3dcopy",
     "v_3dcopy_params",

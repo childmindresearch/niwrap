@@ -191,6 +191,7 @@ def surface_flip_normals(
 __all__ = [
     "SURFACE_FLIP_NORMALS_METADATA",
     "SurfaceFlipNormalsOutputs",
+    "SurfaceFlipNormalsParameters",
     "surface_flip_normals",
     "surface_flip_normals_params",
 ]

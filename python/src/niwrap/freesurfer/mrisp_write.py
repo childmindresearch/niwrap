@@ -276,6 +276,7 @@ def mrisp_write(
 __all__ = [
     "MRISP_WRITE_METADATA",
     "MrispWriteOutputs",
+    "MrispWriteParameters",
     "mrisp_write",
     "mrisp_write_params",
 ]

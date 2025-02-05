@@ -509,7 +509,12 @@ def mredit(
 
 __all__ = [
     "MREDIT_METADATA",
+    "MreditConfigParameters",
     "MreditOutputs",
+    "MreditParameters",
+    "MreditPlaneParameters",
+    "MreditSphereParameters",
+    "MreditVoxelParameters",
     "mredit",
     "mredit_config_params",
     "mredit_params",

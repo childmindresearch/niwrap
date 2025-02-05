@@ -365,6 +365,7 @@ def surf2vol(
 __all__ = [
     "SURF2VOL_METADATA",
     "Surf2volOutputs",
+    "Surf2volParameters",
     "surf2vol",
     "surf2vol_params",
 ]

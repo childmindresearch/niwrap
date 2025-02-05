@@ -278,6 +278,7 @@ def mris_seg2annot(
 __all__ = [
     "MRIS_SEG2ANNOT_METADATA",
     "MrisSeg2annotOutputs",
+    "MrisSeg2annotParameters",
     "mris_seg2annot",
     "mris_seg2annot_params",
 ]

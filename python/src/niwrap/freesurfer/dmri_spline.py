@@ -260,6 +260,7 @@ def dmri_spline(
 __all__ = [
     "DMRI_SPLINE_METADATA",
     "DmriSplineOutputs",
+    "DmriSplineParameters",
     "dmri_spline",
     "dmri_spline_params",
 ]

@@ -199,6 +199,7 @@ def v_3d_acost(
 
 __all__ = [
     "V3dAcostOutputs",
+    "V3dAcostParameters",
     "V_3D_ACOST_METADATA",
     "v_3d_acost",
     "v_3d_acost_params",

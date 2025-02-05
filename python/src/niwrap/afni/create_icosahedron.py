@@ -265,6 +265,7 @@ def create_icosahedron(
 __all__ = [
     "CREATE_ICOSAHEDRON_METADATA",
     "CreateIcosahedronOutputs",
+    "CreateIcosahedronParameters",
     "create_icosahedron",
     "create_icosahedron_params",
 ]

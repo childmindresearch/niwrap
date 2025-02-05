@@ -179,6 +179,7 @@ def v__parse_afni_name(
 
 __all__ = [
     "VParseAfniNameOutputs",
+    "VParseAfniNameParameters",
     "V__PARSE_AFNI_NAME_METADATA",
     "v__parse_afni_name",
     "v__parse_afni_name_params",

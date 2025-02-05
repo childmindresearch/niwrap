@@ -262,6 +262,7 @@ def tractstats2table(
 __all__ = [
     "TRACTSTATS2TABLE_METADATA",
     "Tractstats2tableOutputs",
+    "Tractstats2tableParameters",
     "tractstats2table",
     "tractstats2table_params",
 ]

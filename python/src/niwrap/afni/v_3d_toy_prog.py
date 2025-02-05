@@ -204,6 +204,7 @@ def v_3d_toy_prog(
 
 __all__ = [
     "V3dToyProgOutputs",
+    "V3dToyProgParameters",
     "V_3D_TOY_PROG_METADATA",
     "v_3d_toy_prog",
     "v_3d_toy_prog_params",

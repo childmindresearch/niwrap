@@ -196,6 +196,7 @@ def nicat(
 __all__ = [
     "NICAT_METADATA",
     "NicatOutputs",
+    "NicatParameters",
     "nicat",
     "nicat_params",
 ]

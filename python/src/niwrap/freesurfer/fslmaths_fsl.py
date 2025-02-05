@@ -187,6 +187,7 @@ def fslmaths_fsl(
 __all__ = [
     "FSLMATHS_FSL_METADATA",
     "FslmathsFslOutputs",
+    "FslmathsFslParameters",
     "fslmaths_fsl",
     "fslmaths_fsl_params",
 ]

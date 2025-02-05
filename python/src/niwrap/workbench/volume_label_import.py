@@ -284,6 +284,7 @@ def volume_label_import(
 __all__ = [
     "VOLUME_LABEL_IMPORT_METADATA",
     "VolumeLabelImportOutputs",
+    "VolumeLabelImportParameters",
     "volume_label_import",
     "volume_label_import_params",
 ]

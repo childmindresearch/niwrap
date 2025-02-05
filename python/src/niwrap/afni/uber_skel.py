@@ -259,6 +259,7 @@ def uber_skel(
 __all__ = [
     "UBER_SKEL_METADATA",
     "UberSkelOutputs",
+    "UberSkelParameters",
     "uber_skel",
     "uber_skel_params",
 ]

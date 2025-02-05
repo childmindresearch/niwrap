@@ -192,6 +192,7 @@ def surface_wedge_volume(
 __all__ = [
     "SURFACE_WEDGE_VOLUME_METADATA",
     "SurfaceWedgeVolumeOutputs",
+    "SurfaceWedgeVolumeParameters",
     "surface_wedge_volume",
     "surface_wedge_volume_params",
 ]

@@ -397,7 +397,11 @@ def cifti_false_correlation(
 
 __all__ = [
     "CIFTI_FALSE_CORRELATION_METADATA",
+    "CiftiFalseCorrelationCerebellumSurfaceParameters",
+    "CiftiFalseCorrelationLeftSurfaceParameters",
     "CiftiFalseCorrelationOutputs",
+    "CiftiFalseCorrelationParameters",
+    "CiftiFalseCorrelationRightSurfaceParameters",
     "cifti_false_correlation",
     "cifti_false_correlation_cerebellum_surface_params",
     "cifti_false_correlation_left_surface_params",

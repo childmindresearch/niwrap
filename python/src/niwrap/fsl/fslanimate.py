@@ -185,6 +185,7 @@ def fslanimate(
 __all__ = [
     "FSLANIMATE_METADATA",
     "FslanimateOutputs",
+    "FslanimateParameters",
     "fslanimate",
     "fslanimate_params",
 ]

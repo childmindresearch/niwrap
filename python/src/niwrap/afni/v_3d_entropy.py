@@ -171,6 +171,7 @@ def v_3d_entropy(
 
 __all__ = [
     "V3dEntropyOutputs",
+    "V3dEntropyParameters",
     "V_3D_ENTROPY_METADATA",
     "v_3d_entropy",
     "v_3d_entropy_params",

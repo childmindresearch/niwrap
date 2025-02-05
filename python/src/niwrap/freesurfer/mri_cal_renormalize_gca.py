@@ -197,6 +197,7 @@ def mri_cal_renormalize_gca(
 __all__ = [
     "MRI_CAL_RENORMALIZE_GCA_METADATA",
     "MriCalRenormalizeGcaOutputs",
+    "MriCalRenormalizeGcaParameters",
     "mri_cal_renormalize_gca",
     "mri_cal_renormalize_gca_params",
 ]

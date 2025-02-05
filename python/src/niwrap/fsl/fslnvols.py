@@ -164,6 +164,7 @@ def fslnvols(
 __all__ = [
     "FSLNVOLS_METADATA",
     "FslnvolsOutputs",
+    "FslnvolsParameters",
     "fslnvols",
     "fslnvols_params",
 ]

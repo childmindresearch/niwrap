@@ -213,6 +213,7 @@ def create_displacement_field(
 __all__ = [
     "CREATE_DISPLACEMENT_FIELD_METADATA",
     "CreateDisplacementFieldOutputs",
+    "CreateDisplacementFieldParameters",
     "create_displacement_field",
     "create_displacement_field_params",
 ]

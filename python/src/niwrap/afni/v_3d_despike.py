@@ -182,6 +182,7 @@ def v_3d_despike(
 
 __all__ = [
     "V3dDespikeOutputs",
+    "V3dDespikeParameters",
     "V_3D_DESPIKE_METADATA",
     "v_3d_despike",
     "v_3d_despike_params",

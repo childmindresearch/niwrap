@@ -192,6 +192,7 @@ def ants_denoise_image_fs(
 __all__ = [
     "ANTS_DENOISE_IMAGE_FS_METADATA",
     "AntsDenoiseImageFsOutputs",
+    "AntsDenoiseImageFsParameters",
     "ants_denoise_image_fs",
     "ants_denoise_image_fs_params",
 ]

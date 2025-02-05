@@ -291,6 +291,7 @@ def test_tutorials_sh(
 __all__ = [
     "TEST_TUTORIALS_SH_METADATA",
     "TestTutorialsShOutputs",
+    "TestTutorialsShParameters",
     "test_tutorials_sh",
     "test_tutorials_sh_params",
 ]

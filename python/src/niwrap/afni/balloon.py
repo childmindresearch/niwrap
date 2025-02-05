@@ -199,6 +199,7 @@ def balloon(
 __all__ = [
     "BALLOON_METADATA",
     "BalloonOutputs",
+    "BalloonParameters",
     "balloon",
     "balloon_params",
 ]

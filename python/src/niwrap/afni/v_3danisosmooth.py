@@ -407,6 +407,7 @@ def v_3danisosmooth(
 
 __all__ = [
     "V3danisosmoothOutputs",
+    "V3danisosmoothParameters",
     "V_3DANISOSMOOTH_METADATA",
     "v_3danisosmooth",
     "v_3danisosmooth_params",

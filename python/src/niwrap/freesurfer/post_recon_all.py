@@ -290,6 +290,7 @@ def post_recon_all(
 __all__ = [
     "POST_RECON_ALL_METADATA",
     "PostReconAllOutputs",
+    "PostReconAllParameters",
     "post_recon_all",
     "post_recon_all_params",
 ]

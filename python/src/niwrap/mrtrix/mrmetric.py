@@ -396,7 +396,9 @@ def mrmetric(
 
 __all__ = [
     "MRMETRIC_METADATA",
+    "MrmetricConfigParameters",
     "MrmetricOutputs",
+    "MrmetricParameters",
     "mrmetric",
     "mrmetric_config_params",
     "mrmetric_params",

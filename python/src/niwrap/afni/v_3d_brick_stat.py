@@ -426,6 +426,7 @@ def v_3d_brick_stat(
 
 __all__ = [
     "V3dBrickStatOutputs",
+    "V3dBrickStatParameters",
     "V_3D_BRICK_STAT_METADATA",
     "v_3d_brick_stat",
     "v_3d_brick_stat_params",

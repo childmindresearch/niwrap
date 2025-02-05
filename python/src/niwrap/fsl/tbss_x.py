@@ -171,6 +171,7 @@ def tbss_x(
 __all__ = [
     "TBSS_X_METADATA",
     "TbssXOutputs",
+    "TbssXParameters",
     "tbss_x",
     "tbss_x_params",
 ]

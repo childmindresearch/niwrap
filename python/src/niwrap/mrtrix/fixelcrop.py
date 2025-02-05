@@ -326,7 +326,9 @@ def fixelcrop(
 
 __all__ = [
     "FIXELCROP_METADATA",
+    "FixelcropConfigParameters",
     "FixelcropOutputs",
+    "FixelcropParameters",
     "fixelcrop",
     "fixelcrop_config_params",
     "fixelcrop_params",

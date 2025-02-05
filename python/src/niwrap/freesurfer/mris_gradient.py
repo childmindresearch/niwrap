@@ -187,6 +187,7 @@ def mris_gradient(
 __all__ = [
     "MRIS_GRADIENT_METADATA",
     "MrisGradientOutputs",
+    "MrisGradientParameters",
     "mris_gradient",
     "mris_gradient_params",
 ]

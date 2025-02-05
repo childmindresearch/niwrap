@@ -250,6 +250,7 @@ def v_3d_amp_to_rsfc(
 
 __all__ = [
     "V3dAmpToRsfcOutputs",
+    "V3dAmpToRsfcParameters",
     "V_3D_AMP_TO_RSFC_METADATA",
     "v_3d_amp_to_rsfc",
     "v_3d_amp_to_rsfc_params",

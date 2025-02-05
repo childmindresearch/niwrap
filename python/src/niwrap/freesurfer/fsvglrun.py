@@ -205,6 +205,7 @@ def fsvglrun(
 __all__ = [
     "FSVGLRUN_METADATA",
     "FsvglrunOutputs",
+    "FsvglrunParameters",
     "fsvglrun",
     "fsvglrun_params",
 ]

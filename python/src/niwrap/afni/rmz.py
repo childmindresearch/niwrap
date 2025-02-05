@@ -192,6 +192,7 @@ def rmz(
 __all__ = [
     "RMZ_METADATA",
     "RmzOutputs",
+    "RmzParameters",
     "rmz",
     "rmz_params",
 ]

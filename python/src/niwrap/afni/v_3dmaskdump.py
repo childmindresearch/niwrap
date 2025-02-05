@@ -398,6 +398,7 @@ def v_3dmaskdump(
 
 __all__ = [
     "V3dmaskdumpOutputs",
+    "V3dmaskdumpParameters",
     "V_3DMASKDUMP_METADATA",
     "v_3dmaskdump",
     "v_3dmaskdump_params",

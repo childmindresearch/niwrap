@@ -282,6 +282,7 @@ def mri_segment_thalamic_nuclei_dti_cnn(
 __all__ = [
     "MRI_SEGMENT_THALAMIC_NUCLEI_DTI_CNN_METADATA",
     "MriSegmentThalamicNucleiDtiCnnOutputs",
+    "MriSegmentThalamicNucleiDtiCnnParameters",
     "mri_segment_thalamic_nuclei_dti_cnn",
     "mri_segment_thalamic_nuclei_dti_cnn_params",
 ]

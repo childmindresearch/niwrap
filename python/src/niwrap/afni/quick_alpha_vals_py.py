@@ -181,6 +181,7 @@ def quick_alpha_vals_py(
 __all__ = [
     "QUICK_ALPHA_VALS_PY_METADATA",
     "QuickAlphaValsPyOutputs",
+    "QuickAlphaValsPyParameters",
     "quick_alpha_vals_py",
     "quick_alpha_vals_py_params",
 ]

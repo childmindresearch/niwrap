@@ -227,6 +227,7 @@ def cutoffcalc(
 __all__ = [
     "CUTOFFCALC_METADATA",
     "CutoffcalcOutputs",
+    "CutoffcalcParameters",
     "cutoffcalc",
     "cutoffcalc_params",
 ]

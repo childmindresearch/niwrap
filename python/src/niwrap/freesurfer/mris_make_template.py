@@ -303,6 +303,7 @@ def mris_make_template(
 __all__ = [
     "MRIS_MAKE_TEMPLATE_METADATA",
     "MrisMakeTemplateOutputs",
+    "MrisMakeTemplateParameters",
     "mris_make_template",
     "mris_make_template_params",
 ]

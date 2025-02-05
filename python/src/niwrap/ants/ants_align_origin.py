@@ -220,6 +220,7 @@ def ants_align_origin(
 __all__ = [
     "ANTS_ALIGN_ORIGIN_METADATA",
     "AntsAlignOriginOutputs",
+    "AntsAlignOriginParameters",
     "ants_align_origin",
     "ants_align_origin_params",
 ]

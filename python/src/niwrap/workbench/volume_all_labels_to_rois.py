@@ -192,6 +192,7 @@ def volume_all_labels_to_rois(
 __all__ = [
     "VOLUME_ALL_LABELS_TO_ROIS_METADATA",
     "VolumeAllLabelsToRoisOutputs",
+    "VolumeAllLabelsToRoisParameters",
     "volume_all_labels_to_rois",
     "volume_all_labels_to_rois_params",
 ]

@@ -180,6 +180,7 @@ def v__suma_fsvol_to_brik(
 
 __all__ = [
     "VSumaFsvolToBrikOutputs",
+    "VSumaFsvolToBrikParameters",
     "V__SUMA_FSVOL_TO_BRIK_METADATA",
     "v__suma_fsvol_to_brik",
     "v__suma_fsvol_to_brik_params",

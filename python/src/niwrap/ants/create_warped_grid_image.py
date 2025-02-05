@@ -210,6 +210,7 @@ def create_warped_grid_image(
 __all__ = [
     "CREATE_WARPED_GRID_IMAGE_METADATA",
     "CreateWarpedGridImageOutputs",
+    "CreateWarpedGridImageParameters",
     "create_warped_grid_image",
     "create_warped_grid_image_params",
 ]

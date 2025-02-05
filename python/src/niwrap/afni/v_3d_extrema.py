@@ -357,6 +357,7 @@ def v_3d_extrema(
 
 __all__ = [
     "V3dExtremaOutputs",
+    "V3dExtremaParameters",
     "V_3D_EXTREMA_METADATA",
     "v_3d_extrema",
     "v_3d_extrema_params",

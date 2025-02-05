@@ -292,6 +292,7 @@ def mris_smooth(
 __all__ = [
     "MRIS_SMOOTH_METADATA",
     "MrisSmoothOutputs",
+    "MrisSmoothParameters",
     "mris_smooth",
     "mris_smooth_params",
 ]

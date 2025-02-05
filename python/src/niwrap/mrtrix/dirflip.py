@@ -339,7 +339,9 @@ def dirflip(
 
 __all__ = [
     "DIRFLIP_METADATA",
+    "DirflipConfigParameters",
     "DirflipOutputs",
+    "DirflipParameters",
     "dirflip",
     "dirflip_config_params",
     "dirflip_params",

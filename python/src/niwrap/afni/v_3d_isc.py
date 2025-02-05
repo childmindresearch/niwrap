@@ -282,6 +282,7 @@ def v_3d_isc(
 
 __all__ = [
     "V3dIscOutputs",
+    "V3dIscParameters",
     "V_3D_ISC_METADATA",
     "v_3d_isc",
     "v_3d_isc_params",

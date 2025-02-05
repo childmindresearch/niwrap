@@ -186,6 +186,7 @@ def fftest(
 __all__ = [
     "FFTEST_METADATA",
     "FftestOutputs",
+    "FftestParameters",
     "fftest",
     "fftest_params",
 ]

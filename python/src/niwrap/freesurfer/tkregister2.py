@@ -223,6 +223,7 @@ def tkregister2(
 __all__ = [
     "TKREGISTER2_METADATA",
     "Tkregister2Outputs",
+    "Tkregister2Parameters",
     "tkregister2",
     "tkregister2_params",
 ]

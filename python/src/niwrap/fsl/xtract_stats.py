@@ -202,6 +202,7 @@ def xtract_stats(
 __all__ = [
     "XTRACT_STATS_METADATA",
     "XtractStatsOutputs",
+    "XtractStatsParameters",
     "xtract_stats",
     "xtract_stats_params",
 ]

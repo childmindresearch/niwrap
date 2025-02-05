@@ -183,6 +183,7 @@ def volume_remove_islands(
 __all__ = [
     "VOLUME_REMOVE_ISLANDS_METADATA",
     "VolumeRemoveIslandsOutputs",
+    "VolumeRemoveIslandsParameters",
     "volume_remove_islands",
     "volume_remove_islands_params",
 ]

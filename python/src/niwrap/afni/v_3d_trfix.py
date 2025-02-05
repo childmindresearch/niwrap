@@ -222,6 +222,7 @@ def v_3d_trfix(
 
 __all__ = [
     "V3dTrfixOutputs",
+    "V3dTrfixParameters",
     "V_3D_TRFIX_METADATA",
     "v_3d_trfix",
     "v_3d_trfix_params",

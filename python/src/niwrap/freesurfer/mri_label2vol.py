@@ -390,6 +390,7 @@ def mri_label2vol(
 __all__ = [
     "MRI_LABEL2VOL_METADATA",
     "MriLabel2volOutputs",
+    "MriLabel2volParameters",
     "mri_label2vol",
     "mri_label2vol_params",
 ]

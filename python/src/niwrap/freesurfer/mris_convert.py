@@ -553,6 +553,7 @@ def mris_convert(
 __all__ = [
     "MRIS_CONVERT_METADATA",
     "MrisConvertOutputs",
+    "MrisConvertParameters",
     "mris_convert",
     "mris_convert_params",
 ]

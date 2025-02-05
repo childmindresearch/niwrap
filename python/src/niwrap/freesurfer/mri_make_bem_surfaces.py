@@ -181,6 +181,7 @@ def mri_make_bem_surfaces(
 __all__ = [
     "MRI_MAKE_BEM_SURFACES_METADATA",
     "MriMakeBemSurfacesOutputs",
+    "MriMakeBemSurfacesParameters",
     "mri_make_bem_surfaces",
     "mri_make_bem_surfaces_params",
 ]

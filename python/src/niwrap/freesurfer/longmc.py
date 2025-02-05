@@ -214,6 +214,7 @@ def longmc(
 __all__ = [
     "LONGMC_METADATA",
     "LongmcOutputs",
+    "LongmcParameters",
     "longmc",
     "longmc_params",
 ]

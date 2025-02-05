@@ -473,6 +473,7 @@ def mris_register_to_volume(
 __all__ = [
     "MRIS_REGISTER_TO_VOLUME_METADATA",
     "MrisRegisterToVolumeOutputs",
+    "MrisRegisterToVolumeParameters",
     "mris_register_to_volume",
     "mris_register_to_volume_params",
 ]

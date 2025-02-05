@@ -322,7 +322,9 @@ def transformcalc(
 
 __all__ = [
     "TRANSFORMCALC_METADATA",
+    "TransformcalcConfigParameters",
     "TransformcalcOutputs",
+    "TransformcalcParameters",
     "transformcalc",
     "transformcalc_config_params",
     "transformcalc_params",

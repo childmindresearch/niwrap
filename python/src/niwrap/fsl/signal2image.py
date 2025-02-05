@@ -291,6 +291,7 @@ def signal2image(
 __all__ = [
     "SIGNAL2IMAGE_METADATA",
     "Signal2imageOutputs",
+    "Signal2imageParameters",
     "signal2image",
     "signal2image_params",
 ]

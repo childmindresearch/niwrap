@@ -369,7 +369,9 @@ def sh2response(
 
 __all__ = [
     "SH2RESPONSE_METADATA",
+    "Sh2responseConfigParameters",
     "Sh2responseOutputs",
+    "Sh2responseParameters",
     "sh2response",
     "sh2response_config_params",
     "sh2response_params",

@@ -182,6 +182,7 @@ def v_3d_detrend(
 
 __all__ = [
     "V3dDetrendOutputs",
+    "V3dDetrendParameters",
     "V_3D_DETREND_METADATA",
     "v_3d_detrend",
     "v_3d_detrend_params",

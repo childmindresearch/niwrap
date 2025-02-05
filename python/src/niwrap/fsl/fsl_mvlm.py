@@ -314,6 +314,7 @@ def fsl_mvlm(
 __all__ = [
     "FSL_MVLM_METADATA",
     "FslMvlmOutputs",
+    "FslMvlmParameters",
     "fsl_mvlm",
     "fsl_mvlm_params",
 ]

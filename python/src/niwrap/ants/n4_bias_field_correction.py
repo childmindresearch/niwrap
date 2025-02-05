@@ -570,7 +570,11 @@ def n4_bias_field_correction(
 
 
 __all__ = [
+    "N4BiasFieldCorrectionBsplineFittingParameters",
+    "N4BiasFieldCorrectionConvergenceParameters",
+    "N4BiasFieldCorrectionHistogramSharpeningParameters",
     "N4BiasFieldCorrectionOutputs",
+    "N4BiasFieldCorrectionParameters",
     "N4_BIAS_FIELD_CORRECTION_METADATA",
     "n4_bias_field_correction",
     "n4_bias_field_correction_bspline_fitting_params",

@@ -201,6 +201,7 @@ def fs_lib_check(
 __all__ = [
     "FS_LIB_CHECK_METADATA",
     "FsLibCheckOutputs",
+    "FsLibCheckParameters",
     "fs_lib_check",
     "fs_lib_check_params",
 ]

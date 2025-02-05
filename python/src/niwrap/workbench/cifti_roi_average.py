@@ -250,6 +250,7 @@ def cifti_roi_average(
 __all__ = [
     "CIFTI_ROI_AVERAGE_METADATA",
     "CiftiRoiAverageOutputs",
+    "CiftiRoiAverageParameters",
     "cifti_roi_average",
     "cifti_roi_average_params",
 ]

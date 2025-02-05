@@ -327,6 +327,7 @@ def mris_surface_stats(
 __all__ = [
     "MRIS_SURFACE_STATS_METADATA",
     "MrisSurfaceStatsOutputs",
+    "MrisSurfaceStatsParameters",
     "mris_surface_stats",
     "mris_surface_stats_params",
 ]

@@ -167,6 +167,7 @@ def diffusion_utils(
 __all__ = [
     "DIFFUSION_UTILS_METADATA",
     "DiffusionUtilsOutputs",
+    "DiffusionUtilsParameters",
     "diffusion_utils",
     "diffusion_utils_params",
 ]

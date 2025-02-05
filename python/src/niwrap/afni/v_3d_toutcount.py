@@ -268,6 +268,7 @@ def v_3d_toutcount(
 
 __all__ = [
     "V3dToutcountOutputs",
+    "V3dToutcountParameters",
     "V_3D_TOUTCOUNT_METADATA",
     "v_3d_toutcount",
     "v_3d_toutcount_params",

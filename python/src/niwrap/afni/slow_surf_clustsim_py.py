@@ -267,6 +267,7 @@ def slow_surf_clustsim_py(
 __all__ = [
     "SLOW_SURF_CLUSTSIM_PY_METADATA",
     "SlowSurfClustsimPyOutputs",
+    "SlowSurfClustsimPyParameters",
     "slow_surf_clustsim_py",
     "slow_surf_clustsim_py_params",
 ]

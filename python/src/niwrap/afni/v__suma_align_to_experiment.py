@@ -394,6 +394,7 @@ def v__suma_align_to_experiment(
 
 __all__ = [
     "VSumaAlignToExperimentOutputs",
+    "VSumaAlignToExperimentParameters",
     "V__SUMA_ALIGN_TO_EXPERIMENT_METADATA",
     "v__suma_align_to_experiment",
     "v__suma_align_to_experiment_params",

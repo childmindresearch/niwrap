@@ -291,6 +291,7 @@ def mri_easyreg(
 __all__ = [
     "MRI_EASYREG_METADATA",
     "MriEasyregOutputs",
+    "MriEasyregParameters",
     "mri_easyreg",
     "mri_easyreg_params",
 ]

@@ -200,6 +200,7 @@ def metadata_string_replace(
 __all__ = [
     "METADATA_STRING_REPLACE_METADATA",
     "MetadataStringReplaceOutputs",
+    "MetadataStringReplaceParameters",
     "metadata_string_replace",
     "metadata_string_replace_params",
 ]

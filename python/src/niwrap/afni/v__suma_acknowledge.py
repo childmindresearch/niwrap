@@ -245,6 +245,7 @@ def v__suma_acknowledge(
 
 __all__ = [
     "VSumaAcknowledgeOutputs",
+    "VSumaAcknowledgeParameters",
     "V__SUMA_ACKNOWLEDGE_METADATA",
     "v__suma_acknowledge",
     "v__suma_acknowledge_params",

@@ -226,6 +226,7 @@ def mris_aa_shrinkwrap(
 __all__ = [
     "MRIS_AA_SHRINKWRAP_METADATA",
     "MrisAaShrinkwrapOutputs",
+    "MrisAaShrinkwrapParameters",
     "mris_aa_shrinkwrap",
     "mris_aa_shrinkwrap_params",
 ]

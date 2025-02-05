@@ -180,6 +180,7 @@ def print_unique_labels_csh(
 __all__ = [
     "PRINT_UNIQUE_LABELS_CSH_METADATA",
     "PrintUniqueLabelsCshOutputs",
+    "PrintUniqueLabelsCshParameters",
     "print_unique_labels_csh",
     "print_unique_labels_csh_params",
 ]

@@ -335,7 +335,7 @@ def ss3t_csd_beta1_outputs(
     """
     ret = Ss3tCsdBeta1Outputs(
         root=execution.output_file("."),
-        response_odf=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in response_odf],
+        response_odf=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("response_odf")],
     )
     return ret
 
@@ -429,8 +429,11 @@ def ss3t_csd_beta1(
 
 __all__ = [
     "SS3T_CSD_BETA1_METADATA",
+    "Ss3tCsdBeta1ConfigParameters",
     "Ss3tCsdBeta1Outputs",
+    "Ss3tCsdBeta1Parameters",
     "Ss3tCsdBeta1ResponseOdfOutputs",
+    "Ss3tCsdBeta1ResponseOdfParameters",
     "ss3t_csd_beta1",
     "ss3t_csd_beta1_config_params",
     "ss3t_csd_beta1_params",

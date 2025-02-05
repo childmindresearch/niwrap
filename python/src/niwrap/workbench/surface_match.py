@@ -185,6 +185,7 @@ def surface_match(
 __all__ = [
     "SURFACE_MATCH_METADATA",
     "SurfaceMatchOutputs",
+    "SurfaceMatchParameters",
     "surface_match",
     "surface_match_params",
 ]

@@ -307,6 +307,7 @@ def lpcregister(
 __all__ = [
     "LPCREGISTER_METADATA",
     "LpcregisterOutputs",
+    "LpcregisterParameters",
     "lpcregister",
     "lpcregister_params",
 ]

@@ -357,6 +357,7 @@ def v_3d_roistats(
 
 __all__ = [
     "V3dRoistatsOutputs",
+    "V3dRoistatsParameters",
     "V_3D_ROISTATS_METADATA",
     "v_3d_roistats",
     "v_3d_roistats_params",

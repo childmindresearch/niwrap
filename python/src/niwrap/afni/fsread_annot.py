@@ -305,6 +305,7 @@ def fsread_annot(
 __all__ = [
     "FSREAD_ANNOT_METADATA",
     "FsreadAnnotOutputs",
+    "FsreadAnnotParameters",
     "fsread_annot",
     "fsread_annot_params",
 ]

@@ -255,6 +255,7 @@ def v_3d_degree_centrality(
 
 __all__ = [
     "V3dDegreeCentralityOutputs",
+    "V3dDegreeCentralityParameters",
     "V_3D_DEGREE_CENTRALITY_METADATA",
     "v_3d_degree_centrality",
     "v_3d_degree_centrality_params",

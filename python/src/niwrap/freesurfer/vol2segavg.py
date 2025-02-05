@@ -314,6 +314,7 @@ def vol2segavg(
 __all__ = [
     "VOL2SEGAVG_METADATA",
     "Vol2segavgOutputs",
+    "Vol2segavgParameters",
     "vol2segavg",
     "vol2segavg_params",
 ]

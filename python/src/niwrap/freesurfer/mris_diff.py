@@ -225,6 +225,7 @@ def mris_diff(
 __all__ = [
     "MRIS_DIFF_METADATA",
     "MrisDiffOutputs",
+    "MrisDiffParameters",
     "mris_diff",
     "mris_diff_params",
 ]

@@ -187,6 +187,7 @@ def recon_all_exvivo(
 __all__ = [
     "RECON_ALL_EXVIVO_METADATA",
     "ReconAllExvivoOutputs",
+    "ReconAllExvivoParameters",
     "recon_all_exvivo",
     "recon_all_exvivo_params",
 ]

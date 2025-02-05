@@ -266,6 +266,7 @@ def cifti_label_import(
 __all__ = [
     "CIFTI_LABEL_IMPORT_METADATA",
     "CiftiLabelImportOutputs",
+    "CiftiLabelImportParameters",
     "cifti_label_import",
     "cifti_label_import_params",
 ]

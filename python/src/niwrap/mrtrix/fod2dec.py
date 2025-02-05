@@ -441,7 +441,9 @@ def fod2dec(
 
 __all__ = [
     "FOD2DEC_METADATA",
+    "Fod2decConfigParameters",
     "Fod2decOutputs",
+    "Fod2decParameters",
     "fod2dec",
     "fod2dec_config_params",
     "fod2dec_params",

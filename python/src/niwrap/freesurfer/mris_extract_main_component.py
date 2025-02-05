@@ -176,6 +176,7 @@ def mris_extract_main_component(
 __all__ = [
     "MRIS_EXTRACT_MAIN_COMPONENT_METADATA",
     "MrisExtractMainComponentOutputs",
+    "MrisExtractMainComponentParameters",
     "mris_extract_main_component",
     "mris_extract_main_component_params",
 ]

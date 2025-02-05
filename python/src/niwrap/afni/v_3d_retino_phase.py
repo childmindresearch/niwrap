@@ -356,6 +356,7 @@ def v_3d_retino_phase(
 
 __all__ = [
     "V3dRetinoPhaseOutputs",
+    "V3dRetinoPhaseParameters",
     "V_3D_RETINO_PHASE_METADATA",
     "v_3d_retino_phase",
     "v_3d_retino_phase_params",

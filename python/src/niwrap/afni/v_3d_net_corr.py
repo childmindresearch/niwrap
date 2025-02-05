@@ -371,6 +371,7 @@ def v_3d_net_corr(
 
 __all__ = [
     "V3dNetCorrOutputs",
+    "V3dNetCorrParameters",
     "V_3D_NET_CORR_METADATA",
     "v_3d_net_corr",
     "v_3d_net_corr_params",

@@ -168,6 +168,7 @@ def segment_bs_sh(
 __all__ = [
     "SEGMENT_BS_SH_METADATA",
     "SegmentBsShOutputs",
+    "SegmentBsShParameters",
     "segment_bs_sh",
     "segment_bs_sh_params",
 ]

@@ -182,6 +182,7 @@ def v__djunct_dwi_selector(
 
 __all__ = [
     "VDjunctDwiSelectorOutputs",
+    "VDjunctDwiSelectorParameters",
     "V__DJUNCT_DWI_SELECTOR_METADATA",
     "v__djunct_dwi_selector",
     "v__djunct_dwi_selector_params",

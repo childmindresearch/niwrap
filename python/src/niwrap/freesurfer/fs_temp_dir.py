@@ -184,6 +184,7 @@ def fs_temp_dir(
 __all__ = [
     "FS_TEMP_DIR_METADATA",
     "FsTempDirOutputs",
+    "FsTempDirParameters",
     "fs_temp_dir",
     "fs_temp_dir_params",
 ]

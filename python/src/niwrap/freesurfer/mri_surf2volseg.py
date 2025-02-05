@@ -455,6 +455,7 @@ def mri_surf2volseg(
 __all__ = [
     "MRI_SURF2VOLSEG_METADATA",
     "MriSurf2volsegOutputs",
+    "MriSurf2volsegParameters",
     "mri_surf2volseg",
     "mri_surf2volseg_params",
 ]

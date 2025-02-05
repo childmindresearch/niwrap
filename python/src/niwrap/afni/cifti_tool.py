@@ -256,6 +256,7 @@ def cifti_tool(
 __all__ = [
     "CIFTI_TOOL_METADATA",
     "CiftiToolOutputs",
+    "CiftiToolParameters",
     "cifti_tool",
     "cifti_tool_params",
 ]

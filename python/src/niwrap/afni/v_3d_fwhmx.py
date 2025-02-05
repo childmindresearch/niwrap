@@ -301,6 +301,7 @@ def v_3d_fwhmx(
 
 __all__ = [
     "V3dFwhmxOutputs",
+    "V3dFwhmxParameters",
     "V_3D_FWHMX_METADATA",
     "v_3d_fwhmx",
     "v_3d_fwhmx_params",

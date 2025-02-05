@@ -170,6 +170,7 @@ def v__check_for_afni_dset(
 
 __all__ = [
     "VCheckForAfniDsetOutputs",
+    "VCheckForAfniDsetParameters",
     "V__CHECK_FOR_AFNI_DSET_METADATA",
     "v__check_for_afni_dset",
     "v__check_for_afni_dset_params",

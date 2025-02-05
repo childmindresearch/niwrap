@@ -204,6 +204,7 @@ def antsuse_landmark_images_to_get_affine_transform(
 __all__ = [
     "ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA",
     "AntsuseLandmarkImagesToGetAffineTransformOutputs",
+    "AntsuseLandmarkImagesToGetAffineTransformParameters",
     "antsuse_landmark_images_to_get_affine_transform",
     "antsuse_landmark_images_to_get_affine_transform_params",
 ]

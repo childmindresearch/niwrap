@@ -169,6 +169,7 @@ def v__get_afni_version(
 
 __all__ = [
     "VGetAfniVersionOutputs",
+    "VGetAfniVersionParameters",
     "V__GET_AFNI_VERSION_METADATA",
     "v__get_afni_version",
     "v__get_afni_version_params",

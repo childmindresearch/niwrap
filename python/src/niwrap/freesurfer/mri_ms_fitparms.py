@@ -535,6 +535,7 @@ def mri_ms_fitparms(
 __all__ = [
     "MRI_MS_FITPARMS_METADATA",
     "MriMsFitparmsOutputs",
+    "MriMsFitparmsParameters",
     "mri_ms_fitparms",
     "mri_ms_fitparms_params",
 ]

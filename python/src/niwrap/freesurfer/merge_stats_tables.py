@@ -311,6 +311,7 @@ def merge_stats_tables(
 __all__ = [
     "MERGE_STATS_TABLES_METADATA",
     "MergeStatsTablesOutputs",
+    "MergeStatsTablesParameters",
     "merge_stats_tables",
     "merge_stats_tables_params",
 ]

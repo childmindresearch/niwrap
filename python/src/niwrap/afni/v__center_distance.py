@@ -178,6 +178,7 @@ def v__center_distance(
 
 __all__ = [
     "VCenterDistanceOutputs",
+    "VCenterDistanceParameters",
     "V__CENTER_DISTANCE_METADATA",
     "v__center_distance",
     "v__center_distance_params",

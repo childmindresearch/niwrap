@@ -255,6 +255,7 @@ def xsanatreg(
 __all__ = [
     "XSANATREG_METADATA",
     "XsanatregOutputs",
+    "XsanatregParameters",
     "xsanatreg",
     "xsanatreg_params",
 ]

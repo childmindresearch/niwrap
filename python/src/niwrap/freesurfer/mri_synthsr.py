@@ -255,6 +255,7 @@ def mri_synthsr(
 __all__ = [
     "MRI_SYNTHSR_METADATA",
     "MriSynthsrOutputs",
+    "MriSynthsrParameters",
     "mri_synthsr",
     "mri_synthsr_params",
 ]

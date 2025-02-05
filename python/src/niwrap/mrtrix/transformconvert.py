@@ -324,7 +324,9 @@ def transformconvert(
 
 __all__ = [
     "TRANSFORMCONVERT_METADATA",
+    "TransformconvertConfigParameters",
     "TransformconvertOutputs",
+    "TransformconvertParameters",
     "transformconvert",
     "transformconvert_config_params",
     "transformconvert_params",

@@ -438,6 +438,7 @@ def asegstats2table(
 __all__ = [
     "ASEGSTATS2TABLE_METADATA",
     "Asegstats2tableOutputs",
+    "Asegstats2tableParameters",
     "asegstats2table",
     "asegstats2table_params",
 ]

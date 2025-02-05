@@ -209,6 +209,7 @@ def v__command_globb(
 
 __all__ = [
     "VCommandGlobbOutputs",
+    "VCommandGlobbParameters",
     "V__COMMAND_GLOBB_METADATA",
     "v__command_globb",
     "v__command_globb_params",

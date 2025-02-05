@@ -172,6 +172,7 @@ def v__suma_make_spec_fs(
 
 __all__ = [
     "VSumaMakeSpecFsOutputs",
+    "VSumaMakeSpecFsParameters",
     "V__SUMA_MAKE_SPEC_FS_METADATA",
     "v__suma_make_spec_fs",
     "v__suma_make_spec_fs_params",

@@ -601,7 +601,12 @@ def sh2amp(
 
 __all__ = [
     "SH2AMP_METADATA",
+    "Sh2ampConfigParameters",
+    "Sh2ampFslgradParameters",
     "Sh2ampOutputs",
+    "Sh2ampParameters",
+    "Sh2ampVariousFileParameters",
+    "Sh2ampVariousStringParameters",
     "sh2amp",
     "sh2amp_config_params",
     "sh2amp_fslgrad_params",

@@ -238,6 +238,7 @@ def paste_image_into_image(
 __all__ = [
     "PASTE_IMAGE_INTO_IMAGE_METADATA",
     "PasteImageIntoImageOutputs",
+    "PasteImageIntoImageParameters",
     "paste_image_into_image",
     "paste_image_into_image_params",
 ]

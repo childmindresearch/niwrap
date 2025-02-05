@@ -218,6 +218,7 @@ def texture_cooccurrence_features(
 __all__ = [
     "TEXTURE_COOCCURRENCE_FEATURES_METADATA",
     "TextureCooccurrenceFeaturesOutputs",
+    "TextureCooccurrenceFeaturesParameters",
     "texture_cooccurrence_features",
     "texture_cooccurrence_features_params",
 ]

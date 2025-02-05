@@ -420,6 +420,7 @@ def cluster(
 __all__ = [
     "CLUSTER_METADATA",
     "ClusterOutputs",
+    "ClusterParameters",
     "cluster",
     "cluster_params",
 ]

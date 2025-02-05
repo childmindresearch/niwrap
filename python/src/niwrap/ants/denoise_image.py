@@ -299,6 +299,7 @@ def denoise_image(
 __all__ = [
     "DENOISE_IMAGE_METADATA",
     "DenoiseImageOutputs",
+    "DenoiseImageParameters",
     "denoise_image",
     "denoise_image_params",
 ]

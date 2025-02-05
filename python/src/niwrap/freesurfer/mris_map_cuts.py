@@ -172,6 +172,7 @@ def mris_map_cuts(
 __all__ = [
     "MRIS_MAP_CUTS_METADATA",
     "MrisMapCutsOutputs",
+    "MrisMapCutsParameters",
     "mris_map_cuts",
     "mris_map_cuts_params",
 ]

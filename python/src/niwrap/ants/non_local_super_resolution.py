@@ -318,6 +318,7 @@ def non_local_super_resolution(
 __all__ = [
     "NON_LOCAL_SUPER_RESOLUTION_METADATA",
     "NonLocalSuperResolutionOutputs",
+    "NonLocalSuperResolutionParameters",
     "non_local_super_resolution",
     "non_local_super_resolution_params",
 ]

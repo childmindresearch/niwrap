@@ -370,6 +370,7 @@ def mris_volmask(
 __all__ = [
     "MRIS_VOLMASK_METADATA",
     "MrisVolmaskOutputs",
+    "MrisVolmaskParameters",
     "mris_volmask",
     "mris_volmask_params",
 ]

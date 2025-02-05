@@ -183,6 +183,7 @@ def mri_relabel_hypointensities(
 __all__ = [
     "MRI_RELABEL_HYPOINTENSITIES_METADATA",
     "MriRelabelHypointensitiesOutputs",
+    "MriRelabelHypointensitiesParameters",
     "mri_relabel_hypointensities",
     "mri_relabel_hypointensities_params",
 ]

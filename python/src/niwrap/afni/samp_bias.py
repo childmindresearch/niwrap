@@ -233,6 +233,7 @@ def samp_bias(
 __all__ = [
     "SAMP_BIAS_METADATA",
     "SampBiasOutputs",
+    "SampBiasParameters",
     "samp_bias",
     "samp_bias_params",
 ]

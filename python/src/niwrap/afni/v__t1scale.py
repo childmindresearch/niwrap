@@ -307,6 +307,7 @@ def v__t1scale(
 
 __all__ = [
     "VT1scaleOutputs",
+    "VT1scaleParameters",
     "V__T1SCALE_METADATA",
     "v__t1scale",
     "v__t1scale_params",

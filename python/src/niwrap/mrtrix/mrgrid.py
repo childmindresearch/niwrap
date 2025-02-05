@@ -770,7 +770,12 @@ def mrgrid(
 
 __all__ = [
     "MRGRID_METADATA",
+    "MrgridAxisParameters",
+    "MrgridConfigParameters",
     "MrgridOutputs",
+    "MrgridParameters",
+    "MrgridVariousFileParameters",
+    "MrgridVariousStringParameters",
     "mrgrid",
     "mrgrid_axis_params",
     "mrgrid_config_params",

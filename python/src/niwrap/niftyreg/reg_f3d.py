@@ -639,6 +639,7 @@ def reg_f3d(
 __all__ = [
     "REG_F3D_METADATA",
     "RegF3dOutputs",
+    "RegF3dParameters",
     "reg_f3d",
     "reg_f3d_params",
 ]

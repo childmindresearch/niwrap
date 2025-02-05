@@ -331,6 +331,7 @@ def v_3dfim_(
 
 __all__ = [
     "V3dfimOutputs",
+    "V3dfimParameters",
     "V_3DFIM__METADATA",
     "v_3dfim_",
     "v_3dfim__params",

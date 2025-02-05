@@ -183,6 +183,7 @@ def mris_sample_label(
 __all__ = [
     "MRIS_SAMPLE_LABEL_METADATA",
     "MrisSampleLabelOutputs",
+    "MrisSampleLabelParameters",
     "mris_sample_label",
     "mris_sample_label_params",
 ]

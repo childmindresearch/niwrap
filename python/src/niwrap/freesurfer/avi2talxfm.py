@@ -190,6 +190,7 @@ def avi2talxfm(
 __all__ = [
     "AVI2TALXFM_METADATA",
     "Avi2talxfmOutputs",
+    "Avi2talxfmParameters",
     "avi2talxfm",
     "avi2talxfm_params",
 ]

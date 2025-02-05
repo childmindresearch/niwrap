@@ -345,6 +345,7 @@ def v_3d_xclust_sim(
 
 __all__ = [
     "V3dXclustSimOutputs",
+    "V3dXclustSimParameters",
     "V_3D_XCLUST_SIM_METADATA",
     "v_3d_xclust_sim",
     "v_3d_xclust_sim_params",

@@ -248,6 +248,7 @@ def first_flirt(
 __all__ = [
     "FIRST_FLIRT_METADATA",
     "FirstFlirtOutputs",
+    "FirstFlirtParameters",
     "first_flirt",
     "first_flirt_params",
 ]

@@ -240,6 +240,7 @@ def possum_matrix(
 __all__ = [
     "POSSUM_MATRIX_METADATA",
     "PossumMatrixOutputs",
+    "PossumMatrixParameters",
     "possum_matrix",
     "possum_matrix_params",
 ]

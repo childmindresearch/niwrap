@@ -172,6 +172,7 @@ def v_1dmatcalc(
 
 __all__ = [
     "V1dmatcalcOutputs",
+    "V1dmatcalcParameters",
     "V_1DMATCALC_METADATA",
     "v_1dmatcalc",
     "v_1dmatcalc_params",

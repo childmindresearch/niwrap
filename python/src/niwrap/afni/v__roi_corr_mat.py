@@ -260,6 +260,7 @@ def v__roi_corr_mat(
 
 __all__ = [
     "VRoiCorrMatOutputs",
+    "VRoiCorrMatParameters",
     "V__ROI_CORR_MAT_METADATA",
     "v__roi_corr_mat",
     "v__roi_corr_mat_params",

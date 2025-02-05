@@ -186,6 +186,7 @@ def v_3d_extract_group_in_corr(
 
 __all__ = [
     "V3dExtractGroupInCorrOutputs",
+    "V3dExtractGroupInCorrParameters",
     "V_3D_EXTRACT_GROUP_IN_CORR_METADATA",
     "v_3d_extract_group_in_corr",
     "v_3d_extract_group_in_corr_params",

@@ -183,6 +183,7 @@ def volume_fill_holes(
 __all__ = [
     "VOLUME_FILL_HOLES_METADATA",
     "VolumeFillHolesOutputs",
+    "VolumeFillHolesParameters",
     "volume_fill_holes",
     "volume_fill_holes_params",
 ]

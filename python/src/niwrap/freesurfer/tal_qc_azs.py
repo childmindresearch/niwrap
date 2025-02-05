@@ -164,6 +164,7 @@ def tal_qc_azs(
 __all__ = [
     "TAL_QC_AZS_METADATA",
     "TalQcAzsOutputs",
+    "TalQcAzsParameters",
     "tal_qc_azs",
     "tal_qc_azs_params",
 ]

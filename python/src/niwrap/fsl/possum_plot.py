@@ -178,6 +178,7 @@ def possum_plot(
 __all__ = [
     "POSSUM_PLOT_METADATA",
     "PossumPlotOutputs",
+    "PossumPlotParameters",
     "possum_plot",
     "possum_plot_params",
 ]

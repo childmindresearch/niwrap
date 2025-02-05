@@ -201,6 +201,7 @@ def mri_extract(
 __all__ = [
     "MRI_EXTRACT_METADATA",
     "MriExtractOutputs",
+    "MriExtractParameters",
     "mri_extract",
     "mri_extract_params",
 ]

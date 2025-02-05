@@ -247,6 +247,7 @@ def mri_make_uchar(
 __all__ = [
     "MRI_MAKE_UCHAR_METADATA",
     "MriMakeUcharOutputs",
+    "MriMakeUcharParameters",
     "mri_make_uchar",
     "mri_make_uchar_params",
 ]

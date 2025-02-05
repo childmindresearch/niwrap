@@ -168,6 +168,7 @@ def v_3d_conformist(
 
 __all__ = [
     "V3dConformistOutputs",
+    "V3dConformistParameters",
     "V_3D_CONFORMIST_METADATA",
     "v_3d_conformist",
     "v_3d_conformist_params",

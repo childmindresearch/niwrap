@@ -354,6 +354,7 @@ def fsl_anat(
 __all__ = [
     "FSL_ANAT_METADATA",
     "FslAnatOutputs",
+    "FslAnatParameters",
     "fsl_anat",
     "fsl_anat_params",
 ]

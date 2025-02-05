@@ -189,6 +189,7 @@ def polyorder(
 __all__ = [
     "POLYORDER_METADATA",
     "PolyorderOutputs",
+    "PolyorderParameters",
     "polyorder",
     "polyorder_params",
 ]

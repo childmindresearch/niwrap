@@ -265,6 +265,7 @@ def surf_extrema(
 __all__ = [
     "SURF_EXTREMA_METADATA",
     "SurfExtremaOutputs",
+    "SurfExtremaParameters",
     "surf_extrema",
     "surf_extrema_params",
 ]

@@ -243,6 +243,7 @@ def mri_hausdorff_dist(
 __all__ = [
     "MRI_HAUSDORFF_DIST_METADATA",
     "MriHausdorffDistOutputs",
+    "MriHausdorffDistParameters",
     "mri_hausdorff_dist",
     "mri_hausdorff_dist_params",
 ]

@@ -224,6 +224,7 @@ def mris_compute_overlap(
 __all__ = [
     "MRIS_COMPUTE_OVERLAP_METADATA",
     "MrisComputeOverlapOutputs",
+    "MrisComputeOverlapParameters",
     "mris_compute_overlap",
     "mris_compute_overlap_params",
 ]

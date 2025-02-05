@@ -316,6 +316,7 @@ def epi_reg(
 __all__ = [
     "EPI_REG_METADATA",
     "EpiRegOutputs",
+    "EpiRegParameters",
     "epi_reg",
     "epi_reg_params",
 ]

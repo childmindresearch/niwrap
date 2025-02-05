@@ -178,6 +178,7 @@ def mris_init_global_tractography(
 __all__ = [
     "MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA",
     "MrisInitGlobalTractographyOutputs",
+    "MrisInitGlobalTractographyParameters",
     "mris_init_global_tractography",
     "mris_init_global_tractography_params",
 ]

@@ -411,6 +411,7 @@ def mcflirt(
 __all__ = [
     "MCFLIRT_METADATA",
     "McflirtOutputs",
+    "McflirtParameters",
     "mcflirt",
     "mcflirt_params",
 ]

@@ -285,6 +285,8 @@ def surface_average(
 __all__ = [
     "SURFACE_AVERAGE_METADATA",
     "SurfaceAverageOutputs",
+    "SurfaceAverageParameters",
+    "SurfaceAverageSurfParameters",
     "surface_average",
     "surface_average_params",
     "surface_average_surf_params",

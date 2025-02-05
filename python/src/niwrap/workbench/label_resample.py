@@ -409,7 +409,10 @@ def label_resample(
 
 __all__ = [
     "LABEL_RESAMPLE_METADATA",
+    "LabelResampleAreaMetricsParameters",
+    "LabelResampleAreaSurfsParameters",
     "LabelResampleOutputs",
+    "LabelResampleParameters",
     "label_resample",
     "label_resample_area_metrics_params",
     "label_resample_area_surfs_params",

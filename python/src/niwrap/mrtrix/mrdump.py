@@ -329,7 +329,9 @@ def mrdump(
 
 __all__ = [
     "MRDUMP_METADATA",
+    "MrdumpConfigParameters",
     "MrdumpOutputs",
+    "MrdumpParameters",
     "mrdump",
     "mrdump_config_params",
     "mrdump_params",

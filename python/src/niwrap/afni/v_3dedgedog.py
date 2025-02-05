@@ -325,6 +325,7 @@ def v_3dedgedog(
 
 __all__ = [
     "V3dedgedogOutputs",
+    "V3dedgedogParameters",
     "V_3DEDGEDOG_METADATA",
     "v_3dedgedog",
     "v_3dedgedog_params",

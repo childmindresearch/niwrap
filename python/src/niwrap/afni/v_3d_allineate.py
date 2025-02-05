@@ -329,6 +329,7 @@ def v_3d_allineate(
 
 __all__ = [
     "V3dAllineateOutputs",
+    "V3dAllineateParameters",
     "V_3D_ALLINEATE_METADATA",
     "v_3d_allineate",
     "v_3d_allineate_params",

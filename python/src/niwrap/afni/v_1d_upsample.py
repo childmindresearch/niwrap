@@ -185,6 +185,7 @@ def v_1d_upsample(
 
 __all__ = [
     "V1dUpsampleOutputs",
+    "V1dUpsampleParameters",
     "V_1D_UPSAMPLE_METADATA",
     "v_1d_upsample",
     "v_1d_upsample_params",

@@ -198,6 +198,7 @@ def surf_dist(
 __all__ = [
     "SURF_DIST_METADATA",
     "SurfDistOutputs",
+    "SurfDistParameters",
     "surf_dist",
     "surf_dist_params",
 ]

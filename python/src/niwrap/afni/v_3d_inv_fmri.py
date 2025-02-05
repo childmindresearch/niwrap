@@ -299,6 +299,7 @@ def v_3d_inv_fmri(
 
 __all__ = [
     "V3dInvFmriOutputs",
+    "V3dInvFmriParameters",
     "V_3D_INV_FMRI_METADATA",
     "v_3d_inv_fmri",
     "v_3d_inv_fmri_params",

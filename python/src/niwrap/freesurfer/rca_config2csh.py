@@ -166,6 +166,7 @@ def rca_config2csh(
 __all__ = [
     "RCA_CONFIG2CSH_METADATA",
     "RcaConfig2cshOutputs",
+    "RcaConfig2cshParameters",
     "rca_config2csh",
     "rca_config2csh_params",
 ]

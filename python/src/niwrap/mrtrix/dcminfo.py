@@ -387,7 +387,10 @@ def dcminfo(
 
 __all__ = [
     "DCMINFO_METADATA",
+    "DcminfoConfigParameters",
     "DcminfoOutputs",
+    "DcminfoParameters",
+    "DcminfoTagParameters",
     "dcminfo",
     "dcminfo_config_params",
     "dcminfo_params",

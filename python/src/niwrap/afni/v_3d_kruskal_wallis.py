@@ -219,6 +219,7 @@ def v_3d_kruskal_wallis(
 
 __all__ = [
     "V3dKruskalWallisOutputs",
+    "V3dKruskalWallisParameters",
     "V_3D_KRUSKAL_WALLIS_METADATA",
     "v_3d_kruskal_wallis",
     "v_3d_kruskal_wallis_params",

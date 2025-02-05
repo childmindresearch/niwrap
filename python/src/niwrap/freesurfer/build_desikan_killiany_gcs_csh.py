@@ -166,6 +166,7 @@ def build_desikan_killiany_gcs_csh(
 __all__ = [
     "BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA",
     "BuildDesikanKillianyGcsCshOutputs",
+    "BuildDesikanKillianyGcsCshParameters",
     "build_desikan_killiany_gcs_csh",
     "build_desikan_killiany_gcs_csh_params",
 ]

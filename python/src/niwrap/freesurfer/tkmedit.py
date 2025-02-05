@@ -177,6 +177,7 @@ def tkmedit(
 __all__ = [
     "TKMEDIT_METADATA",
     "TkmeditOutputs",
+    "TkmeditParameters",
     "tkmedit",
     "tkmedit_params",
 ]

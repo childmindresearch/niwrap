@@ -203,6 +203,7 @@ def surface_cut_resample(
 __all__ = [
     "SURFACE_CUT_RESAMPLE_METADATA",
     "SurfaceCutResampleOutputs",
+    "SurfaceCutResampleParameters",
     "surface_cut_resample",
     "surface_cut_resample_params",
 ]

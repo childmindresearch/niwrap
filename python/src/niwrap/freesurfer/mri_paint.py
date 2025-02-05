@@ -210,6 +210,7 @@ def mri_paint(
 __all__ = [
     "MRI_PAINT_METADATA",
     "MriPaintOutputs",
+    "MriPaintParameters",
     "mri_paint",
     "mri_paint_params",
 ]

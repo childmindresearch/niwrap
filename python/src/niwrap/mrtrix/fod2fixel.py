@@ -498,7 +498,9 @@ def fod2fixel(
 
 __all__ = [
     "FOD2FIXEL_METADATA",
+    "Fod2fixelConfigParameters",
     "Fod2fixelOutputs",
+    "Fod2fixelParameters",
     "fod2fixel",
     "fod2fixel_config_params",
     "fod2fixel_params",

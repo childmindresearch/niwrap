@@ -409,6 +409,7 @@ def mri_mcsim(
 __all__ = [
     "MRI_MCSIM_METADATA",
     "MriMcsimOutputs",
+    "MriMcsimParameters",
     "mri_mcsim",
     "mri_mcsim_params",
 ]

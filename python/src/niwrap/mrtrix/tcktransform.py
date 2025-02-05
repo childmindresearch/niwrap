@@ -318,7 +318,9 @@ def tcktransform(
 
 __all__ = [
     "TCKTRANSFORM_METADATA",
+    "TcktransformConfigParameters",
     "TcktransformOutputs",
+    "TcktransformParameters",
     "tcktransform",
     "tcktransform_config_params",
     "tcktransform_params",

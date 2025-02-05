@@ -166,6 +166,7 @@ def mri_rf_long_label(
 __all__ = [
     "MRI_RF_LONG_LABEL_METADATA",
     "MriRfLongLabelOutputs",
+    "MriRfLongLabelParameters",
     "mri_rf_long_label",
     "mri_rf_long_label_params",
 ]

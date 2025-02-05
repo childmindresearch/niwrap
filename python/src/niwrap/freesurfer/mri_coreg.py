@@ -754,6 +754,7 @@ def mri_coreg(
 __all__ = [
     "MRI_COREG_METADATA",
     "MriCoregOutputs",
+    "MriCoregParameters",
     "mri_coreg",
     "mri_coreg_params",
 ]

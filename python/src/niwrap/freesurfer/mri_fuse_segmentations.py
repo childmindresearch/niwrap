@@ -230,6 +230,7 @@ def mri_fuse_segmentations(
 __all__ = [
     "MRI_FUSE_SEGMENTATIONS_METADATA",
     "MriFuseSegmentationsOutputs",
+    "MriFuseSegmentationsParameters",
     "mri_fuse_segmentations",
     "mri_fuse_segmentations_params",
 ]

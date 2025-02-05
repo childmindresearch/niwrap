@@ -280,6 +280,7 @@ def v_3dretroicor(
 
 __all__ = [
     "V3dretroicorOutputs",
+    "V3dretroicorParameters",
     "V_3DRETROICOR_METADATA",
     "v_3dretroicor",
     "v_3dretroicor_params",

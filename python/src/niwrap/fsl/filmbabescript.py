@@ -171,6 +171,7 @@ def filmbabescript(
 __all__ = [
     "FILMBABESCRIPT_METADATA",
     "FilmbabescriptOutputs",
+    "FilmbabescriptParameters",
     "filmbabescript",
     "filmbabescript_params",
 ]

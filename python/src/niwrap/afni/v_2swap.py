@@ -171,6 +171,7 @@ def v_2swap(
 
 __all__ = [
     "V2swapOutputs",
+    "V2swapParameters",
     "V_2SWAP_METADATA",
     "v_2swap",
     "v_2swap_params",

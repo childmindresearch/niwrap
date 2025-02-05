@@ -171,6 +171,7 @@ def morph_only_subject_lh(
 __all__ = [
     "MORPH_ONLY_SUBJECT_LH_METADATA",
     "MorphOnlySubjectLhOutputs",
+    "MorphOnlySubjectLhParameters",
     "morph_only_subject_lh",
     "morph_only_subject_lh_params",
 ]

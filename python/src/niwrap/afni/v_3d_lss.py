@@ -168,6 +168,7 @@ def v_3d_lss(
 
 __all__ = [
     "V3dLssOutputs",
+    "V3dLssParameters",
     "V_3D_LSS_METADATA",
     "v_3d_lss",
     "v_3d_lss_params",

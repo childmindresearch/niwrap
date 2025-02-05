@@ -183,6 +183,7 @@ def volume_components_to_frames(
 __all__ = [
     "VOLUME_COMPONENTS_TO_FRAMES_METADATA",
     "VolumeComponentsToFramesOutputs",
+    "VolumeComponentsToFramesParameters",
     "volume_components_to_frames",
     "volume_components_to_frames_params",
 ]

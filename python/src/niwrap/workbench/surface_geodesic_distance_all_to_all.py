@@ -269,6 +269,7 @@ def surface_geodesic_distance_all_to_all(
 __all__ = [
     "SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA",
     "SurfaceGeodesicDistanceAllToAllOutputs",
+    "SurfaceGeodesicDistanceAllToAllParameters",
     "surface_geodesic_distance_all_to_all",
     "surface_geodesic_distance_all_to_all_params",
 ]

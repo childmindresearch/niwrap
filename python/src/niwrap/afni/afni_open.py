@@ -282,6 +282,7 @@ def afni_open(
 __all__ = [
     "AFNI_OPEN_METADATA",
     "AfniOpenOutputs",
+    "AfniOpenParameters",
     "afni_open",
     "afni_open_params",
 ]

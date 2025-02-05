@@ -322,6 +322,7 @@ def v_3d_tshift(
 
 __all__ = [
     "V3dTshiftOutputs",
+    "V3dTshiftParameters",
     "V_3D_TSHIFT_METADATA",
     "v_3d_tshift",
     "v_3d_tshift_params",

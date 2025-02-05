@@ -164,6 +164,7 @@ def isanalyze(
 __all__ = [
     "ISANALYZE_METADATA",
     "IsanalyzeOutputs",
+    "IsanalyzeParameters",
     "isanalyze",
     "isanalyze_params",
 ]

@@ -247,6 +247,7 @@ def long_submit_postproc(
 __all__ = [
     "LONG_SUBMIT_POSTPROC_METADATA",
     "LongSubmitPostprocOutputs",
+    "LongSubmitPostprocParameters",
     "long_submit_postproc",
     "long_submit_postproc_params",
 ]

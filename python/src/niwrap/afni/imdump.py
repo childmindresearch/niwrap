@@ -170,6 +170,7 @@ def imdump(
 __all__ = [
     "IMDUMP_METADATA",
     "ImdumpOutputs",
+    "ImdumpParameters",
     "imdump",
     "imdump_params",
 ]

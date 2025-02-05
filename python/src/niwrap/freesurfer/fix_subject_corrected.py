@@ -171,6 +171,7 @@ def fix_subject_corrected(
 __all__ = [
     "FIX_SUBJECT_CORRECTED_METADATA",
     "FixSubjectCorrectedOutputs",
+    "FixSubjectCorrectedParameters",
     "fix_subject_corrected",
     "fix_subject_corrected_params",
 ]

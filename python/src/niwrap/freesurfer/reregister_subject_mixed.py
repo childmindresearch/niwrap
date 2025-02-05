@@ -193,6 +193,7 @@ def reregister_subject_mixed(
 __all__ = [
     "REREGISTER_SUBJECT_MIXED_METADATA",
     "ReregisterSubjectMixedOutputs",
+    "ReregisterSubjectMixedParameters",
     "reregister_subject_mixed",
     "reregister_subject_mixed_params",
 ]

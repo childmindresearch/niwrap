@@ -213,6 +213,7 @@ def possum_interpmot(
 __all__ = [
     "POSSUM_INTERPMOT_METADATA",
     "PossumInterpmotOutputs",
+    "PossumInterpmotParameters",
     "possum_interpmot",
     "possum_interpmot_params",
 ]

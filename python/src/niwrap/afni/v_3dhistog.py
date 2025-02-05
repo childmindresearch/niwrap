@@ -340,6 +340,7 @@ def v_3dhistog(
 
 __all__ = [
     "V3dhistogOutputs",
+    "V3dhistogParameters",
     "V_3DHISTOG_METADATA",
     "v_3dhistog",
     "v_3dhistog_params",

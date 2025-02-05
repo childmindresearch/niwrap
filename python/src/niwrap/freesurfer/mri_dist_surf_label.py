@@ -183,6 +183,7 @@ def mri_dist_surf_label(
 __all__ = [
     "MRI_DIST_SURF_LABEL_METADATA",
     "MriDistSurfLabelOutputs",
+    "MriDistSurfLabelParameters",
     "mri_dist_surf_label",
     "mri_dist_surf_label_params",
 ]

@@ -209,6 +209,7 @@ def v__xyz_to_ijk(
 
 __all__ = [
     "VXyzToIjkOutputs",
+    "VXyzToIjkParameters",
     "V__XYZ_TO_IJK_METADATA",
     "v__xyz_to_ijk",
     "v__xyz_to_ijk_params",

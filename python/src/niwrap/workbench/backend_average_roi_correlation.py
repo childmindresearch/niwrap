@@ -184,6 +184,7 @@ def backend_average_roi_correlation(
 __all__ = [
     "BACKEND_AVERAGE_ROI_CORRELATION_METADATA",
     "BackendAverageRoiCorrelationOutputs",
+    "BackendAverageRoiCorrelationParameters",
     "backend_average_roi_correlation",
     "backend_average_roi_correlation_params",
 ]

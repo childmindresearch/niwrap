@@ -230,6 +230,7 @@ def v_3d_errts_cormat(
 
 __all__ = [
     "V3dErrtsCormatOutputs",
+    "V3dErrtsCormatParameters",
     "V_3D_ERRTS_CORMAT_METADATA",
     "v_3d_errts_cormat",
     "v_3d_errts_cormat_params",

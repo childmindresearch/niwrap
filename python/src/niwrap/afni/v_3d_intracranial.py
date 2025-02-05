@@ -259,6 +259,7 @@ def v_3d_intracranial(
 
 __all__ = [
     "V3dIntracranialOutputs",
+    "V3dIntracranialParameters",
     "V_3D_INTRACRANIAL_METADATA",
     "v_3d_intracranial",
     "v_3d_intracranial_params",

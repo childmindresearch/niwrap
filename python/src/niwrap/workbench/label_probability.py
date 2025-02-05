@@ -199,6 +199,7 @@ def label_probability(
 __all__ = [
     "LABEL_PROBABILITY_METADATA",
     "LabelProbabilityOutputs",
+    "LabelProbabilityParameters",
     "label_probability",
     "label_probability_params",
 ]

@@ -249,6 +249,7 @@ def uber_align_test_py(
 __all__ = [
     "UBER_ALIGN_TEST_PY_METADATA",
     "UberAlignTestPyOutputs",
+    "UberAlignTestPyParameters",
     "uber_align_test_py",
     "uber_align_test_py_params",
 ]

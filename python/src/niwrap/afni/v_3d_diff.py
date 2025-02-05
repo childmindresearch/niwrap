@@ -239,6 +239,7 @@ def v_3d_diff(
 
 __all__ = [
     "V3dDiffOutputs",
+    "V3dDiffParameters",
     "V_3D_DIFF_METADATA",
     "v_3d_diff",
     "v_3d_diff_params",

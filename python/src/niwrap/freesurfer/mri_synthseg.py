@@ -313,6 +313,7 @@ def mri_synthseg(
 __all__ = [
     "MRI_SYNTHSEG_METADATA",
     "MriSynthsegOutputs",
+    "MriSynthsegParameters",
     "mri_synthseg",
     "mri_synthseg_params",
 ]

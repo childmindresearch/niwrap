@@ -258,7 +258,9 @@ def set_map_names(
 
 __all__ = [
     "SET_MAP_NAMES_METADATA",
+    "SetMapNamesMapParameters",
     "SetMapNamesOutputs",
+    "SetMapNamesParameters",
     "set_map_names",
     "set_map_names_map_params",
     "set_map_names_params",

@@ -227,6 +227,7 @@ def dmri_group(
 __all__ = [
     "DMRI_GROUP_METADATA",
     "DmriGroupOutputs",
+    "DmriGroupParameters",
     "dmri_group",
     "dmri_group_params",
 ]

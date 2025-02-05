@@ -167,6 +167,7 @@ def suma_glxdino(
 __all__ = [
     "SUMA_GLXDINO_METADATA",
     "SumaGlxdinoOutputs",
+    "SumaGlxdinoParameters",
     "suma_glxdino",
     "suma_glxdino_params",
 ]

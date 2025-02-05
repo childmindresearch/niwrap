@@ -191,6 +191,7 @@ def tbss_2_reg(
 __all__ = [
     "TBSS_2_REG_METADATA",
     "Tbss2RegOutputs",
+    "Tbss2RegParameters",
     "tbss_2_reg",
     "tbss_2_reg_params",
 ]

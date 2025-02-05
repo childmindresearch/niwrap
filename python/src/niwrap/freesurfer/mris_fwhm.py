@@ -483,6 +483,7 @@ def mris_fwhm(
 __all__ = [
     "MRIS_FWHM_METADATA",
     "MrisFwhmOutputs",
+    "MrisFwhmParameters",
     "mris_fwhm",
     "mris_fwhm_params",
 ]

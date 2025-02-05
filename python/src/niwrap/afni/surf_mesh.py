@@ -242,6 +242,7 @@ def surf_mesh(
 __all__ = [
     "SURF_MESH_METADATA",
     "SurfMeshOutputs",
+    "SurfMeshParameters",
     "surf_mesh",
     "surf_mesh_params",
 ]

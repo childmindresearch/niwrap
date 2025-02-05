@@ -239,6 +239,7 @@ def v__roi_decluster(
 
 __all__ = [
     "VRoiDeclusterOutputs",
+    "VRoiDeclusterParameters",
     "V__ROI_DECLUSTER_METADATA",
     "v__roi_decluster",
     "v__roi_decluster_params",

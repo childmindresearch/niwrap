@@ -176,6 +176,7 @@ def talairach_mgh(
 __all__ = [
     "TALAIRACH_MGH_METADATA",
     "TalairachMghOutputs",
+    "TalairachMghParameters",
     "talairach_mgh",
     "talairach_mgh_params",
 ]

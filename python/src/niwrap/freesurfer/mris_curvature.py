@@ -332,6 +332,7 @@ def mris_curvature(
 __all__ = [
     "MRIS_CURVATURE_METADATA",
     "MrisCurvatureOutputs",
+    "MrisCurvatureParameters",
     "mris_curvature",
     "mris_curvature_params",
 ]

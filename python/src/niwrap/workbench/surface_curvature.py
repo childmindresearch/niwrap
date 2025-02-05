@@ -207,6 +207,7 @@ def surface_curvature(
 __all__ = [
     "SURFACE_CURVATURE_METADATA",
     "SurfaceCurvatureOutputs",
+    "SurfaceCurvatureParameters",
     "surface_curvature",
     "surface_curvature_params",
 ]

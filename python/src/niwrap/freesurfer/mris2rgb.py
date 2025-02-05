@@ -169,6 +169,7 @@ def mris2rgb(
 __all__ = [
     "MRIS2RGB_METADATA",
     "Mris2rgbOutputs",
+    "Mris2rgbParameters",
     "mris2rgb",
     "mris2rgb_params",
 ]

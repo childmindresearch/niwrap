@@ -164,6 +164,7 @@ def segment_monkey(
 __all__ = [
     "SEGMENT_MONKEY_METADATA",
     "SegmentMonkeyOutputs",
+    "SegmentMonkeyParameters",
     "segment_monkey",
     "segment_monkey_params",
 ]

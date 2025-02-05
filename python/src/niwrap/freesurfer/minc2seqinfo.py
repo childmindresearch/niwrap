@@ -176,6 +176,7 @@ def minc2seqinfo(
 __all__ = [
     "MINC2SEQINFO_METADATA",
     "Minc2seqinfoOutputs",
+    "Minc2seqinfoParameters",
     "minc2seqinfo",
     "minc2seqinfo_params",
 ]

@@ -166,6 +166,7 @@ def tbss_4_prestats(
 __all__ = [
     "TBSS_4_PRESTATS_METADATA",
     "Tbss4PrestatsOutputs",
+    "Tbss4PrestatsParameters",
     "tbss_4_prestats",
     "tbss_4_prestats_params",
 ]

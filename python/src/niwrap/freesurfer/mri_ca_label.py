@@ -191,6 +191,7 @@ def mri_ca_label(
 __all__ = [
     "MRI_CA_LABEL_METADATA",
     "MriCaLabelOutputs",
+    "MriCaLabelParameters",
     "mri_ca_label",
     "mri_ca_label_params",
 ]

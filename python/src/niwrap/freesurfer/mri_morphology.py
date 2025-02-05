@@ -210,6 +210,7 @@ def mri_morphology(
 __all__ = [
     "MRI_MORPHOLOGY_METADATA",
     "MriMorphologyOutputs",
+    "MriMorphologyParameters",
     "mri_morphology",
     "mri_morphology_params",
 ]

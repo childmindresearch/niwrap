@@ -186,6 +186,7 @@ def spline3_test(
 __all__ = [
     "SPLINE3_TEST_METADATA",
     "Spline3TestOutputs",
+    "Spline3TestParameters",
     "spline3_test",
     "spline3_test_params",
 ]

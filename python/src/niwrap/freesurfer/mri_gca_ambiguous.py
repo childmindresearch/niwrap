@@ -178,6 +178,7 @@ def mri_gca_ambiguous(
 __all__ = [
     "MRI_GCA_AMBIGUOUS_METADATA",
     "MriGcaAmbiguousOutputs",
+    "MriGcaAmbiguousParameters",
     "mri_gca_ambiguous",
     "mri_gca_ambiguous_params",
 ]

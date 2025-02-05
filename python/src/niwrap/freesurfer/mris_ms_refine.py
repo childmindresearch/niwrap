@@ -254,6 +254,7 @@ def mris_ms_refine(
 __all__ = [
     "MRIS_MS_REFINE_METADATA",
     "MrisMsRefineOutputs",
+    "MrisMsRefineParameters",
     "mris_ms_refine",
     "mris_ms_refine_params",
 ]

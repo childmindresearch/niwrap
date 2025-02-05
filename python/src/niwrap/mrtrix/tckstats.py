@@ -412,7 +412,10 @@ def tckstats(
 
 __all__ = [
     "TCKSTATS_METADATA",
+    "TckstatsConfigParameters",
+    "TckstatsOutputParameters",
     "TckstatsOutputs",
+    "TckstatsParameters",
     "tckstats",
     "tckstats_config_params",
     "tckstats_output_params",

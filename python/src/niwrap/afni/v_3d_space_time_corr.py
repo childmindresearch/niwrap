@@ -251,6 +251,7 @@ def v_3d_space_time_corr(
 
 __all__ = [
     "V3dSpaceTimeCorrOutputs",
+    "V3dSpaceTimeCorrParameters",
     "V_3D_SPACE_TIME_CORR_METADATA",
     "v_3d_space_time_corr",
     "v_3d_space_time_corr_params",

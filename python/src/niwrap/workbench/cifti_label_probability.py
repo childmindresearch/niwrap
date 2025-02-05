@@ -199,6 +199,7 @@ def cifti_label_probability(
 __all__ = [
     "CIFTI_LABEL_PROBABILITY_METADATA",
     "CiftiLabelProbabilityOutputs",
+    "CiftiLabelProbabilityParameters",
     "cifti_label_probability",
     "cifti_label_probability_params",
 ]

@@ -167,6 +167,7 @@ def gcatrainskull(
 __all__ = [
     "GCATRAINSKULL_METADATA",
     "GcatrainskullOutputs",
+    "GcatrainskullParameters",
     "gcatrainskull",
     "gcatrainskull_params",
 ]

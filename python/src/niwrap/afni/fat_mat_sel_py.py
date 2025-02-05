@@ -440,6 +440,7 @@ def fat_mat_sel_py(
 __all__ = [
     "FAT_MAT_SEL_PY_METADATA",
     "FatMatSelPyOutputs",
+    "FatMatSelPyParameters",
     "fat_mat_sel_py",
     "fat_mat_sel_py_params",
 ]

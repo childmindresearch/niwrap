@@ -284,6 +284,7 @@ def standard_space_roi(
 __all__ = [
     "STANDARD_SPACE_ROI_METADATA",
     "StandardSpaceRoiOutputs",
+    "StandardSpaceRoiParameters",
     "standard_space_roi",
     "standard_space_roi_params",
 ]

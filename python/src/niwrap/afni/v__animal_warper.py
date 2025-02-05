@@ -561,6 +561,7 @@ def v__animal_warper(
 
 __all__ = [
     "VAnimalWarperOutputs",
+    "VAnimalWarperParameters",
     "V__ANIMAL_WARPER_METADATA",
     "v__animal_warper",
     "v__animal_warper_params",

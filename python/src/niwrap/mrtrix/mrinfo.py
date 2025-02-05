@@ -705,8 +705,8 @@ def mrinfo_outputs(
         json_all=execution.output_file(params.get("json_all")) if (params.get("json_all") is not None) else None,
         export_grad_mrtrix=execution.output_file(params.get("export_grad_mrtrix")) if (params.get("export_grad_mrtrix") is not None) else None,
         export_pe_table=execution.output_file(params.get("export_pe_table")) if (params.get("export_pe_table") is not None) else None,
-        export_grad_fsl=dyn_outputs(export_grad_fsl["__STYXTYPE__"])(export_grad_fsl, execution) if export_grad_fsl else None,
-        export_pe_eddy=dyn_outputs(export_pe_eddy["__STYXTYPE__"])(export_pe_eddy, execution) if export_pe_eddy else None,
+        export_grad_fsl=dyn_outputs(params.get("export_grad_fsl")["__STYXTYPE__"])(params.get("export_grad_fsl"), execution) if params.get("export_grad_fsl") else None,
+        export_pe_eddy=dyn_outputs(params.get("export_pe_eddy")["__STYXTYPE__"])(params.get("export_pe_eddy"), execution) if params.get("export_pe_eddy") else None,
     )
     return ret
 
@@ -925,9 +925,15 @@ def mrinfo(
 
 __all__ = [
     "MRINFO_METADATA",
+    "MrinfoConfigParameters",
     "MrinfoExportGradFslOutputs",
+    "MrinfoExportGradFslParameters",
     "MrinfoExportPeEddyOutputs",
+    "MrinfoExportPeEddyParameters",
+    "MrinfoFslgradParameters",
     "MrinfoOutputs",
+    "MrinfoParameters",
+    "MrinfoPropertyParameters",
     "mrinfo",
     "mrinfo_config_params",
     "mrinfo_export_grad_fsl_params",

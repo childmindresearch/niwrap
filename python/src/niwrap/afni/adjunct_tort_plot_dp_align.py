@@ -237,6 +237,7 @@ def adjunct_tort_plot_dp_align(
 __all__ = [
     "ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA",
     "AdjunctTortPlotDpAlignOutputs",
+    "AdjunctTortPlotDpAlignParameters",
     "adjunct_tort_plot_dp_align",
     "adjunct_tort_plot_dp_align_params",
 ]

@@ -373,6 +373,7 @@ def make_average_subject(
 __all__ = [
     "MAKE_AVERAGE_SUBJECT_METADATA",
     "MakeAverageSubjectOutputs",
+    "MakeAverageSubjectParameters",
     "make_average_subject",
     "make_average_subject_params",
 ]

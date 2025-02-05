@@ -196,6 +196,7 @@ def avscale(
 __all__ = [
     "AVSCALE_METADATA",
     "AvscaleOutputs",
+    "AvscaleParameters",
     "avscale",
     "avscale_params",
 ]

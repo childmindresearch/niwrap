@@ -518,7 +518,10 @@ def tckdfc(
 
 __all__ = [
     "TCKDFC_METADATA",
+    "TckdfcConfigParameters",
+    "TckdfcDynamicParameters",
     "TckdfcOutputs",
+    "TckdfcParameters",
     "tckdfc",
     "tckdfc_config_params",
     "tckdfc_dynamic_params",

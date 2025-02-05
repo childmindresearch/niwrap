@@ -427,7 +427,11 @@ def volume_set_space(
 
 __all__ = [
     "VOLUME_SET_SPACE_METADATA",
+    "VolumeSetSpaceFileParameters",
     "VolumeSetSpaceOutputs",
+    "VolumeSetSpaceParameters",
+    "VolumeSetSpacePlumbParameters",
+    "VolumeSetSpaceSformParameters",
     "volume_set_space",
     "volume_set_space_file_params",
     "volume_set_space_params",

@@ -465,6 +465,7 @@ def long_stats_slopes(
 __all__ = [
     "LONG_STATS_SLOPES_METADATA",
     "LongStatsSlopesOutputs",
+    "LongStatsSlopesParameters",
     "long_stats_slopes",
     "long_stats_slopes_params",
 ]

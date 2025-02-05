@@ -218,6 +218,7 @@ def mri_twoclass(
 __all__ = [
     "MRI_TWOCLASS_METADATA",
     "MriTwoclassOutputs",
+    "MriTwoclassParameters",
     "mri_twoclass",
     "mri_twoclass_params",
 ]

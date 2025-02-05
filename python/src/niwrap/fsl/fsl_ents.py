@@ -211,6 +211,7 @@ def fsl_ents(
 __all__ = [
     "FSL_ENTS_METADATA",
     "FslEntsOutputs",
+    "FslEntsParameters",
     "fsl_ents",
     "fsl_ents_params",
 ]

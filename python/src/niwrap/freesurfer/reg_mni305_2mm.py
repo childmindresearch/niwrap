@@ -186,6 +186,7 @@ def reg_mni305_2mm(
 __all__ = [
     "REG_MNI305_2MM_METADATA",
     "RegMni3052mmOutputs",
+    "RegMni3052mmParameters",
     "reg_mni305_2mm",
     "reg_mni305_2mm_params",
 ]

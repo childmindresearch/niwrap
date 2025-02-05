@@ -196,6 +196,7 @@ def estnoise(
 __all__ = [
     "ESTNOISE_METADATA",
     "EstnoiseOutputs",
+    "EstnoiseParameters",
     "estnoise",
     "estnoise_params",
 ]

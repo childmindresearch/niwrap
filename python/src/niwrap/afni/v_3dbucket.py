@@ -249,6 +249,7 @@ def v_3dbucket(
 
 __all__ = [
     "V3dbucketOutputs",
+    "V3dbucketParameters",
     "V_3DBUCKET_METADATA",
     "v_3dbucket",
     "v_3dbucket_params",

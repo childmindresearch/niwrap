@@ -212,6 +212,7 @@ def bbregister(
 __all__ = [
     "BBREGISTER_METADATA",
     "BbregisterOutputs",
+    "BbregisterParameters",
     "bbregister",
     "bbregister_params",
 ]

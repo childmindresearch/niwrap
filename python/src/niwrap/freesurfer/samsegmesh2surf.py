@@ -235,6 +235,7 @@ def samsegmesh2surf(
 __all__ = [
     "SAMSEGMESH2SURF_METADATA",
     "Samsegmesh2surfOutputs",
+    "Samsegmesh2surfParameters",
     "samsegmesh2surf",
     "samsegmesh2surf_params",
 ]

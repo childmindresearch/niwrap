@@ -191,6 +191,7 @@ def match_smoothing(
 __all__ = [
     "MATCH_SMOOTHING_METADATA",
     "MatchSmoothingOutputs",
+    "MatchSmoothingParameters",
     "match_smoothing",
     "match_smoothing_params",
 ]

@@ -1116,7 +1116,7 @@ def dwi2response_outputs(
     """
     ret = Dwi2responseOutputs(
         root=execution.output_file("."),
-        algorithm=dyn_outputs(algorithm["__STYXTYPE__"])(algorithm, execution),
+        algorithm=dyn_outputs(params.get("algorithm")["__STYXTYPE__"])(params.get("algorithm"), execution),
     )
     return ret
 
@@ -1232,13 +1232,22 @@ def dwi2response(
 
 __all__ = [
     "DWI2RESPONSE_METADATA",
+    "Dwi2responseConfigParameters",
     "Dwi2responseDhollanderOutputs",
+    "Dwi2responseDhollanderParameters",
     "Dwi2responseFaOutputs",
+    "Dwi2responseFaParameters",
+    "Dwi2responseFslgradParameters",
     "Dwi2responseManualOutputs",
+    "Dwi2responseManualParameters",
     "Dwi2responseMsmt5ttOutputs",
+    "Dwi2responseMsmt5ttParameters",
     "Dwi2responseOutputs",
+    "Dwi2responseParameters",
     "Dwi2responseTaxOutputs",
+    "Dwi2responseTaxParameters",
     "Dwi2responseTournierOutputs",
+    "Dwi2responseTournierParameters",
     "dwi2response",
     "dwi2response_config_params",
     "dwi2response_dhollander_params",

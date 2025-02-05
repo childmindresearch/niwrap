@@ -289,6 +289,7 @@ def fspalm(
 __all__ = [
     "FSPALM_METADATA",
     "FspalmOutputs",
+    "FspalmParameters",
     "fspalm",
     "fspalm_params",
 ]

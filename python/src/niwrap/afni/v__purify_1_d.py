@@ -191,6 +191,7 @@ def v__purify_1_d(
 
 __all__ = [
     "VPurify1DOutputs",
+    "VPurify1DParameters",
     "V__PURIFY_1_D_METADATA",
     "v__purify_1_d",
     "v__purify_1_d_params",

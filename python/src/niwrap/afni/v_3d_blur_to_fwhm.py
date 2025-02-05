@@ -252,6 +252,7 @@ def v_3d_blur_to_fwhm(
 
 __all__ = [
     "V3dBlurToFwhmOutputs",
+    "V3dBlurToFwhmParameters",
     "V_3D_BLUR_TO_FWHM_METADATA",
     "v_3d_blur_to_fwhm",
     "v_3d_blur_to_fwhm_params",

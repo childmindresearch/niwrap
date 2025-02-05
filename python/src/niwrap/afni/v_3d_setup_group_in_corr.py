@@ -257,6 +257,7 @@ def v_3d_setup_group_in_corr(
 
 __all__ = [
     "V3dSetupGroupInCorrOutputs",
+    "V3dSetupGroupInCorrParameters",
     "V_3D_SETUP_GROUP_IN_CORR_METADATA",
     "v_3d_setup_group_in_corr",
     "v_3d_setup_group_in_corr_params",

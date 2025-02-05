@@ -500,7 +500,11 @@ def maskfilter(
 
 __all__ = [
     "MASKFILTER_METADATA",
+    "MaskfilterConfigParameters",
     "MaskfilterOutputs",
+    "MaskfilterParameters",
+    "MaskfilterVariousFileParameters",
+    "MaskfilterVariousStringParameters",
     "maskfilter",
     "maskfilter_config_params",
     "maskfilter_params",

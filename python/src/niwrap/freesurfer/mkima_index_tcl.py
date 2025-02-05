@@ -177,6 +177,7 @@ def mkima_index_tcl(
 __all__ = [
     "MKIMA_INDEX_TCL_METADATA",
     "MkimaIndexTclOutputs",
+    "MkimaIndexTclParameters",
     "mkima_index_tcl",
     "mkima_index_tcl_params",
 ]

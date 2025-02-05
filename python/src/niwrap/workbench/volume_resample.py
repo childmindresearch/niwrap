@@ -487,7 +487,13 @@ def volume_resample(
 
 __all__ = [
     "VOLUME_RESAMPLE_METADATA",
+    "VolumeResampleAffineParameters",
+    "VolumeResampleAffineSeriesParameters",
+    "VolumeResampleFlirtParameters",
+    "VolumeResampleFlirtParameters_",
     "VolumeResampleOutputs",
+    "VolumeResampleParameters",
+    "VolumeResampleWarpParameters",
     "volume_resample",
     "volume_resample_affine_params",
     "volume_resample_affine_series_params",

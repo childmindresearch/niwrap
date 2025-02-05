@@ -263,6 +263,7 @@ def wmedits2surf(
 __all__ = [
     "WMEDITS2SURF_METADATA",
     "Wmedits2surfOutputs",
+    "Wmedits2surfParameters",
     "wmedits2surf",
     "wmedits2surf_params",
 ]

@@ -247,6 +247,7 @@ def v_3dfractionize(
 
 __all__ = [
     "V3dfractionizeOutputs",
+    "V3dfractionizeParameters",
     "V_3DFRACTIONIZE_METADATA",
     "v_3dfractionize",
     "v_3dfractionize_params",

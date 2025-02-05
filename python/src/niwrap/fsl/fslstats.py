@@ -437,6 +437,7 @@ def fslstats(
 __all__ = [
     "FSLSTATS_METADATA",
     "FslstatsOutputs",
+    "FslstatsParameters",
     "fslstats",
     "fslstats_params",
 ]

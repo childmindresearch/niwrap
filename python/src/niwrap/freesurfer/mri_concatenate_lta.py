@@ -272,6 +272,7 @@ def mri_concatenate_lta(
 __all__ = [
     "MRI_CONCATENATE_LTA_METADATA",
     "MriConcatenateLtaOutputs",
+    "MriConcatenateLtaParameters",
     "mri_concatenate_lta",
     "mri_concatenate_lta_params",
 ]

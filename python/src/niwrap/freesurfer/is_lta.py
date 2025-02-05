@@ -184,6 +184,7 @@ def is_lta(
 __all__ = [
     "IS_LTA_METADATA",
     "IsLtaOutputs",
+    "IsLtaParameters",
     "is_lta",
     "is_lta_params",
 ]

@@ -197,6 +197,7 @@ def sbtiv(
 __all__ = [
     "SBTIV_METADATA",
     "SbtivOutputs",
+    "SbtivParameters",
     "sbtiv",
     "sbtiv_params",
 ]

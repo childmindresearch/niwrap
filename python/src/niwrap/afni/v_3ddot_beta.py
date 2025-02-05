@@ -203,6 +203,7 @@ def v_3ddot_beta(
 
 __all__ = [
     "V3ddotBetaOutputs",
+    "V3ddotBetaParameters",
     "V_3DDOT_BETA_METADATA",
     "v_3ddot_beta",
     "v_3ddot_beta_params",

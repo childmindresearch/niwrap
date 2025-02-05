@@ -721,7 +721,13 @@ def cifti_palette(
 
 __all__ = [
     "CIFTI_PALETTE_METADATA",
+    "CiftiPaletteNegPercentParameters",
+    "CiftiPaletteNegUserParameters",
     "CiftiPaletteOutputs",
+    "CiftiPaletteParameters",
+    "CiftiPalettePosPercentParameters",
+    "CiftiPalettePosUserParameters",
+    "CiftiPaletteThresholdingParameters",
     "cifti_palette",
     "cifti_palette_neg_percent_params",
     "cifti_palette_neg_user_params",

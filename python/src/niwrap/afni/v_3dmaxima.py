@@ -346,6 +346,7 @@ def v_3dmaxima(
 
 __all__ = [
     "V3dmaximaOutputs",
+    "V3dmaximaParameters",
     "V_3DMAXIMA_METADATA",
     "v_3dmaxima",
     "v_3dmaxima_params",

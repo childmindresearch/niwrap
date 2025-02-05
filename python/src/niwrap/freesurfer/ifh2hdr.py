@@ -178,6 +178,7 @@ def ifh2hdr(
 __all__ = [
     "IFH2HDR_METADATA",
     "Ifh2hdrOutputs",
+    "Ifh2hdrParameters",
     "ifh2hdr",
     "ifh2hdr_params",
 ]

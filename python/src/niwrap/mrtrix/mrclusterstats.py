@@ -687,7 +687,10 @@ def mrclusterstats(
 
 __all__ = [
     "MRCLUSTERSTATS_METADATA",
+    "MrclusterstatsColumnParameters",
+    "MrclusterstatsConfigParameters",
     "MrclusterstatsOutputs",
+    "MrclusterstatsParameters",
     "mrclusterstats",
     "mrclusterstats_column_params",
     "mrclusterstats_config_params",

@@ -260,6 +260,7 @@ def v__examine_gen_feat_dists(
 
 __all__ = [
     "VExamineGenFeatDistsOutputs",
+    "VExamineGenFeatDistsParameters",
     "V__EXAMINE_GEN_FEAT_DISTS_METADATA",
     "v__examine_gen_feat_dists",
     "v__examine_gen_feat_dists_params",

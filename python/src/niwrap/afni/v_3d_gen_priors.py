@@ -454,6 +454,7 @@ def v_3d_gen_priors(
 
 __all__ = [
     "V3dGenPriorsOutputs",
+    "V3dGenPriorsParameters",
     "V_3D_GEN_PRIORS_METADATA",
     "v_3d_gen_priors",
     "v_3d_gen_priors_params",

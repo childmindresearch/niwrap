@@ -193,6 +193,7 @@ def surface_closest_vertex(
 __all__ = [
     "SURFACE_CLOSEST_VERTEX_METADATA",
     "SurfaceClosestVertexOutputs",
+    "SurfaceClosestVertexParameters",
     "surface_closest_vertex",
     "surface_closest_vertex_params",
 ]

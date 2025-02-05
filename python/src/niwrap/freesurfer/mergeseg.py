@@ -240,6 +240,7 @@ def mergeseg(
 __all__ = [
     "MERGESEG_METADATA",
     "MergesegOutputs",
+    "MergesegParameters",
     "mergeseg",
     "mergeseg_params",
 ]

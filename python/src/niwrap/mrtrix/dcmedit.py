@@ -412,7 +412,10 @@ def dcmedit(
 
 __all__ = [
     "DCMEDIT_METADATA",
+    "DcmeditConfigParameters",
     "DcmeditOutputs",
+    "DcmeditParameters",
+    "DcmeditTagParameters",
     "dcmedit",
     "dcmedit_config_params",
     "dcmedit_params",

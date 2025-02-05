@@ -223,6 +223,7 @@ def v_3d_slice_ndice(
 
 __all__ = [
     "V3dSliceNdiceOutputs",
+    "V3dSliceNdiceParameters",
     "V_3D_SLICE_NDICE_METADATA",
     "v_3d_slice_ndice",
     "v_3d_slice_ndice_params",

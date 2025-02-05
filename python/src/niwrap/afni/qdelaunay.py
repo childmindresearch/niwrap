@@ -494,6 +494,7 @@ def qdelaunay(
 __all__ = [
     "QDELAUNAY_METADATA",
     "QdelaunayOutputs",
+    "QdelaunayParameters",
     "qdelaunay",
     "qdelaunay_params",
 ]

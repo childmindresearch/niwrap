@@ -303,6 +303,7 @@ def surface_sphere_project_unproject(
 __all__ = [
     "SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA",
     "SurfaceSphereProjectUnprojectOutputs",
+    "SurfaceSphereProjectUnprojectParameters",
     "surface_sphere_project_unproject",
     "surface_sphere_project_unproject_params",
 ]

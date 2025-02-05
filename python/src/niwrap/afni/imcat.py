@@ -467,6 +467,7 @@ def imcat(
 __all__ = [
     "IMCAT_METADATA",
     "ImcatOutputs",
+    "ImcatParameters",
     "imcat",
     "imcat_params",
 ]

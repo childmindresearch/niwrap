@@ -349,6 +349,7 @@ def qhull(
 __all__ = [
     "QHULL_METADATA",
     "QhullOutputs",
+    "QhullParameters",
     "qhull",
     "qhull_params",
 ]

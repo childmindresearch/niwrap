@@ -305,6 +305,7 @@ def spmregister(
 __all__ = [
     "SPMREGISTER_METADATA",
     "SpmregisterOutputs",
+    "SpmregisterParameters",
     "spmregister",
     "spmregister_params",
 ]

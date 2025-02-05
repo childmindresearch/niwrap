@@ -417,7 +417,9 @@ def mrdegibbs(
 
 __all__ = [
     "MRDEGIBBS_METADATA",
+    "MrdegibbsConfigParameters",
     "MrdegibbsOutputs",
+    "MrdegibbsParameters",
     "mrdegibbs",
     "mrdegibbs_config_params",
     "mrdegibbs_params",

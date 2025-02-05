@@ -462,6 +462,7 @@ def mri_diff(
 __all__ = [
     "MRI_DIFF_METADATA",
     "MriDiffOutputs",
+    "MriDiffParameters",
     "mri_diff",
     "mri_diff_params",
 ]

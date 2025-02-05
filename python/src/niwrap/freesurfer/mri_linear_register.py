@@ -183,6 +183,7 @@ def mri_linear_register(
 __all__ = [
     "MRI_LINEAR_REGISTER_METADATA",
     "MriLinearRegisterOutputs",
+    "MriLinearRegisterParameters",
     "mri_linear_register",
     "mri_linear_register_params",
 ]

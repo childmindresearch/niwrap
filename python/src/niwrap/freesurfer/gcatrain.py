@@ -341,6 +341,7 @@ def gcatrain(
 __all__ = [
     "GCATRAIN_METADATA",
     "GcatrainOutputs",
+    "GcatrainParameters",
     "gcatrain",
     "gcatrain_params",
 ]

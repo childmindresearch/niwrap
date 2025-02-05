@@ -246,6 +246,7 @@ def slices_summary(
 __all__ = [
     "SLICES_SUMMARY_METADATA",
     "SlicesSummaryOutputs",
+    "SlicesSummaryParameters",
     "slices_summary",
     "slices_summary_params",
 ]

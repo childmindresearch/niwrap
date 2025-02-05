@@ -445,6 +445,7 @@ def fslvbm_2_template(
 __all__ = [
     "FSLVBM_2_TEMPLATE_METADATA",
     "Fslvbm2TemplateOutputs",
+    "Fslvbm2TemplateParameters",
     "fslvbm_2_template",
     "fslvbm_2_template_params",
 ]

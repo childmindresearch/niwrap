@@ -198,6 +198,7 @@ def cifti_all_labels_to_rois(
 __all__ = [
     "CIFTI_ALL_LABELS_TO_ROIS_METADATA",
     "CiftiAllLabelsToRoisOutputs",
+    "CiftiAllLabelsToRoisParameters",
     "cifti_all_labels_to_rois",
     "cifti_all_labels_to_rois_params",
 ]

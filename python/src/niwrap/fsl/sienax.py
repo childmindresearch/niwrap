@@ -290,6 +290,7 @@ def sienax(
 __all__ = [
     "SIENAX_METADATA",
     "SienaxOutputs",
+    "SienaxParameters",
     "sienax",
     "sienax_params",
 ]

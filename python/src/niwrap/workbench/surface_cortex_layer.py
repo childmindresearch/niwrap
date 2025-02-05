@@ -223,6 +223,7 @@ def surface_cortex_layer(
 __all__ = [
     "SURFACE_CORTEX_LAYER_METADATA",
     "SurfaceCortexLayerOutputs",
+    "SurfaceCortexLayerParameters",
     "surface_cortex_layer",
     "surface_cortex_layer_params",
 ]

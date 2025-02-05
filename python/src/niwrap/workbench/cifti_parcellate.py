@@ -525,7 +525,10 @@ def cifti_parcellate(
 
 __all__ = [
     "CIFTI_PARCELLATE_METADATA",
+    "CiftiParcellateExcludeOutliersParameters",
     "CiftiParcellateOutputs",
+    "CiftiParcellateParameters",
+    "CiftiParcellateSpatialWeightsParameters",
     "cifti_parcellate",
     "cifti_parcellate_exclude_outliers_params",
     "cifti_parcellate_params",

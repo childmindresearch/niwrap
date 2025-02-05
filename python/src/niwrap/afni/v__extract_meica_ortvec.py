@@ -235,6 +235,7 @@ def v__extract_meica_ortvec(
 
 __all__ = [
     "VExtractMeicaOrtvecOutputs",
+    "VExtractMeicaOrtvecParameters",
     "V__EXTRACT_MEICA_ORTVEC_METADATA",
     "v__extract_meica_ortvec",
     "v__extract_meica_ortvec_params",

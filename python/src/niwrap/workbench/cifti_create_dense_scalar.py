@@ -511,7 +511,12 @@ def cifti_create_dense_scalar(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_SCALAR_METADATA",
+    "CiftiCreateDenseScalarCerebellumMetricParameters",
+    "CiftiCreateDenseScalarLeftMetricParameters",
     "CiftiCreateDenseScalarOutputs",
+    "CiftiCreateDenseScalarParameters",
+    "CiftiCreateDenseScalarRightMetricParameters",
+    "CiftiCreateDenseScalarVolumeParameters",
     "cifti_create_dense_scalar",
     "cifti_create_dense_scalar_cerebellum_metric_params",
     "cifti_create_dense_scalar_left_metric_params",

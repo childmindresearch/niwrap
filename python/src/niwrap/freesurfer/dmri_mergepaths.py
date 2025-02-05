@@ -224,6 +224,7 @@ def dmri_mergepaths(
 __all__ = [
     "DMRI_MERGEPATHS_METADATA",
     "DmriMergepathsOutputs",
+    "DmriMergepathsParameters",
     "dmri_mergepaths",
     "dmri_mergepaths_params",
 ]

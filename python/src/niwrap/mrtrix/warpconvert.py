@@ -386,7 +386,9 @@ def warpconvert(
 
 __all__ = [
     "WARPCONVERT_METADATA",
+    "WarpconvertConfigParameters",
     "WarpconvertOutputs",
+    "WarpconvertParameters",
     "warpconvert",
     "warpconvert_config_params",
     "warpconvert_params",

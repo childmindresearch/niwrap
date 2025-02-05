@@ -191,6 +191,7 @@ def mris_find_flat_regions(
 __all__ = [
     "MRIS_FIND_FLAT_REGIONS_METADATA",
     "MrisFindFlatRegionsOutputs",
+    "MrisFindFlatRegionsParameters",
     "mris_find_flat_regions",
     "mris_find_flat_regions_params",
 ]

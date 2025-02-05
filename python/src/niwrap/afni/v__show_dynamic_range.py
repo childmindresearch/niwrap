@@ -175,6 +175,7 @@ def v__show_dynamic_range(
 
 __all__ = [
     "VShowDynamicRangeOutputs",
+    "VShowDynamicRangeParameters",
     "V__SHOW_DYNAMIC_RANGE_METADATA",
     "v__show_dynamic_range",
     "v__show_dynamic_range_params",

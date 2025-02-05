@@ -369,6 +369,7 @@ def gca_apply(
 __all__ = [
     "GCA_APPLY_METADATA",
     "GcaApplyOutputs",
+    "GcaApplyParameters",
     "gca_apply",
     "gca_apply_params",
 ]

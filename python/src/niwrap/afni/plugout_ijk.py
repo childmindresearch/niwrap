@@ -279,6 +279,7 @@ def plugout_ijk(
 __all__ = [
     "PLUGOUT_IJK_METADATA",
     "PlugoutIjkOutputs",
+    "PlugoutIjkParameters",
     "plugout_ijk",
     "plugout_ijk_params",
 ]

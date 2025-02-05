@@ -400,6 +400,7 @@ def v_3d_localstat(
 
 __all__ = [
     "V3dLocalstatOutputs",
+    "V3dLocalstatParameters",
     "V_3D_LOCALSTAT_METADATA",
     "v_3d_localstat",
     "v_3d_localstat_params",

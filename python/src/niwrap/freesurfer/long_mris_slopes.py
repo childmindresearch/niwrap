@@ -533,6 +533,7 @@ def long_mris_slopes(
 __all__ = [
     "LONG_MRIS_SLOPES_METADATA",
     "LongMrisSlopesOutputs",
+    "LongMrisSlopesParameters",
     "long_mris_slopes",
     "long_mris_slopes_params",
 ]

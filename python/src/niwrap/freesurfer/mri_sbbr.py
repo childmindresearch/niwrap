@@ -421,6 +421,7 @@ def mri_sbbr(
 __all__ = [
     "MRI_SBBR_METADATA",
     "MriSbbrOutputs",
+    "MriSbbrParameters",
     "mri_sbbr",
     "mri_sbbr_params",
 ]

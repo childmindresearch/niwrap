@@ -212,6 +212,7 @@ def flirt_average(
 __all__ = [
     "FLIRT_AVERAGE_METADATA",
     "FlirtAverageOutputs",
+    "FlirtAverageParameters",
     "flirt_average",
     "flirt_average_params",
 ]

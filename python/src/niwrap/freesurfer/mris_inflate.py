@@ -258,6 +258,7 @@ def mris_inflate(
 __all__ = [
     "MRIS_INFLATE_METADATA",
     "MrisInflateOutputs",
+    "MrisInflateParameters",
     "mris_inflate",
     "mris_inflate_params",
 ]

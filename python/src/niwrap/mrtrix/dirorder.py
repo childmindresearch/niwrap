@@ -325,7 +325,9 @@ def dirorder(
 
 __all__ = [
     "DIRORDER_METADATA",
+    "DirorderConfigParameters",
     "DirorderOutputs",
+    "DirorderParameters",
     "dirorder",
     "dirorder_config_params",
     "dirorder_params",

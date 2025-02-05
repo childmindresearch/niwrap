@@ -795,6 +795,7 @@ def mri_gtmpvc(
 __all__ = [
     "MRI_GTMPVC_METADATA",
     "MriGtmpvcOutputs",
+    "MriGtmpvcParameters",
     "mri_gtmpvc",
     "mri_gtmpvc_params",
 ]

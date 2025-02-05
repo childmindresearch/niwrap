@@ -194,6 +194,7 @@ def mri_mergelabels(
 __all__ = [
     "MRI_MERGELABELS_METADATA",
     "MriMergelabelsOutputs",
+    "MriMergelabelsParameters",
     "mri_mergelabels",
     "mri_mergelabels_params",
 ]

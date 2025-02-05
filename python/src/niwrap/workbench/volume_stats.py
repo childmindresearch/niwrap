@@ -327,6 +327,8 @@ def volume_stats(
 __all__ = [
     "VOLUME_STATS_METADATA",
     "VolumeStatsOutputs",
+    "VolumeStatsParameters",
+    "VolumeStatsRoiParameters",
     "volume_stats",
     "volume_stats_params",
     "volume_stats_roi_params",

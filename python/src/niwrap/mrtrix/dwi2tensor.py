@@ -554,7 +554,10 @@ def dwi2tensor(
 
 __all__ = [
     "DWI2TENSOR_METADATA",
+    "Dwi2tensorConfigParameters",
+    "Dwi2tensorFslgradParameters",
     "Dwi2tensorOutputs",
+    "Dwi2tensorParameters",
     "dwi2tensor",
     "dwi2tensor_config_params",
     "dwi2tensor_fslgrad_params",

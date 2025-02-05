@@ -166,6 +166,7 @@ def freeview(
 __all__ = [
     "FREEVIEW_METADATA",
     "FreeviewOutputs",
+    "FreeviewParameters",
     "freeview",
     "freeview_params",
 ]

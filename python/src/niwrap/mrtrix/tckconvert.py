@@ -541,7 +541,11 @@ def tckconvert(
 
 __all__ = [
     "TCKCONVERT_METADATA",
+    "TckconvertConfigParameters",
     "TckconvertOutputs",
+    "TckconvertParameters",
+    "TckconvertVariousFileParameters",
+    "TckconvertVariousStringParameters",
     "tckconvert",
     "tckconvert_config_params",
     "tckconvert_params",

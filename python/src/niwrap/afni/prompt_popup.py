@@ -195,6 +195,7 @@ def prompt_popup(
 __all__ = [
     "PROMPT_POPUP_METADATA",
     "PromptPopupOutputs",
+    "PromptPopupParameters",
     "prompt_popup",
     "prompt_popup_params",
 ]

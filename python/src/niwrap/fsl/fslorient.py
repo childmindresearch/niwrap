@@ -172,6 +172,7 @@ def fslorient(
 __all__ = [
     "FSLORIENT_METADATA",
     "FslorientOutputs",
+    "FslorientParameters",
     "fslorient",
     "fslorient_params",
 ]

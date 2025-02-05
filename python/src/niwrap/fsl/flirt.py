@@ -679,6 +679,7 @@ def flirt(
 __all__ = [
     "FLIRT_METADATA",
     "FlirtOutputs",
+    "FlirtParameters",
     "flirt",
     "flirt_params",
 ]

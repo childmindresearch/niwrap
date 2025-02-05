@@ -1198,9 +1198,9 @@ def mrregister_outputs(
         affine_2tomidway=execution.output_file(params.get("affine_2tomidway")) if (params.get("affine_2tomidway") is not None) else None,
         affine_log=execution.output_file(params.get("affine_log")) if (params.get("affine_log") is not None) else None,
         nl_warp_full=execution.output_file(params.get("nl_warp_full")) if (params.get("nl_warp_full") is not None) else None,
-        transformed=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in transformed] if transformed else None,
-        transformed_midway=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in transformed_midway] if transformed_midway else None,
-        nl_warp=dyn_outputs(nl_warp["__STYXTYPE__"])(nl_warp, execution) if nl_warp else None,
+        transformed=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("transformed")] if params.get("transformed") else None,
+        transformed_midway=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("transformed_midway")] if params.get("transformed_midway") else None,
+        nl_warp=dyn_outputs(params.get("nl_warp")["__STYXTYPE__"])(params.get("nl_warp"), execution) if params.get("nl_warp") else None,
     )
     return ret
 
@@ -1582,10 +1582,15 @@ def mrregister(
 
 __all__ = [
     "MRREGISTER_METADATA",
+    "MrregisterConfigParameters",
     "MrregisterNlWarpOutputs",
+    "MrregisterNlWarpParameters",
     "MrregisterOutputs",
+    "MrregisterParameters",
     "MrregisterTransformedMidwayOutputs",
+    "MrregisterTransformedMidwayParameters",
     "MrregisterTransformedOutputs",
+    "MrregisterTransformedParameters",
     "mrregister",
     "mrregister_config_params",
     "mrregister_nl_warp_params",

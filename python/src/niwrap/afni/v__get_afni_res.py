@@ -173,6 +173,7 @@ def v__get_afni_res(
 
 __all__ = [
     "VGetAfniResOutputs",
+    "VGetAfniResParameters",
     "V__GET_AFNI_RES_METADATA",
     "v__get_afni_res",
     "v__get_afni_res_params",

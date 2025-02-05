@@ -208,6 +208,7 @@ def v_3d_afnito_analyze(
 
 __all__ = [
     "V3dAfnitoAnalyzeOutputs",
+    "V3dAfnitoAnalyzeParameters",
     "V_3D_AFNITO_ANALYZE_METADATA",
     "v_3d_afnito_analyze",
     "v_3d_afnito_analyze_params",

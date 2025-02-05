@@ -183,6 +183,7 @@ def maskdyads(
 __all__ = [
     "MASKDYADS_METADATA",
     "MaskdyadsOutputs",
+    "MaskdyadsParameters",
     "maskdyads",
     "maskdyads_params",
 ]

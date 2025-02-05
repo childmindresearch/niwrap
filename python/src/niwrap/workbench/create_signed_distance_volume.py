@@ -312,6 +312,7 @@ def create_signed_distance_volume(
 __all__ = [
     "CREATE_SIGNED_DISTANCE_VOLUME_METADATA",
     "CreateSignedDistanceVolumeOutputs",
+    "CreateSignedDistanceVolumeParameters",
     "create_signed_distance_volume",
     "create_signed_distance_volume_params",
 ]

@@ -334,6 +334,7 @@ def fat_mvm_scripter_py(
 __all__ = [
     "FAT_MVM_SCRIPTER_PY_METADATA",
     "FatMvmScripterPyOutputs",
+    "FatMvmScripterPyParameters",
     "fat_mvm_scripter_py",
     "fat_mvm_scripter_py_params",
 ]

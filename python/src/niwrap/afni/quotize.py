@@ -185,6 +185,7 @@ def quotize(
 __all__ = [
     "QUOTIZE_METADATA",
     "QuotizeOutputs",
+    "QuotizeParameters",
     "quotize",
     "quotize_params",
 ]

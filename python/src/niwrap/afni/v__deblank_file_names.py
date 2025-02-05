@@ -197,6 +197,7 @@ def v__deblank_file_names(
 
 __all__ = [
     "VDeblankFileNamesOutputs",
+    "VDeblankFileNamesParameters",
     "V__DEBLANK_FILE_NAMES_METADATA",
     "v__deblank_file_names",
     "v__deblank_file_names_params",

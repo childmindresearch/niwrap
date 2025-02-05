@@ -235,6 +235,7 @@ def mris_thickness(
 __all__ = [
     "MRIS_THICKNESS_METADATA",
     "MrisThicknessOutputs",
+    "MrisThicknessParameters",
     "mris_thickness",
     "mris_thickness_params",
 ]

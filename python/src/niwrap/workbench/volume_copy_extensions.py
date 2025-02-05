@@ -204,6 +204,7 @@ def volume_copy_extensions(
 __all__ = [
     "VOLUME_COPY_EXTENSIONS_METADATA",
     "VolumeCopyExtensionsOutputs",
+    "VolumeCopyExtensionsParameters",
     "volume_copy_extensions",
     "volume_copy_extensions_params",
 ]

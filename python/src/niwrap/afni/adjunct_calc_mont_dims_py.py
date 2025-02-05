@@ -165,6 +165,7 @@ def adjunct_calc_mont_dims_py(
 __all__ = [
     "ADJUNCT_CALC_MONT_DIMS_PY_METADATA",
     "AdjunctCalcMontDimsPyOutputs",
+    "AdjunctCalcMontDimsPyParameters",
     "adjunct_calc_mont_dims_py",
     "adjunct_calc_mont_dims_py_params",
 ]

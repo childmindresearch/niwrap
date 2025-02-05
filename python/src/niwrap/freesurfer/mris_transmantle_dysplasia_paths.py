@@ -219,6 +219,7 @@ def mris_transmantle_dysplasia_paths(
 __all__ = [
     "MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA",
     "MrisTransmantleDysplasiaPathsOutputs",
+    "MrisTransmantleDysplasiaPathsParameters",
     "mris_transmantle_dysplasia_paths",
     "mris_transmantle_dysplasia_paths_params",
 ]

@@ -237,6 +237,7 @@ def siena_diff(
 __all__ = [
     "SIENA_DIFF_METADATA",
     "SienaDiffOutputs",
+    "SienaDiffParameters",
     "siena_diff",
     "siena_diff_params",
 ]

@@ -253,6 +253,7 @@ def mri_rf_train(
 __all__ = [
     "MRI_RF_TRAIN_METADATA",
     "MriRfTrainOutputs",
+    "MriRfTrainParameters",
     "mri_rf_train",
     "mri_rf_train_params",
 ]

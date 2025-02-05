@@ -240,6 +240,7 @@ def warp_tensor_image_multi_transform(
 __all__ = [
     "WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA",
     "WarpTensorImageMultiTransformOutputs",
+    "WarpTensorImageMultiTransformParameters",
     "warp_tensor_image_multi_transform",
     "warp_tensor_image_multi_transform_params",
 ]

@@ -246,6 +246,7 @@ def quickspec(
 __all__ = [
     "QUICKSPEC_METADATA",
     "QuickspecOutputs",
+    "QuickspecParameters",
     "quickspec",
     "quickspec_params",
 ]

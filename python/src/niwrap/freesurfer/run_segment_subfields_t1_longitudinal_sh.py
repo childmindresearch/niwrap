@@ -177,6 +177,7 @@ def run_segment_subfields_t1_longitudinal_sh(
 __all__ = [
     "RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA",
     "RunSegmentSubfieldsT1LongitudinalShOutputs",
+    "RunSegmentSubfieldsT1LongitudinalShParameters",
     "run_segment_subfields_t1_longitudinal_sh",
     "run_segment_subfields_t1_longitudinal_sh_params",
 ]

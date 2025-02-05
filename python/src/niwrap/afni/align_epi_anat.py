@@ -333,6 +333,7 @@ def align_epi_anat(
 __all__ = [
     "ALIGN_EPI_ANAT_METADATA",
     "AlignEpiAnatOutputs",
+    "AlignEpiAnatParameters",
     "align_epi_anat",
     "align_epi_anat_params",
 ]

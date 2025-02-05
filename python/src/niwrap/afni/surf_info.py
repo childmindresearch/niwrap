@@ -272,6 +272,7 @@ def surf_info(
 __all__ = [
     "SURF_INFO_METADATA",
     "SurfInfoOutputs",
+    "SurfInfoParameters",
     "surf_info",
     "surf_info_params",
 ]

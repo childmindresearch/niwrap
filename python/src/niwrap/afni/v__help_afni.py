@@ -157,6 +157,7 @@ def v__help_afni(
 
 __all__ = [
     "VHelpAfniOutputs",
+    "VHelpAfniParameters",
     "V__HELP_AFNI_METADATA",
     "v__help_afni",
     "v__help_afni_params",

@@ -220,6 +220,7 @@ def mri_brainvol_stats(
 __all__ = [
     "MRI_BRAINVOL_STATS_METADATA",
     "MriBrainvolStatsOutputs",
+    "MriBrainvolStatsParameters",
     "mri_brainvol_stats",
     "mri_brainvol_stats_params",
 ]

@@ -376,6 +376,7 @@ def mri_aparc2aseg(
 __all__ = [
     "MRI_APARC2ASEG_METADATA",
     "MriAparc2asegOutputs",
+    "MriAparc2asegParameters",
     "mri_aparc2aseg",
     "mri_aparc2aseg_params",
 ]

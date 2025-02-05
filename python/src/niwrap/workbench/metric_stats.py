@@ -327,6 +327,8 @@ def metric_stats(
 __all__ = [
     "METRIC_STATS_METADATA",
     "MetricStatsOutputs",
+    "MetricStatsParameters",
+    "MetricStatsRoiParameters",
     "metric_stats",
     "metric_stats_params",
     "metric_stats_roi_params",

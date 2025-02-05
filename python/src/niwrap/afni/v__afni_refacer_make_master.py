@@ -172,6 +172,7 @@ def v__afni_refacer_make_master(
 
 __all__ = [
     "VAfniRefacerMakeMasterOutputs",
+    "VAfniRefacerMakeMasterParameters",
     "V__AFNI_REFACER_MAKE_MASTER_METADATA",
     "v__afni_refacer_make_master",
     "v__afni_refacer_make_master_params",

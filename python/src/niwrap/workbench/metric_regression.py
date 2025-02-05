@@ -340,7 +340,10 @@ def metric_regression(
 
 __all__ = [
     "METRIC_REGRESSION_METADATA",
+    "MetricRegressionKeepParameters",
     "MetricRegressionOutputs",
+    "MetricRegressionParameters",
+    "MetricRegressionRemoveParameters",
     "metric_regression",
     "metric_regression_keep_params",
     "metric_regression_params",

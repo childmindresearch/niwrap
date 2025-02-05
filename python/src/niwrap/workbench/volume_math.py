@@ -402,6 +402,8 @@ def volume_math(
 __all__ = [
     "VOLUME_MATH_METADATA",
     "VolumeMathOutputs",
+    "VolumeMathParameters",
+    "VolumeMathVarParameters",
     "volume_math",
     "volume_math_params",
     "volume_math_var_params",

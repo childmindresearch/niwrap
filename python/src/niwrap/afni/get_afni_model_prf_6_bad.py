@@ -199,6 +199,7 @@ def get_afni_model_prf_6_bad(
 __all__ = [
     "GET_AFNI_MODEL_PRF_6_BAD_METADATA",
     "GetAfniModelPrf6BadOutputs",
+    "GetAfniModelPrf6BadParameters",
     "get_afni_model_prf_6_bad",
     "get_afni_model_prf_6_bad_params",
 ]

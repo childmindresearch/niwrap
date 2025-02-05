@@ -250,6 +250,7 @@ def volume_parcel_resampling_generic(
 __all__ = [
     "VOLUME_PARCEL_RESAMPLING_GENERIC_METADATA",
     "VolumeParcelResamplingGenericOutputs",
+    "VolumeParcelResamplingGenericParameters",
     "volume_parcel_resampling_generic",
     "volume_parcel_resampling_generic_params",
 ]

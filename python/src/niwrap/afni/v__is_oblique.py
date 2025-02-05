@@ -168,6 +168,7 @@ def v__is_oblique(
 
 __all__ = [
     "VIsObliqueOutputs",
+    "VIsObliqueParameters",
     "V__IS_OBLIQUE_METADATA",
     "v__is_oblique",
     "v__is_oblique_params",

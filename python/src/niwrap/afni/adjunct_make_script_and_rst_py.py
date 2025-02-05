@@ -226,6 +226,7 @@ def adjunct_make_script_and_rst_py(
 __all__ = [
     "ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA",
     "AdjunctMakeScriptAndRstPyOutputs",
+    "AdjunctMakeScriptAndRstPyParameters",
     "adjunct_make_script_and_rst_py",
     "adjunct_make_script_and_rst_py_params",
 ]

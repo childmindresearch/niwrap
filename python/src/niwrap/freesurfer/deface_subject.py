@@ -202,6 +202,7 @@ def deface_subject(
 __all__ = [
     "DEFACE_SUBJECT_METADATA",
     "DefaceSubjectOutputs",
+    "DefaceSubjectParameters",
     "deface_subject",
     "deface_subject_params",
 ]

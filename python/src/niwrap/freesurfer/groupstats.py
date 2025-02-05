@@ -242,6 +242,7 @@ def groupstats(
 __all__ = [
     "GROUPSTATS_METADATA",
     "GroupstatsOutputs",
+    "GroupstatsParameters",
     "groupstats",
     "groupstats_params",
 ]

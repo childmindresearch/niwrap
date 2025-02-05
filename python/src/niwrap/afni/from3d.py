@@ -276,6 +276,7 @@ def from3d(
 __all__ = [
     "FROM3D_METADATA",
     "From3dOutputs",
+    "From3dParameters",
     "from3d",
     "from3d_params",
 ]

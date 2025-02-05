@@ -187,6 +187,7 @@ def surface_sphere_triangular_patches(
 __all__ = [
     "SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA",
     "SurfaceSphereTriangularPatchesOutputs",
+    "SurfaceSphereTriangularPatchesParameters",
     "surface_sphere_triangular_patches",
     "surface_sphere_triangular_patches_params",
 ]

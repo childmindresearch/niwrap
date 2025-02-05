@@ -254,6 +254,7 @@ def volume_smoothing(
 __all__ = [
     "VOLUME_SMOOTHING_METADATA",
     "VolumeSmoothingOutputs",
+    "VolumeSmoothingParameters",
     "volume_smoothing",
     "volume_smoothing_params",
 ]

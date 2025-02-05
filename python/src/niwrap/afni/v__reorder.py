@@ -212,6 +212,7 @@ def v__reorder(
 
 __all__ = [
     "VReorderOutputs",
+    "VReorderParameters",
     "V__REORDER_METADATA",
     "v__reorder",
     "v__reorder_params",

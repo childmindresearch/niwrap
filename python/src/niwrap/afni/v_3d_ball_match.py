@@ -217,6 +217,7 @@ def v_3d_ball_match(
 
 __all__ = [
     "V3dBallMatchOutputs",
+    "V3dBallMatchParameters",
     "V_3D_BALL_MATCH_METADATA",
     "v_3d_ball_match",
     "v_3d_ball_match_params",

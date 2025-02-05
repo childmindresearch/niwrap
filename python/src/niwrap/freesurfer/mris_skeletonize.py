@@ -332,6 +332,7 @@ def mris_skeletonize(
 __all__ = [
     "MRIS_SKELETONIZE_METADATA",
     "MrisSkeletonizeOutputs",
+    "MrisSkeletonizeParameters",
     "mris_skeletonize",
     "mris_skeletonize_params",
 ]

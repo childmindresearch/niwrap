@@ -183,6 +183,7 @@ def mris_segment(
 __all__ = [
     "MRIS_SEGMENT_METADATA",
     "MrisSegmentOutputs",
+    "MrisSegmentParameters",
     "mris_segment",
     "mris_segment_params",
 ]

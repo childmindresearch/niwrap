@@ -323,6 +323,7 @@ def mris_compute_parc_overlap(
 __all__ = [
     "MRIS_COMPUTE_PARC_OVERLAP_METADATA",
     "MrisComputeParcOverlapOutputs",
+    "MrisComputeParcOverlapParameters",
     "mris_compute_parc_overlap",
     "mris_compute_parc_overlap_params",
 ]

@@ -421,6 +421,7 @@ def mris_ca_train(
 __all__ = [
     "MRIS_CA_TRAIN_METADATA",
     "MrisCaTrainOutputs",
+    "MrisCaTrainParameters",
     "mris_ca_train",
     "mris_ca_train_params",
 ]

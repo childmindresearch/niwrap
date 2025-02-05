@@ -185,6 +185,7 @@ def mri_evaluate_morph(
 __all__ = [
     "MRI_EVALUATE_MORPH_METADATA",
     "MriEvaluateMorphOutputs",
+    "MriEvaluateMorphParameters",
     "mri_evaluate_morph",
     "mri_evaluate_morph_params",
 ]

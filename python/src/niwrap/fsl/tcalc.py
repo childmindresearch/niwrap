@@ -341,6 +341,7 @@ def tcalc(
 __all__ = [
     "TCALC_METADATA",
     "TcalcOutputs",
+    "TcalcParameters",
     "tcalc",
     "tcalc_params",
 ]

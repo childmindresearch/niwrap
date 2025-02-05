@@ -166,6 +166,7 @@ def sphere_subject_lh(
 __all__ = [
     "SPHERE_SUBJECT_LH_METADATA",
     "SphereSubjectLhOutputs",
+    "SphereSubjectLhParameters",
     "sphere_subject_lh",
     "sphere_subject_lh_params",
 ]

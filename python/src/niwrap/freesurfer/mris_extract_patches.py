@@ -171,6 +171,7 @@ def mris_extract_patches(
 __all__ = [
     "MRIS_EXTRACT_PATCHES_METADATA",
     "MrisExtractPatchesOutputs",
+    "MrisExtractPatchesParameters",
     "mris_extract_patches",
     "mris_extract_patches_params",
 ]

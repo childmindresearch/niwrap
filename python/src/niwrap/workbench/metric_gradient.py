@@ -413,6 +413,9 @@ def metric_gradient(
 __all__ = [
     "METRIC_GRADIENT_METADATA",
     "MetricGradientOutputs",
+    "MetricGradientParameters",
+    "MetricGradientPresmoothParameters",
+    "MetricGradientRoiParameters",
     "metric_gradient",
     "metric_gradient_params",
     "metric_gradient_presmooth_params",

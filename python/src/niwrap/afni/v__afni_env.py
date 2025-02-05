@@ -238,6 +238,7 @@ def v__afni_env(
 
 __all__ = [
     "VAfniEnvOutputs",
+    "VAfniEnvParameters",
     "V__AFNI_ENV_METADATA",
     "v__afni_env",
     "v__afni_env_params",

@@ -183,6 +183,7 @@ def histo_compute_joint_density(
 __all__ = [
     "HISTO_COMPUTE_JOINT_DENSITY_METADATA",
     "HistoComputeJointDensityOutputs",
+    "HistoComputeJointDensityParameters",
     "histo_compute_joint_density",
     "histo_compute_joint_density_params",
 ]

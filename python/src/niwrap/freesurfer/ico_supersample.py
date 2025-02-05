@@ -190,6 +190,7 @@ def ico_supersample(
 __all__ = [
     "ICO_SUPERSAMPLE_METADATA",
     "IcoSupersampleOutputs",
+    "IcoSupersampleParameters",
     "ico_supersample",
     "ico_supersample_params",
 ]

@@ -435,6 +435,7 @@ def v__sswarper(
 
 __all__ = [
     "VSswarperOutputs",
+    "VSswarperParameters",
     "V__SSWARPER_METADATA",
     "v__sswarper",
     "v__sswarper_params",

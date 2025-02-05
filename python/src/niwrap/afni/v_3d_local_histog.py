@@ -254,6 +254,7 @@ def v_3d_local_histog(
 
 __all__ = [
     "V3dLocalHistogOutputs",
+    "V3dLocalHistogParameters",
     "V_3D_LOCAL_HISTOG_METADATA",
     "v_3d_local_histog",
     "v_3d_local_histog_params",

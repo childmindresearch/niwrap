@@ -662,6 +662,7 @@ def mris_place_surface(
 __all__ = [
     "MRIS_PLACE_SURFACE_METADATA",
     "MrisPlaceSurfaceOutputs",
+    "MrisPlaceSurfaceParameters",
     "mris_place_surface",
     "mris_place_surface_params",
 ]

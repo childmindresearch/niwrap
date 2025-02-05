@@ -162,6 +162,7 @@ def connected_components(
 __all__ = [
     "CONNECTED_COMPONENTS_METADATA",
     "ConnectedComponentsOutputs",
+    "ConnectedComponentsParameters",
     "connected_components",
     "connected_components_params",
 ]

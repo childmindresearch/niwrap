@@ -310,6 +310,7 @@ def v_3d_tsmooth(
 
 __all__ = [
     "V3dTsmoothOutputs",
+    "V3dTsmoothParameters",
     "V_3D_TSMOOTH_METADATA",
     "v_3d_tsmooth",
     "v_3d_tsmooth_params",

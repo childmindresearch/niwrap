@@ -195,6 +195,7 @@ def mris_make_face_parcellation(
 __all__ = [
     "MRIS_MAKE_FACE_PARCELLATION_METADATA",
     "MrisMakeFaceParcellationOutputs",
+    "MrisMakeFaceParcellationParameters",
     "mris_make_face_parcellation",
     "mris_make_face_parcellation_params",
 ]

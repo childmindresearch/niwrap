@@ -227,6 +227,7 @@ def fdrval(
 __all__ = [
     "FDRVAL_METADATA",
     "FdrvalOutputs",
+    "FdrvalParameters",
     "fdrval",
     "fdrval_params",
 ]

@@ -289,6 +289,7 @@ def feat2surf(
 __all__ = [
     "FEAT2SURF_METADATA",
     "Feat2surfOutputs",
+    "Feat2surfParameters",
     "feat2surf",
     "feat2surf_params",
 ]

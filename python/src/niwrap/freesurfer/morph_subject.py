@@ -166,6 +166,7 @@ def morph_subject(
 __all__ = [
     "MORPH_SUBJECT_METADATA",
     "MorphSubjectOutputs",
+    "MorphSubjectParameters",
     "morph_subject",
     "morph_subject_params",
 ]

@@ -183,6 +183,7 @@ def first_roi_slicesdir(
 __all__ = [
     "FIRST_ROI_SLICESDIR_METADATA",
     "FirstRoiSlicesdirOutputs",
+    "FirstRoiSlicesdirParameters",
     "first_roi_slicesdir",
     "first_roi_slicesdir_params",
 ]

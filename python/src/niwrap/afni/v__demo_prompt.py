@@ -168,6 +168,7 @@ def v__demo_prompt(
 
 __all__ = [
     "VDemoPromptOutputs",
+    "VDemoPromptParameters",
     "V__DEMO_PROMPT_METADATA",
     "v__demo_prompt",
     "v__demo_prompt_params",

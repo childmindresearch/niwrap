@@ -546,6 +546,7 @@ def v__make_label_table(
 
 __all__ = [
     "VMakeLabelTableOutputs",
+    "VMakeLabelTableParameters",
     "V__MAKE_LABEL_TABLE_METADATA",
     "v__make_label_table",
     "v__make_label_table_params",

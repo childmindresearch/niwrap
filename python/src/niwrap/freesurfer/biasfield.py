@@ -219,6 +219,7 @@ def biasfield(
 __all__ = [
     "BIASFIELD_METADATA",
     "BiasfieldOutputs",
+    "BiasfieldParameters",
     "biasfield",
     "biasfield_params",
 ]

@@ -205,6 +205,7 @@ def v_1d_correlate(
 
 __all__ = [
     "V1dCorrelateOutputs",
+    "V1dCorrelateParameters",
     "V_1D_CORRELATE_METADATA",
     "v_1d_correlate",
     "v_1d_correlate_params",

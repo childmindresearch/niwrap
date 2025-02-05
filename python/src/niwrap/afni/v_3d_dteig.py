@@ -224,6 +224,7 @@ def v_3d_dteig(
 
 __all__ = [
     "V3dDteigOutputs",
+    "V3dDteigParameters",
     "V_3D_DTEIG_METADATA",
     "v_3d_dteig",
     "v_3d_dteig_params",

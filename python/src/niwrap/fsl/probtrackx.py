@@ -551,6 +551,7 @@ def probtrackx(
 __all__ = [
     "PROBTRACKX_METADATA",
     "ProbtrackxOutputs",
+    "ProbtrackxParameters",
     "probtrackx",
     "probtrackx_params",
 ]

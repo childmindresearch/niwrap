@@ -514,6 +514,7 @@ def reg_transform(
 __all__ = [
     "REG_TRANSFORM_METADATA",
     "RegTransformOutputs",
+    "RegTransformParameters",
     "reg_transform",
     "reg_transform_params",
 ]

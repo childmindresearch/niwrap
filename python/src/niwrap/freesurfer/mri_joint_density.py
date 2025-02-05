@@ -183,6 +183,7 @@ def mri_joint_density(
 __all__ = [
     "MRI_JOINT_DENSITY_METADATA",
     "MriJointDensityOutputs",
+    "MriJointDensityParameters",
     "mri_joint_density",
     "mri_joint_density_params",
 ]

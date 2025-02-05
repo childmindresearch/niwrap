@@ -179,6 +179,7 @@ def v_3dnvals(
 
 __all__ = [
     "V3dnvalsOutputs",
+    "V3dnvalsParameters",
     "V_3DNVALS_METADATA",
     "v_3dnvals",
     "v_3dnvals_params",

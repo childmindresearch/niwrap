@@ -288,6 +288,7 @@ def v_3d_multi_thresh(
 
 __all__ = [
     "V3dMultiThreshOutputs",
+    "V3dMultiThreshParameters",
     "V_3D_MULTI_THRESH_METADATA",
     "v_3d_multi_thresh",
     "v_3d_multi_thresh_params",

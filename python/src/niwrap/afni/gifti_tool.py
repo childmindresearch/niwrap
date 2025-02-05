@@ -398,6 +398,7 @@ def gifti_tool(
 __all__ = [
     "GIFTI_TOOL_METADATA",
     "GiftiToolOutputs",
+    "GiftiToolParameters",
     "gifti_tool",
     "gifti_tool_params",
 ]

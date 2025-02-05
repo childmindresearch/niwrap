@@ -234,6 +234,7 @@ def apqc_make_tcsh_py(
 __all__ = [
     "APQC_MAKE_TCSH_PY_METADATA",
     "ApqcMakeTcshPyOutputs",
+    "ApqcMakeTcshPyParameters",
     "apqc_make_tcsh_py",
     "apqc_make_tcsh_py_params",
 ]

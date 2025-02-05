@@ -212,6 +212,7 @@ def slicesdir(
 __all__ = [
     "SLICESDIR_METADATA",
     "SlicesdirOutputs",
+    "SlicesdirParameters",
     "slicesdir",
     "slicesdir_params",
 ]

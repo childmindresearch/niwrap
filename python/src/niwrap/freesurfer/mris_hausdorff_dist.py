@@ -197,6 +197,7 @@ def mris_hausdorff_dist(
 __all__ = [
     "MRIS_HAUSDORFF_DIST_METADATA",
     "MrisHausdorffDistOutputs",
+    "MrisHausdorffDistParameters",
     "mris_hausdorff_dist",
     "mris_hausdorff_dist_params",
 ]

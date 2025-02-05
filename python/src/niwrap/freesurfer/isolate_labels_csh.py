@@ -217,6 +217,7 @@ def isolate_labels_csh(
 __all__ = [
     "ISOLATE_LABELS_CSH_METADATA",
     "IsolateLabelsCshOutputs",
+    "IsolateLabelsCshParameters",
     "isolate_labels_csh",
     "isolate_labels_csh_params",
 ]

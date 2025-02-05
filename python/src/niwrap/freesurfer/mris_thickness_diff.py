@@ -311,6 +311,7 @@ def mris_thickness_diff(
 __all__ = [
     "MRIS_THICKNESS_DIFF_METADATA",
     "MrisThicknessDiffOutputs",
+    "MrisThicknessDiffParameters",
     "mris_thickness_diff",
     "mris_thickness_diff_params",
 ]

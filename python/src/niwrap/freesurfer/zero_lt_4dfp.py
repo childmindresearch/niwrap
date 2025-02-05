@@ -205,6 +205,7 @@ def zero_lt_4dfp(
 __all__ = [
     "ZERO_LT_4DFP_METADATA",
     "ZeroLt4dfpOutputs",
+    "ZeroLt4dfpParameters",
     "zero_lt_4dfp",
     "zero_lt_4dfp_params",
 ]

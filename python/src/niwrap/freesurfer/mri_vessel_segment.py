@@ -210,6 +210,7 @@ def mri_vessel_segment(
 __all__ = [
     "MRI_VESSEL_SEGMENT_METADATA",
     "MriVesselSegmentOutputs",
+    "MriVesselSegmentParameters",
     "mri_vessel_segment",
     "mri_vessel_segment_params",
 ]

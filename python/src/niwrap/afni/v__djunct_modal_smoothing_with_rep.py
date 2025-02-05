@@ -234,6 +234,7 @@ def v__djunct_modal_smoothing_with_rep(
 
 __all__ = [
     "VDjunctModalSmoothingWithRepOutputs",
+    "VDjunctModalSmoothingWithRepParameters",
     "V__DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA",
     "v__djunct_modal_smoothing_with_rep",
     "v__djunct_modal_smoothing_with_rep_params",

@@ -171,6 +171,7 @@ def v__no_ext(
 
 __all__ = [
     "VNoExtOutputs",
+    "VNoExtParameters",
     "V__NO_EXT_METADATA",
     "v__no_ext",
     "v__no_ext_params",

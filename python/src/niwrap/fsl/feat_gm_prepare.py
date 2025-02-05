@@ -171,6 +171,7 @@ def feat_gm_prepare(
 __all__ = [
     "FEAT_GM_PREPARE_METADATA",
     "FeatGmPrepareOutputs",
+    "FeatGmPrepareParameters",
     "feat_gm_prepare",
     "feat_gm_prepare_params",
 ]

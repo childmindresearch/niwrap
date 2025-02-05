@@ -318,7 +318,9 @@ def tsfmult(
 
 __all__ = [
     "TSFMULT_METADATA",
+    "TsfmultConfigParameters",
     "TsfmultOutputs",
+    "TsfmultParameters",
     "tsfmult",
     "tsfmult_config_params",
     "tsfmult_params",

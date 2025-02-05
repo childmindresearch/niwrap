@@ -183,6 +183,7 @@ def segment_subfields_t1_longitudinal(
 __all__ = [
     "SEGMENT_SUBFIELDS_T1_LONGITUDINAL_METADATA",
     "SegmentSubfieldsT1LongitudinalOutputs",
+    "SegmentSubfieldsT1LongitudinalParameters",
     "segment_subfields_t1_longitudinal",
     "segment_subfields_t1_longitudinal_params",
 ]

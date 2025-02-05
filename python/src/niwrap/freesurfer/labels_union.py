@@ -185,6 +185,7 @@ def labels_union(
 __all__ = [
     "LABELS_UNION_METADATA",
     "LabelsUnionOutputs",
+    "LabelsUnionParameters",
     "labels_union",
     "labels_union_params",
 ]

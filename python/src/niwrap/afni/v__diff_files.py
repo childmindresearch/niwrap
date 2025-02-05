@@ -254,6 +254,7 @@ def v__diff_files(
 
 __all__ = [
     "VDiffFilesOutputs",
+    "VDiffFilesParameters",
     "V__DIFF_FILES_METADATA",
     "v__diff_files",
     "v__diff_files_params",

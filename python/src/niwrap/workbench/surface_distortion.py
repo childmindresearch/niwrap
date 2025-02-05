@@ -350,7 +350,10 @@ def surface_distortion(
 
 __all__ = [
     "SURFACE_DISTORTION_METADATA",
+    "SurfaceDistortionLocalAffineMethodParameters",
     "SurfaceDistortionOutputs",
+    "SurfaceDistortionParameters",
+    "SurfaceDistortionSmoothParameters",
     "surface_distortion",
     "surface_distortion_local_affine_method_params",
     "surface_distortion_params",

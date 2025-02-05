@@ -222,6 +222,7 @@ def register_elderly_subject(
 __all__ = [
     "REGISTER_ELDERLY_SUBJECT_METADATA",
     "RegisterElderlySubjectOutputs",
+    "RegisterElderlySubjectParameters",
     "register_elderly_subject",
     "register_elderly_subject_params",
 ]

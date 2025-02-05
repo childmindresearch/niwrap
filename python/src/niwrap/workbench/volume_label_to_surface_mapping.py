@@ -315,6 +315,8 @@ def volume_label_to_surface_mapping(
 __all__ = [
     "VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA",
     "VolumeLabelToSurfaceMappingOutputs",
+    "VolumeLabelToSurfaceMappingParameters",
+    "VolumeLabelToSurfaceMappingRibbonConstrainedParameters",
     "volume_label_to_surface_mapping",
     "volume_label_to_surface_mapping_params",
     "volume_label_to_surface_mapping_ribbon_constrained_params",

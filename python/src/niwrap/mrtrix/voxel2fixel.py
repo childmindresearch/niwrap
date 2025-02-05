@@ -326,7 +326,9 @@ def voxel2fixel(
 
 __all__ = [
     "VOXEL2FIXEL_METADATA",
+    "Voxel2fixelConfigParameters",
     "Voxel2fixelOutputs",
+    "Voxel2fixelParameters",
     "voxel2fixel",
     "voxel2fixel_config_params",
     "voxel2fixel_params",

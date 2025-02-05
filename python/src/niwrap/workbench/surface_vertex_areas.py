@@ -183,6 +183,7 @@ def surface_vertex_areas(
 __all__ = [
     "SURFACE_VERTEX_AREAS_METADATA",
     "SurfaceVertexAreasOutputs",
+    "SurfaceVertexAreasParameters",
     "surface_vertex_areas",
     "surface_vertex_areas_params",
 ]

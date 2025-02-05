@@ -337,7 +337,9 @@ def cifti_rois_from_extrema(
 
 __all__ = [
     "CIFTI_ROIS_FROM_EXTREMA_METADATA",
+    "CiftiRoisFromExtremaGaussianParameters",
     "CiftiRoisFromExtremaOutputs",
+    "CiftiRoisFromExtremaParameters",
     "cifti_rois_from_extrema",
     "cifti_rois_from_extrema_gaussian_params",
     "cifti_rois_from_extrema_params",

@@ -379,6 +379,9 @@ def cifti_estimate_fwhm(
 __all__ = [
     "CIFTI_ESTIMATE_FWHM_METADATA",
     "CiftiEstimateFwhmOutputs",
+    "CiftiEstimateFwhmParameters",
+    "CiftiEstimateFwhmSurfaceParameters",
+    "CiftiEstimateFwhmWholeFileParameters",
     "cifti_estimate_fwhm",
     "cifti_estimate_fwhm_params",
     "cifti_estimate_fwhm_surface_params",

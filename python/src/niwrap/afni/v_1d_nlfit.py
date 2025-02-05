@@ -242,6 +242,7 @@ def v_1d_nlfit(
 
 __all__ = [
     "V1dNlfitOutputs",
+    "V1dNlfitParameters",
     "V_1D_NLFIT_METADATA",
     "v_1d_nlfit",
     "v_1d_nlfit_params",

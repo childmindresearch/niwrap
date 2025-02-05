@@ -234,6 +234,7 @@ def dmri_anatomi_cuts(
 __all__ = [
     "DMRI_ANATOMI_CUTS_METADATA",
     "DmriAnatomiCutsOutputs",
+    "DmriAnatomiCutsParameters",
     "dmri_anatomi_cuts",
     "dmri_anatomi_cuts_params",
 ]

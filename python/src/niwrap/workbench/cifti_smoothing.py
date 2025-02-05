@@ -476,7 +476,11 @@ def cifti_smoothing(
 
 __all__ = [
     "CIFTI_SMOOTHING_METADATA",
+    "CiftiSmoothingCerebellumSurfaceParameters",
+    "CiftiSmoothingLeftSurfaceParameters",
     "CiftiSmoothingOutputs",
+    "CiftiSmoothingParameters",
+    "CiftiSmoothingRightSurfaceParameters",
     "cifti_smoothing",
     "cifti_smoothing_cerebellum_surface_params",
     "cifti_smoothing_left_surface_params",

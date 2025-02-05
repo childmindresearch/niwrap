@@ -245,6 +245,7 @@ def mri_func2sph(
 __all__ = [
     "MRI_FUNC2SPH_METADATA",
     "MriFunc2sphOutputs",
+    "MriFunc2sphParameters",
     "mri_func2sph",
     "mri_func2sph_params",
 ]

@@ -344,6 +344,7 @@ def v_3d_undump(
 
 __all__ = [
     "V3dUndumpOutputs",
+    "V3dUndumpParameters",
     "V_3D_UNDUMP_METADATA",
     "v_3d_undump",
     "v_3d_undump_params",

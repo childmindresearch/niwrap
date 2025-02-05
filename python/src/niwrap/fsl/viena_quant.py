@@ -183,6 +183,7 @@ def viena_quant(
 __all__ = [
     "VIENA_QUANT_METADATA",
     "VienaQuantOutputs",
+    "VienaQuantParameters",
     "viena_quant",
     "viena_quant_params",
 ]

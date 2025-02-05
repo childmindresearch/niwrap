@@ -242,6 +242,7 @@ def rcbf_prep(
 __all__ = [
     "RCBF_PREP_METADATA",
     "RcbfPrepOutputs",
+    "RcbfPrepParameters",
     "rcbf_prep",
     "rcbf_prep_params",
 ]

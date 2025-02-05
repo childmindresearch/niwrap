@@ -201,6 +201,7 @@ def make_symmetric(
 __all__ = [
     "MAKE_SYMMETRIC_METADATA",
     "MakeSymmetricOutputs",
+    "MakeSymmetricParameters",
     "make_symmetric",
     "make_symmetric_params",
 ]

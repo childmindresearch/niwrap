@@ -236,6 +236,7 @@ def v_3d_synthesize(
 
 __all__ = [
     "V3dSynthesizeOutputs",
+    "V3dSynthesizeParameters",
     "V_3D_SYNTHESIZE_METADATA",
     "v_3d_synthesize",
     "v_3d_synthesize_params",

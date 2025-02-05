@@ -242,6 +242,7 @@ def invwarp(
 __all__ = [
     "INVWARP_METADATA",
     "InvwarpOutputs",
+    "InvwarpParameters",
     "invwarp",
     "invwarp_params",
 ]

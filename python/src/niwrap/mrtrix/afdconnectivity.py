@@ -421,7 +421,9 @@ def afdconnectivity(
 
 __all__ = [
     "AFDCONNECTIVITY_METADATA",
+    "AfdconnectivityConfigParameters",
     "AfdconnectivityOutputs",
+    "AfdconnectivityParameters",
     "afdconnectivity",
     "afdconnectivity_config_params",
     "afdconnectivity_params",

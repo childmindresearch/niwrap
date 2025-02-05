@@ -464,6 +464,7 @@ def fugue(
 __all__ = [
     "FUGUE_METADATA",
     "FugueOutputs",
+    "FugueParameters",
     "fugue",
     "fugue_params",
 ]

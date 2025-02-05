@@ -452,6 +452,10 @@ def cifti_export_dense_mapping(
 __all__ = [
     "CIFTI_EXPORT_DENSE_MAPPING_METADATA",
     "CiftiExportDenseMappingOutputs",
+    "CiftiExportDenseMappingParameters",
+    "CiftiExportDenseMappingSurfaceParameters",
+    "CiftiExportDenseMappingVolumeAllParameters",
+    "CiftiExportDenseMappingVolumeParameters",
     "cifti_export_dense_mapping",
     "cifti_export_dense_mapping_params",
     "cifti_export_dense_mapping_surface_params",

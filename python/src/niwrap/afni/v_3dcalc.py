@@ -261,6 +261,7 @@ def v_3dcalc(
 
 __all__ = [
     "V3dcalcOutputs",
+    "V3dcalcParameters",
     "V_3DCALC_METADATA",
     "v_3dcalc",
     "v_3dcalc_params",

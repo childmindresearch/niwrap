@@ -176,6 +176,7 @@ def mkmnc_index_tcl(
 __all__ = [
     "MKMNC_INDEX_TCL_METADATA",
     "MkmncIndexTclOutputs",
+    "MkmncIndexTclParameters",
     "mkmnc_index_tcl",
     "mkmnc_index_tcl_params",
 ]

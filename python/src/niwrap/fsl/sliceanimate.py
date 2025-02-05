@@ -177,6 +177,7 @@ def sliceanimate(
 __all__ = [
     "SLICEANIMATE_METADATA",
     "SliceanimateOutputs",
+    "SliceanimateParameters",
     "sliceanimate",
     "sliceanimate_params",
 ]

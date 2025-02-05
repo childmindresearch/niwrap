@@ -381,6 +381,7 @@ def dtifit(
 __all__ = [
     "DTIFIT_METADATA",
     "DtifitOutputs",
+    "DtifitParameters",
     "dtifit",
     "dtifit_params",
 ]

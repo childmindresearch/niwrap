@@ -236,6 +236,7 @@ def pointflirt(
 __all__ = [
     "POINTFLIRT_METADATA",
     "PointflirtOutputs",
+    "PointflirtParameters",
     "pointflirt",
     "pointflirt_params",
 ]

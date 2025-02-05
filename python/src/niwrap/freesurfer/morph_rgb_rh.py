@@ -166,6 +166,7 @@ def morph_rgb_rh(
 __all__ = [
     "MORPH_RGB_RH_METADATA",
     "MorphRgbRhOutputs",
+    "MorphRgbRhParameters",
     "morph_rgb_rh",
     "morph_rgb_rh_params",
 ]

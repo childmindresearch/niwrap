@@ -301,6 +301,7 @@ def v_1dgen_arma11(
 
 __all__ = [
     "V1dgenArma11Outputs",
+    "V1dgenArma11Parameters",
     "V_1DGEN_ARMA11_METADATA",
     "v_1dgen_arma11",
     "v_1dgen_arma11_params",

@@ -170,6 +170,7 @@ def concat_bvars(
 __all__ = [
     "CONCAT_BVARS_METADATA",
     "ConcatBvarsOutputs",
+    "ConcatBvarsParameters",
     "concat_bvars",
     "concat_bvars_params",
 ]

@@ -231,6 +231,7 @@ def mris_expand(
 __all__ = [
     "MRIS_EXPAND_METADATA",
     "MrisExpandOutputs",
+    "MrisExpandParameters",
     "mris_expand",
     "mris_expand_params",
 ]

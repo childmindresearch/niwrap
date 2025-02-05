@@ -269,6 +269,7 @@ def overlay(
 __all__ = [
     "OVERLAY_METADATA",
     "OverlayOutputs",
+    "OverlayParameters",
     "overlay",
     "overlay_params",
 ]

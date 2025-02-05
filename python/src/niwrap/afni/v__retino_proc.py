@@ -622,6 +622,7 @@ def v__retino_proc(
 
 __all__ = [
     "VRetinoProcOutputs",
+    "VRetinoProcParameters",
     "V__RETINO_PROC_METADATA",
     "v__retino_proc",
     "v__retino_proc_params",

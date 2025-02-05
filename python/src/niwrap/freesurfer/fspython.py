@@ -167,6 +167,7 @@ def fspython(
 __all__ = [
     "FSPYTHON_METADATA",
     "FspythonOutputs",
+    "FspythonParameters",
     "fspython",
     "fspython_params",
 ]

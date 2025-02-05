@@ -324,6 +324,7 @@ def ants_brain_extraction_sh(
 __all__ = [
     "ANTS_BRAIN_EXTRACTION_SH_METADATA",
     "AntsBrainExtractionShOutputs",
+    "AntsBrainExtractionShParameters",
     "ants_brain_extraction_sh",
     "ants_brain_extraction_sh_params",
 ]

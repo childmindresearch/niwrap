@@ -176,6 +176,7 @@ def mri_reduce(
 __all__ = [
     "MRI_REDUCE_METADATA",
     "MriReduceOutputs",
+    "MriReduceParameters",
     "mri_reduce",
     "mri_reduce_params",
 ]

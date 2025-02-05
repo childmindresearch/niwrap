@@ -318,6 +318,7 @@ def ccops(
 __all__ = [
     "CCOPS_METADATA",
     "CcopsOutputs",
+    "CcopsParameters",
     "ccops",
     "ccops_params",
 ]

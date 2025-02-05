@@ -185,6 +185,7 @@ def volume_label_export_table(
 __all__ = [
     "VOLUME_LABEL_EXPORT_TABLE_METADATA",
     "VolumeLabelExportTableOutputs",
+    "VolumeLabelExportTableParameters",
     "volume_label_export_table",
     "volume_label_export_table_params",
 ]

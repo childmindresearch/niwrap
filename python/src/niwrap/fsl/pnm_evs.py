@@ -402,6 +402,7 @@ def pnm_evs(
 __all__ = [
     "PNM_EVS_METADATA",
     "PnmEvsOutputs",
+    "PnmEvsParameters",
     "pnm_evs",
     "pnm_evs_params",
 ]

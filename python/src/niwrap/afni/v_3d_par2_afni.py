@@ -230,6 +230,7 @@ def v_3d_par2_afni(
 
 __all__ = [
     "V3dPar2AfniOutputs",
+    "V3dPar2AfniParameters",
     "V_3D_PAR2_AFNI_METADATA",
     "v_3d_par2_afni",
     "v_3d_par2_afni_params",

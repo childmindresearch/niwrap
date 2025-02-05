@@ -306,6 +306,7 @@ def count(
 __all__ = [
     "COUNT_METADATA",
     "CountOutputs",
+    "CountParameters",
     "count",
     "count_params",
 ]

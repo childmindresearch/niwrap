@@ -190,6 +190,7 @@ def border_export_color_table(
 __all__ = [
     "BORDER_EXPORT_COLOR_TABLE_METADATA",
     "BorderExportColorTableOutputs",
+    "BorderExportColorTableParameters",
     "border_export_color_table",
     "border_export_color_table_params",
 ]

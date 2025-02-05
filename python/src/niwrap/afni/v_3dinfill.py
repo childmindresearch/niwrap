@@ -285,6 +285,7 @@ def v_3dinfill(
 
 __all__ = [
     "V3dinfillOutputs",
+    "V3dinfillParameters",
     "V_3DINFILL_METADATA",
     "v_3dinfill",
     "v_3dinfill_params",

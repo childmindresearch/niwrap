@@ -358,6 +358,7 @@ def rbbr(
 __all__ = [
     "RBBR_METADATA",
     "RbbrOutputs",
+    "RbbrParameters",
     "rbbr",
     "rbbr_params",
 ]

@@ -224,6 +224,7 @@ def mri_reorient_lr_csh(
 __all__ = [
     "MRI_REORIENT_LR_CSH_METADATA",
     "MriReorientLrCshOutputs",
+    "MriReorientLrCshParameters",
     "mri_reorient_lr_csh",
     "mri_reorient_lr_csh_params",
 ]

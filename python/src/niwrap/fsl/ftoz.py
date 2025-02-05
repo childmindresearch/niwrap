@@ -195,6 +195,7 @@ def ftoz(
 __all__ = [
     "FTOZ_METADATA",
     "FtozOutputs",
+    "FtozParameters",
     "ftoz",
     "ftoz_params",
 ]

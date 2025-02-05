@@ -219,6 +219,7 @@ def mris_mef_surfaces(
 __all__ = [
     "MRIS_MEF_SURFACES_METADATA",
     "MrisMefSurfacesOutputs",
+    "MrisMefSurfacesParameters",
     "mris_mef_surfaces",
     "mris_mef_surfaces_params",
 ]

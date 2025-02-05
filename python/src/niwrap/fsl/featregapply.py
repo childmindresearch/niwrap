@@ -241,6 +241,7 @@ def featregapply(
 __all__ = [
     "FEATREGAPPLY_METADATA",
     "FeatregapplyOutputs",
+    "FeatregapplyParameters",
     "featregapply",
     "featregapply_params",
 ]

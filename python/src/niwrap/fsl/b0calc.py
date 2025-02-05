@@ -331,6 +331,7 @@ def b0calc(
 __all__ = [
     "B0CALC_METADATA",
     "B0calcOutputs",
+    "B0calcParameters",
     "b0calc",
     "b0calc_params",
 ]

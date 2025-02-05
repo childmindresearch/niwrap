@@ -227,6 +227,7 @@ def table2map(
 __all__ = [
     "TABLE2MAP_METADATA",
     "Table2mapOutputs",
+    "Table2mapParameters",
     "table2map",
     "table2map_params",
 ]

@@ -205,6 +205,7 @@ def imrotate(
 __all__ = [
     "IMROTATE_METADATA",
     "ImrotateOutputs",
+    "ImrotateParameters",
     "imrotate",
     "imrotate_params",
 ]

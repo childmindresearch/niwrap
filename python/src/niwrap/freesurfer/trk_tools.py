@@ -232,6 +232,7 @@ def trk_tools(
 __all__ = [
     "TRK_TOOLS_METADATA",
     "TrkToolsOutputs",
+    "TrkToolsParameters",
     "trk_tools",
     "trk_tools_params",
 ]

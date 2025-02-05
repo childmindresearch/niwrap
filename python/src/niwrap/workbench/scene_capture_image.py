@@ -673,7 +673,12 @@ def scene_capture_image(
 
 __all__ = [
     "SCENE_CAPTURE_IMAGE_METADATA",
+    "SceneCaptureImageConnDbLoginParameters",
     "SceneCaptureImageOutputs",
+    "SceneCaptureImageParameters",
+    "SceneCaptureImageResolutionParameters",
+    "SceneCaptureImageSetMapYokeParameters",
+    "SceneCaptureImageSizeWidthHeightParameters",
     "scene_capture_image",
     "scene_capture_image_conn_db_login_params",
     "scene_capture_image_params",

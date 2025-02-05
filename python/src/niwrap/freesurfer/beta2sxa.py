@@ -206,6 +206,7 @@ def beta2sxa(
 __all__ = [
     "BETA2SXA_METADATA",
     "Beta2sxaOutputs",
+    "Beta2sxaParameters",
     "beta2sxa",
     "beta2sxa_params",
 ]

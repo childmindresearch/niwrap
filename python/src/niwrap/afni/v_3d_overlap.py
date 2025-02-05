@@ -179,6 +179,7 @@ def v_3d_overlap(
 
 __all__ = [
     "V3dOverlapOutputs",
+    "V3dOverlapParameters",
     "V_3D_OVERLAP_METADATA",
     "v_3d_overlap",
     "v_3d_overlap_params",

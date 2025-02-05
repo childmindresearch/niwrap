@@ -170,6 +170,7 @@ def check_recons_sh(
 __all__ = [
     "CHECK_RECONS_SH_METADATA",
     "CheckReconsShOutputs",
+    "CheckReconsShParameters",
     "check_recons_sh",
     "check_recons_sh_params",
 ]

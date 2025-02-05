@@ -245,6 +245,7 @@ def dcmsplit(
 __all__ = [
     "DCMSPLIT_METADATA",
     "DcmsplitOutputs",
+    "DcmsplitParameters",
     "dcmsplit",
     "dcmsplit_params",
 ]

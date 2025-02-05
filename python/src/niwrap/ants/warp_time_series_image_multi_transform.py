@@ -223,6 +223,7 @@ def warp_time_series_image_multi_transform(
 __all__ = [
     "WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA",
     "WarpTimeSeriesImageMultiTransformOutputs",
+    "WarpTimeSeriesImageMultiTransformParameters",
     "warp_time_series_image_multi_transform",
     "warp_time_series_image_multi_transform_params",
 ]

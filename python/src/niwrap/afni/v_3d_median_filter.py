@@ -225,6 +225,7 @@ def v_3d_median_filter(
 
 __all__ = [
     "V3dMedianFilterOutputs",
+    "V3dMedianFilterParameters",
     "V_3D_MEDIAN_FILTER_METADATA",
     "v_3d_median_filter",
     "v_3d_median_filter_params",

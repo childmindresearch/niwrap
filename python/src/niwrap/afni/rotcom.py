@@ -182,6 +182,7 @@ def rotcom(
 __all__ = [
     "ROTCOM_METADATA",
     "RotcomOutputs",
+    "RotcomParameters",
     "rotcom",
     "rotcom_params",
 ]

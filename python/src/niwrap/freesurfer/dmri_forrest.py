@@ -241,6 +241,7 @@ def dmri_forrest(
 __all__ = [
     "DMRI_FORREST_METADATA",
     "DmriForrestOutputs",
+    "DmriForrestParameters",
     "dmri_forrest",
     "dmri_forrest_params",
 ]

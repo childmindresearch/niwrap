@@ -197,6 +197,7 @@ def surface_smoothing(
 __all__ = [
     "SURFACE_SMOOTHING_METADATA",
     "SurfaceSmoothingOutputs",
+    "SurfaceSmoothingParameters",
     "surface_smoothing",
     "surface_smoothing_params",
 ]

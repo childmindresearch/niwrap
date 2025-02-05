@@ -372,6 +372,7 @@ def make_bianca_mask(
 __all__ = [
     "MAKE_BIANCA_MASK_METADATA",
     "MakeBiancaMaskOutputs",
+    "MakeBiancaMaskParameters",
     "make_bianca_mask",
     "make_bianca_mask_params",
 ]

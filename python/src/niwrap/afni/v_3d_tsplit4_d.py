@@ -198,6 +198,7 @@ def v_3d_tsplit4_d(
 
 __all__ = [
     "V3dTsplit4DOutputs",
+    "V3dTsplit4DParameters",
     "V_3D_TSPLIT4_D_METADATA",
     "v_3d_tsplit4_d",
     "v_3d_tsplit4_d_params",

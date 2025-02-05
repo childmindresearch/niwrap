@@ -310,6 +310,7 @@ def mris_label2annot(
 __all__ = [
     "MRIS_LABEL2ANNOT_METADATA",
     "MrisLabel2annotOutputs",
+    "MrisLabel2annotParameters",
     "mris_label2annot",
     "mris_label2annot_params",
 ]

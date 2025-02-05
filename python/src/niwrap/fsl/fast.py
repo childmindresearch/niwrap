@@ -433,6 +433,7 @@ def fast(
 __all__ = [
     "FAST_METADATA",
     "FastOutputs",
+    "FastParameters",
     "fast",
     "fast_params",
 ]

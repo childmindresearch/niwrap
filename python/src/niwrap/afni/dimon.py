@@ -271,6 +271,7 @@ def dimon(
 __all__ = [
     "DIMON_METADATA",
     "DimonOutputs",
+    "DimonParameters",
     "dimon",
     "dimon_params",
 ]

@@ -213,6 +213,7 @@ def mri_cvs_check(
 __all__ = [
     "MRI_CVS_CHECK_METADATA",
     "MriCvsCheckOutputs",
+    "MriCvsCheckParameters",
     "mri_cvs_check",
     "mri_cvs_check_params",
 ]

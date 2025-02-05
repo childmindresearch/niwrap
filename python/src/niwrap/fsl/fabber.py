@@ -585,6 +585,7 @@ def fabber(
 __all__ = [
     "FABBER_METADATA",
     "FabberOutputs",
+    "FabberParameters",
     "fabber",
     "fabber_params",
 ]

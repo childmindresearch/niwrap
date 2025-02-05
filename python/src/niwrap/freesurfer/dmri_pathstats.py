@@ -382,6 +382,7 @@ def dmri_pathstats(
 __all__ = [
     "DMRI_PATHSTATS_METADATA",
     "DmriPathstatsOutputs",
+    "DmriPathstatsParameters",
     "dmri_pathstats",
     "dmri_pathstats_params",
 ]

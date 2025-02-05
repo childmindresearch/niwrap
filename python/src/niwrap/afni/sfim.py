@@ -219,6 +219,7 @@ def sfim(
 __all__ = [
     "SFIM_METADATA",
     "SfimOutputs",
+    "SfimParameters",
     "sfim",
     "sfim_params",
 ]

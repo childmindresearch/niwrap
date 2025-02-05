@@ -231,6 +231,7 @@ def v_3d_getrow(
 
 __all__ = [
     "V3dGetrowOutputs",
+    "V3dGetrowParameters",
     "V_3D_GETROW_METADATA",
     "v_3d_getrow",
     "v_3d_getrow_params",

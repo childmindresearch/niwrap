@@ -262,6 +262,7 @@ def mri_motion_correct2(
 __all__ = [
     "MRI_MOTION_CORRECT2_METADATA",
     "MriMotionCorrect2Outputs",
+    "MriMotionCorrect2Parameters",
     "mri_motion_correct2",
     "mri_motion_correct2_params",
 ]

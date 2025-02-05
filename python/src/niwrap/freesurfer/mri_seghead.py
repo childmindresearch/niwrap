@@ -329,6 +329,7 @@ def mri_seghead(
 __all__ = [
     "MRI_SEGHEAD_METADATA",
     "MriSegheadOutputs",
+    "MriSegheadParameters",
     "mri_seghead",
     "mri_seghead_params",
 ]

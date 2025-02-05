@@ -176,6 +176,7 @@ def mri_topologycorrection(
 __all__ = [
     "MRI_TOPOLOGYCORRECTION_METADATA",
     "MriTopologycorrectionOutputs",
+    "MriTopologycorrectionParameters",
     "mri_topologycorrection",
     "mri_topologycorrection_params",
 ]

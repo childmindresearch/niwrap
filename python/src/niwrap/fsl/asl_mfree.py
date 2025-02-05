@@ -366,6 +366,7 @@ def asl_mfree(
 __all__ = [
     "ASL_MFREE_METADATA",
     "AslMfreeOutputs",
+    "AslMfreeParameters",
     "asl_mfree",
     "asl_mfree_params",
 ]

@@ -185,6 +185,7 @@ def mp_diffpow(
 __all__ = [
     "MP_DIFFPOW_METADATA",
     "MpDiffpowOutputs",
+    "MpDiffpowParameters",
     "mp_diffpow",
     "mp_diffpow_params",
 ]

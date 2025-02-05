@@ -242,6 +242,7 @@ def v_3dresample(
 
 __all__ = [
     "V3dresampleOutputs",
+    "V3dresampleParameters",
     "V_3DRESAMPLE_METADATA",
     "v_3dresample",
     "v_3dresample_params",

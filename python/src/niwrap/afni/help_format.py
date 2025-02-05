@@ -169,6 +169,7 @@ def help_format(
 __all__ = [
     "HELP_FORMAT_METADATA",
     "HelpFormatOutputs",
+    "HelpFormatParameters",
     "help_format",
     "help_format_params",
 ]

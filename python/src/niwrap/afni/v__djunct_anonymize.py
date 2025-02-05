@@ -195,6 +195,7 @@ def v__djunct_anonymize(
 
 __all__ = [
     "VDjunctAnonymizeOutputs",
+    "VDjunctAnonymizeParameters",
     "V__DJUNCT_ANONYMIZE_METADATA",
     "v__djunct_anonymize",
     "v__djunct_anonymize_params",

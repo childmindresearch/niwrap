@@ -176,6 +176,7 @@ def segment_thalamic_nuclei(
 __all__ = [
     "SEGMENT_THALAMIC_NUCLEI_METADATA",
     "SegmentThalamicNucleiOutputs",
+    "SegmentThalamicNucleiParameters",
     "segment_thalamic_nuclei",
     "segment_thalamic_nuclei_params",
 ]

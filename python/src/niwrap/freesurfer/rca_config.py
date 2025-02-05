@@ -191,6 +191,7 @@ def rca_config(
 __all__ = [
     "RCA_CONFIG_METADATA",
     "RcaConfigOutputs",
+    "RcaConfigParameters",
     "rca_config",
     "rca_config_params",
 ]

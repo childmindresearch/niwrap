@@ -212,6 +212,7 @@ def compute_label_volumes_csh(
 __all__ = [
     "COMPUTE_LABEL_VOLUMES_CSH_METADATA",
     "ComputeLabelVolumesCshOutputs",
+    "ComputeLabelVolumesCshParameters",
     "compute_label_volumes_csh",
     "compute_label_volumes_csh_params",
 ]

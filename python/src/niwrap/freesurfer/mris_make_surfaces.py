@@ -779,6 +779,7 @@ def mris_make_surfaces(
 __all__ = [
     "MRIS_MAKE_SURFACES_METADATA",
     "MrisMakeSurfacesOutputs",
+    "MrisMakeSurfacesParameters",
     "mris_make_surfaces",
     "mris_make_surfaces_params",
 ]

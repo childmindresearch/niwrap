@@ -355,6 +355,7 @@ def v_3d_reg_ana(
 
 __all__ = [
     "V3dRegAnaOutputs",
+    "V3dRegAnaParameters",
     "V_3D_REG_ANA_METADATA",
     "v_3d_reg_ana",
     "v_3d_reg_ana_params",

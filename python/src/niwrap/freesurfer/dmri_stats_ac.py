@@ -214,6 +214,7 @@ def dmri_stats_ac(
 __all__ = [
     "DMRI_STATS_AC_METADATA",
     "DmriStatsAcOutputs",
+    "DmriStatsAcParameters",
     "dmri_stats_ac",
     "dmri_stats_ac_params",
 ]

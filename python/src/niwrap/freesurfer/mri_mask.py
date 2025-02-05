@@ -393,6 +393,7 @@ def mri_mask(
 __all__ = [
     "MRI_MASK_METADATA",
     "MriMaskOutputs",
+    "MriMaskParameters",
     "mri_mask",
     "mri_mask_params",
 ]

@@ -169,6 +169,7 @@ def v_3d_cm(
 
 __all__ = [
     "V3dCmOutputs",
+    "V3dCmParameters",
     "V_3D_CM_METADATA",
     "v_3d_cm",
     "v_3d_cm_params",

@@ -217,6 +217,7 @@ def mris_wm_volume(
 __all__ = [
     "MRIS_WM_VOLUME_METADATA",
     "MrisWmVolumeOutputs",
+    "MrisWmVolumeParameters",
     "mris_wm_volume",
     "mris_wm_volume_params",
 ]

@@ -668,7 +668,11 @@ def mrfilter(
 
 __all__ = [
     "MRFILTER_METADATA",
+    "MrfilterConfigParameters",
     "MrfilterOutputs",
+    "MrfilterParameters",
+    "MrfilterVariousFileParameters",
+    "MrfilterVariousStringParameters",
     "mrfilter",
     "mrfilter_config_params",
     "mrfilter_params",

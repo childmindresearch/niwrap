@@ -187,6 +187,7 @@ def tksurfer(
 __all__ = [
     "TKSURFER_METADATA",
     "TksurferOutputs",
+    "TksurferParameters",
     "tksurfer",
     "tksurfer_params",
 ]

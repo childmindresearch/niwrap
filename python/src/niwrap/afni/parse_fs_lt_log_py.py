@@ -205,6 +205,7 @@ def parse_fs_lt_log_py(
 __all__ = [
     "PARSE_FS_LT_LOG_PY_METADATA",
     "ParseFsLtLogPyOutputs",
+    "ParseFsLtLogPyParameters",
     "parse_fs_lt_log_py",
     "parse_fs_lt_log_py_params",
 ]

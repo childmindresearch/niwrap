@@ -186,6 +186,7 @@ def mri_apply_bias(
 __all__ = [
     "MRI_APPLY_BIAS_METADATA",
     "MriApplyBiasOutputs",
+    "MriApplyBiasParameters",
     "mri_apply_bias",
     "mri_apply_bias_params",
 ]

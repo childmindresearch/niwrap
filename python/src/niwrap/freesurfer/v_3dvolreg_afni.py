@@ -184,6 +184,7 @@ def v_3dvolreg_afni(
 
 __all__ = [
     "V3dvolregAfniOutputs",
+    "V3dvolregAfniParameters",
     "V_3DVOLREG_AFNI_METADATA",
     "v_3dvolreg_afni",
     "v_3dvolreg_afni_params",

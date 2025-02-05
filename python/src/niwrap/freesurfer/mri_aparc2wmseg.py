@@ -195,6 +195,7 @@ def mri_aparc2wmseg(
 __all__ = [
     "MRI_APARC2WMSEG_METADATA",
     "MriAparc2wmsegOutputs",
+    "MriAparc2wmsegParameters",
     "mri_aparc2wmseg",
     "mri_aparc2wmseg_params",
 ]

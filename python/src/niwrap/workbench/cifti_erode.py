@@ -414,7 +414,11 @@ def cifti_erode(
 
 __all__ = [
     "CIFTI_ERODE_METADATA",
+    "CiftiErodeCerebellumSurfaceParameters",
+    "CiftiErodeLeftSurfaceParameters",
     "CiftiErodeOutputs",
+    "CiftiErodeParameters",
+    "CiftiErodeRightSurfaceParameters",
     "cifti_erode",
     "cifti_erode_cerebellum_surface_params",
     "cifti_erode_left_surface_params",

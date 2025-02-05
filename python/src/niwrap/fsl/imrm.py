@@ -166,6 +166,7 @@ def imrm(
 __all__ = [
     "IMRM_METADATA",
     "ImrmOutputs",
+    "ImrmParameters",
     "imrm",
     "imrm_params",
 ]

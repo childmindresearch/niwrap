@@ -532,6 +532,7 @@ def file_tool(
 __all__ = [
     "FILE_TOOL_METADATA",
     "FileToolOutputs",
+    "FileToolParameters",
     "file_tool",
     "file_tool_params",
 ]

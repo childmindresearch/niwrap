@@ -175,6 +175,7 @@ def v__suma_make_spec_caret(
 
 __all__ = [
     "VSumaMakeSpecCaretOutputs",
+    "VSumaMakeSpecCaretParameters",
     "V__SUMA_MAKE_SPEC_CARET_METADATA",
     "v__suma_make_spec_caret",
     "v__suma_make_spec_caret_params",

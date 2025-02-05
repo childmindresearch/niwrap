@@ -945,6 +945,7 @@ def mri_glmfit(
 __all__ = [
     "MRI_GLMFIT_METADATA",
     "MriGlmfitOutputs",
+    "MriGlmfitParameters",
     "mri_glmfit",
     "mri_glmfit_params",
 ]

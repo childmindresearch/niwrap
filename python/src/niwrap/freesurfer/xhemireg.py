@@ -277,6 +277,7 @@ def xhemireg(
 __all__ = [
     "XHEMIREG_METADATA",
     "XhemiregOutputs",
+    "XhemiregParameters",
     "xhemireg",
     "xhemireg_params",
 ]

@@ -229,6 +229,7 @@ def cifti_label_adjacency(
 __all__ = [
     "CIFTI_LABEL_ADJACENCY_METADATA",
     "CiftiLabelAdjacencyOutputs",
+    "CiftiLabelAdjacencyParameters",
     "cifti_label_adjacency",
     "cifti_label_adjacency_params",
 ]

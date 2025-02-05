@@ -223,6 +223,7 @@ def fat_roi_row(
 __all__ = [
     "FAT_ROI_ROW_METADATA",
     "FatRoiRowOutputs",
+    "FatRoiRowParameters",
     "fat_roi_row",
     "fat_roi_row_params",
 ]

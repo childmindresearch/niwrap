@@ -384,7 +384,9 @@ def v_5tt2vis(
 
 
 __all__ = [
+    "V5tt2visConfigParameters",
     "V5tt2visOutputs",
+    "V5tt2visParameters",
     "V_5TT2VIS_METADATA",
     "v_5tt2vis",
     "v_5tt2vis_config_params",

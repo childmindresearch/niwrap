@@ -271,6 +271,7 @@ def mri_jacobian(
 __all__ = [
     "MRI_JACOBIAN_METADATA",
     "MriJacobianOutputs",
+    "MriJacobianParameters",
     "mri_jacobian",
     "mri_jacobian_params",
 ]

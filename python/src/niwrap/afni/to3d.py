@@ -597,6 +597,7 @@ def to3d(
 __all__ = [
     "TO3D_METADATA",
     "To3dOutputs",
+    "To3dParameters",
     "to3d",
     "to3d_params",
 ]

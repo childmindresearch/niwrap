@@ -292,6 +292,7 @@ def v_3d_lomb_scargle(
 
 __all__ = [
     "V3dLombScargleOutputs",
+    "V3dLombScargleParameters",
     "V_3D_LOMB_SCARGLE_METADATA",
     "v_3d_lomb_scargle",
     "v_3d_lomb_scargle_params",

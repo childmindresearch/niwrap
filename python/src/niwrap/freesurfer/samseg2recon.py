@@ -285,6 +285,7 @@ def samseg2recon(
 __all__ = [
     "SAMSEG2RECON_METADATA",
     "Samseg2reconOutputs",
+    "Samseg2reconParameters",
     "samseg2recon",
     "samseg2recon_params",
 ]

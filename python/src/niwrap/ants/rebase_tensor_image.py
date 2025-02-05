@@ -201,6 +201,7 @@ def rebase_tensor_image(
 __all__ = [
     "REBASE_TENSOR_IMAGE_METADATA",
     "RebaseTensorImageOutputs",
+    "RebaseTensorImageParameters",
     "rebase_tensor_image",
     "rebase_tensor_image_params",
 ]

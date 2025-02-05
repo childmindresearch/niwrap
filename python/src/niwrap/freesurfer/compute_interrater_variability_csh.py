@@ -203,6 +203,7 @@ def compute_interrater_variability_csh(
 __all__ = [
     "COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA",
     "ComputeInterraterVariabilityCshOutputs",
+    "ComputeInterraterVariabilityCshParameters",
     "compute_interrater_variability_csh",
     "compute_interrater_variability_csh_params",
 ]

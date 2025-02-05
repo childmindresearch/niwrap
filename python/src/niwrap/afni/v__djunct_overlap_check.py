@@ -398,6 +398,7 @@ def v__djunct_overlap_check(
 
 __all__ = [
     "VDjunctOverlapCheckOutputs",
+    "VDjunctOverlapCheckParameters",
     "V__DJUNCT_OVERLAP_CHECK_METADATA",
     "v__djunct_overlap_check",
     "v__djunct_overlap_check_params",

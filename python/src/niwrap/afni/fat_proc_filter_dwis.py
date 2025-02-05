@@ -304,6 +304,7 @@ def fat_proc_filter_dwis(
 __all__ = [
     "FAT_PROC_FILTER_DWIS_METADATA",
     "FatProcFilterDwisOutputs",
+    "FatProcFilterDwisParameters",
     "fat_proc_filter_dwis",
     "fat_proc_filter_dwis_params",
 ]

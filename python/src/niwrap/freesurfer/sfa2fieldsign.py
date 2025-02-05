@@ -283,6 +283,7 @@ def sfa2fieldsign(
 __all__ = [
     "SFA2FIELDSIGN_METADATA",
     "Sfa2fieldsignOutputs",
+    "Sfa2fieldsignParameters",
     "sfa2fieldsign",
     "sfa2fieldsign_params",
 ]

@@ -367,6 +367,7 @@ def msm(
 __all__ = [
     "MSM_METADATA",
     "MsmOutputs",
+    "MsmParameters",
     "msm",
     "msm_params",
 ]

@@ -227,6 +227,7 @@ def zip_scene_file(
 __all__ = [
     "ZIP_SCENE_FILE_METADATA",
     "ZipSceneFileOutputs",
+    "ZipSceneFileParameters",
     "zip_scene_file",
     "zip_scene_file_params",
 ]

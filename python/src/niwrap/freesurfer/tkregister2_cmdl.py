@@ -797,6 +797,7 @@ def tkregister2_cmdl(
 __all__ = [
     "TKREGISTER2_CMDL_METADATA",
     "Tkregister2CmdlOutputs",
+    "Tkregister2CmdlParameters",
     "tkregister2_cmdl",
     "tkregister2_cmdl_params",
 ]

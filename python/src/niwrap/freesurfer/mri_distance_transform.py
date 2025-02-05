@@ -201,6 +201,7 @@ def mri_distance_transform(
 __all__ = [
     "MRI_DISTANCE_TRANSFORM_METADATA",
     "MriDistanceTransformOutputs",
+    "MriDistanceTransformParameters",
     "mri_distance_transform",
     "mri_distance_transform_params",
 ]

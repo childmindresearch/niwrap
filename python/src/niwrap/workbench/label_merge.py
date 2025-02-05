@@ -344,7 +344,11 @@ def label_merge(
 
 __all__ = [
     "LABEL_MERGE_METADATA",
+    "LabelMergeColumnParameters",
+    "LabelMergeLabelParameters",
     "LabelMergeOutputs",
+    "LabelMergeParameters",
+    "LabelMergeUpToParameters",
     "label_merge",
     "label_merge_column_params",
     "label_merge_label_params",

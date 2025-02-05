@@ -282,6 +282,7 @@ def parc_atlas_jackknife_test(
 __all__ = [
     "PARC_ATLAS_JACKKNIFE_TEST_METADATA",
     "ParcAtlasJackknifeTestOutputs",
+    "ParcAtlasJackknifeTestParameters",
     "parc_atlas_jackknife_test",
     "parc_atlas_jackknife_test_params",
 ]

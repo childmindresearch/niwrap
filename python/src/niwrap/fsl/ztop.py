@@ -191,6 +191,7 @@ def ztop(
 __all__ = [
     "ZTOP_METADATA",
     "ZtopOutputs",
+    "ZtopParameters",
     "ztop",
     "ztop_params",
 ]

@@ -304,6 +304,7 @@ def fat_proc_decmap(
 __all__ = [
     "FAT_PROC_DECMAP_METADATA",
     "FatProcDecmapOutputs",
+    "FatProcDecmapParameters",
     "fat_proc_decmap",
     "fat_proc_decmap_params",
 ]

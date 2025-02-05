@@ -182,6 +182,7 @@ def abids_tool(
 __all__ = [
     "ABIDS_TOOL_METADATA",
     "AbidsToolOutputs",
+    "AbidsToolParameters",
     "abids_tool",
     "abids_tool_params",
 ]

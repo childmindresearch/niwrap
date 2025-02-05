@@ -256,6 +256,7 @@ def long_stats_combine(
 __all__ = [
     "LONG_STATS_COMBINE_METADATA",
     "LongStatsCombineOutputs",
+    "LongStatsCombineParameters",
     "long_stats_combine",
     "long_stats_combine_params",
 ]

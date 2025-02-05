@@ -217,6 +217,7 @@ def adjunct_suma_fs_roi_info(
 __all__ = [
     "ADJUNCT_SUMA_FS_ROI_INFO_METADATA",
     "AdjunctSumaFsRoiInfoOutputs",
+    "AdjunctSumaFsRoiInfoParameters",
     "adjunct_suma_fs_roi_info",
     "adjunct_suma_fs_roi_info_params",
 ]

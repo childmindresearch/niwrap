@@ -178,6 +178,7 @@ def segment_subject_t1_auto_estimate_alveus_ml(
 __all__ = [
     "SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_METADATA",
     "SegmentSubjectT1AutoEstimateAlveusMlOutputs",
+    "SegmentSubjectT1AutoEstimateAlveusMlParameters",
     "segment_subject_t1_auto_estimate_alveus_ml",
     "segment_subject_t1_auto_estimate_alveus_ml_params",
 ]

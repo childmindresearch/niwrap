@@ -164,6 +164,7 @@ def inflate_subject_new(
 __all__ = [
     "INFLATE_SUBJECT_NEW_METADATA",
     "InflateSubjectNewOutputs",
+    "InflateSubjectNewParameters",
     "inflate_subject_new",
     "inflate_subject_new_params",
 ]

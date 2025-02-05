@@ -363,7 +363,10 @@ def surface_resample(
 
 __all__ = [
     "SURFACE_RESAMPLE_METADATA",
+    "SurfaceResampleAreaMetricsParameters",
+    "SurfaceResampleAreaSurfsParameters",
     "SurfaceResampleOutputs",
+    "SurfaceResampleParameters",
     "surface_resample",
     "surface_resample_area_metrics_params",
     "surface_resample_area_surfs_params",

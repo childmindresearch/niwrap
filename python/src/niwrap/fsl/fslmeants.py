@@ -300,6 +300,7 @@ def fslmeants(
 __all__ = [
     "FSLMEANTS_METADATA",
     "FslmeantsOutputs",
+    "FslmeantsParameters",
     "fslmeants",
     "fslmeants_params",
 ]

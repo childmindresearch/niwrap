@@ -295,6 +295,7 @@ def create_dticohort(
 __all__ = [
     "CREATE_DTICOHORT_METADATA",
     "CreateDticohortOutputs",
+    "CreateDticohortParameters",
     "create_dticohort",
     "create_dticohort_params",
 ]

@@ -326,6 +326,7 @@ def mrisp_paint(
 __all__ = [
     "MRISP_PAINT_METADATA",
     "MrispPaintOutputs",
+    "MrispPaintParameters",
     "mrisp_paint",
     "mrisp_paint_params",
 ]

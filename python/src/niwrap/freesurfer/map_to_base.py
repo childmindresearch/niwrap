@@ -220,6 +220,7 @@ def map_to_base(
 __all__ = [
     "MAP_TO_BASE_METADATA",
     "MapToBaseOutputs",
+    "MapToBaseParameters",
     "map_to_base",
     "map_to_base_params",
 ]

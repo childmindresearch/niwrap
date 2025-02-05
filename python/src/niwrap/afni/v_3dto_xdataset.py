@@ -185,6 +185,7 @@ def v_3dto_xdataset(
 
 __all__ = [
     "V3dtoXdatasetOutputs",
+    "V3dtoXdatasetParameters",
     "V_3DTO_XDATASET_METADATA",
     "v_3dto_xdataset",
     "v_3dto_xdataset_params",

@@ -257,6 +257,7 @@ def label2patch(
 __all__ = [
     "LABEL2PATCH_METADATA",
     "Label2patchOutputs",
+    "Label2patchParameters",
     "label2patch",
     "label2patch_params",
 ]

@@ -211,6 +211,7 @@ def smoothest(
 __all__ = [
     "SMOOTHEST_METADATA",
     "SmoothestOutputs",
+    "SmoothestParameters",
     "smoothest",
     "smoothest_params",
 ]

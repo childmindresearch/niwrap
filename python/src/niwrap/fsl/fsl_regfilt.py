@@ -359,6 +359,7 @@ def fsl_regfilt(
 __all__ = [
     "FSL_REGFILT_METADATA",
     "FslRegfiltOutputs",
+    "FslRegfiltParameters",
     "fsl_regfilt",
     "fsl_regfilt_params",
 ]

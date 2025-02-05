@@ -289,6 +289,7 @@ def fat_proc_map_to_dti(
 __all__ = [
     "FAT_PROC_MAP_TO_DTI_METADATA",
     "FatProcMapToDtiOutputs",
+    "FatProcMapToDtiParameters",
     "fat_proc_map_to_dti",
     "fat_proc_map_to_dti_params",
 ]

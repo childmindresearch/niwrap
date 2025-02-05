@@ -379,6 +379,7 @@ def mri_annotation2label(
 __all__ = [
     "MRI_ANNOTATION2LABEL_METADATA",
     "MriAnnotation2labelOutputs",
+    "MriAnnotation2labelParameters",
     "mri_annotation2label",
     "mri_annotation2label_params",
 ]

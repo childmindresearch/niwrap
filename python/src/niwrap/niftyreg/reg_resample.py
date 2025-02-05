@@ -287,6 +287,7 @@ def reg_resample(
 __all__ = [
     "REG_RESAMPLE_METADATA",
     "RegResampleOutputs",
+    "RegResampleParameters",
     "reg_resample",
     "reg_resample_params",
 ]

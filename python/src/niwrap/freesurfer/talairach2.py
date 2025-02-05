@@ -173,6 +173,7 @@ def talairach2(
 __all__ = [
     "TALAIRACH2_METADATA",
     "Talairach2Outputs",
+    "Talairach2Parameters",
     "talairach2",
     "talairach2_params",
 ]

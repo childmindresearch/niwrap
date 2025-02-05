@@ -226,6 +226,7 @@ def cifti_label_modify_keys(
 __all__ = [
     "CIFTI_LABEL_MODIFY_KEYS_METADATA",
     "CiftiLabelModifyKeysOutputs",
+    "CiftiLabelModifyKeysParameters",
     "cifti_label_modify_keys",
     "cifti_label_modify_keys_params",
 ]

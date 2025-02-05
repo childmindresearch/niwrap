@@ -366,6 +366,7 @@ def surf_smooth(
 __all__ = [
     "SURF_SMOOTH_METADATA",
     "SurfSmoothOutputs",
+    "SurfSmoothParameters",
     "surf_smooth",
     "surf_smooth_params",
 ]

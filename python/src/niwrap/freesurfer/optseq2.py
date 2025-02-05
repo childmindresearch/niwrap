@@ -549,6 +549,7 @@ def optseq2(
 __all__ = [
     "OPTSEQ2_METADATA",
     "Optseq2Outputs",
+    "Optseq2Parameters",
     "optseq2",
     "optseq2_params",
 ]

@@ -436,6 +436,7 @@ def fim2(
 __all__ = [
     "FIM2_METADATA",
     "Fim2Outputs",
+    "Fim2Parameters",
     "fim2",
     "fim2_params",
 ]

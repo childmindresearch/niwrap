@@ -243,6 +243,7 @@ def mri_extract_label(
 __all__ = [
     "MRI_EXTRACT_LABEL_METADATA",
     "MriExtractLabelOutputs",
+    "MriExtractLabelParameters",
     "mri_extract_label",
     "mri_extract_label_params",
 ]

@@ -474,6 +474,7 @@ def avw2fsl(
 __all__ = [
     "AVW2FSL_METADATA",
     "Avw2fslOutputs",
+    "Avw2fslParameters",
     "avw2fsl",
     "avw2fsl_params",
 ]

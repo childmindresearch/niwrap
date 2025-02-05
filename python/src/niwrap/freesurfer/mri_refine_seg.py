@@ -192,6 +192,7 @@ def mri_refine_seg(
 __all__ = [
     "MRI_REFINE_SEG_METADATA",
     "MriRefineSegOutputs",
+    "MriRefineSegParameters",
     "mri_refine_seg",
     "mri_refine_seg_params",
 ]

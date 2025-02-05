@@ -227,6 +227,7 @@ def xcorr(
 __all__ = [
     "XCORR_METADATA",
     "XcorrOutputs",
+    "XcorrParameters",
     "xcorr",
     "xcorr_params",
 ]

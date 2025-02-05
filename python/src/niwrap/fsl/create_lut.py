@@ -169,6 +169,7 @@ def create_lut(
 __all__ = [
     "CREATE_LUT_METADATA",
     "CreateLutOutputs",
+    "CreateLutParameters",
     "create_lut",
     "create_lut_params",
 ]

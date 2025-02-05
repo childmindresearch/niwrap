@@ -342,7 +342,9 @@ def dirmerge(
 
 __all__ = [
     "DIRMERGE_METADATA",
+    "DirmergeConfigParameters",
     "DirmergeOutputs",
+    "DirmergeParameters",
     "dirmerge",
     "dirmerge_config_params",
     "dirmerge_params",

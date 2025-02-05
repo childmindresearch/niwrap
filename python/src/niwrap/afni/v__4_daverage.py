@@ -164,6 +164,7 @@ def v__4_daverage(
 
 __all__ = [
     "V4DaverageOutputs",
+    "V4DaverageParameters",
     "V__4_DAVERAGE_METADATA",
     "v__4_daverage",
     "v__4_daverage_params",

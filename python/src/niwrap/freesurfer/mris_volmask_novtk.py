@@ -354,6 +354,7 @@ def mris_volmask_novtk(
 __all__ = [
     "MRIS_VOLMASK_NOVTK_METADATA",
     "MrisVolmaskNovtkOutputs",
+    "MrisVolmaskNovtkParameters",
     "mris_volmask_novtk",
     "mris_volmask_novtk_params",
 ]

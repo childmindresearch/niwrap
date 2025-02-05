@@ -171,6 +171,7 @@ def surface_information(
 __all__ = [
     "SURFACE_INFORMATION_METADATA",
     "SurfaceInformationOutputs",
+    "SurfaceInformationParameters",
     "surface_information",
     "surface_information_params",
 ]

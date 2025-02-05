@@ -296,6 +296,7 @@ def responsemean(
 __all__ = [
     "RESPONSEMEAN_METADATA",
     "ResponsemeanOutputs",
+    "ResponsemeanParameters",
     "responsemean",
     "responsemean_params",
 ]

@@ -191,6 +191,7 @@ def v__script_check(
 
 __all__ = [
     "VScriptCheckOutputs",
+    "VScriptCheckParameters",
     "V__SCRIPT_CHECK_METADATA",
     "v__script_check",
     "v__script_check_params",

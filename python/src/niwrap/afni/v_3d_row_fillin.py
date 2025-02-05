@@ -219,6 +219,7 @@ def v_3d_row_fillin(
 
 __all__ = [
     "V3dRowFillinOutputs",
+    "V3dRowFillinParameters",
     "V_3D_ROW_FILLIN_METADATA",
     "v_3d_row_fillin",
     "v_3d_row_fillin_params",

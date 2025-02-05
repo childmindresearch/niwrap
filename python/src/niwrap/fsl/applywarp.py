@@ -289,6 +289,7 @@ def applywarp(
 __all__ = [
     "APPLYWARP_METADATA",
     "ApplywarpOutputs",
+    "ApplywarpParameters",
     "applywarp",
     "applywarp_params",
 ]

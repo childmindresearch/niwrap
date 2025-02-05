@@ -194,6 +194,7 @@ def fslsplit(
 __all__ = [
     "FSLSPLIT_METADATA",
     "FslsplitOutputs",
+    "FslsplitParameters",
     "fslsplit",
     "fslsplit_params",
 ]

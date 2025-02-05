@@ -336,6 +336,7 @@ def bianca(
 __all__ = [
     "BIANCA_METADATA",
     "BiancaOutputs",
+    "BiancaParameters",
     "bianca",
     "bianca_params",
 ]

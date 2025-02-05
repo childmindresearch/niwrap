@@ -178,6 +178,7 @@ def adjunct_select_str_py(
 __all__ = [
     "ADJUNCT_SELECT_STR_PY_METADATA",
     "AdjunctSelectStrPyOutputs",
+    "AdjunctSelectStrPyParameters",
     "adjunct_select_str_py",
     "adjunct_select_str_py_params",
 ]

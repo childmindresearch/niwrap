@@ -258,6 +258,7 @@ def tbss_skeleton(
 __all__ = [
     "TBSS_SKELETON_METADATA",
     "TbssSkeletonOutputs",
+    "TbssSkeletonParameters",
     "tbss_skeleton",
     "tbss_skeleton_params",
 ]

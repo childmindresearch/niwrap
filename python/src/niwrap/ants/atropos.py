@@ -434,6 +434,7 @@ def atropos(
 __all__ = [
     "ATROPOS_METADATA",
     "AtroposOutputs",
+    "AtroposParameters",
     "atropos",
     "atropos_params",
 ]

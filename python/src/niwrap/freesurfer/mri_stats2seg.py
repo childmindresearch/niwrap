@@ -208,6 +208,7 @@ def mri_stats2seg(
 __all__ = [
     "MRI_STATS2SEG_METADATA",
     "MriStats2segOutputs",
+    "MriStats2segParameters",
     "mri_stats2seg",
     "mri_stats2seg_params",
 ]

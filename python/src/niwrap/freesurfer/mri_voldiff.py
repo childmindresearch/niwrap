@@ -243,6 +243,7 @@ def mri_voldiff(
 __all__ = [
     "MRI_VOLDIFF_METADATA",
     "MriVoldiffOutputs",
+    "MriVoldiffParameters",
     "mri_voldiff",
     "mri_voldiff_params",
 ]

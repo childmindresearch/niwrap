@@ -214,6 +214,7 @@ def v__djunct_4d_imager(
 
 __all__ = [
     "VDjunct4dImagerOutputs",
+    "VDjunct4dImagerParameters",
     "V__DJUNCT_4D_IMAGER_METADATA",
     "v__djunct_4d_imager",
     "v__djunct_4d_imager_params",

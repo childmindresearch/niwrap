@@ -204,6 +204,7 @@ def oct_register_mosaic(
 __all__ = [
     "OCT_REGISTER_MOSAIC_METADATA",
     "OctRegisterMosaicOutputs",
+    "OctRegisterMosaicParameters",
     "oct_register_mosaic",
     "oct_register_mosaic_params",
 ]

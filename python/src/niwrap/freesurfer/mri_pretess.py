@@ -238,6 +238,7 @@ def mri_pretess(
 __all__ = [
     "MRI_PRETESS_METADATA",
     "MriPretessOutputs",
+    "MriPretessParameters",
     "mri_pretess",
     "mri_pretess_params",
 ]

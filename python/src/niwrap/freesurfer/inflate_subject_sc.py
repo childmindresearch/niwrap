@@ -165,6 +165,7 @@ def inflate_subject_sc(
 __all__ = [
     "INFLATE_SUBJECT_SC_METADATA",
     "InflateSubjectScOutputs",
+    "InflateSubjectScParameters",
     "inflate_subject_sc",
     "inflate_subject_sc_params",
 ]

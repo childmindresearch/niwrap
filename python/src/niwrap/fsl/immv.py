@@ -173,6 +173,7 @@ def immv(
 __all__ = [
     "IMMV_METADATA",
     "ImmvOutputs",
+    "ImmvParameters",
     "immv",
     "immv_params",
 ]

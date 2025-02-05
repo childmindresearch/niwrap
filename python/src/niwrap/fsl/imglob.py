@@ -172,6 +172,7 @@ def imglob(
 __all__ = [
     "IMGLOB_METADATA",
     "ImglobOutputs",
+    "ImglobParameters",
     "imglob",
     "imglob_params",
 ]

@@ -236,6 +236,7 @@ def seg2filled(
 __all__ = [
     "SEG2FILLED_METADATA",
     "Seg2filledOutputs",
+    "Seg2filledParameters",
     "seg2filled",
     "seg2filled_params",
 ]

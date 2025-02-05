@@ -208,6 +208,7 @@ def label2surf(
 __all__ = [
     "LABEL2SURF_METADATA",
     "Label2surfOutputs",
+    "Label2surfParameters",
     "label2surf",
     "label2surf_params",
 ]

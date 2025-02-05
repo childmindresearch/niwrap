@@ -274,6 +274,7 @@ def mri_vol2surf(
 __all__ = [
     "MRI_VOL2SURF_METADATA",
     "MriVol2surfOutputs",
+    "MriVol2surfParameters",
     "mri_vol2surf",
     "mri_vol2surf_params",
 ]

@@ -218,6 +218,7 @@ def mri_easywarp(
 __all__ = [
     "MRI_EASYWARP_METADATA",
     "MriEasywarpOutputs",
+    "MriEasywarpParameters",
     "mri_easywarp",
     "mri_easywarp_params",
 ]

@@ -562,6 +562,7 @@ def mri_fwhm(
 __all__ = [
     "MRI_FWHM_METADATA",
     "MriFwhmOutputs",
+    "MriFwhmParameters",
     "mri_fwhm",
     "mri_fwhm_params",
 ]

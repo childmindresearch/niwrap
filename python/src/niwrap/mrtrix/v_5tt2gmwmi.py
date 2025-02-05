@@ -336,7 +336,9 @@ def v_5tt2gmwmi(
 
 
 __all__ = [
+    "V5tt2gmwmiConfigParameters",
     "V5tt2gmwmiOutputs",
+    "V5tt2gmwmiParameters",
     "V_5TT2GMWMI_METADATA",
     "v_5tt2gmwmi",
     "v_5tt2gmwmi_config_params",

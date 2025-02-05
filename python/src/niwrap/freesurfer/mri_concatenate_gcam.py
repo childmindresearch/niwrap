@@ -232,6 +232,7 @@ def mri_concatenate_gcam(
 __all__ = [
     "MRI_CONCATENATE_GCAM_METADATA",
     "MriConcatenateGcamOutputs",
+    "MriConcatenateGcamParameters",
     "mri_concatenate_gcam",
     "mri_concatenate_gcam_params",
 ]

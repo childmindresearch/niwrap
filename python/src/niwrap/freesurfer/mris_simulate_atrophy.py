@@ -221,6 +221,7 @@ def mris_simulate_atrophy(
 __all__ = [
     "MRIS_SIMULATE_ATROPHY_METADATA",
     "MrisSimulateAtrophyOutputs",
+    "MrisSimulateAtrophyParameters",
     "mris_simulate_atrophy",
     "mris_simulate_atrophy_params",
 ]

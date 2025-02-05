@@ -394,6 +394,7 @@ def topup(
 __all__ = [
     "TOPUP_METADATA",
     "TopupOutputs",
+    "TopupParameters",
     "topup",
     "topup_params",
 ]

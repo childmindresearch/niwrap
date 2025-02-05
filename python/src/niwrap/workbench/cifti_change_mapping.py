@@ -384,7 +384,11 @@ def cifti_change_mapping(
 
 __all__ = [
     "CIFTI_CHANGE_MAPPING_METADATA",
+    "CiftiChangeMappingFromCiftiParameters",
     "CiftiChangeMappingOutputs",
+    "CiftiChangeMappingParameters",
+    "CiftiChangeMappingScalarParameters",
+    "CiftiChangeMappingSeriesParameters",
     "cifti_change_mapping",
     "cifti_change_mapping_from_cifti_params",
     "cifti_change_mapping_params",

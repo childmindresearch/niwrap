@@ -444,7 +444,12 @@ def convert_affine(
 
 __all__ = [
     "CONVERT_AFFINE_METADATA",
+    "ConvertAffineFromFlirtParameters",
+    "ConvertAffineFromWorldParameters",
     "ConvertAffineOutputs",
+    "ConvertAffineParameters",
+    "ConvertAffineToFlirtParameters",
+    "ConvertAffineToWorldParameters",
     "convert_affine",
     "convert_affine_from_flirt_params",
     "convert_affine_from_world_params",

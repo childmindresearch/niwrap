@@ -222,6 +222,7 @@ def v_3d_mann_whitney(
 
 __all__ = [
     "V3dMannWhitneyOutputs",
+    "V3dMannWhitneyParameters",
     "V_3D_MANN_WHITNEY_METADATA",
     "v_3d_mann_whitney",
     "v_3d_mann_whitney_params",

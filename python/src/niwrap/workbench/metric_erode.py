@@ -249,6 +249,7 @@ def metric_erode(
 __all__ = [
     "METRIC_ERODE_METADATA",
     "MetricErodeOutputs",
+    "MetricErodeParameters",
     "metric_erode",
     "metric_erode_params",
 ]

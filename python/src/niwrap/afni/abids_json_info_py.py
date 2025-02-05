@@ -232,6 +232,7 @@ def abids_json_info_py(
 __all__ = [
     "ABIDS_JSON_INFO_PY_METADATA",
     "AbidsJsonInfoPyOutputs",
+    "AbidsJsonInfoPyParameters",
     "abids_json_info_py",
     "abids_json_info_py_params",
 ]

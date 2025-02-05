@@ -225,6 +225,7 @@ def imcalc(
 __all__ = [
     "IMCALC_METADATA",
     "ImcalcOutputs",
+    "ImcalcParameters",
     "imcalc",
     "imcalc_params",
 ]

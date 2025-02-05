@@ -208,6 +208,7 @@ def mri_xvolavg(
 __all__ = [
     "MRI_XVOLAVG_METADATA",
     "MriXvolavgOutputs",
+    "MriXvolavgParameters",
     "mri_xvolavg",
     "mri_xvolavg_params",
 ]

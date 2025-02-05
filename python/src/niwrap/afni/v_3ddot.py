@@ -300,6 +300,7 @@ def v_3ddot(
 
 __all__ = [
     "V3ddotOutputs",
+    "V3ddotParameters",
     "V_3DDOT_METADATA",
     "v_3ddot",
     "v_3ddot_params",

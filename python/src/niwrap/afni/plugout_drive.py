@@ -245,6 +245,7 @@ def plugout_drive(
 __all__ = [
     "PLUGOUT_DRIVE_METADATA",
     "PlugoutDriveOutputs",
+    "PlugoutDriveParameters",
     "plugout_drive",
     "plugout_drive_params",
 ]

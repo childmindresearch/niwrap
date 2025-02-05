@@ -188,6 +188,7 @@ def v_3d_rsfc(
 
 __all__ = [
     "V3dRsfcOutputs",
+    "V3dRsfcParameters",
     "V_3D_RSFC_METADATA",
     "v_3d_rsfc",
     "v_3d_rsfc_params",

@@ -615,7 +615,12 @@ def amp2sh(
 
 __all__ = [
     "AMP2SH_METADATA",
+    "Amp2shConfigParameters",
+    "Amp2shFslgradParameters",
     "Amp2shOutputs",
+    "Amp2shParameters",
+    "Amp2shVariousFileParameters",
+    "Amp2shVariousStringParameters",
     "amp2sh",
     "amp2sh_config_params",
     "amp2sh_fslgrad_params",

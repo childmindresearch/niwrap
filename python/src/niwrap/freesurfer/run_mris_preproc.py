@@ -175,6 +175,7 @@ def run_mris_preproc(
 __all__ = [
     "RUN_MRIS_PREPROC_METADATA",
     "RunMrisPreprocOutputs",
+    "RunMrisPreprocParameters",
     "run_mris_preproc",
     "run_mris_preproc_params",
 ]

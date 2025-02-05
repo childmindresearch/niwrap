@@ -475,6 +475,7 @@ def mri_watershed(
 __all__ = [
     "MRI_WATERSHED_METADATA",
     "MriWatershedOutputs",
+    "MriWatershedParameters",
     "mri_watershed",
     "mri_watershed_params",
 ]

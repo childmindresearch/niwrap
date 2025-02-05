@@ -228,6 +228,7 @@ def v_3d_rankizer(
 
 __all__ = [
     "V3dRankizerOutputs",
+    "V3dRankizerParameters",
     "V_3D_RANKIZER_METADATA",
     "v_3d_rankizer",
     "v_3d_rankizer_params",

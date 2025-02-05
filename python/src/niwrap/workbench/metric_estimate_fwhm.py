@@ -260,6 +260,8 @@ def metric_estimate_fwhm(
 __all__ = [
     "METRIC_ESTIMATE_FWHM_METADATA",
     "MetricEstimateFwhmOutputs",
+    "MetricEstimateFwhmParameters",
+    "MetricEstimateFwhmWholeFileParameters",
     "metric_estimate_fwhm",
     "metric_estimate_fwhm_params",
     "metric_estimate_fwhm_whole_file_params",

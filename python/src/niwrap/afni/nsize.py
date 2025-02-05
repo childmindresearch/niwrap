@@ -176,6 +176,7 @@ def nsize(
 __all__ = [
     "NSIZE_METADATA",
     "NsizeOutputs",
+    "NsizeParameters",
     "nsize",
     "nsize_params",
 ]

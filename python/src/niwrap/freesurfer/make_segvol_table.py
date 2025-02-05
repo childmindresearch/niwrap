@@ -279,6 +279,7 @@ def make_segvol_table(
 __all__ = [
     "MAKE_SEGVOL_TABLE_METADATA",
     "MakeSegvolTableOutputs",
+    "MakeSegvolTableParameters",
     "make_segvol_table",
     "make_segvol_table_params",
 ]

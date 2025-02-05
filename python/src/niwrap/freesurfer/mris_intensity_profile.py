@@ -313,6 +313,7 @@ def mris_intensity_profile(
 __all__ = [
     "MRIS_INTENSITY_PROFILE_METADATA",
     "MrisIntensityProfileOutputs",
+    "MrisIntensityProfileParameters",
     "mris_intensity_profile",
     "mris_intensity_profile_params",
 ]

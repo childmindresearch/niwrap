@@ -178,6 +178,7 @@ def medianfilter(
 __all__ = [
     "MEDIANFILTER_METADATA",
     "MedianfilterOutputs",
+    "MedianfilterParameters",
     "medianfilter",
     "medianfilter_params",
 ]

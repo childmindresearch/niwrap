@@ -270,6 +270,7 @@ def mmppsp(
 __all__ = [
     "MMPPSP_METADATA",
     "MmppspOutputs",
+    "MmppspParameters",
     "mmppsp",
     "mmppsp_params",
 ]

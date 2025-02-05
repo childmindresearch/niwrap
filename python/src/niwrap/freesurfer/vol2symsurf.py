@@ -255,6 +255,7 @@ def vol2symsurf(
 __all__ = [
     "VOL2SYMSURF_METADATA",
     "Vol2symsurfOutputs",
+    "Vol2symsurfParameters",
     "vol2symsurf",
     "vol2symsurf_params",
 ]

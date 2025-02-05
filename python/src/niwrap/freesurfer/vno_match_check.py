@@ -190,6 +190,7 @@ def vno_match_check(
 __all__ = [
     "VNO_MATCH_CHECK_METADATA",
     "VnoMatchCheckOutputs",
+    "VnoMatchCheckParameters",
     "vno_match_check",
     "vno_match_check_params",
 ]

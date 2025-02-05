@@ -273,6 +273,7 @@ def v__fs_roi_label(
 
 __all__ = [
     "VFsRoiLabelOutputs",
+    "VFsRoiLabelParameters",
     "V__FS_ROI_LABEL_METADATA",
     "v__fs_roi_label",
     "v__fs_roi_label_params",

@@ -365,6 +365,7 @@ def v_3d_zipper_zapper(
 
 __all__ = [
     "V3dZipperZapperOutputs",
+    "V3dZipperZapperParameters",
     "V_3D_ZIPPER_ZAPPER_METADATA",
     "v_3d_zipper_zapper",
     "v_3d_zipper_zapper_params",

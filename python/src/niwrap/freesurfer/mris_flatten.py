@@ -250,6 +250,7 @@ def mris_flatten(
 __all__ = [
     "MRIS_FLATTEN_METADATA",
     "MrisFlattenOutputs",
+    "MrisFlattenParameters",
     "mris_flatten",
     "mris_flatten_params",
 ]

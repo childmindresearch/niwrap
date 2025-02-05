@@ -423,6 +423,7 @@ def v_3dkmeans(
 
 __all__ = [
     "V3dkmeansOutputs",
+    "V3dkmeansParameters",
     "V_3DKMEANS_METADATA",
     "v_3dkmeans",
     "v_3dkmeans_params",

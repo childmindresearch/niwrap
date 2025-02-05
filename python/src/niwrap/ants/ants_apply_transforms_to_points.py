@@ -321,7 +321,10 @@ def ants_apply_transforms_to_points(
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA",
+    "AntsApplyTransformsToPointsInverseTransformParameters",
     "AntsApplyTransformsToPointsOutputs",
+    "AntsApplyTransformsToPointsParameters",
+    "AntsApplyTransformsToPointsSingleTransformParameters",
     "ants_apply_transforms_to_points",
     "ants_apply_transforms_to_points_inverse_transform_params",
     "ants_apply_transforms_to_points_params",

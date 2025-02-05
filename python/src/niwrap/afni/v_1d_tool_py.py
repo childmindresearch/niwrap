@@ -299,6 +299,7 @@ def v_1d_tool_py(
 
 __all__ = [
     "V1dToolPyOutputs",
+    "V1dToolPyParameters",
     "V_1D_TOOL_PY_METADATA",
     "v_1d_tool_py",
     "v_1d_tool_py_params",

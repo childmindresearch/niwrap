@@ -267,6 +267,7 @@ def dmri_match(
 __all__ = [
     "DMRI_MATCH_METADATA",
     "DmriMatchOutputs",
+    "DmriMatchParameters",
     "dmri_match",
     "dmri_match_params",
 ]

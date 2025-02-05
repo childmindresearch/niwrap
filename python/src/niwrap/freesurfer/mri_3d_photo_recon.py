@@ -325,6 +325,7 @@ def mri_3d_photo_recon(
 __all__ = [
     "MRI_3D_PHOTO_RECON_METADATA",
     "Mri3dPhotoReconOutputs",
+    "Mri3dPhotoReconParameters",
     "mri_3d_photo_recon",
     "mri_3d_photo_recon_params",
 ]

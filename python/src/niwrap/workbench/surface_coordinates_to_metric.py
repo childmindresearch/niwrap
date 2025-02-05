@@ -181,6 +181,7 @@ def surface_coordinates_to_metric(
 __all__ = [
     "SURFACE_COORDINATES_TO_METRIC_METADATA",
     "SurfaceCoordinatesToMetricOutputs",
+    "SurfaceCoordinatesToMetricParameters",
     "surface_coordinates_to_metric",
     "surface_coordinates_to_metric_params",
 ]

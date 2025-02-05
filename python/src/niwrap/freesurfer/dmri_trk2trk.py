@@ -474,6 +474,7 @@ def dmri_trk2trk(
 __all__ = [
     "DMRI_TRK2TRK_METADATA",
     "DmriTrk2trkOutputs",
+    "DmriTrk2trkParameters",
     "dmri_trk2trk",
     "dmri_trk2trk_params",
 ]

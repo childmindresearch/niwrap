@@ -199,6 +199,7 @@ def bugr(
 __all__ = [
     "BUGR_METADATA",
     "BugrOutputs",
+    "BugrParameters",
     "bugr",
     "bugr_params",
 ]

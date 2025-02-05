@@ -164,6 +164,7 @@ def isnifti(
 __all__ = [
     "ISNIFTI_METADATA",
     "IsniftiOutputs",
+    "IsniftiParameters",
     "isnifti",
     "isnifti_params",
 ]

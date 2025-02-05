@@ -252,6 +252,7 @@ def bedpostx_mgh(
 __all__ = [
     "BEDPOSTX_MGH_METADATA",
     "BedpostxMghOutputs",
+    "BedpostxMghParameters",
     "bedpostx_mgh",
     "bedpostx_mgh_params",
 ]

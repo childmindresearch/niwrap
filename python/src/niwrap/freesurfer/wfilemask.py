@@ -220,6 +220,7 @@ def wfilemask(
 __all__ = [
     "WFILEMASK_METADATA",
     "WfilemaskOutputs",
+    "WfilemaskParameters",
     "wfilemask",
     "wfilemask_params",
 ]

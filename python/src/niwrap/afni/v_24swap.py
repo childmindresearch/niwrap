@@ -183,6 +183,7 @@ def v_24swap(
 
 __all__ = [
     "V24swapOutputs",
+    "V24swapParameters",
     "V_24SWAP_METADATA",
     "v_24swap",
     "v_24swap_params",

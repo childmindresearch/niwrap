@@ -189,6 +189,7 @@ def adjunct_combine_str_py(
 __all__ = [
     "ADJUNCT_COMBINE_STR_PY_METADATA",
     "AdjunctCombineStrPyOutputs",
+    "AdjunctCombineStrPyParameters",
     "adjunct_combine_str_py",
     "adjunct_combine_str_py_params",
 ]

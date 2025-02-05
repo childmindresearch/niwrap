@@ -275,6 +275,7 @@ def slicetimer_fsl(
 __all__ = [
     "SLICETIMER_FSL_METADATA",
     "SlicetimerFslOutputs",
+    "SlicetimerFslParameters",
     "slicetimer_fsl",
     "slicetimer_fsl_params",
 ]

@@ -178,6 +178,7 @@ def fslpspec(
 __all__ = [
     "FSLPSPEC_METADATA",
     "FslpspecOutputs",
+    "FslpspecParameters",
     "fslpspec",
     "fslpspec_params",
 ]

@@ -227,6 +227,7 @@ def cifti_label_to_roi(
 __all__ = [
     "CIFTI_LABEL_TO_ROI_METADATA",
     "CiftiLabelToRoiOutputs",
+    "CiftiLabelToRoiParameters",
     "cifti_label_to_roi",
     "cifti_label_to_roi_params",
 ]

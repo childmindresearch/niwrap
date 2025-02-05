@@ -301,6 +301,7 @@ def dmri_extract_surface_measurements(
 __all__ = [
     "DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA",
     "DmriExtractSurfaceMeasurementsOutputs",
+    "DmriExtractSurfaceMeasurementsParameters",
     "dmri_extract_surface_measurements",
     "dmri_extract_surface_measurements_params",
 ]

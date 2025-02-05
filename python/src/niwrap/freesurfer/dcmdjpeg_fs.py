@@ -508,6 +508,7 @@ def dcmdjpeg_fs(
 __all__ = [
     "DCMDJPEG_FS_METADATA",
     "DcmdjpegFsOutputs",
+    "DcmdjpegFsParameters",
     "dcmdjpeg_fs",
     "dcmdjpeg_fs_params",
 ]

@@ -411,6 +411,7 @@ def v_3d_seg(
 
 __all__ = [
     "V3dSegOutputs",
+    "V3dSegParameters",
     "V_3D_SEG_METADATA",
     "v_3d_seg",
     "v_3d_seg_params",

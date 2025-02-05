@@ -542,7 +542,12 @@ def probtrackx_dot_convert(
 
 __all__ = [
     "PROBTRACKX_DOT_CONVERT_METADATA",
+    "ProbtrackxDotConvertColCiftiParameters",
+    "ProbtrackxDotConvertColVoxelsParameters",
     "ProbtrackxDotConvertOutputs",
+    "ProbtrackxDotConvertParameters",
+    "ProbtrackxDotConvertRowCiftiParameters",
+    "ProbtrackxDotConvertRowVoxelsParameters",
     "probtrackx_dot_convert",
     "probtrackx_dot_convert_col_cifti_params",
     "probtrackx_dot_convert_col_voxels_params",

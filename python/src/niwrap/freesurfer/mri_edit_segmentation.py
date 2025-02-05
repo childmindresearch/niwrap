@@ -183,6 +183,7 @@ def mri_edit_segmentation(
 __all__ = [
     "MRI_EDIT_SEGMENTATION_METADATA",
     "MriEditSegmentationOutputs",
+    "MriEditSegmentationParameters",
     "mri_edit_segmentation",
     "mri_edit_segmentation_params",
 ]

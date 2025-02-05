@@ -297,6 +297,7 @@ def v_3d_depth_map(
 
 __all__ = [
     "V3dDepthMapOutputs",
+    "V3dDepthMapParameters",
     "V_3D_DEPTH_MAP_METADATA",
     "v_3d_depth_map",
     "v_3d_depth_map_params",

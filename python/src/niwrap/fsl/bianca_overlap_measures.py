@@ -204,6 +204,7 @@ def bianca_overlap_measures(
 __all__ = [
     "BIANCA_OVERLAP_MEASURES_METADATA",
     "BiancaOverlapMeasuresOutputs",
+    "BiancaOverlapMeasuresParameters",
     "bianca_overlap_measures",
     "bianca_overlap_measures_params",
 ]

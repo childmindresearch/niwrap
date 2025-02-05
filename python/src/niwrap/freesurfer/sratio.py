@@ -198,6 +198,7 @@ def sratio(
 __all__ = [
     "SRATIO_METADATA",
     "SratioOutputs",
+    "SratioParameters",
     "sratio",
     "sratio_params",
 ]

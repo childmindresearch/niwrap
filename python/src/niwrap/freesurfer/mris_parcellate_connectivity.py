@@ -197,6 +197,7 @@ def mris_parcellate_connectivity(
 __all__ = [
     "MRIS_PARCELLATE_CONNECTIVITY_METADATA",
     "MrisParcellateConnectivityOutputs",
+    "MrisParcellateConnectivityParameters",
     "mris_parcellate_connectivity",
     "mris_parcellate_connectivity_params",
 ]

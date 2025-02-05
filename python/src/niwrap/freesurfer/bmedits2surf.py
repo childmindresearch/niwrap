@@ -267,6 +267,7 @@ def bmedits2surf(
 __all__ = [
     "BMEDITS2SURF_METADATA",
     "Bmedits2surfOutputs",
+    "Bmedits2surfParameters",
     "bmedits2surf",
     "bmedits2surf_params",
 ]

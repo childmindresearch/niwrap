@@ -451,6 +451,7 @@ def mri_compute_volume_fractions(
 __all__ = [
     "MRI_COMPUTE_VOLUME_FRACTIONS_METADATA",
     "MriComputeVolumeFractionsOutputs",
+    "MriComputeVolumeFractionsParameters",
     "mri_compute_volume_fractions",
     "mri_compute_volume_fractions_params",
 ]

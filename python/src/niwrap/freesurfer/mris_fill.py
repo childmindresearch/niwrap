@@ -200,6 +200,7 @@ def mris_fill(
 __all__ = [
     "MRIS_FILL_METADATA",
     "MrisFillOutputs",
+    "MrisFillParameters",
     "mris_fill",
     "mris_fill_params",
 ]

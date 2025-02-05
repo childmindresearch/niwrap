@@ -181,6 +181,7 @@ def cluster2html(
 __all__ = [
     "CLUSTER2HTML_METADATA",
     "Cluster2htmlOutputs",
+    "Cluster2htmlParameters",
     "cluster2html",
     "cluster2html_params",
 ]

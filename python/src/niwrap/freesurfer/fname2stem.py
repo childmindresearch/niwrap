@@ -168,6 +168,7 @@ def fname2stem(
 __all__ = [
     "FNAME2STEM_METADATA",
     "Fname2stemOutputs",
+    "Fname2stemParameters",
     "fname2stem",
     "fname2stem_params",
 ]

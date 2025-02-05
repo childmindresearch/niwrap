@@ -302,6 +302,7 @@ def reg_aladin(
 __all__ = [
     "REG_ALADIN_METADATA",
     "RegAladinOutputs",
+    "RegAladinParameters",
     "reg_aladin",
     "reg_aladin_params",
 ]

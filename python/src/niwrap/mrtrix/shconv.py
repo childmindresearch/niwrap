@@ -467,7 +467,11 @@ def shconv(
 
 __all__ = [
     "SHCONV_METADATA",
+    "ShconvConfigParameters",
     "ShconvOutputs",
+    "ShconvParameters",
+    "ShconvVariousFileParameters",
+    "ShconvVariousStringParameters",
     "shconv",
     "shconv_config_params",
     "shconv_params",

@@ -303,6 +303,7 @@ def v__align_centers(
 
 __all__ = [
     "VAlignCentersOutputs",
+    "VAlignCentersParameters",
     "V__ALIGN_CENTERS_METADATA",
     "v__align_centers",
     "v__align_centers_params",

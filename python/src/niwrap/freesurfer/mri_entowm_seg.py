@@ -447,6 +447,7 @@ def mri_entowm_seg(
 __all__ = [
     "MRI_ENTOWM_SEG_METADATA",
     "MriEntowmSegOutputs",
+    "MriEntowmSegParameters",
     "mri_entowm_seg",
     "mri_entowm_seg_params",
 ]

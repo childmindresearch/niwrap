@@ -553,7 +553,12 @@ def cifti_create_dense_timeseries(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_TIMESERIES_METADATA",
+    "CiftiCreateDenseTimeseriesCerebellumMetricParameters",
+    "CiftiCreateDenseTimeseriesLeftMetricParameters",
     "CiftiCreateDenseTimeseriesOutputs",
+    "CiftiCreateDenseTimeseriesParameters",
+    "CiftiCreateDenseTimeseriesRightMetricParameters",
+    "CiftiCreateDenseTimeseriesVolumeParameters",
     "cifti_create_dense_timeseries",
     "cifti_create_dense_timeseries_cerebellum_metric_params",
     "cifti_create_dense_timeseries_left_metric_params",

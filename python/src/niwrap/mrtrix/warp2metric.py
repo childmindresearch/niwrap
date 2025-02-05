@@ -422,7 +422,10 @@ def warp2metric(
 
 __all__ = [
     "WARP2METRIC_METADATA",
+    "Warp2metricConfigParameters",
+    "Warp2metricFcParameters",
     "Warp2metricOutputs",
+    "Warp2metricParameters",
     "warp2metric",
     "warp2metric_config_params",
     "warp2metric_fc_params",

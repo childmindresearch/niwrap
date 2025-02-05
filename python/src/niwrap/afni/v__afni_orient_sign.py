@@ -171,6 +171,7 @@ def v__afni_orient_sign(
 
 __all__ = [
     "VAfniOrientSignOutputs",
+    "VAfniOrientSignParameters",
     "V__AFNI_ORIENT_SIGN_METADATA",
     "v__afni_orient_sign",
     "v__afni_orient_sign_params",

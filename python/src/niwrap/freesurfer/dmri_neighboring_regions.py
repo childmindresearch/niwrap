@@ -176,6 +176,7 @@ def dmri_neighboring_regions(
 __all__ = [
     "DMRI_NEIGHBORING_REGIONS_METADATA",
     "DmriNeighboringRegionsOutputs",
+    "DmriNeighboringRegionsParameters",
     "dmri_neighboring_regions",
     "dmri_neighboring_regions_params",
 ]

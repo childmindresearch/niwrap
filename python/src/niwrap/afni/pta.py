@@ -265,6 +265,7 @@ def pta(
 __all__ = [
     "PTA_METADATA",
     "PtaOutputs",
+    "PtaParameters",
     "pta",
     "pta_params",
 ]

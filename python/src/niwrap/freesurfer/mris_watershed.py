@@ -211,6 +211,7 @@ def mris_watershed(
 __all__ = [
     "MRIS_WATERSHED_METADATA",
     "MrisWatershedOutputs",
+    "MrisWatershedParameters",
     "mris_watershed",
     "mris_watershed_params",
 ]

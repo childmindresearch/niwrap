@@ -278,6 +278,7 @@ def mri_nlfilter(
 __all__ = [
     "MRI_NLFILTER_METADATA",
     "MriNlfilterOutputs",
+    "MriNlfilterParameters",
     "mri_nlfilter",
     "mri_nlfilter_params",
 ]

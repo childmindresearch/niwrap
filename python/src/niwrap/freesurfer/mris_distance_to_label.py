@@ -175,6 +175,7 @@ def mris_distance_to_label(
 __all__ = [
     "MRIS_DISTANCE_TO_LABEL_METADATA",
     "MrisDistanceToLabelOutputs",
+    "MrisDistanceToLabelParameters",
     "mris_distance_to_label",
     "mris_distance_to_label_params",
 ]

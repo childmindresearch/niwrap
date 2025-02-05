@@ -236,6 +236,7 @@ def signed_distance_to_surface(
 __all__ = [
     "SIGNED_DISTANCE_TO_SURFACE_METADATA",
     "SignedDistanceToSurfaceOutputs",
+    "SignedDistanceToSurfaceParameters",
     "signed_distance_to_surface",
     "signed_distance_to_surface_params",
 ]

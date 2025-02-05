@@ -596,6 +596,7 @@ def v__auto_tlrc(
 
 __all__ = [
     "VAutoTlrcOutputs",
+    "VAutoTlrcParameters",
     "V__AUTO_TLRC_METADATA",
     "v__auto_tlrc",
     "v__auto_tlrc_params",

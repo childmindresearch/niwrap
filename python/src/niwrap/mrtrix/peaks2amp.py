@@ -313,7 +313,9 @@ def peaks2amp(
 
 __all__ = [
     "PEAKS2AMP_METADATA",
+    "Peaks2ampConfigParameters",
     "Peaks2ampOutputs",
+    "Peaks2ampParameters",
     "peaks2amp",
     "peaks2amp_config_params",
     "peaks2amp_params",

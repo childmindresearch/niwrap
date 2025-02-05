@@ -192,6 +192,7 @@ def set_spacing(
 __all__ = [
     "SET_SPACING_METADATA",
     "SetSpacingOutputs",
+    "SetSpacingParameters",
     "set_spacing",
     "set_spacing_params",
 ]

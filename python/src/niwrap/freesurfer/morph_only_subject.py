@@ -170,6 +170,7 @@ def morph_only_subject(
 __all__ = [
     "MORPH_ONLY_SUBJECT_METADATA",
     "MorphOnlySubjectOutputs",
+    "MorphOnlySubjectParameters",
     "morph_only_subject",
     "morph_only_subject_params",
 ]

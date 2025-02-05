@@ -227,6 +227,7 @@ def v__shift_volume(
 
 __all__ = [
     "VShiftVolumeOutputs",
+    "VShiftVolumeParameters",
     "V__SHIFT_VOLUME_METADATA",
     "v__shift_volume",
     "v__shift_volume_params",

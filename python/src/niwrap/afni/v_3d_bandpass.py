@@ -357,6 +357,7 @@ def v_3d_bandpass(
 
 __all__ = [
     "V3dBandpassOutputs",
+    "V3dBandpassParameters",
     "V_3D_BANDPASS_METADATA",
     "v_3d_bandpass",
     "v_3d_bandpass_params",

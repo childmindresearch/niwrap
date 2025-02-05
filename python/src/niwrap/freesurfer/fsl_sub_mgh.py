@@ -316,6 +316,7 @@ def fsl_sub_mgh(
 __all__ = [
     "FSL_SUB_MGH_METADATA",
     "FslSubMghOutputs",
+    "FslSubMghParameters",
     "fsl_sub_mgh",
     "fsl_sub_mgh_params",
 ]

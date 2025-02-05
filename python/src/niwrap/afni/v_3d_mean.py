@@ -338,6 +338,7 @@ def v_3d_mean(
 
 __all__ = [
     "V3dMeanOutputs",
+    "V3dMeanParameters",
     "V_3D_MEAN_METADATA",
     "v_3d_mean",
     "v_3d_mean_params",

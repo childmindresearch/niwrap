@@ -192,6 +192,7 @@ def mri_extract_fcd_features(
 __all__ = [
     "MRI_EXTRACT_FCD_FEATURES_METADATA",
     "MriExtractFcdFeaturesOutputs",
+    "MriExtractFcdFeaturesParameters",
     "mri_extract_fcd_features",
     "mri_extract_fcd_features_params",
 ]

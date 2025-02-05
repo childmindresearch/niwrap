@@ -165,6 +165,7 @@ def fsr_getxopts(
 __all__ = [
     "FSR_GETXOPTS_METADATA",
     "FsrGetxoptsOutputs",
+    "FsrGetxoptsParameters",
     "fsr_getxopts",
     "fsr_getxopts_params",
 ]

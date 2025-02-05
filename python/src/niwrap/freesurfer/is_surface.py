@@ -168,6 +168,7 @@ def is_surface(
 __all__ = [
     "IS_SURFACE_METADATA",
     "IsSurfaceOutputs",
+    "IsSurfaceParameters",
     "is_surface",
     "is_surface_params",
 ]

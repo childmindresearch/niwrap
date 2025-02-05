@@ -232,6 +232,7 @@ def fslascii2img(
 __all__ = [
     "FSLASCII2IMG_METADATA",
     "Fslascii2imgOutputs",
+    "Fslascii2imgParameters",
     "fslascii2img",
     "fslascii2img_params",
 ]

@@ -210,6 +210,7 @@ def fslselectvols(
 __all__ = [
     "FSLSELECTVOLS_METADATA",
     "FslselectvolsOutputs",
+    "FslselectvolsParameters",
     "fslselectvols",
     "fslselectvols_params",
 ]

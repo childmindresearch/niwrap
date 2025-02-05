@@ -212,6 +212,7 @@ def v__spharm_examples(
 
 __all__ = [
     "VSpharmExamplesOutputs",
+    "VSpharmExamplesParameters",
     "V__SPHARM_EXAMPLES_METADATA",
     "v__spharm_examples",
     "v__spharm_examples_params",

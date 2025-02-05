@@ -206,6 +206,7 @@ def p2dsetstat(
 __all__ = [
     "P2DSETSTAT_METADATA",
     "P2dsetstatOutputs",
+    "P2dsetstatParameters",
     "p2dsetstat",
     "p2dsetstat_params",
 ]

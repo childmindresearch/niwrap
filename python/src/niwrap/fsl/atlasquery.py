@@ -217,6 +217,7 @@ def atlasquery(
 __all__ = [
     "ATLASQUERY_METADATA",
     "AtlasqueryOutputs",
+    "AtlasqueryParameters",
     "atlasquery",
     "atlasquery_params",
 ]

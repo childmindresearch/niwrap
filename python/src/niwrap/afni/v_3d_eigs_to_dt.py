@@ -256,6 +256,7 @@ def v_3d_eigs_to_dt(
 
 __all__ = [
     "V3dEigsToDtOutputs",
+    "V3dEigsToDtParameters",
     "V_3D_EIGS_TO_DT_METADATA",
     "v_3d_eigs_to_dt",
     "v_3d_eigs_to_dt_params",

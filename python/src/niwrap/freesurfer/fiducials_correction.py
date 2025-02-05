@@ -176,6 +176,7 @@ def fiducials_correction(
 __all__ = [
     "FIDUCIALS_CORRECTION_METADATA",
     "FiducialsCorrectionOutputs",
+    "FiducialsCorrectionParameters",
     "fiducials_correction",
     "fiducials_correction_params",
 ]

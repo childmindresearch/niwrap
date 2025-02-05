@@ -231,6 +231,7 @@ def swap_subjectwise(
 __all__ = [
     "SWAP_SUBJECTWISE_METADATA",
     "SwapSubjectwiseOutputs",
+    "SwapSubjectwiseParameters",
     "swap_subjectwise",
     "swap_subjectwise_params",
 ]

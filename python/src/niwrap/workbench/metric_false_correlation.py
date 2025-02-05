@@ -247,6 +247,7 @@ def metric_false_correlation(
 __all__ = [
     "METRIC_FALSE_CORRELATION_METADATA",
     "MetricFalseCorrelationOutputs",
+    "MetricFalseCorrelationParameters",
     "metric_false_correlation",
     "metric_false_correlation_params",
 ]

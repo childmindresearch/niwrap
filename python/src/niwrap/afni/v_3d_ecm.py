@@ -341,6 +341,7 @@ def v_3d_ecm(
 
 __all__ = [
     "V3dEcmOutputs",
+    "V3dEcmParameters",
     "V_3D_ECM_METADATA",
     "v_3d_ecm",
     "v_3d_ecm_params",

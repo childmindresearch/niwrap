@@ -295,6 +295,7 @@ def mri_fit_bias(
 __all__ = [
     "MRI_FIT_BIAS_METADATA",
     "MriFitBiasOutputs",
+    "MriFitBiasParameters",
     "mri_fit_bias",
     "mri_fit_bias_params",
 ]

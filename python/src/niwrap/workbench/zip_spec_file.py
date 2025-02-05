@@ -221,6 +221,7 @@ def zip_spec_file(
 __all__ = [
     "ZIP_SPEC_FILE_METADATA",
     "ZipSpecFileOutputs",
+    "ZipSpecFileParameters",
     "zip_spec_file",
     "zip_spec_file_params",
 ]

@@ -218,6 +218,7 @@ def resample_image(
 __all__ = [
     "RESAMPLE_IMAGE_METADATA",
     "ResampleImageOutputs",
+    "ResampleImageParameters",
     "resample_image",
     "resample_image_params",
 ]

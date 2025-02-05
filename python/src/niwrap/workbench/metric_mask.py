@@ -206,6 +206,7 @@ def metric_mask(
 __all__ = [
     "METRIC_MASK_METADATA",
     "MetricMaskOutputs",
+    "MetricMaskParameters",
     "metric_mask",
     "metric_mask_params",
 ]

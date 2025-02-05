@@ -164,6 +164,7 @@ def invfeatreg(
 __all__ = [
     "INVFEATREG_METADATA",
     "InvfeatregOutputs",
+    "InvfeatregParameters",
     "invfeatreg",
     "invfeatreg_params",
 ]

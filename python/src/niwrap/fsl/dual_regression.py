@@ -244,6 +244,7 @@ def dual_regression(
 __all__ = [
     "DUAL_REGRESSION_METADATA",
     "DualRegressionOutputs",
+    "DualRegressionParameters",
     "dual_regression",
     "dual_regression_params",
 ]

@@ -178,6 +178,7 @@ def mri_log_likelihood(
 __all__ = [
     "MRI_LOG_LIKELIHOOD_METADATA",
     "MriLogLikelihoodOutputs",
+    "MriLogLikelihoodParameters",
     "mri_log_likelihood",
     "mri_log_likelihood_params",
 ]

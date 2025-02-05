@@ -190,6 +190,7 @@ def mris_segmentation_stats(
 __all__ = [
     "MRIS_SEGMENTATION_STATS_METADATA",
     "MrisSegmentationStatsOutputs",
+    "MrisSegmentationStatsParameters",
     "mris_segmentation_stats",
     "mris_segmentation_stats_params",
 ]

@@ -209,6 +209,7 @@ def cifti_reorder(
 __all__ = [
     "CIFTI_REORDER_METADATA",
     "CiftiReorderOutputs",
+    "CiftiReorderParameters",
     "cifti_reorder",
     "cifti_reorder_params",
 ]

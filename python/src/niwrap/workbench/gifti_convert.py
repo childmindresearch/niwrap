@@ -193,6 +193,7 @@ def gifti_convert(
 __all__ = [
     "GIFTI_CONVERT_METADATA",
     "GiftiConvertOutputs",
+    "GiftiConvertParameters",
     "gifti_convert",
     "gifti_convert_params",
 ]

@@ -176,6 +176,7 @@ def fsl2ascii(
 __all__ = [
     "FSL2ASCII_METADATA",
     "Fsl2asciiOutputs",
+    "Fsl2asciiParameters",
     "fsl2ascii",
     "fsl2ascii_params",
 ]

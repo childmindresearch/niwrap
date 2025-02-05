@@ -393,6 +393,7 @@ def v_3_droimaker(
 
 __all__ = [
     "V3DroimakerOutputs",
+    "V3DroimakerParameters",
     "V_3_DROIMAKER_METADATA",
     "v_3_droimaker",
     "v_3_droimaker_params",

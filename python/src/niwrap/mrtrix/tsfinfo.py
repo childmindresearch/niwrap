@@ -321,7 +321,9 @@ def tsfinfo(
 
 __all__ = [
     "TSFINFO_METADATA",
+    "TsfinfoConfigParameters",
     "TsfinfoOutputs",
+    "TsfinfoParameters",
     "tsfinfo",
     "tsfinfo_config_params",
     "tsfinfo_params",

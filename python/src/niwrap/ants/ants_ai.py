@@ -324,6 +324,7 @@ def ants_ai(
 __all__ = [
     "ANTS_AI_METADATA",
     "AntsAiOutputs",
+    "AntsAiParameters",
     "ants_ai",
     "ants_ai_params",
 ]

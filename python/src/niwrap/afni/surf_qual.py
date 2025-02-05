@@ -238,6 +238,7 @@ def surf_qual(
 __all__ = [
     "SURF_QUAL_METADATA",
     "SurfQualOutputs",
+    "SurfQualParameters",
     "surf_qual",
     "surf_qual_params",
 ]

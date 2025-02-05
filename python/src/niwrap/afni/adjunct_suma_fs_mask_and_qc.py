@@ -237,6 +237,7 @@ def adjunct_suma_fs_mask_and_qc(
 __all__ = [
     "ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA",
     "AdjunctSumaFsMaskAndQcOutputs",
+    "AdjunctSumaFsMaskAndQcParameters",
     "adjunct_suma_fs_mask_and_qc",
     "adjunct_suma_fs_mask_and_qc_params",
 ]

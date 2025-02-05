@@ -399,6 +399,7 @@ def mri_fieldsign(
 __all__ = [
     "MRI_FIELDSIGN_METADATA",
     "MriFieldsignOutputs",
+    "MriFieldsignParameters",
     "mri_fieldsign",
     "mri_fieldsign_params",
 ]

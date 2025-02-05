@@ -271,6 +271,7 @@ def v__compute_oc_weights(
 
 __all__ = [
     "VComputeOcWeightsOutputs",
+    "VComputeOcWeightsParameters",
     "V__COMPUTE_OC_WEIGHTS_METADATA",
     "v__compute_oc_weights",
     "v__compute_oc_weights_params",

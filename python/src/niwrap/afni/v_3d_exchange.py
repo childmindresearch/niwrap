@@ -214,6 +214,7 @@ def v_3d_exchange(
 
 __all__ = [
     "V3dExchangeOutputs",
+    "V3dExchangeParameters",
     "V_3D_EXCHANGE_METADATA",
     "v_3d_exchange",
     "v_3d_exchange_params",

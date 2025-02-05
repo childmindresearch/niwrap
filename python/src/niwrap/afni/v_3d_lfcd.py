@@ -235,6 +235,7 @@ def v_3d_lfcd(
 
 __all__ = [
     "V3dLfcdOutputs",
+    "V3dLfcdParameters",
     "V_3D_LFCD_METADATA",
     "v_3d_lfcd",
     "v_3d_lfcd_params",

@@ -451,6 +451,7 @@ def v_3d_tproject(
 
 __all__ = [
     "V3dTprojectOutputs",
+    "V3dTprojectParameters",
     "V_3D_TPROJECT_METADATA",
     "v_3d_tproject",
     "v_3d_tproject_params",

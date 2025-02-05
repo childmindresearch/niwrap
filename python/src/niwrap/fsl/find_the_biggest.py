@@ -176,6 +176,7 @@ def find_the_biggest(
 __all__ = [
     "FIND_THE_BIGGEST_METADATA",
     "FindTheBiggestOutputs",
+    "FindTheBiggestParameters",
     "find_the_biggest",
     "find_the_biggest_params",
 ]

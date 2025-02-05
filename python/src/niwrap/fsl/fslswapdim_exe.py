@@ -211,6 +211,7 @@ def fslswapdim_exe(
 __all__ = [
     "FSLSWAPDIM_EXE_METADATA",
     "FslswapdimExeOutputs",
+    "FslswapdimExeParameters",
     "fslswapdim_exe",
     "fslswapdim_exe_params",
 ]

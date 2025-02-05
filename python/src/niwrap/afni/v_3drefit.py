@@ -382,6 +382,7 @@ def v_3drefit(
 
 __all__ = [
     "V3drefitOutputs",
+    "V3drefitParameters",
     "V_3DREFIT_METADATA",
     "v_3drefit",
     "v_3drefit_params",

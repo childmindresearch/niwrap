@@ -244,6 +244,8 @@ def annotation_resample(
 __all__ = [
     "ANNOTATION_RESAMPLE_METADATA",
     "AnnotationResampleOutputs",
+    "AnnotationResampleParameters",
+    "AnnotationResampleSurfacePairParameters",
     "annotation_resample",
     "annotation_resample_params",
     "annotation_resample_surface_pair_params",

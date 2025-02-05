@@ -164,6 +164,7 @@ def unpack_ima_tcl(
 __all__ = [
     "UNPACK_IMA_TCL_METADATA",
     "UnpackImaTclOutputs",
+    "UnpackImaTclParameters",
     "unpack_ima_tcl",
     "unpack_ima_tcl_params",
 ]

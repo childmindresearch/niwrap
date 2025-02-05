@@ -371,6 +371,7 @@ def v_3d_tcorr_map(
 
 __all__ = [
     "V3dTcorrMapOutputs",
+    "V3dTcorrMapParameters",
     "V_3D_TCORR_MAP_METADATA",
     "v_3d_tcorr_map",
     "v_3d_tcorr_map_params",

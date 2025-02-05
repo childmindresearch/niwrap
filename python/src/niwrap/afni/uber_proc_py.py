@@ -168,6 +168,7 @@ def uber_proc_py(
 __all__ = [
     "UBER_PROC_PY_METADATA",
     "UberProcPyOutputs",
+    "UberProcPyParameters",
     "uber_proc_py",
     "uber_proc_py_params",
 ]

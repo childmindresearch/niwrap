@@ -195,6 +195,7 @@ def v_3dmaxdisp(
 
 __all__ = [
     "V3dmaxdispOutputs",
+    "V3dmaxdispParameters",
     "V_3DMAXDISP_METADATA",
     "v_3dmaxdisp",
     "v_3dmaxdisp_params",

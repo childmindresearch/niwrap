@@ -289,6 +289,7 @@ def mris_target_pos(
 __all__ = [
     "MRIS_TARGET_POS_METADATA",
     "MrisTargetPosOutputs",
+    "MrisTargetPosParameters",
     "mris_target_pos",
     "mris_target_pos_params",
 ]

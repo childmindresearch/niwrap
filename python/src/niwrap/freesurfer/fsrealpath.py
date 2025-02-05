@@ -172,6 +172,7 @@ def fsrealpath(
 __all__ = [
     "FSREALPATH_METADATA",
     "FsrealpathOutputs",
+    "FsrealpathParameters",
     "fsrealpath",
     "fsrealpath_params",
 ]

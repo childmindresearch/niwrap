@@ -326,7 +326,9 @@ def tsfthreshold(
 
 __all__ = [
     "TSFTHRESHOLD_METADATA",
+    "TsfthresholdConfigParameters",
     "TsfthresholdOutputs",
+    "TsfthresholdParameters",
     "tsfthreshold",
     "tsfthreshold_config_params",
     "tsfthreshold_params",

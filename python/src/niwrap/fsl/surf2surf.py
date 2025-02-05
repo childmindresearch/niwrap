@@ -273,6 +273,7 @@ def surf2surf(
 __all__ = [
     "SURF2SURF_METADATA",
     "Surf2surfOutputs",
+    "Surf2surfParameters",
     "surf2surf",
     "surf2surf_params",
 ]

@@ -216,6 +216,7 @@ def talairach_avi(
 __all__ = [
     "TALAIRACH_AVI_METADATA",
     "TalairachAviOutputs",
+    "TalairachAviParameters",
     "talairach_avi",
     "talairach_avi_params",
 ]

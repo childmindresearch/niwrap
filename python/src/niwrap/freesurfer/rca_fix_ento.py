@@ -224,6 +224,7 @@ def rca_fix_ento(
 __all__ = [
     "RCA_FIX_ENTO_METADATA",
     "RcaFixEntoOutputs",
+    "RcaFixEntoParameters",
     "rca_fix_ento",
     "rca_fix_ento_params",
 ]

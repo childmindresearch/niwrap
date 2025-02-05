@@ -232,6 +232,7 @@ def mri_map_cpdat(
 __all__ = [
     "MRI_MAP_CPDAT_METADATA",
     "MriMapCpdatOutputs",
+    "MriMapCpdatParameters",
     "mri_map_cpdat",
     "mri_map_cpdat_params",
 ]

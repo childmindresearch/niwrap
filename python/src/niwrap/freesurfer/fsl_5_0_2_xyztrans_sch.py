@@ -185,6 +185,7 @@ def fsl_5_0_2_xyztrans_sch(
 __all__ = [
     "FSL_5_0_2_XYZTRANS_SCH_METADATA",
     "Fsl502XyztransSchOutputs",
+    "Fsl502XyztransSchParameters",
     "fsl_5_0_2_xyztrans_sch",
     "fsl_5_0_2_xyztrans_sch_params",
 ]

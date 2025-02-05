@@ -464,6 +464,9 @@ def cifti_math(
 __all__ = [
     "CIFTI_MATH_METADATA",
     "CiftiMathOutputs",
+    "CiftiMathParameters",
+    "CiftiMathSelectParameters",
+    "CiftiMathVarParameters",
     "cifti_math",
     "cifti_math_params",
     "cifti_math_select_params",

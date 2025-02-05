@@ -238,6 +238,7 @@ def qatools_py(
 __all__ = [
     "QATOOLS_PY_METADATA",
     "QatoolsPyOutputs",
+    "QatoolsPyParameters",
     "qatools_py",
     "qatools_py_params",
 ]

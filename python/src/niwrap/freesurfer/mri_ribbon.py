@@ -202,6 +202,7 @@ def mri_ribbon(
 __all__ = [
     "MRI_RIBBON_METADATA",
     "MriRibbonOutputs",
+    "MriRibbonParameters",
     "mri_ribbon",
     "mri_ribbon_params",
 ]

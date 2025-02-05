@@ -223,6 +223,7 @@ def segment_subject_old_skull_strip(
 __all__ = [
     "SEGMENT_SUBJECT_OLD_SKULL_STRIP_METADATA",
     "SegmentSubjectOldSkullStripOutputs",
+    "SegmentSubjectOldSkullStripParameters",
     "segment_subject_old_skull_strip",
     "segment_subject_old_skull_strip_params",
 ]

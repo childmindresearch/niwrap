@@ -183,6 +183,7 @@ def surface_normals(
 __all__ = [
     "SURFACE_NORMALS_METADATA",
     "SurfaceNormalsOutputs",
+    "SurfaceNormalsParameters",
     "surface_normals",
     "surface_normals_params",
 ]

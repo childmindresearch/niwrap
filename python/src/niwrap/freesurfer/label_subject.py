@@ -182,6 +182,7 @@ def label_subject(
 __all__ = [
     "LABEL_SUBJECT_METADATA",
     "LabelSubjectOutputs",
+    "LabelSubjectParameters",
     "label_subject",
     "label_subject_params",
 ]

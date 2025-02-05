@@ -218,6 +218,7 @@ def mris_compute_volume_fractions(
 __all__ = [
     "MRIS_COMPUTE_VOLUME_FRACTIONS_METADATA",
     "MrisComputeVolumeFractionsOutputs",
+    "MrisComputeVolumeFractionsParameters",
     "mris_compute_volume_fractions",
     "mris_compute_volume_fractions_params",
 ]

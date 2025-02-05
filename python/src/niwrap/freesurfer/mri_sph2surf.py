@@ -266,6 +266,7 @@ def mri_sph2surf(
 __all__ = [
     "MRI_SPH2SURF_METADATA",
     "MriSph2surfOutputs",
+    "MriSph2surfParameters",
     "mri_sph2surf",
     "mri_sph2surf_params",
 ]

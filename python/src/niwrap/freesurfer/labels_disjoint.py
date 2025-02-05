@@ -189,6 +189,7 @@ def labels_disjoint(
 __all__ = [
     "LABELS_DISJOINT_METADATA",
     "LabelsDisjointOutputs",
+    "LabelsDisjointParameters",
     "labels_disjoint",
     "labels_disjoint_params",
 ]

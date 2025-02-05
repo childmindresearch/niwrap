@@ -255,6 +255,7 @@ def anatomical_average(
 __all__ = [
     "ANATOMICAL_AVERAGE_METADATA",
     "AnatomicalAverageOutputs",
+    "AnatomicalAverageParameters",
     "anatomical_average",
     "anatomical_average_params",
 ]

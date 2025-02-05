@@ -178,6 +178,7 @@ def mri_validate_skull_stripped(
 __all__ = [
     "MRI_VALIDATE_SKULL_STRIPPED_METADATA",
     "MriValidateSkullStrippedOutputs",
+    "MriValidateSkullStrippedParameters",
     "mri_validate_skull_stripped",
     "mri_validate_skull_stripped_params",
 ]

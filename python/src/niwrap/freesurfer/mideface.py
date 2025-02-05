@@ -389,6 +389,7 @@ def mideface(
 __all__ = [
     "MIDEFACE_METADATA",
     "MidefaceOutputs",
+    "MidefaceParameters",
     "mideface",
     "mideface_params",
 ]

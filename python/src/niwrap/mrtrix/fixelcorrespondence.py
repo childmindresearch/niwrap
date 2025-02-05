@@ -346,7 +346,9 @@ def fixelcorrespondence(
 
 __all__ = [
     "FIXELCORRESPONDENCE_METADATA",
+    "FixelcorrespondenceConfigParameters",
     "FixelcorrespondenceOutputs",
+    "FixelcorrespondenceParameters",
     "fixelcorrespondence",
     "fixelcorrespondence_config_params",
     "fixelcorrespondence_params",

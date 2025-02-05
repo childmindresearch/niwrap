@@ -294,6 +294,7 @@ def v__dice_metric(
 
 __all__ = [
     "VDiceMetricOutputs",
+    "VDiceMetricParameters",
     "V__DICE_METRIC_METADATA",
     "v__dice_metric",
     "v__dice_metric_params",

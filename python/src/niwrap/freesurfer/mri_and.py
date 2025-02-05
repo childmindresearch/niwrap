@@ -164,6 +164,7 @@ def mri_and(
 __all__ = [
     "MRI_AND_METADATA",
     "MriAndOutputs",
+    "MriAndParameters",
     "mri_and",
     "mri_and_params",
 ]

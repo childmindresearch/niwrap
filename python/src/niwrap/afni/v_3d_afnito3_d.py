@@ -169,6 +169,7 @@ def v_3d_afnito3_d(
 
 __all__ = [
     "V3dAfnito3DOutputs",
+    "V3dAfnito3DParameters",
     "V_3D_AFNITO3_D_METADATA",
     "v_3d_afnito3_d",
     "v_3d_afnito3_d_params",

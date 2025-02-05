@@ -251,6 +251,7 @@ def v_1deval(
 
 __all__ = [
     "V1devalOutputs",
+    "V1devalParameters",
     "V_1DEVAL_METADATA",
     "v_1deval",
     "v_1deval_params",

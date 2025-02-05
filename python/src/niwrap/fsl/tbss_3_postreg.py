@@ -177,6 +177,7 @@ def tbss_3_postreg(
 __all__ = [
     "TBSS_3_POSTREG_METADATA",
     "Tbss3PostregOutputs",
+    "Tbss3PostregParameters",
     "tbss_3_postreg",
     "tbss_3_postreg_params",
 ]

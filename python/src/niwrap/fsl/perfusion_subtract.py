@@ -188,6 +188,7 @@ def perfusion_subtract(
 __all__ = [
     "PERFUSION_SUBTRACT_METADATA",
     "PerfusionSubtractOutputs",
+    "PerfusionSubtractParameters",
     "perfusion_subtract",
     "perfusion_subtract_params",
 ]

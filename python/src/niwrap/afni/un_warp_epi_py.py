@@ -219,6 +219,7 @@ def un_warp_epi_py(
 __all__ = [
     "UN_WARP_EPI_PY_METADATA",
     "UnWarpEpiPyOutputs",
+    "UnWarpEpiPyParameters",
     "un_warp_epi_py",
     "un_warp_epi_py_params",
 ]

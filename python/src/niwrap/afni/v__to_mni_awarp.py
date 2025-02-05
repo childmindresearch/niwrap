@@ -179,6 +179,7 @@ def v__to_mni_awarp(
 
 __all__ = [
     "VToMniAwarpOutputs",
+    "VToMniAwarpParameters",
     "V__TO_MNI_AWARP_METADATA",
     "v__to_mni_awarp",
     "v__to_mni_awarp_params",

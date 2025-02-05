@@ -403,6 +403,7 @@ def ants_joint_tensor_fusion(
 __all__ = [
     "ANTS_JOINT_TENSOR_FUSION_METADATA",
     "AntsJointTensorFusionOutputs",
+    "AntsJointTensorFusionParameters",
     "ants_joint_tensor_fusion",
     "ants_joint_tensor_fusion_params",
 ]

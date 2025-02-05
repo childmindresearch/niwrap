@@ -233,6 +233,7 @@ def wpng(
 __all__ = [
     "WPNG_METADATA",
     "WpngOutputs",
+    "WpngParameters",
     "wpng",
     "wpng_params",
 ]

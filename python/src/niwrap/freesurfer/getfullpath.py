@@ -164,6 +164,7 @@ def getfullpath(
 __all__ = [
     "GETFULLPATH_METADATA",
     "GetfullpathOutputs",
+    "GetfullpathParameters",
     "getfullpath",
     "getfullpath_params",
 ]

@@ -239,6 +239,7 @@ def mri_synthstrip(
 __all__ = [
     "MRI_SYNTHSTRIP_METADATA",
     "MriSynthstripOutputs",
+    "MriSynthstripParameters",
     "mri_synthstrip",
     "mri_synthstrip_params",
 ]

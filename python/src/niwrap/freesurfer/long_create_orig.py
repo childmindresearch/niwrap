@@ -181,6 +181,7 @@ def long_create_orig(
 __all__ = [
     "LONG_CREATE_ORIG_METADATA",
     "LongCreateOrigOutputs",
+    "LongCreateOrigParameters",
     "long_create_orig",
     "long_create_orig_params",
 ]

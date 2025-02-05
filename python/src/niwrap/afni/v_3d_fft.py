@@ -288,6 +288,7 @@ def v_3d_fft(
 
 __all__ = [
     "V3dFftOutputs",
+    "V3dFftParameters",
     "V_3D_FFT_METADATA",
     "v_3d_fft",
     "v_3d_fft_params",

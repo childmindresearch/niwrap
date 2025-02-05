@@ -191,6 +191,7 @@ def surface_affine_regression(
 __all__ = [
     "SURFACE_AFFINE_REGRESSION_METADATA",
     "SurfaceAffineRegressionOutputs",
+    "SurfaceAffineRegressionParameters",
     "surface_affine_regression",
     "surface_affine_regression_params",
 ]

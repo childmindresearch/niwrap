@@ -245,6 +245,7 @@ def v_3d_anhist(
 
 __all__ = [
     "V3dAnhistOutputs",
+    "V3dAnhistParameters",
     "V_3D_ANHIST_METADATA",
     "v_3d_anhist",
     "v_3d_anhist_params",

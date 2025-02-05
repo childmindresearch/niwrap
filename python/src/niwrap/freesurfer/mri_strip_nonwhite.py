@@ -194,6 +194,7 @@ def mri_strip_nonwhite(
 __all__ = [
     "MRI_STRIP_NONWHITE_METADATA",
     "MriStripNonwhiteOutputs",
+    "MriStripNonwhiteParameters",
     "mri_strip_nonwhite",
     "mri_strip_nonwhite_params",
 ]

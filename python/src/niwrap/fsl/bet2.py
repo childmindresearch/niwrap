@@ -328,6 +328,7 @@ def bet2(
 __all__ = [
     "BET2_METADATA",
     "Bet2Outputs",
+    "Bet2Parameters",
     "bet2",
     "bet2_params",
 ]

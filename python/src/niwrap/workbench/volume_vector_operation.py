@@ -251,6 +251,7 @@ def volume_vector_operation(
 __all__ = [
     "VOLUME_VECTOR_OPERATION_METADATA",
     "VolumeVectorOperationOutputs",
+    "VolumeVectorOperationParameters",
     "volume_vector_operation",
     "volume_vector_operation_params",
 ]

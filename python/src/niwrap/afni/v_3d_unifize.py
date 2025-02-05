@@ -382,6 +382,7 @@ def v_3d_unifize(
 
 __all__ = [
     "V3dUnifizeOutputs",
+    "V3dUnifizeParameters",
     "V_3D_UNIFIZE_METADATA",
     "v_3d_unifize",
     "v_3d_unifize_params",

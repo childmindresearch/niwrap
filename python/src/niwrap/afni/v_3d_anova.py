@@ -338,6 +338,7 @@ def v_3d_anova(
 
 __all__ = [
     "V3dAnovaOutputs",
+    "V3dAnovaParameters",
     "V_3D_ANOVA_METADATA",
     "v_3d_anova",
     "v_3d_anova_params",

@@ -192,6 +192,7 @@ def fsladd(
 __all__ = [
     "FSLADD_METADATA",
     "FsladdOutputs",
+    "FsladdParameters",
     "fsladd",
     "fsladd_params",
 ]

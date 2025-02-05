@@ -725,7 +725,11 @@ def tckmap(
 
 __all__ = [
     "TCKMAP_METADATA",
+    "TckmapConfigParameters",
     "TckmapOutputs",
+    "TckmapParameters",
+    "TckmapVariousFileParameters",
+    "TckmapVariousStringParameters",
     "tckmap",
     "tckmap_config_params",
     "tckmap_params",

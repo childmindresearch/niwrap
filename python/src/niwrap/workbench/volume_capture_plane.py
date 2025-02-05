@@ -297,6 +297,7 @@ def volume_capture_plane(
 __all__ = [
     "VOLUME_CAPTURE_PLANE_METADATA",
     "VolumeCapturePlaneOutputs",
+    "VolumeCapturePlaneParameters",
     "volume_capture_plane",
     "volume_capture_plane_params",
 ]

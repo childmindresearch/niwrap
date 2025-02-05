@@ -185,6 +185,7 @@ def spec_file_merge(
 __all__ = [
     "SPEC_FILE_MERGE_METADATA",
     "SpecFileMergeOutputs",
+    "SpecFileMergeParameters",
     "spec_file_merge",
     "spec_file_merge_params",
 ]

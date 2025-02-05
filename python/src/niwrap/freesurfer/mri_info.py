@@ -587,6 +587,7 @@ def mri_info(
 __all__ = [
     "MRI_INFO_METADATA",
     "MriInfoOutputs",
+    "MriInfoParameters",
     "mri_info",
     "mri_info_params",
 ]

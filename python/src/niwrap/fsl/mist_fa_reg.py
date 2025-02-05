@@ -190,6 +190,7 @@ def mist_fa_reg(
 __all__ = [
     "MIST_FA_REG_METADATA",
     "MistFaRegOutputs",
+    "MistFaRegParameters",
     "mist_fa_reg",
     "mist_fa_reg_params",
 ]

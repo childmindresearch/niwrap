@@ -245,6 +245,7 @@ def meica_py(
 __all__ = [
     "MEICA_PY_METADATA",
     "MeicaPyOutputs",
+    "MeicaPyParameters",
     "meica_py",
     "meica_py_params",
 ]

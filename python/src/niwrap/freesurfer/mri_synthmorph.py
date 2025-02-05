@@ -323,6 +323,7 @@ def mri_synthmorph(
 __all__ = [
     "MRI_SYNTHMORPH_METADATA",
     "MriSynthmorphOutputs",
+    "MriSynthmorphParameters",
     "mri_synthmorph",
     "mri_synthmorph_params",
 ]

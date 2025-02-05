@@ -254,6 +254,7 @@ def test_recon_all_csh(
 __all__ = [
     "TEST_RECON_ALL_CSH_METADATA",
     "TestReconAllCshOutputs",
+    "TestReconAllCshParameters",
     "test_recon_all_csh",
     "test_recon_all_csh_params",
 ]

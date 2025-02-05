@@ -262,6 +262,7 @@ def reg_jacobian(
 __all__ = [
     "REG_JACOBIAN_METADATA",
     "RegJacobianOutputs",
+    "RegJacobianParameters",
     "reg_jacobian",
     "reg_jacobian_params",
 ]

@@ -231,6 +231,7 @@ def v_3d_dft(
 
 __all__ = [
     "V3dDftOutputs",
+    "V3dDftParameters",
     "V_3D_DFT_METADATA",
     "v_3d_dft",
     "v_3d_dft_params",

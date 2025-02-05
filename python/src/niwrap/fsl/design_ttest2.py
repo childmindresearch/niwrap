@@ -186,6 +186,7 @@ def design_ttest2(
 __all__ = [
     "DESIGN_TTEST2_METADATA",
     "DesignTtest2Outputs",
+    "DesignTtest2Parameters",
     "design_ttest2",
     "design_ttest2_params",
 ]

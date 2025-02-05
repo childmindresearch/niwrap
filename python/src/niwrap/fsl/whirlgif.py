@@ -231,6 +231,7 @@ def whirlgif(
 __all__ = [
     "WHIRLGIF_METADATA",
     "WhirlgifOutputs",
+    "WhirlgifParameters",
     "whirlgif",
     "whirlgif_params",
 ]

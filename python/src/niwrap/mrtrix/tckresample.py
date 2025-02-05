@@ -544,7 +544,11 @@ def tckresample(
 
 __all__ = [
     "TCKRESAMPLE_METADATA",
+    "TckresampleArcParameters",
+    "TckresampleConfigParameters",
+    "TckresampleLineParameters",
     "TckresampleOutputs",
+    "TckresampleParameters",
     "tckresample",
     "tckresample_arc_params",
     "tckresample_config_params",

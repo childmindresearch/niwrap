@@ -205,6 +205,7 @@ def mccutup(
 __all__ = [
     "MCCUTUP_METADATA",
     "MccutupOutputs",
+    "MccutupParameters",
     "mccutup",
     "mccutup_params",
 ]

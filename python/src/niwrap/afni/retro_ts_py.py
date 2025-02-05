@@ -446,6 +446,7 @@ def retro_ts_py(
 __all__ = [
     "RETRO_TS_PY_METADATA",
     "RetroTsPyOutputs",
+    "RetroTsPyParameters",
     "retro_ts_py",
     "retro_ts_py_params",
 ]

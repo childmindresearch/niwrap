@@ -257,6 +257,7 @@ def mri_seg_diff(
 __all__ = [
     "MRI_SEG_DIFF_METADATA",
     "MriSegDiffOutputs",
+    "MriSegDiffParameters",
     "mri_seg_diff",
     "mri_seg_diff_params",
 ]

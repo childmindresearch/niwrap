@@ -317,6 +317,7 @@ def mris_anatomical_stats(
 __all__ = [
     "MRIS_ANATOMICAL_STATS_METADATA",
     "MrisAnatomicalStatsOutputs",
+    "MrisAnatomicalStatsParameters",
     "mris_anatomical_stats",
     "mris_anatomical_stats_params",
 ]

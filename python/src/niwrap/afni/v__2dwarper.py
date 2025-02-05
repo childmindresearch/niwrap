@@ -168,6 +168,7 @@ def v__2dwarper(
 
 __all__ = [
     "V2dwarperOutputs",
+    "V2dwarperParameters",
     "V__2DWARPER_METADATA",
     "v__2dwarper",
     "v__2dwarper_params",

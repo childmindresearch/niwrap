@@ -719,7 +719,10 @@ def connectomestats(
 
 __all__ = [
     "CONNECTOMESTATS_METADATA",
+    "ConnectomestatsColumnParameters",
+    "ConnectomestatsConfigParameters",
     "ConnectomestatsOutputs",
+    "ConnectomestatsParameters",
     "connectomestats",
     "connectomestats_column_params",
     "connectomestats_config_params",

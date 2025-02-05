@@ -423,6 +423,9 @@ def metric_extrema(
 __all__ = [
     "METRIC_EXTREMA_METADATA",
     "MetricExtremaOutputs",
+    "MetricExtremaParameters",
+    "MetricExtremaPresmoothParameters",
+    "MetricExtremaThresholdParameters",
     "metric_extrema",
     "metric_extrema_params",
     "metric_extrema_presmooth_params",

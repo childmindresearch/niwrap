@@ -339,7 +339,9 @@ def mrcheckerboardmask(
 
 __all__ = [
     "MRCHECKERBOARDMASK_METADATA",
+    "MrcheckerboardmaskConfigParameters",
     "MrcheckerboardmaskOutputs",
+    "MrcheckerboardmaskParameters",
     "mrcheckerboardmask",
     "mrcheckerboardmask_config_params",
     "mrcheckerboardmask_params",

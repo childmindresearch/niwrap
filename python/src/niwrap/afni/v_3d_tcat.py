@@ -212,6 +212,7 @@ def v_3d_tcat(
 
 __all__ = [
     "V3dTcatOutputs",
+    "V3dTcatParameters",
     "V_3D_TCAT_METADATA",
     "v_3d_tcat",
     "v_3d_tcat_params",

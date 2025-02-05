@@ -231,6 +231,7 @@ def dmri_project_end_points(
 __all__ = [
     "DMRI_PROJECT_END_POINTS_METADATA",
     "DmriProjectEndPointsOutputs",
+    "DmriProjectEndPointsParameters",
     "dmri_project_end_points",
     "dmri_project_end_points_params",
 ]

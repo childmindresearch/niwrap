@@ -197,6 +197,7 @@ def cifti_transpose(
 __all__ = [
     "CIFTI_TRANSPOSE_METADATA",
     "CiftiTransposeOutputs",
+    "CiftiTransposeParameters",
     "cifti_transpose",
     "cifti_transpose_params",
 ]

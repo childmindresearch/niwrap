@@ -230,6 +230,7 @@ def v_3d_afnito_nifti(
 
 __all__ = [
     "V3dAfnitoNiftiOutputs",
+    "V3dAfnitoNiftiParameters",
     "V_3D_AFNITO_NIFTI_METADATA",
     "v_3d_afnito_nifti",
     "v_3d_afnito_nifti_params",

@@ -166,6 +166,7 @@ def run_qdec_glm(
 __all__ = [
     "RUN_QDEC_GLM_METADATA",
     "RunQdecGlmOutputs",
+    "RunQdecGlmParameters",
     "run_qdec_glm",
     "run_qdec_glm_params",
 ]

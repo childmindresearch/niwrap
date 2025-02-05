@@ -396,6 +396,7 @@ def v_3d_lmer(
 
 __all__ = [
     "V3dLmerOutputs",
+    "V3dLmerParameters",
     "V_3D_LMER_METADATA",
     "v_3d_lmer",
     "v_3d_lmer_params",

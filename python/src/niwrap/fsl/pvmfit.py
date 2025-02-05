@@ -316,6 +316,7 @@ def pvmfit(
 __all__ = [
     "PVMFIT_METADATA",
     "PvmfitOutputs",
+    "PvmfitParameters",
     "pvmfit",
     "pvmfit_params",
 ]

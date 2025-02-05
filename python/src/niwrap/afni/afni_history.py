@@ -385,6 +385,7 @@ def afni_history(
 __all__ = [
     "AFNI_HISTORY_METADATA",
     "AfniHistoryOutputs",
+    "AfniHistoryParameters",
     "afni_history",
     "afni_history_params",
 ]

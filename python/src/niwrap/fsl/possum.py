@@ -428,6 +428,7 @@ def possum(
 __all__ = [
     "POSSUM_METADATA",
     "PossumOutputs",
+    "PossumParameters",
     "possum",
     "possum_params",
 ]

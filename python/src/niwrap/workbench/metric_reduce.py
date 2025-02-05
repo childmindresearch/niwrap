@@ -293,7 +293,9 @@ def metric_reduce(
 
 __all__ = [
     "METRIC_REDUCE_METADATA",
+    "MetricReduceExcludeOutliersParameters",
     "MetricReduceOutputs",
+    "MetricReduceParameters",
     "metric_reduce",
     "metric_reduce_exclude_outliers_params",
     "metric_reduce_params",

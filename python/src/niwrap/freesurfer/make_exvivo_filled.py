@@ -185,6 +185,7 @@ def make_exvivo_filled(
 __all__ = [
     "MAKE_EXVIVO_FILLED_METADATA",
     "MakeExvivoFilledOutputs",
+    "MakeExvivoFilledParameters",
     "make_exvivo_filled",
     "make_exvivo_filled_params",
 ]

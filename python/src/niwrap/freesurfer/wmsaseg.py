@@ -267,6 +267,7 @@ def wmsaseg(
 __all__ = [
     "WMSASEG_METADATA",
     "WmsasegOutputs",
+    "WmsasegParameters",
     "wmsaseg",
     "wmsaseg_params",
 ]

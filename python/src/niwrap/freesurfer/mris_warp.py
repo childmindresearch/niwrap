@@ -248,6 +248,7 @@ def mris_warp(
 __all__ = [
     "MRIS_WARP_METADATA",
     "MrisWarpOutputs",
+    "MrisWarpParameters",
     "mris_warp",
     "mris_warp_params",
 ]

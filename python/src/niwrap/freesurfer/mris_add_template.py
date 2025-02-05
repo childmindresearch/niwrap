@@ -162,6 +162,7 @@ def mris_add_template(
 __all__ = [
     "MRIS_ADD_TEMPLATE_METADATA",
     "MrisAddTemplateOutputs",
+    "MrisAddTemplateParameters",
     "mris_add_template",
     "mris_add_template_params",
 ]

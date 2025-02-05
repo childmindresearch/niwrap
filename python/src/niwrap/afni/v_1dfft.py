@@ -253,6 +253,7 @@ def v_1dfft(
 
 __all__ = [
     "V1dfftOutputs",
+    "V1dfftParameters",
     "V_1DFFT_METADATA",
     "v_1dfft",
     "v_1dfft_params",

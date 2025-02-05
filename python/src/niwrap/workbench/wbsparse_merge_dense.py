@@ -231,6 +231,8 @@ def wbsparse_merge_dense(
 __all__ = [
     "WBSPARSE_MERGE_DENSE_METADATA",
     "WbsparseMergeDenseOutputs",
+    "WbsparseMergeDenseParameters",
+    "WbsparseMergeDenseWbsparseParameters",
     "wbsparse_merge_dense",
     "wbsparse_merge_dense_params",
     "wbsparse_merge_dense_wbsparse_params",

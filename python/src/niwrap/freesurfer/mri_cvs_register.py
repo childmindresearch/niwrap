@@ -447,6 +447,7 @@ def mri_cvs_register(
 __all__ = [
     "MRI_CVS_REGISTER_METADATA",
     "MriCvsRegisterOutputs",
+    "MriCvsRegisterParameters",
     "mri_cvs_register",
     "mri_cvs_register_params",
 ]

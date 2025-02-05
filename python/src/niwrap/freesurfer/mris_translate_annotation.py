@@ -197,6 +197,7 @@ def mris_translate_annotation(
 __all__ = [
     "MRIS_TRANSLATE_ANNOTATION_METADATA",
     "MrisTranslateAnnotationOutputs",
+    "MrisTranslateAnnotationParameters",
     "mris_translate_annotation",
     "mris_translate_annotation_params",
 ]

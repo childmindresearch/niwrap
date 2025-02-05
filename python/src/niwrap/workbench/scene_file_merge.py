@@ -338,6 +338,10 @@ def scene_file_merge(
 __all__ = [
     "SCENE_FILE_MERGE_METADATA",
     "SceneFileMergeOutputs",
+    "SceneFileMergeParameters",
+    "SceneFileMergeSceneFileParameters",
+    "SceneFileMergeSceneParameters",
+    "SceneFileMergeUpToParameters",
     "scene_file_merge",
     "scene_file_merge_params",
     "scene_file_merge_scene_file_params",

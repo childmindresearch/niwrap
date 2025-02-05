@@ -347,6 +347,7 @@ def surface_metrics(
 __all__ = [
     "SURFACE_METRICS_METADATA",
     "SurfaceMetricsOutputs",
+    "SurfaceMetricsParameters",
     "surface_metrics",
     "surface_metrics_params",
 ]

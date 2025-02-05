@@ -543,6 +543,7 @@ def mri_normalize(
 __all__ = [
     "MRI_NORMALIZE_METADATA",
     "MriNormalizeOutputs",
+    "MriNormalizeParameters",
     "mri_normalize",
     "mri_normalize_params",
 ]

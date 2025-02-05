@@ -290,6 +290,7 @@ def fat_proc_align_anat_pair(
 __all__ = [
     "FAT_PROC_ALIGN_ANAT_PAIR_METADATA",
     "FatProcAlignAnatPairOutputs",
+    "FatProcAlignAnatPairParameters",
     "fat_proc_align_anat_pair",
     "fat_proc_align_anat_pair_params",
 ]

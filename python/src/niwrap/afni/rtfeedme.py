@@ -290,6 +290,7 @@ def rtfeedme(
 __all__ = [
     "RTFEEDME_METADATA",
     "RtfeedmeOutputs",
+    "RtfeedmeParameters",
     "rtfeedme",
     "rtfeedme_params",
 ]

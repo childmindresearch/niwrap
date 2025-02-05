@@ -233,6 +233,7 @@ def v_3d_attribute(
 
 __all__ = [
     "V3dAttributeOutputs",
+    "V3dAttributeParameters",
     "V_3D_ATTRIBUTE_METADATA",
     "v_3d_attribute",
     "v_3d_attribute_params",

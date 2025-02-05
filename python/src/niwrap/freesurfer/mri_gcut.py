@@ -216,6 +216,7 @@ def mri_gcut(
 __all__ = [
     "MRI_GCUT_METADATA",
     "MriGcutOutputs",
+    "MriGcutParameters",
     "mri_gcut",
     "mri_gcut_params",
 ]

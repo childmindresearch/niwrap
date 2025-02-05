@@ -508,7 +508,12 @@ def cifti_create_label(
 
 __all__ = [
     "CIFTI_CREATE_LABEL_METADATA",
+    "CiftiCreateLabelCerebellumLabelParameters",
+    "CiftiCreateLabelLeftLabelParameters",
     "CiftiCreateLabelOutputs",
+    "CiftiCreateLabelParameters",
+    "CiftiCreateLabelRightLabelParameters",
+    "CiftiCreateLabelVolumeParameters",
     "cifti_create_label",
     "cifti_create_label_cerebellum_label_params",
     "cifti_create_label_left_label_params",

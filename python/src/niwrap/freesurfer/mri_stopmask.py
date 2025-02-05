@@ -288,6 +288,7 @@ def mri_stopmask(
 __all__ = [
     "MRI_STOPMASK_METADATA",
     "MriStopmaskOutputs",
+    "MriStopmaskParameters",
     "mri_stopmask",
     "mri_stopmask_params",
 ]

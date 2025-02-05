@@ -305,6 +305,7 @@ def v__anaticor(
 
 __all__ = [
     "VAnaticorOutputs",
+    "VAnaticorParameters",
     "V__ANATICOR_METADATA",
     "v__anaticor",
     "v__anaticor_params",

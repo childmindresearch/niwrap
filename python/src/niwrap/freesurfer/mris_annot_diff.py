@@ -187,6 +187,7 @@ def mris_annot_diff(
 __all__ = [
     "MRIS_ANNOT_DIFF_METADATA",
     "MrisAnnotDiffOutputs",
+    "MrisAnnotDiffParameters",
     "mris_annot_diff",
     "mris_annot_diff_params",
 ]

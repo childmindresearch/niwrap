@@ -517,7 +517,9 @@ def mrthreshold(
 
 __all__ = [
     "MRTHRESHOLD_METADATA",
+    "MrthresholdConfigParameters",
     "MrthresholdOutputs",
+    "MrthresholdParameters",
     "mrthreshold",
     "mrthreshold_config_params",
     "mrthreshold_params",

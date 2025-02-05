@@ -316,7 +316,10 @@ def cifti_average(
 
 __all__ = [
     "CIFTI_AVERAGE_METADATA",
+    "CiftiAverageCiftiParameters",
+    "CiftiAverageExcludeOutliersParameters",
     "CiftiAverageOutputs",
+    "CiftiAverageParameters",
     "cifti_average",
     "cifti_average_cifti_params",
     "cifti_average_exclude_outliers_params",

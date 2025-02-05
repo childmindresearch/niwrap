@@ -240,6 +240,7 @@ def map_track_id(
 __all__ = [
     "MAP_TRACK_ID_METADATA",
     "MapTrackIdOutputs",
+    "MapTrackIdParameters",
     "map_track_id",
     "map_track_id_params",
 ]

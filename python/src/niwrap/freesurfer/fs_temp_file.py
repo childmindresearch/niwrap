@@ -201,6 +201,7 @@ def fs_temp_file(
 __all__ = [
     "FS_TEMP_FILE_METADATA",
     "FsTempFileOutputs",
+    "FsTempFileParameters",
     "fs_temp_file",
     "fs_temp_file_params",
 ]

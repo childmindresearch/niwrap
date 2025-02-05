@@ -900,10 +900,10 @@ def cifti_convert_outputs(
     """
     ret = CiftiConvertOutputs(
         root=execution.output_file("."),
-        from_gifti_ext=dyn_outputs(from_gifti_ext["__STYXTYPE__"])(from_gifti_ext, execution) if from_gifti_ext else None,
-        to_nifti=dyn_outputs(to_nifti["__STYXTYPE__"])(to_nifti, execution) if to_nifti else None,
-        from_nifti=dyn_outputs(from_nifti["__STYXTYPE__"])(from_nifti, execution) if from_nifti else None,
-        from_text=dyn_outputs(from_text["__STYXTYPE__"])(from_text, execution) if from_text else None,
+        from_gifti_ext=dyn_outputs(params.get("from_gifti_ext")["__STYXTYPE__"])(params.get("from_gifti_ext"), execution) if params.get("from_gifti_ext") else None,
+        to_nifti=dyn_outputs(params.get("to_nifti")["__STYXTYPE__"])(params.get("to_nifti"), execution) if params.get("to_nifti") else None,
+        from_nifti=dyn_outputs(params.get("from_nifti")["__STYXTYPE__"])(params.get("from_nifti"), execution) if params.get("from_nifti") else None,
+        from_text=dyn_outputs(params.get("from_text")["__STYXTYPE__"])(params.get("from_text"), execution) if params.get("from_text") else None,
     )
     return ret
 
@@ -1028,10 +1028,21 @@ def cifti_convert(
 __all__ = [
     "CIFTI_CONVERT_METADATA",
     "CiftiConvertFromGiftiExtOutputs",
+    "CiftiConvertFromGiftiExtParameters",
     "CiftiConvertFromNiftiOutputs",
+    "CiftiConvertFromNiftiParameters",
     "CiftiConvertFromTextOutputs",
+    "CiftiConvertFromTextParameters",
     "CiftiConvertOutputs",
+    "CiftiConvertParameters",
+    "CiftiConvertReplaceBinaryParameters",
+    "CiftiConvertResetTimepointsParameters",
+    "CiftiConvertResetTimepointsParameters_",
+    "CiftiConvertResetTimepointsParameters_2",
+    "CiftiConvertToGiftiExtParameters",
     "CiftiConvertToNiftiOutputs",
+    "CiftiConvertToNiftiParameters",
+    "CiftiConvertToTextParameters",
     "cifti_convert",
     "cifti_convert_from_gifti_ext_params",
     "cifti_convert_from_nifti_params",

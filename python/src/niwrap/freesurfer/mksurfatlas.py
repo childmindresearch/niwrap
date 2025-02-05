@@ -256,6 +256,7 @@ def mksurfatlas(
 __all__ = [
     "MKSURFATLAS_METADATA",
     "MksurfatlasOutputs",
+    "MksurfatlasParameters",
     "mksurfatlas",
     "mksurfatlas_params",
 ]

@@ -189,6 +189,7 @@ def dtistudio_fiberto_segments(
 __all__ = [
     "DTISTUDIO_FIBERTO_SEGMENTS_METADATA",
     "DtistudioFibertoSegmentsOutputs",
+    "DtistudioFibertoSegmentsParameters",
     "dtistudio_fiberto_segments",
     "dtistudio_fiberto_segments_params",
 ]

@@ -233,6 +233,7 @@ def volume_distortion(
 __all__ = [
     "VOLUME_DISTORTION_METADATA",
     "VolumeDistortionOutputs",
+    "VolumeDistortionParameters",
     "volume_distortion",
     "volume_distortion_params",
 ]

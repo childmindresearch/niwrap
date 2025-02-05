@@ -183,6 +183,7 @@ def tokens(
 __all__ = [
     "TOKENS_METADATA",
     "TokensOutputs",
+    "TokensParameters",
     "tokens",
     "tokens_params",
 ]

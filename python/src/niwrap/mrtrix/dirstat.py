@@ -501,7 +501,10 @@ def dirstat(
 
 __all__ = [
     "DIRSTAT_METADATA",
+    "DirstatConfigParameters",
+    "DirstatFslgradParameters",
     "DirstatOutputs",
+    "DirstatParameters",
     "dirstat",
     "dirstat_config_params",
     "dirstat_fslgrad_params",

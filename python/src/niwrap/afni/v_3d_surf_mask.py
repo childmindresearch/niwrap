@@ -246,6 +246,7 @@ def v_3d_surf_mask(
 
 __all__ = [
     "V3dSurfMaskOutputs",
+    "V3dSurfMaskParameters",
     "V_3D_SURF_MASK_METADATA",
     "v_3d_surf_mask",
     "v_3d_surf_mask_params",

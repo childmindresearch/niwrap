@@ -183,6 +183,7 @@ def ccalc(
 __all__ = [
     "CCALC_METADATA",
     "CcalcOutputs",
+    "CcalcParameters",
     "ccalc",
     "ccalc_params",
 ]

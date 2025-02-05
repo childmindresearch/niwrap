@@ -633,7 +633,7 @@ def dwi2fod_outputs(
     ret = Dwi2fodOutputs(
         root=execution.output_file("."),
         predicted_signal=execution.output_file(params.get("predicted_signal")) if (params.get("predicted_signal") is not None) else None,
-        response_odf=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in response_odf],
+        response_odf=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("response_odf")],
     )
     return ret
 
@@ -825,8 +825,14 @@ def dwi2fod(
 
 __all__ = [
     "DWI2FOD_METADATA",
+    "Dwi2fodConfigParameters",
+    "Dwi2fodFslgradParameters",
     "Dwi2fodOutputs",
+    "Dwi2fodParameters",
     "Dwi2fodResponseOdfOutputs",
+    "Dwi2fodResponseOdfParameters",
+    "Dwi2fodVariousFileParameters",
+    "Dwi2fodVariousStringParameters",
     "dwi2fod",
     "dwi2fod_config_params",
     "dwi2fod_fslgrad_params",

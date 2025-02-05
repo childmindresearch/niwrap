@@ -397,6 +397,7 @@ def fat_mat2d_plot_py(
 __all__ = [
     "FAT_MAT2D_PLOT_PY_METADATA",
     "FatMat2dPlotPyOutputs",
+    "FatMat2dPlotPyParameters",
     "fat_mat2d_plot_py",
     "fat_mat2d_plot_py_params",
 ]

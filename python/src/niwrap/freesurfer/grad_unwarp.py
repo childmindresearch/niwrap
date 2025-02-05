@@ -258,6 +258,7 @@ def grad_unwarp(
 __all__ = [
     "GRAD_UNWARP_METADATA",
     "GradUnwarpOutputs",
+    "GradUnwarpParameters",
     "grad_unwarp",
     "grad_unwarp_params",
 ]

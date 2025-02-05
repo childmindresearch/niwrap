@@ -195,6 +195,7 @@ def imupsam(
 __all__ = [
     "IMUPSAM_METADATA",
     "ImupsamOutputs",
+    "ImupsamParameters",
     "imupsam",
     "imupsam_params",
 ]

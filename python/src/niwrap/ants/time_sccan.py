@@ -480,7 +480,11 @@ def time_sccan(
 
 __all__ = [
     "TIME_SCCAN_METADATA",
+    "TimeSccanNetworkRegionAveragingParameters",
+    "TimeSccanNetworkSccaParameters",
     "TimeSccanOutputs",
+    "TimeSccanParameters",
+    "TimeSccanTimeseriesimageToMatrixParameters",
     "time_sccan",
     "time_sccan_network_region_averaging_params",
     "time_sccan_network_scca_params",

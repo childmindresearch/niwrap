@@ -233,6 +233,7 @@ def volume_parcel_smoothing(
 __all__ = [
     "VOLUME_PARCEL_SMOOTHING_METADATA",
     "VolumeParcelSmoothingOutputs",
+    "VolumeParcelSmoothingParameters",
     "volume_parcel_smoothing",
     "volume_parcel_smoothing_params",
 ]

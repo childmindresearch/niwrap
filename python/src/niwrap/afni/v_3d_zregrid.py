@@ -229,6 +229,7 @@ def v_3d_zregrid(
 
 __all__ = [
     "V3dZregridOutputs",
+    "V3dZregridParameters",
     "V_3D_ZREGRID_METADATA",
     "v_3d_zregrid",
     "v_3d_zregrid_params",

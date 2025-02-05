@@ -157,6 +157,7 @@ def fiducials_calibration(
 __all__ = [
     "FIDUCIALS_CALIBRATION_METADATA",
     "FiducialsCalibrationOutputs",
+    "FiducialsCalibrationParameters",
     "fiducials_calibration",
     "fiducials_calibration_params",
 ]

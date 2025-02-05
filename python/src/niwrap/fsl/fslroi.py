@@ -248,6 +248,7 @@ def fslroi(
 __all__ = [
     "FSLROI_METADATA",
     "FslroiOutputs",
+    "FslroiParameters",
     "fslroi",
     "fslroi_params",
 ]

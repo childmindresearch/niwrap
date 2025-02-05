@@ -177,6 +177,7 @@ def basil_var(
 __all__ = [
     "BASIL_VAR_METADATA",
     "BasilVarOutputs",
+    "BasilVarParameters",
     "basil_var",
     "basil_var_params",
 ]

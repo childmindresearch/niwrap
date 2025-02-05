@@ -191,6 +191,7 @@ def v__clust_exp_cat_lab(
 
 __all__ = [
     "VClustExpCatLabOutputs",
+    "VClustExpCatLabParameters",
     "V__CLUST_EXP_CAT_LAB_METADATA",
     "v__clust_exp_cat_lab",
     "v__clust_exp_cat_lab_params",

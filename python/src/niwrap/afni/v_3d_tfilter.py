@@ -193,6 +193,7 @@ def v_3d_tfilter(
 
 __all__ = [
     "V3dTfilterOutputs",
+    "V3dTfilterParameters",
     "V_3D_TFILTER_METADATA",
     "v_3d_tfilter",
     "v_3d_tfilter_params",

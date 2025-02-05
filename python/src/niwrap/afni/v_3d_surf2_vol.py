@@ -437,6 +437,7 @@ def v_3d_surf2_vol(
 
 __all__ = [
     "V3dSurf2VolOutputs",
+    "V3dSurf2VolParameters",
     "V_3D_SURF2_VOL_METADATA",
     "v_3d_surf2_vol",
     "v_3d_surf2_vol_params",

@@ -202,6 +202,7 @@ def v_1d_flag_motion(
 
 __all__ = [
     "V1dFlagMotionOutputs",
+    "V1dFlagMotionParameters",
     "V_1D_FLAG_MOTION_METADATA",
     "v_1d_flag_motion",
     "v_1d_flag_motion_params",

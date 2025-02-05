@@ -441,6 +441,7 @@ def dmri_train(
 __all__ = [
     "DMRI_TRAIN_METADATA",
     "DmriTrainOutputs",
+    "DmriTrainParameters",
     "dmri_train",
     "dmri_train_params",
 ]

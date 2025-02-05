@@ -164,6 +164,7 @@ def tbss_1_preproc(
 __all__ = [
     "TBSS_1_PREPROC_METADATA",
     "Tbss1PreprocOutputs",
+    "Tbss1PreprocParameters",
     "tbss_1_preproc",
     "tbss_1_preproc_params",
 ]

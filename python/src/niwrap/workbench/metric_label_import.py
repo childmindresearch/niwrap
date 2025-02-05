@@ -280,6 +280,7 @@ def metric_label_import(
 __all__ = [
     "METRIC_LABEL_IMPORT_METADATA",
     "MetricLabelImportOutputs",
+    "MetricLabelImportParameters",
     "metric_label_import",
     "metric_label_import_params",
 ]

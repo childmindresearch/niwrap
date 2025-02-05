@@ -199,6 +199,7 @@ def column_cat(
 __all__ = [
     "COLUMN_CAT_METADATA",
     "ColumnCatOutputs",
+    "ColumnCatParameters",
     "column_cat",
     "column_cat_params",
 ]

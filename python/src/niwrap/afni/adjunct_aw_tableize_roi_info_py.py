@@ -212,6 +212,7 @@ def adjunct_aw_tableize_roi_info_py(
 __all__ = [
     "ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA",
     "AdjunctAwTableizeRoiInfoPyOutputs",
+    "AdjunctAwTableizeRoiInfoPyParameters",
     "adjunct_aw_tableize_roi_info_py",
     "adjunct_aw_tableize_roi_info_py_params",
 ]

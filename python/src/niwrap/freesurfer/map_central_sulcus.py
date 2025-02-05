@@ -542,6 +542,7 @@ def map_central_sulcus(
 __all__ = [
     "MAP_CENTRAL_SULCUS_METADATA",
     "MapCentralSulcusOutputs",
+    "MapCentralSulcusParameters",
     "map_central_sulcus",
     "map_central_sulcus_params",
 ]

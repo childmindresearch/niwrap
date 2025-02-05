@@ -449,6 +449,7 @@ def asl_file(
 __all__ = [
     "ASL_FILE_METADATA",
     "AslFileOutputs",
+    "AslFileParameters",
     "asl_file",
     "asl_file_params",
 ]

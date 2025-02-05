@@ -253,6 +253,7 @@ def v__fat_tract_colorize(
 
 __all__ = [
     "VFatTractColorizeOutputs",
+    "VFatTractColorizeParameters",
     "V__FAT_TRACT_COLORIZE_METADATA",
     "v__fat_tract_colorize",
     "v__fat_tract_colorize_params",

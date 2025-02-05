@@ -349,6 +349,7 @@ def gtmseg(
 __all__ = [
     "GTMSEG_METADATA",
     "GtmsegOutputs",
+    "GtmsegParameters",
     "gtmseg",
     "gtmseg_params",
 ]

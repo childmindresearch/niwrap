@@ -222,6 +222,7 @@ def firdesign(
 __all__ = [
     "FIRDESIGN_METADATA",
     "FirdesignOutputs",
+    "FirdesignParameters",
     "firdesign",
     "firdesign_params",
 ]

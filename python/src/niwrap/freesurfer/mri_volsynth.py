@@ -655,6 +655,7 @@ def mri_volsynth(
 __all__ = [
     "MRI_VOLSYNTH_METADATA",
     "MriVolsynthOutputs",
+    "MriVolsynthParameters",
     "mri_volsynth",
     "mri_volsynth_params",
 ]

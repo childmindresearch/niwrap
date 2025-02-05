@@ -237,7 +237,9 @@ def cifti_merge_parcels(
 
 __all__ = [
     "CIFTI_MERGE_PARCELS_METADATA",
+    "CiftiMergeParcelsCiftiParameters",
     "CiftiMergeParcelsOutputs",
+    "CiftiMergeParcelsParameters",
     "cifti_merge_parcels",
     "cifti_merge_parcels_cifti_params",
     "cifti_merge_parcels_params",

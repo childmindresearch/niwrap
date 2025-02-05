@@ -332,6 +332,7 @@ def v_3d_qwarp(
 
 __all__ = [
     "V3dQwarpOutputs",
+    "V3dQwarpParameters",
     "V_3D_QWARP_METADATA",
     "v_3d_qwarp",
     "v_3d_qwarp_params",

@@ -363,6 +363,7 @@ def v__clip_volume(
 
 __all__ = [
     "VClipVolumeOutputs",
+    "VClipVolumeParameters",
     "V__CLIP_VOLUME_METADATA",
     "v__clip_volume",
     "v__clip_volume_params",

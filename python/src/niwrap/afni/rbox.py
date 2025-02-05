@@ -231,6 +231,7 @@ def rbox(
 __all__ = [
     "RBOX_METADATA",
     "RboxOutputs",
+    "RboxParameters",
     "rbox",
     "rbox_params",
 ]

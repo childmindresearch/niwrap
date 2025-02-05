@@ -301,6 +301,7 @@ def ants_slice_regularized_registration(
 __all__ = [
     "ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA",
     "AntsSliceRegularizedRegistrationOutputs",
+    "AntsSliceRegularizedRegistrationParameters",
     "ants_slice_regularized_registration",
     "ants_slice_regularized_registration_params",
 ]

@@ -401,7 +401,10 @@ def dwi2adc(
 
 __all__ = [
     "DWI2ADC_METADATA",
+    "Dwi2adcConfigParameters",
+    "Dwi2adcFslgradParameters",
     "Dwi2adcOutputs",
+    "Dwi2adcParameters",
     "dwi2adc",
     "dwi2adc_config_params",
     "dwi2adc_fslgrad_params",

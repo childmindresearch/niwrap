@@ -171,6 +171,7 @@ def mri_histo_eq(
 __all__ = [
     "MRI_HISTO_EQ_METADATA",
     "MriHistoEqOutputs",
+    "MriHistoEqParameters",
     "mri_histo_eq",
     "mri_histo_eq_params",
 ]

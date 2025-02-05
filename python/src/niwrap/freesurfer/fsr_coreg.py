@@ -231,6 +231,7 @@ def fsr_coreg(
 __all__ = [
     "FSR_COREG_METADATA",
     "FsrCoregOutputs",
+    "FsrCoregParameters",
     "fsr_coreg",
     "fsr_coreg_params",
 ]

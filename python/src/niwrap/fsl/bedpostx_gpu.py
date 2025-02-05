@@ -278,6 +278,7 @@ def bedpostx_gpu(
 __all__ = [
     "BEDPOSTX_GPU_METADATA",
     "BedpostxGpuOutputs",
+    "BedpostxGpuParameters",
     "bedpostx_gpu",
     "bedpostx_gpu_params",
 ]

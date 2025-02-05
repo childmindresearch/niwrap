@@ -200,6 +200,7 @@ def vertexvol(
 __all__ = [
     "VERTEXVOL_METADATA",
     "VertexvolOutputs",
+    "VertexvolParameters",
     "vertexvol",
     "vertexvol_params",
 ]

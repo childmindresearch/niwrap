@@ -170,6 +170,7 @@ def fix_subject(
 __all__ = [
     "FIX_SUBJECT_METADATA",
     "FixSubjectOutputs",
+    "FixSubjectParameters",
     "fix_subject",
     "fix_subject_params",
 ]

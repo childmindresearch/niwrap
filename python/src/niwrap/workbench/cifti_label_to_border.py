@@ -222,7 +222,7 @@ def cifti_label_to_border_outputs(
     """
     ret = CiftiLabelToBorderOutputs(
         root=execution.output_file("."),
-        border=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in border] if border else None,
+        border=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("border")] if params.get("border") else None,
     )
     return ret
 
@@ -292,7 +292,9 @@ def cifti_label_to_border(
 __all__ = [
     "CIFTI_LABEL_TO_BORDER_METADATA",
     "CiftiLabelToBorderBorderOutputs",
+    "CiftiLabelToBorderBorderParameters",
     "CiftiLabelToBorderOutputs",
+    "CiftiLabelToBorderParameters",
     "cifti_label_to_border",
     "cifti_label_to_border_border_params",
     "cifti_label_to_border_params",

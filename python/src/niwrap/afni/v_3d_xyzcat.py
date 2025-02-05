@@ -205,6 +205,7 @@ def v_3d_xyzcat(
 
 __all__ = [
     "V3dXyzcatOutputs",
+    "V3dXyzcatParameters",
     "V_3D_XYZCAT_METADATA",
     "v_3d_xyzcat",
     "v_3d_xyzcat_params",

@@ -190,6 +190,7 @@ def mri_remove_neck(
 __all__ = [
     "MRI_REMOVE_NECK_METADATA",
     "MriRemoveNeckOutputs",
+    "MriRemoveNeckParameters",
     "mri_remove_neck",
     "mri_remove_neck_params",
 ]

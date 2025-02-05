@@ -183,6 +183,7 @@ def gltsymtest(
 __all__ = [
     "GLTSYMTEST_METADATA",
     "GltsymtestOutputs",
+    "GltsymtestParameters",
     "gltsymtest",
     "gltsymtest_params",
 ]

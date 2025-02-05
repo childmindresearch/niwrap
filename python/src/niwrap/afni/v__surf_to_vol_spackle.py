@@ -301,6 +301,7 @@ def v__surf_to_vol_spackle(
 
 __all__ = [
     "VSurfToVolSpackleOutputs",
+    "VSurfToVolSpackleParameters",
     "V__SURF_TO_VOL_SPACKLE_METADATA",
     "v__surf_to_vol_spackle",
     "v__surf_to_vol_spackle_params",

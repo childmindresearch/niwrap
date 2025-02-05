@@ -191,6 +191,7 @@ def eddy_correct(
 __all__ = [
     "EDDY_CORRECT_METADATA",
     "EddyCorrectOutputs",
+    "EddyCorrectParameters",
     "eddy_correct",
     "eddy_correct_params",
 ]

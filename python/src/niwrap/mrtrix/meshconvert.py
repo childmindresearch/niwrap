@@ -383,7 +383,10 @@ def meshconvert(
 
 __all__ = [
     "MESHCONVERT_METADATA",
+    "MeshconvertConfigParameters",
     "MeshconvertOutputs",
+    "MeshconvertParameters",
+    "MeshconvertTransformParameters",
     "meshconvert",
     "meshconvert_config_params",
     "meshconvert_params",

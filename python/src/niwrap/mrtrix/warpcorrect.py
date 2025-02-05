@@ -345,7 +345,9 @@ def warpcorrect(
 
 __all__ = [
     "WARPCORRECT_METADATA",
+    "WarpcorrectConfigParameters",
     "WarpcorrectOutputs",
+    "WarpcorrectParameters",
     "warpcorrect",
     "warpcorrect_config_params",
     "warpcorrect_params",

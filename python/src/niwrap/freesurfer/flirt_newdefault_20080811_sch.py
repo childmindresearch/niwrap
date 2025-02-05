@@ -185,6 +185,7 @@ def flirt_newdefault_20080811_sch(
 __all__ = [
     "FLIRT_NEWDEFAULT_20080811_SCH_METADATA",
     "FlirtNewdefault20080811SchOutputs",
+    "FlirtNewdefault20080811SchParameters",
     "flirt_newdefault_20080811_sch",
     "flirt_newdefault_20080811_sch_params",
 ]

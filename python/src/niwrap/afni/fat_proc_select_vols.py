@@ -252,6 +252,7 @@ def fat_proc_select_vols(
 __all__ = [
     "FAT_PROC_SELECT_VOLS_METADATA",
     "FatProcSelectVolsOutputs",
+    "FatProcSelectVolsParameters",
     "fat_proc_select_vols",
     "fat_proc_select_vols_params",
 ]

@@ -269,6 +269,7 @@ def v__align_partial_oblique(
 
 __all__ = [
     "VAlignPartialObliqueOutputs",
+    "VAlignPartialObliqueParameters",
     "V__ALIGN_PARTIAL_OBLIQUE_METADATA",
     "v__align_partial_oblique",
     "v__align_partial_oblique_params",

@@ -163,6 +163,7 @@ def v__afni_orient2_raimap(
 
 __all__ = [
     "VAfniOrient2RaimapOutputs",
+    "VAfniOrient2RaimapParameters",
     "V__AFNI_ORIENT2_RAIMAP_METADATA",
     "v__afni_orient2_raimap",
     "v__afni_orient2_raimap_params",

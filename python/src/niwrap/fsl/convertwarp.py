@@ -360,6 +360,7 @@ def convertwarp(
 __all__ = [
     "CONVERTWARP_METADATA",
     "ConvertwarpOutputs",
+    "ConvertwarpParameters",
     "convertwarp",
     "convertwarp_params",
 ]

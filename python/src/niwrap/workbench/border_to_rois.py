@@ -218,6 +218,7 @@ def border_to_rois(
 __all__ = [
     "BORDER_TO_ROIS_METADATA",
     "BorderToRoisOutputs",
+    "BorderToRoisParameters",
     "border_to_rois",
     "border_to_rois_params",
 ]

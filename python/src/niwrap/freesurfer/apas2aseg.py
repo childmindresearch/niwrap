@@ -202,6 +202,7 @@ def apas2aseg(
 __all__ = [
     "APAS2ASEG_METADATA",
     "Apas2asegOutputs",
+    "Apas2asegParameters",
     "apas2aseg",
     "apas2aseg_params",
 ]

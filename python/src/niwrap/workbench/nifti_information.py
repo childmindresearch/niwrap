@@ -286,6 +286,9 @@ def nifti_information(
 __all__ = [
     "NIFTI_INFORMATION_METADATA",
     "NiftiInformationOutputs",
+    "NiftiInformationParameters",
+    "NiftiInformationPrintHeaderParameters",
+    "NiftiInformationPrintXmlParameters",
     "nifti_information",
     "nifti_information_params",
     "nifti_information_print_header_params",

@@ -264,6 +264,7 @@ def v_3d_rprog_demo(
 
 __all__ = [
     "V3dRprogDemoOutputs",
+    "V3dRprogDemoParameters",
     "V_3D_RPROG_DEMO_METADATA",
     "v_3d_rprog_demo",
     "v_3d_rprog_demo_params",

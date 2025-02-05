@@ -238,6 +238,7 @@ def applytopup(
 __all__ = [
     "APPLYTOPUP_METADATA",
     "ApplytopupOutputs",
+    "ApplytopupParameters",
     "applytopup",
     "applytopup_params",
 ]

@@ -215,6 +215,7 @@ def gcaprepone(
 __all__ = [
     "GCAPREPONE_METADATA",
     "GcapreponeOutputs",
+    "GcapreponeParameters",
     "gcaprepone",
     "gcaprepone_params",
 ]

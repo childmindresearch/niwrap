@@ -227,6 +227,7 @@ def v__afni_r_package_install(
 
 __all__ = [
     "VAfniRPackageInstallOutputs",
+    "VAfniRPackageInstallParameters",
     "V__AFNI_R_PACKAGE_INSTALL_METADATA",
     "v__afni_r_package_install",
     "v__afni_r_package_install_params",

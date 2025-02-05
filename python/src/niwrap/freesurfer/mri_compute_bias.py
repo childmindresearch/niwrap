@@ -178,6 +178,7 @@ def mri_compute_bias(
 __all__ = [
     "MRI_COMPUTE_BIAS_METADATA",
     "MriComputeBiasOutputs",
+    "MriComputeBiasParameters",
     "mri_compute_bias",
     "mri_compute_bias_params",
 ]

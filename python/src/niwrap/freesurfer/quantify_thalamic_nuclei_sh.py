@@ -185,6 +185,7 @@ def quantify_thalamic_nuclei_sh(
 __all__ = [
     "QUANTIFY_THALAMIC_NUCLEI_SH_METADATA",
     "QuantifyThalamicNucleiShOutputs",
+    "QuantifyThalamicNucleiShParameters",
     "quantify_thalamic_nuclei_sh",
     "quantify_thalamic_nuclei_sh_params",
 ]

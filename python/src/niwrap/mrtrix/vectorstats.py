@@ -546,7 +546,10 @@ def vectorstats(
 
 __all__ = [
     "VECTORSTATS_METADATA",
+    "VectorstatsColumnParameters",
+    "VectorstatsConfigParameters",
     "VectorstatsOutputs",
+    "VectorstatsParameters",
     "vectorstats",
     "vectorstats_column_params",
     "vectorstats_config_params",

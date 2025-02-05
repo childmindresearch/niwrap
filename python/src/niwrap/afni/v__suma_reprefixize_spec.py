@@ -209,6 +209,7 @@ def v__suma_reprefixize_spec(
 
 __all__ = [
     "VSumaReprefixizeSpecOutputs",
+    "VSumaReprefixizeSpecParameters",
     "V__SUMA_REPREFIXIZE_SPEC_METADATA",
     "v__suma_reprefixize_spec",
     "v__suma_reprefixize_spec_params",

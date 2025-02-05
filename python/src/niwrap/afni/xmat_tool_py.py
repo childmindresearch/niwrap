@@ -354,6 +354,7 @@ def xmat_tool_py(
 __all__ = [
     "XMAT_TOOL_PY_METADATA",
     "XmatToolPyOutputs",
+    "XmatToolPyParameters",
     "xmat_tool_py",
     "xmat_tool_py_params",
 ]

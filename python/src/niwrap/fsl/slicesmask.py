@@ -183,6 +183,7 @@ def slicesmask(
 __all__ = [
     "SLICESMASK_METADATA",
     "SlicesmaskOutputs",
+    "SlicesmaskParameters",
     "slicesmask",
     "slicesmask_params",
 ]

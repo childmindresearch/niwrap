@@ -218,6 +218,7 @@ def v_3d_clust_count(
 
 __all__ = [
     "V3dClustCountOutputs",
+    "V3dClustCountParameters",
     "V_3D_CLUST_COUNT_METADATA",
     "v_3d_clust_count",
     "v_3d_clust_count_params",

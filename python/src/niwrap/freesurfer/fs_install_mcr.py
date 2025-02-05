@@ -166,6 +166,7 @@ def fs_install_mcr(
 __all__ = [
     "FS_INSTALL_MCR_METADATA",
     "FsInstallMcrOutputs",
+    "FsInstallMcrParameters",
     "fs_install_mcr",
     "fs_install_mcr_params",
 ]

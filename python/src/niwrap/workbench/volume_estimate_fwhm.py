@@ -257,6 +257,8 @@ def volume_estimate_fwhm(
 __all__ = [
     "VOLUME_ESTIMATE_FWHM_METADATA",
     "VolumeEstimateFwhmOutputs",
+    "VolumeEstimateFwhmParameters",
+    "VolumeEstimateFwhmWholeFileParameters",
     "volume_estimate_fwhm",
     "volume_estimate_fwhm_params",
     "volume_estimate_fwhm_whole_file_params",

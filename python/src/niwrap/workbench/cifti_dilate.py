@@ -462,7 +462,11 @@ def cifti_dilate(
 
 __all__ = [
     "CIFTI_DILATE_METADATA",
+    "CiftiDilateCerebellumSurfaceParameters",
+    "CiftiDilateLeftSurfaceParameters",
     "CiftiDilateOutputs",
+    "CiftiDilateParameters",
+    "CiftiDilateRightSurfaceParameters",
     "cifti_dilate",
     "cifti_dilate_cerebellum_surface_params",
     "cifti_dilate_left_surface_params",

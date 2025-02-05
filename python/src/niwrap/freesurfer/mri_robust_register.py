@@ -720,6 +720,7 @@ def mri_robust_register(
 __all__ = [
     "MRI_ROBUST_REGISTER_METADATA",
     "MriRobustRegisterOutputs",
+    "MriRobustRegisterParameters",
     "mri_robust_register",
     "mri_robust_register_params",
 ]

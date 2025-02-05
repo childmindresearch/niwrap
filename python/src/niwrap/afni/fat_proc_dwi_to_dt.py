@@ -487,6 +487,7 @@ def fat_proc_dwi_to_dt(
 __all__ = [
     "FAT_PROC_DWI_TO_DT_METADATA",
     "FatProcDwiToDtOutputs",
+    "FatProcDwiToDtParameters",
     "fat_proc_dwi_to_dt",
     "fat_proc_dwi_to_dt_params",
 ]

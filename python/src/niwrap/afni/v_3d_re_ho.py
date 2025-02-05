@@ -355,6 +355,7 @@ def v_3d_re_ho(
 
 __all__ = [
     "V3dReHoOutputs",
+    "V3dReHoParameters",
     "V_3D_RE_HO_METADATA",
     "v_3d_re_ho",
     "v_3d_re_ho_params",

@@ -222,6 +222,7 @@ def v__make_plug_diff(
 
 __all__ = [
     "VMakePlugDiffOutputs",
+    "VMakePlugDiffParameters",
     "V__MAKE_PLUG_DIFF_METADATA",
     "v__make_plug_diff",
     "v__make_plug_diff_params",

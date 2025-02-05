@@ -257,6 +257,7 @@ def afni_system_check_py(
 __all__ = [
     "AFNI_SYSTEM_CHECK_PY_METADATA",
     "AfniSystemCheckPyOutputs",
+    "AfniSystemCheckPyParameters",
     "afni_system_check_py",
     "afni_system_check_py_params",
 ]

@@ -218,6 +218,7 @@ def aiv(
 __all__ = [
     "AIV_METADATA",
     "AivOutputs",
+    "AivParameters",
     "aiv",
     "aiv_params",
 ]

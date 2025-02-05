@@ -194,6 +194,7 @@ def quantify_hasubregions_sh(
 __all__ = [
     "QUANTIFY_HASUBREGIONS_SH_METADATA",
     "QuantifyHasubregionsShOutputs",
+    "QuantifyHasubregionsShParameters",
     "quantify_hasubregions_sh",
     "quantify_hasubregions_sh_params",
 ]

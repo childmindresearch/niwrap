@@ -339,6 +339,7 @@ def mm(
 __all__ = [
     "MM_METADATA",
     "MmOutputs",
+    "MmParameters",
     "mm",
     "mm_params",
 ]

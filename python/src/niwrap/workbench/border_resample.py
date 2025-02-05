@@ -203,6 +203,7 @@ def border_resample(
 __all__ = [
     "BORDER_RESAMPLE_METADATA",
     "BorderResampleOutputs",
+    "BorderResampleParameters",
     "border_resample",
     "border_resample_params",
 ]

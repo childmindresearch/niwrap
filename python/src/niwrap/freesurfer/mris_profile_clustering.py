@@ -185,6 +185,7 @@ def mris_profile_clustering(
 __all__ = [
     "MRIS_PROFILE_CLUSTERING_METADATA",
     "MrisProfileClusteringOutputs",
+    "MrisProfileClusteringParameters",
     "mris_profile_clustering",
     "mris_profile_clustering_params",
 ]

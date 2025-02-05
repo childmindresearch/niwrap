@@ -206,6 +206,7 @@ def fixup_mni_paths(
 __all__ = [
     "FIXUP_MNI_PATHS_METADATA",
     "FixupMniPathsOutputs",
+    "FixupMniPathsParameters",
     "fixup_mni_paths",
     "fixup_mni_paths_params",
 ]

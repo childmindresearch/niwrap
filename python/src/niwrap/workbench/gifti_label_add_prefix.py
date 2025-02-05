@@ -188,6 +188,7 @@ def gifti_label_add_prefix(
 __all__ = [
     "GIFTI_LABEL_ADD_PREFIX_METADATA",
     "GiftiLabelAddPrefixOutputs",
+    "GiftiLabelAddPrefixParameters",
     "gifti_label_add_prefix",
     "gifti_label_add_prefix_params",
 ]

@@ -268,6 +268,7 @@ def quickspec_sl(
 __all__ = [
     "QUICKSPEC_SL_METADATA",
     "QuickspecSlOutputs",
+    "QuickspecSlParameters",
     "quickspec_sl",
     "quickspec_sl_params",
 ]

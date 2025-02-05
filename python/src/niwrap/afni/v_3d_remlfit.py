@@ -304,6 +304,7 @@ def v_3d_remlfit(
 
 __all__ = [
     "V3dRemlfitOutputs",
+    "V3dRemlfitParameters",
     "V_3D_REMLFIT_METADATA",
     "v_3d_remlfit",
     "v_3d_remlfit_params",

@@ -164,6 +164,7 @@ def renormalize_subject_keep_editting(
 __all__ = [
     "RENORMALIZE_SUBJECT_KEEP_EDITTING_METADATA",
     "RenormalizeSubjectKeepEdittingOutputs",
+    "RenormalizeSubjectKeepEdittingParameters",
     "renormalize_subject_keep_editting",
     "renormalize_subject_keep_editting_params",
 ]

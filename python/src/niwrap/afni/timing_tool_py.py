@@ -381,6 +381,7 @@ def timing_tool_py(
 __all__ = [
     "TIMING_TOOL_PY_METADATA",
     "TimingToolPyOutputs",
+    "TimingToolPyParameters",
     "timing_tool_py",
     "timing_tool_py_params",
 ]

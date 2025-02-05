@@ -212,6 +212,7 @@ def fs_check_version(
 __all__ = [
     "FS_CHECK_VERSION_METADATA",
     "FsCheckVersionOutputs",
+    "FsCheckVersionParameters",
     "fs_check_version",
     "fs_check_version_params",
 ]

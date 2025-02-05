@@ -539,6 +539,7 @@ def v_1dplot_py(
 
 __all__ = [
     "V1dplotPyOutputs",
+    "V1dplotPyParameters",
     "V_1DPLOT_PY_METADATA",
     "v_1dplot_py",
     "v_1dplot_py_params",

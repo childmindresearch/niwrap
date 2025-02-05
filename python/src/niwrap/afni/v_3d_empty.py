@@ -213,6 +213,7 @@ def v_3d_empty(
 
 __all__ = [
     "V3dEmptyOutputs",
+    "V3dEmptyParameters",
     "V_3D_EMPTY_METADATA",
     "v_3d_empty",
     "v_3d_empty_params",

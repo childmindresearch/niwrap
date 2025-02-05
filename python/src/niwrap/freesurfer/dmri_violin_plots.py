@@ -187,6 +187,7 @@ def dmri_violin_plots(
 __all__ = [
     "DMRI_VIOLIN_PLOTS_METADATA",
     "DmriViolinPlotsOutputs",
+    "DmriViolinPlotsParameters",
     "dmri_violin_plots",
     "dmri_violin_plots_params",
 ]

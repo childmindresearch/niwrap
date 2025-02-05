@@ -214,6 +214,7 @@ def v_3d_friedman(
 
 __all__ = [
     "V3dFriedmanOutputs",
+    "V3dFriedmanParameters",
     "V_3D_FRIEDMAN_METADATA",
     "v_3d_friedman",
     "v_3d_friedman_params",

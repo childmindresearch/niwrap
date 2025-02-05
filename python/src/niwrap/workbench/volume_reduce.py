@@ -293,7 +293,9 @@ def volume_reduce(
 
 __all__ = [
     "VOLUME_REDUCE_METADATA",
+    "VolumeReduceExcludeOutliersParameters",
     "VolumeReduceOutputs",
+    "VolumeReduceParameters",
     "volume_reduce",
     "volume_reduce_exclude_outliers_params",
     "volume_reduce_params",

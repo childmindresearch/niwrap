@@ -194,6 +194,7 @@ def imand(
 __all__ = [
     "IMAND_METADATA",
     "ImandOutputs",
+    "ImandParameters",
     "imand",
     "imand_params",
 ]

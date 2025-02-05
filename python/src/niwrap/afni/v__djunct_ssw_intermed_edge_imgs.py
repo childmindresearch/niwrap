@@ -290,6 +290,7 @@ def v__djunct_ssw_intermed_edge_imgs(
 
 __all__ = [
     "VDjunctSswIntermedEdgeImgsOutputs",
+    "VDjunctSswIntermedEdgeImgsParameters",
     "V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA",
     "v__djunct_ssw_intermed_edge_imgs",
     "v__djunct_ssw_intermed_edge_imgs_params",

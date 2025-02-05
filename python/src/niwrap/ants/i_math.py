@@ -202,6 +202,7 @@ def i_math(
 
 __all__ = [
     "IMathOutputs",
+    "IMathParameters",
     "I_MATH_METADATA",
     "i_math",
     "i_math_params",

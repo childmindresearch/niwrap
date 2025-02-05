@@ -192,6 +192,7 @@ def mris_compute_layer_intensities(
 __all__ = [
     "MRIS_COMPUTE_LAYER_INTENSITIES_METADATA",
     "MrisComputeLayerIntensitiesOutputs",
+    "MrisComputeLayerIntensitiesParameters",
     "mris_compute_layer_intensities",
     "mris_compute_layer_intensities_params",
 ]

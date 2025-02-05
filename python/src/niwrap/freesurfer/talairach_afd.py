@@ -215,6 +215,7 @@ def talairach_afd(
 __all__ = [
     "TALAIRACH_AFD_METADATA",
     "TalairachAfdOutputs",
+    "TalairachAfdParameters",
     "talairach_afd",
     "talairach_afd_params",
 ]

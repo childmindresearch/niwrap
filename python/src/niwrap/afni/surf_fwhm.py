@@ -330,6 +330,7 @@ def surf_fwhm(
 __all__ = [
     "SURF_FWHM_METADATA",
     "SurfFwhmOutputs",
+    "SurfFwhmParameters",
     "surf_fwhm",
     "surf_fwhm_params",
 ]

@@ -276,6 +276,7 @@ def bblabel(
 __all__ = [
     "BBLABEL_METADATA",
     "BblabelOutputs",
+    "BblabelParameters",
     "bblabel",
     "bblabel_params",
 ]

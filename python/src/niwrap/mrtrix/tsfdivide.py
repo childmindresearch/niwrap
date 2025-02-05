@@ -318,7 +318,9 @@ def tsfdivide(
 
 __all__ = [
     "TSFDIVIDE_METADATA",
+    "TsfdivideConfigParameters",
     "TsfdivideOutputs",
+    "TsfdivideParameters",
     "tsfdivide",
     "tsfdivide_config_params",
     "tsfdivide_params",

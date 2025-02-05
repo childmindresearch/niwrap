@@ -171,6 +171,7 @@ def mri_correct_segmentations(
 __all__ = [
     "MRI_CORRECT_SEGMENTATIONS_METADATA",
     "MriCorrectSegmentationsOutputs",
+    "MriCorrectSegmentationsParameters",
     "mri_correct_segmentations",
     "mri_correct_segmentations_params",
 ]

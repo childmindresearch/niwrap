@@ -184,6 +184,7 @@ def histo_synthesize(
 __all__ = [
     "HISTO_SYNTHESIZE_METADATA",
     "HistoSynthesizeOutputs",
+    "HistoSynthesizeParameters",
     "histo_synthesize",
     "histo_synthesize_params",
 ]

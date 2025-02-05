@@ -445,6 +445,7 @@ def v_3drotate(
 
 __all__ = [
     "V3drotateOutputs",
+    "V3drotateParameters",
     "V_3DROTATE_METADATA",
     "v_3drotate",
     "v_3drotate_params",

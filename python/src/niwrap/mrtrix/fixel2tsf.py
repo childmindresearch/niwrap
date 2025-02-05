@@ -334,7 +334,9 @@ def fixel2tsf(
 
 __all__ = [
     "FIXEL2TSF_METADATA",
+    "Fixel2tsfConfigParameters",
     "Fixel2tsfOutputs",
+    "Fixel2tsfParameters",
     "fixel2tsf",
     "fixel2tsf_config_params",
     "fixel2tsf_params",

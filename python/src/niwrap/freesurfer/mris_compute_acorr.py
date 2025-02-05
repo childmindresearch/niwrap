@@ -204,6 +204,7 @@ def mris_compute_acorr(
 __all__ = [
     "MRIS_COMPUTE_ACORR_METADATA",
     "MrisComputeAcorrOutputs",
+    "MrisComputeAcorrParameters",
     "mris_compute_acorr",
     "mris_compute_acorr_params",
 ]

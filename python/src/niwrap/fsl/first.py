@@ -322,6 +322,7 @@ def first(
 __all__ = [
     "FIRST_METADATA",
     "FirstOutputs",
+    "FirstParameters",
     "first",
     "first_params",
 ]

@@ -202,6 +202,7 @@ def mris_rf_label(
 __all__ = [
     "MRIS_RF_LABEL_METADATA",
     "MrisRfLabelOutputs",
+    "MrisRfLabelParameters",
     "mris_rf_label",
     "mris_rf_label_params",
 ]

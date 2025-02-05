@@ -167,6 +167,7 @@ def check_mcr_sh(
 __all__ = [
     "CHECK_MCR_SH_METADATA",
     "CheckMcrShOutputs",
+    "CheckMcrShParameters",
     "check_mcr_sh",
     "check_mcr_sh_params",
 ]

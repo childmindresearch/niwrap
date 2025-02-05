@@ -201,6 +201,7 @@ def fslreorient2std(
 __all__ = [
     "FSLREORIENT2STD_METADATA",
     "Fslreorient2stdOutputs",
+    "Fslreorient2stdParameters",
     "fslreorient2std",
     "fslreorient2std_params",
 ]

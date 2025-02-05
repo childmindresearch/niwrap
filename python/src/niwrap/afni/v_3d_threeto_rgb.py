@@ -250,6 +250,7 @@ def v_3d_threeto_rgb(
 
 __all__ = [
     "V3dThreetoRgbOutputs",
+    "V3dThreetoRgbParameters",
     "V_3D_THREETO_RGB_METADATA",
     "v_3d_threeto_rgb",
     "v_3d_threeto_rgb_params",

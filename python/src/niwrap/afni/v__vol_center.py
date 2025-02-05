@@ -178,6 +178,7 @@ def v__vol_center(
 
 __all__ = [
     "VVolCenterOutputs",
+    "VVolCenterParameters",
     "V__VOL_CENTER_METADATA",
     "v__vol_center",
     "v__vol_center_params",

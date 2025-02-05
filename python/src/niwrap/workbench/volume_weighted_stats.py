@@ -407,6 +407,10 @@ def volume_weighted_stats(
 __all__ = [
     "VOLUME_WEIGHTED_STATS_METADATA",
     "VolumeWeightedStatsOutputs",
+    "VolumeWeightedStatsParameters",
+    "VolumeWeightedStatsRoiParameters",
+    "VolumeWeightedStatsStdevParameters",
+    "VolumeWeightedStatsWeightVolumeParameters",
     "volume_weighted_stats",
     "volume_weighted_stats_params",
     "volume_weighted_stats_roi_params",

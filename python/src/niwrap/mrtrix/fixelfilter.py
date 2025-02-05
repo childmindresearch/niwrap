@@ -571,7 +571,13 @@ def fixelfilter(
 
 __all__ = [
     "FIXELFILTER_METADATA",
+    "FixelfilterConfigParameters",
     "FixelfilterOutputs",
+    "FixelfilterParameters",
+    "FixelfilterVariousFileParameters",
+    "FixelfilterVariousFileParameters_",
+    "FixelfilterVariousStringParameters",
+    "FixelfilterVariousStringParameters_",
     "fixelfilter",
     "fixelfilter_config_params",
     "fixelfilter_params",

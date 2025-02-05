@@ -245,6 +245,7 @@ def dtigen(
 __all__ = [
     "DTIGEN_METADATA",
     "DtigenOutputs",
+    "DtigenParameters",
     "dtigen",
     "dtigen_params",
 ]

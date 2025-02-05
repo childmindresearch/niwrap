@@ -206,6 +206,7 @@ def pairreg(
 __all__ = [
     "PAIRREG_METADATA",
     "PairregOutputs",
+    "PairregParameters",
     "pairreg",
     "pairreg_params",
 ]

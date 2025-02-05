@@ -671,6 +671,7 @@ def mri_nl_align(
 __all__ = [
     "MRI_NL_ALIGN_METADATA",
     "MriNlAlignOutputs",
+    "MriNlAlignParameters",
     "mri_nl_align",
     "mri_nl_align_params",
 ]

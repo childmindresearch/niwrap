@@ -212,6 +212,7 @@ def v_3d_local_acf(
 
 __all__ = [
     "V3dLocalAcfOutputs",
+    "V3dLocalAcfParameters",
     "V_3D_LOCAL_ACF_METADATA",
     "v_3d_local_acf",
     "v_3d_local_acf_params",

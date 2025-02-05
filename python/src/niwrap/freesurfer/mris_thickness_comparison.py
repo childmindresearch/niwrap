@@ -194,6 +194,7 @@ def mris_thickness_comparison(
 __all__ = [
     "MRIS_THICKNESS_COMPARISON_METADATA",
     "MrisThicknessComparisonOutputs",
+    "MrisThicknessComparisonParameters",
     "mris_thickness_comparison",
     "mris_thickness_comparison_params",
 ]

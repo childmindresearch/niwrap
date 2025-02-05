@@ -527,6 +527,7 @@ def gdcmconv_fs(
 __all__ = [
     "GDCMCONV_FS_METADATA",
     "GdcmconvFsOutputs",
+    "GdcmconvFsParameters",
     "gdcmconv_fs",
     "gdcmconv_fs_params",
 ]

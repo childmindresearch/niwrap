@@ -194,6 +194,7 @@ def mris_remove_variance(
 __all__ = [
     "MRIS_REMOVE_VARIANCE_METADATA",
     "MrisRemoveVarianceOutputs",
+    "MrisRemoveVarianceParameters",
     "mris_remove_variance",
     "mris_remove_variance_params",
 ]

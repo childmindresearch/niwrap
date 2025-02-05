@@ -164,6 +164,7 @@ def browse_minc_header_tcl(
 __all__ = [
     "BROWSE_MINC_HEADER_TCL_METADATA",
     "BrowseMincHeaderTclOutputs",
+    "BrowseMincHeaderTclParameters",
     "browse_minc_header_tcl",
     "browse_minc_header_tcl_params",
 ]

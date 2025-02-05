@@ -164,6 +164,7 @@ def v_3d_mema(
 
 __all__ = [
     "V3dMemaOutputs",
+    "V3dMemaParameters",
     "V_3D_MEMA_METADATA",
     "v_3d_mema",
     "v_3d_mema_params",

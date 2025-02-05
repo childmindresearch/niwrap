@@ -837,6 +837,7 @@ def mri_segstats(
 __all__ = [
     "MRI_SEGSTATS_METADATA",
     "MriSegstatsOutputs",
+    "MriSegstatsParameters",
     "mri_segstats",
     "mri_segstats_params",
 ]

@@ -241,6 +241,7 @@ def inspec(
 __all__ = [
     "INSPEC_METADATA",
     "InspecOutputs",
+    "InspecParameters",
     "inspec",
     "inspec_params",
 ]

@@ -225,6 +225,7 @@ def fslcc(
 __all__ = [
     "FSLCC_METADATA",
     "FslccOutputs",
+    "FslccParameters",
     "fslcc",
     "fslcc_params",
 ]

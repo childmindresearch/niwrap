@@ -176,6 +176,7 @@ def plot_structure_stats_tcl(
 __all__ = [
     "PLOT_STRUCTURE_STATS_TCL_METADATA",
     "PlotStructureStatsTclOutputs",
+    "PlotStructureStatsTclParameters",
     "plot_structure_stats_tcl",
     "plot_structure_stats_tcl_params",
 ]

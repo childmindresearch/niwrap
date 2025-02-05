@@ -291,6 +291,7 @@ def volume_find_clusters(
 __all__ = [
     "VOLUME_FIND_CLUSTERS_METADATA",
     "VolumeFindClustersOutputs",
+    "VolumeFindClustersParameters",
     "volume_find_clusters",
     "volume_find_clusters_params",
 ]

@@ -176,6 +176,7 @@ def mris_topo_fixer(
 __all__ = [
     "MRIS_TOPO_FIXER_METADATA",
     "MrisTopoFixerOutputs",
+    "MrisTopoFixerParameters",
     "mris_topo_fixer",
     "mris_topo_fixer_params",
 ]

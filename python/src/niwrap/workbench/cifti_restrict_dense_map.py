@@ -268,6 +268,7 @@ def cifti_restrict_dense_map(
 __all__ = [
     "CIFTI_RESTRICT_DENSE_MAP_METADATA",
     "CiftiRestrictDenseMapOutputs",
+    "CiftiRestrictDenseMapParameters",
     "cifti_restrict_dense_map",
     "cifti_restrict_dense_map_params",
 ]

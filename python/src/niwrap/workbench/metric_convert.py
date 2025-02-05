@@ -287,8 +287,8 @@ def metric_convert_outputs(
     """
     ret = MetricConvertOutputs(
         root=execution.output_file("."),
-        to_nifti=dyn_outputs(to_nifti["__STYXTYPE__"])(to_nifti, execution) if to_nifti else None,
-        from_nifti=dyn_outputs(from_nifti["__STYXTYPE__"])(from_nifti, execution) if from_nifti else None,
+        to_nifti=dyn_outputs(params.get("to_nifti")["__STYXTYPE__"])(params.get("to_nifti"), execution) if params.get("to_nifti") else None,
+        from_nifti=dyn_outputs(params.get("from_nifti")["__STYXTYPE__"])(params.get("from_nifti"), execution) if params.get("from_nifti") else None,
     )
     return ret
 
@@ -353,8 +353,11 @@ def metric_convert(
 __all__ = [
     "METRIC_CONVERT_METADATA",
     "MetricConvertFromNiftiOutputs",
+    "MetricConvertFromNiftiParameters",
     "MetricConvertOutputs",
+    "MetricConvertParameters",
     "MetricConvertToNiftiOutputs",
+    "MetricConvertToNiftiParameters",
     "metric_convert",
     "metric_convert_from_nifti_params",
     "metric_convert_params",

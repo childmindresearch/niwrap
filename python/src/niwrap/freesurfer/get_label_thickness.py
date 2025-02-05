@@ -165,6 +165,7 @@ def get_label_thickness(
 __all__ = [
     "GET_LABEL_THICKNESS_METADATA",
     "GetLabelThicknessOutputs",
+    "GetLabelThicknessParameters",
     "get_label_thickness",
     "get_label_thickness_params",
 ]

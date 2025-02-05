@@ -207,6 +207,7 @@ def imstat(
 __all__ = [
     "IMSTAT_METADATA",
     "ImstatOutputs",
+    "ImstatParameters",
     "imstat",
     "imstat_params",
 ]

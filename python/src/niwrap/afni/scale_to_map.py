@@ -444,6 +444,7 @@ def scale_to_map(
 __all__ = [
     "SCALE_TO_MAP_METADATA",
     "ScaleToMapOutputs",
+    "ScaleToMapParameters",
     "scale_to_map",
     "scale_to_map_params",
 ]

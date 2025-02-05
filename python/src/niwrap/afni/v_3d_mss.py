@@ -372,6 +372,7 @@ def v_3d_mss(
 
 __all__ = [
     "V3dMssOutputs",
+    "V3dMssParameters",
     "V_3D_MSS_METADATA",
     "v_3d_mss",
     "v_3d_mss_params",

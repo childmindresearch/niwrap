@@ -289,6 +289,7 @@ def exvivo_hemi_proc(
 __all__ = [
     "EXVIVO_HEMI_PROC_METADATA",
     "ExvivoHemiProcOutputs",
+    "ExvivoHemiProcParameters",
     "exvivo_hemi_proc",
     "exvivo_hemi_proc_params",
 ]

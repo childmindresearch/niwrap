@@ -291,6 +291,7 @@ def mri_modify(
 __all__ = [
     "MRI_MODIFY_METADATA",
     "MriModifyOutputs",
+    "MriModifyParameters",
     "mri_modify",
     "mri_modify_params",
 ]

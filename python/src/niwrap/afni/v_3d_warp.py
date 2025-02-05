@@ -164,6 +164,7 @@ def v_3d_warp(
 
 __all__ = [
     "V3dWarpOutputs",
+    "V3dWarpParameters",
     "V_3D_WARP_METADATA",
     "v_3d_warp",
     "v_3d_warp_params",

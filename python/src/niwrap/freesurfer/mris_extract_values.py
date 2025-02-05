@@ -224,6 +224,7 @@ def mris_extract_values(
 __all__ = [
     "MRIS_EXTRACT_VALUES_METADATA",
     "MrisExtractValuesOutputs",
+    "MrisExtractValuesParameters",
     "mris_extract_values",
     "mris_extract_values_params",
 ]

@@ -251,6 +251,7 @@ def metric_vector_operation(
 __all__ = [
     "METRIC_VECTOR_OPERATION_METADATA",
     "MetricVectorOperationOutputs",
+    "MetricVectorOperationParameters",
     "metric_vector_operation",
     "metric_vector_operation_params",
 ]

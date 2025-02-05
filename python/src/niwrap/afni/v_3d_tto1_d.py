@@ -233,6 +233,7 @@ def v_3d_tto1_d(
 
 __all__ = [
     "V3dTto1DOutputs",
+    "V3dTto1DParameters",
     "V_3D_TTO1_D_METADATA",
     "v_3d_tto1_d",
     "v_3d_tto1_d_params",

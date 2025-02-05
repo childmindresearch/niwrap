@@ -171,6 +171,7 @@ def reconbatchjobs(
 __all__ = [
     "RECONBATCHJOBS_METADATA",
     "ReconbatchjobsOutputs",
+    "ReconbatchjobsParameters",
     "reconbatchjobs",
     "reconbatchjobs_params",
 ]

@@ -168,6 +168,7 @@ def v_1d_astrip(
 
 __all__ = [
     "V1dAstripOutputs",
+    "V1dAstripParameters",
     "V_1D_ASTRIP_METADATA",
     "v_1d_astrip",
     "v_1d_astrip_params",

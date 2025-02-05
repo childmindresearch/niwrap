@@ -169,6 +169,7 @@ def v__djunct_4d_slices_to_3d_vol(
 
 __all__ = [
     "VDjunct4dSlicesTo3dVolOutputs",
+    "VDjunct4dSlicesTo3dVolParameters",
     "V__DJUNCT_4D_SLICES_TO_3D_VOL_METADATA",
     "v__djunct_4d_slices_to_3d_vol",
     "v__djunct_4d_slices_to_3d_vol_params",

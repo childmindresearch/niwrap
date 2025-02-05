@@ -176,6 +176,7 @@ def fslval(
 __all__ = [
     "FSLVAL_METADATA",
     "FslvalOutputs",
+    "FslvalParameters",
     "fslval",
     "fslval_params",
 ]

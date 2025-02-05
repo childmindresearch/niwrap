@@ -220,6 +220,7 @@ def fslsmoothfill(
 __all__ = [
     "FSLSMOOTHFILL_METADATA",
     "FslsmoothfillOutputs",
+    "FslsmoothfillParameters",
     "fslsmoothfill",
     "fslsmoothfill_params",
 ]

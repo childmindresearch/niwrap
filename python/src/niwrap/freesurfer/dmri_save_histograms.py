@@ -207,6 +207,7 @@ def dmri_save_histograms(
 __all__ = [
     "DMRI_SAVE_HISTOGRAMS_METADATA",
     "DmriSaveHistogramsOutputs",
+    "DmriSaveHistogramsParameters",
     "dmri_save_histograms",
     "dmri_save_histograms_params",
 ]

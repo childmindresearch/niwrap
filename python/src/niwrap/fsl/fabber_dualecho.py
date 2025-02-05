@@ -530,6 +530,7 @@ def fabber_dualecho(
 __all__ = [
     "FABBER_DUALECHO_METADATA",
     "FabberDualechoOutputs",
+    "FabberDualechoParameters",
     "fabber_dualecho",
     "fabber_dualecho_params",
 ]

@@ -224,6 +224,7 @@ def add_noise_to_image(
 __all__ = [
     "ADD_NOISE_TO_IMAGE_METADATA",
     "AddNoiseToImageOutputs",
+    "AddNoiseToImageParameters",
     "add_noise_to_image",
     "add_noise_to_image_params",
 ]

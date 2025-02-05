@@ -207,6 +207,7 @@ def mri_cvs_data_copy(
 __all__ = [
     "MRI_CVS_DATA_COPY_METADATA",
     "MriCvsDataCopyOutputs",
+    "MriCvsDataCopyParameters",
     "mri_cvs_data_copy",
     "mri_cvs_data_copy_params",
 ]

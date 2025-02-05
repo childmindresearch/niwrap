@@ -397,6 +397,7 @@ def afni_(
 __all__ = [
     "AFNI_METADATA",
     "AfniOutputs",
+    "AfniParameters",
     "afni_",
     "afni_params",
 ]

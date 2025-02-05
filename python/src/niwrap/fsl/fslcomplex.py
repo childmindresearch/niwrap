@@ -201,6 +201,7 @@ def fslcomplex(
 __all__ = [
     "FSLCOMPLEX_METADATA",
     "FslcomplexOutputs",
+    "FslcomplexParameters",
     "fslcomplex",
     "fslcomplex_params",
 ]

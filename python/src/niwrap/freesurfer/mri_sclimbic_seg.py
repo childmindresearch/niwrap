@@ -432,6 +432,7 @@ def mri_sclimbic_seg(
 __all__ = [
     "MRI_SCLIMBIC_SEG_METADATA",
     "MriSclimbicSegOutputs",
+    "MriSclimbicSegParameters",
     "mri_sclimbic_seg",
     "mri_sclimbic_seg_params",
 ]

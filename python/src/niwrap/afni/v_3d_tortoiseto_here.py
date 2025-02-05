@@ -226,6 +226,7 @@ def v_3d_tortoiseto_here(
 
 __all__ = [
     "V3dTortoisetoHereOutputs",
+    "V3dTortoisetoHereParameters",
     "V_3D_TORTOISETO_HERE_METADATA",
     "v_3d_tortoiseto_here",
     "v_3d_tortoiseto_here_params",

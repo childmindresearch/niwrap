@@ -246,6 +246,7 @@ def dicom_hdr(
 __all__ = [
     "DICOM_HDR_METADATA",
     "DicomHdrOutputs",
+    "DicomHdrParameters",
     "dicom_hdr",
     "dicom_hdr_params",
 ]

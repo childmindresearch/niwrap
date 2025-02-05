@@ -185,6 +185,7 @@ def hiam_make_template(
 __all__ = [
     "HIAM_MAKE_TEMPLATE_METADATA",
     "HiamMakeTemplateOutputs",
+    "HiamMakeTemplateParameters",
     "hiam_make_template",
     "hiam_make_template_params",
 ]

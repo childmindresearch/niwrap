@@ -377,7 +377,9 @@ def mrhistmatch(
 
 __all__ = [
     "MRHISTMATCH_METADATA",
+    "MrhistmatchConfigParameters",
     "MrhistmatchOutputs",
+    "MrhistmatchParameters",
     "mrhistmatch",
     "mrhistmatch_config_params",
     "mrhistmatch_params",

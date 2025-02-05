@@ -366,6 +366,7 @@ def mean(
 __all__ = [
     "MEAN_METADATA",
     "MeanOutputs",
+    "MeanParameters",
     "mean",
     "mean_params",
 ]

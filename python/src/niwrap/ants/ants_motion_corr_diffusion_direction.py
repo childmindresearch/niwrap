@@ -212,6 +212,7 @@ def ants_motion_corr_diffusion_direction(
 __all__ = [
     "ANTS_MOTION_CORR_DIFFUSION_DIRECTION_METADATA",
     "AntsMotionCorrDiffusionDirectionOutputs",
+    "AntsMotionCorrDiffusionDirectionParameters",
     "ants_motion_corr_diffusion_direction",
     "ants_motion_corr_diffusion_direction_params",
 ]

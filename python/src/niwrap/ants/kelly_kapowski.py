@@ -434,6 +434,7 @@ def kelly_kapowski(
 __all__ = [
     "KELLY_KAPOWSKI_METADATA",
     "KellyKapowskiOutputs",
+    "KellyKapowskiParameters",
     "kelly_kapowski",
     "kelly_kapowski_params",
 ]

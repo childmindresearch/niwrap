@@ -210,6 +210,7 @@ def v_3d_pvmap(
 
 __all__ = [
     "V3dPvmapOutputs",
+    "V3dPvmapParameters",
     "V_3D_PVMAP_METADATA",
     "v_3d_pvmap",
     "v_3d_pvmap_params",

@@ -212,6 +212,7 @@ def easythresh(
 __all__ = [
     "EASYTHRESH_METADATA",
     "EasythreshOutputs",
+    "EasythreshParameters",
     "easythresh",
     "easythresh_params",
 ]

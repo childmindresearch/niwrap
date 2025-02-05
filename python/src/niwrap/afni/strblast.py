@@ -225,6 +225,7 @@ def strblast(
 __all__ = [
     "STRBLAST_METADATA",
     "StrblastOutputs",
+    "StrblastParameters",
     "strblast",
     "strblast_params",
 ]

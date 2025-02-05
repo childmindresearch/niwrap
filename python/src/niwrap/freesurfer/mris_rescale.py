@@ -176,6 +176,7 @@ def mris_rescale(
 __all__ = [
     "MRIS_RESCALE_METADATA",
     "MrisRescaleOutputs",
+    "MrisRescaleParameters",
     "mris_rescale",
     "mris_rescale_params",
 ]

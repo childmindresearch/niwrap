@@ -216,6 +216,7 @@ def mris_average_curvature(
 __all__ = [
     "MRIS_AVERAGE_CURVATURE_METADATA",
     "MrisAverageCurvatureOutputs",
+    "MrisAverageCurvatureParameters",
     "mris_average_curvature",
     "mris_average_curvature_params",
 ]

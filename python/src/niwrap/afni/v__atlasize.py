@@ -377,6 +377,7 @@ def v__atlasize(
 
 __all__ = [
     "VAtlasizeOutputs",
+    "VAtlasizeParameters",
     "V__ATLASIZE_METADATA",
     "v__atlasize",
     "v__atlasize_params",

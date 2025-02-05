@@ -219,6 +219,7 @@ def gauss_4dfp(
 __all__ = [
     "GAUSS_4DFP_METADATA",
     "Gauss4dfpOutputs",
+    "Gauss4dfpParameters",
     "gauss_4dfp",
     "gauss_4dfp_params",
 ]

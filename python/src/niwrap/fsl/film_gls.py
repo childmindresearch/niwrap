@@ -437,6 +437,7 @@ def film_gls(
 __all__ = [
     "FILM_GLS_METADATA",
     "FilmGlsOutputs",
+    "FilmGlsParameters",
     "film_gls",
     "film_gls_params",
 ]

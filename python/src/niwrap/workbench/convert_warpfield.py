@@ -401,7 +401,11 @@ def convert_warpfield(
 
 __all__ = [
     "CONVERT_WARPFIELD_METADATA",
+    "ConvertWarpfieldFromFnirtParameters",
+    "ConvertWarpfieldFromWorldParameters",
     "ConvertWarpfieldOutputs",
+    "ConvertWarpfieldParameters",
+    "ConvertWarpfieldToFnirtParameters",
     "convert_warpfield",
     "convert_warpfield_from_fnirt_params",
     "convert_warpfield_from_world_params",

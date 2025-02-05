@@ -183,6 +183,7 @@ def siena_flirt(
 __all__ = [
     "SIENA_FLIRT_METADATA",
     "SienaFlirtOutputs",
+    "SienaFlirtParameters",
     "siena_flirt",
     "siena_flirt_params",
 ]

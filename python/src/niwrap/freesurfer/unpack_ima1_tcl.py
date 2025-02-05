@@ -180,6 +180,7 @@ def unpack_ima1_tcl(
 __all__ = [
     "UNPACK_IMA1_TCL_METADATA",
     "UnpackIma1TclOutputs",
+    "UnpackIma1TclParameters",
     "unpack_ima1_tcl",
     "unpack_ima1_tcl_params",
 ]

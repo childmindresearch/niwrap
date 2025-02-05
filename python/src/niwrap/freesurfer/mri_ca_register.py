@@ -571,6 +571,7 @@ def mri_ca_register(
 __all__ = [
     "MRI_CA_REGISTER_METADATA",
     "MriCaRegisterOutputs",
+    "MriCaRegisterParameters",
     "mri_ca_register",
     "mri_ca_register_params",
 ]

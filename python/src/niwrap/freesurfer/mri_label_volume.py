@@ -344,6 +344,7 @@ def mri_label_volume(
 __all__ = [
     "MRI_LABEL_VOLUME_METADATA",
     "MriLabelVolumeOutputs",
+    "MriLabelVolumeParameters",
     "mri_label_volume",
     "mri_label_volume_params",
 ]

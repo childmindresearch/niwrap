@@ -202,6 +202,7 @@ def label_subject_flash(
 __all__ = [
     "LABEL_SUBJECT_FLASH_METADATA",
     "LabelSubjectFlashOutputs",
+    "LabelSubjectFlashParameters",
     "label_subject_flash",
     "label_subject_flash_params",
 ]

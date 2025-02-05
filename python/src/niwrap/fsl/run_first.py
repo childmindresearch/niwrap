@@ -258,6 +258,7 @@ def run_first(
 __all__ = [
     "RUN_FIRST_METADATA",
     "RunFirstOutputs",
+    "RunFirstParameters",
     "run_first",
     "run_first_params",
 ]

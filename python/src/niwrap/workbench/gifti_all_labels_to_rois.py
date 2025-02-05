@@ -192,6 +192,7 @@ def gifti_all_labels_to_rois(
 __all__ = [
     "GIFTI_ALL_LABELS_TO_ROIS_METADATA",
     "GiftiAllLabelsToRoisOutputs",
+    "GiftiAllLabelsToRoisParameters",
     "gifti_all_labels_to_rois",
     "gifti_all_labels_to_rois_params",
 ]

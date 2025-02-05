@@ -254,6 +254,7 @@ def v_1dsvd(
 
 __all__ = [
     "V1dsvdOutputs",
+    "V1dsvdParameters",
     "V_1DSVD_METADATA",
     "v_1dsvd",
     "v_1dsvd_params",

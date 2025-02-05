@@ -231,6 +231,7 @@ def v__electro_grid(
 
 __all__ = [
     "VElectroGridOutputs",
+    "VElectroGridParameters",
     "V__ELECTRO_GRID_METADATA",
     "v__electro_grid",
     "v__electro_grid_params",

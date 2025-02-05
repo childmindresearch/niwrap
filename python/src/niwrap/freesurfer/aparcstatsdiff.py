@@ -208,6 +208,7 @@ def aparcstatsdiff(
 __all__ = [
     "APARCSTATSDIFF_METADATA",
     "AparcstatsdiffOutputs",
+    "AparcstatsdiffParameters",
     "aparcstatsdiff",
     "aparcstatsdiff_params",
 ]

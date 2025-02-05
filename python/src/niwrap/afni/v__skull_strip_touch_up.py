@@ -212,6 +212,7 @@ def v__skull_strip_touch_up(
 
 __all__ = [
     "VSkullStripTouchUpOutputs",
+    "VSkullStripTouchUpParameters",
     "V__SKULL_STRIP_TOUCH_UP_METADATA",
     "v__skull_strip_touch_up",
     "v__skull_strip_touch_up_params",

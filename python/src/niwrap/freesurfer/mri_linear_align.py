@@ -178,6 +178,7 @@ def mri_linear_align(
 __all__ = [
     "MRI_LINEAR_ALIGN_METADATA",
     "MriLinearAlignOutputs",
+    "MriLinearAlignParameters",
     "mri_linear_align",
     "mri_linear_align_params",
 ]

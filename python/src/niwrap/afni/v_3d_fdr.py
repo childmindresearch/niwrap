@@ -305,6 +305,7 @@ def v_3d_fdr(
 
 __all__ = [
     "V3dFdrOutputs",
+    "V3dFdrParameters",
     "V_3D_FDR_METADATA",
     "v_3d_fdr",
     "v_3d_fdr_params",

@@ -183,6 +183,7 @@ def labels_intersect(
 __all__ = [
     "LABELS_INTERSECT_METADATA",
     "LabelsIntersectOutputs",
+    "LabelsIntersectParameters",
     "labels_intersect",
     "labels_intersect_params",
 ]

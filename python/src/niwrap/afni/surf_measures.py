@@ -349,6 +349,7 @@ def surf_measures(
 __all__ = [
     "SURF_MEASURES_METADATA",
     "SurfMeasuresOutputs",
+    "SurfMeasuresParameters",
     "surf_measures",
     "surf_measures_params",
 ]

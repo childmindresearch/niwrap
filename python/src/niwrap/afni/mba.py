@@ -339,6 +339,7 @@ def mba(
 __all__ = [
     "MBA_METADATA",
     "MbaOutputs",
+    "MbaParameters",
     "mba",
     "mba_params",
 ]

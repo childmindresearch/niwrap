@@ -165,6 +165,7 @@ def mris_errors(
 __all__ = [
     "MRIS_ERRORS_METADATA",
     "MrisErrorsOutputs",
+    "MrisErrorsParameters",
     "mris_errors",
     "mris_errors_params",
 ]

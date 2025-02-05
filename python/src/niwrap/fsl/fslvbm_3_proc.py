@@ -514,6 +514,7 @@ def fslvbm_3_proc(
 __all__ = [
     "FSLVBM_3_PROC_METADATA",
     "Fslvbm3ProcOutputs",
+    "Fslvbm3ProcParameters",
     "fslvbm_3_proc",
     "fslvbm_3_proc_params",
 ]

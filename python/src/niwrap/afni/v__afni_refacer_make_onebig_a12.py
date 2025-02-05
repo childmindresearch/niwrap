@@ -170,6 +170,7 @@ def v__afni_refacer_make_onebig_a12(
 
 __all__ = [
     "VAfniRefacerMakeOnebigA12Outputs",
+    "VAfniRefacerMakeOnebigA12Parameters",
     "V__AFNI_REFACER_MAKE_ONEBIG_A12_METADATA",
     "v__afni_refacer_make_onebig_a12",
     "v__afni_refacer_make_onebig_a12_params",

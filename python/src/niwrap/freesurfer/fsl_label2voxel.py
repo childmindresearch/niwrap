@@ -190,6 +190,7 @@ def fsl_label2voxel(
 __all__ = [
     "FSL_LABEL2VOXEL_METADATA",
     "FslLabel2voxelOutputs",
+    "FslLabel2voxelParameters",
     "fsl_label2voxel",
     "fsl_label2voxel_params",
 ]

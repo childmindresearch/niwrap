@@ -204,6 +204,7 @@ def v_1d_sem(
 
 __all__ = [
     "V1dSemOutputs",
+    "V1dSemParameters",
     "V_1D_SEM_METADATA",
     "v_1d_sem",
     "v_1d_sem_params",

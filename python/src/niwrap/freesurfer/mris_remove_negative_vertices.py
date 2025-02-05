@@ -183,6 +183,7 @@ def mris_remove_negative_vertices(
 __all__ = [
     "MRIS_REMOVE_NEGATIVE_VERTICES_METADATA",
     "MrisRemoveNegativeVerticesOutputs",
+    "MrisRemoveNegativeVerticesParameters",
     "mris_remove_negative_vertices",
     "mris_remove_negative_vertices_params",
 ]

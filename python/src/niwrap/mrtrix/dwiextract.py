@@ -627,7 +627,7 @@ def dwiextract_outputs(
         root=execution.output_file("."),
         output=execution.output_file(params.get("output")),
         export_grad_mrtrix=execution.output_file(params.get("export_grad_mrtrix")) if (params.get("export_grad_mrtrix") is not None) else None,
-        export_grad_fsl=dyn_outputs(export_grad_fsl["__STYXTYPE__"])(export_grad_fsl, execution) if export_grad_fsl else None,
+        export_grad_fsl=dyn_outputs(params.get("export_grad_fsl")["__STYXTYPE__"])(params.get("export_grad_fsl"), execution) if params.get("export_grad_fsl") else None,
     )
     return ret
 
@@ -771,8 +771,15 @@ def dwiextract(
 
 __all__ = [
     "DWIEXTRACT_METADATA",
+    "DwiextractConfigParameters",
     "DwiextractExportGradFslOutputs",
+    "DwiextractExportGradFslParameters",
+    "DwiextractFslgradParameters",
+    "DwiextractImportPeEddyParameters",
     "DwiextractOutputs",
+    "DwiextractParameters",
+    "DwiextractVariousFileParameters",
+    "DwiextractVariousStringParameters",
     "dwiextract",
     "dwiextract_config_params",
     "dwiextract_export_grad_fsl_params",

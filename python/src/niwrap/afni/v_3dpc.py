@@ -318,6 +318,7 @@ def v_3dpc(
 
 __all__ = [
     "V3dpcOutputs",
+    "V3dpcParameters",
     "V_3DPC_METADATA",
     "v_3dpc",
     "v_3dpc_params",

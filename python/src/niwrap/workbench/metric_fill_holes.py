@@ -206,6 +206,7 @@ def metric_fill_holes(
 __all__ = [
     "METRIC_FILL_HOLES_METADATA",
     "MetricFillHolesOutputs",
+    "MetricFillHolesParameters",
     "metric_fill_holes",
     "metric_fill_holes_params",
 ]

@@ -310,6 +310,7 @@ def ants_joint_label_fusion_sh(
 __all__ = [
     "ANTS_JOINT_LABEL_FUSION_SH_METADATA",
     "AntsJointLabelFusionShOutputs",
+    "AntsJointLabelFusionShParameters",
     "ants_joint_label_fusion_sh",
     "ants_joint_label_fusion_sh_params",
 ]

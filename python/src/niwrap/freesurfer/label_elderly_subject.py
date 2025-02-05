@@ -194,6 +194,7 @@ def label_elderly_subject(
 __all__ = [
     "LABEL_ELDERLY_SUBJECT_METADATA",
     "LabelElderlySubjectOutputs",
+    "LabelElderlySubjectParameters",
     "label_elderly_subject",
     "label_elderly_subject_params",
 ]

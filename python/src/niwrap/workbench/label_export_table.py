@@ -178,6 +178,7 @@ def label_export_table(
 __all__ = [
     "LABEL_EXPORT_TABLE_METADATA",
     "LabelExportTableOutputs",
+    "LabelExportTableParameters",
     "label_export_table",
     "label_export_table_params",
 ]

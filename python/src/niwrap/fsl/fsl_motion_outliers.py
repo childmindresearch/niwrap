@@ -328,6 +328,7 @@ def fsl_motion_outliers(
 __all__ = [
     "FSL_MOTION_OUTLIERS_METADATA",
     "FslMotionOutliersOutputs",
+    "FslMotionOutliersParameters",
     "fsl_motion_outliers",
     "fsl_motion_outliers_params",
 ]

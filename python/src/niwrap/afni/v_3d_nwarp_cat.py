@@ -261,6 +261,7 @@ def v_3d_nwarp_cat(
 
 __all__ = [
     "V3dNwarpCatOutputs",
+    "V3dNwarpCatParameters",
     "V_3D_NWARP_CAT_METADATA",
     "v_3d_nwarp_cat",
     "v_3d_nwarp_cat_params",

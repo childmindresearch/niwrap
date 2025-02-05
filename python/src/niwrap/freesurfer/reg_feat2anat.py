@@ -345,6 +345,7 @@ def reg_feat2anat(
 __all__ = [
     "REG_FEAT2ANAT_METADATA",
     "RegFeat2anatOutputs",
+    "RegFeat2anatParameters",
     "reg_feat2anat",
     "reg_feat2anat_params",
 ]

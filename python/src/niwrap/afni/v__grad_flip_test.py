@@ -338,6 +338,7 @@ def v__grad_flip_test(
 
 __all__ = [
     "VGradFlipTestOutputs",
+    "VGradFlipTestParameters",
     "V__GRAD_FLIP_TEST_METADATA",
     "v__grad_flip_test",
     "v__grad_flip_test_params",

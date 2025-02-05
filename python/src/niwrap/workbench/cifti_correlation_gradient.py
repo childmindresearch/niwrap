@@ -554,7 +554,12 @@ def cifti_correlation_gradient(
 
 __all__ = [
     "CIFTI_CORRELATION_GRADIENT_METADATA",
+    "CiftiCorrelationGradientCerebellumSurfaceParameters",
+    "CiftiCorrelationGradientDoubleCorrelationParameters",
+    "CiftiCorrelationGradientLeftSurfaceParameters",
     "CiftiCorrelationGradientOutputs",
+    "CiftiCorrelationGradientParameters",
+    "CiftiCorrelationGradientRightSurfaceParameters",
     "cifti_correlation_gradient",
     "cifti_correlation_gradient_cerebellum_surface_params",
     "cifti_correlation_gradient_double_correlation_params",

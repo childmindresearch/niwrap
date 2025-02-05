@@ -185,6 +185,7 @@ def mri_compute_volume_intensities(
 __all__ = [
     "MRI_COMPUTE_VOLUME_INTENSITIES_METADATA",
     "MriComputeVolumeIntensitiesOutputs",
+    "MriComputeVolumeIntensitiesParameters",
     "mri_compute_volume_intensities",
     "mri_compute_volume_intensities_params",
 ]

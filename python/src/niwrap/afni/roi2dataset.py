@@ -292,6 +292,7 @@ def roi2dataset(
 __all__ = [
     "ROI2DATASET_METADATA",
     "Roi2datasetOutputs",
+    "Roi2datasetParameters",
     "roi2dataset",
     "roi2dataset_params",
 ]

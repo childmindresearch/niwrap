@@ -413,6 +413,7 @@ def fvcompare(
 __all__ = [
     "FVCOMPARE_METADATA",
     "FvcompareOutputs",
+    "FvcompareParameters",
     "fvcompare",
     "fvcompare_params",
 ]

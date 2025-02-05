@@ -252,6 +252,7 @@ def mri_edit_segmentation_with_surfaces(
 __all__ = [
     "MRI_EDIT_SEGMENTATION_WITH_SURFACES_METADATA",
     "MriEditSegmentationWithSurfacesOutputs",
+    "MriEditSegmentationWithSurfacesParameters",
     "mri_edit_segmentation_with_surfaces",
     "mri_edit_segmentation_with_surfaces_params",
 ]

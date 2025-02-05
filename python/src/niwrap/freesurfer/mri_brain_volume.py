@@ -179,6 +179,7 @@ def mri_brain_volume(
 __all__ = [
     "MRI_BRAIN_VOLUME_METADATA",
     "MriBrainVolumeOutputs",
+    "MriBrainVolumeParameters",
     "mri_brain_volume",
     "mri_brain_volume_params",
 ]

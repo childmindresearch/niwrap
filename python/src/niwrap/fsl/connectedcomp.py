@@ -187,6 +187,7 @@ def connectedcomp(
 __all__ = [
     "CONNECTEDCOMP_METADATA",
     "ConnectedcompOutputs",
+    "ConnectedcompParameters",
     "connectedcomp",
     "connectedcomp_params",
 ]

@@ -252,6 +252,7 @@ def volume_parcel_resampling(
 __all__ = [
     "VOLUME_PARCEL_RESAMPLING_METADATA",
     "VolumeParcelResamplingOutputs",
+    "VolumeParcelResamplingParameters",
     "volume_parcel_resampling",
     "volume_parcel_resampling_params",
 ]

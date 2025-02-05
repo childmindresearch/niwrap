@@ -210,6 +210,7 @@ def mris_mesh_subdivide(
 __all__ = [
     "MRIS_MESH_SUBDIVIDE_METADATA",
     "MrisMeshSubdivideOutputs",
+    "MrisMeshSubdivideParameters",
     "mris_mesh_subdivide",
     "mris_mesh_subdivide_params",
 ]

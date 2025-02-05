@@ -163,6 +163,7 @@ def v__surf_smooth_heat_07_examples(
 
 __all__ = [
     "VSurfSmoothHeat07ExamplesOutputs",
+    "VSurfSmoothHeat07ExamplesParameters",
     "V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA",
     "v__surf_smooth_heat_07_examples",
     "v__surf_smooth_heat_07_examples_params",

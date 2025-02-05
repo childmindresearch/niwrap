@@ -216,6 +216,7 @@ def mri_compute_change_map(
 __all__ = [
     "MRI_COMPUTE_CHANGE_MAP_METADATA",
     "MriComputeChangeMapOutputs",
+    "MriComputeChangeMapParameters",
     "mri_compute_change_map",
     "mri_compute_change_map_params",
 ]

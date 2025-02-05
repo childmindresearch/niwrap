@@ -186,6 +186,7 @@ def bayes_view(
 __all__ = [
     "BAYES_VIEW_METADATA",
     "BayesViewOutputs",
+    "BayesViewParameters",
     "bayes_view",
     "bayes_view_params",
 ]

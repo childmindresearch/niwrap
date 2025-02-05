@@ -211,6 +211,7 @@ def v_3dmaskave(
 
 __all__ = [
     "V3dmaskaveOutputs",
+    "V3dmaskaveParameters",
     "V_3DMASKAVE_METADATA",
     "v_3dmaskave",
     "v_3dmaskave_params",

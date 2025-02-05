@@ -246,6 +246,7 @@ def v_3d_cruiseto_afni(
 
 __all__ = [
     "V3dCruisetoAfniOutputs",
+    "V3dCruisetoAfniParameters",
     "V_3D_CRUISETO_AFNI_METADATA",
     "v_3d_cruiseto_afni",
     "v_3d_cruiseto_afni_params",

@@ -204,6 +204,7 @@ def v_1d_marry(
 
 __all__ = [
     "V1dMarryOutputs",
+    "V1dMarryParameters",
     "V_1D_MARRY_METADATA",
     "v_1d_marry",
     "v_1d_marry_params",

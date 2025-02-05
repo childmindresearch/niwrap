@@ -179,6 +179,7 @@ def fslcpgeom(
 __all__ = [
     "FSLCPGEOM_METADATA",
     "FslcpgeomOutputs",
+    "FslcpgeomParameters",
     "fslcpgeom",
     "fslcpgeom_params",
 ]

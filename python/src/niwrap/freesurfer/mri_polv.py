@@ -189,6 +189,7 @@ def mri_polv(
 __all__ = [
     "MRI_POLV_METADATA",
     "MriPolvOutputs",
+    "MriPolvParameters",
     "mri_polv",
     "mri_polv_params",
 ]

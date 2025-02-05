@@ -183,6 +183,7 @@ def compute_vox2vox(
 __all__ = [
     "COMPUTE_VOX2VOX_METADATA",
     "ComputeVox2voxOutputs",
+    "ComputeVox2voxParameters",
     "compute_vox2vox",
     "compute_vox2vox_params",
 ]

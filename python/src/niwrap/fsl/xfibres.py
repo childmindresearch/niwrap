@@ -444,6 +444,7 @@ def xfibres(
 __all__ = [
     "XFIBRES_METADATA",
     "XfibresOutputs",
+    "XfibresParameters",
     "xfibres",
     "xfibres_params",
 ]

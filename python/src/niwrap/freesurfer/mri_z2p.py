@@ -281,6 +281,7 @@ def mri_z2p(
 __all__ = [
     "MRI_Z2P_METADATA",
     "MriZ2pOutputs",
+    "MriZ2pParameters",
     "mri_z2p",
     "mri_z2p_params",
 ]

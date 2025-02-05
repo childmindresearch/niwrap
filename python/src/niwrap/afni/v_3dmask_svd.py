@@ -171,6 +171,7 @@ def v_3dmask_svd(
 
 __all__ = [
     "V3dmaskSvdOutputs",
+    "V3dmaskSvdParameters",
     "V_3DMASK_SVD_METADATA",
     "v_3dmask_svd",
     "v_3dmask_svd_params",

@@ -321,7 +321,9 @@ def mrcentroid(
 
 __all__ = [
     "MRCENTROID_METADATA",
+    "MrcentroidConfigParameters",
     "MrcentroidOutputs",
+    "MrcentroidParameters",
     "mrcentroid",
     "mrcentroid_config_params",
     "mrcentroid_params",

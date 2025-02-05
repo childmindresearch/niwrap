@@ -704,6 +704,7 @@ def v_3d_tstat(
 
 __all__ = [
     "V3dTstatOutputs",
+    "V3dTstatParameters",
     "V_3D_TSTAT_METADATA",
     "v_3d_tstat",
     "v_3d_tstat_params",

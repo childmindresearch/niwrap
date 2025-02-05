@@ -257,6 +257,7 @@ def swi_preprocess(
 __all__ = [
     "SWI_PREPROCESS_METADATA",
     "SwiPreprocessOutputs",
+    "SwiPreprocessParameters",
     "swi_preprocess",
     "swi_preprocess_params",
 ]

@@ -233,7 +233,7 @@ def convert_matrix4_to_matrix2_outputs(
         root=execution.output_file("."),
         counts_out=execution.output_file(params.get("counts_out")),
         opt_distances_distance_out=execution.output_file(params.get("opt_distances_distance_out")) if (params.get("opt_distances_distance_out") is not None) else None,
-        individual_fibers=dyn_outputs(individual_fibers["__STYXTYPE__"])(individual_fibers, execution) if individual_fibers else None,
+        individual_fibers=dyn_outputs(params.get("individual_fibers")["__STYXTYPE__"])(params.get("individual_fibers"), execution) if params.get("individual_fibers") else None,
     )
     return ret
 
@@ -307,7 +307,9 @@ def convert_matrix4_to_matrix2(
 __all__ = [
     "CONVERT_MATRIX4_TO_MATRIX2_METADATA",
     "ConvertMatrix4ToMatrix2IndividualFibersOutputs",
+    "ConvertMatrix4ToMatrix2IndividualFibersParameters",
     "ConvertMatrix4ToMatrix2Outputs",
+    "ConvertMatrix4ToMatrix2Parameters",
     "convert_matrix4_to_matrix2",
     "convert_matrix4_to_matrix2_individual_fibers_params",
     "convert_matrix4_to_matrix2_params",

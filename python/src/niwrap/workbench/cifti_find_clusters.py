@@ -588,7 +588,13 @@ def cifti_find_clusters(
 
 __all__ = [
     "CIFTI_FIND_CLUSTERS_METADATA",
+    "CiftiFindClustersCerebellumSurfaceParameters",
+    "CiftiFindClustersDistanceParameters",
+    "CiftiFindClustersLeftSurfaceParameters",
     "CiftiFindClustersOutputs",
+    "CiftiFindClustersParameters",
+    "CiftiFindClustersRightSurfaceParameters",
+    "CiftiFindClustersSizeRatioParameters",
     "cifti_find_clusters",
     "cifti_find_clusters_cerebellum_surface_params",
     "cifti_find_clusters_distance_params",

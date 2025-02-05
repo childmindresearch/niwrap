@@ -329,6 +329,7 @@ def fat_proc_connec_vis(
 __all__ = [
     "FAT_PROC_CONNEC_VIS_METADATA",
     "FatProcConnecVisOutputs",
+    "FatProcConnecVisParameters",
     "fat_proc_connec_vis",
     "fat_proc_connec_vis_params",
 ]

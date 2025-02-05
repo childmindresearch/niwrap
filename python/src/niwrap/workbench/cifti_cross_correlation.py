@@ -240,6 +240,7 @@ def cifti_cross_correlation(
 __all__ = [
     "CIFTI_CROSS_CORRELATION_METADATA",
     "CiftiCrossCorrelationOutputs",
+    "CiftiCrossCorrelationParameters",
     "cifti_cross_correlation",
     "cifti_cross_correlation_params",
 ]

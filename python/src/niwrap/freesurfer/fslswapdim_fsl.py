@@ -205,6 +205,7 @@ def fslswapdim_fsl(
 __all__ = [
     "FSLSWAPDIM_FSL_METADATA",
     "FslswapdimFslOutputs",
+    "FslswapdimFslParameters",
     "fslswapdim_fsl",
     "fslswapdim_fsl_params",
 ]

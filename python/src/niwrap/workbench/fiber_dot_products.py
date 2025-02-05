@@ -228,6 +228,7 @@ def fiber_dot_products(
 __all__ = [
     "FIBER_DOT_PRODUCTS_METADATA",
     "FiberDotProductsOutputs",
+    "FiberDotProductsParameters",
     "fiber_dot_products",
     "fiber_dot_products_params",
 ]

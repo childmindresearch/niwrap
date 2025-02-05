@@ -358,6 +358,7 @@ def feat2segstats(
 __all__ = [
     "FEAT2SEGSTATS_METADATA",
     "Feat2segstatsOutputs",
+    "Feat2segstatsParameters",
     "feat2segstats",
     "feat2segstats_params",
 ]

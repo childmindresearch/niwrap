@@ -195,6 +195,7 @@ def calc_grad_perc_dev(
 __all__ = [
     "CALC_GRAD_PERC_DEV_METADATA",
     "CalcGradPercDevOutputs",
+    "CalcGradPercDevParameters",
     "calc_grad_perc_dev",
     "calc_grad_perc_dev_params",
 ]

@@ -307,7 +307,9 @@ def cifti_reduce(
 
 __all__ = [
     "CIFTI_REDUCE_METADATA",
+    "CiftiReduceExcludeOutliersParameters",
     "CiftiReduceOutputs",
+    "CiftiReduceParameters",
     "cifti_reduce",
     "cifti_reduce_exclude_outliers_params",
     "cifti_reduce_params",

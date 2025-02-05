@@ -223,6 +223,7 @@ def v_1dgrayplot(
 
 __all__ = [
     "V1dgrayplotOutputs",
+    "V1dgrayplotParameters",
     "V_1DGRAYPLOT_METADATA",
     "v_1dgrayplot",
     "v_1dgrayplot_params",

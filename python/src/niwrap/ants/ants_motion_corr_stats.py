@@ -242,6 +242,7 @@ def ants_motion_corr_stats(
 __all__ = [
     "ANTS_MOTION_CORR_STATS_METADATA",
     "AntsMotionCorrStatsOutputs",
+    "AntsMotionCorrStatsParameters",
     "ants_motion_corr_stats",
     "ants_motion_corr_stats_params",
 ]

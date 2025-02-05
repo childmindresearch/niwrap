@@ -351,7 +351,9 @@ def shbasis(
 
 __all__ = [
     "SHBASIS_METADATA",
+    "ShbasisConfigParameters",
     "ShbasisOutputs",
+    "ShbasisParameters",
     "shbasis",
     "shbasis_config_params",
     "shbasis_params",

@@ -353,6 +353,7 @@ def v_3dclust(
 
 __all__ = [
     "V3dclustOutputs",
+    "V3dclustParameters",
     "V_3DCLUST_METADATA",
     "v_3dclust",
     "v_3dclust_params",

@@ -281,6 +281,8 @@ def convert_matrix4_to_workbench_sparse(
 __all__ = [
     "CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA",
     "ConvertMatrix4ToWorkbenchSparseOutputs",
+    "ConvertMatrix4ToWorkbenchSparseParameters",
+    "ConvertMatrix4ToWorkbenchSparseVolumeSeedsParameters",
     "convert_matrix4_to_workbench_sparse",
     "convert_matrix4_to_workbench_sparse_params",
     "convert_matrix4_to_workbench_sparse_volume_seeds_params",

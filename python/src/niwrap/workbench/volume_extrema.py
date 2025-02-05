@@ -406,6 +406,9 @@ def volume_extrema(
 __all__ = [
     "VOLUME_EXTREMA_METADATA",
     "VolumeExtremaOutputs",
+    "VolumeExtremaParameters",
+    "VolumeExtremaPresmoothParameters",
+    "VolumeExtremaThresholdParameters",
     "volume_extrema",
     "volume_extrema_params",
     "volume_extrema_presmooth_params",

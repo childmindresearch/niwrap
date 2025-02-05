@@ -187,6 +187,7 @@ def dmri_group_by_endpoints(
 __all__ = [
     "DMRI_GROUP_BY_ENDPOINTS_METADATA",
     "DmriGroupByEndpointsOutputs",
+    "DmriGroupByEndpointsParameters",
     "dmri_group_by_endpoints",
     "dmri_group_by_endpoints_params",
 ]

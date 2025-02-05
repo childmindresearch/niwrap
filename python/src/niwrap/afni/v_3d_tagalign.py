@@ -320,6 +320,7 @@ def v_3d_tagalign(
 
 __all__ = [
     "V3dTagalignOutputs",
+    "V3dTagalignParameters",
     "V_3D_TAGALIGN_METADATA",
     "v_3d_tagalign",
     "v_3d_tagalign_params",

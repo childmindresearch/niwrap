@@ -194,6 +194,7 @@ def v_3d_skull_strip(
 
 __all__ = [
     "V3dSkullStripOutputs",
+    "V3dSkullStripParameters",
     "V_3D_SKULL_STRIP_METADATA",
     "v_3d_skull_strip",
     "v_3d_skull_strip_params",

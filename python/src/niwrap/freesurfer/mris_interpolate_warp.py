@@ -178,6 +178,7 @@ def mris_interpolate_warp(
 __all__ = [
     "MRIS_INTERPOLATE_WARP_METADATA",
     "MrisInterpolateWarpOutputs",
+    "MrisInterpolateWarpParameters",
     "mris_interpolate_warp",
     "mris_interpolate_warp_params",
 ]

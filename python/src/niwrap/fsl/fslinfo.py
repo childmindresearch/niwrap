@@ -164,6 +164,7 @@ def fslinfo(
 __all__ = [
     "FSLINFO_METADATA",
     "FslinfoOutputs",
+    "FslinfoParameters",
     "fslinfo",
     "fslinfo_params",
 ]

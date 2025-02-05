@@ -220,6 +220,7 @@ def analyzeto4dfp(
 __all__ = [
     "ANALYZETO4DFP_METADATA",
     "Analyzeto4dfpOutputs",
+    "Analyzeto4dfpParameters",
     "analyzeto4dfp",
     "analyzeto4dfp_params",
 ]

@@ -249,6 +249,7 @@ def label_erode(
 __all__ = [
     "LABEL_ERODE_METADATA",
     "LabelErodeOutputs",
+    "LabelErodeParameters",
     "label_erode",
     "label_erode_params",
 ]

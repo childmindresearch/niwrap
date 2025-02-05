@@ -175,6 +175,7 @@ def run_segment_thalamic_nuclei_sh(
 __all__ = [
     "RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA",
     "RunSegmentThalamicNucleiShOutputs",
+    "RunSegmentThalamicNucleiShParameters",
     "run_segment_thalamic_nuclei_sh",
     "run_segment_thalamic_nuclei_sh_params",
 ]

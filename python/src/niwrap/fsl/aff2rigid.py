@@ -175,6 +175,7 @@ def aff2rigid(
 __all__ = [
     "AFF2RIGID_METADATA",
     "Aff2rigidOutputs",
+    "Aff2rigidParameters",
     "aff2rigid",
     "aff2rigid_params",
 ]

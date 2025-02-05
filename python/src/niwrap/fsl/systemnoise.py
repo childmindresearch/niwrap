@@ -222,6 +222,7 @@ def systemnoise(
 __all__ = [
     "SYSTEMNOISE_METADATA",
     "SystemnoiseOutputs",
+    "SystemnoiseParameters",
     "systemnoise",
     "systemnoise_params",
 ]

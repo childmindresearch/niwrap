@@ -194,6 +194,7 @@ def mri_mark_temporal_lobe(
 __all__ = [
     "MRI_MARK_TEMPORAL_LOBE_METADATA",
     "MriMarkTemporalLobeOutputs",
+    "MriMarkTemporalLobeParameters",
     "mri_mark_temporal_lobe",
     "mri_mark_temporal_lobe_params",
 ]

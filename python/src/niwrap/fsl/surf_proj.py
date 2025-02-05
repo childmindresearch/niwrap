@@ -283,6 +283,7 @@ def surf_proj(
 __all__ = [
     "SURF_PROJ_METADATA",
     "SurfProjOutputs",
+    "SurfProjParameters",
     "surf_proj",
     "surf_proj_params",
 ]

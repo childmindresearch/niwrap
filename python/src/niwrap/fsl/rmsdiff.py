@@ -187,6 +187,7 @@ def rmsdiff(
 __all__ = [
     "RMSDIFF_METADATA",
     "RmsdiffOutputs",
+    "RmsdiffParameters",
     "rmsdiff",
     "rmsdiff_params",
 ]

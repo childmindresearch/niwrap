@@ -187,6 +187,7 @@ def make_hemi_mask(
 __all__ = [
     "MAKE_HEMI_MASK_METADATA",
     "MakeHemiMaskOutputs",
+    "MakeHemiMaskParameters",
     "make_hemi_mask",
     "make_hemi_mask_params",
 ]

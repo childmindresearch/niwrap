@@ -358,7 +358,9 @@ def mrcat(
 
 __all__ = [
     "MRCAT_METADATA",
+    "MrcatConfigParameters",
     "MrcatOutputs",
+    "MrcatParameters",
     "mrcat",
     "mrcat_config_params",
     "mrcat_params",

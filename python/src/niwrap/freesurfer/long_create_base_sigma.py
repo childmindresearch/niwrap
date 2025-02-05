@@ -175,6 +175,7 @@ def long_create_base_sigma(
 __all__ = [
     "LONG_CREATE_BASE_SIGMA_METADATA",
     "LongCreateBaseSigmaOutputs",
+    "LongCreateBaseSigmaParameters",
     "long_create_base_sigma",
     "long_create_base_sigma_params",
 ]

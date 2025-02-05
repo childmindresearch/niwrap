@@ -199,6 +199,7 @@ def fabber_cest(
 __all__ = [
     "FABBER_CEST_METADATA",
     "FabberCestOutputs",
+    "FabberCestParameters",
     "fabber_cest",
     "fabber_cest_params",
 ]

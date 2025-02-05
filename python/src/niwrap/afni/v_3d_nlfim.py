@@ -231,6 +231,7 @@ def v_3d_nlfim(
 
 __all__ = [
     "V3dNlfimOutputs",
+    "V3dNlfimParameters",
     "V_3D_NLFIM_METADATA",
     "v_3d_nlfim",
     "v_3d_nlfim_params",

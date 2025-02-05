@@ -194,6 +194,7 @@ def thickdiffmap(
 __all__ = [
     "THICKDIFFMAP_METADATA",
     "ThickdiffmapOutputs",
+    "ThickdiffmapParameters",
     "thickdiffmap",
     "thickdiffmap_params",
 ]

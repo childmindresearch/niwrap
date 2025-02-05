@@ -182,6 +182,7 @@ def run_segment_subject_sh(
 __all__ = [
     "RUN_SEGMENT_SUBJECT_SH_METADATA",
     "RunSegmentSubjectShOutputs",
+    "RunSegmentSubjectShParameters",
     "run_segment_subject_sh",
     "run_segment_subject_sh_params",
 ]

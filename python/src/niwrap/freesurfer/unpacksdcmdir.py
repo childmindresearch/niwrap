@@ -182,6 +182,7 @@ def unpacksdcmdir(
 __all__ = [
     "UNPACKSDCMDIR_METADATA",
     "UnpacksdcmdirOutputs",
+    "UnpacksdcmdirParameters",
     "unpacksdcmdir",
     "unpacksdcmdir_params",
 ]

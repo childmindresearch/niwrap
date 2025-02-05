@@ -173,6 +173,7 @@ def feat_model(
 __all__ = [
     "FEAT_MODEL_METADATA",
     "FeatModelOutputs",
+    "FeatModelParameters",
     "feat_model",
     "feat_model_params",
 ]

@@ -553,6 +553,7 @@ def v_3d_warp_drive(
 
 __all__ = [
     "V3dWarpDriveOutputs",
+    "V3dWarpDriveParameters",
     "V_3D_WARP_DRIVE_METADATA",
     "v_3d_warp_drive",
     "v_3d_warp_drive_params",

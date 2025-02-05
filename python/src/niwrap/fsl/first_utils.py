@@ -461,6 +461,7 @@ def first_utils(
 __all__ = [
     "FIRST_UTILS_METADATA",
     "FirstUtilsOutputs",
+    "FirstUtilsParameters",
     "first_utils",
     "first_utils_params",
 ]

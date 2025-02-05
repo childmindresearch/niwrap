@@ -217,6 +217,7 @@ def v_3d_signatures(
 
 __all__ = [
     "V3dSignaturesOutputs",
+    "V3dSignaturesParameters",
     "V_3D_SIGNATURES_METADATA",
     "v_3d_signatures",
     "v_3d_signatures_params",

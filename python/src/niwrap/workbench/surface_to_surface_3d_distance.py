@@ -209,6 +209,7 @@ def surface_to_surface_3d_distance(
 __all__ = [
     "SURFACE_TO_SURFACE_3D_DISTANCE_METADATA",
     "SurfaceToSurface3dDistanceOutputs",
+    "SurfaceToSurface3dDistanceParameters",
     "surface_to_surface_3d_distance",
     "surface_to_surface_3d_distance_params",
 ]

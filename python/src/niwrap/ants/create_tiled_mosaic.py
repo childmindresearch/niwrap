@@ -334,6 +334,7 @@ def create_tiled_mosaic(
 __all__ = [
     "CREATE_TILED_MOSAIC_METADATA",
     "CreateTiledMosaicOutputs",
+    "CreateTiledMosaicParameters",
     "create_tiled_mosaic",
     "create_tiled_mosaic_params",
 ]

@@ -245,6 +245,7 @@ def v_3d_zcat(
 
 __all__ = [
     "V3dZcatOutputs",
+    "V3dZcatParameters",
     "V_3D_ZCAT_METADATA",
     "v_3d_zcat",
     "v_3d_zcat_params",

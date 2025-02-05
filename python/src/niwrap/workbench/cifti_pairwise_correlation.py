@@ -210,6 +210,7 @@ def cifti_pairwise_correlation(
 __all__ = [
     "CIFTI_PAIRWISE_CORRELATION_METADATA",
     "CiftiPairwiseCorrelationOutputs",
+    "CiftiPairwiseCorrelationParameters",
     "cifti_pairwise_correlation",
     "cifti_pairwise_correlation_params",
 ]

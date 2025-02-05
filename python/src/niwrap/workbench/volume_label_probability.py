@@ -197,6 +197,7 @@ def volume_label_probability(
 __all__ = [
     "VOLUME_LABEL_PROBABILITY_METADATA",
     "VolumeLabelProbabilityOutputs",
+    "VolumeLabelProbabilityParameters",
     "volume_label_probability",
     "volume_label_probability_params",
 ]

@@ -401,7 +401,10 @@ def volume_dilate(
 
 __all__ = [
     "VOLUME_DILATE_METADATA",
+    "VolumeDilateGradExtrapolateParameters",
     "VolumeDilateOutputs",
+    "VolumeDilateParameters",
+    "VolumeDilatePresmoothParameters",
     "volume_dilate",
     "volume_dilate_grad_extrapolate_params",
     "volume_dilate_params",

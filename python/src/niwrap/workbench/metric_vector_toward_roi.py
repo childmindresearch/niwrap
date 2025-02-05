@@ -204,6 +204,7 @@ def metric_vector_toward_roi(
 __all__ = [
     "METRIC_VECTOR_TOWARD_ROI_METADATA",
     "MetricVectorTowardRoiOutputs",
+    "MetricVectorTowardRoiParameters",
     "metric_vector_toward_roi",
     "metric_vector_toward_roi_params",
 ]

@@ -169,6 +169,7 @@ def register_subject_flash(
 __all__ = [
     "REGISTER_SUBJECT_FLASH_METADATA",
     "RegisterSubjectFlashOutputs",
+    "RegisterSubjectFlashParameters",
     "register_subject_flash",
     "register_subject_flash_params",
 ]

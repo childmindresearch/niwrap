@@ -178,6 +178,7 @@ def fslslice(
 __all__ = [
     "FSLSLICE_METADATA",
     "FslsliceOutputs",
+    "FslsliceParameters",
     "fslslice",
     "fslslice_params",
 ]

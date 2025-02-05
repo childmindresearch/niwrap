@@ -332,6 +332,7 @@ def find_variance_lines(
 __all__ = [
     "FIND_VARIANCE_LINES_METADATA",
     "FindVarianceLinesOutputs",
+    "FindVarianceLinesParameters",
     "find_variance_lines",
     "find_variance_lines_params",
 ]

@@ -261,6 +261,7 @@ def v_1d_bport(
 
 __all__ = [
     "V1dBportOutputs",
+    "V1dBportParameters",
     "V_1D_BPORT_METADATA",
     "v_1d_bport",
     "v_1d_bport_params",

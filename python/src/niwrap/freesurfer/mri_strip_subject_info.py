@@ -171,6 +171,7 @@ def mri_strip_subject_info(
 __all__ = [
     "MRI_STRIP_SUBJECT_INFO_METADATA",
     "MriStripSubjectInfoOutputs",
+    "MriStripSubjectInfoParameters",
     "mri_strip_subject_info",
     "mri_strip_subject_info_params",
 ]

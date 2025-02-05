@@ -378,7 +378,9 @@ def tcksample(
 
 __all__ = [
     "TCKSAMPLE_METADATA",
+    "TcksampleConfigParameters",
     "TcksampleOutputs",
+    "TcksampleParameters",
     "tcksample",
     "tcksample_config_params",
     "tcksample_params",

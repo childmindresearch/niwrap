@@ -218,6 +218,7 @@ def long_qdec_table(
 __all__ = [
     "LONG_QDEC_TABLE_METADATA",
     "LongQdecTableOutputs",
+    "LongQdecTableParameters",
     "long_qdec_table",
     "long_qdec_table_params",
 ]

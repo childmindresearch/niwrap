@@ -375,6 +375,11 @@ def extract_region_from_image(
 __all__ = [
     "EXTRACT_REGION_FROM_IMAGE_METADATA",
     "ExtractRegionFromImageOutputs",
+    "ExtractRegionFromImageParameters",
+    "ExtractRegionFromImageRegionDomainImageParameters",
+    "ExtractRegionFromImageRegionLabelParameters",
+    "ExtractRegionFromImageRegionLabelWithImageParameters",
+    "ExtractRegionFromImageRegionMinMaxIndexParameters",
     "extract_region_from_image",
     "extract_region_from_image_params",
     "extract_region_from_image_region_domain_image_params",

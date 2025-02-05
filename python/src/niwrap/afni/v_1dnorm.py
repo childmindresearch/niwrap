@@ -211,6 +211,7 @@ def v_1dnorm(
 
 __all__ = [
     "V1dnormOutputs",
+    "V1dnormParameters",
     "V_1DNORM_METADATA",
     "v_1dnorm",
     "v_1dnorm_params",

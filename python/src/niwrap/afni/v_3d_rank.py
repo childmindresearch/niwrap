@@ -211,6 +211,7 @@ def v_3d_rank(
 
 __all__ = [
     "V3dRankOutputs",
+    "V3dRankParameters",
     "V_3D_RANK_METADATA",
     "v_3d_rank",
     "v_3d_rank_params",

@@ -366,7 +366,9 @@ def fixelconnectivity(
 
 __all__ = [
     "FIXELCONNECTIVITY_METADATA",
+    "FixelconnectivityConfigParameters",
     "FixelconnectivityOutputs",
+    "FixelconnectivityParameters",
     "fixelconnectivity",
     "fixelconnectivity_config_params",
     "fixelconnectivity_params",

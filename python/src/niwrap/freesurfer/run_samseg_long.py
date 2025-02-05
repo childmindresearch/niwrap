@@ -401,6 +401,7 @@ def run_samseg_long(
 __all__ = [
     "RUN_SAMSEG_LONG_METADATA",
     "RunSamsegLongOutputs",
+    "RunSamsegLongParameters",
     "run_samseg_long",
     "run_samseg_long_params",
 ]

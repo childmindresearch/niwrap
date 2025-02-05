@@ -272,6 +272,7 @@ def t4imgs_4dfp(
 __all__ = [
     "T4IMGS_4DFP_METADATA",
     "T4imgs4dfpOutputs",
+    "T4imgs4dfpParameters",
     "t4imgs_4dfp",
     "t4imgs_4dfp_params",
 ]

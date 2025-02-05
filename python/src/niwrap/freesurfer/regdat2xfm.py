@@ -171,6 +171,7 @@ def regdat2xfm(
 __all__ = [
     "REGDAT2XFM_METADATA",
     "Regdat2xfmOutputs",
+    "Regdat2xfmParameters",
     "regdat2xfm",
     "regdat2xfm_params",
 ]

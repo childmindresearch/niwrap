@@ -219,6 +219,7 @@ def v_3d_wilcoxon(
 
 __all__ = [
     "V3dWilcoxonOutputs",
+    "V3dWilcoxonParameters",
     "V_3D_WILCOXON_METADATA",
     "v_3d_wilcoxon",
     "v_3d_wilcoxon_params",

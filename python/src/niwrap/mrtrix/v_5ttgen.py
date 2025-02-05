@@ -651,7 +651,7 @@ def v_5ttgen_outputs(
     """
     ret = V5ttgenOutputs(
         root=execution.output_file("."),
-        algorithm=dyn_outputs(algorithm["__STYXTYPE__"])(algorithm, execution),
+        algorithm=dyn_outputs(params.get("algorithm")["__STYXTYPE__"])(params.get("algorithm"), execution),
     )
     return ret
 
@@ -764,11 +764,17 @@ def v_5ttgen(
 
 
 __all__ = [
+    "V5ttgenConfigParameters",
     "V5ttgenFreesurferOutputs",
+    "V5ttgenFreesurferParameters",
     "V5ttgenFslOutputs",
+    "V5ttgenFslParameters",
     "V5ttgenGifOutputs",
+    "V5ttgenGifParameters",
     "V5ttgenHsvsOutputs",
+    "V5ttgenHsvsParameters",
     "V5ttgenOutputs",
+    "V5ttgenParameters",
     "V_5TTGEN_METADATA",
     "v_5ttgen",
     "v_5ttgen_config_params",

@@ -262,6 +262,7 @@ def roigrow(
 __all__ = [
     "ROIGROW_METADATA",
     "RoigrowOutputs",
+    "RoigrowParameters",
     "roigrow",
     "roigrow_params",
 ]

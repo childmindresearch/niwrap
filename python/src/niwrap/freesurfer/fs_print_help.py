@@ -168,6 +168,7 @@ def fs_print_help(
 __all__ = [
     "FS_PRINT_HELP_METADATA",
     "FsPrintHelpOutputs",
+    "FsPrintHelpParameters",
     "fs_print_help",
     "fs_print_help_params",
 ]

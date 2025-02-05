@@ -405,6 +405,7 @@ def v_3d_tfitter(
 
 __all__ = [
     "V3dTfitterOutputs",
+    "V3dTfitterParameters",
     "V_3D_TFITTER_METADATA",
     "v_3d_tfitter",
     "v_3d_tfitter_params",

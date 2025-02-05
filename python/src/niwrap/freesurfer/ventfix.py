@@ -181,6 +181,7 @@ def ventfix(
 __all__ = [
     "VENTFIX_METADATA",
     "VentfixOutputs",
+    "VentfixParameters",
     "ventfix",
     "ventfix_params",
 ]

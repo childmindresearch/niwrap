@@ -268,6 +268,7 @@ def fat_proc_convert_dcm_anat(
 __all__ = [
     "FAT_PROC_CONVERT_DCM_ANAT_METADATA",
     "FatProcConvertDcmAnatOutputs",
+    "FatProcConvertDcmAnatParameters",
     "fat_proc_convert_dcm_anat",
     "fat_proc_convert_dcm_anat_params",
 ]

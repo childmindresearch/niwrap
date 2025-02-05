@@ -287,6 +287,7 @@ def v__afni_refacer_run(
 
 __all__ = [
     "VAfniRefacerRunOutputs",
+    "VAfniRefacerRunParameters",
     "V__AFNI_REFACER_RUN_METADATA",
     "v__afni_refacer_run",
     "v__afni_refacer_run_params",

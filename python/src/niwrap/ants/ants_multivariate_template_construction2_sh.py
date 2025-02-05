@@ -175,6 +175,7 @@ def ants_multivariate_template_construction2_sh(
 __all__ = [
     "ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA",
     "AntsMultivariateTemplateConstruction2ShOutputs",
+    "AntsMultivariateTemplateConstruction2ShParameters",
     "ants_multivariate_template_construction2_sh",
     "ants_multivariate_template_construction2_sh_params",
 ]

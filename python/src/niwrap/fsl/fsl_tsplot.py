@@ -348,6 +348,7 @@ def fsl_tsplot(
 __all__ = [
     "FSL_TSPLOT_METADATA",
     "FslTsplotOutputs",
+    "FslTsplotParameters",
     "fsl_tsplot",
     "fsl_tsplot_params",
 ]

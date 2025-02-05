@@ -203,6 +203,7 @@ def ttologp(
 __all__ = [
     "TTOLOGP_METADATA",
     "TtologpOutputs",
+    "TtologpParameters",
     "ttologp",
     "ttologp_params",
 ]

@@ -252,6 +252,7 @@ def export_gcam(
 __all__ = [
     "EXPORT_GCAM_METADATA",
     "ExportGcamOutputs",
+    "ExportGcamParameters",
     "export_gcam",
     "export_gcam_params",
 ]

@@ -186,6 +186,7 @@ def fslfft(
 __all__ = [
     "FSLFFT_METADATA",
     "FslfftOutputs",
+    "FslfftParameters",
     "fslfft",
     "fslfft_params",
 ]

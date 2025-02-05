@@ -262,6 +262,7 @@ def bedpostx(
 __all__ = [
     "BEDPOSTX_METADATA",
     "BedpostxOutputs",
+    "BedpostxParameters",
     "bedpostx",
     "bedpostx_params",
 ]

@@ -546,6 +546,7 @@ def fabber_dwi(
 __all__ = [
     "FABBER_DWI_METADATA",
     "FabberDwiOutputs",
+    "FabberDwiParameters",
     "fabber_dwi",
     "fabber_dwi_params",
 ]

@@ -167,6 +167,7 @@ def v__float_fix(
 
 __all__ = [
     "VFloatFixOutputs",
+    "VFloatFixParameters",
     "V__FLOAT_FIX_METADATA",
     "v__float_fix",
     "v__float_fix_params",

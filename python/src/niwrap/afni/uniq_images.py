@@ -173,6 +173,7 @@ def uniq_images(
 __all__ = [
     "UNIQ_IMAGES_METADATA",
     "UniqImagesOutputs",
+    "UniqImagesParameters",
     "uniq_images",
     "uniq_images_params",
 ]

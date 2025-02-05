@@ -303,6 +303,7 @@ def swi_process(
 __all__ = [
     "SWI_PROCESS_METADATA",
     "SwiProcessOutputs",
+    "SwiProcessParameters",
     "swi_process",
     "swi_process_params",
 ]

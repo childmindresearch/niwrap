@@ -388,7 +388,10 @@ def cifti_average_dense_roi(
 
 __all__ = [
     "CIFTI_AVERAGE_DENSE_ROI_METADATA",
+    "CiftiAverageDenseRoiCiftiParameters",
+    "CiftiAverageDenseRoiCiftiRoiParameters",
     "CiftiAverageDenseRoiOutputs",
+    "CiftiAverageDenseRoiParameters",
     "cifti_average_dense_roi",
     "cifti_average_dense_roi_cifti_params",
     "cifti_average_dense_roi_cifti_roi_params",

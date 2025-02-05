@@ -179,6 +179,7 @@ def unpackimadir(
 __all__ = [
     "UNPACKIMADIR_METADATA",
     "UnpackimadirOutputs",
+    "UnpackimadirParameters",
     "unpackimadir",
     "unpackimadir_params",
 ]

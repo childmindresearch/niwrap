@@ -179,6 +179,7 @@ def mris_distance_map(
 __all__ = [
     "MRIS_DISTANCE_MAP_METADATA",
     "MrisDistanceMapOutputs",
+    "MrisDistanceMapParameters",
     "mris_distance_map",
     "mris_distance_map_params",
 ]

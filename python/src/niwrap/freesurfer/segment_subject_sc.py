@@ -204,6 +204,7 @@ def segment_subject_sc(
 __all__ = [
     "SEGMENT_SUBJECT_SC_METADATA",
     "SegmentSubjectScOutputs",
+    "SegmentSubjectScParameters",
     "segment_subject_sc",
     "segment_subject_sc_params",
 ]

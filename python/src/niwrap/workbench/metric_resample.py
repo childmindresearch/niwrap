@@ -413,7 +413,10 @@ def metric_resample(
 
 __all__ = [
     "METRIC_RESAMPLE_METADATA",
+    "MetricResampleAreaMetricsParameters",
+    "MetricResampleAreaSurfsParameters",
     "MetricResampleOutputs",
+    "MetricResampleParameters",
     "metric_resample",
     "metric_resample_area_metrics_params",
     "metric_resample_area_surfs_params",

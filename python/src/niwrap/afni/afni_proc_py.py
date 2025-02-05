@@ -266,6 +266,7 @@ def afni_proc_py(
 __all__ = [
     "AFNI_PROC_PY_METADATA",
     "AfniProcPyOutputs",
+    "AfniProcPyParameters",
     "afni_proc_py",
     "afni_proc_py_params",
 ]

@@ -203,6 +203,7 @@ def mri_transform(
 __all__ = [
     "MRI_TRANSFORM_METADATA",
     "MriTransformOutputs",
+    "MriTransformParameters",
     "mri_transform",
     "mri_transform_params",
 ]

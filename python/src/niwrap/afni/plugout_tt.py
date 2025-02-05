@@ -307,6 +307,7 @@ def plugout_tt(
 __all__ = [
     "PLUGOUT_TT_METADATA",
     "PlugoutTtOutputs",
+    "PlugoutTtParameters",
     "plugout_tt",
     "plugout_tt_params",
 ]

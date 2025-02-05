@@ -176,6 +176,7 @@ def fslvbm_1_bet(
 __all__ = [
     "FSLVBM_1_BET_METADATA",
     "Fslvbm1BetOutputs",
+    "Fslvbm1BetParameters",
     "fslvbm_1_bet",
     "fslvbm_1_bet_params",
 ]

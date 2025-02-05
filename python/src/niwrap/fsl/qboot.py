@@ -400,6 +400,7 @@ def qboot(
 __all__ = [
     "QBOOT_METADATA",
     "QbootOutputs",
+    "QbootParameters",
     "qboot",
     "qboot_params",
 ]

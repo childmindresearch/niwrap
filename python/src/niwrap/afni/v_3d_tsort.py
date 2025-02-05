@@ -250,6 +250,7 @@ def v_3d_tsort(
 
 __all__ = [
     "V3dTsortOutputs",
+    "V3dTsortParameters",
     "V_3D_TSORT_METADATA",
     "v_3d_tsort",
     "v_3d_tsort_params",

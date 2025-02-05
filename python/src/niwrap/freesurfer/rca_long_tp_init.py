@@ -218,6 +218,7 @@ def rca_long_tp_init(
 __all__ = [
     "RCA_LONG_TP_INIT_METADATA",
     "RcaLongTpInitOutputs",
+    "RcaLongTpInitParameters",
     "rca_long_tp_init",
     "rca_long_tp_init_params",
 ]

@@ -242,6 +242,7 @@ def v_1d_apar2mat(
 
 __all__ = [
     "V1dApar2matOutputs",
+    "V1dApar2matParameters",
     "V_1D_APAR2MAT_METADATA",
     "v_1d_apar2mat",
     "v_1d_apar2mat_params",

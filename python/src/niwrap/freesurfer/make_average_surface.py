@@ -370,6 +370,7 @@ def make_average_surface(
 __all__ = [
     "MAKE_AVERAGE_SURFACE_METADATA",
     "MakeAverageSurfaceOutputs",
+    "MakeAverageSurfaceParameters",
     "make_average_surface",
     "make_average_surface_params",
 ]

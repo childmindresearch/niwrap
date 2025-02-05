@@ -244,6 +244,7 @@ def long_stats_tps(
 __all__ = [
     "LONG_STATS_TPS_METADATA",
     "LongStatsTpsOutputs",
+    "LongStatsTpsParameters",
     "long_stats_tps",
     "long_stats_tps_params",
 ]

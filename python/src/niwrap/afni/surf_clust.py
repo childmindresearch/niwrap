@@ -566,6 +566,7 @@ def surf_clust(
 __all__ = [
     "SURF_CLUST_METADATA",
     "SurfClustOutputs",
+    "SurfClustParameters",
     "surf_clust",
     "surf_clust_params",
 ]

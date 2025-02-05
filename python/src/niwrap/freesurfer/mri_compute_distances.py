@@ -185,6 +185,7 @@ def mri_compute_distances(
 __all__ = [
     "MRI_COMPUTE_DISTANCES_METADATA",
     "MriComputeDistancesOutputs",
+    "MriComputeDistancesParameters",
     "mri_compute_distances",
     "mri_compute_distances_params",
 ]

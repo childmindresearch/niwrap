@@ -364,6 +364,7 @@ def convex_hull(
 __all__ = [
     "CONVEX_HULL_METADATA",
     "ConvexHullOutputs",
+    "ConvexHullParameters",
     "convex_hull",
     "convex_hull_params",
 ]

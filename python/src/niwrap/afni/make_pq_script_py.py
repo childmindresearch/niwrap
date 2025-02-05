@@ -190,6 +190,7 @@ def make_pq_script_py(
 __all__ = [
     "MAKE_PQ_SCRIPT_PY_METADATA",
     "MakePqScriptPyOutputs",
+    "MakePqScriptPyParameters",
     "make_pq_script_py",
     "make_pq_script_py_params",
 ]

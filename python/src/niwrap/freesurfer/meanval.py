@@ -200,6 +200,7 @@ def meanval(
 __all__ = [
     "MEANVAL_METADATA",
     "MeanvalOutputs",
+    "MeanvalParameters",
     "meanval",
     "meanval_params",
 ]

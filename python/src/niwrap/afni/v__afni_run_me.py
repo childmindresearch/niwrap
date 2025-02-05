@@ -180,6 +180,7 @@ def v__afni_run_me(
 
 __all__ = [
     "VAfniRunMeOutputs",
+    "VAfniRunMeParameters",
     "V__AFNI_RUN_ME_METADATA",
     "v__afni_run_me",
     "v__afni_run_me_params",

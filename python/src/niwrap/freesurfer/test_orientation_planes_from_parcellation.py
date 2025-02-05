@@ -185,6 +185,7 @@ def test_orientation_planes_from_parcellation(
 __all__ = [
     "TEST_ORIENTATION_PLANES_FROM_PARCELLATION_METADATA",
     "TestOrientationPlanesFromParcellationOutputs",
+    "TestOrientationPlanesFromParcellationParameters",
     "test_orientation_planes_from_parcellation",
     "test_orientation_planes_from_parcellation_params",
 ]

@@ -276,6 +276,7 @@ def xcerebralseg(
 __all__ = [
     "XCEREBRALSEG_METADATA",
     "XcerebralsegOutputs",
+    "XcerebralsegParameters",
     "xcerebralseg",
     "xcerebralseg_params",
 ]

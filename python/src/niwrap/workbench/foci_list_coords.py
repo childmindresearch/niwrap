@@ -192,6 +192,7 @@ def foci_list_coords(
 __all__ = [
     "FOCI_LIST_COORDS_METADATA",
     "FociListCoordsOutputs",
+    "FociListCoordsParameters",
     "foci_list_coords",
     "foci_list_coords_params",
 ]

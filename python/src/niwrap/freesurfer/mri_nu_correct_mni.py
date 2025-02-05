@@ -300,6 +300,7 @@ def mri_nu_correct_mni(
 __all__ = [
     "MRI_NU_CORRECT_MNI_METADATA",
     "MriNuCorrectMniOutputs",
+    "MriNuCorrectMniParameters",
     "mri_nu_correct_mni",
     "mri_nu_correct_mni_params",
 ]

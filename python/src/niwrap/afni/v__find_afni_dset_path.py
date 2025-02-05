@@ -187,6 +187,7 @@ def v__find_afni_dset_path(
 
 __all__ = [
     "VFindAfniDsetPathOutputs",
+    "VFindAfniDsetPathParameters",
     "V__FIND_AFNI_DSET_PATH_METADATA",
     "v__find_afni_dset_path",
     "v__find_afni_dset_path_params",

@@ -241,6 +241,7 @@ def image_set_statistics(
 __all__ = [
     "IMAGE_SET_STATISTICS_METADATA",
     "ImageSetStatisticsOutputs",
+    "ImageSetStatisticsParameters",
     "image_set_statistics",
     "image_set_statistics_params",
 ]

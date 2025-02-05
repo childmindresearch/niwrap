@@ -334,6 +334,7 @@ def mris_autodet_gwstats(
 __all__ = [
     "MRIS_AUTODET_GWSTATS_METADATA",
     "MrisAutodetGwstatsOutputs",
+    "MrisAutodetGwstatsParameters",
     "mris_autodet_gwstats",
     "mris_autodet_gwstats_params",
 ]

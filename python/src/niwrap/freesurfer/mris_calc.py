@@ -231,6 +231,7 @@ def mris_calc(
 __all__ = [
     "MRIS_CALC_METADATA",
     "MrisCalcOutputs",
+    "MrisCalcParameters",
     "mris_calc",
     "mris_calc_params",
 ]

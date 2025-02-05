@@ -544,7 +544,13 @@ def fixelconvert(
 
 __all__ = [
     "FIXELCONVERT_METADATA",
+    "FixelconvertConfigParameters",
     "FixelconvertOutputs",
+    "FixelconvertParameters",
+    "FixelconvertVariousFileParameters",
+    "FixelconvertVariousFileParameters_",
+    "FixelconvertVariousStringParameters",
+    "FixelconvertVariousStringParameters_",
     "fixelconvert",
     "fixelconvert_config_params",
     "fixelconvert_params",

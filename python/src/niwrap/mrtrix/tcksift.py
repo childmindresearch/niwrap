@@ -554,7 +554,9 @@ def tcksift(
 
 __all__ = [
     "TCKSIFT_METADATA",
+    "TcksiftConfigParameters",
     "TcksiftOutputs",
+    "TcksiftParameters",
     "tcksift",
     "tcksift_config_params",
     "tcksift_params",

@@ -278,6 +278,7 @@ def train_gcs_atlas(
 __all__ = [
     "TRAIN_GCS_ATLAS_METADATA",
     "TrainGcsAtlasOutputs",
+    "TrainGcsAtlasParameters",
     "train_gcs_atlas",
     "train_gcs_atlas_params",
 ]

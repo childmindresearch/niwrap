@@ -192,6 +192,7 @@ def imaver(
 __all__ = [
     "IMAVER_METADATA",
     "ImaverOutputs",
+    "ImaverParameters",
     "imaver",
     "imaver_params",
 ]

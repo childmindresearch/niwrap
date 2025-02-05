@@ -203,6 +203,7 @@ def float_scan(
 __all__ = [
     "FLOAT_SCAN_METADATA",
     "FloatScanOutputs",
+    "FloatScanParameters",
     "float_scan",
     "float_scan_params",
 ]

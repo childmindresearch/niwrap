@@ -280,6 +280,7 @@ def mri_normalize_tp2(
 __all__ = [
     "MRI_NORMALIZE_TP2_METADATA",
     "MriNormalizeTp2Outputs",
+    "MriNormalizeTp2Parameters",
     "mri_normalize_tp2",
     "mri_normalize_tp2_params",
 ]

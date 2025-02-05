@@ -302,6 +302,7 @@ def reg_tools(
 __all__ = [
     "REG_TOOLS_METADATA",
     "RegToolsOutputs",
+    "RegToolsParameters",
     "reg_tools",
     "reg_tools_params",
 ]

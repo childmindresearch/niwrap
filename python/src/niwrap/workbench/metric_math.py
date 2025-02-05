@@ -403,6 +403,8 @@ def metric_math(
 __all__ = [
     "METRIC_MATH_METADATA",
     "MetricMathOutputs",
+    "MetricMathParameters",
+    "MetricMathVarParameters",
     "metric_math",
     "metric_math_params",
     "metric_math_var_params",

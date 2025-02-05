@@ -165,6 +165,7 @@ def v__no_pound(
 
 __all__ = [
     "VNoPoundOutputs",
+    "VNoPoundParameters",
     "V__NO_POUND_METADATA",
     "v__no_pound",
     "v__no_pound_params",

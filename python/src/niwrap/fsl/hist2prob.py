@@ -190,6 +190,7 @@ def hist2prob(
 __all__ = [
     "HIST2PROB_METADATA",
     "Hist2probOutputs",
+    "Hist2probParameters",
     "hist2prob",
     "hist2prob_params",
 ]

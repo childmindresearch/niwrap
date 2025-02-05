@@ -164,6 +164,7 @@ def bedpostx_datacheck(
 __all__ = [
     "BEDPOSTX_DATACHECK_METADATA",
     "BedpostxDatacheckOutputs",
+    "BedpostxDatacheckParameters",
     "bedpostx_datacheck",
     "bedpostx_datacheck_params",
 ]

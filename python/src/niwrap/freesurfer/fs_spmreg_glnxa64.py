@@ -163,6 +163,7 @@ def fs_spmreg_glnxa64(
 __all__ = [
     "FS_SPMREG_GLNXA64_METADATA",
     "FsSpmregGlnxa64Outputs",
+    "FsSpmregGlnxa64Parameters",
     "fs_spmreg_glnxa64",
     "fs_spmreg_glnxa64_params",
 ]

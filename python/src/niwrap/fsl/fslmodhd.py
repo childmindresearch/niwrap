@@ -178,6 +178,7 @@ def fslmodhd(
 __all__ = [
     "FSLMODHD_METADATA",
     "FslmodhdOutputs",
+    "FslmodhdParameters",
     "fslmodhd",
     "fslmodhd_params",
 ]

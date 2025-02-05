@@ -378,6 +378,7 @@ def v__update_afni_binaries(
 
 __all__ = [
     "VUpdateAfniBinariesOutputs",
+    "VUpdateAfniBinariesParameters",
     "V__UPDATE_AFNI_BINARIES_METADATA",
     "v__update_afni_binaries",
     "v__update_afni_binaries_params",

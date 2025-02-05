@@ -454,6 +454,7 @@ def bet(
 __all__ = [
     "BET_METADATA",
     "BetOutputs",
+    "BetParameters",
     "bet",
     "bet_params",
 ]

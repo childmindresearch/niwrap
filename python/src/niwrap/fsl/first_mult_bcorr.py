@@ -216,6 +216,7 @@ def first_mult_bcorr(
 __all__ = [
     "FIRST_MULT_BCORR_METADATA",
     "FirstMultBcorrOutputs",
+    "FirstMultBcorrParameters",
     "first_mult_bcorr",
     "first_mult_bcorr_params",
 ]

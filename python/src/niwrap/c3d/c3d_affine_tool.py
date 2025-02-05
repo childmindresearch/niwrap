@@ -341,6 +341,7 @@ def c3d_affine_tool(
 __all__ = [
     "C3D_AFFINE_TOOL_METADATA",
     "C3dAffineToolOutputs",
+    "C3dAffineToolParameters",
     "c3d_affine_tool",
     "c3d_affine_tool_params",
 ]

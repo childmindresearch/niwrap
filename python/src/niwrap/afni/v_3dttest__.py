@@ -416,6 +416,7 @@ def v_3dttest__(
 
 __all__ = [
     "V3dttestOutputs",
+    "V3dttestParameters",
     "V_3DTTEST___METADATA",
     "v_3dttest__",
     "v_3dttest___params",

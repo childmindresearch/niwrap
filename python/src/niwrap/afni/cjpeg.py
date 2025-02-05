@@ -220,6 +220,7 @@ def cjpeg(
 __all__ = [
     "CJPEG_METADATA",
     "CjpegOutputs",
+    "CjpegParameters",
     "cjpeg",
     "cjpeg_params",
 ]

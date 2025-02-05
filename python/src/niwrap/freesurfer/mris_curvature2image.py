@@ -243,6 +243,7 @@ def mris_curvature2image(
 __all__ = [
     "MRIS_CURVATURE2IMAGE_METADATA",
     "MrisCurvature2imageOutputs",
+    "MrisCurvature2imageParameters",
     "mris_curvature2image",
     "mris_curvature2image_params",
 ]

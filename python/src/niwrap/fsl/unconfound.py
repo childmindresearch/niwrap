@@ -185,6 +185,7 @@ def unconfound(
 __all__ = [
     "UNCONFOUND_METADATA",
     "UnconfoundOutputs",
+    "UnconfoundParameters",
     "unconfound",
     "unconfound_params",
 ]

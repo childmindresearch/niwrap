@@ -162,6 +162,7 @@ def v__to_rai(
 
 __all__ = [
     "VToRaiOutputs",
+    "VToRaiParameters",
     "V__TO_RAI_METADATA",
     "v__to_rai",
     "v__to_rai_params",

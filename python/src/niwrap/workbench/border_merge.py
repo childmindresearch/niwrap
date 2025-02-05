@@ -342,7 +342,11 @@ def border_merge(
 
 __all__ = [
     "BORDER_MERGE_METADATA",
+    "BorderMergeBorderParameters",
     "BorderMergeOutputs",
+    "BorderMergeParameters",
+    "BorderMergeSelectParameters",
+    "BorderMergeUpToParameters",
     "border_merge",
     "border_merge_border_params",
     "border_merge_params",

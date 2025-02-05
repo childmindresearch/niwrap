@@ -205,6 +205,7 @@ def cifti_parcel_mapping_to_label(
 __all__ = [
     "CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA",
     "CiftiParcelMappingToLabelOutputs",
+    "CiftiParcelMappingToLabelParameters",
     "cifti_parcel_mapping_to_label",
     "cifti_parcel_mapping_to_label_params",
 ]

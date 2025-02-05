@@ -293,6 +293,7 @@ def v_2d_im_reg(
 
 __all__ = [
     "V2dImRegOutputs",
+    "V2dImRegParameters",
     "V_2D_IM_REG_METADATA",
     "v_2d_im_reg",
     "v_2d_im_reg_params",

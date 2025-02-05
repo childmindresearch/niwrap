@@ -376,7 +376,11 @@ def foci_resample(
 
 __all__ = [
     "FOCI_RESAMPLE_METADATA",
+    "FociResampleCerebellumSurfacesParameters",
+    "FociResampleLeftSurfacesParameters",
     "FociResampleOutputs",
+    "FociResampleParameters",
+    "FociResampleRightSurfacesParameters",
     "foci_resample",
     "foci_resample_cerebellum_surfaces_params",
     "foci_resample_left_surfaces_params",

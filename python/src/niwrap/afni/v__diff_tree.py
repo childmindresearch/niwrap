@@ -332,6 +332,7 @@ def v__diff_tree(
 
 __all__ = [
     "VDiffTreeOutputs",
+    "VDiffTreeParameters",
     "V__DIFF_TREE_METADATA",
     "v__diff_tree",
     "v__diff_tree_params",

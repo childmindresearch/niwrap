@@ -164,6 +164,7 @@ def csvprint(
 __all__ = [
     "CSVPRINT_METADATA",
     "CsvprintOutputs",
+    "CsvprintParameters",
     "csvprint",
     "csvprint_params",
 ]

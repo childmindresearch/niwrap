@@ -231,6 +231,7 @@ def fsl_reg(
 __all__ = [
     "FSL_REG_METADATA",
     "FslRegOutputs",
+    "FslRegParameters",
     "fsl_reg",
     "fsl_reg_params",
 ]

@@ -256,6 +256,7 @@ def ants_landmark_based_transform_initializer(
 __all__ = [
     "ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA",
     "AntsLandmarkBasedTransformInitializerOutputs",
+    "AntsLandmarkBasedTransformInitializerParameters",
     "ants_landmark_based_transform_initializer",
     "ants_landmark_based_transform_initializer_params",
 ]

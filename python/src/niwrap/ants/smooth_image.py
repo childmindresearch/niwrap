@@ -216,6 +216,7 @@ def smooth_image(
 __all__ = [
     "SMOOTH_IMAGE_METADATA",
     "SmoothImageOutputs",
+    "SmoothImageParameters",
     "smooth_image",
     "smooth_image_params",
 ]

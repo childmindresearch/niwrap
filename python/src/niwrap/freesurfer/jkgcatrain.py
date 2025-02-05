@@ -207,6 +207,7 @@ def jkgcatrain(
 __all__ = [
     "JKGCATRAIN_METADATA",
     "JkgcatrainOutputs",
+    "JkgcatrainParameters",
     "jkgcatrain",
     "jkgcatrain_params",
 ]

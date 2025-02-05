@@ -394,6 +394,7 @@ def convert_dset(
 __all__ = [
     "CONVERT_DSET_METADATA",
     "ConvertDsetOutputs",
+    "ConvertDsetParameters",
     "convert_dset",
     "convert_dset_params",
 ]

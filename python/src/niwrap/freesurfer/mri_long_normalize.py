@@ -273,6 +273,7 @@ def mri_long_normalize(
 __all__ = [
     "MRI_LONG_NORMALIZE_METADATA",
     "MriLongNormalizeOutputs",
+    "MriLongNormalizeParameters",
     "mri_long_normalize",
     "mri_long_normalize_params",
 ]

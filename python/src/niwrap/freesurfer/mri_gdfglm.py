@@ -163,6 +163,7 @@ def mri_gdfglm(
 __all__ = [
     "MRI_GDFGLM_METADATA",
     "MriGdfglmOutputs",
+    "MriGdfglmParameters",
     "mri_gdfglm",
     "mri_gdfglm_params",
 ]

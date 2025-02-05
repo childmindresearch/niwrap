@@ -209,6 +209,7 @@ def segment_ha_t1_sh(
 __all__ = [
     "SEGMENT_HA_T1_SH_METADATA",
     "SegmentHaT1ShOutputs",
+    "SegmentHaT1ShParameters",
     "segment_ha_t1_sh",
     "segment_ha_t1_sh_params",
 ]

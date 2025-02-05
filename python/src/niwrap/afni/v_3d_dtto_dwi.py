@@ -189,6 +189,7 @@ def v_3d_dtto_dwi(
 
 __all__ = [
     "V3dDttoDwiOutputs",
+    "V3dDttoDwiParameters",
     "V_3D_DTTO_DWI_METADATA",
     "v_3d_dtto_dwi",
     "v_3d_dtto_dwi_params",

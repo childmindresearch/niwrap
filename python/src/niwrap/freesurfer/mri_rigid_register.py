@@ -183,6 +183,7 @@ def mri_rigid_register(
 __all__ = [
     "MRI_RIGID_REGISTER_METADATA",
     "MriRigidRegisterOutputs",
+    "MriRigidRegisterParameters",
     "mri_rigid_register",
     "mri_rigid_register_params",
 ]

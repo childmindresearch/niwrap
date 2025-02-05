@@ -449,6 +449,7 @@ def v_3d_group_in_corr(
 
 __all__ = [
     "V3dGroupInCorrOutputs",
+    "V3dGroupInCorrParameters",
     "V_3D_GROUP_IN_CORR_METADATA",
     "v_3d_group_in_corr",
     "v_3d_group_in_corr_params",

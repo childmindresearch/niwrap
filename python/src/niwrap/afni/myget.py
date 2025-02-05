@@ -178,6 +178,7 @@ def myget(
 __all__ = [
     "MYGET_METADATA",
     "MygetOutputs",
+    "MygetParameters",
     "myget",
     "myget_params",
 ]

@@ -189,6 +189,7 @@ def fslchfiletype(
 __all__ = [
     "FSLCHFILETYPE_METADATA",
     "FslchfiletypeOutputs",
+    "FslchfiletypeParameters",
     "fslchfiletype",
     "fslchfiletype_params",
 ]

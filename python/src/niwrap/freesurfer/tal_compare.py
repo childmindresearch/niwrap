@@ -191,6 +191,7 @@ def tal_compare(
 __all__ = [
     "TAL_COMPARE_METADATA",
     "TalCompareOutputs",
+    "TalCompareParameters",
     "tal_compare",
     "tal_compare_params",
 ]

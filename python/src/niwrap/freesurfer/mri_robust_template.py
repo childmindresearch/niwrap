@@ -579,6 +579,7 @@ def mri_robust_template(
 __all__ = [
     "MRI_ROBUST_TEMPLATE_METADATA",
     "MriRobustTemplateOutputs",
+    "MriRobustTemplateParameters",
     "mri_robust_template",
     "mri_robust_template_params",
 ]

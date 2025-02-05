@@ -184,6 +184,7 @@ def v_3d_nwarp_xyz(
 
 __all__ = [
     "V3dNwarpXyzOutputs",
+    "V3dNwarpXyzParameters",
     "V_3D_NWARP_XYZ_METADATA",
     "v_3d_nwarp_xyz",
     "v_3d_nwarp_xyz_params",

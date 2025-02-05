@@ -214,6 +214,7 @@ def surface_apply_warpfield(
 __all__ = [
     "SURFACE_APPLY_WARPFIELD_METADATA",
     "SurfaceApplyWarpfieldOutputs",
+    "SurfaceApplyWarpfieldParameters",
     "surface_apply_warpfield",
     "surface_apply_warpfield_params",
 ]

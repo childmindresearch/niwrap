@@ -274,6 +274,7 @@ def slicetimer(
 __all__ = [
     "SLICETIMER_METADATA",
     "SlicetimerOutputs",
+    "SlicetimerParameters",
     "slicetimer",
     "slicetimer_params",
 ]

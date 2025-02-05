@@ -396,6 +396,7 @@ def gen_ss_review_scripts(
 __all__ = [
     "GEN_SS_REVIEW_SCRIPTS_METADATA",
     "GenSsReviewScriptsOutputs",
+    "GenSsReviewScriptsParameters",
     "gen_ss_review_scripts",
     "gen_ss_review_scripts_params",
 ]

@@ -168,6 +168,7 @@ def anatomi_cuts_utils(
 __all__ = [
     "ANATOMI_CUTS_UTILS_METADATA",
     "AnatomiCutsUtilsOutputs",
+    "AnatomiCutsUtilsParameters",
     "anatomi_cuts_utils",
     "anatomi_cuts_utils_params",
 ]

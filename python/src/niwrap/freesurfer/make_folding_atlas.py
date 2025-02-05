@@ -365,6 +365,7 @@ def make_folding_atlas(
 __all__ = [
     "MAKE_FOLDING_ATLAS_METADATA",
     "MakeFoldingAtlasOutputs",
+    "MakeFoldingAtlasParameters",
     "make_folding_atlas",
     "make_folding_atlas_params",
 ]

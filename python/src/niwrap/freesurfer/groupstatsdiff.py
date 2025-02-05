@@ -349,6 +349,7 @@ def groupstatsdiff(
 __all__ = [
     "GROUPSTATSDIFF_METADATA",
     "GroupstatsdiffOutputs",
+    "GroupstatsdiffParameters",
     "groupstatsdiff",
     "groupstatsdiff_params",
 ]

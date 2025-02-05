@@ -512,7 +512,9 @@ def tensor2metric(
 
 __all__ = [
     "TENSOR2METRIC_METADATA",
+    "Tensor2metricConfigParameters",
     "Tensor2metricOutputs",
+    "Tensor2metricParameters",
     "tensor2metric",
     "tensor2metric_config_params",
     "tensor2metric_params",

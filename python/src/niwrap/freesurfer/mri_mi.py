@@ -193,6 +193,7 @@ def mri_mi(
 __all__ = [
     "MRI_MI_METADATA",
     "MriMiOutputs",
+    "MriMiParameters",
     "mri_mi",
     "mri_mi_params",
 ]

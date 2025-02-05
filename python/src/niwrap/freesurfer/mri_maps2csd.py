@@ -278,6 +278,7 @@ def mri_maps2csd(
 __all__ = [
     "MRI_MAPS2CSD_METADATA",
     "MriMaps2csdOutputs",
+    "MriMaps2csdParameters",
     "mri_maps2csd",
     "mri_maps2csd_params",
 ]

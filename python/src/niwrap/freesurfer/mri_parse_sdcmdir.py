@@ -207,6 +207,7 @@ def mri_parse_sdcmdir(
 __all__ = [
     "MRI_PARSE_SDCMDIR_METADATA",
     "MriParseSdcmdirOutputs",
+    "MriParseSdcmdirParameters",
     "mri_parse_sdcmdir",
     "mri_parse_sdcmdir_params",
 ]

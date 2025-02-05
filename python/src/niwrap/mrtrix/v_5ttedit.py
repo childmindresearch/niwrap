@@ -392,7 +392,9 @@ def v_5ttedit(
 
 
 __all__ = [
+    "V5tteditConfigParameters",
     "V5tteditOutputs",
+    "V5tteditParameters",
     "V_5TTEDIT_METADATA",
     "v_5ttedit",
     "v_5ttedit_config_params",

@@ -204,6 +204,7 @@ def foci_get_projection_vertex(
 __all__ = [
     "FOCI_GET_PROJECTION_VERTEX_METADATA",
     "FociGetProjectionVertexOutputs",
+    "FociGetProjectionVertexParameters",
     "foci_get_projection_vertex",
     "foci_get_projection_vertex_params",
 ]

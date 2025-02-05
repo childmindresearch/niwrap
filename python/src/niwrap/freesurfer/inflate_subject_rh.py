@@ -172,6 +172,7 @@ def inflate_subject_rh(
 __all__ = [
     "INFLATE_SUBJECT_RH_METADATA",
     "InflateSubjectRhOutputs",
+    "InflateSubjectRhParameters",
     "inflate_subject_rh",
     "inflate_subject_rh_params",
 ]

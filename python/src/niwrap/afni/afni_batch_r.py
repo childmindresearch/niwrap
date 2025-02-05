@@ -203,6 +203,7 @@ def afni_batch_r(
 __all__ = [
     "AFNI_BATCH_R_METADATA",
     "AfniBatchROutputs",
+    "AfniBatchRParameters",
     "afni_batch_r",
     "afni_batch_r_params",
 ]

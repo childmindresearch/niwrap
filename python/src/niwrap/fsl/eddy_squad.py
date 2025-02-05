@@ -213,6 +213,7 @@ def eddy_squad(
 __all__ = [
     "EDDY_SQUAD_METADATA",
     "EddySquadOutputs",
+    "EddySquadParameters",
     "eddy_squad",
     "eddy_squad_params",
 ]

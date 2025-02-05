@@ -214,6 +214,7 @@ def surf_retino_map(
 __all__ = [
     "SURF_RETINO_MAP_METADATA",
     "SurfRetinoMapOutputs",
+    "SurfRetinoMapParameters",
     "surf_retino_map",
     "surf_retino_map_params",
 ]

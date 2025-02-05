@@ -313,6 +313,7 @@ def mri_ca_train(
 __all__ = [
     "MRI_CA_TRAIN_METADATA",
     "MriCaTrainOutputs",
+    "MriCaTrainParameters",
     "mri_ca_train",
     "mri_ca_train_params",
 ]

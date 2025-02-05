@@ -187,6 +187,7 @@ def v_3d_convolve(
 
 __all__ = [
     "V3dConvolveOutputs",
+    "V3dConvolveParameters",
     "V_3D_CONVOLVE_METADATA",
     "v_3d_convolve",
     "v_3d_convolve_params",

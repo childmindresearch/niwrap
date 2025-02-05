@@ -196,6 +196,7 @@ def extracttxt(
 __all__ = [
     "EXTRACTTXT_METADATA",
     "ExtracttxtOutputs",
+    "ExtracttxtParameters",
     "extracttxt",
     "extracttxt_params",
 ]

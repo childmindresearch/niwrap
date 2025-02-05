@@ -196,6 +196,7 @@ def v__snapshot_volreg(
 
 __all__ = [
     "VSnapshotVolregOutputs",
+    "VSnapshotVolregParameters",
     "V__SNAPSHOT_VOLREG_METADATA",
     "v__snapshot_volreg",
     "v__snapshot_volreg_params",

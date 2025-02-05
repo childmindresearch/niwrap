@@ -488,6 +488,7 @@ def fabber_asl(
 __all__ = [
     "FABBER_ASL_METADATA",
     "FabberAslOutputs",
+    "FabberAslParameters",
     "fabber_asl",
     "fabber_asl_params",
 ]

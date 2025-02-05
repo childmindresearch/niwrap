@@ -268,6 +268,7 @@ def segment_subregions(
 __all__ = [
     "SEGMENT_SUBREGIONS_METADATA",
     "SegmentSubregionsOutputs",
+    "SegmentSubregionsParameters",
     "segment_subregions",
     "segment_subregions_params",
 ]

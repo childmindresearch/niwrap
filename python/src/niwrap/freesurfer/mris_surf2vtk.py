@@ -182,6 +182,7 @@ def mris_surf2vtk(
 __all__ = [
     "MRIS_SURF2VTK_METADATA",
     "MrisSurf2vtkOutputs",
+    "MrisSurf2vtkParameters",
     "mris_surf2vtk",
     "mris_surf2vtk_params",
 ]

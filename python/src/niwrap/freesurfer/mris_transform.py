@@ -221,6 +221,7 @@ def mris_transform(
 __all__ = [
     "MRIS_TRANSFORM_METADATA",
     "MrisTransformOutputs",
+    "MrisTransformParameters",
     "mris_transform",
     "mris_transform_params",
 ]

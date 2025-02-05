@@ -181,6 +181,7 @@ def mris_euler_number(
 __all__ = [
     "MRIS_EULER_NUMBER_METADATA",
     "MrisEulerNumberOutputs",
+    "MrisEulerNumberParameters",
     "mris_euler_number",
     "mris_euler_number_params",
 ]

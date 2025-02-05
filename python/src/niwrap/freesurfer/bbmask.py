@@ -248,6 +248,7 @@ def bbmask(
 __all__ = [
     "BBMASK_METADATA",
     "BbmaskOutputs",
+    "BbmaskParameters",
     "bbmask",
     "bbmask_params",
 ]

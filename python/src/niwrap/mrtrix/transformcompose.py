@@ -434,7 +434,11 @@ def transformcompose(
 
 __all__ = [
     "TRANSFORMCOMPOSE_METADATA",
+    "TransformcomposeConfigParameters",
     "TransformcomposeOutputs",
+    "TransformcomposeParameters",
+    "TransformcomposeVariousFileParameters",
+    "TransformcomposeVariousStringParameters",
     "transformcompose",
     "transformcompose_config_params",
     "transformcompose_params",

@@ -243,6 +243,7 @@ def fat_mvm_prep(
 __all__ = [
     "FAT_MVM_PREP_METADATA",
     "FatMvmPrepOutputs",
+    "FatMvmPrepParameters",
     "fat_mvm_prep",
     "fat_mvm_prep_params",
 ]

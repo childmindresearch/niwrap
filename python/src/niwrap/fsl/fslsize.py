@@ -172,6 +172,7 @@ def fslsize(
 __all__ = [
     "FSLSIZE_METADATA",
     "FslsizeOutputs",
+    "FslsizeParameters",
     "fslsize",
     "fslsize_params",
 ]

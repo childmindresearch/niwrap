@@ -201,6 +201,7 @@ def v__suma_renumber_fs(
 
 __all__ = [
     "VSumaRenumberFsOutputs",
+    "VSumaRenumberFsParameters",
     "V__SUMA_RENUMBER_FS_METADATA",
     "v__suma_renumber_fs",
     "v__suma_renumber_fs_params",

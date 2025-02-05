@@ -333,6 +333,7 @@ def v__measure_bb_thick(
 
 __all__ = [
     "VMeasureBbThickOutputs",
+    "VMeasureBbThickParameters",
     "V__MEASURE_BB_THICK_METADATA",
     "v__measure_bb_thick",
     "v__measure_bb_thick_params",

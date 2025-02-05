@@ -244,6 +244,7 @@ def ants_cortical_thickness_sh(
 __all__ = [
     "ANTS_CORTICAL_THICKNESS_SH_METADATA",
     "AntsCorticalThicknessShOutputs",
+    "AntsCorticalThicknessShParameters",
     "ants_cortical_thickness_sh",
     "ants_cortical_thickness_sh_params",
 ]

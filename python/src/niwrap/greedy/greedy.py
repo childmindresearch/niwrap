@@ -1455,12 +1455,12 @@ def greedy_outputs(
     ret = GreedyOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file(params.get("output")) if (params.get("output") is not None) else None,
-        invert=dyn_outputs(invert["__STYXTYPE__"])(invert, execution) if invert else None,
-        root_=dyn_outputs(root["__STYXTYPE__"])(root, execution) if root else None,
-        jacobian=dyn_outputs(jacobian["__STYXTYPE__"])(jacobian, execution) if jacobian else None,
-        reslice_moving_image=dyn_outputs(reslice_moving_image["__STYXTYPE__"])(reslice_moving_image, execution) if reslice_moving_image else None,
-        reslice_surface=dyn_outputs(reslice_surface["__STYXTYPE__"])(reslice_surface, execution) if reslice_surface else None,
-        reslice_simplex_jacobian=dyn_outputs(reslice_simplex_jacobian["__STYXTYPE__"])(reslice_simplex_jacobian, execution) if reslice_simplex_jacobian else None,
+        invert=dyn_outputs(params.get("invert")["__STYXTYPE__"])(params.get("invert"), execution) if params.get("invert") else None,
+        root_=dyn_outputs(params.get("root")["__STYXTYPE__"])(params.get("root"), execution) if params.get("root") else None,
+        jacobian=dyn_outputs(params.get("jacobian")["__STYXTYPE__"])(params.get("jacobian"), execution) if params.get("jacobian") else None,
+        reslice_moving_image=dyn_outputs(params.get("reslice_moving_image")["__STYXTYPE__"])(params.get("reslice_moving_image"), execution) if params.get("reslice_moving_image") else None,
+        reslice_surface=dyn_outputs(params.get("reslice_surface")["__STYXTYPE__"])(params.get("reslice_surface"), execution) if params.get("reslice_surface") else None,
+        reslice_simplex_jacobian=dyn_outputs(params.get("reslice_simplex_jacobian")["__STYXTYPE__"])(params.get("reslice_simplex_jacobian"), execution) if params.get("reslice_simplex_jacobian") else None,
     )
     return ret
 
@@ -1688,13 +1688,24 @@ def greedy_(
 
 __all__ = [
     "GREEDY_METADATA",
+    "GreedyInputImagesParameters",
     "GreedyInvertOutputs",
+    "GreedyInvertParameters",
     "GreedyJacobianOutputs",
+    "GreedyJacobianParameters",
+    "GreedyMetricParameters",
     "GreedyOutputs",
+    "GreedyParameters",
     "GreedyResliceMovingImageOutputs",
+    "GreedyResliceMovingImageParameters",
     "GreedyResliceSimplexJacobianOutputs",
+    "GreedyResliceSimplexJacobianParameters",
     "GreedyResliceSurfaceOutputs",
+    "GreedyResliceSurfaceParameters",
     "GreedyRootOutputs",
+    "GreedyRootParameters",
+    "GreedySearchParameters",
+    "GreedyTjrParameters",
     "greedy_",
     "greedy_input_images_params",
     "greedy_invert_params",

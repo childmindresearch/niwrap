@@ -329,6 +329,7 @@ def surf_dset_info(
 __all__ = [
     "SURF_DSET_INFO_METADATA",
     "SurfDsetInfoOutputs",
+    "SurfDsetInfoParameters",
     "surf_dset_info",
     "surf_dset_info_params",
 ]

@@ -332,6 +332,7 @@ def n3_bias_field_correction(
 
 __all__ = [
     "N3BiasFieldCorrectionOutputs",
+    "N3BiasFieldCorrectionParameters",
     "N3_BIAS_FIELD_CORRECTION_METADATA",
     "n3_bias_field_correction",
     "n3_bias_field_correction_params",

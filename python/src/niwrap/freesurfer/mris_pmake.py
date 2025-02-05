@@ -307,6 +307,7 @@ def mris_pmake(
 __all__ = [
     "MRIS_PMAKE_METADATA",
     "MrisPmakeOutputs",
+    "MrisPmakeParameters",
     "mris_pmake",
     "mris_pmake_params",
 ]

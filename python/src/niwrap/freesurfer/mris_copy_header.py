@@ -187,6 +187,7 @@ def mris_copy_header(
 __all__ = [
     "MRIS_COPY_HEADER_METADATA",
     "MrisCopyHeaderOutputs",
+    "MrisCopyHeaderParameters",
     "mris_copy_header",
     "mris_copy_header_params",
 ]

@@ -318,6 +318,7 @@ def estimate_fiber_binghams(
 __all__ = [
     "ESTIMATE_FIBER_BINGHAMS_METADATA",
     "EstimateFiberBinghamsOutputs",
+    "EstimateFiberBinghamsParameters",
     "estimate_fiber_binghams",
     "estimate_fiber_binghams_params",
 ]

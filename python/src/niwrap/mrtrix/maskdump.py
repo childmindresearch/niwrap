@@ -315,7 +315,9 @@ def maskdump(
 
 __all__ = [
     "MASKDUMP_METADATA",
+    "MaskdumpConfigParameters",
     "MaskdumpOutputs",
+    "MaskdumpParameters",
     "maskdump",
     "maskdump_config_params",
     "maskdump_params",

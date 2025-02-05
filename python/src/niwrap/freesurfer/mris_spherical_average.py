@@ -213,6 +213,7 @@ def mris_spherical_average(
 __all__ = [
     "MRIS_SPHERICAL_AVERAGE_METADATA",
     "MrisSphericalAverageOutputs",
+    "MrisSphericalAverageParameters",
     "mris_spherical_average",
     "mris_spherical_average_params",
 ]

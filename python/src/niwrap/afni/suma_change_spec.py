@@ -213,6 +213,7 @@ def suma_change_spec(
 __all__ = [
     "SUMA_CHANGE_SPEC_METADATA",
     "SumaChangeSpecOutputs",
+    "SumaChangeSpecParameters",
     "suma_change_spec",
     "suma_change_spec_params",
 ]

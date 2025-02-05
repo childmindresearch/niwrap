@@ -284,6 +284,7 @@ def surf_layers(
 __all__ = [
     "SURF_LAYERS_METADATA",
     "SurfLayersOutputs",
+    "SurfLayersParameters",
     "surf_layers",
     "surf_layers_params",
 ]

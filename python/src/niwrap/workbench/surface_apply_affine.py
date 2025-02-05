@@ -251,7 +251,9 @@ def surface_apply_affine(
 
 __all__ = [
     "SURFACE_APPLY_AFFINE_METADATA",
+    "SurfaceApplyAffineFlirtParameters",
     "SurfaceApplyAffineOutputs",
+    "SurfaceApplyAffineParameters",
     "surface_apply_affine",
     "surface_apply_affine_flirt_params",
     "surface_apply_affine_params",

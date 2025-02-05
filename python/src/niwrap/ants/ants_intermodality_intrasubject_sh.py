@@ -310,6 +310,7 @@ def ants_intermodality_intrasubject_sh(
 __all__ = [
     "ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA",
     "AntsIntermodalityIntrasubjectShOutputs",
+    "AntsIntermodalityIntrasubjectShParameters",
     "ants_intermodality_intrasubject_sh",
     "ants_intermodality_intrasubject_sh_params",
 ]

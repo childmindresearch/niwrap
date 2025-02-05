@@ -202,6 +202,7 @@ def label_geometry_measures(
 __all__ = [
     "LABEL_GEOMETRY_MEASURES_METADATA",
     "LabelGeometryMeasuresOutputs",
+    "LabelGeometryMeasuresParameters",
     "label_geometry_measures",
     "label_geometry_measures_params",
 ]

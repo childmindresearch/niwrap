@@ -201,6 +201,7 @@ def surface_create_sphere(
 __all__ = [
     "SURFACE_CREATE_SPHERE_METADATA",
     "SurfaceCreateSphereOutputs",
+    "SurfaceCreateSphereParameters",
     "surface_create_sphere",
     "surface_create_sphere_params",
 ]

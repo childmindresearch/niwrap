@@ -287,6 +287,7 @@ def mri_gradunwarp(
 __all__ = [
     "MRI_GRADUNWARP_METADATA",
     "MriGradunwarpOutputs",
+    "MriGradunwarpParameters",
     "mri_gradunwarp",
     "mri_gradunwarp_params",
 ]

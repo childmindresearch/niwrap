@@ -179,6 +179,7 @@ def register_child(
 __all__ = [
     "REGISTER_CHILD_METADATA",
     "RegisterChildOutputs",
+    "RegisterChildParameters",
     "register_child",
     "register_child_params",
 ]

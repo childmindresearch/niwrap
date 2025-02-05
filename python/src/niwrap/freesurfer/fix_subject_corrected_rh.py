@@ -171,6 +171,7 @@ def fix_subject_corrected_rh(
 __all__ = [
     "FIX_SUBJECT_CORRECTED_RH_METADATA",
     "FixSubjectCorrectedRhOutputs",
+    "FixSubjectCorrectedRhParameters",
     "fix_subject_corrected_rh",
     "fix_subject_corrected_rh_params",
 ]

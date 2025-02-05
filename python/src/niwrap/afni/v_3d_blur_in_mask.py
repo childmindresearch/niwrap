@@ -273,6 +273,7 @@ def v_3d_blur_in_mask(
 
 __all__ = [
     "V3dBlurInMaskOutputs",
+    "V3dBlurInMaskParameters",
     "V_3D_BLUR_IN_MASK_METADATA",
     "v_3d_blur_in_mask",
     "v_3d_blur_in_mask_params",

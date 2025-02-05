@@ -179,6 +179,7 @@ def check_feat(
 __all__ = [
     "CHECK_FEAT_METADATA",
     "CheckFeatOutputs",
+    "CheckFeatParameters",
     "check_feat",
     "check_feat_params",
 ]

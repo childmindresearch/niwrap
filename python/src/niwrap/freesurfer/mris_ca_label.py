@@ -363,6 +363,7 @@ def mris_ca_label(
 __all__ = [
     "MRIS_CA_LABEL_METADATA",
     "MrisCaLabelOutputs",
+    "MrisCaLabelParameters",
     "mris_ca_label",
     "mris_ca_label_params",
 ]

@@ -199,6 +199,7 @@ def v_3d_zcutup(
 
 __all__ = [
     "V3dZcutupOutputs",
+    "V3dZcutupParameters",
     "V_3D_ZCUTUP_METADATA",
     "v_3d_zcutup",
     "v_3d_zcutup_params",

@@ -166,6 +166,7 @@ def v_3d_clip_level(
 
 __all__ = [
     "V3dClipLevelOutputs",
+    "V3dClipLevelParameters",
     "V_3D_CLIP_LEVEL_METADATA",
     "v_3d_clip_level",
     "v_3d_clip_level_params",

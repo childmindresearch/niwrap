@@ -172,6 +172,7 @@ def fslhd(
 __all__ = [
     "FSLHD_METADATA",
     "FslhdOutputs",
+    "FslhdParameters",
     "fslhd",
     "fslhd_params",
 ]

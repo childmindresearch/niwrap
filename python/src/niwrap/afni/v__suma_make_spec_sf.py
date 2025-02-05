@@ -197,6 +197,7 @@ def v__suma_make_spec_sf(
 
 __all__ = [
     "VSumaMakeSpecSfOutputs",
+    "VSumaMakeSpecSfParameters",
     "V__SUMA_MAKE_SPEC_SF_METADATA",
     "v__suma_make_spec_sf",
     "v__suma_make_spec_sf_params",

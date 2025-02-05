@@ -169,6 +169,7 @@ def dicom_to_raw(
 __all__ = [
     "DICOM_TO_RAW_METADATA",
     "DicomToRawOutputs",
+    "DicomToRawParameters",
     "dicom_to_raw",
     "dicom_to_raw_params",
 ]

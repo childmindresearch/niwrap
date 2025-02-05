@@ -220,6 +220,7 @@ def djpeg(
 __all__ = [
     "DJPEG_METADATA",
     "DjpegOutputs",
+    "DjpegParameters",
     "djpeg",
     "djpeg_params",
 ]

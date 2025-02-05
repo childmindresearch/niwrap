@@ -173,6 +173,7 @@ def pngappend(
 __all__ = [
     "PNGAPPEND_METADATA",
     "PngappendOutputs",
+    "PngappendParameters",
     "pngappend",
     "pngappend_params",
 ]

@@ -227,6 +227,7 @@ def gifti_label_to_roi(
 __all__ = [
     "GIFTI_LABEL_TO_ROI_METADATA",
     "GiftiLabelToRoiOutputs",
+    "GiftiLabelToRoiParameters",
     "gifti_label_to_roi",
     "gifti_label_to_roi_params",
 ]

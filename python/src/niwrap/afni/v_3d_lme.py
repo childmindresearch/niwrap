@@ -487,6 +487,7 @@ def v_3d_lme(
 
 __all__ = [
     "V3dLmeOutputs",
+    "V3dLmeParameters",
     "V_3D_LME_METADATA",
     "v_3d_lme",
     "v_3d_lme_params",

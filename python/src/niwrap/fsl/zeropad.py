@@ -176,6 +176,7 @@ def zeropad(
 __all__ = [
     "ZEROPAD_METADATA",
     "ZeropadOutputs",
+    "ZeropadParameters",
     "zeropad",
     "zeropad_params",
 ]

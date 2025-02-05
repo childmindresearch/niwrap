@@ -198,6 +198,7 @@ def v_3d_aboverlap(
 
 __all__ = [
     "V3dAboverlapOutputs",
+    "V3dAboverlapParameters",
     "V_3D_ABOVERLAP_METADATA",
     "v_3d_aboverlap",
     "v_3d_aboverlap_params",

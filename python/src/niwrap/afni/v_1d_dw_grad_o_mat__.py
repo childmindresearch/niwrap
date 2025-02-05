@@ -401,6 +401,7 @@ def v_1d_dw_grad_o_mat__(
 
 __all__ = [
     "V1dDwGradOMatOutputs",
+    "V1dDwGradOMatParameters",
     "V_1D_DW_GRAD_O_MAT___METADATA",
     "v_1d_dw_grad_o_mat__",
     "v_1d_dw_grad_o_mat___params",

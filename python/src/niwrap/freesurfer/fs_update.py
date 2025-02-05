@@ -176,6 +176,7 @@ def fs_update(
 __all__ = [
     "FS_UPDATE_METADATA",
     "FsUpdateOutputs",
+    "FsUpdateParameters",
     "fs_update",
     "fs_update_params",
 ]

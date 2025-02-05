@@ -239,6 +239,7 @@ def mris_niters2fwhm(
 __all__ = [
     "MRIS_NITERS2FWHM_METADATA",
     "MrisNiters2fwhmOutputs",
+    "MrisNiters2fwhmParameters",
     "mris_niters2fwhm",
     "mris_niters2fwhm_params",
 ]

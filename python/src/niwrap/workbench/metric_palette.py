@@ -705,7 +705,13 @@ def metric_palette(
 
 __all__ = [
     "METRIC_PALETTE_METADATA",
+    "MetricPaletteNegPercentParameters",
+    "MetricPaletteNegUserParameters",
     "MetricPaletteOutputs",
+    "MetricPaletteParameters",
+    "MetricPalettePosPercentParameters",
+    "MetricPalettePosUserParameters",
+    "MetricPaletteThresholdingParameters",
     "metric_palette",
     "metric_palette_neg_percent_params",
     "metric_palette_neg_user_params",

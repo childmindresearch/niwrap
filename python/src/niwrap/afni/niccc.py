@@ -289,6 +289,7 @@ def niccc(
 __all__ = [
     "NICCC_METADATA",
     "NicccOutputs",
+    "NicccParameters",
     "niccc",
     "niccc_params",
 ]

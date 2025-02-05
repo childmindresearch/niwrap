@@ -176,6 +176,7 @@ def imcp(
 __all__ = [
     "IMCP_METADATA",
     "ImcpOutputs",
+    "ImcpParameters",
     "imcp",
     "imcp_params",
 ]

@@ -298,6 +298,7 @@ def mri_exvivo_strip(
 __all__ = [
     "MRI_EXVIVO_STRIP_METADATA",
     "MriExvivoStripOutputs",
+    "MriExvivoStripParameters",
     "mri_exvivo_strip",
     "mri_exvivo_strip_params",
 ]

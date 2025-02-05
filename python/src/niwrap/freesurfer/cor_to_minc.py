@@ -176,6 +176,7 @@ def cor_to_minc(
 __all__ = [
     "COR_TO_MINC_METADATA",
     "CorToMincOutputs",
+    "CorToMincParameters",
     "cor_to_minc",
     "cor_to_minc_params",
 ]

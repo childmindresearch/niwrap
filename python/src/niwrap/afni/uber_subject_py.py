@@ -657,6 +657,7 @@ def uber_subject_py(
 __all__ = [
     "UBER_SUBJECT_PY_METADATA",
     "UberSubjectPyOutputs",
+    "UberSubjectPyParameters",
     "uber_subject_py",
     "uber_subject_py_params",
 ]

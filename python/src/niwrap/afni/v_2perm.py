@@ -220,6 +220,7 @@ def v_2perm(
 
 __all__ = [
     "V2permOutputs",
+    "V2permParameters",
     "V_2PERM_METADATA",
     "v_2perm",
     "v_2perm_params",

@@ -193,6 +193,7 @@ def siena_flow2std(
 __all__ = [
     "SIENA_FLOW2STD_METADATA",
     "SienaFlow2stdOutputs",
+    "SienaFlow2stdParameters",
     "siena_flow2std",
     "siena_flow2std_params",
 ]

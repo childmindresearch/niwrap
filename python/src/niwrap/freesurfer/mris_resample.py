@@ -233,6 +233,7 @@ def mris_resample(
 __all__ = [
     "MRIS_RESAMPLE_METADATA",
     "MrisResampleOutputs",
+    "MrisResampleParameters",
     "mris_resample",
     "mris_resample_params",
 ]

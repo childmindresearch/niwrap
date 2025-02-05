@@ -291,6 +291,7 @@ def mris_register_to_label(
 __all__ = [
     "MRIS_REGISTER_TO_LABEL_METADATA",
     "MrisRegisterToLabelOutputs",
+    "MrisRegisterToLabelParameters",
     "mris_register_to_label",
     "mris_register_to_label_params",
 ]

@@ -168,6 +168,7 @@ def v__get_afni_id(
 
 __all__ = [
     "VGetAfniIdOutputs",
+    "VGetAfniIdParameters",
     "V__GET_AFNI_ID_METADATA",
     "v__get_afni_id",
     "v__get_afni_id_params",

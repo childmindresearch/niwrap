@@ -226,6 +226,7 @@ def mris_label_area(
 __all__ = [
     "MRIS_LABEL_AREA_METADATA",
     "MrisLabelAreaOutputs",
+    "MrisLabelAreaParameters",
     "mris_label_area",
     "mris_label_area_params",
 ]

@@ -350,6 +350,7 @@ def fat_proc_convert_dcm_dwis(
 __all__ = [
     "FAT_PROC_CONVERT_DCM_DWIS_METADATA",
     "FatProcConvertDcmDwisOutputs",
+    "FatProcConvertDcmDwisParameters",
     "fat_proc_convert_dcm_dwis",
     "fat_proc_convert_dcm_dwis_params",
 ]

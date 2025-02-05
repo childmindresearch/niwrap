@@ -317,6 +317,7 @@ def mris_multimodal_surface_placement(
 __all__ = [
     "MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA",
     "MrisMultimodalSurfacePlacementOutputs",
+    "MrisMultimodalSurfacePlacementParameters",
     "mris_multimodal_surface_placement",
     "mris_multimodal_surface_placement_params",
 ]

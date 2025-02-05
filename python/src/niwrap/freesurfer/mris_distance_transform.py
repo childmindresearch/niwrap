@@ -236,6 +236,7 @@ def mris_distance_transform(
 __all__ = [
     "MRIS_DISTANCE_TRANSFORM_METADATA",
     "MrisDistanceTransformOutputs",
+    "MrisDistanceTransformParameters",
     "mris_distance_transform",
     "mris_distance_transform_params",
 ]

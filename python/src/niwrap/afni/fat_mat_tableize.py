@@ -276,6 +276,7 @@ def fat_mat_tableize(
 __all__ = [
     "FAT_MAT_TABLEIZE_METADATA",
     "FatMatTableizeOutputs",
+    "FatMatTableizeParameters",
     "fat_mat_tableize",
     "fat_mat_tableize_params",
 ]

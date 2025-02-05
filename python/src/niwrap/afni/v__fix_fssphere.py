@@ -223,6 +223,7 @@ def v__fix_fssphere(
 
 __all__ = [
     "VFixFssphereOutputs",
+    "VFixFssphereParameters",
     "V__FIX_FSSPHERE_METADATA",
     "v__fix_fssphere",
     "v__fix_fssphere_params",

@@ -169,6 +169,7 @@ def mri_gradient_info(
 __all__ = [
     "MRI_GRADIENT_INFO_METADATA",
     "MriGradientInfoOutputs",
+    "MriGradientInfoParameters",
     "mri_gradient_info",
     "mri_gradient_info_params",
 ]

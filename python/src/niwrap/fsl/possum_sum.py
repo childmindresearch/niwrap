@@ -204,6 +204,7 @@ def possum_sum(
 __all__ = [
     "POSSUM_SUM_METADATA",
     "PossumSumOutputs",
+    "PossumSumParameters",
     "possum_sum",
     "possum_sum_params",
 ]

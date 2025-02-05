@@ -215,6 +215,7 @@ def v_3dmatmult(
 
 __all__ = [
     "V3dmatmultOutputs",
+    "V3dmatmultParameters",
     "V_3DMATMULT_METADATA",
     "v_3dmatmult",
     "v_3dmatmult_params",

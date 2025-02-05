@@ -253,6 +253,7 @@ def v_3dedge3(
 
 __all__ = [
     "V3dedge3Outputs",
+    "V3dedge3Parameters",
     "V_3DEDGE3_METADATA",
     "v_3dedge3",
     "v_3dedge3_params",

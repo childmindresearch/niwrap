@@ -212,6 +212,7 @@ def fs_time(
 __all__ = [
     "FS_TIME_METADATA",
     "FsTimeOutputs",
+    "FsTimeParameters",
     "fs_time",
     "fs_time_params",
 ]

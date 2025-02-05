@@ -385,6 +385,9 @@ def volume_create(
 __all__ = [
     "VOLUME_CREATE_METADATA",
     "VolumeCreateOutputs",
+    "VolumeCreateParameters",
+    "VolumeCreatePlumbParameters",
+    "VolumeCreateSformParameters",
     "volume_create",
     "volume_create_params",
     "volume_create_plumb_params",

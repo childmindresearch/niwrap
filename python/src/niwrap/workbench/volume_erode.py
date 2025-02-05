@@ -220,6 +220,7 @@ def volume_erode(
 __all__ = [
     "VOLUME_ERODE_METADATA",
     "VolumeErodeOutputs",
+    "VolumeErodeParameters",
     "volume_erode",
     "volume_erode_params",
 ]

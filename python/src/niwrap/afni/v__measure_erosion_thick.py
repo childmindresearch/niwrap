@@ -311,6 +311,7 @@ def v__measure_erosion_thick(
 
 __all__ = [
     "VMeasureErosionThickOutputs",
+    "VMeasureErosionThickParameters",
     "V__MEASURE_EROSION_THICK_METADATA",
     "v__measure_erosion_thick",
     "v__measure_erosion_thick_params",

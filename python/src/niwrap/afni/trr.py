@@ -381,6 +381,7 @@ def trr(
 __all__ = [
     "TRR_METADATA",
     "TrrOutputs",
+    "TrrParameters",
     "trr",
     "trr_params",
 ]

@@ -227,6 +227,7 @@ def robustfov(
 __all__ = [
     "ROBUSTFOV_METADATA",
     "RobustfovOutputs",
+    "RobustfovParameters",
     "robustfov",
     "robustfov_params",
 ]

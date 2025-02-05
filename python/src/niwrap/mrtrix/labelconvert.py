@@ -353,7 +353,9 @@ def labelconvert(
 
 __all__ = [
     "LABELCONVERT_METADATA",
+    "LabelconvertConfigParameters",
     "LabelconvertOutputs",
+    "LabelconvertParameters",
     "labelconvert",
     "labelconvert_config_params",
     "labelconvert_params",

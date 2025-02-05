@@ -551,6 +551,7 @@ def fsl_sub(
 __all__ = [
     "FSL_SUB_METADATA",
     "FslSubOutputs",
+    "FslSubParameters",
     "fsl_sub",
     "fsl_sub_params",
 ]

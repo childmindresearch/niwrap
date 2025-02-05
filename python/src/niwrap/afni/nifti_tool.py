@@ -292,6 +292,7 @@ def nifti_tool(
 __all__ = [
     "NIFTI_TOOL_METADATA",
     "NiftiToolOutputs",
+    "NiftiToolParameters",
     "nifti_tool",
     "nifti_tool_params",
 ]

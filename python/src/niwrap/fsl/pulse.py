@@ -466,6 +466,7 @@ def pulse(
 __all__ = [
     "PULSE_METADATA",
     "PulseOutputs",
+    "PulseParameters",
     "pulse",
     "pulse_params",
 ]

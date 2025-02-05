@@ -560,6 +560,7 @@ def flirt_fsl(
 __all__ = [
     "FLIRT_FSL_METADATA",
     "FlirtFslOutputs",
+    "FlirtFslParameters",
     "flirt_fsl",
     "flirt_fsl_params",
 ]

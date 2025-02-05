@@ -187,6 +187,7 @@ def bianca_cluster_stats(
 __all__ = [
     "BIANCA_CLUSTER_STATS_METADATA",
     "BiancaClusterStatsOutputs",
+    "BiancaClusterStatsParameters",
     "bianca_cluster_stats",
     "bianca_cluster_stats_params",
 ]

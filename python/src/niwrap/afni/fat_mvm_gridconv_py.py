@@ -199,6 +199,7 @@ def fat_mvm_gridconv_py(
 __all__ = [
     "FAT_MVM_GRIDCONV_PY_METADATA",
     "FatMvmGridconvPyOutputs",
+    "FatMvmGridconvPyParameters",
     "fat_mvm_gridconv_py",
     "fat_mvm_gridconv_py_params",
 ]

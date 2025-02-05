@@ -182,6 +182,7 @@ def v_3d_mvm_validator(
 
 __all__ = [
     "V3dMvmValidatorOutputs",
+    "V3dMvmValidatorParameters",
     "V_3D_MVM_VALIDATOR_METADATA",
     "v_3d_mvm_validator",
     "v_3d_mvm_validator_params",

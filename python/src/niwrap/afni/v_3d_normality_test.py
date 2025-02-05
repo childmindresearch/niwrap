@@ -198,6 +198,7 @@ def v_3d_normality_test(
 
 __all__ = [
     "V3dNormalityTestOutputs",
+    "V3dNormalityTestParameters",
     "V_3D_NORMALITY_TEST_METADATA",
     "v_3d_normality_test",
     "v_3d_normality_test_params",

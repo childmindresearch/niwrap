@@ -196,6 +196,7 @@ def v_3d_sharpen(
 
 __all__ = [
     "V3dSharpenOutputs",
+    "V3dSharpenParameters",
     "V_3D_SHARPEN_METADATA",
     "v_3d_sharpen",
     "v_3d_sharpen_params",

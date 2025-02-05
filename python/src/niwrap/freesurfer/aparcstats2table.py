@@ -348,6 +348,7 @@ def aparcstats2table(
 __all__ = [
     "APARCSTATS2TABLE_METADATA",
     "Aparcstats2tableOutputs",
+    "Aparcstats2tableParameters",
     "aparcstats2table",
     "aparcstats2table_params",
 ]

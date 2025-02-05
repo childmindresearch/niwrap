@@ -213,6 +213,7 @@ def read_matlab_files_py(
 __all__ = [
     "READ_MATLAB_FILES_PY_METADATA",
     "ReadMatlabFilesPyOutputs",
+    "ReadMatlabFilesPyParameters",
     "read_matlab_files_py",
     "read_matlab_files_py_params",
 ]

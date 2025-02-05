@@ -250,6 +250,7 @@ def v_1dcat(
 
 __all__ = [
     "V1dcatOutputs",
+    "V1dcatParameters",
     "V_1DCAT_METADATA",
     "v_1dcat",
     "v_1dcat_params",

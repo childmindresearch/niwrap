@@ -707,7 +707,13 @@ def volume_palette(
 
 __all__ = [
     "VOLUME_PALETTE_METADATA",
+    "VolumePaletteNegPercentParameters",
+    "VolumePaletteNegUserParameters",
     "VolumePaletteOutputs",
+    "VolumePaletteParameters",
+    "VolumePalettePosPercentParameters",
+    "VolumePalettePosUserParameters",
+    "VolumePaletteThresholdingParameters",
     "volume_palette",
     "volume_palette_neg_percent_params",
     "volume_palette_neg_user_params",

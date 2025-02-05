@@ -306,7 +306,9 @@ def tsfvalidate(
 
 __all__ = [
     "TSFVALIDATE_METADATA",
+    "TsfvalidateConfigParameters",
     "TsfvalidateOutputs",
+    "TsfvalidateParameters",
     "tsfvalidate",
     "tsfvalidate_config_params",
     "tsfvalidate_params",

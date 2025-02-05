@@ -192,6 +192,7 @@ def mris_deform(
 __all__ = [
     "MRIS_DEFORM_METADATA",
     "MrisDeformOutputs",
+    "MrisDeformParameters",
     "mris_deform",
     "mris_deform_params",
 ]

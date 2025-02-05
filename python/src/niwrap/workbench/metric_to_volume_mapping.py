@@ -303,6 +303,8 @@ def metric_to_volume_mapping(
 __all__ = [
     "METRIC_TO_VOLUME_MAPPING_METADATA",
     "MetricToVolumeMappingOutputs",
+    "MetricToVolumeMappingParameters",
+    "MetricToVolumeMappingRibbonConstrainedParameters",
     "metric_to_volume_mapping",
     "metric_to_volume_mapping_params",
     "metric_to_volume_mapping_ribbon_constrained_params",

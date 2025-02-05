@@ -232,6 +232,7 @@ def wm_anat_snr(
 __all__ = [
     "WM_ANAT_SNR_METADATA",
     "WmAnatSnrOutputs",
+    "WmAnatSnrParameters",
     "wm_anat_snr",
     "wm_anat_snr_params",
 ]

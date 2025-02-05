@@ -172,6 +172,7 @@ def update_needed(
 __all__ = [
     "UPDATE_NEEDED_METADATA",
     "UpdateNeededOutputs",
+    "UpdateNeededParameters",
     "update_needed",
     "update_needed_params",
 ]

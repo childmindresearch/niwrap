@@ -191,6 +191,7 @@ def v_3d_afnito_raw(
 
 __all__ = [
     "V3dAfnitoRawOutputs",
+    "V3dAfnitoRawParameters",
     "V_3D_AFNITO_RAW_METADATA",
     "v_3d_afnito_raw",
     "v_3d_afnito_raw_params",

@@ -225,6 +225,7 @@ def super_resolution(
 __all__ = [
     "SUPER_RESOLUTION_METADATA",
     "SuperResolutionOutputs",
+    "SuperResolutionParameters",
     "super_resolution",
     "super_resolution_params",
 ]

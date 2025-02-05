@@ -238,6 +238,7 @@ def mris_reposition_surface(
 __all__ = [
     "MRIS_REPOSITION_SURFACE_METADATA",
     "MrisRepositionSurfaceOutputs",
+    "MrisRepositionSurfaceParameters",
     "mris_reposition_surface",
     "mris_reposition_surface_params",
 ]

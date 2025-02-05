@@ -187,6 +187,7 @@ def cp_dicom(
 __all__ = [
     "CP_DICOM_METADATA",
     "CpDicomOutputs",
+    "CpDicomParameters",
     "cp_dicom",
     "cp_dicom_params",
 ]

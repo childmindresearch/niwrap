@@ -169,6 +169,7 @@ def feat(
 __all__ = [
     "FEAT_METADATA",
     "FeatOutputs",
+    "FeatParameters",
     "feat",
     "feat_params",
 ]

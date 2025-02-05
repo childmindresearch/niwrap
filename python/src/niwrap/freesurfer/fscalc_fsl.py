@@ -187,6 +187,7 @@ def fscalc_fsl(
 __all__ = [
     "FSCALC_FSL_METADATA",
     "FscalcFslOutputs",
+    "FscalcFslParameters",
     "fscalc_fsl",
     "fscalc_fsl_params",
 ]

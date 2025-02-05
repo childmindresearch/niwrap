@@ -275,6 +275,7 @@ def neuro_deconvolve_py(
 __all__ = [
     "NEURO_DECONVOLVE_PY_METADATA",
     "NeuroDeconvolvePyOutputs",
+    "NeuroDeconvolvePyParameters",
     "neuro_deconvolve_py",
     "neuro_deconvolve_py_params",
 ]

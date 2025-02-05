@@ -288,6 +288,7 @@ def surf2_vol_coord(
 __all__ = [
     "SURF2_VOL_COORD_METADATA",
     "Surf2VolCoordOutputs",
+    "Surf2VolCoordParameters",
     "surf2_vol_coord",
     "surf2_vol_coord_params",
 ]

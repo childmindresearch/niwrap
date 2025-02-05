@@ -202,6 +202,7 @@ def border_to_vertices(
 __all__ = [
     "BORDER_TO_VERTICES_METADATA",
     "BorderToVerticesOutputs",
+    "BorderToVerticesParameters",
     "border_to_vertices",
     "border_to_vertices_params",
 ]

@@ -346,7 +346,9 @@ def meshfilter(
 
 __all__ = [
     "MESHFILTER_METADATA",
+    "MeshfilterConfigParameters",
     "MeshfilterOutputs",
+    "MeshfilterParameters",
     "meshfilter",
     "meshfilter_config_params",
     "meshfilter_params",

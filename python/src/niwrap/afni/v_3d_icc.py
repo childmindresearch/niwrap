@@ -217,6 +217,7 @@ def v_3d_icc(
 
 __all__ = [
     "V3dIccOutputs",
+    "V3dIccParameters",
     "V_3D_ICC_METADATA",
     "v_3d_icc",
     "v_3d_icc_params",

@@ -440,6 +440,7 @@ def make_random_timing_py(
 __all__ = [
     "MAKE_RANDOM_TIMING_PY_METADATA",
     "MakeRandomTimingPyOutputs",
+    "MakeRandomTimingPyParameters",
     "make_random_timing_py",
     "make_random_timing_py_params",
 ]

@@ -211,6 +211,7 @@ def v_4dfptoanalyze(
 
 __all__ = [
     "V4dfptoanalyzeOutputs",
+    "V4dfptoanalyzeParameters",
     "V_4DFPTOANALYZE_METADATA",
     "v_4dfptoanalyze",
     "v_4dfptoanalyze_params",

@@ -183,6 +183,7 @@ def dicom_rename(
 __all__ = [
     "DICOM_RENAME_METADATA",
     "DicomRenameOutputs",
+    "DicomRenameParameters",
     "dicom_rename",
     "dicom_rename_params",
 ]

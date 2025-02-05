@@ -430,6 +430,7 @@ def dcmdrle_fs(
 __all__ = [
     "DCMDRLE_FS_METADATA",
     "DcmdrleFsOutputs",
+    "DcmdrleFsParameters",
     "dcmdrle_fs",
     "dcmdrle_fs_params",
 ]

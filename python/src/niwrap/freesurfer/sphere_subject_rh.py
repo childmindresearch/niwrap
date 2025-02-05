@@ -168,6 +168,7 @@ def sphere_subject_rh(
 __all__ = [
     "SPHERE_SUBJECT_RH_METADATA",
     "SphereSubjectRhOutputs",
+    "SphereSubjectRhParameters",
     "sphere_subject_rh",
     "sphere_subject_rh_params",
 ]

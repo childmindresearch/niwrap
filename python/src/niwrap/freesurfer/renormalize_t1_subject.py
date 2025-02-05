@@ -166,6 +166,7 @@ def renormalize_t1_subject(
 __all__ = [
     "RENORMALIZE_T1_SUBJECT_METADATA",
     "RenormalizeT1SubjectOutputs",
+    "RenormalizeT1SubjectParameters",
     "renormalize_t1_subject",
     "renormalize_t1_subject_params",
 ]

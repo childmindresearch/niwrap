@@ -201,6 +201,7 @@ def antsintegrate_vector_field(
 __all__ = [
     "ANTSINTEGRATE_VECTOR_FIELD_METADATA",
     "AntsintegrateVectorFieldOutputs",
+    "AntsintegrateVectorFieldParameters",
     "antsintegrate_vector_field",
     "antsintegrate_vector_field_params",
 ]

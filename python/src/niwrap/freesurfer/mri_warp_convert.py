@@ -206,6 +206,7 @@ def mri_warp_convert(
 __all__ = [
     "MRI_WARP_CONVERT_METADATA",
     "MriWarpConvertOutputs",
+    "MriWarpConvertParameters",
     "mri_warp_convert",
     "mri_warp_convert_params",
 ]

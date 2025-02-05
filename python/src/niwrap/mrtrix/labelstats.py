@@ -321,7 +321,9 @@ def labelstats(
 
 __all__ = [
     "LABELSTATS_METADATA",
+    "LabelstatsConfigParameters",
     "LabelstatsOutputs",
+    "LabelstatsParameters",
     "labelstats",
     "labelstats_config_params",
     "labelstats_params",

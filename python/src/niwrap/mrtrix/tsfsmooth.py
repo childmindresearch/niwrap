@@ -325,7 +325,9 @@ def tsfsmooth(
 
 __all__ = [
     "TSFSMOOTH_METADATA",
+    "TsfsmoothConfigParameters",
     "TsfsmoothOutputs",
+    "TsfsmoothParameters",
     "tsfsmooth",
     "tsfsmooth_config_params",
     "tsfsmooth_params",

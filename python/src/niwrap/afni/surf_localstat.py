@@ -230,6 +230,7 @@ def surf_localstat(
 __all__ = [
     "SURF_LOCALSTAT_METADATA",
     "SurfLocalstatOutputs",
+    "SurfLocalstatParameters",
     "surf_localstat",
     "surf_localstat_params",
 ]

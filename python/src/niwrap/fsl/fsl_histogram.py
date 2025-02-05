@@ -316,6 +316,7 @@ def fsl_histogram(
 __all__ = [
     "FSL_HISTOGRAM_METADATA",
     "FslHistogramOutputs",
+    "FslHistogramParameters",
     "fsl_histogram",
     "fsl_histogram_params",
 ]

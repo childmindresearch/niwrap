@@ -206,6 +206,7 @@ def metric_remove_islands(
 __all__ = [
     "METRIC_REMOVE_ISLANDS_METADATA",
     "MetricRemoveIslandsOutputs",
+    "MetricRemoveIslandsParameters",
     "metric_remove_islands",
     "metric_remove_islands_params",
 ]

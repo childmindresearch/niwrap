@@ -170,6 +170,7 @@ def v_3drename(
 
 __all__ = [
     "V3drenameOutputs",
+    "V3drenameParameters",
     "V_3DRENAME_METADATA",
     "v_3drename",
     "v_3drename_params",

@@ -326,7 +326,9 @@ def mesh2voxel(
 
 __all__ = [
     "MESH2VOXEL_METADATA",
+    "Mesh2voxelConfigParameters",
     "Mesh2voxelOutputs",
+    "Mesh2voxelParameters",
     "mesh2voxel",
     "mesh2voxel_config_params",
     "mesh2voxel_params",

@@ -194,6 +194,7 @@ def siena_cal(
 __all__ = [
     "SIENA_CAL_METADATA",
     "SienaCalOutputs",
+    "SienaCalParameters",
     "siena_cal",
     "siena_cal_params",
 ]

@@ -241,6 +241,7 @@ def aparc2feat(
 __all__ = [
     "APARC2FEAT_METADATA",
     "Aparc2featOutputs",
+    "Aparc2featParameters",
     "aparc2feat",
     "aparc2feat_params",
 ]

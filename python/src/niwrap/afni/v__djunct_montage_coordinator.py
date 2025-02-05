@@ -221,6 +221,7 @@ def v__djunct_montage_coordinator(
 
 __all__ = [
     "VDjunctMontageCoordinatorOutputs",
+    "VDjunctMontageCoordinatorParameters",
     "V__DJUNCT_MONTAGE_COORDINATOR_METADATA",
     "v__djunct_montage_coordinator",
     "v__djunct_montage_coordinator_params",

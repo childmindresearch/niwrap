@@ -174,6 +174,7 @@ def ants_transform_info(
 __all__ = [
     "ANTS_TRANSFORM_INFO_METADATA",
     "AntsTransformInfoOutputs",
+    "AntsTransformInfoParameters",
     "ants_transform_info",
     "ants_transform_info_params",
 ]

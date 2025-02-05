@@ -225,6 +225,7 @@ def metric_rois_to_border(
 __all__ = [
     "METRIC_ROIS_TO_BORDER_METADATA",
     "MetricRoisToBorderOutputs",
+    "MetricRoisToBorderParameters",
     "metric_rois_to_border",
     "metric_rois_to_border_params",
 ]

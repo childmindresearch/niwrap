@@ -200,6 +200,7 @@ def tile_images(
 __all__ = [
     "TILE_IMAGES_METADATA",
     "TileImagesOutputs",
+    "TileImagesParameters",
     "tile_images",
     "tile_images_params",
 ]

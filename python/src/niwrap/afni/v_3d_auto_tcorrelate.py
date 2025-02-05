@@ -294,6 +294,7 @@ def v_3d_auto_tcorrelate(
 
 __all__ = [
     "V3dAutoTcorrelateOutputs",
+    "V3dAutoTcorrelateParameters",
     "V_3D_AUTO_TCORRELATE_METADATA",
     "v_3d_auto_tcorrelate",
     "v_3d_auto_tcorrelate_params",

@@ -196,6 +196,7 @@ def mris_shrinkwrap(
 __all__ = [
     "MRIS_SHRINKWRAP_METADATA",
     "MrisShrinkwrapOutputs",
+    "MrisShrinkwrapParameters",
     "mris_shrinkwrap",
     "mris_shrinkwrap_params",
 ]

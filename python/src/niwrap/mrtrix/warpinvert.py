@@ -347,7 +347,9 @@ def warpinvert(
 
 __all__ = [
     "WARPINVERT_METADATA",
+    "WarpinvertConfigParameters",
     "WarpinvertOutputs",
+    "WarpinvertParameters",
     "warpinvert",
     "warpinvert_config_params",
     "warpinvert_params",

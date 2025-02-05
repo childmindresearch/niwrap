@@ -1126,7 +1126,7 @@ def ants_apply_transforms_outputs(
     """
     ret = AntsApplyTransformsOutputs(
         root=execution.output_file("."),
-        output=dyn_outputs(output["__STYXTYPE__"])(output, execution),
+        output=dyn_outputs(params.get("output")["__STYXTYPE__"])(params.get("output"), execution),
     )
     return ret
 
@@ -1237,10 +1237,30 @@ def ants_apply_transforms(
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_METADATA",
+    "AntsApplyTransformsAlphaParameters",
+    "AntsApplyTransformsBsplineParameters",
     "AntsApplyTransformsCompositeDisplacementFieldOutputOutputs",
+    "AntsApplyTransformsCompositeDisplacementFieldOutputParameters",
+    "AntsApplyTransformsCosineWindowedSincParameters",
+    "AntsApplyTransformsGaussianParameters",
     "AntsApplyTransformsGenericAffineTransformOutputOutputs",
+    "AntsApplyTransformsGenericAffineTransformOutputParameters",
+    "AntsApplyTransformsGenericLabelParameters",
+    "AntsApplyTransformsHammingWindowedSincParameters",
+    "AntsApplyTransformsLanczosWindowedSincParameters",
+    "AntsApplyTransformsLinearParameters",
+    "AntsApplyTransformsMultiLabelParameters",
+    "AntsApplyTransformsMultiLabelnoparamsParameters",
+    "AntsApplyTransformsNearestNeighborParameters",
     "AntsApplyTransformsOutputs",
+    "AntsApplyTransformsParamParameters",
+    "AntsApplyTransformsParameters",
+    "AntsApplyTransformsSigmaParameters",
+    "AntsApplyTransformsTransformFileNameParameters",
+    "AntsApplyTransformsUseInverseParameters",
     "AntsApplyTransformsWarpedOutputOutputs",
+    "AntsApplyTransformsWarpedOutputParameters",
+    "AntsApplyTransformsWelchWindowedSincParameters",
     "ants_apply_transforms",
     "ants_apply_transforms_alpha_params",
     "ants_apply_transforms_bspline_params",

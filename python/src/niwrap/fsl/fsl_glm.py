@@ -480,6 +480,7 @@ def fsl_glm(
 __all__ = [
     "FSL_GLM_METADATA",
     "FslGlmOutputs",
+    "FslGlmParameters",
     "fsl_glm",
     "fsl_glm_params",
 ]

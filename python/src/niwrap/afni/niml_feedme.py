@@ -246,6 +246,7 @@ def niml_feedme(
 __all__ = [
     "NIML_FEEDME_METADATA",
     "NimlFeedmeOutputs",
+    "NimlFeedmeParameters",
     "niml_feedme",
     "niml_feedme_params",
 ]

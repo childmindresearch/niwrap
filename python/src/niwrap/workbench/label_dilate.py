@@ -249,6 +249,7 @@ def label_dilate(
 __all__ = [
     "LABEL_DILATE_METADATA",
     "LabelDilateOutputs",
+    "LabelDilateParameters",
     "label_dilate",
     "label_dilate_params",
 ]

@@ -262,6 +262,7 @@ def v__rename_panga(
 
 __all__ = [
     "VRenamePangaOutputs",
+    "VRenamePangaParameters",
     "V__RENAME_PANGA_METADATA",
     "v__rename_panga",
     "v__rename_panga_params",

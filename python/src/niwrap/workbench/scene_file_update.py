@@ -442,7 +442,11 @@ def scene_file_update(
 
 __all__ = [
     "SCENE_FILE_UPDATE_METADATA",
+    "SceneFileUpdateCopyMapOnePaletteParameters",
+    "SceneFileUpdateDataFileAddParameters",
+    "SceneFileUpdateDataFileRemoveParameters",
     "SceneFileUpdateOutputs",
+    "SceneFileUpdateParameters",
     "scene_file_update",
     "scene_file_update_copy_map_one_palette_params",
     "scene_file_update_data_file_add_params",

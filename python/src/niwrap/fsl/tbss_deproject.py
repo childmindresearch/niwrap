@@ -191,6 +191,7 @@ def tbss_deproject(
 __all__ = [
     "TBSS_DEPROJECT_METADATA",
     "TbssDeprojectOutputs",
+    "TbssDeprojectParameters",
     "tbss_deproject",
     "tbss_deproject_params",
 ]

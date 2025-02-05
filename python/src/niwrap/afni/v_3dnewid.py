@@ -225,6 +225,7 @@ def v_3dnewid(
 
 __all__ = [
     "V3dnewidOutputs",
+    "V3dnewidParameters",
     "V_3DNEWID_METADATA",
     "v_3dnewid",
     "v_3dnewid_params",

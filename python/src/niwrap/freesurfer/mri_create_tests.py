@@ -375,6 +375,7 @@ def mri_create_tests(
 __all__ = [
     "MRI_CREATE_TESTS_METADATA",
     "MriCreateTestsOutputs",
+    "MriCreateTestsParameters",
     "mri_create_tests",
     "mri_create_tests_params",
 ]

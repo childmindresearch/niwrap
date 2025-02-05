@@ -284,6 +284,7 @@ def featquery(
 __all__ = [
     "FEATQUERY_METADATA",
     "FeatqueryOutputs",
+    "FeatqueryParameters",
     "featquery",
     "featquery_params",
 ]

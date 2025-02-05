@@ -367,6 +367,7 @@ def ants_joint_fusion(
 __all__ = [
     "ANTS_JOINT_FUSION_METADATA",
     "AntsJointFusionOutputs",
+    "AntsJointFusionParameters",
     "ants_joint_fusion",
     "ants_joint_fusion_params",
 ]

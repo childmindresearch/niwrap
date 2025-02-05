@@ -412,6 +412,7 @@ def v_3ddelay(
 
 __all__ = [
     "V3ddelayOutputs",
+    "V3ddelayParameters",
     "V_3DDELAY_METADATA",
     "v_3ddelay",
     "v_3ddelay_params",

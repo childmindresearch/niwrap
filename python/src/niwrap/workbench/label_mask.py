@@ -206,6 +206,7 @@ def label_mask(
 __all__ = [
     "LABEL_MASK_METADATA",
     "LabelMaskOutputs",
+    "LabelMaskParameters",
     "label_mask",
     "label_mask_params",
 ]

@@ -185,6 +185,7 @@ def sphere_subject(
 __all__ = [
     "SPHERE_SUBJECT_METADATA",
     "SphereSubjectOutputs",
+    "SphereSubjectParameters",
     "sphere_subject",
     "sphere_subject_params",
 ]

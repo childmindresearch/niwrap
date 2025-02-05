@@ -245,6 +245,7 @@ def unpackmincdir(
 __all__ = [
     "UNPACKMINCDIR_METADATA",
     "UnpackmincdirOutputs",
+    "UnpackmincdirParameters",
     "unpackmincdir",
     "unpackmincdir_params",
 ]

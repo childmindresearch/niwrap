@@ -172,6 +172,7 @@ def v_1d_rplot(
 
 __all__ = [
     "V1dRplotOutputs",
+    "V1dRplotParameters",
     "V_1D_RPLOT_METADATA",
     "v_1d_rplot",
     "v_1d_rplot_params",

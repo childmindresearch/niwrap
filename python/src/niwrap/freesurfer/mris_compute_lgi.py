@@ -232,6 +232,7 @@ def mris_compute_lgi(
 __all__ = [
     "MRIS_COMPUTE_LGI_METADATA",
     "MrisComputeLgiOutputs",
+    "MrisComputeLgiParameters",
     "mris_compute_lgi",
     "mris_compute_lgi_params",
 ]

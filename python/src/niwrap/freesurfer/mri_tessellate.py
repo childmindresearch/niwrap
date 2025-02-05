@@ -217,6 +217,7 @@ def mri_tessellate(
 __all__ = [
     "MRI_TESSELLATE_METADATA",
     "MriTessellateOutputs",
+    "MriTessellateParameters",
     "mri_tessellate",
     "mri_tessellate_params",
 ]

@@ -313,6 +313,7 @@ def v_3d_autobox(
 
 __all__ = [
     "V3dAutoboxOutputs",
+    "V3dAutoboxParameters",
     "V_3D_AUTOBOX_METADATA",
     "v_3d_autobox",
     "v_3d_autobox_params",

@@ -193,6 +193,7 @@ def mri_probedicom(
 __all__ = [
     "MRI_PROBEDICOM_METADATA",
     "MriProbedicomOutputs",
+    "MriProbedicomParameters",
     "mri_probedicom",
     "mri_probedicom_params",
 ]

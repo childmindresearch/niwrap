@@ -244,6 +244,7 @@ def v_3d_mepfm(
 
 __all__ = [
     "V3dMepfmOutputs",
+    "V3dMepfmParameters",
     "V_3D_MEPFM_METADATA",
     "v_3d_mepfm",
     "v_3d_mepfm_params",

@@ -243,6 +243,7 @@ def extract_seg_waveform(
 __all__ = [
     "EXTRACT_SEG_WAVEFORM_METADATA",
     "ExtractSegWaveformOutputs",
+    "ExtractSegWaveformParameters",
     "extract_seg_waveform",
     "extract_seg_waveform_params",
 ]

@@ -203,6 +203,7 @@ def make_dyadic_vectors(
 __all__ = [
     "MAKE_DYADIC_VECTORS_METADATA",
     "MakeDyadicVectorsOutputs",
+    "MakeDyadicVectorsParameters",
     "make_dyadic_vectors",
     "make_dyadic_vectors_params",
 ]

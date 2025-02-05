@@ -176,6 +176,7 @@ def irepifitvol(
 __all__ = [
     "IREPIFITVOL_METADATA",
     "IrepifitvolOutputs",
+    "IrepifitvolParameters",
     "irepifitvol",
     "irepifitvol_params",
 ]

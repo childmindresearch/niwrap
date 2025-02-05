@@ -265,6 +265,7 @@ def metric_rois_from_extrema(
 __all__ = [
     "METRIC_ROIS_FROM_EXTREMA_METADATA",
     "MetricRoisFromExtremaOutputs",
+    "MetricRoisFromExtremaParameters",
     "metric_rois_from_extrema",
     "metric_rois_from_extrema_params",
 ]

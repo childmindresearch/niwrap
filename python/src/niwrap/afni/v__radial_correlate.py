@@ -380,6 +380,7 @@ def v__radial_correlate(
 
 __all__ = [
     "VRadialCorrelateOutputs",
+    "VRadialCorrelateParameters",
     "V__RADIAL_CORRELATE_METADATA",
     "v__radial_correlate",
     "v__radial_correlate_params",

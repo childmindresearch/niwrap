@@ -203,6 +203,7 @@ def v_1d_tsort(
 
 __all__ = [
     "V1dTsortOutputs",
+    "V1dTsortParameters",
     "V_1D_TSORT_METADATA",
     "v_1d_tsort",
     "v_1d_tsort_params",

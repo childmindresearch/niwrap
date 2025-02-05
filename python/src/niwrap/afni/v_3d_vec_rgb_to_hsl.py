@@ -215,6 +215,7 @@ def v_3d_vec_rgb_to_hsl(
 
 __all__ = [
     "V3dVecRgbToHslOutputs",
+    "V3dVecRgbToHslParameters",
     "V_3D_VEC_RGB_TO_HSL_METADATA",
     "v_3d_vec_rgb_to_hsl",
     "v_3d_vec_rgb_to_hsl_params",

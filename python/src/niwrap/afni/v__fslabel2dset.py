@@ -204,6 +204,7 @@ def v__fslabel2dset(
 
 __all__ = [
     "VFslabel2dsetOutputs",
+    "VFslabel2dsetParameters",
     "V__FSLABEL2DSET_METADATA",
     "v__fslabel2dset",
     "v__fslabel2dset_params",

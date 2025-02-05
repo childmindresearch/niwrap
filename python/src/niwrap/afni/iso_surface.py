@@ -324,6 +324,7 @@ def iso_surface(
 __all__ = [
     "ISO_SURFACE_METADATA",
     "IsoSurfaceOutputs",
+    "IsoSurfaceParameters",
     "iso_surface",
     "iso_surface_params",
 ]

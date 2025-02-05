@@ -464,6 +464,7 @@ def v_2dcat(
 
 __all__ = [
     "V2dcatOutputs",
+    "V2dcatParameters",
     "V_2DCAT_METADATA",
     "v_2dcat",
     "v_2dcat_params",

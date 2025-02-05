@@ -170,6 +170,7 @@ def v__1d_diff_mag(
 
 __all__ = [
     "V1dDiffMagOutputs",
+    "V1dDiffMagParameters",
     "V__1D_DIFF_MAG_METADATA",
     "v__1d_diff_mag",
     "v__1d_diff_mag_params",

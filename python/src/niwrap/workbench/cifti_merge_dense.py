@@ -251,7 +251,9 @@ def cifti_merge_dense(
 
 __all__ = [
     "CIFTI_MERGE_DENSE_METADATA",
+    "CiftiMergeDenseCiftiParameters",
     "CiftiMergeDenseOutputs",
+    "CiftiMergeDenseParameters",
     "cifti_merge_dense",
     "cifti_merge_dense_cifti_params",
     "cifti_merge_dense_params",

@@ -246,6 +246,7 @@ def v_3d_tqual(
 
 __all__ = [
     "V3dTqualOutputs",
+    "V3dTqualParameters",
     "V_3D_TQUAL_METADATA",
     "v_3d_tqual",
     "v_3d_tqual_params",

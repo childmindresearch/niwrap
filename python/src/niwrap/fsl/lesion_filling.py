@@ -220,6 +220,7 @@ def lesion_filling(
 __all__ = [
     "LESION_FILLING_METADATA",
     "LesionFillingOutputs",
+    "LesionFillingParameters",
     "lesion_filling",
     "lesion_filling_params",
 ]

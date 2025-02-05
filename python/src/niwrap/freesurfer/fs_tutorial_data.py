@@ -171,6 +171,7 @@ def fs_tutorial_data(
 __all__ = [
     "FS_TUTORIAL_DATA_METADATA",
     "FsTutorialDataOutputs",
+    "FsTutorialDataParameters",
     "fs_tutorial_data",
     "fs_tutorial_data_params",
 ]

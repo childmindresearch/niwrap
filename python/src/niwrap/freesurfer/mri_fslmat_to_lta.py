@@ -193,6 +193,7 @@ def mri_fslmat_to_lta(
 __all__ = [
     "MRI_FSLMAT_TO_LTA_METADATA",
     "MriFslmatToLtaOutputs",
+    "MriFslmatToLtaParameters",
     "mri_fslmat_to_lta",
     "mri_fslmat_to_lta_params",
 ]

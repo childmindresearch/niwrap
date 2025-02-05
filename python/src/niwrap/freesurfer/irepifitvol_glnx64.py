@@ -178,6 +178,7 @@ def irepifitvol_glnx64(
 __all__ = [
     "IREPIFITVOL_GLNX64_METADATA",
     "IrepifitvolGlnx64Outputs",
+    "IrepifitvolGlnx64Parameters",
     "irepifitvol_glnx64",
     "irepifitvol_glnx64_params",
 ]

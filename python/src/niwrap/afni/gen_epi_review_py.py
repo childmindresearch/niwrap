@@ -275,6 +275,7 @@ def gen_epi_review_py(
 __all__ = [
     "GEN_EPI_REVIEW_PY_METADATA",
     "GenEpiReviewPyOutputs",
+    "GenEpiReviewPyParameters",
     "gen_epi_review_py",
     "gen_epi_review_py_params",
 ]

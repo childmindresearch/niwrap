@@ -319,6 +319,7 @@ def mri_segment_hypothalamic_subunits(
 __all__ = [
     "MRI_SEGMENT_HYPOTHALAMIC_SUBUNITS_METADATA",
     "MriSegmentHypothalamicSubunitsOutputs",
+    "MriSegmentHypothalamicSubunitsParameters",
     "mri_segment_hypothalamic_subunits",
     "mri_segment_hypothalamic_subunits_params",
 ]

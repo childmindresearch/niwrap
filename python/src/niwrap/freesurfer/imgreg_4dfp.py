@@ -199,6 +199,7 @@ def imgreg_4dfp(
 __all__ = [
     "IMGREG_4DFP_METADATA",
     "Imgreg4dfpOutputs",
+    "Imgreg4dfpParameters",
     "imgreg_4dfp",
     "imgreg_4dfp_params",
 ]

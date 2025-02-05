@@ -209,6 +209,7 @@ def multiply_images(
 __all__ = [
     "MULTIPLY_IMAGES_METADATA",
     "MultiplyImagesOutputs",
+    "MultiplyImagesParameters",
     "multiply_images",
     "multiply_images_params",
 ]

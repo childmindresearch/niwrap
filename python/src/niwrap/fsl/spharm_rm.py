@@ -216,6 +216,7 @@ def spharm_rm(
 __all__ = [
     "SPHARM_RM_METADATA",
     "SpharmRmOutputs",
+    "SpharmRmParameters",
     "spharm_rm",
     "spharm_rm_params",
 ]

@@ -166,6 +166,7 @@ def nmovie_qt(
 __all__ = [
     "NMOVIE_QT_METADATA",
     "NmovieQtOutputs",
+    "NmovieQtParameters",
     "nmovie_qt",
     "nmovie_qt_params",
 ]

@@ -502,6 +502,7 @@ def mri_glmfit_sim(
 __all__ = [
     "MRI_GLMFIT_SIM_METADATA",
     "MriGlmfitSimOutputs",
+    "MriGlmfitSimParameters",
     "mri_glmfit_sim",
     "mri_glmfit_sim_params",
 ]

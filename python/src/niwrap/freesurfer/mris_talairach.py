@@ -164,6 +164,7 @@ def mris_talairach(
 __all__ = [
     "MRIS_TALAIRACH_METADATA",
     "MrisTalairachOutputs",
+    "MrisTalairachParameters",
     "mris_talairach",
     "mris_talairach_params",
 ]

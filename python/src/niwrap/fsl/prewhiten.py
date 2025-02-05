@@ -183,6 +183,7 @@ def prewhiten(
 __all__ = [
     "PREWHITEN_METADATA",
     "PrewhitenOutputs",
+    "PrewhitenParameters",
     "prewhiten",
     "prewhiten_params",
 ]

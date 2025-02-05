@@ -349,6 +349,7 @@ def v_3d_zeropad(
 
 __all__ = [
     "V3dZeropadOutputs",
+    "V3dZeropadParameters",
     "V_3D_ZEROPAD_METADATA",
     "v_3d_zeropad",
     "v_3d_zeropad_params",

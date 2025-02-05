@@ -281,6 +281,7 @@ def adwarp(
 __all__ = [
     "ADWARP_METADATA",
     "AdwarpOutputs",
+    "AdwarpParameters",
     "adwarp",
     "adwarp_params",
 ]

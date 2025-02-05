@@ -249,6 +249,7 @@ def v_3d_spat_norm(
 
 __all__ = [
     "V3dSpatNormOutputs",
+    "V3dSpatNormParameters",
     "V_3D_SPAT_NORM_METADATA",
     "v_3d_spat_norm",
     "v_3d_spat_norm_params",

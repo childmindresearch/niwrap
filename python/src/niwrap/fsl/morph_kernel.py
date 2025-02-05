@@ -176,6 +176,7 @@ def morph_kernel(
 __all__ = [
     "MORPH_KERNEL_METADATA",
     "MorphKernelOutputs",
+    "MorphKernelParameters",
     "morph_kernel",
     "morph_kernel_params",
 ]

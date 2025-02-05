@@ -174,6 +174,7 @@ def mri_align_long_csh(
 __all__ = [
     "MRI_ALIGN_LONG_CSH_METADATA",
     "MriAlignLongCshOutputs",
+    "MriAlignLongCshParameters",
     "mri_align_long_csh",
     "mri_align_long_csh_params",
 ]

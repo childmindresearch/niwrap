@@ -315,6 +315,7 @@ def mris_make_average_surface(
 __all__ = [
     "MRIS_MAKE_AVERAGE_SURFACE_METADATA",
     "MrisMakeAverageSurfaceOutputs",
+    "MrisMakeAverageSurfaceParameters",
     "mris_make_average_surface",
     "mris_make_average_surface_params",
 ]

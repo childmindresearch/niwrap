@@ -685,7 +685,9 @@ def tcksift2(
 
 __all__ = [
     "TCKSIFT2_METADATA",
+    "Tcksift2ConfigParameters",
     "Tcksift2Outputs",
+    "Tcksift2Parameters",
     "tcksift2",
     "tcksift2_config_params",
     "tcksift2_params",

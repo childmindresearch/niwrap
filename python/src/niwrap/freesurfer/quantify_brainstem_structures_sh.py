@@ -184,6 +184,7 @@ def quantify_brainstem_structures_sh(
 __all__ = [
     "QUANTIFY_BRAINSTEM_STRUCTURES_SH_METADATA",
     "QuantifyBrainstemStructuresShOutputs",
+    "QuantifyBrainstemStructuresShParameters",
     "quantify_brainstem_structures_sh",
     "quantify_brainstem_structures_sh_params",
 ]

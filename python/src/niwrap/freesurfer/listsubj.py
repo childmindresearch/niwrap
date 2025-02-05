@@ -165,6 +165,7 @@ def listsubj(
 __all__ = [
     "LISTSUBJ_METADATA",
     "ListsubjOutputs",
+    "ListsubjParameters",
     "listsubj",
     "listsubj_params",
 ]

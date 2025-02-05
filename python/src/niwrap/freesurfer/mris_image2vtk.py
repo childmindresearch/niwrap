@@ -211,6 +211,7 @@ def mris_image2vtk(
 __all__ = [
     "MRIS_IMAGE2VTK_METADATA",
     "MrisImage2vtkOutputs",
+    "MrisImage2vtkParameters",
     "mris_image2vtk",
     "mris_image2vtk_params",
 ]

@@ -223,6 +223,7 @@ def v_1d_bandpass(
 
 __all__ = [
     "V1dBandpassOutputs",
+    "V1dBandpassParameters",
     "V_1D_BANDPASS_METADATA",
     "v_1d_bandpass",
     "v_1d_bandpass_params",

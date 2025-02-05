@@ -164,6 +164,7 @@ def check_subject(
 __all__ = [
     "CHECK_SUBJECT_METADATA",
     "CheckSubjectOutputs",
+    "CheckSubjectParameters",
     "check_subject",
     "check_subject_params",
 ]

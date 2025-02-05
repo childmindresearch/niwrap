@@ -254,6 +254,7 @@ def threshold_image(
 __all__ = [
     "THRESHOLD_IMAGE_METADATA",
     "ThresholdImageOutputs",
+    "ThresholdImageParameters",
     "threshold_image",
     "threshold_image_params",
 ]

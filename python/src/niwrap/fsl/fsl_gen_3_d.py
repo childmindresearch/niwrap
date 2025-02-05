@@ -176,6 +176,7 @@ def fsl_gen_3_d(
 __all__ = [
     "FSL_GEN_3_D_METADATA",
     "FslGen3DOutputs",
+    "FslGen3DParameters",
     "fsl_gen_3_d",
     "fsl_gen_3_d_params",
 ]

@@ -379,6 +379,7 @@ def v_3d_hist(
 
 __all__ = [
     "V3dHistOutputs",
+    "V3dHistParameters",
     "V_3D_HIST_METADATA",
     "v_3d_hist",
     "v_3d_hist_params",

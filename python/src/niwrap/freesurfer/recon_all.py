@@ -789,6 +789,7 @@ def recon_all(
 __all__ = [
     "RECON_ALL_METADATA",
     "ReconAllOutputs",
+    "ReconAllParameters",
     "recon_all",
     "recon_all_params",
 ]

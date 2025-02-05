@@ -163,6 +163,7 @@ def v__to_mni_qwarpar(
 
 __all__ = [
     "VToMniQwarparOutputs",
+    "VToMniQwarparParameters",
     "V__TO_MNI_QWARPAR_METADATA",
     "v__to_mni_qwarpar",
     "v__to_mni_qwarpar_params",

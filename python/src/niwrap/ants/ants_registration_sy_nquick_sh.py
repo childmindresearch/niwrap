@@ -224,6 +224,7 @@ def ants_registration_sy_nquick_sh(
 __all__ = [
     "ANTS_REGISTRATION_SY_NQUICK_SH_METADATA",
     "AntsRegistrationSyNquickShOutputs",
+    "AntsRegistrationSyNquickShParameters",
     "ants_registration_sy_nquick_sh",
     "ants_registration_sy_nquick_sh_params",
 ]

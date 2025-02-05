@@ -222,6 +222,7 @@ def mri_relabel_nonwm_hypos(
 __all__ = [
     "MRI_RELABEL_NONWM_HYPOS_METADATA",
     "MriRelabelNonwmHyposOutputs",
+    "MriRelabelNonwmHyposParameters",
     "mri_relabel_nonwm_hypos",
     "mri_relabel_nonwm_hypos_params",
 ]

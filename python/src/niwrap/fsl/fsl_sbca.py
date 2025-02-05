@@ -339,6 +339,7 @@ def fsl_sbca(
 __all__ = [
     "FSL_SBCA_METADATA",
     "FslSbcaOutputs",
+    "FslSbcaParameters",
     "fsl_sbca",
     "fsl_sbca_params",
 ]

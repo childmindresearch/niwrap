@@ -338,6 +338,7 @@ def v_3dvolreg(
 
 __all__ = [
     "V3dvolregOutputs",
+    "V3dvolregParameters",
     "V_3DVOLREG_METADATA",
     "v_3dvolreg",
     "v_3dvolreg_params",

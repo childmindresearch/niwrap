@@ -687,6 +687,7 @@ def mri_label2label(
 __all__ = [
     "MRI_LABEL2LABEL_METADATA",
     "MriLabel2labelOutputs",
+    "MriLabel2labelParameters",
     "mri_label2label",
     "mri_label2label_params",
 ]

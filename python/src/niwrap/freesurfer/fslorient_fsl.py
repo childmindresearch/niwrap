@@ -196,6 +196,7 @@ def fslorient_fsl(
 __all__ = [
     "FSLORIENT_FSL_METADATA",
     "FslorientFslOutputs",
+    "FslorientFslParameters",
     "fslorient_fsl",
     "fslorient_fsl_params",
 ]

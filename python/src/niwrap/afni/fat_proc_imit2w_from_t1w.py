@@ -269,6 +269,7 @@ def fat_proc_imit2w_from_t1w(
 __all__ = [
     "FAT_PROC_IMIT2W_FROM_T1W_METADATA",
     "FatProcImit2wFromT1wOutputs",
+    "FatProcImit2wFromT1wParameters",
     "fat_proc_imit2w_from_t1w",
     "fat_proc_imit2w_from_t1w_params",
 ]

@@ -275,6 +275,7 @@ def dmri_bset(
 __all__ = [
     "DMRI_BSET_METADATA",
     "DmriBsetOutputs",
+    "DmriBsetParameters",
     "dmri_bset",
     "dmri_bset_params",
 ]

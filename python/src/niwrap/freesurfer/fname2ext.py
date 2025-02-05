@@ -171,6 +171,7 @@ def fname2ext(
 __all__ = [
     "FNAME2EXT_METADATA",
     "Fname2extOutputs",
+    "Fname2extParameters",
     "fname2ext",
     "fname2ext_params",
 ]

@@ -187,6 +187,7 @@ def make_upright(
 __all__ = [
     "MAKE_UPRIGHT_METADATA",
     "MakeUprightOutputs",
+    "MakeUprightParameters",
     "make_upright",
     "make_upright_params",
 ]

@@ -515,6 +515,7 @@ def dcm2niix_afni(
 __all__ = [
     "DCM2NIIX_AFNI_METADATA",
     "Dcm2niixAfniOutputs",
+    "Dcm2niixAfniParameters",
     "dcm2niix_afni",
     "dcm2niix_afni_params",
 ]

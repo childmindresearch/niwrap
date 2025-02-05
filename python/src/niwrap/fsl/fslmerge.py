@@ -203,6 +203,7 @@ def fslmerge(
 __all__ = [
     "FSLMERGE_METADATA",
     "FslmergeOutputs",
+    "FslmergeParameters",
     "fslmerge",
     "fslmerge_params",
 ]

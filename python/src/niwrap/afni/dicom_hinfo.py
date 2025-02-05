@@ -208,6 +208,7 @@ def dicom_hinfo(
 __all__ = [
     "DICOM_HINFO_METADATA",
     "DicomHinfoOutputs",
+    "DicomHinfoParameters",
     "dicom_hinfo",
     "dicom_hinfo_params",
 ]

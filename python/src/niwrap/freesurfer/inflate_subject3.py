@@ -171,6 +171,7 @@ def inflate_subject3(
 __all__ = [
     "INFLATE_SUBJECT3_METADATA",
     "InflateSubject3Outputs",
+    "InflateSubject3Parameters",
     "inflate_subject3",
     "inflate_subject3_params",
 ]

@@ -245,6 +245,7 @@ def mkxsubjreg(
 __all__ = [
     "MKXSUBJREG_METADATA",
     "MkxsubjregOutputs",
+    "MkxsubjregParameters",
     "mkxsubjreg",
     "mkxsubjreg_params",
 ]

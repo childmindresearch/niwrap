@@ -387,6 +387,7 @@ def fat_proc_axialize_anat(
 __all__ = [
     "FAT_PROC_AXIALIZE_ANAT_METADATA",
     "FatProcAxializeAnatOutputs",
+    "FatProcAxializeAnatParameters",
     "fat_proc_axialize_anat",
     "fat_proc_axialize_anat_params",
 ]

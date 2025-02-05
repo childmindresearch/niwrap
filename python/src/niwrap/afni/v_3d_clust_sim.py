@@ -189,6 +189,7 @@ def v_3d_clust_sim(
 
 __all__ = [
     "V3dClustSimOutputs",
+    "V3dClustSimParameters",
     "V_3D_CLUST_SIM_METADATA",
     "v_3d_clust_sim",
     "v_3d_clust_sim_params",

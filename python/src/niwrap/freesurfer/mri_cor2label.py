@@ -307,6 +307,7 @@ def mri_cor2label(
 __all__ = [
     "MRI_COR2LABEL_METADATA",
     "MriCor2labelOutputs",
+    "MriCor2labelParameters",
     "mri_cor2label",
     "mri_cor2label_params",
 ]

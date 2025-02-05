@@ -176,6 +176,7 @@ def v__from_rai(
 
 __all__ = [
     "VFromRaiOutputs",
+    "VFromRaiParameters",
     "V__FROM_RAI_METADATA",
     "v__from_rai",
     "v__from_rai_params",

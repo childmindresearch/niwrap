@@ -248,6 +248,7 @@ def antsuse_landmark_images_to_get_bspline_displacement_field(
 __all__ = [
     "ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA",
     "AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs",
+    "AntsuseLandmarkImagesToGetBsplineDisplacementFieldParameters",
     "antsuse_landmark_images_to_get_bspline_displacement_field",
     "antsuse_landmark_images_to_get_bspline_displacement_field_params",
 ]

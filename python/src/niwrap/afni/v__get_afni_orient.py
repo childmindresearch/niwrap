@@ -176,6 +176,7 @@ def v__get_afni_orient(
 
 __all__ = [
     "VGetAfniOrientOutputs",
+    "VGetAfniOrientParameters",
     "V__GET_AFNI_ORIENT_METADATA",
     "v__get_afni_orient",
     "v__get_afni_orient_params",

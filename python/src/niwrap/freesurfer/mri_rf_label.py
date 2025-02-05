@@ -595,6 +595,7 @@ def mri_rf_label(
 __all__ = [
     "MRI_RF_LABEL_METADATA",
     "MriRfLabelOutputs",
+    "MriRfLabelParameters",
     "mri_rf_label",
     "mri_rf_label_params",
 ]

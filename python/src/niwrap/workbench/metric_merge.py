@@ -344,7 +344,11 @@ def metric_merge(
 
 __all__ = [
     "METRIC_MERGE_METADATA",
+    "MetricMergeColumnParameters",
+    "MetricMergeMetricParameters",
     "MetricMergeOutputs",
+    "MetricMergeParameters",
+    "MetricMergeUpToParameters",
     "metric_merge",
     "metric_merge_column_params",
     "metric_merge_metric_params",

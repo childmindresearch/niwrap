@@ -503,6 +503,7 @@ def sccan(
 __all__ = [
     "SCCAN_METADATA",
     "SccanOutputs",
+    "SccanParameters",
     "sccan",
     "sccan_params",
 ]

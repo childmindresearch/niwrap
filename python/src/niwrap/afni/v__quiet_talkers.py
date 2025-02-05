@@ -240,6 +240,7 @@ def v__quiet_talkers(
 
 __all__ = [
     "VQuietTalkersOutputs",
+    "VQuietTalkersParameters",
     "V__QUIET_TALKERS_METADATA",
     "v__quiet_talkers",
     "v__quiet_talkers_params",

@@ -217,6 +217,7 @@ def ants_neuroimaging_battery(
 __all__ = [
     "ANTS_NEUROIMAGING_BATTERY_METADATA",
     "AntsNeuroimagingBatteryOutputs",
+    "AntsNeuroimagingBatteryParameters",
     "ants_neuroimaging_battery",
     "ants_neuroimaging_battery_params",
 ]

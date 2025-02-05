@@ -401,6 +401,7 @@ def mris_apply_reg(
 __all__ = [
     "MRIS_APPLY_REG_METADATA",
     "MrisApplyRegOutputs",
+    "MrisApplyRegParameters",
     "mris_apply_reg",
     "mris_apply_reg_params",
 ]

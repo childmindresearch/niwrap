@@ -204,6 +204,7 @@ def slicedelay(
 __all__ = [
     "SLICEDELAY_METADATA",
     "SlicedelayOutputs",
+    "SlicedelayParameters",
     "slicedelay",
     "slicedelay_params",
 ]

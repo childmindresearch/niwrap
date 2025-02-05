@@ -331,7 +331,9 @@ def sh2power(
 
 __all__ = [
     "SH2POWER_METADATA",
+    "Sh2powerConfigParameters",
     "Sh2powerOutputs",
+    "Sh2powerParameters",
     "sh2power",
     "sh2power_config_params",
     "sh2power_params",

@@ -276,7 +276,9 @@ def volume_warpfield_affine_regression(
 
 __all__ = [
     "VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA",
+    "VolumeWarpfieldAffineRegressionFlirtOutParameters",
     "VolumeWarpfieldAffineRegressionOutputs",
+    "VolumeWarpfieldAffineRegressionParameters",
     "volume_warpfield_affine_regression",
     "volume_warpfield_affine_regression_flirt_out_params",
     "volume_warpfield_affine_regression_params",

@@ -176,6 +176,7 @@ def cat_matvec(
 __all__ = [
     "CAT_MATVEC_METADATA",
     "CatMatvecOutputs",
+    "CatMatvecParameters",
     "cat_matvec",
     "cat_matvec_params",
 ]

@@ -269,6 +269,7 @@ def eddy_quad(
 __all__ = [
     "EDDY_QUAD_METADATA",
     "EddyQuadOutputs",
+    "EddyQuadParameters",
     "eddy_quad",
     "eddy_quad_params",
 ]

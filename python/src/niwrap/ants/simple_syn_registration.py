@@ -193,6 +193,7 @@ def simple_syn_registration(
 __all__ = [
     "SIMPLE_SYN_REGISTRATION_METADATA",
     "SimpleSynRegistrationOutputs",
+    "SimpleSynRegistrationParameters",
     "simple_syn_registration",
     "simple_syn_registration_params",
 ]

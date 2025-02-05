@@ -249,6 +249,7 @@ def mris_estimate_wm(
 __all__ = [
     "MRIS_ESTIMATE_WM_METADATA",
     "MrisEstimateWmOutputs",
+    "MrisEstimateWmParameters",
     "mris_estimate_wm",
     "mris_estimate_wm_params",
 ]

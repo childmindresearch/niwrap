@@ -314,6 +314,7 @@ def v_3dmask_tool(
 
 __all__ = [
     "V3dmaskToolOutputs",
+    "V3dmaskToolParameters",
     "V_3DMASK_TOOL_METADATA",
     "v_3dmask_tool",
     "v_3dmask_tool_params",

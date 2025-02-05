@@ -176,6 +176,7 @@ def mri_train(
 __all__ = [
     "MRI_TRAIN_METADATA",
     "MriTrainOutputs",
+    "MriTrainParameters",
     "mri_train",
     "mri_train_params",
 ]

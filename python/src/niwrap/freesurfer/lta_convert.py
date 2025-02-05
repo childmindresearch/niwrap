@@ -258,6 +258,7 @@ def lta_convert(
 __all__ = [
     "LTA_CONVERT_METADATA",
     "LtaConvertOutputs",
+    "LtaConvertParameters",
     "lta_convert",
     "lta_convert_params",
 ]

@@ -275,6 +275,7 @@ def rtview(
 __all__ = [
     "RTVIEW_METADATA",
     "RtviewOutputs",
+    "RtviewParameters",
     "rtview",
     "rtview_params",
 ]

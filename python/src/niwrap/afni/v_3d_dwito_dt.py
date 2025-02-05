@@ -182,6 +182,7 @@ def v_3d_dwito_dt(
 
 __all__ = [
     "V3dDwitoDtOutputs",
+    "V3dDwitoDtParameters",
     "V_3D_DWITO_DT_METADATA",
     "v_3d_dwito_dt",
     "v_3d_dwito_dt_params",

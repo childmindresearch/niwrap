@@ -258,6 +258,7 @@ def volume_rois_from_extrema(
 __all__ = [
     "VOLUME_ROIS_FROM_EXTREMA_METADATA",
     "VolumeRoisFromExtremaOutputs",
+    "VolumeRoisFromExtremaParameters",
     "volume_rois_from_extrema",
     "volume_rois_from_extrema_params",
 ]

@@ -172,6 +172,7 @@ def stem2fname(
 __all__ = [
     "STEM2FNAME_METADATA",
     "Stem2fnameOutputs",
+    "Stem2fnameParameters",
     "stem2fname",
     "stem2fname_params",
 ]

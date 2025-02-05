@@ -259,6 +259,7 @@ def spharm_reco(
 __all__ = [
     "SPHARM_RECO_METADATA",
     "SpharmRecoOutputs",
+    "SpharmRecoParameters",
     "spharm_reco",
     "spharm_reco_params",
 ]

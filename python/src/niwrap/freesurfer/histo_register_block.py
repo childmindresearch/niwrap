@@ -217,6 +217,7 @@ def histo_register_block(
 __all__ = [
     "HISTO_REGISTER_BLOCK_METADATA",
     "HistoRegisterBlockOutputs",
+    "HistoRegisterBlockParameters",
     "histo_register_block",
     "histo_register_block_params",
 ]

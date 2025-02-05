@@ -198,6 +198,7 @@ def pointset2label(
 __all__ = [
     "POINTSET2LABEL_METADATA",
     "Pointset2labelOutputs",
+    "Pointset2labelParameters",
     "pointset2label",
     "pointset2label_params",
 ]

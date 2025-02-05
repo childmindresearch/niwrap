@@ -192,6 +192,7 @@ def applyxfm4_d(
 __all__ = [
     "APPLYXFM4_D_METADATA",
     "Applyxfm4DOutputs",
+    "Applyxfm4DParameters",
     "applyxfm4_d",
     "applyxfm4_d_params",
 ]

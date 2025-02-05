@@ -174,6 +174,7 @@ def inflate_subject_lh(
 __all__ = [
     "INFLATE_SUBJECT_LH_METADATA",
     "InflateSubjectLhOutputs",
+    "InflateSubjectLhParameters",
     "inflate_subject_lh",
     "inflate_subject_lh_params",
 ]

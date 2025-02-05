@@ -271,6 +271,7 @@ def v_3d_winsor(
 
 __all__ = [
     "V3dWinsorOutputs",
+    "V3dWinsorParameters",
     "V_3D_WINSOR_METADATA",
     "v_3d_winsor",
     "v_3d_winsor_params",

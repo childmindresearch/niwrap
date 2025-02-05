@@ -218,6 +218,7 @@ def surface_inflation(
 __all__ = [
     "SURFACE_INFLATION_METADATA",
     "SurfaceInflationOutputs",
+    "SurfaceInflationParameters",
     "surface_inflation",
     "surface_inflation_params",
 ]

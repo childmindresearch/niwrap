@@ -227,6 +227,7 @@ def volume_label_to_roi(
 __all__ = [
     "VOLUME_LABEL_TO_ROI_METADATA",
     "VolumeLabelToRoiOutputs",
+    "VolumeLabelToRoiParameters",
     "volume_label_to_roi",
     "volume_label_to_roi_params",
 ]

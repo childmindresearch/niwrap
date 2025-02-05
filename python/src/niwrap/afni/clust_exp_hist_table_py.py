@@ -208,6 +208,7 @@ def clust_exp_hist_table_py(
 __all__ = [
     "CLUST_EXP_HIST_TABLE_PY_METADATA",
     "ClustExpHistTablePyOutputs",
+    "ClustExpHistTablePyParameters",
     "clust_exp_hist_table_py",
     "clust_exp_hist_table_py_params",
 ]

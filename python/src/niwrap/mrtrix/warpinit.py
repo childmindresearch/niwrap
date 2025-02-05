@@ -335,7 +335,9 @@ def warpinit(
 
 __all__ = [
     "WARPINIT_METADATA",
+    "WarpinitConfigParameters",
     "WarpinitOutputs",
+    "WarpinitParameters",
     "warpinit",
     "warpinit_config_params",
     "warpinit_params",

@@ -431,6 +431,7 @@ def long_submit_jobs(
 __all__ = [
     "LONG_SUBMIT_JOBS_METADATA",
     "LongSubmitJobsOutputs",
+    "LongSubmitJobsParameters",
     "long_submit_jobs",
     "long_submit_jobs_params",
 ]

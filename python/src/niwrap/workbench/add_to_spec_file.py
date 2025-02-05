@@ -257,6 +257,7 @@ def add_to_spec_file(
 __all__ = [
     "ADD_TO_SPEC_FILE_METADATA",
     "AddToSpecFileOutputs",
+    "AddToSpecFileParameters",
     "add_to_spec_file",
     "add_to_spec_file_params",
 ]

@@ -201,6 +201,7 @@ def abids_json_tool_py(
 __all__ = [
     "ABIDS_JSON_TOOL_PY_METADATA",
     "AbidsJsonToolPyOutputs",
+    "AbidsJsonToolPyParameters",
     "abids_json_tool_py",
     "abids_json_tool_py_params",
 ]

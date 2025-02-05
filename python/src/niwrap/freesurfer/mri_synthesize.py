@@ -216,6 +216,7 @@ def mri_synthesize(
 __all__ = [
     "MRI_SYNTHESIZE_METADATA",
     "MriSynthesizeOutputs",
+    "MriSynthesizeParameters",
     "mri_synthesize",
     "mri_synthesize_params",
 ]

@@ -700,6 +700,7 @@ def melodic(
 __all__ = [
     "MELODIC_METADATA",
     "MelodicOutputs",
+    "MelodicParameters",
     "melodic",
     "melodic_params",
 ]

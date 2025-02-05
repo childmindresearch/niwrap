@@ -252,6 +252,7 @@ def img2imgcoord(
 __all__ = [
     "IMG2IMGCOORD_METADATA",
     "Img2imgcoordOutputs",
+    "Img2imgcoordParameters",
     "img2imgcoord",
     "img2imgcoord_params",
 ]

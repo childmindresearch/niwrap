@@ -260,6 +260,7 @@ def v_3d_dtto_noisy_dwi(
 
 __all__ = [
     "V3dDttoNoisyDwiOutputs",
+    "V3dDttoNoisyDwiParameters",
     "V_3D_DTTO_NOISY_DWI_METADATA",
     "v_3d_dtto_noisy_dwi",
     "v_3d_dtto_noisy_dwi_params",

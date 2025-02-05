@@ -382,7 +382,11 @@ def cifti_merge(
 
 __all__ = [
     "CIFTI_MERGE_METADATA",
+    "CiftiMergeCiftiParameters",
+    "CiftiMergeIndexParameters",
     "CiftiMergeOutputs",
+    "CiftiMergeParameters",
+    "CiftiMergeUpToParameters",
     "cifti_merge",
     "cifti_merge_cifti_params",
     "cifti_merge_index_params",

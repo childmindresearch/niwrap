@@ -200,6 +200,7 @@ def label_subject_mixed(
 __all__ = [
     "LABEL_SUBJECT_MIXED_METADATA",
     "LabelSubjectMixedOutputs",
+    "LabelSubjectMixedParameters",
     "label_subject_mixed",
     "label_subject_mixed_params",
 ]

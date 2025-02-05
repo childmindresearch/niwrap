@@ -208,6 +208,7 @@ def get_afni_model_prf_6(
 __all__ = [
     "GET_AFNI_MODEL_PRF_6_METADATA",
     "GetAfniModelPrf6Outputs",
+    "GetAfniModelPrf6Parameters",
     "get_afni_model_prf_6",
     "get_afni_model_prf_6_params",
 ]

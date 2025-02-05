@@ -208,6 +208,7 @@ def dsetstat2p(
 __all__ = [
     "DSETSTAT2P_METADATA",
     "Dsetstat2pOutputs",
+    "Dsetstat2pParameters",
     "dsetstat2p",
     "dsetstat2p_params",
 ]

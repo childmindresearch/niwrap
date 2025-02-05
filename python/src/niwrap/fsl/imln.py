@@ -176,6 +176,7 @@ def imln(
 __all__ = [
     "IMLN_METADATA",
     "ImlnOutputs",
+    "ImlnParameters",
     "imln",
     "imln_params",
 ]

@@ -210,6 +210,7 @@ def surface_modify_sphere(
 __all__ = [
     "SURFACE_MODIFY_SPHERE_METADATA",
     "SurfaceModifySphereOutputs",
+    "SurfaceModifySphereParameters",
     "surface_modify_sphere",
     "surface_modify_sphere_params",
 ]

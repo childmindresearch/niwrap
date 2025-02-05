@@ -257,6 +257,7 @@ def susan(
 __all__ = [
     "SUSAN_METADATA",
     "SusanOutputs",
+    "SusanParameters",
     "susan",
     "susan_params",
 ]

@@ -172,6 +172,7 @@ def mris_volume(
 __all__ = [
     "MRIS_VOLUME_METADATA",
     "MrisVolumeOutputs",
+    "MrisVolumeParameters",
     "mris_volume",
     "mris_volume_params",
 ]

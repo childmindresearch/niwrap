@@ -376,7 +376,9 @@ def mrcolour(
 
 __all__ = [
     "MRCOLOUR_METADATA",
+    "MrcolourConfigParameters",
     "MrcolourOutputs",
+    "MrcolourParameters",
     "mrcolour",
     "mrcolour_config_params",
     "mrcolour_params",

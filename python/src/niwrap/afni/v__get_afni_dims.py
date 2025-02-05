@@ -168,6 +168,7 @@ def v__get_afni_dims(
 
 __all__ = [
     "VGetAfniDimsOutputs",
+    "VGetAfniDimsParameters",
     "V__GET_AFNI_DIMS_METADATA",
     "v__get_afni_dims",
     "v__get_afni_dims_params",

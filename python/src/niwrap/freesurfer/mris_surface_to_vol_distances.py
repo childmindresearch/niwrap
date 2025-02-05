@@ -190,6 +190,7 @@ def mris_surface_to_vol_distances(
 __all__ = [
     "MRIS_SURFACE_TO_VOL_DISTANCES_METADATA",
     "MrisSurfaceToVolDistancesOutputs",
+    "MrisSurfaceToVolDistancesParameters",
     "mris_surface_to_vol_distances",
     "mris_surface_to_vol_distances_params",
 ]

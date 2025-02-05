@@ -358,6 +358,7 @@ def filmbabe(
 __all__ = [
     "FILMBABE_METADATA",
     "FilmbabeOutputs",
+    "FilmbabeParameters",
     "filmbabe",
     "filmbabe_params",
 ]

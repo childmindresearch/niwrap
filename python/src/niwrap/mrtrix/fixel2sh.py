@@ -335,7 +335,9 @@ def fixel2sh(
 
 __all__ = [
     "FIXEL2SH_METADATA",
+    "Fixel2shConfigParameters",
     "Fixel2shOutputs",
+    "Fixel2shParameters",
     "fixel2sh",
     "fixel2sh_config_params",
     "fixel2sh_params",

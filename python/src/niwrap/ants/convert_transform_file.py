@@ -185,6 +185,7 @@ def convert_transform_file(
 __all__ = [
     "CONVERT_TRANSFORM_FILE_METADATA",
     "ConvertTransformFileOutputs",
+    "ConvertTransformFileParameters",
     "convert_transform_file",
     "convert_transform_file_params",
 ]

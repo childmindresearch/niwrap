@@ -335,7 +335,9 @@ def convert_fiber_orientations(
 
 __all__ = [
     "CONVERT_FIBER_ORIENTATIONS_METADATA",
+    "ConvertFiberOrientationsFiberParameters",
     "ConvertFiberOrientationsOutputs",
+    "ConvertFiberOrientationsParameters",
     "convert_fiber_orientations",
     "convert_fiber_orientations_fiber_params",
     "convert_fiber_orientations_params",

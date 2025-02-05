@@ -328,6 +328,7 @@ def v_3d_nwarp_apply(
 
 __all__ = [
     "V3dNwarpApplyOutputs",
+    "V3dNwarpApplyParameters",
     "V_3D_NWARP_APPLY_METADATA",
     "v_3d_nwarp_apply",
     "v_3d_nwarp_apply_params",

@@ -238,6 +238,7 @@ def v_3daxialize(
 
 __all__ = [
     "V3daxializeOutputs",
+    "V3daxializeParameters",
     "V_3DAXIALIZE_METADATA",
     "v_3daxialize",
     "v_3daxialize_params",

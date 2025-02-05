@@ -323,6 +323,7 @@ def gems_compute_atlas_probs(
 __all__ = [
     "GEMS_COMPUTE_ATLAS_PROBS_METADATA",
     "GemsComputeAtlasProbsOutputs",
+    "GemsComputeAtlasProbsParameters",
     "gems_compute_atlas_probs",
     "gems_compute_atlas_probs_params",
 ]

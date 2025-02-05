@@ -171,6 +171,7 @@ def afni_run_r(
 __all__ = [
     "AFNI_RUN_R_METADATA",
     "AfniRunROutputs",
+    "AfniRunRParameters",
     "afni_run_r",
     "afni_run_r_params",
 ]

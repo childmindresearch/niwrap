@@ -205,6 +205,7 @@ def image_math(
 __all__ = [
     "IMAGE_MATH_METADATA",
     "ImageMathOutputs",
+    "ImageMathParameters",
     "image_math",
     "image_math_params",
 ]

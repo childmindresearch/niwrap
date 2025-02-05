@@ -306,6 +306,7 @@ def gen_group_command(
 __all__ = [
     "GEN_GROUP_COMMAND_METADATA",
     "GenGroupCommandOutputs",
+    "GenGroupCommandParameters",
     "gen_group_command",
     "gen_group_command_params",
 ]

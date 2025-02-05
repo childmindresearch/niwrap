@@ -375,6 +375,7 @@ def mri_gtmseg(
 __all__ = [
     "MRI_GTMSEG_METADATA",
     "MriGtmsegOutputs",
+    "MriGtmsegParameters",
     "mri_gtmseg",
     "mri_gtmseg_params",
 ]

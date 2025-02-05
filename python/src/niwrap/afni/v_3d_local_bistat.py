@@ -306,6 +306,7 @@ def v_3d_local_bistat(
 
 __all__ = [
     "V3dLocalBistatOutputs",
+    "V3dLocalBistatParameters",
     "V_3D_LOCAL_BISTAT_METADATA",
     "v_3d_local_bistat",
     "v_3d_local_bistat_params",

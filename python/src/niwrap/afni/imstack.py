@@ -200,6 +200,7 @@ def imstack(
 __all__ = [
     "IMSTACK_METADATA",
     "ImstackOutputs",
+    "ImstackParameters",
     "imstack",
     "imstack_params",
 ]

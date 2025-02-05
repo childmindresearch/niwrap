@@ -192,6 +192,7 @@ def v_3d_lrflip(
 
 __all__ = [
     "V3dLrflipOutputs",
+    "V3dLrflipParameters",
     "V_3D_LRFLIP_METADATA",
     "v_3d_lrflip",
     "v_3d_lrflip_params",

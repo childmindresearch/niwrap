@@ -356,7 +356,11 @@ def file_convert(
 
 __all__ = [
     "FILE_CONVERT_METADATA",
+    "FileConvertBorderVersionConvertParameters",
+    "FileConvertCiftiVersionConvertParameters",
+    "FileConvertNiftiVersionConvertParameters",
     "FileConvertOutputs",
+    "FileConvertParameters",
     "file_convert",
     "file_convert_border_version_convert_params",
     "file_convert_cifti_version_convert_params",

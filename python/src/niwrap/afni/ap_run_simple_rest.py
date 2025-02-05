@@ -277,6 +277,7 @@ def ap_run_simple_rest(
 __all__ = [
     "AP_RUN_SIMPLE_REST_METADATA",
     "ApRunSimpleRestOutputs",
+    "ApRunSimpleRestParameters",
     "ap_run_simple_rest",
     "ap_run_simple_rest_params",
 ]

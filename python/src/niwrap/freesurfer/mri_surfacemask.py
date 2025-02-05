@@ -187,6 +187,7 @@ def mri_surfacemask(
 __all__ = [
     "MRI_SURFACEMASK_METADATA",
     "MriSurfacemaskOutputs",
+    "MriSurfacemaskParameters",
     "mri_surfacemask",
     "mri_surfacemask_params",
 ]

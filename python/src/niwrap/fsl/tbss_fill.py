@@ -198,6 +198,7 @@ def tbss_fill(
 __all__ = [
     "TBSS_FILL_METADATA",
     "TbssFillOutputs",
+    "TbssFillParameters",
     "tbss_fill",
     "tbss_fill_params",
 ]

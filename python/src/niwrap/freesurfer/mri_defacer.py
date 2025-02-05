@@ -425,6 +425,7 @@ def mri_defacer(
 __all__ = [
     "MRI_DEFACER_METADATA",
     "MriDefacerOutputs",
+    "MriDefacerParameters",
     "mri_defacer",
     "mri_defacer_params",
 ]

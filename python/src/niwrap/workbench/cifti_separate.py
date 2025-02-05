@@ -549,10 +549,10 @@ def cifti_separate_outputs(
     """
     ret = CiftiSeparateOutputs(
         root=execution.output_file("."),
-        volume_all=dyn_outputs(volume_all["__STYXTYPE__"])(volume_all, execution) if volume_all else None,
-        label=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in label] if label else None,
-        metric=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in metric] if metric else None,
-        volume=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in volume] if volume else None,
+        volume_all=dyn_outputs(params.get("volume_all")["__STYXTYPE__"])(params.get("volume_all"), execution) if params.get("volume_all") else None,
+        label=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("label")] if params.get("label") else None,
+        metric=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("metric")] if params.get("metric") else None,
+        volume=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("volume")] if params.get("volume") else None,
     )
     return ret
 
@@ -707,10 +707,15 @@ def cifti_separate(
 __all__ = [
     "CIFTI_SEPARATE_METADATA",
     "CiftiSeparateLabelOutputs",
+    "CiftiSeparateLabelParameters",
     "CiftiSeparateMetricOutputs",
+    "CiftiSeparateMetricParameters",
     "CiftiSeparateOutputs",
+    "CiftiSeparateParameters",
     "CiftiSeparateVolumeAllOutputs",
+    "CiftiSeparateVolumeAllParameters",
     "CiftiSeparateVolumeOutputs",
+    "CiftiSeparateVolumeParameters",
     "cifti_separate",
     "cifti_separate_label_params",
     "cifti_separate_metric_params",

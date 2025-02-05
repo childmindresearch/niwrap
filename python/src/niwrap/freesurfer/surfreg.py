@@ -316,6 +316,7 @@ def surfreg(
 __all__ = [
     "SURFREG_METADATA",
     "SurfregOutputs",
+    "SurfregParameters",
     "surfreg",
     "surfreg_params",
 ]

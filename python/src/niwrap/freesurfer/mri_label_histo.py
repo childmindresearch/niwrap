@@ -190,6 +190,7 @@ def mri_label_histo(
 __all__ = [
     "MRI_LABEL_HISTO_METADATA",
     "MriLabelHistoOutputs",
+    "MriLabelHistoParameters",
     "mri_label_histo",
     "mri_label_histo_params",
 ]

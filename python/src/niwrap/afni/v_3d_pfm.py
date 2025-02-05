@@ -241,6 +241,7 @@ def v_3d_pfm(
 
 __all__ = [
     "V3dPfmOutputs",
+    "V3dPfmParameters",
     "V_3D_PFM_METADATA",
     "v_3d_pfm",
     "v_3d_pfm_params",

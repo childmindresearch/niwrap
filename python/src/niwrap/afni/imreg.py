@@ -363,6 +363,7 @@ def imreg(
 __all__ = [
     "IMREG_METADATA",
     "ImregOutputs",
+    "ImregParameters",
     "imreg",
     "imreg_params",
 ]

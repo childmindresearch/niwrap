@@ -398,6 +398,8 @@ def cifti_extrema(
 __all__ = [
     "CIFTI_EXTREMA_METADATA",
     "CiftiExtremaOutputs",
+    "CiftiExtremaParameters",
+    "CiftiExtremaThresholdParameters",
     "cifti_extrema",
     "cifti_extrema_params",
     "cifti_extrema_threshold_params",

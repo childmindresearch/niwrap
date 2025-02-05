@@ -261,6 +261,7 @@ def convert_scalar_image_to_rgb(
 __all__ = [
     "CONVERT_SCALAR_IMAGE_TO_RGB_METADATA",
     "ConvertScalarImageToRgbOutputs",
+    "ConvertScalarImageToRgbParameters",
     "convert_scalar_image_to_rgb",
     "convert_scalar_image_to_rgb_params",
 ]

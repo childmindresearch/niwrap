@@ -194,6 +194,7 @@ def mris_morph_stats(
 __all__ = [
     "MRIS_MORPH_STATS_METADATA",
     "MrisMorphStatsOutputs",
+    "MrisMorphStatsParameters",
     "mris_morph_stats",
     "mris_morph_stats_params",
 ]

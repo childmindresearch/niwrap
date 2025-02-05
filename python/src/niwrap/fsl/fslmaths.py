@@ -994,7 +994,9 @@ def fslmaths(
 
 __all__ = [
     "FSLMATHS_METADATA",
+    "FslmathsOperationParameters",
     "FslmathsOutputs",
+    "FslmathsParameters",
     "fslmaths",
     "fslmaths_operation_params",
     "fslmaths_params",

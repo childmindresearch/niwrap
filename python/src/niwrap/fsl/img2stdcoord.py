@@ -270,6 +270,7 @@ def img2stdcoord(
 __all__ = [
     "IMG2STDCOORD_METADATA",
     "Img2stdcoordOutputs",
+    "Img2stdcoordParameters",
     "img2stdcoord",
     "img2stdcoord_params",
 ]

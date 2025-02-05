@@ -214,6 +214,7 @@ def tbss_non_fa(
 __all__ = [
     "TBSS_NON_FA_METADATA",
     "TbssNonFaOutputs",
+    "TbssNonFaParameters",
     "tbss_non_fa",
     "tbss_non_fa_params",
 ]

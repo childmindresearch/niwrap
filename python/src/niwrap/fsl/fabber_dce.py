@@ -540,6 +540,7 @@ def fabber_dce(
 __all__ = [
     "FABBER_DCE_METADATA",
     "FabberDceOutputs",
+    "FabberDceParameters",
     "fabber_dce",
     "fabber_dce_params",
 ]

@@ -227,6 +227,7 @@ def imcutup(
 __all__ = [
     "IMCUTUP_METADATA",
     "ImcutupOutputs",
+    "ImcutupParameters",
     "imcutup",
     "imcutup_params",
 ]

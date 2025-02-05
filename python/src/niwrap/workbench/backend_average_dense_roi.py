@@ -182,6 +182,7 @@ def backend_average_dense_roi(
 __all__ = [
     "BACKEND_AVERAGE_DENSE_ROI_METADATA",
     "BackendAverageDenseRoiOutputs",
+    "BackendAverageDenseRoiParameters",
     "backend_average_dense_roi",
     "backend_average_dense_roi_params",
 ]

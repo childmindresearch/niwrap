@@ -413,6 +413,7 @@ def mris_fix_topology(
 __all__ = [
     "MRIS_FIX_TOPOLOGY_METADATA",
     "MrisFixTopologyOutputs",
+    "MrisFixTopologyParameters",
     "mris_fix_topology",
     "mris_fix_topology_params",
 ]

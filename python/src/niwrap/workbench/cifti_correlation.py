@@ -363,6 +363,8 @@ def cifti_correlation(
 __all__ = [
     "CIFTI_CORRELATION_METADATA",
     "CiftiCorrelationOutputs",
+    "CiftiCorrelationParameters",
+    "CiftiCorrelationRoiOverrideParameters",
     "cifti_correlation",
     "cifti_correlation_params",
     "cifti_correlation_roi_override_params",

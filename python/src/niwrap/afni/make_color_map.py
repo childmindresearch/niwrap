@@ -391,6 +391,7 @@ def make_color_map(
 __all__ = [
     "MAKE_COLOR_MAP_METADATA",
     "MakeColorMapOutputs",
+    "MakeColorMapParameters",
     "make_color_map",
     "make_color_map_params",
 ]

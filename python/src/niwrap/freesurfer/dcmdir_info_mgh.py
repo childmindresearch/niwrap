@@ -207,6 +207,7 @@ def dcmdir_info_mgh(
 __all__ = [
     "DCMDIR_INFO_MGH_METADATA",
     "DcmdirInfoMghOutputs",
+    "DcmdirInfoMghParameters",
     "dcmdir_info_mgh",
     "dcmdir_info_mgh_params",
 ]

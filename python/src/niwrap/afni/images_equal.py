@@ -186,6 +186,7 @@ def images_equal(
 __all__ = [
     "IMAGES_EQUAL_METADATA",
     "ImagesEqualOutputs",
+    "ImagesEqualParameters",
     "images_equal",
     "images_equal_params",
 ]

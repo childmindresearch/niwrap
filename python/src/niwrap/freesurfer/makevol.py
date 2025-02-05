@@ -260,6 +260,7 @@ def makevol(
 __all__ = [
     "MAKEVOL_METADATA",
     "MakevolOutputs",
+    "MakevolParameters",
     "makevol",
     "makevol_params",
 ]

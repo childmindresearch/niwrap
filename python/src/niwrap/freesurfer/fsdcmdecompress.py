@@ -214,6 +214,7 @@ def fsdcmdecompress(
 __all__ = [
     "FSDCMDECOMPRESS_METADATA",
     "FsdcmdecompressOutputs",
+    "FsdcmdecompressParameters",
     "fsdcmdecompress",
     "fsdcmdecompress_params",
 ]

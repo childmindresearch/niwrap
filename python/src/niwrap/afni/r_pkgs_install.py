@@ -215,6 +215,7 @@ def r_pkgs_install(
 
 __all__ = [
     "RPkgsInstallOutputs",
+    "RPkgsInstallParameters",
     "R_PKGS_INSTALL_METADATA",
     "r_pkgs_install",
     "r_pkgs_install_params",

@@ -549,6 +549,7 @@ def dcmunpack(
 __all__ = [
     "DCMUNPACK_METADATA",
     "DcmunpackOutputs",
+    "DcmunpackParameters",
     "dcmunpack",
     "dcmunpack_params",
 ]

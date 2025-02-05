@@ -210,6 +210,7 @@ def mris_remove_intersection(
 __all__ = [
     "MRIS_REMOVE_INTERSECTION_METADATA",
     "MrisRemoveIntersectionOutputs",
+    "MrisRemoveIntersectionParameters",
     "mris_remove_intersection",
     "mris_remove_intersection_params",
 ]

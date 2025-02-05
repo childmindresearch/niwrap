@@ -254,6 +254,7 @@ def eddy_combine(
 __all__ = [
     "EDDY_COMBINE_METADATA",
     "EddyCombineOutputs",
+    "EddyCombineParameters",
     "eddy_combine",
     "eddy_combine_params",
 ]

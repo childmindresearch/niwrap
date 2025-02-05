@@ -520,6 +520,7 @@ def mri_binarize(
 __all__ = [
     "MRI_BINARIZE_METADATA",
     "MriBinarizeOutputs",
+    "MriBinarizeParameters",
     "mri_binarize",
     "mri_binarize_params",
 ]

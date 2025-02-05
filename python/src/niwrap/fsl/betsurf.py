@@ -269,6 +269,7 @@ def betsurf(
 __all__ = [
     "BETSURF_METADATA",
     "BetsurfOutputs",
+    "BetsurfParameters",
     "betsurf",
     "betsurf_params",
 ]

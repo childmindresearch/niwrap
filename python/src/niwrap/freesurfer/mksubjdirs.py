@@ -218,6 +218,7 @@ def mksubjdirs(
 __all__ = [
     "MKSUBJDIRS_METADATA",
     "MksubjdirsOutputs",
+    "MksubjdirsParameters",
     "mksubjdirs",
     "mksubjdirs_params",
 ]

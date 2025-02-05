@@ -385,6 +385,7 @@ def surf_patch(
 __all__ = [
     "SURF_PATCH_METADATA",
     "SurfPatchOutputs",
+    "SurfPatchParameters",
     "surf_patch",
     "surf_patch_params",
 ]

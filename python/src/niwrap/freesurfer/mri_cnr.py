@@ -241,6 +241,7 @@ def mri_cnr(
 __all__ = [
     "MRI_CNR_METADATA",
     "MriCnrOutputs",
+    "MriCnrParameters",
     "mri_cnr",
     "mri_cnr_params",
 ]

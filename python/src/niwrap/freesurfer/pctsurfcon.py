@@ -287,6 +287,7 @@ def pctsurfcon(
 __all__ = [
     "PCTSURFCON_METADATA",
     "PctsurfconOutputs",
+    "PctsurfconParameters",
     "pctsurfcon",
     "pctsurfcon_params",
 ]

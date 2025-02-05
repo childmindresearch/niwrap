@@ -289,6 +289,7 @@ def make_average_volume(
 __all__ = [
     "MAKE_AVERAGE_VOLUME_METADATA",
     "MakeAverageVolumeOutputs",
+    "MakeAverageVolumeParameters",
     "make_average_volume",
     "make_average_volume_params",
 ]

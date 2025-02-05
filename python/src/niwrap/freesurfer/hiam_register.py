@@ -185,6 +185,7 @@ def hiam_register(
 __all__ = [
     "HIAM_REGISTER_METADATA",
     "HiamRegisterOutputs",
+    "HiamRegisterParameters",
     "hiam_register",
     "hiam_register_params",
 ]

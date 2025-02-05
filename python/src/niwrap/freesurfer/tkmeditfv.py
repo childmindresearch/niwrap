@@ -469,6 +469,7 @@ def tkmeditfv(
 __all__ = [
     "TKMEDITFV_METADATA",
     "TkmeditfvOutputs",
+    "TkmeditfvParameters",
     "tkmeditfv",
     "tkmeditfv_params",
 ]

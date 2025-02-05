@@ -439,7 +439,9 @@ def connectome2tck(
 
 __all__ = [
     "CONNECTOME2TCK_METADATA",
+    "Connectome2tckConfigParameters",
     "Connectome2tckOutputs",
+    "Connectome2tckParameters",
     "connectome2tck",
     "connectome2tck_config_params",
     "connectome2tck_params",

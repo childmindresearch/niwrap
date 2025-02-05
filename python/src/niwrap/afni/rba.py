@@ -476,6 +476,7 @@ def rba(
 __all__ = [
     "RBA_METADATA",
     "RbaOutputs",
+    "RbaParameters",
     "rba",
     "rba_params",
 ]

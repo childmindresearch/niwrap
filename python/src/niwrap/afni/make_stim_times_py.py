@@ -286,6 +286,7 @@ def make_stim_times_py(
 __all__ = [
     "MAKE_STIM_TIMES_PY_METADATA",
     "MakeStimTimesPyOutputs",
+    "MakeStimTimesPyParameters",
     "make_stim_times_py",
     "make_stim_times_py_params",
 ]

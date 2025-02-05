@@ -254,6 +254,7 @@ def surface_geodesic_distance(
 __all__ = [
     "SURFACE_GEODESIC_DISTANCE_METADATA",
     "SurfaceGeodesicDistanceOutputs",
+    "SurfaceGeodesicDistanceParameters",
     "surface_geodesic_distance",
     "surface_geodesic_distance_params",
 ]

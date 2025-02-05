@@ -289,6 +289,7 @@ def tedana_wrapper_py(
 __all__ = [
     "TEDANA_WRAPPER_PY_METADATA",
     "TedanaWrapperPyOutputs",
+    "TedanaWrapperPyParameters",
     "tedana_wrapper_py",
     "tedana_wrapper_py_params",
 ]

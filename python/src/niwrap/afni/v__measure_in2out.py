@@ -336,6 +336,7 @@ def v__measure_in2out(
 
 __all__ = [
     "VMeasureIn2outOutputs",
+    "VMeasureIn2outParameters",
     "V__MEASURE_IN2OUT_METADATA",
     "v__measure_in2out",
     "v__measure_in2out_params",

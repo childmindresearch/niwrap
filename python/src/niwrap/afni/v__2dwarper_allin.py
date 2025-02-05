@@ -197,6 +197,7 @@ def v__2dwarper_allin(
 
 __all__ = [
     "V2dwarperAllinOutputs",
+    "V2dwarperAllinParameters",
     "V__2DWARPER_ALLIN_METADATA",
     "v__2dwarper_allin",
     "v__2dwarper_allin_params",

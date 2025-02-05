@@ -314,6 +314,7 @@ def v__djunct_edgy_align_check(
 
 __all__ = [
     "VDjunctEdgyAlignCheckOutputs",
+    "VDjunctEdgyAlignCheckParameters",
     "V__DJUNCT_EDGY_ALIGN_CHECK_METADATA",
     "v__djunct_edgy_align_check",
     "v__djunct_edgy_align_check_params",

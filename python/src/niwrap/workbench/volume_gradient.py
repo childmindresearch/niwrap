@@ -294,6 +294,8 @@ def volume_gradient(
 __all__ = [
     "VOLUME_GRADIENT_METADATA",
     "VolumeGradientOutputs",
+    "VolumeGradientParameters",
+    "VolumeGradientPresmoothParameters",
     "volume_gradient",
     "volume_gradient_params",
     "volume_gradient_presmooth_params",

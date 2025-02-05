@@ -237,6 +237,7 @@ def v__scale_volume(
 
 __all__ = [
     "VScaleVolumeOutputs",
+    "VScaleVolumeParameters",
     "V__SCALE_VOLUME_METADATA",
     "v__scale_volume",
     "v__scale_volume_params",

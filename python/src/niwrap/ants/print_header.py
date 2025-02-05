@@ -182,6 +182,7 @@ def print_header(
 __all__ = [
     "PRINT_HEADER_METADATA",
     "PrintHeaderOutputs",
+    "PrintHeaderParameters",
     "print_header",
     "print_header_params",
 ]

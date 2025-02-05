@@ -164,6 +164,7 @@ def mpr2mni305(
 __all__ = [
     "MPR2MNI305_METADATA",
     "Mpr2mni305Outputs",
+    "Mpr2mni305Parameters",
     "mpr2mni305",
     "mpr2mni305_params",
 ]

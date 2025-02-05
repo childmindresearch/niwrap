@@ -210,6 +210,7 @@ def v_3dmatcalc(
 
 __all__ = [
     "V3dmatcalcOutputs",
+    "V3dmatcalcParameters",
     "V_3DMATCALC_METADATA",
     "v_3dmatcalc",
     "v_3dmatcalc_params",

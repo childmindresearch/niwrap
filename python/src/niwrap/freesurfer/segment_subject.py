@@ -220,6 +220,7 @@ def segment_subject(
 __all__ = [
     "SEGMENT_SUBJECT_METADATA",
     "SegmentSubjectOutputs",
+    "SegmentSubjectParameters",
     "segment_subject",
     "segment_subject_params",
 ]

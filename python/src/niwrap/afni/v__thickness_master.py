@@ -203,6 +203,7 @@ def v__thickness_master(
 
 __all__ = [
     "VThicknessMasterOutputs",
+    "VThicknessMasterParameters",
     "V__THICKNESS_MASTER_METADATA",
     "v__thickness_master",
     "v__thickness_master_params",

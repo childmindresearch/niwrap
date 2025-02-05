@@ -362,6 +362,7 @@ def mri_average(
 __all__ = [
     "MRI_AVERAGE_METADATA",
     "MriAverageOutputs",
+    "MriAverageParameters",
     "mri_average",
     "mri_average_params",
 ]

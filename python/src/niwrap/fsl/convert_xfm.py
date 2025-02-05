@@ -219,6 +219,7 @@ def convert_xfm(
 __all__ = [
     "CONVERT_XFM_METADATA",
     "ConvertXfmOutputs",
+    "ConvertXfmParameters",
     "convert_xfm",
     "convert_xfm_params",
 ]

@@ -166,6 +166,7 @@ def dmri_ac_sh(
 __all__ = [
     "DMRI_AC_SH_METADATA",
     "DmriAcShOutputs",
+    "DmriAcShParameters",
     "dmri_ac_sh",
     "dmri_ac_sh_params",
 ]

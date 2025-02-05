@@ -190,6 +190,7 @@ def mris_merge_parcellations(
 __all__ = [
     "MRIS_MERGE_PARCELLATIONS_METADATA",
     "MrisMergeParcellationsOutputs",
+    "MrisMergeParcellationsParameters",
     "mris_merge_parcellations",
     "mris_merge_parcellations_params",
 ]

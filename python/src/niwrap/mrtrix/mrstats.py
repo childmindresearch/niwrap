@@ -398,7 +398,10 @@ def mrstats(
 
 __all__ = [
     "MRSTATS_METADATA",
+    "MrstatsConfigParameters",
+    "MrstatsOutputParameters",
     "MrstatsOutputs",
+    "MrstatsParameters",
     "mrstats",
     "mrstats_config_params",
     "mrstats_output_params",

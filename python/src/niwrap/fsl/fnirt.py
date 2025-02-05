@@ -282,6 +282,7 @@ def fnirt(
 __all__ = [
     "FNIRT_METADATA",
     "FnirtOutputs",
+    "FnirtParameters",
     "fnirt",
     "fnirt_params",
 ]

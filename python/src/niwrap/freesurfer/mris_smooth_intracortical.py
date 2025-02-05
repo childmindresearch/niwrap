@@ -288,6 +288,7 @@ def mris_smooth_intracortical(
 __all__ = [
     "MRIS_SMOOTH_INTRACORTICAL_METADATA",
     "MrisSmoothIntracorticalOutputs",
+    "MrisSmoothIntracorticalParameters",
     "mris_smooth_intracortical",
     "mris_smooth_intracortical_params",
 ]

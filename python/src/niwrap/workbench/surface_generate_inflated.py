@@ -213,6 +213,7 @@ def surface_generate_inflated(
 __all__ = [
     "SURFACE_GENERATE_INFLATED_METADATA",
     "SurfaceGenerateInflatedOutputs",
+    "SurfaceGenerateInflatedParameters",
     "surface_generate_inflated",
     "surface_generate_inflated_params",
 ]

@@ -286,6 +286,7 @@ def v_3dmerge(
 
 __all__ = [
     "V3dmergeOutputs",
+    "V3dmergeParameters",
     "V_3DMERGE_METADATA",
     "v_3dmerge",
     "v_3dmerge_params",

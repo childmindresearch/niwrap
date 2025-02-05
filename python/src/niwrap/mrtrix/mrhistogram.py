@@ -367,7 +367,9 @@ def mrhistogram(
 
 __all__ = [
     "MRHISTOGRAM_METADATA",
+    "MrhistogramConfigParameters",
     "MrhistogramOutputs",
+    "MrhistogramParameters",
     "mrhistogram",
     "mrhistogram_config_params",
     "mrhistogram_params",

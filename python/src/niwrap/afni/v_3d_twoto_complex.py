@@ -228,6 +228,7 @@ def v_3d_twoto_complex(
 
 __all__ = [
     "V3dTwotoComplexOutputs",
+    "V3dTwotoComplexParameters",
     "V_3D_TWOTO_COMPLEX_METADATA",
     "v_3d_twoto_complex",
     "v_3d_twoto_complex_params",

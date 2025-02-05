@@ -208,6 +208,7 @@ def apply_morph(
 __all__ = [
     "APPLY_MORPH_METADATA",
     "ApplyMorphOutputs",
+    "ApplyMorphParameters",
     "apply_morph",
     "apply_morph_params",
 ]

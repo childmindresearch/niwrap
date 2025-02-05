@@ -226,6 +226,7 @@ def label_modify_keys(
 __all__ = [
     "LABEL_MODIFY_KEYS_METADATA",
     "LabelModifyKeysOutputs",
+    "LabelModifyKeysParameters",
     "label_modify_keys",
     "label_modify_keys_params",
 ]

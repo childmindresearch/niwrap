@@ -452,7 +452,9 @@ def dwidenoise(
 
 __all__ = [
     "DWIDENOISE_METADATA",
+    "DwidenoiseConfigParameters",
     "DwidenoiseOutputs",
+    "DwidenoiseParameters",
     "dwidenoise",
     "dwidenoise_config_params",
     "dwidenoise_params",

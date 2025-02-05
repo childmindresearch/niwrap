@@ -202,6 +202,7 @@ def map_all_labels_lh(
 __all__ = [
     "MAP_ALL_LABELS_LH_METADATA",
     "MapAllLabelsLhOutputs",
+    "MapAllLabelsLhParameters",
     "map_all_labels_lh",
     "map_all_labels_lh_params",
 ]

@@ -212,6 +212,7 @@ def immask(
 __all__ = [
     "IMMASK_METADATA",
     "ImmaskOutputs",
+    "ImmaskParameters",
     "immask",
     "immask_params",
 ]

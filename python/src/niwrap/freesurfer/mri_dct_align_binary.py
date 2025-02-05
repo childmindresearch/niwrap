@@ -183,6 +183,7 @@ def mri_dct_align_binary(
 __all__ = [
     "MRI_DCT_ALIGN_BINARY_METADATA",
     "MriDctAlignBinaryOutputs",
+    "MriDctAlignBinaryParameters",
     "mri_dct_align_binary",
     "mri_dct_align_binary_params",
 ]

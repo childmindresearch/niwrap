@@ -204,6 +204,7 @@ def mris_multiscale_stats(
 __all__ = [
     "MRIS_MULTISCALE_STATS_METADATA",
     "MrisMultiscaleStatsOutputs",
+    "MrisMultiscaleStatsParameters",
     "mris_multiscale_stats",
     "mris_multiscale_stats_params",
 ]

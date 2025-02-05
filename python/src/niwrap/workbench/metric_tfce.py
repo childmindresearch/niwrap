@@ -390,6 +390,9 @@ def metric_tfce(
 __all__ = [
     "METRIC_TFCE_METADATA",
     "MetricTfceOutputs",
+    "MetricTfceParameters",
+    "MetricTfceParametersParameters",
+    "MetricTfcePresmoothParameters",
     "metric_tfce",
     "metric_tfce_parameters_params",
     "metric_tfce_params",

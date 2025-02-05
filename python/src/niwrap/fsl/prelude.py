@@ -487,6 +487,7 @@ def prelude(
 __all__ = [
     "PRELUDE_METADATA",
     "PreludeOutputs",
+    "PreludeParameters",
     "prelude",
     "prelude_params",
 ]

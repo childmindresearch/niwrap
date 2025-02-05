@@ -369,6 +369,7 @@ def mri_fill(
 __all__ = [
     "MRI_FILL_METADATA",
     "MriFillOutputs",
+    "MriFillParameters",
     "mri_fill",
     "mri_fill_params",
 ]

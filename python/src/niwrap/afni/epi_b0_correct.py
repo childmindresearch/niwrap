@@ -455,6 +455,7 @@ def epi_b0_correct(
 __all__ = [
     "EPI_B0_CORRECT_METADATA",
     "EpiB0CorrectOutputs",
+    "EpiB0CorrectParameters",
     "epi_b0_correct",
     "epi_b0_correct_params",
 ]

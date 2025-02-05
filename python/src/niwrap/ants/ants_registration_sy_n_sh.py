@@ -412,6 +412,7 @@ def ants_registration_sy_n_sh(
 __all__ = [
     "ANTS_REGISTRATION_SY_N_SH_METADATA",
     "AntsRegistrationSyNShOutputs",
+    "AntsRegistrationSyNShParameters",
     "ants_registration_sy_n_sh",
     "ants_registration_sy_n_sh_params",
 ]

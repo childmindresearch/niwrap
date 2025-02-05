@@ -214,6 +214,7 @@ def mris_defects_pointset(
 __all__ = [
     "MRIS_DEFECTS_POINTSET_METADATA",
     "MrisDefectsPointsetOutputs",
+    "MrisDefectsPointsetParameters",
     "mris_defects_pointset",
     "mris_defects_pointset_params",
 ]

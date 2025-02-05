@@ -232,6 +232,7 @@ def v_3d_tnorm(
 
 __all__ = [
     "V3dTnormOutputs",
+    "V3dTnormParameters",
     "V_3D_TNORM_METADATA",
     "v_3d_tnorm",
     "v_3d_tnorm_params",

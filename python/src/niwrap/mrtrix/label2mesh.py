@@ -321,7 +321,9 @@ def label2mesh(
 
 __all__ = [
     "LABEL2MESH_METADATA",
+    "Label2meshConfigParameters",
     "Label2meshOutputs",
+    "Label2meshParameters",
     "label2mesh",
     "label2mesh_config_params",
     "label2mesh_params",

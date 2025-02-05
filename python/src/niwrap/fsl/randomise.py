@@ -474,6 +474,7 @@ def randomise(
 __all__ = [
     "RANDOMISE_METADATA",
     "RandomiseOutputs",
+    "RandomiseParameters",
     "randomise",
     "randomise_params",
 ]

@@ -173,6 +173,7 @@ def v__do_examples(
 
 __all__ = [
     "VDoExamplesOutputs",
+    "VDoExamplesParameters",
     "V__DO_EXAMPLES_METADATA",
     "v__do_examples",
     "v__do_examples_params",

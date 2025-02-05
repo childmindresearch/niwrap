@@ -329,6 +329,7 @@ def init_user_dotfiles_py(
 __all__ = [
     "INIT_USER_DOTFILES_PY_METADATA",
     "InitUserDotfilesPyOutputs",
+    "InitUserDotfilesPyParameters",
     "init_user_dotfiles_py",
     "init_user_dotfiles_py_params",
 ]

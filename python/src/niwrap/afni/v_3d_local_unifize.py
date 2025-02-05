@@ -270,6 +270,7 @@ def v_3d_local_unifize(
 
 __all__ = [
     "V3dLocalUnifizeOutputs",
+    "V3dLocalUnifizeParameters",
     "V_3D_LOCAL_UNIFIZE_METADATA",
     "v_3d_local_unifize",
     "v_3d_local_unifize_params",

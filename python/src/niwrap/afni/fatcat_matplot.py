@@ -172,6 +172,7 @@ def fatcat_matplot(
 __all__ = [
     "FATCAT_MATPLOT_METADATA",
     "FatcatMatplotOutputs",
+    "FatcatMatplotParameters",
     "fatcat_matplot",
     "fatcat_matplot_params",
 ]

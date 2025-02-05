@@ -171,6 +171,7 @@ def spm_t_to_b(
 __all__ = [
     "SPM_T_TO_B_METADATA",
     "SpmTToBOutputs",
+    "SpmTToBParameters",
     "spm_t_to_b",
     "spm_t_to_b_params",
 ]

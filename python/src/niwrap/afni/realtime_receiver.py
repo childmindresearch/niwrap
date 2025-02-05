@@ -291,6 +291,7 @@ def realtime_receiver(
 __all__ = [
     "REALTIME_RECEIVER_METADATA",
     "RealtimeReceiverOutputs",
+    "RealtimeReceiverParameters",
     "realtime_receiver",
     "realtime_receiver_params",
 ]

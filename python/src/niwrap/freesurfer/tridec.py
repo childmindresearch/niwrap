@@ -190,6 +190,7 @@ def tridec(
 __all__ = [
     "TRIDEC_METADATA",
     "TridecOutputs",
+    "TridecParameters",
     "tridec",
     "tridec_params",
 ]

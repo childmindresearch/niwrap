@@ -278,6 +278,7 @@ def map_icosahedron(
 __all__ = [
     "MAP_ICOSAHEDRON_METADATA",
     "MapIcosahedronOutputs",
+    "MapIcosahedronParameters",
     "map_icosahedron",
     "map_icosahedron_params",
 ]

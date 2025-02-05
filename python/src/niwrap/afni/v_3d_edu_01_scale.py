@@ -205,6 +205,7 @@ def v_3d_edu_01_scale(
 
 __all__ = [
     "V3dEdu01ScaleOutputs",
+    "V3dEdu01ScaleParameters",
     "V_3D_EDU_01_SCALE_METADATA",
     "v_3d_edu_01_scale",
     "v_3d_edu_01_scale_params",

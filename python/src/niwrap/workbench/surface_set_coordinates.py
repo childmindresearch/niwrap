@@ -196,6 +196,7 @@ def surface_set_coordinates(
 __all__ = [
     "SURFACE_SET_COORDINATES_METADATA",
     "SurfaceSetCoordinatesOutputs",
+    "SurfaceSetCoordinatesParameters",
     "surface_set_coordinates",
     "surface_set_coordinates_params",
 ]

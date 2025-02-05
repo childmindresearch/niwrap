@@ -170,6 +170,7 @@ def v__time_diff(
 
 __all__ = [
     "VTimeDiffOutputs",
+    "VTimeDiffParameters",
     "V__TIME_DIFF_METADATA",
     "v__time_diff",
     "v__time_diff_params",

@@ -182,6 +182,7 @@ def spec_file_relocate(
 __all__ = [
     "SPEC_FILE_RELOCATE_METADATA",
     "SpecFileRelocateOutputs",
+    "SpecFileRelocateParameters",
     "spec_file_relocate",
     "spec_file_relocate_params",
 ]

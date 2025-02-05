@@ -349,6 +349,7 @@ def v_3d_deconvolve(
 
 __all__ = [
     "V3dDeconvolveOutputs",
+    "V3dDeconvolveParameters",
     "V_3D_DECONVOLVE_METADATA",
     "v_3d_deconvolve",
     "v_3d_deconvolve_params",

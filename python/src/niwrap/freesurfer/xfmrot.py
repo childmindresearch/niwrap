@@ -193,6 +193,7 @@ def xfmrot(
 __all__ = [
     "XFMROT_METADATA",
     "XfmrotOutputs",
+    "XfmrotParameters",
     "xfmrot",
     "xfmrot_params",
 ]

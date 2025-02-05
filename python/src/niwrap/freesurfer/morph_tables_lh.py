@@ -181,6 +181,7 @@ def morph_tables_lh(
 __all__ = [
     "MORPH_TABLES_LH_METADATA",
     "MorphTablesLhOutputs",
+    "MorphTablesLhParameters",
     "morph_tables_lh",
     "morph_tables_lh_params",
 ]

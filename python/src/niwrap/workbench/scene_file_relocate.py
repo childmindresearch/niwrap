@@ -182,6 +182,7 @@ def scene_file_relocate(
 __all__ = [
     "SCENE_FILE_RELOCATE_METADATA",
     "SceneFileRelocateOutputs",
+    "SceneFileRelocateParameters",
     "scene_file_relocate",
     "scene_file_relocate_params",
 ]

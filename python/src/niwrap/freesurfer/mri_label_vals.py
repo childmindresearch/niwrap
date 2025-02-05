@@ -189,6 +189,7 @@ def mri_label_vals(
 __all__ = [
     "MRI_LABEL_VALS_METADATA",
     "MriLabelValsOutputs",
+    "MriLabelValsParameters",
     "mri_label_vals",
     "mri_label_vals_params",
 ]

@@ -208,6 +208,7 @@ def make_cortex_label(
 __all__ = [
     "MAKE_CORTEX_LABEL_METADATA",
     "MakeCortexLabelOutputs",
+    "MakeCortexLabelParameters",
     "make_cortex_label",
     "make_cortex_label_params",
 ]

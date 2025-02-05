@@ -178,6 +178,7 @@ def mris_curvature_stats(
 __all__ = [
     "MRIS_CURVATURE_STATS_METADATA",
     "MrisCurvatureStatsOutputs",
+    "MrisCurvatureStatsParameters",
     "mris_curvature_stats",
     "mris_curvature_stats_params",
 ]

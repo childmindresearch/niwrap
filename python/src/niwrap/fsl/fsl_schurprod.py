@@ -244,6 +244,7 @@ def fsl_schurprod(
 __all__ = [
     "FSL_SCHURPROD_METADATA",
     "FslSchurprodOutputs",
+    "FslSchurprodParameters",
     "fsl_schurprod",
     "fsl_schurprod_params",
 ]

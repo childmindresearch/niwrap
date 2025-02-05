@@ -656,7 +656,14 @@ def cifti_create_dense_from_template(
 
 __all__ = [
     "CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA",
+    "CiftiCreateDenseFromTemplateCiftiParameters",
+    "CiftiCreateDenseFromTemplateLabelParameters",
+    "CiftiCreateDenseFromTemplateMetricParameters",
     "CiftiCreateDenseFromTemplateOutputs",
+    "CiftiCreateDenseFromTemplateParameters",
+    "CiftiCreateDenseFromTemplateSeriesParameters",
+    "CiftiCreateDenseFromTemplateVolumeAllParameters",
+    "CiftiCreateDenseFromTemplateVolumeParameters",
     "cifti_create_dense_from_template",
     "cifti_create_dense_from_template_cifti_params",
     "cifti_create_dense_from_template_label_params",

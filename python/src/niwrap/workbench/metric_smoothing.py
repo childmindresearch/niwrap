@@ -399,6 +399,8 @@ def metric_smoothing(
 __all__ = [
     "METRIC_SMOOTHING_METADATA",
     "MetricSmoothingOutputs",
+    "MetricSmoothingParameters",
+    "MetricSmoothingRoiParameters",
     "metric_smoothing",
     "metric_smoothing_params",
     "metric_smoothing_roi_params",

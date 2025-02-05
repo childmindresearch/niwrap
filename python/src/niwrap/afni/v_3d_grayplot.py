@@ -322,6 +322,7 @@ def v_3d_grayplot(
 
 __all__ = [
     "V3dGrayplotOutputs",
+    "V3dGrayplotParameters",
     "V_3D_GRAYPLOT_METADATA",
     "v_3d_grayplot",
     "v_3d_grayplot_params",

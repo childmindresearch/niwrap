@@ -212,6 +212,7 @@ def mris_entropy(
 __all__ = [
     "MRIS_ENTROPY_METADATA",
     "MrisEntropyOutputs",
+    "MrisEntropyParameters",
     "mris_entropy",
     "mris_entropy_params",
 ]

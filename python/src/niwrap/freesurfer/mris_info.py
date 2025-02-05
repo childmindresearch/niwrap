@@ -415,6 +415,7 @@ def mris_info(
 __all__ = [
     "MRIS_INFO_METADATA",
     "MrisInfoOutputs",
+    "MrisInfoParameters",
     "mris_info",
     "mris_info_params",
 ]

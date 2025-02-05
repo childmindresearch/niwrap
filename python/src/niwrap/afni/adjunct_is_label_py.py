@@ -171,6 +171,7 @@ def adjunct_is_label_py(
 __all__ = [
     "ADJUNCT_IS_LABEL_PY_METADATA",
     "AdjunctIsLabelPyOutputs",
+    "AdjunctIsLabelPyParameters",
     "adjunct_is_label_py",
     "adjunct_is_label_py_params",
 ]

@@ -213,6 +213,7 @@ def antsuse_deformation_field_to_get_affine_transform(
 __all__ = [
     "ANTSUSE_DEFORMATION_FIELD_TO_GET_AFFINE_TRANSFORM_METADATA",
     "AntsuseDeformationFieldToGetAffineTransformOutputs",
+    "AntsuseDeformationFieldToGetAffineTransformParameters",
     "antsuse_deformation_field_to_get_affine_transform",
     "antsuse_deformation_field_to_get_affine_transform_params",
 ]

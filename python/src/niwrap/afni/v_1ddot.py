@@ -234,6 +234,7 @@ def v_1ddot(
 
 __all__ = [
     "V1ddotOutputs",
+    "V1ddotParameters",
     "V_1DDOT_METADATA",
     "v_1ddot",
     "v_1ddot_params",

@@ -214,6 +214,7 @@ def isolate_labels_keeporigval_csh(
 __all__ = [
     "ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA",
     "IsolateLabelsKeeporigvalCshOutputs",
+    "IsolateLabelsKeeporigvalCshParameters",
     "isolate_labels_keeporigval_csh",
     "isolate_labels_keeporigval_csh_params",
 ]

@@ -236,6 +236,7 @@ def makerot(
 __all__ = [
     "MAKEROT_METADATA",
     "MakerotOutputs",
+    "MakerotParameters",
     "makerot",
     "makerot_params",
 ]

@@ -180,6 +180,7 @@ def v__grayplot(
 
 __all__ = [
     "VGrayplotOutputs",
+    "VGrayplotParameters",
     "V__GRAYPLOT_METADATA",
     "v__grayplot",
     "v__grayplot_params",

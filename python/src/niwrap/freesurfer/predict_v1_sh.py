@@ -206,6 +206,7 @@ def predict_v1_sh(
 __all__ = [
     "PREDICT_V1_SH_METADATA",
     "PredictV1ShOutputs",
+    "PredictV1ShParameters",
     "predict_v1_sh",
     "predict_v1_sh_params",
 ]

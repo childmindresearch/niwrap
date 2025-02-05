@@ -483,6 +483,10 @@ def cifti_weighted_stats(
 __all__ = [
     "CIFTI_WEIGHTED_STATS_METADATA",
     "CiftiWeightedStatsOutputs",
+    "CiftiWeightedStatsParameters",
+    "CiftiWeightedStatsRoiParameters",
+    "CiftiWeightedStatsSpatialWeightsParameters",
+    "CiftiWeightedStatsStdevParameters",
     "cifti_weighted_stats",
     "cifti_weighted_stats_params",
     "cifti_weighted_stats_roi_params",

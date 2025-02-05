@@ -406,6 +406,7 @@ def fsl_rigid_register(
 __all__ = [
     "FSL_RIGID_REGISTER_METADATA",
     "FslRigidRegisterOutputs",
+    "FslRigidRegisterParameters",
     "fsl_rigid_register",
     "fsl_rigid_register_params",
 ]

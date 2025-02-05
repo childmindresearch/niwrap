@@ -267,6 +267,7 @@ def v_3d_mse(
 
 __all__ = [
     "V3dMseOutputs",
+    "V3dMseParameters",
     "V_3D_MSE_METADATA",
     "v_3d_mse",
     "v_3d_mse_params",

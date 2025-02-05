@@ -277,6 +277,7 @@ def surface_geodesic_rois(
 __all__ = [
     "SURFACE_GEODESIC_ROIS_METADATA",
     "SurfaceGeodesicRoisOutputs",
+    "SurfaceGeodesicRoisParameters",
     "surface_geodesic_rois",
     "surface_geodesic_rois_params",
 ]

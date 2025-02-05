@@ -219,6 +219,7 @@ def v_3d_pval(
 
 __all__ = [
     "V3dPvalOutputs",
+    "V3dPvalParameters",
     "V_3D_PVAL_METADATA",
     "v_3d_pval",
     "v_3d_pval_params",

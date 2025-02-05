@@ -284,6 +284,7 @@ def v_3d_match(
 
 __all__ = [
     "V3dMatchOutputs",
+    "V3dMatchParameters",
     "V_3D_MATCH_METADATA",
     "v_3d_match",
     "v_3d_match_params",

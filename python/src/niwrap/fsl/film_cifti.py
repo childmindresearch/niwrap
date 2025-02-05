@@ -266,6 +266,7 @@ def film_cifti(
 __all__ = [
     "FILM_CIFTI_METADATA",
     "FilmCiftiOutputs",
+    "FilmCiftiParameters",
     "film_cifti",
     "film_cifti_params",
 ]

@@ -166,6 +166,7 @@ def v_3d_afnito_niml(
 
 __all__ = [
     "V3dAfnitoNimlOutputs",
+    "V3dAfnitoNimlParameters",
     "V_3D_AFNITO_NIML_METADATA",
     "v_3d_afnito_niml",
     "v_3d_afnito_niml_params",

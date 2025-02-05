@@ -392,7 +392,10 @@ def cifti_average_roi_correlation(
 
 __all__ = [
     "CIFTI_AVERAGE_ROI_CORRELATION_METADATA",
+    "CiftiAverageRoiCorrelationCiftiParameters",
+    "CiftiAverageRoiCorrelationCiftiRoiParameters",
     "CiftiAverageRoiCorrelationOutputs",
+    "CiftiAverageRoiCorrelationParameters",
     "cifti_average_roi_correlation",
     "cifti_average_roi_correlation_cifti_params",
     "cifti_average_roi_correlation_cifti_roi_params",

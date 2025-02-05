@@ -169,6 +169,7 @@ def xhemi_tal(
 __all__ = [
     "XHEMI_TAL_METADATA",
     "XhemiTalOutputs",
+    "XhemiTalParameters",
     "xhemi_tal",
     "xhemi_tal_params",
 ]

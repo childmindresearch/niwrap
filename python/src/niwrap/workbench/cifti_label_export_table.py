@@ -185,6 +185,7 @@ def cifti_label_export_table(
 __all__ = [
     "CIFTI_LABEL_EXPORT_TABLE_METADATA",
     "CiftiLabelExportTableOutputs",
+    "CiftiLabelExportTableParameters",
     "cifti_label_export_table",
     "cifti_label_export_table_params",
 ]

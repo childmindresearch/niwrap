@@ -473,7 +473,10 @@ def sh2peaks(
 
 __all__ = [
     "SH2PEAKS_METADATA",
+    "Sh2peaksConfigParameters",
+    "Sh2peaksDirectionParameters",
     "Sh2peaksOutputs",
+    "Sh2peaksParameters",
     "sh2peaks",
     "sh2peaks_config_params",
     "sh2peaks_direction_params",

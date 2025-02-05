@@ -357,6 +357,9 @@ def volume_tfce(
 __all__ = [
     "VOLUME_TFCE_METADATA",
     "VolumeTfceOutputs",
+    "VolumeTfceParameters",
+    "VolumeTfceParametersParameters",
+    "VolumeTfcePresmoothParameters",
     "volume_tfce",
     "volume_tfce_parameters_params",
     "volume_tfce_params",

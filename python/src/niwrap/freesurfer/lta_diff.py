@@ -245,6 +245,7 @@ def lta_diff(
 __all__ = [
     "LTA_DIFF_METADATA",
     "LtaDiffOutputs",
+    "LtaDiffParameters",
     "lta_diff",
     "lta_diff_params",
 ]

@@ -183,6 +183,7 @@ def oxford_asl(
 __all__ = [
     "OXFORD_ASL_METADATA",
     "OxfordAslOutputs",
+    "OxfordAslParameters",
     "oxford_asl",
     "oxford_asl_params",
 ]

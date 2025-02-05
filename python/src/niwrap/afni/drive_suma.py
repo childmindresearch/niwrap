@@ -482,6 +482,7 @@ def drive_suma(
 __all__ = [
     "DRIVE_SUMA_METADATA",
     "DriveSumaOutputs",
+    "DriveSumaParameters",
     "drive_suma",
     "drive_suma_params",
 ]

@@ -209,6 +209,7 @@ def v_3d_periodogram(
 
 __all__ = [
     "V3dPeriodogramOutputs",
+    "V3dPeriodogramParameters",
     "V_3D_PERIODOGRAM_METADATA",
     "v_3d_periodogram",
     "v_3d_periodogram_params",

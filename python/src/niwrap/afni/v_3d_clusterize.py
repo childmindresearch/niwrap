@@ -417,6 +417,7 @@ def v_3d_clusterize(
 
 __all__ = [
     "V3dClusterizeOutputs",
+    "V3dClusterizeParameters",
     "V_3D_CLUSTERIZE_METADATA",
     "v_3d_clusterize",
     "v_3d_clusterize_params",

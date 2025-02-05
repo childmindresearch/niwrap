@@ -279,6 +279,7 @@ def serial_helper(
 __all__ = [
     "SERIAL_HELPER_METADATA",
     "SerialHelperOutputs",
+    "SerialHelperParameters",
     "serial_helper",
     "serial_helper_params",
 ]

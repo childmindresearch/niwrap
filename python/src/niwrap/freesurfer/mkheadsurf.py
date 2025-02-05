@@ -457,6 +457,7 @@ def mkheadsurf(
 __all__ = [
     "MKHEADSURF_METADATA",
     "MkheadsurfOutputs",
+    "MkheadsurfParameters",
     "mkheadsurf",
     "mkheadsurf_params",
 ]

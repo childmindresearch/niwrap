@@ -267,6 +267,7 @@ def v_3d_dwuncert(
 
 __all__ = [
     "V3dDwuncertOutputs",
+    "V3dDwuncertParameters",
     "V_3D_DWUNCERT_METADATA",
     "v_3d_dwuncert",
     "v_3d_dwuncert_params",

@@ -186,6 +186,7 @@ def apsearch(
 __all__ = [
     "APSEARCH_METADATA",
     "ApsearchOutputs",
+    "ApsearchParameters",
     "apsearch",
     "apsearch_params",
 ]

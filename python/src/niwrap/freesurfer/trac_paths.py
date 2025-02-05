@@ -285,6 +285,7 @@ def trac_paths(
 __all__ = [
     "TRAC_PATHS_METADATA",
     "TracPathsOutputs",
+    "TracPathsParameters",
     "trac_paths",
     "trac_paths_params",
 ]

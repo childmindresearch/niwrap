@@ -172,6 +172,7 @@ def brec(
 __all__ = [
     "BREC_METADATA",
     "BrecOutputs",
+    "BrecParameters",
     "brec",
     "brec_params",
 ]

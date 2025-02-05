@@ -174,6 +174,7 @@ def convert_to_jpg(
 __all__ = [
     "CONVERT_TO_JPG_METADATA",
     "ConvertToJpgOutputs",
+    "ConvertToJpgParameters",
     "convert_to_jpg",
     "convert_to_jpg_params",
 ]

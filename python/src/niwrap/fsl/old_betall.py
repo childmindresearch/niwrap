@@ -179,6 +179,7 @@ def old_betall(
 __all__ = [
     "OLD_BETALL_METADATA",
     "OldBetallOutputs",
+    "OldBetallParameters",
     "old_betall",
     "old_betall_params",
 ]

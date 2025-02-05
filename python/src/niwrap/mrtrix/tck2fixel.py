@@ -338,7 +338,9 @@ def tck2fixel(
 
 __all__ = [
     "TCK2FIXEL_METADATA",
+    "Tck2fixelConfigParameters",
     "Tck2fixelOutputs",
+    "Tck2fixelParameters",
     "tck2fixel",
     "tck2fixel_config_params",
     "tck2fixel_params",

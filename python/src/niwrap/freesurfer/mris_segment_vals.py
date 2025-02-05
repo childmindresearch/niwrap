@@ -207,6 +207,7 @@ def mris_segment_vals(
 __all__ = [
     "MRIS_SEGMENT_VALS_METADATA",
     "MrisSegmentValsOutputs",
+    "MrisSegmentValsParameters",
     "mris_segment_vals",
     "mris_segment_vals_params",
 ]

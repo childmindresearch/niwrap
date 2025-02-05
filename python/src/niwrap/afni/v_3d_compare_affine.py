@@ -205,6 +205,7 @@ def v_3d_compare_affine(
 
 __all__ = [
     "V3dCompareAffineOutputs",
+    "V3dCompareAffineParameters",
     "V_3D_COMPARE_AFFINE_METADATA",
     "v_3d_compare_affine",
     "v_3d_compare_affine_params",

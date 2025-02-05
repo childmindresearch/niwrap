@@ -159,6 +159,7 @@ def mri_gcab_train(
 __all__ = [
     "MRI_GCAB_TRAIN_METADATA",
     "MriGcabTrainOutputs",
+    "MriGcabTrainParameters",
     "mri_gcab_train",
     "mri_gcab_train_params",
 ]

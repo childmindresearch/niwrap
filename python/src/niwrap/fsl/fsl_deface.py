@@ -335,6 +335,7 @@ def fsl_deface(
 __all__ = [
     "FSL_DEFACE_METADATA",
     "FslDefaceOutputs",
+    "FslDefaceParameters",
     "fsl_deface",
     "fsl_deface_params",
 ]

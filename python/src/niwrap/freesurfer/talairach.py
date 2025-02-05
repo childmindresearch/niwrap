@@ -200,6 +200,7 @@ def talairach(
 __all__ = [
     "TALAIRACH_METADATA",
     "TalairachOutputs",
+    "TalairachParameters",
     "talairach",
     "talairach_params",
 ]

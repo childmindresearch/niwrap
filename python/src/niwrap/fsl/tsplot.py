@@ -259,6 +259,7 @@ def tsplot(
 __all__ = [
     "TSPLOT_METADATA",
     "TsplotOutputs",
+    "TsplotParameters",
     "tsplot",
     "tsplot_params",
 ]

@@ -189,6 +189,7 @@ def surface_flip_lr(
 __all__ = [
     "SURFACE_FLIP_LR_METADATA",
     "SurfaceFlipLrOutputs",
+    "SurfaceFlipLrParameters",
     "surface_flip_lr",
     "surface_flip_lr_params",
 ]

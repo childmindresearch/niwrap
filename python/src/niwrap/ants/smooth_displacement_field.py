@@ -240,6 +240,7 @@ def smooth_displacement_field(
 __all__ = [
     "SMOOTH_DISPLACEMENT_FIELD_METADATA",
     "SmoothDisplacementFieldOutputs",
+    "SmoothDisplacementFieldParameters",
     "smooth_displacement_field",
     "smooth_displacement_field_params",
 ]

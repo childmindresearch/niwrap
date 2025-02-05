@@ -785,6 +785,7 @@ def mri_em_register(
 __all__ = [
     "MRI_EM_REGISTER_METADATA",
     "MriEmRegisterOutputs",
+    "MriEmRegisterParameters",
     "mri_em_register",
     "mri_em_register_params",
 ]

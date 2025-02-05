@@ -176,6 +176,7 @@ def segment_subject_notal2(
 __all__ = [
     "SEGMENT_SUBJECT_NOTAL2_METADATA",
     "SegmentSubjectNotal2Outputs",
+    "SegmentSubjectNotal2Parameters",
     "segment_subject_notal2",
     "segment_subject_notal2_params",
 ]

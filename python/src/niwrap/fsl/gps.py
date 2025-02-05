@@ -242,6 +242,7 @@ def gps(
 __all__ = [
     "GPS_METADATA",
     "GpsOutputs",
+    "GpsParameters",
     "gps",
     "gps_params",
 ]

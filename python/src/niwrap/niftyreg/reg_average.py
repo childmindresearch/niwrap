@@ -178,6 +178,7 @@ def reg_average(
 __all__ = [
     "REG_AVERAGE_METADATA",
     "RegAverageOutputs",
+    "RegAverageParameters",
     "reg_average",
     "reg_average_params",
 ]

@@ -430,6 +430,7 @@ def waver(
 __all__ = [
     "WAVER_METADATA",
     "WaverOutputs",
+    "WaverParameters",
     "waver",
     "waver_params",
 ]

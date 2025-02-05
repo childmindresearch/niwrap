@@ -322,6 +322,7 @@ def v__add_edge(
 
 __all__ = [
     "VAddEdgeOutputs",
+    "VAddEdgeParameters",
     "V__ADD_EDGE_METADATA",
     "v__add_edge",
     "v__add_edge_params",

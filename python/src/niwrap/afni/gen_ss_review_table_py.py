@@ -304,6 +304,7 @@ def gen_ss_review_table_py(
 __all__ = [
     "GEN_SS_REVIEW_TABLE_PY_METADATA",
     "GenSsReviewTablePyOutputs",
+    "GenSsReviewTablePyParameters",
     "gen_ss_review_table_py",
     "gen_ss_review_table_py_params",
 ]

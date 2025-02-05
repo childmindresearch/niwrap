@@ -251,6 +251,7 @@ def cifti_vector_operation(
 __all__ = [
     "CIFTI_VECTOR_OPERATION_METADATA",
     "CiftiVectorOperationOutputs",
+    "CiftiVectorOperationParameters",
     "cifti_vector_operation",
     "cifti_vector_operation_params",
 ]

@@ -293,6 +293,7 @@ def mri_funcvits(
 __all__ = [
     "MRI_FUNCVITS_METADATA",
     "MriFuncvitsOutputs",
+    "MriFuncvitsParameters",
     "mri_funcvits",
     "mri_funcvits_params",
 ]

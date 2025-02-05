@@ -207,6 +207,7 @@ def mris_jacobian(
 __all__ = [
     "MRIS_JACOBIAN_METADATA",
     "MrisJacobianOutputs",
+    "MrisJacobianParameters",
     "mris_jacobian",
     "mris_jacobian_params",
 ]

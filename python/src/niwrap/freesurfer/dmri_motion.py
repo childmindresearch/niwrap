@@ -279,6 +279,7 @@ def dmri_motion(
 __all__ = [
     "DMRI_MOTION_METADATA",
     "DmriMotionOutputs",
+    "DmriMotionParameters",
     "dmri_motion",
     "dmri_motion_params",
 ]

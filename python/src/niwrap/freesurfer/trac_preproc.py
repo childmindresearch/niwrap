@@ -273,6 +273,7 @@ def trac_preproc(
 __all__ = [
     "TRAC_PREPROC_METADATA",
     "TracPreprocOutputs",
+    "TracPreprocParameters",
     "trac_preproc",
     "trac_preproc_params",
 ]

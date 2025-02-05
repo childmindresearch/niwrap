@@ -484,6 +484,7 @@ def fslregister(
 __all__ = [
     "FSLREGISTER_METADATA",
     "FslregisterOutputs",
+    "FslregisterParameters",
     "fslregister",
     "fslregister_params",
 ]

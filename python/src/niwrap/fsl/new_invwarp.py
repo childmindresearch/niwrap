@@ -258,6 +258,7 @@ def new_invwarp(
 __all__ = [
     "NEW_INVWARP_METADATA",
     "NewInvwarpOutputs",
+    "NewInvwarpParameters",
     "new_invwarp",
     "new_invwarp_params",
 ]

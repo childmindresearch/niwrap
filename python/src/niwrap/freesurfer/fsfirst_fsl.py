@@ -159,6 +159,7 @@ def fsfirst_fsl(
 __all__ = [
     "FSFIRST_FSL_METADATA",
     "FsfirstFslOutputs",
+    "FsfirstFslParameters",
     "fsfirst_fsl",
     "fsfirst_fsl_params",
 ]

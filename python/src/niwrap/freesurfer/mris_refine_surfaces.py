@@ -236,6 +236,7 @@ def mris_refine_surfaces(
 __all__ = [
     "MRIS_REFINE_SURFACES_METADATA",
     "MrisRefineSurfacesOutputs",
+    "MrisRefineSurfacesParameters",
     "mris_refine_surfaces",
     "mris_refine_surfaces_params",
 ]

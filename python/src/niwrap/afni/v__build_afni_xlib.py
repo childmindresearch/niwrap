@@ -189,6 +189,7 @@ def v__build_afni_xlib(
 
 __all__ = [
     "VBuildAfniXlibOutputs",
+    "VBuildAfniXlibParameters",
     "V__BUILD_AFNI_XLIB_METADATA",
     "v__build_afni_xlib",
     "v__build_afni_xlib_params",

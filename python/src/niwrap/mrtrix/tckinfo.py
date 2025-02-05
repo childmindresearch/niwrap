@@ -307,7 +307,9 @@ def tckinfo(
 
 __all__ = [
     "TCKINFO_METADATA",
+    "TckinfoConfigParameters",
     "TckinfoOutputs",
+    "TckinfoParameters",
     "tckinfo",
     "tckinfo_config_params",
     "tckinfo_params",

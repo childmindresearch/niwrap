@@ -308,6 +308,7 @@ def surf_to_surf(
 __all__ = [
     "SURF_TO_SURF_METADATA",
     "SurfToSurfOutputs",
+    "SurfToSurfParameters",
     "surf_to_surf",
     "surf_to_surf_params",
 ]

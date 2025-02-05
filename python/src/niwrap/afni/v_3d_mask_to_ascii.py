@@ -180,6 +180,7 @@ def v_3d_mask_to_ascii(
 
 __all__ = [
     "V3dMaskToAsciiOutputs",
+    "V3dMaskToAsciiParameters",
     "V_3D_MASK_TO_ASCII_METADATA",
     "v_3d_mask_to_ascii",
     "v_3d_mask_to_ascii_params",

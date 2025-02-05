@@ -1150,6 +1150,7 @@ def v_3dinfo(
 
 __all__ = [
     "V3dinfoOutputs",
+    "V3dinfoParameters",
     "V_3DINFO_METADATA",
     "v_3dinfo",
     "v_3dinfo_params",

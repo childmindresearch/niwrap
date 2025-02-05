@@ -198,6 +198,7 @@ def mris_nudge(
 __all__ = [
     "MRIS_NUDGE_METADATA",
     "MrisNudgeOutputs",
+    "MrisNudgeParameters",
     "mris_nudge",
     "mris_nudge_params",
 ]

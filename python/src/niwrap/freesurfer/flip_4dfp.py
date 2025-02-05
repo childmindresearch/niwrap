@@ -218,6 +218,7 @@ def flip_4dfp(
 __all__ = [
     "FLIP_4DFP_METADATA",
     "Flip4dfpOutputs",
+    "Flip4dfpParameters",
     "flip_4dfp",
     "flip_4dfp_params",
 ]

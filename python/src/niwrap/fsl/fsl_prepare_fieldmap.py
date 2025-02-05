@@ -209,6 +209,7 @@ def fsl_prepare_fieldmap(
 __all__ = [
     "FSL_PREPARE_FIELDMAP_METADATA",
     "FslPrepareFieldmapOutputs",
+    "FslPrepareFieldmapParameters",
     "fsl_prepare_fieldmap",
     "fsl_prepare_fieldmap_params",
 ]

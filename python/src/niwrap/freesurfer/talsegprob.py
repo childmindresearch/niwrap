@@ -352,6 +352,7 @@ def talsegprob(
 __all__ = [
     "TALSEGPROB_METADATA",
     "TalsegprobOutputs",
+    "TalsegprobParameters",
     "talsegprob",
     "talsegprob_params",
 ]

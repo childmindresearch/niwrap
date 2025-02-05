@@ -383,6 +383,9 @@ def metric_weighted_stats(
 __all__ = [
     "METRIC_WEIGHTED_STATS_METADATA",
     "MetricWeightedStatsOutputs",
+    "MetricWeightedStatsParameters",
+    "MetricWeightedStatsRoiParameters",
+    "MetricWeightedStatsStdevParameters",
     "metric_weighted_stats",
     "metric_weighted_stats_params",
     "metric_weighted_stats_roi_params",

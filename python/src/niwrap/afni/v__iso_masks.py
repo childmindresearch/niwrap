@@ -175,6 +175,7 @@ def v__iso_masks(
 
 __all__ = [
     "VIsoMasksOutputs",
+    "VIsoMasksParameters",
     "V__ISO_MASKS_METADATA",
     "v__iso_masks",
     "v__iso_masks_params",

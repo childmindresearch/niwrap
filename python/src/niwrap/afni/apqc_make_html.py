@@ -167,6 +167,7 @@ def apqc_make_html(
 __all__ = [
     "APQC_MAKE_HTML_METADATA",
     "ApqcMakeHtmlOutputs",
+    "ApqcMakeHtmlParameters",
     "apqc_make_html",
     "apqc_make_html_params",
 ]

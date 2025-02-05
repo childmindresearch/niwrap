@@ -242,6 +242,7 @@ def v_3d_local_svd(
 
 __all__ = [
     "V3dLocalSvdOutputs",
+    "V3dLocalSvdParameters",
     "V_3D_LOCAL_SVD_METADATA",
     "v_3d_local_svd",
     "v_3d_local_svd_params",

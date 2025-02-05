@@ -222,6 +222,7 @@ def border_length(
 __all__ = [
     "BORDER_LENGTH_METADATA",
     "BorderLengthOutputs",
+    "BorderLengthParameters",
     "border_length",
     "border_length_params",
 ]

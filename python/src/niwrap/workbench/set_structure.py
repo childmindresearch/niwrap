@@ -318,6 +318,7 @@ def set_structure(
 __all__ = [
     "SET_STRUCTURE_METADATA",
     "SetStructureOutputs",
+    "SetStructureParameters",
     "set_structure",
     "set_structure_params",
 ]

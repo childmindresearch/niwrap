@@ -421,7 +421,11 @@ def fixel2peaks(
 
 __all__ = [
     "FIXEL2PEAKS_METADATA",
+    "Fixel2peaksConfigParameters",
     "Fixel2peaksOutputs",
+    "Fixel2peaksParameters",
+    "Fixel2peaksVariousFileParameters",
+    "Fixel2peaksVariousStringParameters",
     "fixel2peaks",
     "fixel2peaks_config_params",
     "fixel2peaks_params",

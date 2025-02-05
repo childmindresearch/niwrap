@@ -266,6 +266,7 @@ def fslcreatehd(
 __all__ = [
     "FSLCREATEHD_METADATA",
     "FslcreatehdOutputs",
+    "FslcreatehdParameters",
     "fslcreatehd",
     "fslcreatehd_params",
 ]

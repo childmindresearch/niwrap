@@ -295,6 +295,7 @@ def mri_cc(
 __all__ = [
     "MRI_CC_METADATA",
     "MriCcOutputs",
+    "MriCcParameters",
     "mri_cc",
     "mri_cc_params",
 ]

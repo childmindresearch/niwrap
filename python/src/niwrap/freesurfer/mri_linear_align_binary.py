@@ -197,6 +197,7 @@ def mri_linear_align_binary(
 __all__ = [
     "MRI_LINEAR_ALIGN_BINARY_METADATA",
     "MriLinearAlignBinaryOutputs",
+    "MriLinearAlignBinaryParameters",
     "mri_linear_align_binary",
     "mri_linear_align_binary_params",
 ]

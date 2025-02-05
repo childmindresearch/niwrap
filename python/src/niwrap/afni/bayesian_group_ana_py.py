@@ -322,6 +322,7 @@ def bayesian_group_ana_py(
 __all__ = [
     "BAYESIAN_GROUP_ANA_PY_METADATA",
     "BayesianGroupAnaPyOutputs",
+    "BayesianGroupAnaPyParameters",
     "bayesian_group_ana_py",
     "bayesian_group_ana_py_params",
 ]

@@ -226,6 +226,7 @@ def volume_label_modify_keys(
 __all__ = [
     "VOLUME_LABEL_MODIFY_KEYS_METADATA",
     "VolumeLabelModifyKeysOutputs",
+    "VolumeLabelModifyKeysParameters",
     "volume_label_modify_keys",
     "volume_label_modify_keys_params",
 ]

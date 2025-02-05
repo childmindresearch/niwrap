@@ -227,6 +227,7 @@ def trac_all(
 __all__ = [
     "TRAC_ALL_METADATA",
     "TracAllOutputs",
+    "TracAllParameters",
     "trac_all",
     "trac_all_params",
 ]

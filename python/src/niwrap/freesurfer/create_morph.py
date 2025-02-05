@@ -222,6 +222,7 @@ def create_morph(
 __all__ = [
     "CREATE_MORPH_METADATA",
     "CreateMorphOutputs",
+    "CreateMorphParameters",
     "create_morph",
     "create_morph_params",
 ]

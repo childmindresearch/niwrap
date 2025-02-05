@@ -398,7 +398,7 @@ def mtnormalise_outputs(
         check_norm=execution.output_file(params.get("check_norm")) if (params.get("check_norm") is not None) else None,
         check_mask=execution.output_file(params.get("check_mask")) if (params.get("check_mask") is not None) else None,
         check_factors=execution.output_file(params.get("check_factors")) if (params.get("check_factors") is not None) else None,
-        input_output=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in input_output],
+        input_output=[dyn_outputs(i["__STYXTYPE__"])(i, execution) if dyn_outputs(i["__STYXTYPE__"]) else None for i in params.get("input_output")],
     )
     return ret
 
@@ -563,8 +563,11 @@ def mtnormalise(
 
 __all__ = [
     "MTNORMALISE_METADATA",
+    "MtnormaliseConfigParameters",
     "MtnormaliseInputOutputOutputs",
+    "MtnormaliseInputOutputParameters",
     "MtnormaliseOutputs",
+    "MtnormaliseParameters",
     "mtnormalise",
     "mtnormalise_config_params",
     "mtnormalise_input_output_params",

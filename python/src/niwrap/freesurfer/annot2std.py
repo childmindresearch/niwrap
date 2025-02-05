@@ -332,6 +332,7 @@ def annot2std(
 __all__ = [
     "ANNOT2STD_METADATA",
     "Annot2stdOutputs",
+    "Annot2stdParameters",
     "annot2std",
     "annot2std_params",
 ]

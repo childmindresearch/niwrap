@@ -485,6 +485,7 @@ def tkregisterfv(
 __all__ = [
     "TKREGISTERFV_METADATA",
     "TkregisterfvOutputs",
+    "TkregisterfvParameters",
     "tkregisterfv",
     "tkregisterfv_params",
 ]

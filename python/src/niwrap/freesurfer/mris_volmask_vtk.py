@@ -376,6 +376,7 @@ def mris_volmask_vtk(
 __all__ = [
     "MRIS_VOLMASK_VTK_METADATA",
     "MrisVolmaskVtkOutputs",
+    "MrisVolmaskVtkParameters",
     "mris_volmask_vtk",
     "mris_volmask_vtk_params",
 ]

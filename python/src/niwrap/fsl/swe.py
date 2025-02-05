@@ -545,6 +545,7 @@ def swe(
 __all__ = [
     "SWE_METADATA",
     "SweOutputs",
+    "SweParameters",
     "swe",
     "swe_params",
 ]

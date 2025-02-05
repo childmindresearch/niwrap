@@ -523,6 +523,7 @@ def mri_segment(
 __all__ = [
     "MRI_SEGMENT_METADATA",
     "MriSegmentOutputs",
+    "MriSegmentParameters",
     "mri_segment",
     "mri_segment_params",
 ]

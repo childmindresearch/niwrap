@@ -225,6 +225,7 @@ def mris_divide_parcellation(
 __all__ = [
     "MRIS_DIVIDE_PARCELLATION_METADATA",
     "MrisDivideParcellationOutputs",
+    "MrisDivideParcellationParameters",
     "mris_divide_parcellation",
     "mris_divide_parcellation_params",
 ]

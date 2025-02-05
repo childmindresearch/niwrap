@@ -383,7 +383,9 @@ def file_information(
 
 __all__ = [
     "FILE_INFORMATION_METADATA",
+    "FileInformationOnlyMetadataParameters",
     "FileInformationOutputs",
+    "FileInformationParameters",
     "file_information",
     "file_information_only_metadata_params",
     "file_information_params",

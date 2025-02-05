@@ -199,6 +199,7 @@ def mri_add_xform_to_header(
 __all__ = [
     "MRI_ADD_XFORM_TO_HEADER_METADATA",
     "MriAddXformToHeaderOutputs",
+    "MriAddXformToHeaderParameters",
     "mri_add_xform_to_header",
     "mri_add_xform_to_header_params",
 ]

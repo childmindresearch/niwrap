@@ -244,6 +244,7 @@ def v_3d_automask(
 
 __all__ = [
     "V3dAutomaskOutputs",
+    "V3dAutomaskParameters",
     "V_3D_AUTOMASK_METADATA",
     "v_3d_automask",
     "v_3d_automask_params",

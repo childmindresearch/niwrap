@@ -795,6 +795,7 @@ def mri_surf2surf(
 __all__ = [
     "MRI_SURF2SURF_METADATA",
     "MriSurf2surfOutputs",
+    "MriSurf2surfParameters",
     "mri_surf2surf",
     "mri_surf2surf_params",
 ]

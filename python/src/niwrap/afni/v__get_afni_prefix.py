@@ -172,6 +172,7 @@ def v__get_afni_prefix(
 
 __all__ = [
     "VGetAfniPrefixOutputs",
+    "VGetAfniPrefixParameters",
     "V__GET_AFNI_PREFIX_METADATA",
     "v__get_afni_prefix",
     "v__get_afni_prefix_params",

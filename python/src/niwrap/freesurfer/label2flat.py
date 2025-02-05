@@ -190,6 +190,7 @@ def label2flat(
 __all__ = [
     "LABEL2FLAT_METADATA",
     "Label2flatOutputs",
+    "Label2flatParameters",
     "label2flat",
     "label2flat_params",
 ]

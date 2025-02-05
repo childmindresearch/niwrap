@@ -202,6 +202,7 @@ def v__noisy_skull_strip(
 
 __all__ = [
     "VNoisySkullStripOutputs",
+    "VNoisySkullStripParameters",
     "V__NOISY_SKULL_STRIP_METADATA",
     "v__noisy_skull_strip",
     "v__noisy_skull_strip_params",

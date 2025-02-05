@@ -360,6 +360,7 @@ def dt_recon(
 __all__ = [
     "DT_RECON_METADATA",
     "DtReconOutputs",
+    "DtReconParameters",
     "dt_recon",
     "dt_recon_params",
 ]

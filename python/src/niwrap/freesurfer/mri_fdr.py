@@ -259,6 +259,7 @@ def mri_fdr(
 __all__ = [
     "MRI_FDR_METADATA",
     "MriFdrOutputs",
+    "MriFdrParameters",
     "mri_fdr",
     "mri_fdr_params",
 ]

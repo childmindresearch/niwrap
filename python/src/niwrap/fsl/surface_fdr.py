@@ -175,6 +175,7 @@ def surface_fdr(
 __all__ = [
     "SURFACE_FDR_METADATA",
     "SurfaceFdrOutputs",
+    "SurfaceFdrParameters",
     "surface_fdr",
     "surface_fdr_params",
 ]

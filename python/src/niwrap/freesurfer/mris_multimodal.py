@@ -263,6 +263,7 @@ def mris_multimodal(
 __all__ = [
     "MRIS_MULTIMODAL_METADATA",
     "MrisMultimodalOutputs",
+    "MrisMultimodalParameters",
     "mris_multimodal",
     "mris_multimodal_params",
 ]

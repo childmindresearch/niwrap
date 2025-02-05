@@ -561,6 +561,8 @@ def ants_atropos_n4_sh(
 __all__ = [
     "ANTS_ATROPOS_N4_SH_METADATA",
     "AntsAtroposN4ShOutputs",
+    "AntsAtroposN4ShParameters",
+    "AntsAtroposN4ShSegmentationPriorsParameters",
     "ants_atropos_n4_sh",
     "ants_atropos_n4_sh_params",
     "ants_atropos_n4_sh_segmentation_priors_params",

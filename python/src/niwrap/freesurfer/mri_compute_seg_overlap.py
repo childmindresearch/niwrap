@@ -265,6 +265,7 @@ def mri_compute_seg_overlap(
 __all__ = [
     "MRI_COMPUTE_SEG_OVERLAP_METADATA",
     "MriComputeSegOverlapOutputs",
+    "MriComputeSegOverlapParameters",
     "mri_compute_seg_overlap",
     "mri_compute_seg_overlap_params",
 ]

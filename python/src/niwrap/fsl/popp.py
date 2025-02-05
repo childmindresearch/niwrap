@@ -543,6 +543,7 @@ def popp(
 __all__ = [
     "POPP_METADATA",
     "PoppOutputs",
+    "PoppParameters",
     "popp",
     "popp_params",
 ]

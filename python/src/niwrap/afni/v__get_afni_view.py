@@ -170,6 +170,7 @@ def v__get_afni_view(
 
 __all__ = [
     "VGetAfniViewOutputs",
+    "VGetAfniViewParameters",
     "V__GET_AFNI_VIEW_METADATA",
     "v__get_afni_view",
     "v__get_afni_view_params",

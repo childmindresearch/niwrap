@@ -180,6 +180,7 @@ def remove_talairach(
 __all__ = [
     "REMOVE_TALAIRACH_METADATA",
     "RemoveTalairachOutputs",
+    "RemoveTalairachParameters",
     "remove_talairach",
     "remove_talairach_params",
 ]

@@ -187,6 +187,7 @@ def surfmaths(
 __all__ = [
     "SURFMATHS_METADATA",
     "SurfmathsOutputs",
+    "SurfmathsParameters",
     "surfmaths",
     "surfmaths_params",
 ]

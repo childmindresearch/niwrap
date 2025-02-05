@@ -275,6 +275,7 @@ def mri_path2label(
 __all__ = [
     "MRI_PATH2LABEL_METADATA",
     "MriPath2labelOutputs",
+    "MriPath2labelParameters",
     "mri_path2label",
     "mri_path2label_params",
 ]

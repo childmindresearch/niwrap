@@ -183,6 +183,7 @@ def mris_sphere(
 __all__ = [
     "MRIS_SPHERE_METADATA",
     "MrisSphereOutputs",
+    "MrisSphereParameters",
     "mris_sphere",
     "mris_sphere_params",
 ]

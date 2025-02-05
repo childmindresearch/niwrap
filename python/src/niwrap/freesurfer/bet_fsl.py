@@ -414,6 +414,7 @@ def bet_fsl(
 __all__ = [
     "BET_FSL_METADATA",
     "BetFslOutputs",
+    "BetFslParameters",
     "bet_fsl",
     "bet_fsl_params",
 ]

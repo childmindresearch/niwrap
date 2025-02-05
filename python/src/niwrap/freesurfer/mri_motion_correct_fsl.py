@@ -177,6 +177,7 @@ def mri_motion_correct_fsl(
 __all__ = [
     "MRI_MOTION_CORRECT_FSL_METADATA",
     "MriMotionCorrectFslOutputs",
+    "MriMotionCorrectFslParameters",
     "mri_motion_correct_fsl",
     "mri_motion_correct_fsl_params",
 ]

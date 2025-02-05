@@ -598,6 +598,7 @@ def mri_concat(
 __all__ = [
     "MRI_CONCAT_METADATA",
     "MriConcatOutputs",
+    "MriConcatParameters",
     "mri_concat",
     "mri_concat_params",
 ]

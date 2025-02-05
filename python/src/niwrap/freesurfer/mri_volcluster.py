@@ -711,6 +711,7 @@ def mri_volcluster(
 __all__ = [
     "MRI_VOLCLUSTER_METADATA",
     "MriVolclusterOutputs",
+    "MriVolclusterParameters",
     "mri_volcluster",
     "mri_volcluster_params",
 ]

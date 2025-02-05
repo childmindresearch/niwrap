@@ -221,6 +221,7 @@ def sigloss(
 __all__ = [
     "SIGLOSS_METADATA",
     "SiglossOutputs",
+    "SiglossParameters",
     "sigloss",
     "sigloss_params",
 ]

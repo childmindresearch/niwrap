@@ -282,6 +282,7 @@ def fdr(
 __all__ = [
     "FDR_METADATA",
     "FdrOutputs",
+    "FdrParameters",
     "fdr",
     "fdr_params",
 ]

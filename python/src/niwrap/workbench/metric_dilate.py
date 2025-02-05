@@ -333,6 +333,7 @@ def metric_dilate(
 __all__ = [
     "METRIC_DILATE_METADATA",
     "MetricDilateOutputs",
+    "MetricDilateParameters",
     "metric_dilate",
     "metric_dilate_params",
 ]

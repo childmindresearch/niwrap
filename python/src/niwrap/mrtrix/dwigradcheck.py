@@ -403,7 +403,7 @@ def dwigradcheck_outputs(
         root=execution.output_file("."),
         export_grad_mrtrix=execution.output_file(params.get("export_grad_mrtrix")) if (params.get("export_grad_mrtrix") is not None) else None,
         export_grad_fsl=execution.output_file(params.get("export_grad_mrtrix")) if (params.get("export_grad_mrtrix") is not None) else None,
-        export_grad_fsl_=dyn_outputs(export_grad_fsl["__STYXTYPE__"])(export_grad_fsl, execution) if export_grad_fsl else None,
+        export_grad_fsl_=dyn_outputs(params.get("export_grad_fsl")["__STYXTYPE__"])(params.get("export_grad_fsl"), execution) if params.get("export_grad_fsl") else None,
     )
     return ret
 
@@ -501,7 +501,10 @@ def dwigradcheck(
 __all__ = [
     "DWIGRADCHECK_METADATA",
     "DwigradcheckExportGradFslOutputs",
+    "DwigradcheckExportGradFslParameters",
+    "DwigradcheckFslgradParameters",
     "DwigradcheckOutputs",
+    "DwigradcheckParameters",
     "dwigradcheck",
     "dwigradcheck_export_grad_fsl_params",
     "dwigradcheck_fslgrad_params",

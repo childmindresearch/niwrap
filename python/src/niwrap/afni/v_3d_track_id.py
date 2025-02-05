@@ -577,6 +577,7 @@ def v_3d_track_id(
 
 __all__ = [
     "V3dTrackIdOutputs",
+    "V3dTrackIdParameters",
     "V_3D_TRACK_ID_METADATA",
     "v_3d_track_id",
     "v_3d_track_id_params",

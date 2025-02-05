@@ -373,6 +373,7 @@ def aparc_stats_aseg(
 __all__ = [
     "APARC_STATS_ASEG_METADATA",
     "AparcStatsAsegOutputs",
+    "AparcStatsAsegParameters",
     "aparc_stats_aseg",
     "aparc_stats_aseg_params",
 ]

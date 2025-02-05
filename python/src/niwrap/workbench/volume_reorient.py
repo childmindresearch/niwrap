@@ -203,6 +203,7 @@ def volume_reorient(
 __all__ = [
     "VOLUME_REORIENT_METADATA",
     "VolumeReorientOutputs",
+    "VolumeReorientParameters",
     "volume_reorient",
     "volume_reorient_params",
 ]

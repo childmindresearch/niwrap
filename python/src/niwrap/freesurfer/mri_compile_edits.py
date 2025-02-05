@@ -178,6 +178,7 @@ def mri_compile_edits(
 __all__ = [
     "MRI_COMPILE_EDITS_METADATA",
     "MriCompileEditsOutputs",
+    "MriCompileEditsParameters",
     "mri_compile_edits",
     "mri_compile_edits_params",
 ]

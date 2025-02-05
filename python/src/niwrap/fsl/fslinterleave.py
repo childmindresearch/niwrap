@@ -191,6 +191,7 @@ def fslinterleave(
 __all__ = [
     "FSLINTERLEAVE_METADATA",
     "FslinterleaveOutputs",
+    "FslinterleaveParameters",
     "fslinterleave",
     "fslinterleave_params",
 ]

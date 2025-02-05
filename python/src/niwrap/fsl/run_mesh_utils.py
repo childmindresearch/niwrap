@@ -216,6 +216,7 @@ def run_mesh_utils(
 __all__ = [
     "RUN_MESH_UTILS_METADATA",
     "RunMeshUtilsOutputs",
+    "RunMeshUtilsParameters",
     "run_mesh_utils",
     "run_mesh_utils_params",
 ]

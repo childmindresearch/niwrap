@@ -190,6 +190,7 @@ def mri_hires_register(
 __all__ = [
     "MRI_HIRES_REGISTER_METADATA",
     "MriHiresRegisterOutputs",
+    "MriHiresRegisterParameters",
     "mri_hires_register",
     "mri_hires_register_params",
 ]

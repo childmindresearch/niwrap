@@ -834,7 +834,12 @@ def fixelcfestats(
 
 __all__ = [
     "FIXELCFESTATS_METADATA",
+    "FixelcfestatsColumnParameters",
+    "FixelcfestatsConfigParameters",
     "FixelcfestatsOutputs",
+    "FixelcfestatsParameters",
+    "FixelcfestatsVariousFileParameters",
+    "FixelcfestatsVariousStringParameters",
     "fixelcfestats",
     "fixelcfestats_column_params",
     "fixelcfestats_config_params",

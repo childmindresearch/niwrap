@@ -231,6 +231,7 @@ def v_3d_notes(
 
 __all__ = [
     "V3dNotesOutputs",
+    "V3dNotesParameters",
     "V_3D_NOTES_METADATA",
     "v_3d_notes",
     "v_3d_notes_params",

@@ -336,6 +336,7 @@ def v_3d_polyfit(
 
 __all__ = [
     "V3dPolyfitOutputs",
+    "V3dPolyfitParameters",
     "V_3D_POLYFIT_METADATA",
     "v_3d_polyfit",
     "v_3d_polyfit_params",

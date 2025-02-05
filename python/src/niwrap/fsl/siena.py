@@ -305,6 +305,7 @@ def siena(
 __all__ = [
     "SIENA_METADATA",
     "SienaOutputs",
+    "SienaParameters",
     "siena",
     "siena_params",
 ]

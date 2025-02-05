@@ -327,6 +327,8 @@ def cifti_stats(
 __all__ = [
     "CIFTI_STATS_METADATA",
     "CiftiStatsOutputs",
+    "CiftiStatsParameters",
+    "CiftiStatsRoiParameters",
     "cifti_stats",
     "cifti_stats_params",
     "cifti_stats_roi_params",

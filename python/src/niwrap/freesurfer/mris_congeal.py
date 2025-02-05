@@ -308,6 +308,7 @@ def mris_congeal(
 __all__ = [
     "MRIS_CONGEAL_METADATA",
     "MrisCongealOutputs",
+    "MrisCongealParameters",
     "mris_congeal",
     "mris_congeal_params",
 ]

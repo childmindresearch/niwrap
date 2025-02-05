@@ -247,6 +247,7 @@ def swap_voxelwise(
 __all__ = [
     "SWAP_VOXELWISE_METADATA",
     "SwapVoxelwiseOutputs",
+    "SwapVoxelwiseParameters",
     "swap_voxelwise",
     "swap_voxelwise_params",
 ]

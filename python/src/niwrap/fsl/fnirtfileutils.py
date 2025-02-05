@@ -296,6 +296,7 @@ def fnirtfileutils(
 __all__ = [
     "FNIRTFILEUTILS_METADATA",
     "FnirtfileutilsOutputs",
+    "FnirtfileutilsParameters",
     "fnirtfileutils",
     "fnirtfileutils_params",
 ]

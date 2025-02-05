@@ -164,6 +164,7 @@ def adjunct_simplify_cost(
 __all__ = [
     "ADJUNCT_SIMPLIFY_COST_METADATA",
     "AdjunctSimplifyCostOutputs",
+    "AdjunctSimplifyCostParameters",
     "adjunct_simplify_cost",
     "adjunct_simplify_cost_params",
 ]

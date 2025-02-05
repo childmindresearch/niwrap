@@ -174,6 +174,7 @@ def hiam_make_surfaces(
 __all__ = [
     "HIAM_MAKE_SURFACES_METADATA",
     "HiamMakeSurfacesOutputs",
+    "HiamMakeSurfacesParameters",
     "hiam_make_surfaces",
     "hiam_make_surfaces_params",
 ]

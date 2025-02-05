@@ -340,6 +340,7 @@ def brain_skin(
 __all__ = [
     "BRAIN_SKIN_METADATA",
     "BrainSkinOutputs",
+    "BrainSkinParameters",
     "brain_skin",
     "brain_skin_params",
 ]

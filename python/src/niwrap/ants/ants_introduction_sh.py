@@ -291,6 +291,7 @@ def ants_introduction_sh(
 __all__ = [
     "ANTS_INTRODUCTION_SH_METADATA",
     "AntsIntroductionShOutputs",
+    "AntsIntroductionShParameters",
     "ants_introduction_sh",
     "ants_introduction_sh_params",
 ]

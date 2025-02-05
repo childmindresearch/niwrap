@@ -221,6 +221,7 @@ def mris_label_mode(
 __all__ = [
     "MRIS_LABEL_MODE_METADATA",
     "MrisLabelModeOutputs",
+    "MrisLabelModeParameters",
     "mris_label_mode",
     "mris_label_mode_params",
 ]

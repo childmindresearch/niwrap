@@ -280,6 +280,7 @@ def distancemap(
 __all__ = [
     "DISTANCEMAP_METADATA",
     "DistancemapOutputs",
+    "DistancemapParameters",
     "distancemap",
     "distancemap_params",
 ]

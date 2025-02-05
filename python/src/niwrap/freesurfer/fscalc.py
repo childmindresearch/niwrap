@@ -251,6 +251,7 @@ def fscalc(
 __all__ = [
     "FSCALC_METADATA",
     "FscalcOutputs",
+    "FscalcParameters",
     "fscalc",
     "fscalc_params",
 ]

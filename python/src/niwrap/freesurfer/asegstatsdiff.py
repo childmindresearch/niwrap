@@ -188,6 +188,7 @@ def asegstatsdiff(
 __all__ = [
     "ASEGSTATSDIFF_METADATA",
     "AsegstatsdiffOutputs",
+    "AsegstatsdiffParameters",
     "asegstatsdiff",
     "asegstatsdiff_params",
 ]

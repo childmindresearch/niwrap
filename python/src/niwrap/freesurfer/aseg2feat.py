@@ -253,6 +253,7 @@ def aseg2feat(
 __all__ = [
     "ASEG2FEAT_METADATA",
     "Aseg2featOutputs",
+    "Aseg2featParameters",
     "aseg2feat",
     "aseg2feat_params",
 ]

@@ -263,6 +263,7 @@ def stattablediff(
 __all__ = [
     "STATTABLEDIFF_METADATA",
     "StattablediffOutputs",
+    "StattablediffParameters",
     "stattablediff",
     "stattablediff_params",
 ]

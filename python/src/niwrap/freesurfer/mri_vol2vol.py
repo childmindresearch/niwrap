@@ -637,6 +637,7 @@ def mri_vol2vol(
 __all__ = [
     "MRI_VOL2VOL_METADATA",
     "MriVol2volOutputs",
+    "MriVol2volParameters",
     "mri_vol2vol",
     "mri_vol2vol_params",
 ]

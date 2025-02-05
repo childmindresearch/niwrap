@@ -217,6 +217,7 @@ def mri_threshold(
 __all__ = [
     "MRI_THRESHOLD_METADATA",
     "MriThresholdOutputs",
+    "MriThresholdParameters",
     "mri_threshold",
     "mri_threshold_params",
 ]

@@ -520,7 +520,12 @@ def cifti_replace_structure(
 
 __all__ = [
     "CIFTI_REPLACE_STRUCTURE_METADATA",
+    "CiftiReplaceStructureLabelParameters",
+    "CiftiReplaceStructureMetricParameters",
     "CiftiReplaceStructureOutputs",
+    "CiftiReplaceStructureParameters",
+    "CiftiReplaceStructureVolumeAllParameters",
+    "CiftiReplaceStructureVolumeParameters",
     "cifti_replace_structure",
     "cifti_replace_structure_label_params",
     "cifti_replace_structure_metric_params",

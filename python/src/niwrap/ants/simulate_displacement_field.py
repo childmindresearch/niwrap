@@ -329,7 +329,10 @@ def simulate_displacement_field(
 
 __all__ = [
     "SIMULATE_DISPLACEMENT_FIELD_METADATA",
+    "SimulateDisplacementFieldBsplineOptionsParameters",
+    "SimulateDisplacementFieldExponentialOptionsParameters",
     "SimulateDisplacementFieldOutputs",
+    "SimulateDisplacementFieldParameters",
     "simulate_displacement_field",
     "simulate_displacement_field_bspline_options_params",
     "simulate_displacement_field_exponential_options_params",

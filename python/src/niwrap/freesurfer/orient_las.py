@@ -186,6 +186,7 @@ def orient_las(
 __all__ = [
     "ORIENT_LAS_METADATA",
     "OrientLasOutputs",
+    "OrientLasParameters",
     "orient_las",
     "orient_las_params",
 ]

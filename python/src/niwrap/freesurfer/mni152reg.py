@@ -213,6 +213,7 @@ def mni152reg(
 __all__ = [
     "MNI152REG_METADATA",
     "Mni152regOutputs",
+    "Mni152regParameters",
     "mni152reg",
     "mni152reg_params",
 ]

@@ -181,6 +181,7 @@ def make_average_subcort(
 __all__ = [
     "MAKE_AVERAGE_SUBCORT_METADATA",
     "MakeAverageSubcortOutputs",
+    "MakeAverageSubcortParameters",
     "make_average_subcort",
     "make_average_subcort_params",
 ]

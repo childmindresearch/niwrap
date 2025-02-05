@@ -487,6 +487,7 @@ def auto_warp_py(
 __all__ = [
     "AUTO_WARP_PY_METADATA",
     "AutoWarpPyOutputs",
+    "AutoWarpPyParameters",
     "auto_warp_py",
     "auto_warp_py_params",
 ]

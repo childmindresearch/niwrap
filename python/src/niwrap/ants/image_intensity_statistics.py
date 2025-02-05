@@ -189,6 +189,7 @@ def image_intensity_statistics(
 __all__ = [
     "IMAGE_INTENSITY_STATISTICS_METADATA",
     "ImageIntensityStatisticsOutputs",
+    "ImageIntensityStatisticsParameters",
     "image_intensity_statistics",
     "image_intensity_statistics_params",
 ]

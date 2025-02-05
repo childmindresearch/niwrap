@@ -299,6 +299,7 @@ def v_3d_tsgen(
 
 __all__ = [
     "V3dTsgenOutputs",
+    "V3dTsgenParameters",
     "V_3D_TSGEN_METADATA",
     "v_3d_tsgen",
     "v_3d_tsgen_params",

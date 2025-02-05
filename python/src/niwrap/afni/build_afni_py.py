@@ -311,6 +311,7 @@ def build_afni_py(
 __all__ = [
     "BUILD_AFNI_PY_METADATA",
     "BuildAfniPyOutputs",
+    "BuildAfniPyParameters",
     "build_afni_py",
     "build_afni_py_params",
 ]

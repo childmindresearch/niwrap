@@ -202,6 +202,7 @@ def setlabelstat(
 __all__ = [
     "SETLABELSTAT_METADATA",
     "SetlabelstatOutputs",
+    "SetlabelstatParameters",
     "setlabelstat",
     "setlabelstat_params",
 ]

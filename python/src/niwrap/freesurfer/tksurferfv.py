@@ -247,6 +247,7 @@ def tksurferfv(
 __all__ = [
     "TKSURFERFV_METADATA",
     "TksurferfvOutputs",
+    "TksurferfvParameters",
     "tksurferfv",
     "tksurferfv_params",
 ]

@@ -269,7 +269,9 @@ def foci_create(
 
 __all__ = [
     "FOCI_CREATE_METADATA",
+    "FociCreateClassParameters",
     "FociCreateOutputs",
+    "FociCreateParameters",
     "foci_create",
     "foci_create_class_params",
     "foci_create_params",

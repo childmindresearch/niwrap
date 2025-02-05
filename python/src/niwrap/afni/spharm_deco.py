@@ -268,6 +268,7 @@ def spharm_deco(
 __all__ = [
     "SPHARM_DECO_METADATA",
     "SpharmDecoOutputs",
+    "SpharmDecoParameters",
     "spharm_deco",
     "spharm_deco_params",
 ]

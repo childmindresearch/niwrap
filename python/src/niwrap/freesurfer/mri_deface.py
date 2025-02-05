@@ -192,6 +192,7 @@ def mri_deface(
 __all__ = [
     "MRI_DEFACE_METADATA",
     "MriDefaceOutputs",
+    "MriDefaceParameters",
     "mri_deface",
     "mri_deface_params",
 ]

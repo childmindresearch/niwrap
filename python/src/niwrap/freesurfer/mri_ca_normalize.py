@@ -470,6 +470,7 @@ def mri_ca_normalize(
 __all__ = [
     "MRI_CA_NORMALIZE_METADATA",
     "MriCaNormalizeOutputs",
+    "MriCaNormalizeParameters",
     "mri_ca_normalize",
     "mri_ca_normalize_params",
 ]

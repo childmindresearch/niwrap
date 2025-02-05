@@ -173,6 +173,7 @@ def proj_thresh(
 __all__ = [
     "PROJ_THRESH_METADATA",
     "ProjThreshOutputs",
+    "ProjThreshParameters",
     "proj_thresh",
     "proj_thresh_params",
 ]

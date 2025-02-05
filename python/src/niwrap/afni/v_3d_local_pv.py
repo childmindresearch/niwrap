@@ -300,6 +300,7 @@ def v_3d_local_pv(
 
 __all__ = [
     "V3dLocalPvOutputs",
+    "V3dLocalPvParameters",
     "V_3D_LOCAL_PV_METADATA",
     "v_3d_local_pv",
     "v_3d_local_pv_params",

@@ -275,6 +275,8 @@ def border_file_export_to_caret5(
 __all__ = [
     "BORDER_FILE_EXPORT_TO_CARET5_METADATA",
     "BorderFileExportToCaret5Outputs",
+    "BorderFileExportToCaret5Parameters",
+    "BorderFileExportToCaret5SurfaceParameters",
     "border_file_export_to_caret5",
     "border_file_export_to_caret5_params",
     "border_file_export_to_caret5_surface_params",

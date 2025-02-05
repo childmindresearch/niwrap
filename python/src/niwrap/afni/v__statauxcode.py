@@ -170,6 +170,7 @@ def v__statauxcode(
 
 __all__ = [
     "VStatauxcodeOutputs",
+    "VStatauxcodeParameters",
     "V__STATAUXCODE_METADATA",
     "v__statauxcode",
     "v__statauxcode_params",

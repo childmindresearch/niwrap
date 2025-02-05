@@ -228,6 +228,7 @@ def v_3d_tcorr1_d(
 
 __all__ = [
     "V3dTcorr1DOutputs",
+    "V3dTcorr1DParameters",
     "V_3D_TCORR1_D_METADATA",
     "v_3d_tcorr1_d",
     "v_3d_tcorr1_d_params",

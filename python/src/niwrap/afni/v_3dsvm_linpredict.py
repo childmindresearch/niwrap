@@ -193,6 +193,7 @@ def v_3dsvm_linpredict(
 
 __all__ = [
     "V3dsvmLinpredictOutputs",
+    "V3dsvmLinpredictParameters",
     "V_3DSVM_LINPREDICT_METADATA",
     "v_3dsvm_linpredict",
     "v_3dsvm_linpredict_params",

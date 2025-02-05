@@ -324,6 +324,7 @@ def seg2recon(
 __all__ = [
     "SEG2RECON_METADATA",
     "Seg2reconOutputs",
+    "Seg2reconParameters",
     "seg2recon",
     "seg2recon_params",
 ]

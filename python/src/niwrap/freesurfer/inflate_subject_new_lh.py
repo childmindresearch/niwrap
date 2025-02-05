@@ -172,6 +172,7 @@ def inflate_subject_new_lh(
 __all__ = [
     "INFLATE_SUBJECT_NEW_LH_METADATA",
     "InflateSubjectNewLhOutputs",
+    "InflateSubjectNewLhParameters",
     "inflate_subject_new_lh",
     "inflate_subject_new_lh_params",
 ]

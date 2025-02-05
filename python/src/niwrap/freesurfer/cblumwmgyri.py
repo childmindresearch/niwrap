@@ -230,6 +230,7 @@ def cblumwmgyri(
 __all__ = [
     "CBLUMWMGYRI_METADATA",
     "CblumwmgyriOutputs",
+    "CblumwmgyriParameters",
     "cblumwmgyri",
     "cblumwmgyri_params",
 ]

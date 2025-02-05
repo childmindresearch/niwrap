@@ -194,6 +194,7 @@ def v__chauffeur_afni(
 
 __all__ = [
     "VChauffeurAfniOutputs",
+    "VChauffeurAfniParameters",
     "V__CHAUFFEUR_AFNI_METADATA",
     "v__chauffeur_afni",
     "v__chauffeur_afni_params",

@@ -254,6 +254,7 @@ def defect2seg(
 __all__ = [
     "DEFECT2SEG_METADATA",
     "Defect2segOutputs",
+    "Defect2segParameters",
     "defect2seg",
     "defect2seg_params",
 ]

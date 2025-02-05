@@ -222,6 +222,7 @@ def v_1dsum(
 
 __all__ = [
     "V1dsumOutputs",
+    "V1dsumParameters",
     "V_1DSUM_METADATA",
     "v_1dsum",
     "v_1dsum_params",

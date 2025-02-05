@@ -343,6 +343,7 @@ def mri_wbc(
 __all__ = [
     "MRI_WBC_METADATA",
     "MriWbcOutputs",
+    "MriWbcParameters",
     "mri_wbc",
     "mri_wbc_params",
 ]

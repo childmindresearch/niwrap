@@ -639,6 +639,7 @@ def mri_surfcluster(
 __all__ = [
     "MRI_SURFCLUSTER_METADATA",
     "MriSurfclusterOutputs",
+    "MriSurfclusterParameters",
     "mri_surfcluster",
     "mri_surfcluster_params",
 ]

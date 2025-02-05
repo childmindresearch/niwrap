@@ -335,7 +335,9 @@ def dirsplit(
 
 __all__ = [
     "DIRSPLIT_METADATA",
+    "DirsplitConfigParameters",
     "DirsplitOutputs",
+    "DirsplitParameters",
     "dirsplit",
     "dirsplit_config_params",
     "dirsplit_params",

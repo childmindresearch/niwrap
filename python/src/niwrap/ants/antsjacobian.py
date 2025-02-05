@@ -221,6 +221,7 @@ def antsjacobian(
 __all__ = [
     "ANTSJACOBIAN_METADATA",
     "AntsjacobianOutputs",
+    "AntsjacobianParameters",
     "antsjacobian",
     "antsjacobian_params",
 ]

@@ -192,6 +192,7 @@ def mris_label_calc(
 __all__ = [
     "MRIS_LABEL_CALC_METADATA",
     "MrisLabelCalcOutputs",
+    "MrisLabelCalcParameters",
     "mris_label_calc",
     "mris_label_calc_params",
 ]

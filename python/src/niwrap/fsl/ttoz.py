@@ -203,6 +203,7 @@ def ttoz(
 __all__ = [
     "TTOZ_METADATA",
     "TtozOutputs",
+    "TtozParameters",
     "ttoz",
     "ttoz_params",
 ]

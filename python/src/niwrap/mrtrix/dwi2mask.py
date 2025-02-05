@@ -435,7 +435,10 @@ def dwi2mask(
 
 __all__ = [
     "DWI2MASK_METADATA",
+    "Dwi2maskConfigParameters",
+    "Dwi2maskFslgradParameters",
     "Dwi2maskOutputs",
+    "Dwi2maskParameters",
     "dwi2mask",
     "dwi2mask_config_params",
     "dwi2mask_fslgrad_params",

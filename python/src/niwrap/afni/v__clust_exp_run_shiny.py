@@ -171,6 +171,7 @@ def v__clust_exp_run_shiny(
 
 __all__ = [
     "VClustExpRunShinyOutputs",
+    "VClustExpRunShinyParameters",
     "V__CLUST_EXP_RUN_SHINY_METADATA",
     "v__clust_exp_run_shiny",
     "v__clust_exp_run_shiny_params",

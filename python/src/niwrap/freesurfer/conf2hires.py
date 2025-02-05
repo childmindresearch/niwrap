@@ -307,6 +307,7 @@ def conf2hires(
 __all__ = [
     "CONF2HIRES_METADATA",
     "Conf2hiresOutputs",
+    "Conf2hiresParameters",
     "conf2hires",
     "conf2hires_params",
 ]

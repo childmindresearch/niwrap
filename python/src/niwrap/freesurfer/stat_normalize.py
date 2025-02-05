@@ -245,6 +245,7 @@ def stat_normalize(
 __all__ = [
     "STAT_NORMALIZE_METADATA",
     "StatNormalizeOutputs",
+    "StatNormalizeParameters",
     "stat_normalize",
     "stat_normalize_params",
 ]

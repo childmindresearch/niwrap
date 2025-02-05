@@ -167,6 +167,7 @@ def gcainit(
 __all__ = [
     "GCAINIT_METADATA",
     "GcainitOutputs",
+    "GcainitParameters",
     "gcainit",
     "gcainit_params",
 ]

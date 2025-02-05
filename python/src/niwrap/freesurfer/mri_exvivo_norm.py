@@ -324,6 +324,7 @@ def mri_exvivo_norm(
 __all__ = [
     "MRI_EXVIVO_NORM_METADATA",
     "MriExvivoNormOutputs",
+    "MriExvivoNormParameters",
     "mri_exvivo_norm",
     "mri_exvivo_norm_params",
 ]

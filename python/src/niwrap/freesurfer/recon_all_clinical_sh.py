@@ -191,6 +191,7 @@ def recon_all_clinical_sh(
 __all__ = [
     "RECON_ALL_CLINICAL_SH_METADATA",
     "ReconAllClinicalShOutputs",
+    "ReconAllClinicalShParameters",
     "recon_all_clinical_sh",
     "recon_all_clinical_sh_params",
 ]

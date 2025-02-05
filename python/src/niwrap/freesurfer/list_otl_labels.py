@@ -167,6 +167,7 @@ def list_otl_labels(
 __all__ = [
     "LIST_OTL_LABELS_METADATA",
     "ListOtlLabelsOutputs",
+    "ListOtlLabelsParameters",
     "list_otl_labels",
     "list_otl_labels_params",
 ]

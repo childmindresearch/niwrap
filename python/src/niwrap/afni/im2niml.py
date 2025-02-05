@@ -171,6 +171,7 @@ def im2niml(
 __all__ = [
     "IM2NIML_METADATA",
     "Im2nimlOutputs",
+    "Im2nimlParameters",
     "im2niml",
     "im2niml_params",
 ]

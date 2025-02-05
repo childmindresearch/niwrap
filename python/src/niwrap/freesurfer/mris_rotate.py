@@ -219,6 +219,7 @@ def mris_rotate(
 __all__ = [
     "MRIS_ROTATE_METADATA",
     "MrisRotateOutputs",
+    "MrisRotateParameters",
     "mris_rotate",
     "mris_rotate_params",
 ]

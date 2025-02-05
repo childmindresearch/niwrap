@@ -249,6 +249,7 @@ def mri_probe_ima(
 __all__ = [
     "MRI_PROBE_IMA_METADATA",
     "MriProbeImaOutputs",
+    "MriProbeImaParameters",
     "mri_probe_ima",
     "mri_probe_ima_params",
 ]

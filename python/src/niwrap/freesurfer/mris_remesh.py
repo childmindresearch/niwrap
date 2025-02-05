@@ -242,6 +242,7 @@ def mris_remesh(
 __all__ = [
     "MRIS_REMESH_METADATA",
     "MrisRemeshOutputs",
+    "MrisRemeshParameters",
     "mris_remesh",
     "mris_remesh_params",
 ]

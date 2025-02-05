@@ -176,6 +176,7 @@ def metadata_remove_provenance(
 __all__ = [
     "METADATA_REMOVE_PROVENANCE_METADATA",
     "MetadataRemoveProvenanceOutputs",
+    "MetadataRemoveProvenanceParameters",
     "metadata_remove_provenance",
     "metadata_remove_provenance_params",
 ]

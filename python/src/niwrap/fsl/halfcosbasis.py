@@ -257,6 +257,7 @@ def halfcosbasis(
 __all__ = [
     "HALFCOSBASIS_METADATA",
     "HalfcosbasisOutputs",
+    "HalfcosbasisParameters",
     "halfcosbasis",
     "halfcosbasis_params",
 ]

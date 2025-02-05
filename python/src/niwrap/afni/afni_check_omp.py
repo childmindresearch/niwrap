@@ -166,6 +166,7 @@ def afni_check_omp(
 __all__ = [
     "AFNI_CHECK_OMP_METADATA",
     "AfniCheckOmpOutputs",
+    "AfniCheckOmpParameters",
     "afni_check_omp",
     "afni_check_omp_params",
 ]

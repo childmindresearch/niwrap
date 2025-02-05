@@ -224,6 +224,7 @@ def mri_synthsr_hyperfine(
 __all__ = [
     "MRI_SYNTHSR_HYPERFINE_METADATA",
     "MriSynthsrHyperfineOutputs",
+    "MriSynthsrHyperfineParameters",
     "mri_synthsr_hyperfine",
     "mri_synthsr_hyperfine_params",
 ]

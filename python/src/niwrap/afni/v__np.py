@@ -172,6 +172,7 @@ def v__np(
 
 __all__ = [
     "VNpOutputs",
+    "VNpParameters",
     "V__NP_METADATA",
     "v__np",
     "v__np_params",

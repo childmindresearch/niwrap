@@ -371,7 +371,9 @@ def mraverageheader(
 
 __all__ = [
     "MRAVERAGEHEADER_METADATA",
+    "MraverageheaderConfigParameters",
     "MraverageheaderOutputs",
+    "MraverageheaderParameters",
     "mraverageheader",
     "mraverageheader_config_params",
     "mraverageheader_params",

@@ -194,6 +194,7 @@ def unpack_mnc_tcl(
 __all__ = [
     "UNPACK_MNC_TCL_METADATA",
     "UnpackMncTclOutputs",
+    "UnpackMncTclParameters",
     "unpack_mnc_tcl",
     "unpack_mnc_tcl_params",
 ]

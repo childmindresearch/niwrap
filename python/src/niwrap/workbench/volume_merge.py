@@ -345,6 +345,10 @@ def volume_merge(
 __all__ = [
     "VOLUME_MERGE_METADATA",
     "VolumeMergeOutputs",
+    "VolumeMergeParameters",
+    "VolumeMergeSubvolumeParameters",
+    "VolumeMergeUpToParameters",
+    "VolumeMergeVolumeParameters",
     "volume_merge",
     "volume_merge_params",
     "volume_merge_subvolume_params",

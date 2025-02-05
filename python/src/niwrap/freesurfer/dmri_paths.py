@@ -593,6 +593,7 @@ def dmri_paths(
 __all__ = [
     "DMRI_PATHS_METADATA",
     "DmriPathsOutputs",
+    "DmriPathsParameters",
     "dmri_paths",
     "dmri_paths_params",
 ]

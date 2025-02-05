@@ -220,6 +220,7 @@ def baycest(
 __all__ = [
     "BAYCEST_METADATA",
     "BaycestOutputs",
+    "BaycestParameters",
     "baycest",
     "baycest_params",
 ]

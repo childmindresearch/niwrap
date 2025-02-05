@@ -232,6 +232,7 @@ def mri_matrix_multiply(
 __all__ = [
     "MRI_MATRIX_MULTIPLY_METADATA",
     "MriMatrixMultiplyOutputs",
+    "MriMatrixMultiplyParameters",
     "mri_matrix_multiply",
     "mri_matrix_multiply_params",
 ]

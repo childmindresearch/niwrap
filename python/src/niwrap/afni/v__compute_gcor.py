@@ -232,6 +232,7 @@ def v__compute_gcor(
 
 __all__ = [
     "VComputeGcorOutputs",
+    "VComputeGcorParameters",
     "V__COMPUTE_GCOR_METADATA",
     "v__compute_gcor",
     "v__compute_gcor_params",

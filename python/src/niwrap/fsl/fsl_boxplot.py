@@ -256,6 +256,7 @@ def fsl_boxplot(
 __all__ = [
     "FSL_BOXPLOT_METADATA",
     "FslBoxplotOutputs",
+    "FslBoxplotParameters",
     "fsl_boxplot",
     "fsl_boxplot_params",
 ]

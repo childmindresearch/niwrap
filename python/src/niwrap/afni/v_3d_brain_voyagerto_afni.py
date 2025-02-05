@@ -292,6 +292,7 @@ def v_3d_brain_voyagerto_afni(
 
 __all__ = [
     "V3dBrainVoyagertoAfniOutputs",
+    "V3dBrainVoyagertoAfniParameters",
     "V_3D_BRAIN_VOYAGERTO_AFNI_METADATA",
     "v_3d_brain_voyagerto_afni",
     "v_3d_brain_voyagerto_afni_params",

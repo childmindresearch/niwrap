@@ -243,6 +243,7 @@ def v_3d_stat_clust(
 
 __all__ = [
     "V3dStatClustOutputs",
+    "V3dStatClustParameters",
     "V_3D_STAT_CLUST_METADATA",
     "v_3d_stat_clust",
     "v_3d_stat_clust_params",

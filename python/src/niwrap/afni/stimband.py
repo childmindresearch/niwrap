@@ -219,6 +219,7 @@ def stimband(
 __all__ = [
     "STIMBAND_METADATA",
     "StimbandOutputs",
+    "StimbandParameters",
     "stimband",
     "stimband_params",
 ]

@@ -220,6 +220,7 @@ def label_to_border(
 __all__ = [
     "LABEL_TO_BORDER_METADATA",
     "LabelToBorderOutputs",
+    "LabelToBorderParameters",
     "label_to_border",
     "label_to_border_params",
 ]

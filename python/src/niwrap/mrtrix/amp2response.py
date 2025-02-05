@@ -425,7 +425,9 @@ def amp2response(
 
 __all__ = [
     "AMP2RESPONSE_METADATA",
+    "Amp2responseConfigParameters",
     "Amp2responseOutputs",
+    "Amp2responseParameters",
     "amp2response",
     "amp2response_config_params",
     "amp2response_params",

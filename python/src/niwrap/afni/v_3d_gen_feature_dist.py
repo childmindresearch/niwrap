@@ -247,6 +247,7 @@ def v_3d_gen_feature_dist(
 
 __all__ = [
     "V3dGenFeatureDistOutputs",
+    "V3dGenFeatureDistParameters",
     "V_3D_GEN_FEATURE_DIST_METADATA",
     "v_3d_gen_feature_dist",
     "v_3d_gen_feature_dist_params",

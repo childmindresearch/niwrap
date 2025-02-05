@@ -420,6 +420,7 @@ def mris_sample_parc(
 __all__ = [
     "MRIS_SAMPLE_PARC_METADATA",
     "MrisSampleParcOutputs",
+    "MrisSampleParcParameters",
     "mris_sample_parc",
     "mris_sample_parc_params",
 ]
