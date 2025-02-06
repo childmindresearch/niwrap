@@ -116,11 +116,7 @@
       "value-key": "[REG_MODE]",
       "command-line-flag": "--reg_mode",
       "optional": true,
-      "value-choices": [
-        "none",
-        "coreg",
-        "robust"
-      ]
+      "value-choices": ["none", "coreg", "robust"]
     },
     {
       "id": "threads",
