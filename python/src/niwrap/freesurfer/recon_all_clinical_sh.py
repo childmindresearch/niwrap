@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RECON_ALL_CLINICAL_SH_METADATA = Metadata(
     id="38aa6da8e0504acf21091c65fc76ff6026418cb2.boutiques",
@@ -23,7 +22,7 @@ ReconAllClinicalShParameters = typing.TypedDict('ReconAllClinicalShParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "recon-all-clinical.sh": recon_all_clinical_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "recon-all-clinical.sh": recon_all_clinical_sh_outputs,
+    }.get(t)
 
 
 class ReconAllClinicalShOutputs(typing.NamedTuple):

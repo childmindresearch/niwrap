@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__STATAUXCODE_METADATA = Metadata(
     id="f6c1767e1a9b29b920fca298ee485697451c9d8a.boutiques",
@@ -20,7 +19,7 @@ VStatauxcodeParameters = typing.TypedDict('VStatauxcodeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@statauxcode": v__statauxcode_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@statauxcode": v__statauxcode_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VStatauxcodeOutputs(typing.NamedTuple):

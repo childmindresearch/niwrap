@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCOLOUR_METADATA = Metadata(
     id="5c34d1664fe214212552914265860aab8fddd651.boutiques",
@@ -38,7 +37,7 @@ MrcolourParameters = typing.TypedDict('MrcolourParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,16 +46,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrcolour": mrcolour_cargs,
         "config": mrcolour_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrcolour": mrcolour_outputs,
-    }
-    return vt.get(t)
+        "config": mrcolour_config_outputs,
+    }.get(t)
 
 
 def mrcolour_config_params(

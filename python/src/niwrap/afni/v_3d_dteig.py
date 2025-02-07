@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DTEIG_METADATA = Metadata(
     id="5c446bf21775547faf60f0fa1576969e859e8381.boutiques",
@@ -24,7 +23,7 @@ V3dDteigParameters = typing.TypedDict('V3dDteigParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDTeig": v_3d_dteig_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDTeig": v_3d_dteig_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDteigOutputs(typing.NamedTuple):

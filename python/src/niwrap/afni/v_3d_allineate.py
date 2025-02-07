@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ALLINEATE_METADATA = Metadata(
     id="9e9b34eca4cf79e9ab56b274a89a3cd8dc932bed.boutiques",
@@ -33,7 +32,7 @@ V3dAllineateParameters = typing.TypedDict('V3dAllineateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dAllineate": v_3d_allineate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dAllineate": v_3d_allineate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dAllineateOutputs(typing.NamedTuple):

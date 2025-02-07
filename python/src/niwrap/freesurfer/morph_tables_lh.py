@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MORPH_TABLES_LH_METADATA = Metadata(
     id="e50487cf18790588cbef4e2983a79d88589f3cc3.boutiques",
@@ -21,7 +20,7 @@ MorphTablesLhParameters = typing.TypedDict('MorphTablesLhParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "morph_tables-lh": morph_tables_lh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "morph_tables-lh": morph_tables_lh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MorphTablesLhOutputs(typing.NamedTuple):

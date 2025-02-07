@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
     id="ada7a00c2444c2cdda91b6587672b293db9d33c4.boutiques",
@@ -21,7 +20,7 @@ VolumeComponentsToFramesParameters = typing.TypedDict('VolumeComponentsToFramesP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-components-to-frames": volume_components_to_frames_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-components-to-frames": volume_components_to_frames_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeComponentsToFramesOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_ERODE_METADATA = Metadata(
     id="2f5afe4b3fb0a139ace3b55625e6f2e66890c6b8.boutiques",
@@ -24,7 +23,7 @@ VolumeErodeParameters = typing.TypedDict('VolumeErodeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-erode": volume_erode_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-erode": volume_erode_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeErodeOutputs(typing.NamedTuple):

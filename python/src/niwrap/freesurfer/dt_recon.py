@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DT_RECON_METADATA = Metadata(
     id="2b8457b9d61edcd3ebcd8e361c6c29d3e697032b.boutiques",
@@ -37,7 +36,7 @@ DtReconParameters = typing.TypedDict('DtReconParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dt_recon": dt_recon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dt_recon": dt_recon_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DtReconOutputs(typing.NamedTuple):

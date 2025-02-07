@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_WARPED_GRID_IMAGE_METADATA = Metadata(
     id="43b75b2bbf1de43489ea85a551208078dcde662b.boutiques",
@@ -25,7 +24,7 @@ CreateWarpedGridImageParameters = typing.TypedDict('CreateWarpedGridImageParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CreateWarpedGridImage": create_warped_grid_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "CreateWarpedGridImage": create_warped_grid_image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateWarpedGridImageOutputs(typing.NamedTuple):

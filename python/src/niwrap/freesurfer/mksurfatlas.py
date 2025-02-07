@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MKSURFATLAS_METADATA = Metadata(
     id="e6c489c83a055f531b66d649615579c36de7f9af.boutiques",
@@ -28,7 +27,7 @@ MksurfatlasParameters = typing.TypedDict('MksurfatlasParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mksurfatlas": mksurfatlas_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mksurfatlas": mksurfatlas_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MksurfatlasOutputs(typing.NamedTuple):

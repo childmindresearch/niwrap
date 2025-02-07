@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_SMOOTHING_METADATA = Metadata(
     id="cf0a4d82cf3614e87a43e9e033bd71df5e871ba3.boutiques",
@@ -34,7 +33,7 @@ MetricSmoothingParameters = typing.TypedDict('MetricSmoothingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-smoothing": metric_smoothing_cargs,
         "roi": metric_smoothing_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-smoothing": metric_smoothing_outputs,
-    }
-    return vt.get(t)
+        "roi": metric_smoothing_roi_outputs,
+    }.get(t)
 
 
 def metric_smoothing_roi_params(

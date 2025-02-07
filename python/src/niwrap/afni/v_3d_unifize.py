@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_UNIFIZE_METADATA = Metadata(
     id="f384aca7310e07ceca93f58ec17ea0b68b11373d.boutiques",
@@ -33,7 +32,7 @@ V3dUnifizeParameters = typing.TypedDict('V3dUnifizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dUnifize": v_3d_unifize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dUnifize": v_3d_unifize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dUnifizeOutputs(typing.NamedTuple):

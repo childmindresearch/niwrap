@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_CRUISETO_AFNI_METADATA = Metadata(
     id="4b72eb1971f7fa8dc1755dacfa39929795432071.boutiques",
@@ -29,7 +28,7 @@ V3dCruisetoAfniParameters = typing.TypedDict('V3dCruisetoAfniParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dCRUISEtoAFNI": v_3d_cruiseto_afni_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dCRUISEtoAFNI": v_3d_cruiseto_afni_outputs,
+    }.get(t)
 
 
 class V3dCruisetoAfniOutputs(typing.NamedTuple):

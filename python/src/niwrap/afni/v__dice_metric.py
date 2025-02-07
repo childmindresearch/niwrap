@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DICE_METRIC_METADATA = Metadata(
     id="98eaa1a4d4837bef42b0135a72612d83719e6632.boutiques",
@@ -32,7 +31,7 @@ VDiceMetricParameters = typing.TypedDict('VDiceMetricParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@DiceMetric": v__dice_metric_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@DiceMetric": v__dice_metric_outputs,
+    }.get(t)
 
 
 class VDiceMetricOutputs(typing.NamedTuple):

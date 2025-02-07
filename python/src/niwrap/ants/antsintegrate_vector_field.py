@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTSINTEGRATE_VECTOR_FIELD_METADATA = Metadata(
     id="25eaf01e25105beba3ae7eb2187714401340f8d4.boutiques",
@@ -23,7 +22,7 @@ AntsintegrateVectorFieldParameters = typing.TypedDict('AntsintegrateVectorFieldP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ANTSIntegrateVectorField": antsintegrate_vector_field_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ANTSIntegrateVectorField": antsintegrate_vector_field_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsintegrateVectorFieldOutputs(typing.NamedTuple):

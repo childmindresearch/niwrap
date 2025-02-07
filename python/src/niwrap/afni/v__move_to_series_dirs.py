@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__MOVE_TO_SERIES_DIRS_METADATA = Metadata(
     id="43e65ff4ccb7c662ae1bcaef0b7fb14c99b76809.boutiques",
@@ -27,7 +26,7 @@ VMoveToSeriesDirsParameters = typing.TypedDict('VMoveToSeriesDirsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@move.to.series.dirs": v__move_to_series_dirs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@move.to.series.dirs": v__move_to_series_dirs_outputs,
+    }.get(t)
 
 
 class VMoveToSeriesDirsOutputs(typing.NamedTuple):

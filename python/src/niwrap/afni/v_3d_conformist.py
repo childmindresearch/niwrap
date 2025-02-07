@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_CONFORMIST_METADATA = Metadata(
     id="f609f1b815cd20fa63c94e47456124184827cae8.boutiques",
@@ -20,7 +19,7 @@ V3dConformistParameters = typing.TypedDict('V3dConformistParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dConformist": v_3d_conformist_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dConformist": v_3d_conformist_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dConformistOutputs(typing.NamedTuple):

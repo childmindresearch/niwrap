@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 APQC_MAKE_HTML_METADATA = Metadata(
     id="a958dc9e454decaf99b430f63930ca86b1108a1f.boutiques",
@@ -20,7 +19,7 @@ ApqcMakeHtmlParameters = typing.TypedDict('ApqcMakeHtmlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "apqc_make_html": apqc_make_html_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "apqc_make_html": apqc_make_html_outputs,
+    }.get(t)
 
 
 class ApqcMakeHtmlOutputs(typing.NamedTuple):

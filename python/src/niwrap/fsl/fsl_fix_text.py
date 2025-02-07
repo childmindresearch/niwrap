@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_FIX_TEXT_METADATA = Metadata(
     id="a220cb697a269f6545c026e4c1c455f141351c48.boutiques",
@@ -21,7 +20,7 @@ FslFixTextParameters = typing.TypedDict('FslFixTextParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslFixText": fsl_fix_text_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslFixText": fsl_fix_text_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslFixTextOutputs(typing.NamedTuple):

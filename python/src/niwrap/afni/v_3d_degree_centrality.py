@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
     id="b52b7e118f9973ad723c05506b8d75f114f296f2.boutiques",
@@ -27,7 +26,7 @@ V3dDegreeCentralityParameters = typing.TypedDict('V3dDegreeCentralityParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDegreeCentrality": v_3d_degree_centrality_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDegreeCentrality": v_3d_degree_centrality_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDegreeCentralityOutputs(typing.NamedTuple):

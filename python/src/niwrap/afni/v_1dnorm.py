@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1DNORM_METADATA = Metadata(
     id="ea6e83597c9dc8fb3895db8c36d06ddc6f559447.boutiques",
@@ -25,7 +24,7 @@ V1dnormParameters = typing.TypedDict('V1dnormParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dnorm": v_1dnorm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dnorm": v_1dnorm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dnormOutputs(typing.NamedTuple):

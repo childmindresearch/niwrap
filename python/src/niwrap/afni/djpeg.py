@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DJPEG_METADATA = Metadata(
     id="3600c030d01c581f3a3e8577bb83f497b31a9efb.boutiques",
@@ -26,7 +25,7 @@ DjpegParameters = typing.TypedDict('DjpegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "djpeg": djpeg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "djpeg": djpeg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DjpegOutputs(typing.NamedTuple):

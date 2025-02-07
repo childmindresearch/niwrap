@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONVEX_HULL_METADATA = Metadata(
     id="945c8df244e1356a8e523e12b46e0aa912eddb4c.boutiques",
@@ -35,7 +34,7 @@ ConvexHullParameters = typing.TypedDict('ConvexHullParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ConvexHull": convex_hull_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ConvexHull": convex_hull_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ConvexHullOutputs(typing.NamedTuple):

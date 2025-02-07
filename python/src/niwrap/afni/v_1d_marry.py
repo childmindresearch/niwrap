@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_MARRY_METADATA = Metadata(
     id="bf4086d827742de99647b8c529893b01461d76ef.boutiques",
@@ -22,7 +21,7 @@ V1dMarryParameters = typing.TypedDict('V1dMarryParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dMarry": v_1d_marry_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dMarry": v_1d_marry_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dMarryOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MESHCONVERT_METADATA = Metadata(
     id="762c9b5d3b33c0ecdebcfabfcf5bf55092f9fed9.boutiques",
@@ -41,7 +40,7 @@ MeshconvertParameters = typing.TypedDict('MeshconvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,17 +49,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "meshconvert": meshconvert_cargs,
         "transform": meshconvert_transform_cargs,
         "config": meshconvert_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "meshconvert": meshconvert_outputs,
-    }
-    return vt.get(t)
+        "transform": meshconvert_transform_outputs,
+        "config": meshconvert_config_outputs,
+    }.get(t)
 
 
 def meshconvert_transform_params(

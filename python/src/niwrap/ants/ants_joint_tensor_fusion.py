@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_JOINT_TENSOR_FUSION_METADATA = Metadata(
     id="0060c77e83025b09ff07322e714ad4f9d9337634.boutiques",
@@ -36,7 +35,7 @@ AntsJointTensorFusionParameters = typing.TypedDict('AntsJointTensorFusionParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsJointTensorFusion": ants_joint_tensor_fusion_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsJointTensorFusion": ants_joint_tensor_fusion_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsJointTensorFusionOutputs(typing.NamedTuple):

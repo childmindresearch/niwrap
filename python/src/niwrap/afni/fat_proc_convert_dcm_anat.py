@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
     id="b710eae3e3dfce23951c6f5d44bae1dc65d2b536.boutiques",
@@ -28,7 +27,7 @@ FatProcConvertDcmAnatParameters = typing.TypedDict('FatProcConvertDcmAnatParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_convert_dcm_anat": fat_proc_convert_dcm_anat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_convert_dcm_anat": fat_proc_convert_dcm_anat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcConvertDcmAnatOutputs(typing.NamedTuple):

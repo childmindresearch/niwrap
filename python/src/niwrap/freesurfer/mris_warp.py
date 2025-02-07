@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_WARP_METADATA = Metadata(
     id="a60346ae5a51f63c7f32e60f45dc20db2e519c51.boutiques",
@@ -27,7 +26,7 @@ MrisWarpParameters = typing.TypedDict('MrisWarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_warp": mris_warp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_warp": mris_warp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisWarpOutputs(typing.NamedTuple):

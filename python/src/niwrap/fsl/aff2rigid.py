@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFF2RIGID_METADATA = Metadata(
     id="1c5bd7f0035a88c49ed0e7fc0bc2b90357a5176f.boutiques",
@@ -21,7 +20,7 @@ Aff2rigidParameters = typing.TypedDict('Aff2rigidParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "aff2rigid": aff2rigid_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "aff2rigid": aff2rigid_outputs,
+    }.get(t)
 
 
 class Aff2rigidOutputs(typing.NamedTuple):

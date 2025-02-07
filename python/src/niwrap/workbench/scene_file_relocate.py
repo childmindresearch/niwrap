@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SCENE_FILE_RELOCATE_METADATA = Metadata(
     id="4d5785c213ba8c43cc0d1cb433a896970dc23e80.boutiques",
@@ -21,7 +20,7 @@ SceneFileRelocateParameters = typing.TypedDict('SceneFileRelocateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "scene-file-relocate": scene_file_relocate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "scene-file-relocate": scene_file_relocate_outputs,
+    }.get(t)
 
 
 class SceneFileRelocateOutputs(typing.NamedTuple):

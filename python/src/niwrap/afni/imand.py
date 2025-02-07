@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMAND_METADATA = Metadata(
     id="0afb6402a062c937d946cf010c86102b9c4a0c96.boutiques",
@@ -22,7 +21,7 @@ ImandParameters = typing.TypedDict('ImandParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imand": imand_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imand": imand_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImandOutputs(typing.NamedTuple):

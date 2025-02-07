@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_4DFPTOANALYZE_METADATA = Metadata(
     id="65cd83dce834e4e472f7fa7af8e2201dfe71e3b3.boutiques",
@@ -24,7 +23,7 @@ V4dfptoanalyzeParameters = typing.TypedDict('V4dfptoanalyzeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "4dfptoanalyze": v_4dfptoanalyze_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "4dfptoanalyze": v_4dfptoanalyze_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V4dfptoanalyzeOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TENSOR2METRIC_METADATA = Metadata(
     id="ce3b6c1eb5966c84af85ddfef969868689c115fb.boutiques",
@@ -45,7 +44,7 @@ Tensor2metricParameters = typing.TypedDict('Tensor2metricParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,16 +53,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tensor2metric": tensor2metric_cargs,
         "config": tensor2metric_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,10 +70,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tensor2metric": tensor2metric_outputs,
-    }
-    return vt.get(t)
+        "config": tensor2metric_config_outputs,
+    }.get(t)
 
 
 def tensor2metric_config_params(

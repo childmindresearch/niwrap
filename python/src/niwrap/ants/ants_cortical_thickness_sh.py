@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_CORTICAL_THICKNESS_SH_METADATA = Metadata(
     id="927ff3d34dcb64b2fcbc355449b1223268e7ab32.boutiques",
@@ -25,7 +24,7 @@ AntsCorticalThicknessShParameters = typing.TypedDict('AntsCorticalThicknessShPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsCorticalThickness.sh": ants_cortical_thickness_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsCorticalThickness.sh": ants_cortical_thickness_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsCorticalThicknessShOutputs(typing.NamedTuple):

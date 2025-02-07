@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKGLOBAL_METADATA = Metadata(
     id="83ed2ed5059d206686d68bca5253e7191f588b5d.boutiques",
@@ -60,7 +59,7 @@ TckglobalParameters = typing.TypedDict('TckglobalParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -69,17 +68,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tckglobal": tckglobal_cargs,
         "riso": tckglobal_riso_cargs,
         "config": tckglobal_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -88,10 +86,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tckglobal": tckglobal_outputs,
-    }
-    return vt.get(t)
+        "riso": tckglobal_riso_outputs,
+        "config": tckglobal_config_outputs,
+    }.get(t)
 
 
 def tckglobal_riso_params(

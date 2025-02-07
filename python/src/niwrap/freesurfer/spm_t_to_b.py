@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPM_T_TO_B_METADATA = Metadata(
     id="aeb4cbf77424f7a4691e003e7bad0ef280a42842.boutiques",
@@ -21,7 +20,7 @@ SpmTToBParameters = typing.TypedDict('SpmTToBParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "spm_t_to_b": spm_t_to_b_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "spm_t_to_b": spm_t_to_b_outputs,
+    }.get(t)
 
 
 class SpmTToBOutputs(typing.NamedTuple):

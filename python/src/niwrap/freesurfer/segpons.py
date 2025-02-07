@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SEGPONS_METADATA = Metadata(
     id="4b38e194fdd9fe1d16fc15d6ac746b2dffa56e0f.boutiques",
@@ -25,7 +24,7 @@ SegponsParameters = typing.TypedDict('SegponsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "segpons": segpons_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "segpons": segpons_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SegponsOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DIFF_METADATA = Metadata(
     id="310e8ce2db4e828d08b7d1bb6c0af6eff1fa85cd.boutiques",
@@ -27,7 +26,7 @@ V3dDiffParameters = typing.TypedDict('V3dDiffParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDiff": v_3d_diff_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDiff": v_3d_diff_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDiffOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RUN_SEGMENT_SUBJECT_T1_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA = Metadata(
     id="4f9a46fb43606ac0251e70e49508d55ff638b63c.boutiques",
@@ -21,7 +20,7 @@ RunSegmentSubjectT1AutoEstimateAlveusMlShParameters = typing.TypedDict('RunSegme
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "run_segmentSubjectT1_autoEstimateAlveusML.sh": run_segment_subject_t1_auto_estimate_alveus_ml_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "run_segmentSubjectT1_autoEstimateAlveusML.sh": run_segment_subject_t1_auto_estimate_alveus_ml_sh_outputs,
+    }.get(t)
 
 
 class RunSegmentSubjectT1AutoEstimateAlveusMlShOutputs(typing.NamedTuple):

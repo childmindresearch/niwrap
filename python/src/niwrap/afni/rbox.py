@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RBOX_METADATA = Metadata(
     id="4f43f8ba19b6a24114997ab42bf7e5c5e5484c74.boutiques",
@@ -26,7 +25,7 @@ RboxParameters = typing.TypedDict('RboxParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rbox": rbox_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,8 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "rbox": rbox_outputs,
+    }.get(t)
 
 
 class RboxOutputs(typing.NamedTuple):

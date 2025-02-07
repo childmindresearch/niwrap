@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_THICKNESS_METADATA = Metadata(
     id="1f70790c09e2a07e9627e797f2437c49106bcce2.boutiques",
@@ -26,7 +25,7 @@ MrisThicknessParameters = typing.TypedDict('MrisThicknessParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_thickness": mris_thickness_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_thickness": mris_thickness_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisThicknessOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DWUNCERT_METADATA = Metadata(
     id="8f7f239d86c536d7e540a83e127aed316e05a15c.boutiques",
@@ -28,7 +27,7 @@ V3dDwuncertParameters = typing.TypedDict('V3dDwuncertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDWUncert": v_3d_dwuncert_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDWUncert": v_3d_dwuncert_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDwuncertOutputs(typing.NamedTuple):

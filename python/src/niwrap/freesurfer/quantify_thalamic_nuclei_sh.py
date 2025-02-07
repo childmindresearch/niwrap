@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QUANTIFY_THALAMIC_NUCLEI_SH_METADATA = Metadata(
     id="b433f3a14e198e3262f3306d8a51e090717c6fe0.boutiques",
@@ -22,7 +21,7 @@ QuantifyThalamicNucleiShParameters = typing.TypedDict('QuantifyThalamicNucleiShP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "quantifyThalamicNuclei.sh": quantify_thalamic_nuclei_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "quantifyThalamicNuclei.sh": quantify_thalamic_nuclei_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class QuantifyThalamicNucleiShOutputs(typing.NamedTuple):

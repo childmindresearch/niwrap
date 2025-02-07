@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONNECTOMESTATS_METADATA = Metadata(
     id="a535681290f66c0887d4200e46496cba897c8f9a.boutiques",
@@ -60,7 +59,7 @@ ConnectomestatsParameters = typing.TypedDict('ConnectomestatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -69,17 +68,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "connectomestats": connectomestats_cargs,
         "column": connectomestats_column_cargs,
         "config": connectomestats_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -88,8 +86,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "connectomestats": connectomestats_outputs,
+        "column": connectomestats_column_outputs,
+        "config": connectomestats_config_outputs,
+    }.get(t)
 
 
 def connectomestats_column_params(

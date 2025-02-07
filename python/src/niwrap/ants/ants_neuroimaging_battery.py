@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_NEUROIMAGING_BATTERY_METADATA = Metadata(
     id="8d5f7d9ec665c8a4728e1d76b9ae72be2a9a3489.boutiques",
@@ -24,7 +23,7 @@ AntsNeuroimagingBatteryParameters = typing.TypedDict('AntsNeuroimagingBatteryPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsNeuroimagingBattery": ants_neuroimaging_battery_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsNeuroimagingBattery": ants_neuroimaging_battery_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsNeuroimagingBatteryOutputs(typing.NamedTuple):

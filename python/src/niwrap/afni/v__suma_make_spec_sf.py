@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SUMA_MAKE_SPEC_SF_METADATA = Metadata(
     id="e84849d3eeb33bb18d791b3e555fb699941d3809.boutiques",
@@ -22,7 +21,7 @@ VSumaMakeSpecSfParameters = typing.TypedDict('VSumaMakeSpecSfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@SUMA_Make_Spec_SF": v__suma_make_spec_sf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@SUMA_Make_Spec_SF": v__suma_make_spec_sf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSumaMakeSpecSfOutputs(typing.NamedTuple):

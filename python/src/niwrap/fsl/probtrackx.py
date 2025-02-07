@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PROBTRACKX_METADATA = Metadata(
     id="053d5bf02cc2ecddcdfc27a671338716940fbabe.boutiques",
@@ -53,7 +52,7 @@ ProbtrackxParameters = typing.TypedDict('ProbtrackxParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -62,15 +61,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "probtrackx": probtrackx_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,8 +77,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "probtrackx": probtrackx_outputs,
+    }.get(t)
 
 
 class ProbtrackxOutputs(typing.NamedTuple):

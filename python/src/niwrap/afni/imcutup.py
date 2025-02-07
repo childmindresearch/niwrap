@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMCUTUP_METADATA = Metadata(
     id="f7a6e708513c2d65a4c90feab343a1b3f974642a.boutiques",
@@ -27,7 +26,7 @@ ImcutupParameters = typing.TypedDict('ImcutupParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imcutup": imcutup_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imcutup": imcutup_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImcutupOutputs(typing.NamedTuple):

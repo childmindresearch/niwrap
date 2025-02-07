@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_TOPO_FIXER_METADATA = Metadata(
     id="4b97f9063ba3136c5f175963808d0468021279ab.boutiques",
@@ -21,7 +20,7 @@ MrisTopoFixerParameters = typing.TypedDict('MrisTopoFixerParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_topo_fixer": mris_topo_fixer_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_topo_fixer": mris_topo_fixer_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisTopoFixerOutputs(typing.NamedTuple):

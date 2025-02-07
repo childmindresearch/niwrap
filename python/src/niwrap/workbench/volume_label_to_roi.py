@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_LABEL_TO_ROI_METADATA = Metadata(
     id="b3cda0fa9bc982ba11f500591ea9473a5a0a4fc2.boutiques",
@@ -24,7 +23,7 @@ VolumeLabelToRoiParameters = typing.TypedDict('VolumeLabelToRoiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-label-to-roi": volume_label_to_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-label-to-roi": volume_label_to_roi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeLabelToRoiOutputs(typing.NamedTuple):

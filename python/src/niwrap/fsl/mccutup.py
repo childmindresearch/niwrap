@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MCCUTUP_METADATA = Metadata(
     id="3bcabc27a5688982bd8610840860d2e83796bc90.boutiques",
@@ -23,7 +22,7 @@ MccutupParameters = typing.TypedDict('MccutupParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mccutup": mccutup_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mccutup": mccutup_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MccutupOutputs(typing.NamedTuple):

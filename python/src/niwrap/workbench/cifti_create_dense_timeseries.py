@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
     id="71533feafcaa802cef4d42e37ca6ad2a75119da8.boutiques",
@@ -47,7 +46,7 @@ CiftiCreateDenseTimeseriesParameters = typing.TypedDict('CiftiCreateDenseTimeser
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,19 +55,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-create-dense-timeseries": cifti_create_dense_timeseries_cargs,
         "volume": cifti_create_dense_timeseries_volume_cargs,
         "left_metric": cifti_create_dense_timeseries_left_metric_cargs,
         "right_metric": cifti_create_dense_timeseries_right_metric_cargs,
         "cerebellum_metric": cifti_create_dense_timeseries_cerebellum_metric_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,10 +75,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-create-dense-timeseries": cifti_create_dense_timeseries_outputs,
-    }
-    return vt.get(t)
+        "volume": cifti_create_dense_timeseries_volume_outputs,
+        "left_metric": cifti_create_dense_timeseries_left_metric_outputs,
+        "right_metric": cifti_create_dense_timeseries_right_metric_outputs,
+        "cerebellum_metric": cifti_create_dense_timeseries_cerebellum_metric_outputs,
+    }.get(t)
 
 
 def cifti_create_dense_timeseries_volume_params(

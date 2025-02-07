@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__TIME_DIFF_METADATA = Metadata(
     id="7889ba0aeecc01a9a55b923b84e149e7cec9417e.boutiques",
@@ -21,7 +20,7 @@ VTimeDiffParameters = typing.TypedDict('VTimeDiffParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@TimeDiff": v__time_diff_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@TimeDiff": v__time_diff_outputs,
+    }.get(t)
 
 
 class VTimeDiffOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_QUAL_METADATA = Metadata(
     id="26998942504c3f8916ff5647525cc6689776bf8d.boutiques",
@@ -25,7 +24,7 @@ SurfQualParameters = typing.TypedDict('SurfQualParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfQual": surf_qual_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfQual": surf_qual_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfQualOutputs(typing.NamedTuple):

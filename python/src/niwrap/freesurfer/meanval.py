@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MEANVAL_METADATA = Metadata(
     id="abff5f1715da97f4e48f1b5b12b06bbfdebcd6e0.boutiques",
@@ -23,7 +22,7 @@ MeanvalParameters = typing.TypedDict('MeanvalParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "meanval": meanval_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "meanval": meanval_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MeanvalOutputs(typing.NamedTuple):

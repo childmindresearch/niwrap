@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MULTIPLY_IMAGES_METADATA = Metadata(
     id="3421bb6ea5f44c4d4eb0d2dd002f4de6f489cf86.boutiques",
@@ -24,7 +23,7 @@ MultiplyImagesParameters = typing.TypedDict('MultiplyImagesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "MultiplyImages": multiply_images_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "MultiplyImages": multiply_images_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MultiplyImagesOutputs(typing.NamedTuple):

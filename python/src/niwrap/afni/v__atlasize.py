@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ATLASIZE_METADATA = Metadata(
     id="5fc4c62439ac62644ef483caa2fc7a4ea1cb35f0.boutiques",
@@ -37,7 +36,7 @@ VAtlasizeParameters = typing.TypedDict('VAtlasizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Atlasize": v__atlasize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@Atlasize": v__atlasize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAtlasizeOutputs(typing.NamedTuple):

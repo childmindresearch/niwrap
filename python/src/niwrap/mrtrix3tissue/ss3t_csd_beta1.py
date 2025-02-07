@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SS3T_CSD_BETA1_METADATA = Metadata(
     id="3d7ce53d5c0f3941cd5c3621352793549ea67b37.boutiques",
@@ -42,7 +41,7 @@ Ss3tCsdBeta1Parameters = typing.TypedDict('Ss3tCsdBeta1Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,17 +50,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ss3t_csd_beta1": ss3t_csd_beta1_cargs,
         "config": ss3t_csd_beta1_config_cargs,
         "response_odf": ss3t_csd_beta1_response_odf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,11 +68,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ss3t_csd_beta1": ss3t_csd_beta1_outputs,
+        "config": ss3t_csd_beta1_config_outputs,
         "response_odf": ss3t_csd_beta1_response_odf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def ss3t_csd_beta1_config_params(

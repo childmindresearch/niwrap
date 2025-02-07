@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GCAPREPONE_METADATA = Metadata(
     id="2e14a31362a677b265992815008f70a18a14c39c.boutiques",
@@ -25,7 +24,7 @@ GcapreponeParameters = typing.TypedDict('GcapreponeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gcaprepone": gcaprepone_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gcaprepone": gcaprepone_outputs,
+    }.get(t)
 
 
 class GcapreponeOutputs(typing.NamedTuple):

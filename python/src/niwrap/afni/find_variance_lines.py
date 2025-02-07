@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIND_VARIANCE_LINES_METADATA = Metadata(
     id="400a7e1ff61116676091a1736a0b5ffb08f0a496.boutiques",
@@ -34,7 +33,7 @@ FindVarianceLinesParameters = typing.TypedDict('FindVarianceLinesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "find_variance_lines": find_variance_lines_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "find_variance_lines": find_variance_lines_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FindVarianceLinesOutputs(typing.NamedTuple):

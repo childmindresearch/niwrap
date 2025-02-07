@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPEC_FILE_RELOCATE_METADATA = Metadata(
     id="2d2973acdec95aaa23b607a3339fa38ce965c8dd.boutiques",
@@ -21,7 +20,7 @@ SpecFileRelocateParameters = typing.TypedDict('SpecFileRelocateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "spec-file-relocate": spec_file_relocate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "spec-file-relocate": spec_file_relocate_outputs,
+    }.get(t)
 
 
 class SpecFileRelocateOutputs(typing.NamedTuple):

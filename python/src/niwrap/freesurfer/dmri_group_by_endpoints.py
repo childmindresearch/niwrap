@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_GROUP_BY_ENDPOINTS_METADATA = Metadata(
     id="87310592b138bba2f86c81c258d64cefe1c90e23.boutiques",
@@ -22,7 +21,7 @@ DmriGroupByEndpointsParameters = typing.TypedDict('DmriGroupByEndpointsParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_groupByEndpoints": dmri_group_by_endpoints_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dmri_groupByEndpoints": dmri_group_by_endpoints_outputs,
+    }.get(t)
 
 
 class DmriGroupByEndpointsOutputs(typing.NamedTuple):

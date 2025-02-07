@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA = Metadata(
     id="533d45cdbfae4bc58aadf050a7461db1dc6a6914.boutiques",
@@ -20,7 +19,7 @@ BuildDesikanKillianyGcsCshParameters = typing.TypedDict('BuildDesikanKillianyGcs
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "build_desikan_killiany_gcs.csh": build_desikan_killiany_gcs_csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "build_desikan_killiany_gcs.csh": build_desikan_killiany_gcs_csh_outputs,
+    }.get(t)
 
 
 class BuildDesikanKillianyGcsCshOutputs(typing.NamedTuple):

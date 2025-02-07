@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_LEFT_RIGHT_REGISTER_METADATA = Metadata(
     id="a4c6b07b104f5a2cf15152261803ae81014407e6.boutiques",
@@ -23,7 +22,7 @@ MrisLeftRightRegisterParameters = typing.TypedDict('MrisLeftRightRegisterParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_left_right_register": mris_left_right_register_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_left_right_register": mris_left_right_register_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisLeftRightRegisterOutputs(typing.NamedTuple):

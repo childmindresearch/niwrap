@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_RE_HO_METADATA = Metadata(
     id="a70331895fb8ece074a2e63976ac43635a1ab69b.boutiques",
@@ -33,7 +32,7 @@ V3dReHoParameters = typing.TypedDict('V3dReHoParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dReHo": v_3d_re_ho_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dReHo": v_3d_re_ho_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dReHoOutputs(typing.NamedTuple):

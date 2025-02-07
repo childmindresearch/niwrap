@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA = Metadata(
     id="b866ae2f76511eca887345fe0515e30b2318f31e.boutiques",
@@ -20,7 +19,7 @@ AntsMultivariateTemplateConstruction2ShParameters = typing.TypedDict('AntsMultiv
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsMultivariateTemplateConstruction2.sh": ants_multivariate_template_construction2_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsMultivariateTemplateConstruction2.sh": ants_multivariate_template_construction2_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsMultivariateTemplateConstruction2ShOutputs(typing.NamedTuple):

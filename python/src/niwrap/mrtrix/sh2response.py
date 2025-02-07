@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SH2RESPONSE_METADATA = Metadata(
     id="73af982ff7a9439d2a7181a0cb546efa4f302105.boutiques",
@@ -38,7 +37,7 @@ Sh2responseParameters = typing.TypedDict('Sh2responseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,16 +46,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sh2response": sh2response_cargs,
         "config": sh2response_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sh2response": sh2response_outputs,
-    }
-    return vt.get(t)
+        "config": sh2response_config_outputs,
+    }.get(t)
 
 
 def sh2response_config_params(

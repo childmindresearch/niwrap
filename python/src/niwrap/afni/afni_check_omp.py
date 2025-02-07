@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFNI_CHECK_OMP_METADATA = Metadata(
     id="32dd1aee513bc5242efdf26e5514ec120679a8b1.boutiques",
@@ -20,7 +19,7 @@ AfniCheckOmpParameters = typing.TypedDict('AfniCheckOmpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "afni_check_omp": afni_check_omp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "afni_check_omp": afni_check_omp_outputs,
+    }.get(t)
 
 
 class AfniCheckOmpOutputs(typing.NamedTuple):

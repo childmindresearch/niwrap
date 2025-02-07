@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWI2MASK_METADATA = Metadata(
     id="e651be545db3db1ef7ebcf19117cf1ddd7e6b8f2.boutiques",
@@ -42,7 +41,7 @@ Dwi2maskParameters = typing.TypedDict('Dwi2maskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,17 +50,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwi2mask": dwi2mask_cargs,
         "fslgrad": dwi2mask_fslgrad_cargs,
         "config": dwi2mask_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwi2mask": dwi2mask_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": dwi2mask_fslgrad_outputs,
+        "config": dwi2mask_config_outputs,
+    }.get(t)
 
 
 def dwi2mask_fslgrad_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FOCI_CREATE_METADATA = Metadata(
     id="f54b92ca66ce06ab8acae5b43f6f0c242d214886.boutiques",
@@ -27,7 +26,7 @@ FociCreateParameters = typing.TypedDict('FociCreateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,16 +35,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "foci-create": foci_create_cargs,
         "class": foci_create_class_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "foci-create": foci_create_outputs,
-    }
-    return vt.get(t)
+        "class": foci_create_class_outputs,
+    }.get(t)
 
 
 def foci_create_class_params(

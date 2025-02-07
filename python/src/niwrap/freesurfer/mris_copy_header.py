@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_COPY_HEADER_METADATA = Metadata(
     id="50aaea9bf37b8cf2e2b611b945681126287cbd83.boutiques",
@@ -22,7 +21,7 @@ MrisCopyHeaderParameters = typing.TypedDict('MrisCopyHeaderParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_copy_header": mris_copy_header_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_copy_header": mris_copy_header_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisCopyHeaderOutputs(typing.NamedTuple):

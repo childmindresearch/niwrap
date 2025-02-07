@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_AUTODET_GWSTATS_METADATA = Metadata(
     id="2408fc8252de26e31ffbcec5b0f37d3113618a46.boutiques",
@@ -34,7 +33,7 @@ MrisAutodetGwstatsParameters = typing.TypedDict('MrisAutodetGwstatsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_autodet_gwstats": mris_autodet_gwstats_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_autodet_gwstats": mris_autodet_gwstats_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisAutodetGwstatsOutputs(typing.NamedTuple):

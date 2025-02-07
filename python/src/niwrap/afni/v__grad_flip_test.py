@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__GRAD_FLIP_TEST_METADATA = Metadata(
     id="83d02b240a4d1a85f3fc3038b96542312f180177.boutiques",
@@ -33,7 +32,7 @@ VGradFlipTestParameters = typing.TypedDict('VGradFlipTestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@GradFlipTest": v__grad_flip_test_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@GradFlipTest": v__grad_flip_test_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VGradFlipTestOutputs(typing.NamedTuple):

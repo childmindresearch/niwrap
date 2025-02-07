@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SPHERE_METADATA = Metadata(
     id="ff70a8889110348344f49593918baf25bab92371.boutiques",
@@ -22,7 +21,7 @@ MrisSphereParameters = typing.TypedDict('MrisSphereParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_sphere": mris_sphere_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_sphere": mris_sphere_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSphereOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CLUST_EXP_HIST_TABLE_PY_METADATA = Metadata(
     id="a706e0c184974ad6ed86360994f032d1d4e5296f.boutiques",
@@ -23,7 +22,7 @@ ClustExpHistTablePyParameters = typing.TypedDict('ClustExpHistTablePyParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ClustExp_HistTable.py": clust_exp_hist_table_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ClustExp_HistTable.py": clust_exp_hist_table_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ClustExpHistTablePyOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWIEXTRACT_METADATA = Metadata(
     id="5b00b542225211d60f5d1b333fb8c27f5a4730f1.boutiques",
@@ -69,7 +68,7 @@ DwiextractParameters = typing.TypedDict('DwiextractParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -78,7 +77,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwiextract": dwiextract_cargs,
         "fslgrad": dwiextract_fslgrad_cargs,
         "export_grad_fsl": dwiextract_export_grad_fsl_cargs,
@@ -86,13 +85,12 @@ def dyn_cargs(
         "VariousString": dwiextract_various_string_cargs,
         "VariousFile": dwiextract_various_file_cargs,
         "config": dwiextract_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -101,11 +99,15 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwiextract": dwiextract_outputs,
+        "fslgrad": dwiextract_fslgrad_outputs,
         "export_grad_fsl": dwiextract_export_grad_fsl_outputs,
-    }
-    return vt.get(t)
+        "import_pe_eddy": dwiextract_import_pe_eddy_outputs,
+        "VariousString": dwiextract_various_string_outputs,
+        "VariousFile": dwiextract_various_file_outputs,
+        "config": dwiextract_config_outputs,
+    }.get(t)
 
 
 def dwiextract_fslgrad_params(

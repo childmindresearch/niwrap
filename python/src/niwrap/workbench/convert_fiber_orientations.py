@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
     id="83932f9e32b874b47a5a87d2605029dbebc92a5c.boutiques",
@@ -32,7 +31,7 @@ ConvertFiberOrientationsParameters = typing.TypedDict('ConvertFiberOrientationsP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,16 +40,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "convert-fiber-orientations": convert_fiber_orientations_cargs,
         "fiber": convert_fiber_orientations_fiber_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "convert-fiber-orientations": convert_fiber_orientations_outputs,
-    }
-    return vt.get(t)
+        "fiber": convert_fiber_orientations_fiber_outputs,
+    }.get(t)
 
 
 def convert_fiber_orientations_fiber_params(

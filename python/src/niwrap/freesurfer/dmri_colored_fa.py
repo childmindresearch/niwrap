@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_COLORED_FA_METADATA = Metadata(
     id="9942a5ec79bb71bf37d6af7b5ec7bc808a0b17b5.boutiques",
@@ -21,7 +20,7 @@ DmriColoredFaParameters = typing.TypedDict('DmriColoredFaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_coloredFA": dmri_colored_fa_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dmri_coloredFA": dmri_colored_fa_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DmriColoredFaOutputs(typing.NamedTuple):

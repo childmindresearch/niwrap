@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
     id="9bc6b682807328e6a1b0c7145d97a8a86f72e627.boutiques",
@@ -32,7 +31,7 @@ VolumeLabelToSurfaceMappingParameters = typing.TypedDict('VolumeLabelToSurfaceMa
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,16 +40,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-label-to-surface-mapping": volume_label_to_surface_mapping_cargs,
         "ribbon_constrained": volume_label_to_surface_mapping_ribbon_constrained_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-label-to-surface-mapping": volume_label_to_surface_mapping_outputs,
-    }
-    return vt.get(t)
+        "ribbon_constrained": volume_label_to_surface_mapping_ribbon_constrained_outputs,
+    }.get(t)
 
 
 def volume_label_to_surface_mapping_ribbon_constrained_params(

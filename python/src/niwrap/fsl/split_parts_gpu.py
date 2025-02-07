@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPLIT_PARTS_GPU_METADATA = Metadata(
     id="d04fb1d28332d7da5a41bbc4ec0da2b3260458cf.boutiques",
@@ -27,7 +26,7 @@ SplitPartsGpuParameters = typing.TypedDict('SplitPartsGpuParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "split_parts_gpu": split_parts_gpu_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "split_parts_gpu": split_parts_gpu_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SplitPartsGpuOutputs(typing.NamedTuple):

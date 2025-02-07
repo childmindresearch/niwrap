@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GREEDY_METADATA = Metadata(
     id="81e25c6c4fb84453185826b4258b91dafaf56f30.boutiques",
@@ -143,7 +142,7 @@ GreedyParameters = typing.TypedDict('GreedyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -152,7 +151,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "greedy": greedy_cargs,
         "input_images": greedy_input_images_cargs,
         "invert": greedy_invert_cargs,
@@ -164,13 +163,12 @@ def dyn_cargs(
         "reslice_moving_image": greedy_reslice_moving_image_cargs,
         "reslice_surface": greedy_reslice_surface_cargs,
         "reslice_simplex_jacobian": greedy_reslice_simplex_jacobian_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -179,16 +177,19 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "greedy": greedy_outputs,
+        "input_images": greedy_input_images_outputs,
         "invert": greedy_invert_outputs,
         "root": greedy_root_outputs,
         "jacobian": greedy_jacobian_outputs,
+        "metric": greedy_metric_outputs,
+        "tjr": greedy_tjr_outputs,
+        "search": greedy_search_outputs,
         "reslice_moving_image": greedy_reslice_moving_image_outputs,
         "reslice_surface": greedy_reslice_surface_outputs,
         "reslice_simplex_jacobian": greedy_reslice_simplex_jacobian_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def greedy_input_images_params(

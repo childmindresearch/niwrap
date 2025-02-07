@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_TIME_METADATA = Metadata(
     id="ca61b3d7c09ab70471b0b19e87ec76f60e282835.boutiques",
@@ -24,7 +23,7 @@ FsTimeParameters = typing.TypedDict('FsTimeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs_time": fs_time_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fs_time": fs_time_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FsTimeOutputs(typing.NamedTuple):

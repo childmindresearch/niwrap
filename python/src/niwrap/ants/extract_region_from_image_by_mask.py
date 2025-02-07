@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA = Metadata(
     id="aec2f60db8048987a495410600ad2f857750da61.boutiques",
@@ -25,7 +24,7 @@ ExtractRegionFromImageByMaskParameters = typing.TypedDict('ExtractRegionFromImag
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ExtractRegionFromImageByMask": extract_region_from_image_by_mask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ExtractRegionFromImageByMask": extract_region_from_image_by_mask_outputs,
+    }.get(t)
 
 
 class ExtractRegionFromImageByMaskOutputs(typing.NamedTuple):

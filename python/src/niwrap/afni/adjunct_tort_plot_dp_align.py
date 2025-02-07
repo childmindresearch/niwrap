@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
     id="85f0f975299d8bde02839f551146666cba69ff1f.boutiques",
@@ -24,7 +23,7 @@ AdjunctTortPlotDpAlignParameters = typing.TypedDict('AdjunctTortPlotDpAlignParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_tort_plot_dp_align": adjunct_tort_plot_dp_align_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "adjunct_tort_plot_dp_align": adjunct_tort_plot_dp_align_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AdjunctTortPlotDpAlignOutputs(typing.NamedTuple):

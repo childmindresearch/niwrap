@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SLOW_SURF_CLUSTSIM_PY_METADATA = Metadata(
     id="a7e11fd0c89e1ec778cc2b10b112e4d443b843ac.boutiques",
@@ -30,7 +29,7 @@ SlowSurfClustsimPyParameters = typing.TypedDict('SlowSurfClustsimPyParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "slow_surf_clustsim.py": slow_surf_clustsim_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "slow_surf_clustsim.py": slow_surf_clustsim_py_outputs,
+    }.get(t)
 
 
 class SlowSurfClustsimPyOutputs(typing.NamedTuple):

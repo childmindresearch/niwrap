@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SEGMENT_THALAMIC_NUCLEI_METADATA = Metadata(
     id="6d4f3bd43ea02912a67101dc7d2bc3abdee4ebd2.boutiques",
@@ -21,7 +20,7 @@ SegmentThalamicNucleiParameters = typing.TypedDict('SegmentThalamicNucleiParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SegmentThalamicNuclei": segment_thalamic_nuclei_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SegmentThalamicNuclei": segment_thalamic_nuclei_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SegmentThalamicNucleiOutputs(typing.NamedTuple):

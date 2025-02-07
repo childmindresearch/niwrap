@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXELCFESTATS_METADATA = Metadata(
     id="85b1cb9bb9525faf62a80ea0820d52c7ae94777f.boutiques",
@@ -71,7 +70,7 @@ FixelcfestatsParameters = typing.TypedDict('FixelcfestatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -80,19 +79,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixelcfestats": fixelcfestats_cargs,
         "column": fixelcfestats_column_cargs,
         "config": fixelcfestats_config_cargs,
         "VariousString": fixelcfestats_various_string_cargs,
         "VariousFile": fixelcfestats_various_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -101,8 +99,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fixelcfestats": fixelcfestats_outputs,
+        "column": fixelcfestats_column_outputs,
+        "config": fixelcfestats_config_outputs,
+        "VariousString": fixelcfestats_various_string_outputs,
+        "VariousFile": fixelcfestats_various_file_outputs,
+    }.get(t)
 
 
 def fixelcfestats_column_params(

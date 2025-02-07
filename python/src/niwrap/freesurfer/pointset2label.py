@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 POINTSET2LABEL_METADATA = Metadata(
     id="76bc9f6d69a026b807da7960f3bfd93ec5f85c89.boutiques",
@@ -24,7 +23,7 @@ Pointset2labelParameters = typing.TypedDict('Pointset2labelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "pointset2label": pointset2label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "pointset2label": pointset2label_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Pointset2labelOutputs(typing.NamedTuple):

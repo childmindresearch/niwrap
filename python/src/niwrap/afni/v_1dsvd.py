@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1DSVD_METADATA = Metadata(
     id="c137a2a26ce0b2c14b24befee7a12ab31db435c8.boutiques",
@@ -30,7 +29,7 @@ V1dsvdParameters = typing.TypedDict('V1dsvdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dsvd": v_1dsvd_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dsvd": v_1dsvd_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dsvdOutputs(typing.NamedTuple):

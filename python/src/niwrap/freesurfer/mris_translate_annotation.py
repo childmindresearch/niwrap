@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_TRANSLATE_ANNOTATION_METADATA = Metadata(
     id="d032fa992bc89b8d397cfa5c1c3735e9bf0447e6.boutiques",
@@ -24,7 +23,7 @@ MrisTranslateAnnotationParameters = typing.TypedDict('MrisTranslateAnnotationPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_translate_annotation": mris_translate_annotation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_translate_annotation": mris_translate_annotation_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisTranslateAnnotationOutputs(typing.NamedTuple):

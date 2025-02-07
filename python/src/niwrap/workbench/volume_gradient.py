@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_GRADIENT_METADATA = Metadata(
     id="8af5e6bf60b53a0f383725072c1fa1ba36511752.boutiques",
@@ -30,7 +29,7 @@ VolumeGradientParameters = typing.TypedDict('VolumeGradientParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,16 +38,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-gradient": volume_gradient_cargs,
         "presmooth": volume_gradient_presmooth_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-gradient": volume_gradient_outputs,
-    }
-    return vt.get(t)
+        "presmooth": volume_gradient_presmooth_outputs,
+    }.get(t)
 
 
 def volume_gradient_presmooth_params(

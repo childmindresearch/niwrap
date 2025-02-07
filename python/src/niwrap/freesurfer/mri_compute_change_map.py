@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_COMPUTE_CHANGE_MAP_METADATA = Metadata(
     id="4cf0713520dd67c2b0f360d78cb6a13011d05e50.boutiques",
@@ -25,7 +24,7 @@ MriComputeChangeMapParameters = typing.TypedDict('MriComputeChangeMapParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_compute_change_map": mri_compute_change_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_compute_change_map": mri_compute_change_map_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriComputeChangeMapOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QUANTIFY_HASUBREGIONS_SH_METADATA = Metadata(
     id="df100705a41731ca1f463e42b7e69b52a1c9d0b4.boutiques",
@@ -23,7 +22,7 @@ QuantifyHasubregionsShParameters = typing.TypedDict('QuantifyHasubregionsShParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "quantifyHAsubregions.sh": quantify_hasubregions_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "quantifyHAsubregions.sh": quantify_hasubregions_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class QuantifyHasubregionsShOutputs(typing.NamedTuple):

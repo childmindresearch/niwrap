@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DMERGE_METADATA = Metadata(
     id="7f1c2ca1745d4893ae0eaf6d19b9cf828f0a6f25.boutiques",
@@ -31,7 +30,7 @@ V3dmergeParameters = typing.TypedDict('V3dmergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dmerge": v_3dmerge_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dmerge": v_3dmerge_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dmergeOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DROTATE_METADATA = Metadata(
     id="dae9478b93184d9121e61e24d56f3c564e520ade.boutiques",
@@ -44,7 +43,7 @@ V3drotateParameters = typing.TypedDict('V3drotateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3drotate": v_3drotate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3drotate": v_3drotate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3drotateOutputs(typing.NamedTuple):

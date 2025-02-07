@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 HIAM_REGISTER_METADATA = Metadata(
     id="44d0a11f2a96d3babdb3cdeabdf7fd3e2408cf2f.boutiques",
@@ -22,7 +21,7 @@ HiamRegisterParameters = typing.TypedDict('HiamRegisterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "hiam_register": hiam_register_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "hiam_register": hiam_register_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class HiamRegisterOutputs(typing.NamedTuple):

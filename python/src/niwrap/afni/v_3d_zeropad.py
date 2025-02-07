@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ZEROPAD_METADATA = Metadata(
     id="69b80943bdd6b997541b13be76f096b8bce260d4.boutiques",
@@ -34,7 +33,7 @@ V3dZeropadParameters = typing.TypedDict('V3dZeropadParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dZeropad": v_3d_zeropad_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dZeropad": v_3d_zeropad_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dZeropadOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 POPP_METADATA = Metadata(
     id="29bde353620add34cd7a90603c61465fa385c87a.boutiques",
@@ -52,7 +51,7 @@ PoppParameters = typing.TypedDict('PoppParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -61,15 +60,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "popp": popp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,10 +76,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "popp": popp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PoppOutputs(typing.NamedTuple):

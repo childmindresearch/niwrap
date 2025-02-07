@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LONG_SUBMIT_JOBS_METADATA = Metadata(
     id="d9fdcdcc044b4b6a583cb8d7681940ebbb389e10.boutiques",
@@ -44,7 +43,7 @@ LongSubmitJobsParameters = typing.TypedDict('LongSubmitJobsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "long_submit_jobs": long_submit_jobs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,8 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "long_submit_jobs": long_submit_jobs_outputs,
+    }.get(t)
 
 
 class LongSubmitJobsOutputs(typing.NamedTuple):

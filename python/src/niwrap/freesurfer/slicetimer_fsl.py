@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SLICETIMER_FSL_METADATA = Metadata(
     id="27673c86089b795cd88a005218734e798ec23211.boutiques",
@@ -29,7 +28,7 @@ SlicetimerFslParameters = typing.TypedDict('SlicetimerFslParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "slicetimer.fsl": slicetimer_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "slicetimer.fsl": slicetimer_fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SlicetimerFslOutputs(typing.NamedTuple):

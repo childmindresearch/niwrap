@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_AVERAGE_VOLUME_METADATA = Metadata(
     id="52d00009c5f5db471f13423dea8699f07efa357d.boutiques",
@@ -32,7 +31,7 @@ MakeAverageVolumeParameters = typing.TypedDict('MakeAverageVolumeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_average_volume": make_average_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "make_average_volume": make_average_volume_outputs,
+    }.get(t)
 
 
 class MakeAverageVolumeOutputs(typing.NamedTuple):

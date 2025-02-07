@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_BOXPLOT_METADATA = Metadata(
     id="8abcb032f30a04f5dd6924727b860dc8df188123.boutiques",
@@ -27,7 +26,7 @@ FslBoxplotParameters = typing.TypedDict('FslBoxplotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl_boxplot": fsl_boxplot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fsl_boxplot": fsl_boxplot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslBoxplotOutputs(typing.NamedTuple):

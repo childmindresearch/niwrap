@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ABIDS_TOOL_METADATA = Metadata(
     id="ecdd7e187a3a330cd02d094f809fb0b75a51fe76.boutiques",
@@ -21,7 +20,7 @@ AbidsToolParameters = typing.TypedDict('AbidsToolParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "abids_tool": abids_tool_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "abids_tool": abids_tool_outputs,
+    }.get(t)
 
 
 class AbidsToolOutputs(typing.NamedTuple):

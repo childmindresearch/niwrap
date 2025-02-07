@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PROMPT_POPUP_METADATA = Metadata(
     id="56ce96c081577f794f865f7030869659d97db1e1.boutiques",
@@ -22,7 +21,7 @@ PromptPopupParameters = typing.TypedDict('PromptPopupParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "prompt_popup": prompt_popup_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "prompt_popup": prompt_popup_outputs,
+    }.get(t)
 
 
 class PromptPopupOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_FIND_FLAT_REGIONS_METADATA = Metadata(
     id="5c7cb3d5470380e27f2e79106dbfa81d9cc3d3a9.boutiques",
@@ -22,7 +21,7 @@ MrisFindFlatRegionsParameters = typing.TypedDict('MrisFindFlatRegionsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_find_flat_regions": mris_find_flat_regions_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_find_flat_regions": mris_find_flat_regions_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisFindFlatRegionsOutputs(typing.NamedTuple):

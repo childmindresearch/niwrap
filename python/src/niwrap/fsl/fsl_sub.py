@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_SUB_METADATA = Metadata(
     id="e00d073a22a6b171f18d9558a8e06d7992bcb374.boutiques",
@@ -53,7 +52,7 @@ FslSubParameters = typing.TypedDict('FslSubParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -62,15 +61,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl_sub": fsl_sub_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,8 +77,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fsl_sub": fsl_sub_outputs,
+    }.get(t)
 
 
 class FslSubOutputs(typing.NamedTuple):

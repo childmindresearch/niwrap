@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_DIST_SURF_LABEL_METADATA = Metadata(
     id="72b4cdbb35a27d1559099cff0310255f2417fec4.boutiques",
@@ -22,7 +21,7 @@ MriDistSurfLabelParameters = typing.TypedDict('MriDistSurfLabelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_dist_surf_label": mri_dist_surf_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_dist_surf_label": mri_dist_surf_label_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriDistSurfLabelOutputs(typing.NamedTuple):

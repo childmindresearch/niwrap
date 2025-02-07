@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANATOMI_CUTS_UTILS_METADATA = Metadata(
     id="7198fe86c99847a1acd99691b128d75fcca8f4b4.boutiques",
@@ -20,7 +19,7 @@ AnatomiCutsUtilsParameters = typing.TypedDict('AnatomiCutsUtilsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "anatomiCutsUtils": anatomi_cuts_utils_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "anatomiCutsUtils": anatomi_cuts_utils_outputs,
+    }.get(t)
 
 
 class AnatomiCutsUtilsOutputs(typing.NamedTuple):

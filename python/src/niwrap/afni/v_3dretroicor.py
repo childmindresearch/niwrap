@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DRETROICOR_METADATA = Metadata(
     id="0b8e3bbd9eaa6f16498a0393158cdcd367502347.boutiques",
@@ -28,7 +27,7 @@ V3dretroicorParameters = typing.TypedDict('V3dretroicorParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dretroicor": v_3dretroicor_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dretroicor": v_3dretroicor_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dretroicorOutputs(typing.NamedTuple):

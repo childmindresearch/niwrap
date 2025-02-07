@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SKELETONIZE_METADATA = Metadata(
     id="0b067079e3dfa4d5ff1e1cf5bf10adf3ec69d818.boutiques",
@@ -34,7 +33,7 @@ MrisSkeletonizeParameters = typing.TypedDict('MrisSkeletonizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_skeletonize": mris_skeletonize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_skeletonize": mris_skeletonize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSkeletonizeOutputs(typing.NamedTuple):

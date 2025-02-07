@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GROUPSTATS_METADATA = Metadata(
     id="b3ed2b7c0070683b40d589d0c64dbdd96b53715f.boutiques",
@@ -26,7 +25,7 @@ GroupstatsParameters = typing.TypedDict('GroupstatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "groupstats": groupstats_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "groupstats": groupstats_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GroupstatsOutputs(typing.NamedTuple):

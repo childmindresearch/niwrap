@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFNI_SYSTEM_CHECK_PY_METADATA = Metadata(
     id="707dd8a3faf114c94899a8373ea46705cdf40480.boutiques",
@@ -29,7 +28,7 @@ AfniSystemCheckPyParameters = typing.TypedDict('AfniSystemCheckPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "afni_system_check.py": afni_system_check_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "afni_system_check.py": afni_system_check_py_outputs,
+    }.get(t)
 
 
 class AfniSystemCheckPyOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CHECK_SUBJECT_METADATA = Metadata(
     id="a469eabd7979354cb8f4da4909edfba7eca4707c.boutiques",
@@ -20,7 +19,7 @@ CheckSubjectParameters = typing.TypedDict('CheckSubjectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "check_subject": check_subject_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "check_subject": check_subject_outputs,
+    }.get(t)
 
 
 class CheckSubjectOutputs(typing.NamedTuple):

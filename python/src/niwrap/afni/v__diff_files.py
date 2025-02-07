@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DIFF_FILES_METADATA = Metadata(
     id="edd2d42b0097cf74079def4a47b5ad005afd8f78.boutiques",
@@ -30,7 +29,7 @@ VDiffFilesParameters = typing.TypedDict('VDiffFilesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@diff.files": v__diff_files_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@diff.files": v__diff_files_outputs,
+    }.get(t)
 
 
 class VDiffFilesOutputs(typing.NamedTuple):

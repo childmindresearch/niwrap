@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PNM_EVS_METADATA = Metadata(
     id="ad50045387407a73f19e9a4b5604b989851d1d52.boutiques",
@@ -39,7 +38,7 @@ PnmEvsParameters = typing.TypedDict('PnmEvsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,15 +47,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "pnm_evs": pnm_evs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "pnm_evs": pnm_evs_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PnmEvsOutputs(typing.NamedTuple):

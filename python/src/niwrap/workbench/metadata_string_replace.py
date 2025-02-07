@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METADATA_STRING_REPLACE_METADATA = Metadata(
     id="c5101a74a82c5e31a6a055c1295c99ce1b69c5f2.boutiques",
@@ -24,7 +23,7 @@ MetadataStringReplaceParameters = typing.TypedDict('MetadataStringReplaceParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metadata-string-replace": metadata_string_replace_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "metadata-string-replace": metadata_string_replace_outputs,
+    }.get(t)
 
 
 class MetadataStringReplaceOutputs(typing.NamedTuple):

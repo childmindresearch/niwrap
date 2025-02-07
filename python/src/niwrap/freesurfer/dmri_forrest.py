@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_FORREST_METADATA = Metadata(
     id="dd4542253804128ad899a822733de446938568c4.boutiques",
@@ -27,7 +26,7 @@ DmriForrestParameters = typing.TypedDict('DmriForrestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_forrest": dmri_forrest_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dmri_forrest": dmri_forrest_outputs,
+    }.get(t)
 
 
 class DmriForrestOutputs(typing.NamedTuple):

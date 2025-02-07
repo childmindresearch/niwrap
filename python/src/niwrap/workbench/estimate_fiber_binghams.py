@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
     id="0cdc134d5bffcca430de60ceed43049ba2d52103.boutiques",
@@ -30,7 +29,7 @@ EstimateFiberBinghamsParameters = typing.TypedDict('EstimateFiberBinghamsParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "estimate-fiber-binghams": estimate_fiber_binghams_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "estimate-fiber-binghams": estimate_fiber_binghams_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EstimateFiberBinghamsOutputs(typing.NamedTuple):

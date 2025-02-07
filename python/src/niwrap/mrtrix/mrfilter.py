@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRFILTER_METADATA = Metadata(
     id="3bb2ab8375a99185acaeac0f9e608829bff091ac.boutiques",
@@ -61,7 +60,7 @@ MrfilterParameters = typing.TypedDict('MrfilterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -70,18 +69,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrfilter": mrfilter_cargs,
         "VariousString": mrfilter_various_string_cargs,
         "VariousFile": mrfilter_various_file_cargs,
         "config": mrfilter_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -90,10 +88,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrfilter": mrfilter_outputs,
-    }
-    return vt.get(t)
+        "VariousString": mrfilter_various_string_outputs,
+        "VariousFile": mrfilter_various_file_outputs,
+        "config": mrfilter_config_outputs,
+    }.get(t)
 
 
 def mrfilter_various_string_params(

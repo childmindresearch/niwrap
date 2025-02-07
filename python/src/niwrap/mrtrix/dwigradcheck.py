@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWIGRADCHECK_METADATA = Metadata(
     id="bb74671ccd6fa59a51829fa34812108f525873cb.boutiques",
@@ -47,7 +46,7 @@ DwigradcheckParameters = typing.TypedDict('DwigradcheckParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,17 +55,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwigradcheck": dwigradcheck_cargs,
         "fslgrad": dwigradcheck_fslgrad_cargs,
         "export_grad_fsl": dwigradcheck_export_grad_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -75,11 +73,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwigradcheck": dwigradcheck_outputs,
+        "fslgrad": dwigradcheck_fslgrad_outputs,
         "export_grad_fsl": dwigradcheck_export_grad_fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dwigradcheck_fslgrad_params(

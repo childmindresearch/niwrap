@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_NORMALIZE_METADATA = Metadata(
     id="600d2e82bac484d0fa09b08fc06b759b58c55a5b.boutiques",
@@ -53,7 +52,7 @@ MriNormalizeParameters = typing.TypedDict('MriNormalizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -62,15 +61,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_normalize": mri_normalize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,10 +77,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_normalize": mri_normalize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriNormalizeOutputs(typing.NamedTuple):

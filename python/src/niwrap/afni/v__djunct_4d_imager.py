@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_4D_IMAGER_METADATA = Metadata(
     id="3dd204eaacbae468c095a2b5730ff8d05c57b1e8.boutiques",
@@ -23,7 +22,7 @@ VDjunct4dImagerParameters = typing.TypedDict('VDjunct4dImagerParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_4d_imager": v__djunct_4d_imager_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@djunct_4d_imager": v__djunct_4d_imager_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VDjunct4dImagerOutputs(typing.NamedTuple):

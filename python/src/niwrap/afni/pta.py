@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PTA_METADATA = Metadata(
     id="4e961b6423dd3c4934a447dbf22ed74e7465c3df.boutiques",
@@ -27,7 +26,7 @@ PtaParameters = typing.TypedDict('PtaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "PTA": pta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "PTA": pta_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PtaOutputs(typing.NamedTuple):

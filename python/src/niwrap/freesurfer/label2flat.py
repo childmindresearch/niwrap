@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL2FLAT_METADATA = Metadata(
     id="4324c6b767a12f1782bca11055508c5f21fddd7d.boutiques",
@@ -23,7 +22,7 @@ Label2flatParameters = typing.TypedDict('Label2flatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label2flat": label2flat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label2flat": label2flat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Label2flatOutputs(typing.NamedTuple):

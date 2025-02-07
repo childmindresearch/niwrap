@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SLICE_NDICE_METADATA = Metadata(
     id="2632d37affeb0b9dca727cb8206f5ac9def40039.boutiques",
@@ -24,7 +23,7 @@ V3dSliceNdiceParameters = typing.TypedDict('V3dSliceNdiceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSliceNDice": v_3d_slice_ndice_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSliceNDice": v_3d_slice_ndice_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSliceNdiceOutputs(typing.NamedTuple):

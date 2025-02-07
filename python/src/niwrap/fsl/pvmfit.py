@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PVMFIT_METADATA = Metadata(
     id="2873389b6bc4586f988630b860c7c91d553dc1af.boutiques",
@@ -34,7 +33,7 @@ PvmfitParameters = typing.TypedDict('PvmfitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "pvmfit": pvmfit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "pvmfit": pvmfit_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PvmfitOutputs(typing.NamedTuple):

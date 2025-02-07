@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 HISTO_REGISTER_BLOCK_METADATA = Metadata(
     id="a9ce2e4f5a3f5c4fa13464f62cf2766ed76dbba2.boutiques",
@@ -26,7 +25,7 @@ HistoRegisterBlockParameters = typing.TypedDict('HistoRegisterBlockParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "histo_register_block": histo_register_block_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "histo_register_block": histo_register_block_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class HistoRegisterBlockOutputs(typing.NamedTuple):

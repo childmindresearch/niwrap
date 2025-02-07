@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCMDRLE_FS_METADATA = Metadata(
     id="1c6fdec3b4ee16a344e1e0d5d4e1bcbc79b17f47.boutiques",
@@ -51,7 +50,7 @@ DcmdrleFsParameters = typing.TypedDict('DcmdrleFsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,15 +59,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcmdrle.fs": dcmdrle_fs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,10 +75,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dcmdrle.fs": dcmdrle_fs_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DcmdrleFsOutputs(typing.NamedTuple):

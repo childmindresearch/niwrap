@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MKXSUBJREG_METADATA = Metadata(
     id="e782131163109567ec01cead15e999955396aeed.boutiques",
@@ -27,7 +26,7 @@ MkxsubjregParameters = typing.TypedDict('MkxsubjregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mkxsubjreg": mkxsubjreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mkxsubjreg": mkxsubjreg_outputs,
+    }.get(t)
 
 
 class MkxsubjregOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ANATICOR_METADATA = Metadata(
     id="48ef68fd2da1d36a9c97f8ae28f53b818a2fe8ee.boutiques",
@@ -33,7 +32,7 @@ VAnaticorParameters = typing.TypedDict('VAnaticorParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ANATICOR": v__anaticor_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ANATICOR": v__anaticor_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAnaticorOutputs(typing.NamedTuple):

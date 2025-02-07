@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ALIGN_PARTIAL_OBLIQUE_METADATA = Metadata(
     id="8266c2389908e7353d0356e57b5059a88cdc6548.boutiques",
@@ -28,7 +27,7 @@ VAlignPartialObliqueParameters = typing.TypedDict('VAlignPartialObliqueParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@align_partial_oblique": v__align_partial_oblique_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@align_partial_oblique": v__align_partial_oblique_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAlignPartialObliqueOutputs(typing.NamedTuple):

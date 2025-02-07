@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_FEAT2ANAT_METADATA = Metadata(
     id="6d99523d12853983a4cb41cacabf4975bd54d655.boutiques",
@@ -35,7 +34,7 @@ RegFeat2anatParameters = typing.TypedDict('RegFeat2anatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg-feat2anat": reg_feat2anat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg-feat2anat": reg_feat2anat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegFeat2anatOutputs(typing.NamedTuple):

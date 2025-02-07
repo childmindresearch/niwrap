@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_JACOBIAN_METADATA = Metadata(
     id="261fa5191d385d242b16ec1808b1a5ac51b44bc2.boutiques",
@@ -32,7 +31,7 @@ MriJacobianParameters = typing.TypedDict('MriJacobianParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_jacobian": mri_jacobian_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_jacobian": mri_jacobian_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriJacobianOutputs(typing.NamedTuple):

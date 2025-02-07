@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PERFUSION_SUBTRACT_METADATA = Metadata(
     id="8a0b5c252cd2198e9f3ba22398f35e5e42e86246.boutiques",
@@ -22,7 +21,7 @@ PerfusionSubtractParameters = typing.TypedDict('PerfusionSubtractParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "perfusion_subtract": perfusion_subtract_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "perfusion_subtract": perfusion_subtract_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PerfusionSubtractOutputs(typing.NamedTuple):

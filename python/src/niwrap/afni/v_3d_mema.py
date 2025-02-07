@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MEMA_METADATA = Metadata(
     id="3e49aad2d71d54e4f942b7cc6311a0fe4225ef3f.boutiques",
@@ -19,7 +18,7 @@ V3dMemaParameters = typing.TypedDict('V3dMemaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -28,15 +27,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMEMA": v_3d_mema_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -45,10 +43,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMEMA": v_3d_mema_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMemaOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPMREGISTER_METADATA = Metadata(
     id="f04847924393c8dd412a6711f383105c39a90534.boutiques",
@@ -32,7 +31,7 @@ SpmregisterParameters = typing.TypedDict('SpmregisterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "spmregister": spmregister_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "spmregister": spmregister_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SpmregisterOutputs(typing.NamedTuple):

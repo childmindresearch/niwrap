@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REBASE_TENSOR_IMAGE_METADATA = Metadata(
     id="cb7dc4431e44610b96f7d5021a64651fd63ad535.boutiques",
@@ -24,7 +23,7 @@ RebaseTensorImageParameters = typing.TypedDict('RebaseTensorImageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "RebaseTensorImage": rebase_tensor_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "RebaseTensorImage": rebase_tensor_image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RebaseTensorImageOutputs(typing.NamedTuple):

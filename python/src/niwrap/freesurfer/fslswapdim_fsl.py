@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLSWAPDIM_FSL_METADATA = Metadata(
     id="7302b08bc4d86f9914f7a8203cbaf36cc9515b0c.boutiques",
@@ -24,7 +23,7 @@ FslswapdimFslParameters = typing.TypedDict('FslswapdimFslParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslswapdim.fsl": fslswapdim_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslswapdim.fsl": fslswapdim_fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslswapdimFslOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 POSSUM_PLOT_METADATA = Metadata(
     id="8ed3fa6e50d07f3853fcec9ca53f667a78d048a0.boutiques",
@@ -21,7 +20,7 @@ PossumPlotParameters = typing.TypedDict('PossumPlotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "possum_plot": possum_plot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "possum_plot": possum_plot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PossumPlotOutputs(typing.NamedTuple):

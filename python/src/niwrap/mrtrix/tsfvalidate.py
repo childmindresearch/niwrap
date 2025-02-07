@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TSFVALIDATE_METADATA = Metadata(
     id="9cbd2feb99692133f28747c96ab73eb720860a6a.boutiques",
@@ -34,7 +33,7 @@ TsfvalidateParameters = typing.TypedDict('TsfvalidateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tsfvalidate": tsfvalidate_cargs,
         "config": tsfvalidate_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "tsfvalidate": tsfvalidate_outputs,
+        "config": tsfvalidate_config_outputs,
+    }.get(t)
 
 
 def tsfvalidate_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UNPACK_MNC_TCL_METADATA = Metadata(
     id="54eec142d994829a43977ef77cc7f837f8d06635.boutiques",
@@ -22,7 +21,7 @@ UnpackMncTclParameters = typing.TypedDict('UnpackMncTclParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "unpack_mnc.tcl": unpack_mnc_tcl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "unpack_mnc.tcl": unpack_mnc_tcl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class UnpackMncTclOutputs(typing.NamedTuple):

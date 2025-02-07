@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKEDIT_METADATA = Metadata(
     id="e2f6cba90c1172611cb544017f9c4f8e312c397d.boutiques",
@@ -88,7 +87,7 @@ TckeditParameters = typing.TypedDict('TckeditParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -97,7 +96,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tckedit": tckedit_cargs,
         "include": tckedit_include_cargs,
         "VariousString": tckedit_various_string_cargs,
@@ -110,13 +109,12 @@ def dyn_cargs(
         "VariousString": tckedit_various_string_cargs_2,
         "VariousFile": tckedit_various_file_cargs_2,
         "config": tckedit_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -125,10 +123,20 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tckedit": tckedit_outputs,
-    }
-    return vt.get(t)
+        "include": tckedit_include_outputs,
+        "VariousString": tckedit_various_string_outputs,
+        "VariousFile": tckedit_various_file_outputs,
+        "include_ordered": tckedit_include_ordered_outputs,
+        "exclude": tckedit_exclude_outputs,
+        "VariousString": tckedit_various_string_outputs_,
+        "VariousFile": tckedit_various_file_outputs_,
+        "mask": tckedit_mask_outputs,
+        "VariousString": tckedit_various_string_outputs_2,
+        "VariousFile": tckedit_various_file_outputs_2,
+        "config": tckedit_config_outputs,
+    }.get(t)
 
 
 def tckedit_various_string_params(

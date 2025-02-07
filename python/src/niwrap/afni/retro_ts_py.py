@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RETRO_TS_PY_METADATA = Metadata(
     id="cc5cade6ed0e2d569151f1194c507bd0b645c37b.boutiques",
@@ -44,7 +43,7 @@ RetroTsPyParameters = typing.TypedDict('RetroTsPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "RetroTS.py": retro_ts_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "RetroTS.py": retro_ts_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RetroTsPyOutputs(typing.NamedTuple):

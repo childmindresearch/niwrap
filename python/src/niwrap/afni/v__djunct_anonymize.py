@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_ANONYMIZE_METADATA = Metadata(
     id="b39c604a1cb220842f1bff1090f5403b2eb497f0.boutiques",
@@ -23,7 +22,7 @@ VDjunctAnonymizeParameters = typing.TypedDict('VDjunctAnonymizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_anonymize": v__djunct_anonymize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@djunct_anonymize": v__djunct_anonymize_outputs,
+    }.get(t)
 
 
 class VDjunctAnonymizeOutputs(typing.NamedTuple):

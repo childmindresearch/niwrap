@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIDUCIALS_CALIBRATION_METADATA = Metadata(
     id="445a4b2fe29e36b5286fe1c80268453941ab7144.boutiques",
@@ -19,7 +18,7 @@ FiducialsCalibrationParameters = typing.TypedDict('FiducialsCalibrationParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -28,15 +27,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fiducials_calibration": fiducials_calibration_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -45,8 +43,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fiducials_calibration": fiducials_calibration_outputs,
+    }.get(t)
 
 
 class FiducialsCalibrationOutputs(typing.NamedTuple):

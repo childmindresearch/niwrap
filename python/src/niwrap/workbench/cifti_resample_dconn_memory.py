@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
     id="6897a244659820e737362b7b9d26217d4c4a2122.boutiques",
@@ -122,7 +121,7 @@ CiftiResampleDconnMemoryParameters = typing.TypedDict('CiftiResampleDconnMemoryP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -131,7 +130,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-resample-dconn-memory": cifti_resample_dconn_memory_cargs,
         "volume_predilate": cifti_resample_dconn_memory_volume_predilate_cargs,
         "weighted": cifti_resample_dconn_memory_weighted_cargs,
@@ -149,13 +148,12 @@ def dyn_cargs(
         "cerebellum_spheres": cifti_resample_dconn_memory_cerebellum_spheres_cargs,
         "cerebellum_area_surfs": cifti_resample_dconn_memory_cerebellum_area_surfs_cargs,
         "cerebellum_area_metrics": cifti_resample_dconn_memory_cerebellum_area_metrics_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -164,10 +162,25 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-resample-dconn-memory": cifti_resample_dconn_memory_outputs,
-    }
-    return vt.get(t)
+        "volume_predilate": cifti_resample_dconn_memory_volume_predilate_outputs,
+        "weighted": cifti_resample_dconn_memory_weighted_outputs,
+        "surface_postdilate": cifti_resample_dconn_memory_surface_postdilate_outputs,
+        "weighted": cifti_resample_dconn_memory_weighted_outputs_,
+        "affine": cifti_resample_dconn_memory_affine_outputs,
+        "flirt": cifti_resample_dconn_memory_flirt_outputs,
+        "warpfield": cifti_resample_dconn_memory_warpfield_outputs,
+        "left_spheres": cifti_resample_dconn_memory_left_spheres_outputs,
+        "left_area_surfs": cifti_resample_dconn_memory_left_area_surfs_outputs,
+        "left_area_metrics": cifti_resample_dconn_memory_left_area_metrics_outputs,
+        "right_spheres": cifti_resample_dconn_memory_right_spheres_outputs,
+        "right_area_surfs": cifti_resample_dconn_memory_right_area_surfs_outputs,
+        "right_area_metrics": cifti_resample_dconn_memory_right_area_metrics_outputs,
+        "cerebellum_spheres": cifti_resample_dconn_memory_cerebellum_spheres_outputs,
+        "cerebellum_area_surfs": cifti_resample_dconn_memory_cerebellum_area_surfs_outputs,
+        "cerebellum_area_metrics": cifti_resample_dconn_memory_cerebellum_area_metrics_outputs,
+    }.get(t)
 
 
 def cifti_resample_dconn_memory_weighted_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_2PERM_METADATA = Metadata(
     id="b007441b34ed8856e7a229fc7d4806d2dbea20af.boutiques",
@@ -25,7 +24,7 @@ V2permParameters = typing.TypedDict('V2permParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "2perm": v_2perm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "2perm": v_2perm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V2permOutputs(typing.NamedTuple):

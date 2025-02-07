@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TRANSFORMCOMPOSE_METADATA = Metadata(
     id="8e378625408e1058e736b1bc94ac29bb3d2555e8.boutiques",
@@ -43,7 +42,7 @@ TransformcomposeParameters = typing.TypedDict('TransformcomposeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -52,18 +51,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "transformcompose": transformcompose_cargs,
         "config": transformcompose_config_cargs,
         "VariousString": transformcompose_various_string_cargs,
         "VariousFile": transformcompose_various_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,8 +70,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "transformcompose": transformcompose_outputs,
+        "config": transformcompose_config_outputs,
+        "VariousString": transformcompose_various_string_outputs,
+        "VariousFile": transformcompose_various_file_outputs,
+    }.get(t)
 
 
 def transformcompose_config_params(

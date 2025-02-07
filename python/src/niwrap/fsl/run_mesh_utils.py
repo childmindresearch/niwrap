@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RUN_MESH_UTILS_METADATA = Metadata(
     id="f37cf2d8f5013ba6fbfc7ef807691e24ce397261.boutiques",
@@ -24,7 +23,7 @@ RunMeshUtilsParameters = typing.TypedDict('RunMeshUtilsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "run_mesh_utils": run_mesh_utils_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "run_mesh_utils": run_mesh_utils_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RunMeshUtilsOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_4D_SLICES_TO_3D_VOL_METADATA = Metadata(
     id="e85dbe20324eef240907de23abb203630c5e1180.boutiques",
@@ -20,7 +19,7 @@ VDjunct4dSlicesTo3dVolParameters = typing.TypedDict('VDjunct4dSlicesTo3dVolParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_4d_slices_to_3d_vol": v__djunct_4d_slices_to_3d_vol_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@djunct_4d_slices_to_3d_vol": v__djunct_4d_slices_to_3d_vol_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VDjunct4dSlicesTo3dVolOutputs(typing.NamedTuple):

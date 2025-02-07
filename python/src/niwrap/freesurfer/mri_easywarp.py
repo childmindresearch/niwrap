@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_EASYWARP_METADATA = Metadata(
     id="61155dbff21df2a7da1b05052571570b740944be.boutiques",
@@ -24,7 +23,7 @@ MriEasywarpParameters = typing.TypedDict('MriEasywarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_easywarp": mri_easywarp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_easywarp": mri_easywarp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriEasywarpOutputs(typing.NamedTuple):

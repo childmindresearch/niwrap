@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SHIFT_VOLUME_METADATA = Metadata(
     id="8632323dd36a0ba5f059c998ffcd7826b058d4be.boutiques",
@@ -25,7 +24,7 @@ VShiftVolumeParameters = typing.TypedDict('VShiftVolumeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Shift_Volume": v__shift_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@Shift_Volume": v__shift_volume_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VShiftVolumeOutputs(typing.NamedTuple):

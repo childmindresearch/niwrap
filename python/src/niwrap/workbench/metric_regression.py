@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_REGRESSION_METADATA = Metadata(
     id="ed3451cc9b4382fc2c1eefb297b008ce34410f5e.boutiques",
@@ -35,7 +34,7 @@ MetricRegressionParameters = typing.TypedDict('MetricRegressionParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,17 +43,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-regression": metric_regression_cargs,
         "remove": metric_regression_remove_cargs,
         "keep": metric_regression_keep_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-regression": metric_regression_outputs,
-    }
-    return vt.get(t)
+        "remove": metric_regression_remove_outputs,
+        "keep": metric_regression_keep_outputs,
+    }.get(t)
 
 
 def metric_regression_remove_params(

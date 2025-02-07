@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_PREPROC_METADATA = Metadata(
     id="dd5edb4541571b929ce3905d2cb09807c8f4d850.boutiques",
@@ -67,7 +66,7 @@ MrisPreprocParameters = typing.TypedDict('MrisPreprocParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -76,15 +75,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_preproc": mris_preproc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -93,8 +91,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_preproc": mris_preproc_outputs,
+    }.get(t)
 
 
 class MrisPreprocOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
     id="b24c61221e5bb2198d65942d58627263daee752d.boutiques",
@@ -27,7 +26,7 @@ CiftiRestrictDenseMapParameters = typing.TypedDict('CiftiRestrictDenseMapParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-restrict-dense-map": cifti_restrict_dense_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-restrict-dense-map": cifti_restrict_dense_map_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiRestrictDenseMapOutputs(typing.NamedTuple):

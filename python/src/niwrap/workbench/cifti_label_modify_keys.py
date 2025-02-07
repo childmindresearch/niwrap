@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
     id="b6488aa76d7a1c529a64597a47f17e5cbeb441d6.boutiques",
@@ -23,7 +22,7 @@ CiftiLabelModifyKeysParameters = typing.TypedDict('CiftiLabelModifyKeysParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-label-modify-keys": cifti_label_modify_keys_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-label-modify-keys": cifti_label_modify_keys_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiLabelModifyKeysOutputs(typing.NamedTuple):

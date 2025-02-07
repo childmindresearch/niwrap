@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MIDEFACE_METADATA = Metadata(
     id="78ed8c9b1bc484046f26f89a611375e8c4e503a1.boutiques",
@@ -38,7 +37,7 @@ MidefaceParameters = typing.TypedDict('MidefaceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mideface": mideface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mideface": mideface_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MidefaceOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_3D_PHOTO_RECON_METADATA = Metadata(
     id="65e6002ea15ce2bd0acb1ae3f6efe0b8f986e100.boutiques",
@@ -33,7 +32,7 @@ Mri3dPhotoReconParameters = typing.TypedDict('Mri3dPhotoReconParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_3d_photo_recon": mri_3d_photo_recon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_3d_photo_recon": mri_3d_photo_recon_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Mri3dPhotoReconOutputs(typing.NamedTuple):

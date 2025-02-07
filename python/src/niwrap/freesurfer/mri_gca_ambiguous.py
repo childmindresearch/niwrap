@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_GCA_AMBIGUOUS_METADATA = Metadata(
     id="cdd8244223ec0fbd63686859a42564580f8c6dee.boutiques",
@@ -21,7 +20,7 @@ MriGcaAmbiguousParameters = typing.TypedDict('MriGcaAmbiguousParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_gca_ambiguous": mri_gca_ambiguous_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_gca_ambiguous": mri_gca_ambiguous_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriGcaAmbiguousOutputs(typing.NamedTuple):

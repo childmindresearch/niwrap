@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TBSS_SKELETON_METADATA = Metadata(
     id="25571f737489a24f1ca40f7027b3aa2c256d8dc2.boutiques",
@@ -26,7 +25,7 @@ TbssSkeletonParameters = typing.TypedDict('TbssSkeletonParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tbss_skeleton": tbss_skeleton_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tbss_skeleton": tbss_skeleton_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TbssSkeletonOutputs(typing.NamedTuple):

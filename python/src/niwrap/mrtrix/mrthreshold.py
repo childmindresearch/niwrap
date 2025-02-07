@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRTHRESHOLD_METADATA = Metadata(
     id="5f0e00d650d7ff4c22350347b81985e0b496eddf.boutiques",
@@ -45,7 +44,7 @@ MrthresholdParameters = typing.TypedDict('MrthresholdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,16 +53,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrthreshold": mrthreshold_cargs,
         "config": mrthreshold_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,10 +70,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrthreshold": mrthreshold_outputs,
-    }
-    return vt.get(t)
+        "config": mrthreshold_config_outputs,
+    }.get(t)
 
 
 def mrthreshold_config_params(

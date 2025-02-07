@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CAT_MATVEC_METADATA = Metadata(
     id="ea044673965ec2f3a89f325814e9677a680c6cec.boutiques",
@@ -21,7 +20,7 @@ CatMatvecParameters = typing.TypedDict('CatMatvecParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cat_matvec": cat_matvec_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cat_matvec": cat_matvec_outputs,
+    }.get(t)
 
 
 class CatMatvecOutputs(typing.NamedTuple):

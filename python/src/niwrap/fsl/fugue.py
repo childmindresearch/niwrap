@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FUGUE_METADATA = Metadata(
     id="e92886e40bebff1fca6ad036e63b3a6f487c4e4c.boutiques",
@@ -52,7 +51,7 @@ FugueParameters = typing.TypedDict('FugueParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -61,15 +60,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fugue": fugue_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,10 +76,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fugue": fugue_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FugueOutputs(typing.NamedTuple):

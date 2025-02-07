@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLCREATEHD_METADATA = Metadata(
     id="a1f23fc21d5b4fa921d24d195e31f974c2ac59d1.boutiques",
@@ -33,7 +32,7 @@ FslcreatehdParameters = typing.TypedDict('FslcreatehdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslcreatehd": fslcreatehd_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslcreatehd": fslcreatehd_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslcreatehdOutputs(typing.NamedTuple):

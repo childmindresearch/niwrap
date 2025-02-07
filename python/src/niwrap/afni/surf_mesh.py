@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_MESH_METADATA = Metadata(
     id="aba9dc7cdd5795dd83c2c7deb8fe8088d1965d12.boutiques",
@@ -27,7 +26,7 @@ SurfMeshParameters = typing.TypedDict('SurfMeshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfMesh": surf_mesh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfMesh": surf_mesh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfMeshOutputs(typing.NamedTuple):

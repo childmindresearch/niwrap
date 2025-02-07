@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_HAUSDORFF_DIST_METADATA = Metadata(
     id="c8c6f8e737d084817096cd5c6491a8218fa2f1ee.boutiques",
@@ -23,7 +22,7 @@ MrisHausdorffDistParameters = typing.TypedDict('MrisHausdorffDistParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_hausdorff_dist": mris_hausdorff_dist_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_hausdorff_dist": mris_hausdorff_dist_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisHausdorffDistOutputs(typing.NamedTuple):

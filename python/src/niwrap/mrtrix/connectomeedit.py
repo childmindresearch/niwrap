@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONNECTOMEEDIT_METADATA = Metadata(
     id="3bcd90abe0516012da5aeed95591c6ac56e14c72.boutiques",
@@ -35,7 +34,7 @@ ConnectomeeditParameters = typing.TypedDict('ConnectomeeditParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "connectomeedit": connectomeedit_cargs,
         "config": connectomeedit_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "connectomeedit": connectomeedit_outputs,
+        "config": connectomeedit_config_outputs,
+    }.get(t)
 
 
 def connectomeedit_config_params(

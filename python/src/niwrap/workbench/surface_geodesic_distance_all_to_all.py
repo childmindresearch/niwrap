@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_GEODESIC_DISTANCE_ALL_TO_ALL_METADATA = Metadata(
     id="c5c99621d8058817160d0334f2df766f3870b6d6.boutiques",
@@ -25,7 +24,7 @@ SurfaceGeodesicDistanceAllToAllParameters = typing.TypedDict('SurfaceGeodesicDis
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-geodesic-distance-all-to-all": surface_geodesic_distance_all_to_all_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-geodesic-distance-all-to-all": surface_geodesic_distance_all_to_all_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceGeodesicDistanceAllToAllOutputs(typing.NamedTuple):

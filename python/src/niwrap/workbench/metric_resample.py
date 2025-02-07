@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_RESAMPLE_METADATA = Metadata(
     id="2eca4b3fd760804b5611aaf9dbbfc7999f677124.boutiques",
@@ -40,7 +39,7 @@ MetricResampleParameters = typing.TypedDict('MetricResampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,17 +48,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-resample": metric_resample_cargs,
         "area_surfs": metric_resample_area_surfs_cargs,
         "area_metrics": metric_resample_area_metrics_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,10 +66,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-resample": metric_resample_outputs,
-    }
-    return vt.get(t)
+        "area_surfs": metric_resample_area_surfs_outputs,
+        "area_metrics": metric_resample_area_metrics_outputs,
+    }.get(t)
 
 
 def metric_resample_area_surfs_params(

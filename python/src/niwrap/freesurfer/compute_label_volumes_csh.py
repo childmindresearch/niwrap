@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 COMPUTE_LABEL_VOLUMES_CSH_METADATA = Metadata(
     id="82638ae4faa0eb9506df9c2f3a56c833cb5de288.boutiques",
@@ -24,7 +23,7 @@ ComputeLabelVolumesCshParameters = typing.TypedDict('ComputeLabelVolumesCshParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "compute_label_volumes.csh": compute_label_volumes_csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "compute_label_volumes.csh": compute_label_volumes_csh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ComputeLabelVolumesCshOutputs(typing.NamedTuple):

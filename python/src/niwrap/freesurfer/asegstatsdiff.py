@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ASEGSTATSDIFF_METADATA = Metadata(
     id="10487227e273c61c9beadcb9b38d15804d6724e3.boutiques",
@@ -22,7 +21,7 @@ AsegstatsdiffParameters = typing.TypedDict('AsegstatsdiffParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "asegstatsdiff": asegstatsdiff_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "asegstatsdiff": asegstatsdiff_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AsegstatsdiffOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_AVERAGE_METADATA = Metadata(
     id="9f634edc8e7e1a23500b288fecc20c4dd605a410.boutiques",
@@ -39,7 +38,7 @@ MriAverageParameters = typing.TypedDict('MriAverageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,15 +47,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_average": mri_average_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_average": mri_average_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriAverageOutputs(typing.NamedTuple):

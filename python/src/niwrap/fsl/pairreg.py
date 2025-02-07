@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PAIRREG_METADATA = Metadata(
     id="b91659121aa50786207f87a814c07e8cbf851fc0.boutiques",
@@ -25,7 +24,7 @@ PairregParameters = typing.TypedDict('PairregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "pairreg": pairreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "pairreg": pairreg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PairregOutputs(typing.NamedTuple):

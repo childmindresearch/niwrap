@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__FAT_TRACT_COLORIZE_METADATA = Metadata(
     id="08df2223341e8a3953edfe06cc72302451f3e2c8.boutiques",
@@ -26,7 +25,7 @@ VFatTractColorizeParameters = typing.TypedDict('VFatTractColorizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@fat_tract_colorize": v__fat_tract_colorize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@fat_tract_colorize": v__fat_tract_colorize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VFatTractColorizeOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_ROTATE_METADATA = Metadata(
     id="ef8f8112c666b20f57f67d98677ecae66ab493de.boutiques",
@@ -26,7 +25,7 @@ MrisRotateParameters = typing.TypedDict('MrisRotateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_rotate": mris_rotate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_rotate": mris_rotate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRotateOutputs(typing.NamedTuple):

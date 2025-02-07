@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QDELAUNAY_METADATA = Metadata(
     id="6ffd24be5e49d65ad58c48581dbc1c38e779c71c.boutiques",
@@ -52,7 +51,7 @@ QdelaunayParameters = typing.TypedDict('QdelaunayParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -61,15 +60,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "qdelaunay": qdelaunay_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,8 +76,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "qdelaunay": qdelaunay_outputs,
+    }.get(t)
 
 
 class QdelaunayOutputs(typing.NamedTuple):

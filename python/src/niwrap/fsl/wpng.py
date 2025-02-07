@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 WPNG_METADATA = Metadata(
     id="b70c124c632221928f3f480300f61a73fde2986a.boutiques",
@@ -25,7 +24,7 @@ WpngParameters = typing.TypedDict('WpngParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "wpng": wpng_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "wpng": wpng_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class WpngOutputs(typing.NamedTuple):

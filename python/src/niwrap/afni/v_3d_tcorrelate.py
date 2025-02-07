@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_TCORRELATE_METADATA = Metadata(
     id="a874b3865df8702baf89b243d1e11b051abda5bf.boutiques",
@@ -35,7 +34,7 @@ V3dTcorrelateParameters = typing.TypedDict('V3dTcorrelateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dTcorrelate": v_3d_tcorrelate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dTcorrelate": v_3d_tcorrelate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dTcorrelateOutputs(typing.NamedTuple):

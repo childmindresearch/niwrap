@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SETLABELSTAT_METADATA = Metadata(
     id="4886639a09879a1b6f761d93393746968357bada.boutiques",
@@ -23,7 +22,7 @@ SetlabelstatParameters = typing.TypedDict('SetlabelstatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "setlabelstat": setlabelstat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "setlabelstat": setlabelstat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SetlabelstatOutputs(typing.NamedTuple):

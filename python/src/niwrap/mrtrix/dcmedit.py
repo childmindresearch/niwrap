@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCMEDIT_METADATA = Metadata(
     id="01158fce9a81a53a1cc2f81c6577cb2f6210d5a8.boutiques",
@@ -42,7 +41,7 @@ DcmeditParameters = typing.TypedDict('DcmeditParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,17 +50,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcmedit": dcmedit_cargs,
         "tag": dcmedit_tag_cargs,
         "config": dcmedit_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,8 +68,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dcmedit": dcmedit_outputs,
+        "tag": dcmedit_tag_outputs,
+        "config": dcmedit_config_outputs,
+    }.get(t)
 
 
 def dcmedit_tag_params(

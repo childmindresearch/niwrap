@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UNCONFOUND_METADATA = Metadata(
     id="2ccf7c410e301ebdd239b6f4684654f07d566038.boutiques",
@@ -22,7 +21,7 @@ UnconfoundParameters = typing.TypedDict('UnconfoundParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "unconfound": unconfound_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "unconfound": unconfound_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class UnconfoundOutputs(typing.NamedTuple):

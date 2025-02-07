@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_BLUR_IN_MASK_METADATA = Metadata(
     id="2020eccbab2609356d0e3ab2fdd84a54c25cb900.boutiques",
@@ -30,7 +29,7 @@ V3dBlurInMaskParameters = typing.TypedDict('V3dBlurInMaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dBlurInMask": v_3d_blur_in_mask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dBlurInMask": v_3d_blur_in_mask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dBlurInMaskOutputs(typing.NamedTuple):

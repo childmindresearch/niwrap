@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_LABEL2VOXEL_METADATA = Metadata(
     id="1a0b4441c6daf326201e9ffe4e61b70d47c06809.boutiques",
@@ -23,7 +22,7 @@ FslLabel2voxelParameters = typing.TypedDict('FslLabel2voxelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl_label2voxel": fsl_label2voxel_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fsl_label2voxel": fsl_label2voxel_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslLabel2voxelOutputs(typing.NamedTuple):

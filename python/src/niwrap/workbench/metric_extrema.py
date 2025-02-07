@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_EXTREMA_METADATA = Metadata(
     id="a2f46a01c07390207099bf087477bc693bc124ec.boutiques",
@@ -41,7 +40,7 @@ MetricExtremaParameters = typing.TypedDict('MetricExtremaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,17 +49,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-extrema": metric_extrema_cargs,
         "presmooth": metric_extrema_presmooth_cargs,
         "threshold": metric_extrema_threshold_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-extrema": metric_extrema_outputs,
-    }
-    return vt.get(t)
+        "presmooth": metric_extrema_presmooth_outputs,
+        "threshold": metric_extrema_threshold_outputs,
+    }.get(t)
 
 
 def metric_extrema_presmooth_params(

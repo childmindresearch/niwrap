@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA = Metadata(
     id="1ba8745cbb78f985d998ca462d13cc2627bbcd68.boutiques",
@@ -32,7 +31,7 @@ AntsApplyTransformsToPointsParameters = typing.TypedDict('AntsApplyTransformsToP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,17 +40,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsApplyTransformsToPoints": ants_apply_transforms_to_points_cargs,
         "single_transform": ants_apply_transforms_to_points_single_transform_cargs,
         "inverse_transform": ants_apply_transforms_to_points_inverse_transform_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsApplyTransformsToPoints": ants_apply_transforms_to_points_outputs,
-    }
-    return vt.get(t)
+        "single_transform": ants_apply_transforms_to_points_single_transform_outputs,
+        "inverse_transform": ants_apply_transforms_to_points_inverse_transform_outputs,
+    }.get(t)
 
 
 def ants_apply_transforms_to_points_single_transform_params(

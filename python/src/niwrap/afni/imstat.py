@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMSTAT_METADATA = Metadata(
     id="c59c01eb2a12e7d9a2066403a73878b709e55aa5.boutiques",
@@ -23,7 +22,7 @@ ImstatParameters = typing.TypedDict('ImstatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imstat": imstat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imstat": imstat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImstatOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TRIDEC_METADATA = Metadata(
     id="8f7bd0a6993abb2339230891eb8c52ffadaa9441.boutiques",
@@ -23,7 +22,7 @@ TridecParameters = typing.TypedDict('TridecParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tridec": tridec_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tridec": tridec_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TridecOutputs(typing.NamedTuple):

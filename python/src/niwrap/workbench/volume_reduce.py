@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_REDUCE_METADATA = Metadata(
     id="00b070cbd951ede68c79c38901e32520aed29ba6.boutiques",
@@ -29,7 +28,7 @@ VolumeReduceParameters = typing.TypedDict('VolumeReduceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,16 +37,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-reduce": volume_reduce_cargs,
         "exclude_outliers": volume_reduce_exclude_outliers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-reduce": volume_reduce_outputs,
-    }
-    return vt.get(t)
+        "exclude_outliers": volume_reduce_exclude_outliers_outputs,
+    }.get(t)
 
 
 def volume_reduce_exclude_outliers_params(

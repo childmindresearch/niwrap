@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MASKDUMP_METADATA = Metadata(
     id="34b4c195e55cf0cebd30b2aa1175071f9fc41338.boutiques",
@@ -34,7 +33,7 @@ MaskdumpParameters = typing.TypedDict('MaskdumpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "maskdump": maskdump_cargs,
         "config": maskdump_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "maskdump": maskdump_outputs,
-    }
-    return vt.get(t)
+        "config": maskdump_config_outputs,
+    }.get(t)
 
 
 def maskdump_config_params(

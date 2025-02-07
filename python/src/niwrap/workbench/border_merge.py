@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BORDER_MERGE_METADATA = Metadata(
     id="ca2a6741bf7eb8c410d2cefbca005ab6491b5580.boutiques",
@@ -36,7 +35,7 @@ BorderMergeParameters = typing.TypedDict('BorderMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,18 +44,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "border-merge": border_merge_cargs,
         "border": border_merge_border_cargs,
         "select": border_merge_select_cargs,
         "up_to": border_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "border-merge": border_merge_outputs,
-    }
-    return vt.get(t)
+        "border": border_merge_border_outputs,
+        "select": border_merge_select_outputs,
+        "up_to": border_merge_up_to_outputs,
+    }.get(t)
 
 
 def border_merge_up_to_params(

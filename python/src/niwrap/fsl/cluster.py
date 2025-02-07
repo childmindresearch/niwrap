@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CLUSTER_METADATA = Metadata(
     id="f9c277296bff6829746b7b450932118c7250ea4d.boutiques",
@@ -45,7 +44,7 @@ ClusterParameters = typing.TypedDict('ClusterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,15 +53,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cluster": cluster_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,10 +69,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cluster": cluster_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ClusterOutputs(typing.NamedTuple):

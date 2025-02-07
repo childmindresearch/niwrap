@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PEAKS2AMP_METADATA = Metadata(
     id="90ed8fa8022a8bb67e41e995c1aaf7cea334db02.boutiques",
@@ -34,7 +33,7 @@ Peaks2ampParameters = typing.TypedDict('Peaks2ampParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "peaks2amp": peaks2amp_cargs,
         "config": peaks2amp_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "peaks2amp": peaks2amp_outputs,
-    }
-    return vt.get(t)
+        "config": peaks2amp_config_outputs,
+    }.get(t)
 
 
 def peaks2amp_config_params(

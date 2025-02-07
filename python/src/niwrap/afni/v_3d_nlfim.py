@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_NLFIM_METADATA = Metadata(
     id="b2553c2bf57346747079630757e1d16620ea8119.boutiques",
@@ -22,7 +21,7 @@ V3dNlfimParameters = typing.TypedDict('V3dNlfimParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dNLfim": v_3d_nlfim_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dNLfim": v_3d_nlfim_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dNlfimOutputs(typing.NamedTuple):

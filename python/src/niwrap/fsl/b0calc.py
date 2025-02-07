@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 B0CALC_METADATA = Metadata(
     id="327bbff7f12ab07ebfd36e73f5f6e8c5d9ba0cf0.boutiques",
@@ -33,7 +32,7 @@ B0calcParameters = typing.TypedDict('B0calcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "b0calc": b0calc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "b0calc": b0calc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class B0calcOutputs(typing.NamedTuple):

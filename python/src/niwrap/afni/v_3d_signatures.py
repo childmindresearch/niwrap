@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SIGNATURES_METADATA = Metadata(
     id="6f7958fe91c1d63deab2f5ca691371fc161ee645.boutiques",
@@ -25,7 +24,7 @@ V3dSignaturesParameters = typing.TypedDict('V3dSignaturesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSignatures": v_3d_signatures_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSignatures": v_3d_signatures_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSignaturesOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ROI_DECLUSTER_METADATA = Metadata(
     id="c565e19b7f5a74c17db9a508d6eb500dd6dc0e98.boutiques",
@@ -25,7 +24,7 @@ VRoiDeclusterParameters = typing.TypedDict('VRoiDeclusterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ROI_decluster": v__roi_decluster_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ROI_decluster": v__roi_decluster_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VRoiDeclusterOutputs(typing.NamedTuple):

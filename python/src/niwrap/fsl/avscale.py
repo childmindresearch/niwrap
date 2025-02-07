@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AVSCALE_METADATA = Metadata(
     id="55dd77b83020d0048dbe4f542385e6f483818b7c.boutiques",
@@ -23,7 +22,7 @@ AvscaleParameters = typing.TypedDict('AvscaleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "avscale": avscale_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "avscale": avscale_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AvscaleOutputs(typing.NamedTuple):

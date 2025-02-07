@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_RPLOT_METADATA = Metadata(
     id="97370e286ceee3c0b1e0eb62c1b51f85396f905d.boutiques",
@@ -20,7 +19,7 @@ V1dRplotParameters = typing.TypedDict('V1dRplotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dRplot": v_1d_rplot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dRplot": v_1d_rplot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dRplotOutputs(typing.NamedTuple):

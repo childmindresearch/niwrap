@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_DWI_TO_DT_METADATA = Metadata(
     id="c5a2942f4ac3b0a68c89864b914dd62d776684d1.boutiques",
@@ -48,7 +47,7 @@ FatProcDwiToDtParameters = typing.TypedDict('FatProcDwiToDtParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -57,15 +56,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_dwi_to_dt": fat_proc_dwi_to_dt_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_dwi_to_dt": fat_proc_dwi_to_dt_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcDwiToDtOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOL2SUBFIELD_METADATA = Metadata(
     id="ec503af3368509aa5b191ee5f77a6d7c5a57bc38.boutiques",
@@ -31,7 +30,7 @@ Vol2subfieldParameters = typing.TypedDict('Vol2subfieldParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "vol2subfield": vol2subfield_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "vol2subfield": vol2subfield_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Vol2subfieldOutputs(typing.NamedTuple):

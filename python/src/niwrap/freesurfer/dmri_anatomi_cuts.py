@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_ANATOMI_CUTS_METADATA = Metadata(
     id="b3ae6660625cd9a73409943ca03518bf3c1e8760.boutiques",
@@ -26,7 +25,7 @@ DmriAnatomiCutsParameters = typing.TypedDict('DmriAnatomiCutsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_AnatomiCuts": dmri_anatomi_cuts_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dmri_AnatomiCuts": dmri_anatomi_cuts_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DmriAnatomiCutsOutputs(typing.NamedTuple):

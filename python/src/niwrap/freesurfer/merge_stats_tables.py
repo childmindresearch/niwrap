@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MERGE_STATS_TABLES_METADATA = Metadata(
     id="004967733986569ad699b7fcfc4e0e899cb02c90.boutiques",
@@ -32,7 +31,7 @@ MergeStatsTablesParameters = typing.TypedDict('MergeStatsTablesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "merge_stats_tables": merge_stats_tables_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "merge_stats_tables": merge_stats_tables_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MergeStatsTablesOutputs(typing.NamedTuple):

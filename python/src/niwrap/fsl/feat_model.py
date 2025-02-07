@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FEAT_MODEL_METADATA = Metadata(
     id="e1b97eac6407023b70ba9603b867c2c4df4235a1.boutiques",
@@ -21,7 +20,7 @@ FeatModelParameters = typing.TypedDict('FeatModelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "feat_model": feat_model_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "feat_model": feat_model_outputs,
+    }.get(t)
 
 
 class FeatModelOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_GLMFIT_SIM_METADATA = Metadata(
     id="b485cfa7c95293942f2efa8d5ccde5c8c33116e9.boutiques",
@@ -48,7 +47,7 @@ MriGlmfitSimParameters = typing.TypedDict('MriGlmfitSimParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -57,15 +56,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_glmfit-sim": mri_glmfit_sim_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_glmfit-sim": mri_glmfit_sim_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriGlmfitSimOutputs(typing.NamedTuple):

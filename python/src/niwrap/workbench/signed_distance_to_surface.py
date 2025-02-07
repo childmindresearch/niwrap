@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
     id="8c742ccb7ded65823db6e22f82d38fb5ff077472.boutiques",
@@ -23,7 +22,7 @@ SignedDistanceToSurfaceParameters = typing.TypedDict('SignedDistanceToSurfacePar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "signed-distance-to-surface": signed_distance_to_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "signed-distance-to-surface": signed_distance_to_surface_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SignedDistanceToSurfaceOutputs(typing.NamedTuple):

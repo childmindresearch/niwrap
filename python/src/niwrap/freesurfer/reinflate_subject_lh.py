@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REINFLATE_SUBJECT_LH_METADATA = Metadata(
     id="3a29a9cc35621246bc04494a51e4c6898d34911c.boutiques",
@@ -20,7 +19,7 @@ ReinflateSubjectLhParameters = typing.TypedDict('ReinflateSubjectLhParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reinflate_subject-lh": reinflate_subject_lh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reinflate_subject-lh": reinflate_subject_lh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ReinflateSubjectLhOutputs(typing.NamedTuple):

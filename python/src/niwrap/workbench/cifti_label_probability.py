@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
     id="fb93f8ce53e22b6efd862837588951005975ba93.boutiques",
@@ -22,7 +21,7 @@ CiftiLabelProbabilityParameters = typing.TypedDict('CiftiLabelProbabilityParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-label-probability": cifti_label_probability_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-label-probability": cifti_label_probability_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiLabelProbabilityOutputs(typing.NamedTuple):

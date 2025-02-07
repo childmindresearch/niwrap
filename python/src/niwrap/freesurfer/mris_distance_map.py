@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_DISTANCE_MAP_METADATA = Metadata(
     id="3d8e889c4b656344736f94614b767e1d77d78242.boutiques",
@@ -21,7 +20,7 @@ MrisDistanceMapParameters = typing.TypedDict('MrisDistanceMapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_distance_map": mris_distance_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_distance_map": mris_distance_map_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisDistanceMapOutputs(typing.NamedTuple):

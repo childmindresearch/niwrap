@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
     id="d3c94d964daacbf8ae0c2ceed6d693aee86e0ca6.boutiques",
@@ -24,7 +23,7 @@ CiftiLabelAdjacencyParameters = typing.TypedDict('CiftiLabelAdjacencyParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-label-adjacency": cifti_label_adjacency_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-label-adjacency": cifti_label_adjacency_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiLabelAdjacencyOutputs(typing.NamedTuple):

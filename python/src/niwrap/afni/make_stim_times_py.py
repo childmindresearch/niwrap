@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_STIM_TIMES_PY_METADATA = Metadata(
     id="3d965a39cc5a0128cd3ea1f9b990c124e0c42cd3.boutiques",
@@ -31,7 +30,7 @@ MakeStimTimesPyParameters = typing.TypedDict('MakeStimTimesPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_stim_times.py": make_stim_times_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_stim_times.py": make_stim_times_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeStimTimesPyOutputs(typing.NamedTuple):

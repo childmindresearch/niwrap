@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 THRESHOLD_IMAGE_METADATA = Metadata(
     id="8cf8b0c4869168dc7cd4d8ddd7703d636b4075fc.boutiques",
@@ -29,7 +28,7 @@ ThresholdImageParameters = typing.TypedDict('ThresholdImageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ThresholdImage": threshold_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ThresholdImage": threshold_image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ThresholdImageOutputs(typing.NamedTuple):

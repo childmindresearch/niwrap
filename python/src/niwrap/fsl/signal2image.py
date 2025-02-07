@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SIGNAL2IMAGE_METADATA = Metadata(
     id="c966356e7e749d29ae76a10e34270ee060241613.boutiques",
@@ -31,7 +30,7 @@ Signal2imageParameters = typing.TypedDict('Signal2imageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "signal2image": signal2image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "signal2image": signal2image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Signal2imageOutputs(typing.NamedTuple):

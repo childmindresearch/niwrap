@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_LIB_CHECK_METADATA = Metadata(
     id="f37fc790fdaf3a4bfa36c3a6d4c66c5bcc752a3c.boutiques",
@@ -23,7 +22,7 @@ FsLibCheckParameters = typing.TypedDict('FsLibCheckParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs_lib_check": fs_lib_check_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fs_lib_check": fs_lib_check_outputs,
+    }.get(t)
 
 
 class FsLibCheckOutputs(typing.NamedTuple):

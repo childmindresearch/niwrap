@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFNI_RUN_R_METADATA = Metadata(
     id="c25de8aaab9b4faa0067fa6c9d3361eb1f13f7bf.boutiques",
@@ -21,7 +20,7 @@ AfniRunRParameters = typing.TypedDict('AfniRunRParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "afni_run_R": afni_run_r_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "afni_run_R": afni_run_r_outputs,
+    }.get(t)
 
 
 class AfniRunROutputs(typing.NamedTuple):

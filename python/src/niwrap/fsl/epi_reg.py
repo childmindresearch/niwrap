@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EPI_REG_METADATA = Metadata(
     id="f3b9f93db9cdd0639f6671b27e12cb6c4a3efd3a.boutiques",
@@ -32,7 +31,7 @@ EpiRegParameters = typing.TypedDict('EpiRegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "epi_reg": epi_reg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "epi_reg": epi_reg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EpiRegOutputs(typing.NamedTuple):

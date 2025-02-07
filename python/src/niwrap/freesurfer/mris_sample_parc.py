@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SAMPLE_PARC_METADATA = Metadata(
     id="63fdac72bbfef323f1126c39c936ff5c938f8b5d.boutiques",
@@ -42,7 +41,7 @@ MrisSampleParcParameters = typing.TypedDict('MrisSampleParcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,15 +50,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_sample_parc": mris_sample_parc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,10 +66,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_sample_parc": mris_sample_parc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSampleParcOutputs(typing.NamedTuple):

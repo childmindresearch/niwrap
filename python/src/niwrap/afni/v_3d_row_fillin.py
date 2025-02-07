@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ROW_FILLIN_METADATA = Metadata(
     id="efdbcc5556b9f847fe0eba3e015856a0addd50be.boutiques",
@@ -24,7 +23,7 @@ V3dRowFillinParameters = typing.TypedDict('V3dRowFillinParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dRowFillin": v_3d_row_fillin_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dRowFillin": v_3d_row_fillin_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dRowFillinOutputs(typing.NamedTuple):

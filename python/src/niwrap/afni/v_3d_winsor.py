@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_WINSOR_METADATA = Metadata(
     id="5b03e02998e8591af14134792670004ae23adb4e.boutiques",
@@ -28,7 +27,7 @@ V3dWinsorParameters = typing.TypedDict('V3dWinsorParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dWinsor": v_3d_winsor_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dWinsor": v_3d_winsor_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dWinsorOutputs(typing.NamedTuple):

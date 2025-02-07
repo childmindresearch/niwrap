@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GRAD_UNWARP_METADATA = Metadata(
     id="3f8f59f71178da3b91ee74fc055a9520bba22b05.boutiques",
@@ -28,7 +27,7 @@ GradUnwarpParameters = typing.TypedDict('GradUnwarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "grad_unwarp": grad_unwarp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "grad_unwarp": grad_unwarp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GradUnwarpOutputs(typing.NamedTuple):

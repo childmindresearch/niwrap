@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__AFNI_ORIENT2_RAIMAP_METADATA = Metadata(
     id="ade1258888a2ab4d7104b72e6f2921d74eaf281c.boutiques",
@@ -20,7 +19,7 @@ VAfniOrient2RaimapParameters = typing.TypedDict('VAfniOrient2RaimapParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@AfniOrient2RAImap": v__afni_orient2_raimap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@AfniOrient2RAImap": v__afni_orient2_raimap_outputs,
+    }.get(t)
 
 
 class VAfniOrient2RaimapOutputs(typing.NamedTuple):

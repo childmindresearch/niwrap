@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_WBC_METADATA = Metadata(
     id="92584218abde258bddf747b7925b1c16f3270082.boutiques",
@@ -36,7 +35,7 @@ MriWbcParameters = typing.TypedDict('MriWbcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_wbc": mri_wbc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mri_wbc": mri_wbc_outputs,
+    }.get(t)
 
 
 class MriWbcOutputs(typing.NamedTuple):

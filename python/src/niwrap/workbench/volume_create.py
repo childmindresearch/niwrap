@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_CREATE_METADATA = Metadata(
     id="ae422f4e56594a807daeeede3f3f8be904fa1b31.boutiques",
@@ -50,7 +49,7 @@ VolumeCreateParameters = typing.TypedDict('VolumeCreateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -59,17 +58,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-create": volume_create_cargs,
         "plumb": volume_create_plumb_cargs,
         "sform": volume_create_sform_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,10 +76,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-create": volume_create_outputs,
-    }
-    return vt.get(t)
+        "plumb": volume_create_plumb_outputs,
+        "sform": volume_create_sform_outputs,
+    }.get(t)
 
 
 def volume_create_plumb_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_5TTGEN_METADATA = Metadata(
     id="8d0c791a0a22a9714aac8b71be2ed57e61cce2de.boutiques",
@@ -66,7 +65,7 @@ V5ttgenParameters = typing.TypedDict('V5ttgenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -75,20 +74,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "5ttgen": v_5ttgen_cargs,
         "freesurfer": v_5ttgen_freesurfer_cargs,
         "fsl": v_5ttgen_fsl_cargs,
         "gif": v_5ttgen_gif_cargs,
         "hsvs": v_5ttgen_hsvs_cargs,
         "config": v_5ttgen_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -97,14 +95,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "5ttgen": v_5ttgen_outputs,
         "freesurfer": v_5ttgen_freesurfer_outputs,
         "fsl": v_5ttgen_fsl_outputs,
         "gif": v_5ttgen_gif_outputs,
         "hsvs": v_5ttgen_hsvs_outputs,
-    }
-    return vt.get(t)
+        "config": v_5ttgen_config_outputs,
+    }.get(t)
 
 
 class V5ttgenFreesurferOutputs(typing.NamedTuple):

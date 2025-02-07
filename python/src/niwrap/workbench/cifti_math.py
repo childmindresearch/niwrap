@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_MATH_METADATA = Metadata(
     id="acb213441c239a987f5bfdea4c09dd572401ef60.boutiques",
@@ -36,7 +35,7 @@ CiftiMathParameters = typing.TypedDict('CiftiMathParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,17 +44,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-math": cifti_math_cargs,
         "var": cifti_math_var_cargs,
         "select": cifti_math_select_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-math": cifti_math_outputs,
-    }
-    return vt.get(t)
+        "var": cifti_math_var_outputs,
+        "select": cifti_math_select_outputs,
+    }.get(t)
 
 
 def cifti_math_select_params(

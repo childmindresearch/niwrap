@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DTTO_NOISY_DWI_METADATA = Metadata(
     id="0ef5fe03a8b952b27e737adb59a395ac94790601.boutiques",
@@ -27,7 +26,7 @@ V3dDttoNoisyDwiParameters = typing.TypedDict('V3dDttoNoisyDwiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDTtoNoisyDWI": v_3d_dtto_noisy_dwi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDTtoNoisyDWI": v_3d_dtto_noisy_dwi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDttoNoisyDwiOutputs(typing.NamedTuple):

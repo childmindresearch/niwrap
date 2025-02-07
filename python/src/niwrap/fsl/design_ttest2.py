@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DESIGN_TTEST2_METADATA = Metadata(
     id="4f98cff1704b6243d344d536faebad9ca961f2af.boutiques",
@@ -23,7 +22,7 @@ DesignTtest2Parameters = typing.TypedDict('DesignTtest2Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "design_ttest2": design_ttest2_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "design_ttest2": design_ttest2_outputs,
+    }.get(t)
 
 
 class DesignTtest2Outputs(typing.NamedTuple):

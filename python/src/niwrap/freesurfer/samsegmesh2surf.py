@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SAMSEGMESH2SURF_METADATA = Metadata(
     id="d985be1373714eb0aff1a308730598604fe9d68c.boutiques",
@@ -25,7 +24,7 @@ Samsegmesh2surfParameters = typing.TypedDict('Samsegmesh2surfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "samsegmesh2surf": samsegmesh2surf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "samsegmesh2surf": samsegmesh2surf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Samsegmesh2surfOutputs(typing.NamedTuple):

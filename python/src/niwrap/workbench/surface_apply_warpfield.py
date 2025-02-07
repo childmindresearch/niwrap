@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
     id="62d776ef4770f80788d15439d0c09cdb0b85568a.boutiques",
@@ -23,7 +22,7 @@ SurfaceApplyWarpfieldParameters = typing.TypedDict('SurfaceApplyWarpfieldParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-apply-warpfield": surface_apply_warpfield_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-apply-warpfield": surface_apply_warpfield_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceApplyWarpfieldOutputs(typing.NamedTuple):

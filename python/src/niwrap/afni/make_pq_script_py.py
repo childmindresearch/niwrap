@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_PQ_SCRIPT_PY_METADATA = Metadata(
     id="a615a94a90a33ebcd0b428159142b2d1a4947946.boutiques",
@@ -23,7 +22,7 @@ MakePqScriptPyParameters = typing.TypedDict('MakePqScriptPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_pq_script.py": make_pq_script_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_pq_script.py": make_pq_script_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakePqScriptPyOutputs(typing.NamedTuple):

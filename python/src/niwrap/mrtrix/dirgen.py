@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DIRGEN_METADATA = Metadata(
     id="111662ebc02bd748b7609e8b39562fb928767bbb.boutiques",
@@ -39,7 +38,7 @@ DirgenParameters = typing.TypedDict('DirgenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,16 +47,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dirgen": dirgen_cargs,
         "config": dirgen_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dirgen": dirgen_outputs,
-    }
-    return vt.get(t)
+        "config": dirgen_config_outputs,
+    }.get(t)
 
 
 def dirgen_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_AFNITO_NIML_METADATA = Metadata(
     id="98f63f2e946d67b9373a37700e5abbc719dca8ea.boutiques",
@@ -20,7 +19,7 @@ V3dAfnitoNimlParameters = typing.TypedDict('V3dAfnitoNimlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dAFNItoNIML": v_3d_afnito_niml_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dAFNItoNIML": v_3d_afnito_niml_outputs,
+    }.get(t)
 
 
 class V3dAfnitoNimlOutputs(typing.NamedTuple):

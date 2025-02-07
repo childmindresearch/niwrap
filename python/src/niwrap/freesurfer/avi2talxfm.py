@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AVI2TALXFM_METADATA = Metadata(
     id="8aeaf0bd3a7339f6d2f2be8c9e4153a86e47e03a.boutiques",
@@ -23,7 +22,7 @@ Avi2talxfmParameters = typing.TypedDict('Avi2talxfmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "avi2talxfm": avi2talxfm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "avi2talxfm": avi2talxfm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Avi2talxfmOutputs(typing.NamedTuple):

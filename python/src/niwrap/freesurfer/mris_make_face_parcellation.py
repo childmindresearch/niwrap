@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_MAKE_FACE_PARCELLATION_METADATA = Metadata(
     id="47813723c3b8dcdc56ee88729e050b27cbb7ae13.boutiques",
@@ -23,7 +22,7 @@ MrisMakeFaceParcellationParameters = typing.TypedDict('MrisMakeFaceParcellationP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_make_face_parcellation": mris_make_face_parcellation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_make_face_parcellation": mris_make_face_parcellation_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisMakeFaceParcellationOutputs(typing.NamedTuple):

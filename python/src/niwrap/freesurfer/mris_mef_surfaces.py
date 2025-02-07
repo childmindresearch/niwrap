@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_MEF_SURFACES_METADATA = Metadata(
     id="02223303295326924a357b3a06e1f9463f061c83.boutiques",
@@ -25,7 +24,7 @@ MrisMefSurfacesParameters = typing.TypedDict('MrisMefSurfacesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_mef_surfaces": mris_mef_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_mef_surfaces": mris_mef_surfaces_outputs,
+    }.get(t)
 
 
 class MrisMefSurfacesOutputs(typing.NamedTuple):

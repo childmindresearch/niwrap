@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_TSORT_METADATA = Metadata(
     id="731309e5236007bd69df120b6a0494a5de798eeb.boutiques",
@@ -24,7 +23,7 @@ V1dTsortParameters = typing.TypedDict('V1dTsortParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dTsort": v_1d_tsort_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "1dTsort": v_1d_tsort_outputs,
+    }.get(t)
 
 
 class V1dTsortOutputs(typing.NamedTuple):

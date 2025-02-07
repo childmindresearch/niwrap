@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_BRICK_STAT_METADATA = Metadata(
     id="2171879e0c09931b6800be575110e0354a0a8e86.boutiques",
@@ -49,7 +48,7 @@ V3dBrickStatParameters = typing.TypedDict('V3dBrickStatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -58,15 +57,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dBrickStat": v_3d_brick_stat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -75,10 +73,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dBrickStat": v_3d_brick_stat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dBrickStatOutputs(typing.NamedTuple):

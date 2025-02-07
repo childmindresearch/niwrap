@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_DISTANCE_TO_LABEL_METADATA = Metadata(
     id="0538a932ce0052cc0bb4e77e20e1d20d65106c51.boutiques",
@@ -21,7 +20,7 @@ MrisDistanceToLabelParameters = typing.TypedDict('MrisDistanceToLabelParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_distance_to_label": mris_distance_to_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_distance_to_label": mris_distance_to_label_outputs,
+    }.get(t)
 
 
 class MrisDistanceToLabelOutputs(typing.NamedTuple):

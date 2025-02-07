@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_GRADIENT_METADATA = Metadata(
     id="f4530e09758cb38a6a09de62a78168104a151cfb.boutiques",
@@ -38,7 +37,7 @@ MetricGradientParameters = typing.TypedDict('MetricGradientParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,17 +46,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-gradient": metric_gradient_cargs,
         "presmooth": metric_gradient_presmooth_cargs,
         "roi": metric_gradient_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-gradient": metric_gradient_outputs,
-    }
-    return vt.get(t)
+        "presmooth": metric_gradient_presmooth_outputs,
+        "roi": metric_gradient_roi_outputs,
+    }.get(t)
 
 
 def metric_gradient_presmooth_params(

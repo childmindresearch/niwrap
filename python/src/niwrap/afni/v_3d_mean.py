@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MEAN_METADATA = Metadata(
     id="e324408a8ad006ebdb33f912bb6b96f4f9350026.boutiques",
@@ -38,7 +37,7 @@ V3dMeanParameters = typing.TypedDict('V3dMeanParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMean": v_3d_mean_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMean": v_3d_mean_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMeanOutputs(typing.NamedTuple):

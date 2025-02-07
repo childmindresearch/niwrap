@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_MOTION_CORR_STATS_METADATA = Metadata(
     id="ae93cc3983b8309bee22c105a3b82c9e97354cf5.boutiques",
@@ -26,7 +25,7 @@ AntsMotionCorrStatsParameters = typing.TypedDict('AntsMotionCorrStatsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsMotionCorrStats": ants_motion_corr_stats_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsMotionCorrStats": ants_motion_corr_stats_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsMotionCorrStatsOutputs(typing.NamedTuple):

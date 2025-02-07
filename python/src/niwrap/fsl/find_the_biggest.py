@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIND_THE_BIGGEST_METADATA = Metadata(
     id="3dbb5859444668bef5d4d2dc4f26feb48bfc1655.boutiques",
@@ -21,7 +20,7 @@ FindTheBiggestParameters = typing.TypedDict('FindTheBiggestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "find_the_biggest": find_the_biggest_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "find_the_biggest": find_the_biggest_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FindTheBiggestOutputs(typing.NamedTuple):

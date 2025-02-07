@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
     id="430c0cf662702b145c28eac54a52db1b1f1ee70a.boutiques",
@@ -47,7 +46,7 @@ N4BiasFieldCorrectionParameters = typing.TypedDict('N4BiasFieldCorrectionParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,18 +55,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "N4BiasFieldCorrection": n4_bias_field_correction_cargs,
         "convergence": n4_bias_field_correction_convergence_cargs,
         "bspline_fitting": n4_bias_field_correction_bspline_fitting_cargs,
         "histogram_sharpening": n4_bias_field_correction_histogram_sharpening_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -76,10 +74,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "N4BiasFieldCorrection": n4_bias_field_correction_outputs,
-    }
-    return vt.get(t)
+        "convergence": n4_bias_field_correction_convergence_outputs,
+        "bspline_fitting": n4_bias_field_correction_bspline_fitting_outputs,
+        "histogram_sharpening": n4_bias_field_correction_histogram_sharpening_outputs,
+    }.get(t)
 
 
 def n4_bias_field_correction_convergence_params(

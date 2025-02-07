@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_EXTRACT_LARGEST_CC_METADATA = Metadata(
     id="d482ce41fdae770a9397038906daba39eebb0541.boutiques",
@@ -26,7 +25,7 @@ MriExtractLargestCcParameters = typing.TypedDict('MriExtractLargestCcParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_extract_largest_CC": mri_extract_largest_cc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_extract_largest_CC": mri_extract_largest_cc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriExtractLargestCcOutputs(typing.NamedTuple):

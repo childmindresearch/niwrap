@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_RETINO_MAP_METADATA = Metadata(
     id="0a0bd510fbdb86c742b4ce55d2755f1f8650721e.boutiques",
@@ -24,7 +23,7 @@ SurfRetinoMapParameters = typing.TypedDict('SurfRetinoMapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfRetinoMap": surf_retino_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfRetinoMap": surf_retino_map_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfRetinoMapOutputs(typing.NamedTuple):

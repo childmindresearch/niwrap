@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BEDPOSTX_METADATA = Metadata(
     id="8d827db247c8140fd0612e8c4f7db7d170cfc43e.boutiques",
@@ -27,7 +26,7 @@ BedpostxParameters = typing.TypedDict('BedpostxParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "bedpostx": bedpostx_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "bedpostx": bedpostx_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BedpostxOutputs(typing.NamedTuple):

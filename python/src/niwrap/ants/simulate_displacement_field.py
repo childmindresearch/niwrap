@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SIMULATE_DISPLACEMENT_FIELD_METADATA = Metadata(
     id="ca776aa44d13ed564a1e49ff2d3269669eb9067c.boutiques",
@@ -36,7 +35,7 @@ SimulateDisplacementFieldParameters = typing.TypedDict('SimulateDisplacementFiel
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,17 +44,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SimulateDisplacementField": simulate_displacement_field_cargs,
         "bspline_options": simulate_displacement_field_bspline_options_cargs,
         "exponential_options": simulate_displacement_field_exponential_options_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SimulateDisplacementField": simulate_displacement_field_outputs,
-    }
-    return vt.get(t)
+        "bspline_options": simulate_displacement_field_bspline_options_outputs,
+        "exponential_options": simulate_displacement_field_exponential_options_outputs,
+    }.get(t)
 
 
 def simulate_displacement_field_bspline_options_params(

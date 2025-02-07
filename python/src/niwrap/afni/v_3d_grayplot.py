@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_GRAYPLOT_METADATA = Metadata(
     id="6d17ab08ae2c6bafb3bb5a4bc0dd707aa3956213.boutiques",
@@ -33,7 +32,7 @@ V3dGrayplotParameters = typing.TypedDict('V3dGrayplotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dGrayplot": v_3d_grayplot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dGrayplot": v_3d_grayplot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dGrayplotOutputs(typing.NamedTuple):

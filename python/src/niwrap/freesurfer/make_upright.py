@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_UPRIGHT_METADATA = Metadata(
     id="f69f1f73df7f80db3bbc666008c56b37f2fb8894.boutiques",
@@ -22,7 +21,7 @@ MakeUprightParameters = typing.TypedDict('MakeUprightParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_upright": make_upright_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_upright": make_upright_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeUprightOutputs(typing.NamedTuple):

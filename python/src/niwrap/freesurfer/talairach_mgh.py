@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TALAIRACH_MGH_METADATA = Metadata(
     id="470f9a508abcecfbd0c30650fa66adee5d4d661f.boutiques",
@@ -21,7 +20,7 @@ TalairachMghParameters = typing.TypedDict('TalairachMghParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "talairach_mgh": talairach_mgh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "talairach_mgh": talairach_mgh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TalairachMghOutputs(typing.NamedTuple):

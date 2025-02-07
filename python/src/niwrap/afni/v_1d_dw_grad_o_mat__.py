@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_DW_GRAD_O_MAT___METADATA = Metadata(
     id="46eee009ed5251cf0654dc7e2305bcbaecf3782b.boutiques",
@@ -40,7 +39,7 @@ V1dDwGradOMatParameters = typing.TypedDict('V1dDwGradOMatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,15 +48,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dDW_Grad_o_Mat++": v_1d_dw_grad_o_mat___cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dDW_Grad_o_Mat++": v_1d_dw_grad_o_mat___outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dDwGradOMatOutputs(typing.NamedTuple):

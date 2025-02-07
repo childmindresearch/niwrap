@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_GRADUNWARP_METADATA = Metadata(
     id="b0cc1536d78ca9cef5fa233e1c04b509599e2a82.boutiques",
@@ -30,7 +29,7 @@ MriGradunwarpParameters = typing.TypedDict('MriGradunwarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_gradunwarp": mri_gradunwarp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_gradunwarp": mri_gradunwarp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriGradunwarpOutputs(typing.NamedTuple):

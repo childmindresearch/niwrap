@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_CALC_MONT_DIMS_PY_METADATA = Metadata(
     id="4d9e1251726a46e6f7e2c846f8a4c9e80c3f25b6.boutiques",
@@ -20,7 +19,7 @@ AdjunctCalcMontDimsPyParameters = typing.TypedDict('AdjunctCalcMontDimsPyParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_calc_mont_dims.py": adjunct_calc_mont_dims_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "adjunct_calc_mont_dims.py": adjunct_calc_mont_dims_py_outputs,
+    }.get(t)
 
 
 class AdjunctCalcMontDimsPyOutputs(typing.NamedTuple):

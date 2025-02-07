@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_ICOSAHEDRON_METADATA = Metadata(
     id="0c5ed33e6d9371f02ee960933e1903bb9350e470.boutiques",
@@ -29,7 +28,7 @@ CreateIcosahedronParameters = typing.TypedDict('CreateIcosahedronParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CreateIcosahedron": create_icosahedron_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "CreateIcosahedron": create_icosahedron_outputs,
+    }.get(t)
 
 
 class CreateIcosahedronOutputs(typing.NamedTuple):

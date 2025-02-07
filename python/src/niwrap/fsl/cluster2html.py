@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CLUSTER2HTML_METADATA = Metadata(
     id="4888986f4fd601e816d92a86dd71f10fc36d506a.boutiques",
@@ -22,7 +21,7 @@ Cluster2htmlParameters = typing.TypedDict('Cluster2htmlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cluster2html": cluster2html_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cluster2html": cluster2html_outputs,
+    }.get(t)
 
 
 class Cluster2htmlOutputs(typing.NamedTuple):

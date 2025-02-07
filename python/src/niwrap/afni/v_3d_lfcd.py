@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_LFCD_METADATA = Metadata(
     id="bf72e901409ebf787635076f27fc633055ebec14.boutiques",
@@ -26,7 +25,7 @@ V3dLfcdParameters = typing.TypedDict('V3dLfcdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dLFCD": v_3d_lfcd_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dLFCD": v_3d_lfcd_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dLfcdOutputs(typing.NamedTuple):

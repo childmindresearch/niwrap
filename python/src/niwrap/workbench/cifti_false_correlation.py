@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_FALSE_CORRELATION_METADATA = Metadata(
     id="305c93f3a6d583446150f0a5829082da2a5823ee.boutiques",
@@ -42,7 +41,7 @@ CiftiFalseCorrelationParameters = typing.TypedDict('CiftiFalseCorrelationParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,18 +50,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-false-correlation": cifti_false_correlation_cargs,
         "left_surface": cifti_false_correlation_left_surface_cargs,
         "right_surface": cifti_false_correlation_right_surface_cargs,
         "cerebellum_surface": cifti_false_correlation_cerebellum_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,10 +69,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-false-correlation": cifti_false_correlation_outputs,
-    }
-    return vt.get(t)
+        "left_surface": cifti_false_correlation_left_surface_outputs,
+        "right_surface": cifti_false_correlation_right_surface_outputs,
+        "cerebellum_surface": cifti_false_correlation_cerebellum_surface_outputs,
+    }.get(t)
 
 
 def cifti_false_correlation_left_surface_params(

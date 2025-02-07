@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RSFGEN_METADATA = Metadata(
     id="42de4c95300ddfa6a27f2ddbc5b6d9dc63cdd292.boutiques",
@@ -32,7 +31,7 @@ RsfgenParameters = typing.TypedDict('RsfgenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "RSFgen": rsfgen_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "RSFgen": rsfgen_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RsfgenOutputs(typing.NamedTuple):

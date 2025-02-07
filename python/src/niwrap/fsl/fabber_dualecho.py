@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FABBER_DUALECHO_METADATA = Metadata(
     id="3b814c58103c730b38e41b1c598b309b06d4ea6b.boutiques",
@@ -54,7 +53,7 @@ FabberDualechoParameters = typing.TypedDict('FabberDualechoParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -63,15 +62,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fabber_dualecho": fabber_dualecho_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -80,10 +78,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fabber_dualecho": fabber_dualecho_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FabberDualechoOutputs(typing.NamedTuple):

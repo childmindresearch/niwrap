@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_DWI_SELECTOR_METADATA = Metadata(
     id="322cd55e91869cfd3befcc11394010a6d10dddc6.boutiques",
@@ -22,7 +21,7 @@ VDjunctDwiSelectorParameters = typing.TypedDict('VDjunctDwiSelectorParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_dwi_selector": v__djunct_dwi_selector_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@djunct_dwi_selector": v__djunct_dwi_selector_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VDjunctDwiSelectorOutputs(typing.NamedTuple):

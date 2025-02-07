@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TIMING_TOOL_PY_METADATA = Metadata(
     id="e72448a163610156059a44280593b8076536b24a.boutiques",
@@ -38,7 +37,7 @@ TimingToolPyParameters = typing.TypedDict('TimingToolPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "timing_tool.py": timing_tool_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "timing_tool.py": timing_tool_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TimingToolPyOutputs(typing.NamedTuple):

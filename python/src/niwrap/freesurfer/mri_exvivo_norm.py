@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_EXVIVO_NORM_METADATA = Metadata(
     id="a88bc50afe4bde5d431a45ef570ba7c5a89a8c36.boutiques",
@@ -34,7 +33,7 @@ MriExvivoNormParameters = typing.TypedDict('MriExvivoNormParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_exvivo_norm": mri_exvivo_norm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_exvivo_norm": mri_exvivo_norm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriExvivoNormOutputs(typing.NamedTuple):

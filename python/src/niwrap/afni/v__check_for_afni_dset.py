@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__CHECK_FOR_AFNI_DSET_METADATA = Metadata(
     id="36d93d7fee0a8f5033359b79ea1fc2a9f56b9766.boutiques",
@@ -20,7 +19,7 @@ VCheckForAfniDsetParameters = typing.TypedDict('VCheckForAfniDsetParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@CheckForAfniDset": v__check_for_afni_dset_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@CheckForAfniDset": v__check_for_afni_dset_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VCheckForAfniDsetOutputs(typing.NamedTuple):

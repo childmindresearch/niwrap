@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_EULER_NUMBER_METADATA = Metadata(
     id="0ad5734919ffe0fbdc78eddad073fdf8082b2ef3.boutiques",
@@ -21,7 +20,7 @@ MrisEulerNumberParameters = typing.TypedDict('MrisEulerNumberParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_euler_number": mris_euler_number_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_euler_number": mris_euler_number_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisEulerNumberOutputs(typing.NamedTuple):

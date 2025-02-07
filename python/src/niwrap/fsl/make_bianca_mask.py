@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
     id="6301fdafc66328cb8c345bedf78a2080c05aa6ca.boutiques",
@@ -40,7 +39,7 @@ MakeBiancaMaskParameters = typing.TypedDict('MakeBiancaMaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,15 +48,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_bianca_mask": make_bianca_mask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_bianca_mask": make_bianca_mask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeBiancaMaskOutputs(typing.NamedTuple):

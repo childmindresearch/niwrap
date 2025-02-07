@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 R_PKGS_INSTALL_METADATA = Metadata(
     id="9c9d4c7ec7df54a4bd835bc8c7156ea51895da44.boutiques",
@@ -24,7 +23,7 @@ RPkgsInstallParameters = typing.TypedDict('RPkgsInstallParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rPkgsInstall": r_pkgs_install_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "rPkgsInstall": r_pkgs_install_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RPkgsInstallOutputs(typing.NamedTuple):

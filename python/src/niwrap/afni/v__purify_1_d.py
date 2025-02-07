@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__PURIFY_1_D_METADATA = Metadata(
     id="f151d6221d30e4482e4401cc1da254b8c8b2ea5b.boutiques",
@@ -22,7 +21,7 @@ VPurify1DParameters = typing.TypedDict('VPurify1DParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Purify_1D": v__purify_1_d_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@Purify_1D": v__purify_1_d_outputs,
+    }.get(t)
 
 
 class VPurify1DOutputs(typing.NamedTuple):

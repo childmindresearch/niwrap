@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DCOPY_METADATA = Metadata(
     id="4b8187d004c6f4ba95518e709ad1f9b3eb4ed322.boutiques",
@@ -21,7 +20,7 @@ V3dcopyParameters = typing.TypedDict('V3dcopyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dcopy": v_3dcopy_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dcopy": v_3dcopy_outputs,
+    }.get(t)
 
 
 class V3dcopyOutputs(typing.NamedTuple):

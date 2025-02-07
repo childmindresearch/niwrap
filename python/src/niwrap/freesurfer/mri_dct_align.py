@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_DCT_ALIGN_METADATA = Metadata(
     id="b7dec03c65e4f45076247b5423830965c663feaa.boutiques",
@@ -22,7 +21,7 @@ MriDctAlignParameters = typing.TypedDict('MriDctAlignParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_dct_align": mri_dct_align_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_dct_align": mri_dct_align_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriDctAlignOutputs(typing.NamedTuple):

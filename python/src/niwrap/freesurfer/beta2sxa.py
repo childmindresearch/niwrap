@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BETA2SXA_METADATA = Metadata(
     id="715f661699d8a42e26b57d5896f55ec5edf8d5d2.boutiques",
@@ -23,7 +22,7 @@ Beta2sxaParameters = typing.TypedDict('Beta2sxaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "beta2sxa": beta2sxa_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "beta2sxa": beta2sxa_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Beta2sxaOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWIDENOISE_METADATA = Metadata(
     id="ed89d7a30761400bc9f73bcffb1319ae9ec84397.boutiques",
@@ -39,7 +38,7 @@ DwidenoiseParameters = typing.TypedDict('DwidenoiseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,16 +47,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwidenoise": dwidenoise_cargs,
         "config": dwidenoise_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwidenoise": dwidenoise_outputs,
-    }
-    return vt.get(t)
+        "config": dwidenoise_config_outputs,
+    }.get(t)
 
 
 def dwidenoise_config_params(

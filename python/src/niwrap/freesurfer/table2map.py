@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TABLE2MAP_METADATA = Metadata(
     id="a1a6b6fb84c32df9b568c86f461d163ba6cbfca6.boutiques",
@@ -25,7 +24,7 @@ Table2mapParameters = typing.TypedDict('Table2mapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "table2map": table2map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "table2map": table2map_outputs,
+    }.get(t)
 
 
 class Table2mapOutputs(typing.NamedTuple):

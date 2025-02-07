@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FILE_CONVERT_METADATA = Metadata(
     id="1c927fc2ff61db3bb5d363e2688ca25d14891cce.boutiques",
@@ -41,7 +40,7 @@ FileConvertParameters = typing.TypedDict('FileConvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,18 +49,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "file-convert": file_convert_cargs,
         "border_version_convert": file_convert_border_version_convert_cargs,
         "nifti_version_convert": file_convert_nifti_version_convert_cargs,
         "cifti_version_convert": file_convert_cifti_version_convert_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,8 +68,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "file-convert": file_convert_outputs,
+        "border_version_convert": file_convert_border_version_convert_outputs,
+        "nifti_version_convert": file_convert_nifti_version_convert_outputs,
+        "cifti_version_convert": file_convert_cifti_version_convert_outputs,
+    }.get(t)
 
 
 def file_convert_border_version_convert_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TSFTHRESHOLD_METADATA = Metadata(
     id="28e31eb9711dccf2b69c1a3082ba0162d297e12d.boutiques",
@@ -36,7 +35,7 @@ TsfthresholdParameters = typing.TypedDict('TsfthresholdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,16 +44,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tsfthreshold": tsfthreshold_cargs,
         "config": tsfthreshold_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tsfthreshold": tsfthreshold_outputs,
-    }
-    return vt.get(t)
+        "config": tsfthreshold_config_outputs,
+    }.get(t)
 
 
 def tsfthreshold_config_params(

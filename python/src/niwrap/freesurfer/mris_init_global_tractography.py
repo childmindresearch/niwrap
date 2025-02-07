@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA = Metadata(
     id="67eb4585ff3c986788ed4212a3618bb647f3bf08.boutiques",
@@ -22,7 +21,7 @@ MrisInitGlobalTractographyParameters = typing.TypedDict('MrisInitGlobalTractogra
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_init_global_tractography": mris_init_global_tractography_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_init_global_tractography": mris_init_global_tractography_outputs,
+    }.get(t)
 
 
 class MrisInitGlobalTractographyOutputs(typing.NamedTuple):

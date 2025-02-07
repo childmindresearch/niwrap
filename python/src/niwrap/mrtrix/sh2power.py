@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SH2POWER_METADATA = Metadata(
     id="536779908dfe6a15e2ec1a07b45bd1fe2e688ccd.boutiques",
@@ -35,7 +34,7 @@ Sh2powerParameters = typing.TypedDict('Sh2powerParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sh2power": sh2power_cargs,
         "config": sh2power_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sh2power": sh2power_outputs,
-    }
-    return vt.get(t)
+        "config": sh2power_config_outputs,
+    }.get(t)
 
 
 def sh2power_config_params(

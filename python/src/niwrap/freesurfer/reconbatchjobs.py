@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RECONBATCHJOBS_METADATA = Metadata(
     id="3b88343e632e9bbafdf43ea3df14e2cf0c3f34d1.boutiques",
@@ -21,7 +20,7 @@ ReconbatchjobsParameters = typing.TypedDict('ReconbatchjobsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reconbatchjobs": reconbatchjobs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "reconbatchjobs": reconbatchjobs_outputs,
+    }.get(t)
 
 
 class ReconbatchjobsOutputs(typing.NamedTuple):

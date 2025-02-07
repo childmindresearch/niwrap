@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRGRID_METADATA = Metadata(
     id="38b5784d2ea0ffb125cf48797846326fbc4d3517.boutiques",
@@ -63,7 +62,7 @@ MrgridParameters = typing.TypedDict('MrgridParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -72,19 +71,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrgrid": mrgrid_cargs,
         "axis": mrgrid_axis_cargs,
         "VariousString": mrgrid_various_string_cargs,
         "VariousFile": mrgrid_various_file_cargs,
         "config": mrgrid_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -93,10 +91,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrgrid": mrgrid_outputs,
-    }
-    return vt.get(t)
+        "axis": mrgrid_axis_outputs,
+        "VariousString": mrgrid_various_string_outputs,
+        "VariousFile": mrgrid_various_file_outputs,
+        "config": mrgrid_config_outputs,
+    }.get(t)
 
 
 def mrgrid_axis_params(

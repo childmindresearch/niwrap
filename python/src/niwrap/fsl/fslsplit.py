@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLSPLIT_METADATA = Metadata(
     id="588ee0f4afcc0ecee61fd388fbeb58790d2471e2.boutiques",
@@ -23,7 +22,7 @@ FslsplitParameters = typing.TypedDict('FslsplitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslsplit": fslsplit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslsplit": fslsplit_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslsplitOutputs(typing.NamedTuple):

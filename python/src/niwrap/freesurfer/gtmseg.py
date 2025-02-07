@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GTMSEG_METADATA = Metadata(
     id="29e1c1370e446a18137bbf4e9561c7972ac57725.boutiques",
@@ -37,7 +36,7 @@ GtmsegParameters = typing.TypedDict('GtmsegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gtmseg": gtmseg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gtmseg": gtmseg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GtmsegOutputs(typing.NamedTuple):

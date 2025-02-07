@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UNPACKIMADIR_METADATA = Metadata(
     id="6a27f64ee58627da90e1a875d70fa5b839c021e5.boutiques",
@@ -21,7 +20,7 @@ UnpackimadirParameters = typing.TypedDict('UnpackimadirParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "unpackimadir": unpackimadir_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "unpackimadir": unpackimadir_outputs,
+    }.get(t)
 
 
 class UnpackimadirOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_CREATE_T2COMBINED_METADATA = Metadata(
     id="629ff11abf5f1e027b0ae35e81e63322a5505789.boutiques",
@@ -26,7 +25,7 @@ MriCreateT2combinedParameters = typing.TypedDict('MriCreateT2combinedParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_create_t2combined": mri_create_t2combined_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_create_t2combined": mri_create_t2combined_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriCreateT2combinedOutputs(typing.NamedTuple):

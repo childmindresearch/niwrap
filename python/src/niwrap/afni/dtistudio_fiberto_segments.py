@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DTISTUDIO_FIBERTO_SEGMENTS_METADATA = Metadata(
     id="3f18eb1cd61025f3b6f243c49c95ab75c9ad86a9.boutiques",
@@ -22,7 +21,7 @@ DtistudioFibertoSegmentsParameters = typing.TypedDict('DtistudioFibertoSegmentsP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "DTIStudioFibertoSegments": dtistudio_fiberto_segments_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "DTIStudioFibertoSegments": dtistudio_fiberto_segments_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DtistudioFibertoSegmentsOutputs(typing.NamedTuple):

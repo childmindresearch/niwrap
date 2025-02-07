@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCM2NIIX_AFNI_METADATA = Metadata(
     id="2b048e6ed8405f5110cc5399162aab212faa5c72.boutiques",
@@ -48,7 +47,7 @@ Dcm2niixAfniParameters = typing.TypedDict('Dcm2niixAfniParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -57,15 +56,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcm2niix_afni": dcm2niix_afni_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dcm2niix_afni": dcm2niix_afni_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Dcm2niixAfniOutputs(typing.NamedTuple):

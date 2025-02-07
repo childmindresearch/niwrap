@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FABBER_DCE_METADATA = Metadata(
     id="8503b8f2dd7017cdd9be4bac37b326badcc8e524.boutiques",
@@ -55,7 +54,7 @@ FabberDceParameters = typing.TypedDict('FabberDceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -64,15 +63,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fabber_dce": fabber_dce_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -81,10 +79,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fabber_dce": fabber_dce_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FabberDceOutputs(typing.NamedTuple):

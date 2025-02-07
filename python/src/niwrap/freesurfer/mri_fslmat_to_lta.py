@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_FSLMAT_TO_LTA_METADATA = Metadata(
     id="a584f1ce4737b11d3bc46a9cd0dac5a4276a9a35.boutiques",
@@ -23,7 +22,7 @@ MriFslmatToLtaParameters = typing.TypedDict('MriFslmatToLtaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_fslmat_to_lta": mri_fslmat_to_lta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_fslmat_to_lta": mri_fslmat_to_lta_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriFslmatToLtaOutputs(typing.NamedTuple):

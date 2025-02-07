@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
     id="c7361c4e340d4044ba58e2e93a667ceb9c6989fd.boutiques",
@@ -29,7 +28,7 @@ VolumeWarpfieldAffineRegressionParameters = typing.TypedDict('VolumeWarpfieldAff
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,16 +37,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-warpfield-affine-regression": volume_warpfield_affine_regression_cargs,
         "flirt_out": volume_warpfield_affine_regression_flirt_out_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-warpfield-affine-regression": volume_warpfield_affine_regression_outputs,
+        "flirt_out": volume_warpfield_affine_regression_flirt_out_outputs,
+    }.get(t)
 
 
 def volume_warpfield_affine_regression_flirt_out_params(

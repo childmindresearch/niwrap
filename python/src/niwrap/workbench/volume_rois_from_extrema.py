@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_ROIS_FROM_EXTREMA_METADATA = Metadata(
     id="c4fedde00f78c99eb288d08659b236035a5d3048.boutiques",
@@ -26,7 +25,7 @@ VolumeRoisFromExtremaParameters = typing.TypedDict('VolumeRoisFromExtremaParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-rois-from-extrema": volume_rois_from_extrema_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-rois-from-extrema": volume_rois_from_extrema_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeRoisFromExtremaOutputs(typing.NamedTuple):

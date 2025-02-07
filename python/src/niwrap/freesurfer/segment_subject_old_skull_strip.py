@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SEGMENT_SUBJECT_OLD_SKULL_STRIP_METADATA = Metadata(
     id="abc48359fac304f034867897b978186bcd82c5e7.boutiques",
@@ -25,7 +24,7 @@ SegmentSubjectOldSkullStripParameters = typing.TypedDict('SegmentSubjectOldSkull
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "segment_subject_old_skull_strip": segment_subject_old_skull_strip_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "segment_subject_old_skull_strip": segment_subject_old_skull_strip_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SegmentSubjectOldSkullStripOutputs(typing.NamedTuple):

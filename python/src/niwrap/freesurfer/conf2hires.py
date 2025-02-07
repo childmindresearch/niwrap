@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONF2HIRES_METADATA = Metadata(
     id="0daec93cecaaf674dbbc3d770b70999cf8bff082.boutiques",
@@ -34,7 +33,7 @@ Conf2hiresParameters = typing.TypedDict('Conf2hiresParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "conf2hires": conf2hires_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,8 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "conf2hires": conf2hires_outputs,
+    }.get(t)
 
 
 class Conf2hiresOutputs(typing.NamedTuple):

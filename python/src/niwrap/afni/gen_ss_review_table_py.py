@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GEN_SS_REVIEW_TABLE_PY_METADATA = Metadata(
     id="14139376af49e78f5d6fa5b8178a8e41bcf15797.boutiques",
@@ -33,7 +32,7 @@ GenSsReviewTablePyParameters = typing.TypedDict('GenSsReviewTablePyParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gen_ss_review_table.py": gen_ss_review_table_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gen_ss_review_table.py": gen_ss_review_table_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GenSsReviewTablePyOutputs(typing.NamedTuple):

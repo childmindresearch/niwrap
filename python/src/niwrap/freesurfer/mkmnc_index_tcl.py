@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MKMNC_INDEX_TCL_METADATA = Metadata(
     id="153ac6ba9dc33639bcc37f096fb83434f0b7cb92.boutiques",
@@ -21,7 +20,7 @@ MkmncIndexTclParameters = typing.TypedDict('MkmncIndexTclParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mkmnc_index.tcl": mkmnc_index_tcl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mkmnc_index.tcl": mkmnc_index_tcl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MkmncIndexTclOutputs(typing.NamedTuple):

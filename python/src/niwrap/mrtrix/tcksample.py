@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKSAMPLE_METADATA = Metadata(
     id="0fd3b8818e87fff260e091a14a0639a496a49125.boutiques",
@@ -39,7 +38,7 @@ TcksampleParameters = typing.TypedDict('TcksampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,16 +47,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tcksample": tcksample_cargs,
         "config": tcksample_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tcksample": tcksample_outputs,
-    }
-    return vt.get(t)
+        "config": tcksample_config_outputs,
+    }.get(t)
 
 
 def tcksample_config_params(

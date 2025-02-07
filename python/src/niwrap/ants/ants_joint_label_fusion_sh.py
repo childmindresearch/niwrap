@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_JOINT_LABEL_FUSION_SH_METADATA = Metadata(
     id="247a29d0e6dd59cbbad0a89af0ca5b7e052f7e73.boutiques",
@@ -31,7 +30,7 @@ AntsJointLabelFusionShParameters = typing.TypedDict('AntsJointLabelFusionShParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsJointLabelFusion.sh": ants_joint_label_fusion_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsJointLabelFusion.sh": ants_joint_label_fusion_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsJointLabelFusionShOutputs(typing.NamedTuple):

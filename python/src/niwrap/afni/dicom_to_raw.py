@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DICOM_TO_RAW_METADATA = Metadata(
     id="7eb027b7c5690d1e6ebc29a721254ed558470f1d.boutiques",
@@ -20,7 +19,7 @@ DicomToRawParameters = typing.TypedDict('DicomToRawParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dicom_to_raw": dicom_to_raw_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dicom_to_raw": dicom_to_raw_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DicomToRawOutputs(typing.NamedTuple):

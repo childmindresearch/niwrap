@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_TORTOISETO_HERE_METADATA = Metadata(
     id="daf64b9d38f580b031c7bf8ec8344f0a10916677.boutiques",
@@ -25,7 +24,7 @@ V3dTortoisetoHereParameters = typing.TypedDict('V3dTortoisetoHereParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dTORTOISEtoHere": v_3d_tortoiseto_here_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dTORTOISEtoHere": v_3d_tortoiseto_here_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dTortoisetoHereOutputs(typing.NamedTuple):

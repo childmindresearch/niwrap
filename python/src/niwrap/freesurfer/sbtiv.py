@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SBTIV_METADATA = Metadata(
     id="f635fd3b0d71913a55d64eab8618d5ffd1066300.boutiques",
@@ -22,7 +21,7 @@ SbtivParameters = typing.TypedDict('SbtivParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sbtiv": sbtiv_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sbtiv": sbtiv_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SbtivOutputs(typing.NamedTuple):

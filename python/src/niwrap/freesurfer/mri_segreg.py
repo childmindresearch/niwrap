@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_SEGREG_METADATA = Metadata(
     id="f2669e04710c9f1f9d1fd46259ec2d013c37daf3.boutiques",
@@ -21,7 +20,7 @@ MriSegregParameters = typing.TypedDict('MriSegregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_segreg": mri_segreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_segreg": mri_segreg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriSegregOutputs(typing.NamedTuple):

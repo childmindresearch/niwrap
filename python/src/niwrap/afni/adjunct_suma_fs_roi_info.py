@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_SUMA_FS_ROI_INFO_METADATA = Metadata(
     id="779dea93198c9c27ce2d88ef43623927b9130d07.boutiques",
@@ -24,7 +23,7 @@ AdjunctSumaFsRoiInfoParameters = typing.TypedDict('AdjunctSumaFsRoiInfoParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_suma_fs_roi_info": adjunct_suma_fs_roi_info_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "adjunct_suma_fs_roi_info": adjunct_suma_fs_roi_info_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AdjunctSumaFsRoiInfoOutputs(typing.NamedTuple):

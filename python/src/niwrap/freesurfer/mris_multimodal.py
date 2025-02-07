@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_MULTIMODAL_METADATA = Metadata(
     id="41d6bb30b581761db606adc285367bb0716e55ee.boutiques",
@@ -29,7 +28,7 @@ MrisMultimodalParameters = typing.TypedDict('MrisMultimodalParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_multimodal": mris_multimodal_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_multimodal": mris_multimodal_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisMultimodalOutputs(typing.NamedTuple):

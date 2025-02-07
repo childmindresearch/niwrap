@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
     id="589ed658ff74e91ed944c55e458a7888b478c333.boutiques",
@@ -21,7 +20,7 @@ V3dExtractGroupInCorrParameters = typing.TypedDict('V3dExtractGroupInCorrParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dExtractGroupInCorr": v_3d_extract_group_in_corr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dExtractGroupInCorr": v_3d_extract_group_in_corr_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dExtractGroupInCorrOutputs(typing.NamedTuple):

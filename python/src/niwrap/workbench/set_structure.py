@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SET_STRUCTURE_METADATA = Metadata(
     id="b34214858feec5e1f1ef5db8d7db2f2cbe0976d1.boutiques",
@@ -23,7 +22,7 @@ SetStructureParameters = typing.TypedDict('SetStructureParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "set-structure": set_structure_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "set-structure": set_structure_outputs,
+    }.get(t)
 
 
 class SetStructureOutputs(typing.NamedTuple):

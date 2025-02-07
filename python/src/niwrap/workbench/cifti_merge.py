@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_MERGE_METADATA = Metadata(
     id="9084c8a8cff6894fb50075bd51ea6925c1f6b4d6.boutiques",
@@ -38,7 +37,7 @@ CiftiMergeParameters = typing.TypedDict('CiftiMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,18 +46,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-merge": cifti_merge_cargs,
         "cifti": cifti_merge_cifti_cargs,
         "index": cifti_merge_index_cargs,
         "up_to": cifti_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -67,10 +65,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-merge": cifti_merge_outputs,
-    }
-    return vt.get(t)
+        "cifti": cifti_merge_cifti_outputs,
+        "index": cifti_merge_index_outputs,
+        "up_to": cifti_merge_up_to_outputs,
+    }.get(t)
 
 
 def cifti_merge_up_to_params(

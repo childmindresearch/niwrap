@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PLUGOUT_TTA_METADATA = Metadata(
     id="527ba3843cf35faf98349b2c5641637095261844.boutiques",
@@ -29,7 +28,7 @@ PlugoutTtaParameters = typing.TypedDict('PlugoutTtaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "plugout_tta": plugout_tta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "plugout_tta": plugout_tta_outputs,
+    }.get(t)
 
 
 class PlugoutTtaOutputs(typing.NamedTuple):

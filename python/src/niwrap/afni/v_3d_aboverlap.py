@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ABOVERLAP_METADATA = Metadata(
     id="ce33e10c4b1ac12e30e9f2905df1b25512061469.boutiques",
@@ -24,7 +23,7 @@ V3dAboverlapParameters = typing.TypedDict('V3dAboverlapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dABoverlap": v_3d_aboverlap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dABoverlap": v_3d_aboverlap_outputs,
+    }.get(t)
 
 
 class V3dAboverlapOutputs(typing.NamedTuple):

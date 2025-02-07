@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__MAKE_LABEL_TABLE_METADATA = Metadata(
     id="20feae505751ac89a0b8a088a83f7ee7d488f8c6.boutiques",
@@ -53,7 +52,7 @@ VMakeLabelTableParameters = typing.TypedDict('VMakeLabelTableParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -62,15 +61,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@MakeLabelTable": v__make_label_table_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,10 +77,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@MakeLabelTable": v__make_label_table_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VMakeLabelTableOutputs(typing.NamedTuple):

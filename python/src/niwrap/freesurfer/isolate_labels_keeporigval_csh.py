@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA = Metadata(
     id="df797eee81eb441fe4aa69105caafa1c949467cd.boutiques",
@@ -24,7 +23,7 @@ IsolateLabelsKeeporigvalCshParameters = typing.TypedDict('IsolateLabelsKeeporigv
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "isolate_labels_keeporigval.csh": isolate_labels_keeporigval_csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "isolate_labels_keeporigval.csh": isolate_labels_keeporigval_csh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class IsolateLabelsKeeporigvalCshOutputs(typing.NamedTuple):

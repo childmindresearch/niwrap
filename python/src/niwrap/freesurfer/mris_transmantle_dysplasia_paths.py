@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_TRANSMANTLE_DYSPLASIA_PATHS_METADATA = Metadata(
     id="effcf060042c53596ed252e67dbd78f3fd8cbd8e.boutiques",
@@ -26,7 +25,7 @@ MrisTransmantleDysplasiaPathsParameters = typing.TypedDict('MrisTransmantleDyspl
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_transmantle_dysplasia_paths": mris_transmantle_dysplasia_paths_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_transmantle_dysplasia_paths": mris_transmantle_dysplasia_paths_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisTransmantleDysplasiaPathsOutputs(typing.NamedTuple):

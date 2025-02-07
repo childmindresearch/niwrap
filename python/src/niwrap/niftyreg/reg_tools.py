@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_TOOLS_METADATA = Metadata(
     id="f395b2a3b7977bc04bd46c3a00a35e8d43532b2f.boutiques",
@@ -31,7 +30,7 @@ RegToolsParameters = typing.TypedDict('RegToolsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg_tools": reg_tools_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg_tools": reg_tools_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegToolsOutputs(typing.NamedTuple):

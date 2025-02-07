@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RUN_FASTSURFER_SH_METADATA = Metadata(
     id="26270cd18e89f52fb8cb07dc98fd44dcf0753e14.boutiques",
@@ -54,7 +53,7 @@ RunFastsurferShParameters = typing.TypedDict('RunFastsurferShParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -63,15 +62,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "run_fastsurfer.sh": run_fastsurfer_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -80,10 +78,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "run_fastsurfer.sh": run_fastsurfer_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RunFastsurferShOutputs(typing.NamedTuple):

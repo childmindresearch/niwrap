@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMAVER_METADATA = Metadata(
     id="d40eed47338fed1128a04d1c60c1e336c6bcfad8.boutiques",
@@ -22,7 +21,7 @@ ImaverParameters = typing.TypedDict('ImaverParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imaver": imaver_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imaver": imaver_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImaverOutputs(typing.NamedTuple):

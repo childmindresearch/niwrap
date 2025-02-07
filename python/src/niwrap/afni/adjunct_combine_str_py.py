@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
     id="a45fe06c2fd58fe9e7783f5a93c6f6403e1fcec4.boutiques",
@@ -22,7 +21,7 @@ AdjunctCombineStrPyParameters = typing.TypedDict('AdjunctCombineStrPyParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_combine_str.py": adjunct_combine_str_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "adjunct_combine_str.py": adjunct_combine_str_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AdjunctCombineStrPyOutputs(typing.NamedTuple):

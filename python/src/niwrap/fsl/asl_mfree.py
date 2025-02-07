@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ASL_MFREE_METADATA = Metadata(
     id="2c6ac3df84ba3307596d4d4ee92da51804362ee6.boutiques",
@@ -37,7 +36,7 @@ AslMfreeParameters = typing.TypedDict('AslMfreeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "asl_mfree": asl_mfree_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "asl_mfree": asl_mfree_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AslMfreeOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MREDIT_METADATA = Metadata(
     id="930fabdd0dfa28ab193511318650c392dd3867c2.boutiques",
@@ -55,7 +54,7 @@ MreditParameters = typing.TypedDict('MreditParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -64,19 +63,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mredit": mredit_cargs,
         "plane": mredit_plane_cargs,
         "sphere": mredit_sphere_cargs,
         "voxel": mredit_voxel_cargs,
         "config": mredit_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -85,10 +83,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mredit": mredit_outputs,
-    }
-    return vt.get(t)
+        "plane": mredit_plane_outputs,
+        "sphere": mredit_sphere_outputs,
+        "voxel": mredit_voxel_outputs,
+        "config": mredit_config_outputs,
+    }.get(t)
 
 
 def mredit_plane_params(

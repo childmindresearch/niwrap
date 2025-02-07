@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCMSPLIT_METADATA = Metadata(
     id="3d5aa62fefcd13c6396a58e6fed84abe77250c1e.boutiques",
@@ -29,7 +28,7 @@ DcmsplitParameters = typing.TypedDict('DcmsplitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcmsplit": dcmsplit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dcmsplit": dcmsplit_outputs,
+    }.get(t)
 
 
 class DcmsplitOutputs(typing.NamedTuple):

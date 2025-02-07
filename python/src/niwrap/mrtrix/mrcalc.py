@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCALC_METADATA = Metadata(
     id="4abff4f051d8a436c35f7a012c41ca90bb2f4df0.boutiques",
@@ -242,7 +241,7 @@ MrcalcParameters = typing.TypedDict('MrcalcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -251,7 +250,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrcalc": mrcalc_cargs,
         "abs": mrcalc_abs_cargs,
         "neg": mrcalc_neg_cargs,
@@ -306,13 +305,12 @@ def dyn_cargs(
         "config": mrcalc_config_cargs,
         "VariousString": mrcalc_various_string_cargs,
         "VariousFile": mrcalc_various_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -321,8 +319,62 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mrcalc": mrcalc_outputs,
+        "abs": mrcalc_abs_outputs,
+        "neg": mrcalc_neg_outputs,
+        "add": mrcalc_add_outputs,
+        "subtract": mrcalc_subtract_outputs,
+        "multiply": mrcalc_multiply_outputs,
+        "divide": mrcalc_divide_outputs,
+        "min": mrcalc_min_outputs,
+        "max": mrcalc_max_outputs,
+        "lt": mrcalc_lt_outputs,
+        "gt": mrcalc_gt_outputs,
+        "le": mrcalc_le_outputs,
+        "ge": mrcalc_ge_outputs,
+        "eq": mrcalc_eq_outputs,
+        "neq": mrcalc_neq_outputs,
+        "if": mrcalc_if_outputs,
+        "replace": mrcalc_replace_outputs,
+        "sqrt": mrcalc_sqrt_outputs,
+        "pow": mrcalc_pow_outputs,
+        "round": mrcalc_round_outputs,
+        "ceil": mrcalc_ceil_outputs,
+        "floor": mrcalc_floor_outputs,
+        "not": mrcalc_not_outputs,
+        "and": mrcalc_and_outputs,
+        "or": mrcalc_or_outputs,
+        "xor": mrcalc_xor_outputs,
+        "isnan": mrcalc_isnan_outputs,
+        "isinf": mrcalc_isinf_outputs,
+        "finite": mrcalc_finite_outputs,
+        "complex": mrcalc_complex_outputs,
+        "polar": mrcalc_polar_outputs,
+        "real": mrcalc_real_outputs,
+        "imag": mrcalc_imag_outputs,
+        "phase": mrcalc_phase_outputs,
+        "conj": mrcalc_conj_outputs,
+        "proj": mrcalc_proj_outputs,
+        "exp": mrcalc_exp_outputs,
+        "log": mrcalc_log_outputs,
+        "log10": mrcalc_log10_outputs,
+        "cos": mrcalc_cos_outputs,
+        "sin": mrcalc_sin_outputs,
+        "tan": mrcalc_tan_outputs,
+        "acos": mrcalc_acos_outputs,
+        "asin": mrcalc_asin_outputs,
+        "atan": mrcalc_atan_outputs,
+        "cosh": mrcalc_cosh_outputs,
+        "sinh": mrcalc_sinh_outputs,
+        "tanh": mrcalc_tanh_outputs,
+        "acosh": mrcalc_acosh_outputs,
+        "asinh": mrcalc_asinh_outputs,
+        "atanh": mrcalc_atanh_outputs,
+        "config": mrcalc_config_outputs,
+        "VariousString": mrcalc_various_string_outputs,
+        "VariousFile": mrcalc_various_file_outputs,
+    }.get(t)
 
 
 def mrcalc_abs_params(

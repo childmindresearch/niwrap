@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_MOTION_CORRECT_FSL_METADATA = Metadata(
     id="e4429f150e08917f7317e164c448c83b94352eed.boutiques",
@@ -21,7 +20,7 @@ MriMotionCorrectFslParameters = typing.TypedDict('MriMotionCorrectFslParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_motion_correct.fsl": mri_motion_correct_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_motion_correct.fsl": mri_motion_correct_fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriMotionCorrectFslOutputs(typing.NamedTuple):

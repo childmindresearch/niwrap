@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_FIX_TOPOLOGY_METADATA = Metadata(
     id="5d7620635b54b49eefdf920890334e0223158089.boutiques",
@@ -45,7 +44,7 @@ MrisFixTopologyParameters = typing.TypedDict('MrisFixTopologyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,15 +53,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_fix_topology": mris_fix_topology_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,8 +69,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_fix_topology": mris_fix_topology_outputs,
+    }.get(t)
 
 
 class MrisFixTopologyOutputs(typing.NamedTuple):

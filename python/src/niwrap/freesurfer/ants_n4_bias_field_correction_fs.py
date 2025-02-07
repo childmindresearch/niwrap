@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_N4_BIAS_FIELD_CORRECTION_FS_METADATA = Metadata(
     id="40f0127eb4c39998d72b36223ec17bf7255ab2c2.boutiques",
@@ -26,7 +25,7 @@ AntsN4BiasFieldCorrectionFsParameters = typing.TypedDict('AntsN4BiasFieldCorrect
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "AntsN4BiasFieldCorrectionFs": ants_n4_bias_field_correction_fs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "AntsN4BiasFieldCorrectionFs": ants_n4_bias_field_correction_fs_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsN4BiasFieldCorrectionFsOutputs(typing.NamedTuple):

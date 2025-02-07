@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_ROBUST_TEMPLATE_METADATA = Metadata(
     id="e6d86749b113688755af2fc89adaf79f55c6735f.boutiques",
@@ -56,7 +55,7 @@ MriRobustTemplateParameters = typing.TypedDict('MriRobustTemplateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -65,15 +64,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_robust_template": mri_robust_template_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -82,10 +80,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_robust_template": mri_robust_template_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriRobustTemplateOutputs(typing.NamedTuple):

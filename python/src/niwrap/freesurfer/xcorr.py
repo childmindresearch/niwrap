@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 XCORR_METADATA = Metadata(
     id="9e4522b49e6cabe069fc758dd70b99c8feb9830e.boutiques",
@@ -25,7 +24,7 @@ XcorrParameters = typing.TypedDict('XcorrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "xcorr": xcorr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "xcorr": xcorr_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class XcorrOutputs(typing.NamedTuple):

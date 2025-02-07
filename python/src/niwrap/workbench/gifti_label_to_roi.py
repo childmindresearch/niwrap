@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GIFTI_LABEL_TO_ROI_METADATA = Metadata(
     id="252be09cb9f5099d7e1cc317ddf28a5cc85d2ab6.boutiques",
@@ -24,7 +23,7 @@ GiftiLabelToRoiParameters = typing.TypedDict('GiftiLabelToRoiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gifti-label-to-roi": gifti_label_to_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gifti-label-to-roi": gifti_label_to_roi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GiftiLabelToRoiOutputs(typing.NamedTuple):

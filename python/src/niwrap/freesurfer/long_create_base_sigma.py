@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LONG_CREATE_BASE_SIGMA_METADATA = Metadata(
     id="359af0d6b57993950b3f756ef93dd6df37402a88.boutiques",
@@ -21,7 +20,7 @@ LongCreateBaseSigmaParameters = typing.TypedDict('LongCreateBaseSigmaParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "long_create_base_sigma": long_create_base_sigma_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "long_create_base_sigma": long_create_base_sigma_outputs,
+    }.get(t)
 
 
 class LongCreateBaseSigmaOutputs(typing.NamedTuple):

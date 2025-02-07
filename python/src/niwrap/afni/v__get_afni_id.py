@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__GET_AFNI_ID_METADATA = Metadata(
     id="dd714c32ee0347e743e97e9bb31e98977a041122.boutiques",
@@ -20,7 +19,7 @@ VGetAfniIdParameters = typing.TypedDict('VGetAfniIdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@GetAfniID": v__get_afni_id_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@GetAfniID": v__get_afni_id_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VGetAfniIdOutputs(typing.NamedTuple):

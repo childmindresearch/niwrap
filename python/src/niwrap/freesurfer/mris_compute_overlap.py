@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_COMPUTE_OVERLAP_METADATA = Metadata(
     id="a5b5b5d3058860c230b1e6a107208c5201cd453b.boutiques",
@@ -27,7 +26,7 @@ MrisComputeOverlapParameters = typing.TypedDict('MrisComputeOverlapParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_compute_overlap": mris_compute_overlap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_compute_overlap": mris_compute_overlap_outputs,
+    }.get(t)
 
 
 class MrisComputeOverlapOutputs(typing.NamedTuple):

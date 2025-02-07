@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_THRESHOLD_METADATA = Metadata(
     id="18dd783d6c61c6360f3439c48e74d88d1a862887.boutiques",
@@ -25,7 +24,7 @@ MriThresholdParameters = typing.TypedDict('MriThresholdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_threshold": mri_threshold_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_threshold": mri_threshold_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriThresholdOutputs(typing.NamedTuple):

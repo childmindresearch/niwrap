@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_MATCH_METADATA = Metadata(
     id="7d679c04784ea9862b5def825b069decfde8f8d4.boutiques",
@@ -22,7 +21,7 @@ SurfaceMatchParameters = typing.TypedDict('SurfaceMatchParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-match": surface_match_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "surface-match": surface_match_outputs,
+    }.get(t)
 
 
 class SurfaceMatchOutputs(typing.NamedTuple):

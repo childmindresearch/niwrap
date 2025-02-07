@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BORDER_EXPORT_COLOR_TABLE_METADATA = Metadata(
     id="47f8717766356f0bcb7da91bb98cdef4d44c97d0.boutiques",
@@ -22,7 +21,7 @@ BorderExportColorTableParameters = typing.TypedDict('BorderExportColorTableParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "border-export-color-table": border_export_color_table_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "border-export-color-table": border_export_color_table_outputs,
+    }.get(t)
 
 
 class BorderExportColorTableOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
     id="b6fb601a41c80b9729bd9c95da0d4f3540060f61.boutiques",
@@ -24,7 +23,7 @@ VSkullStripTouchUpParameters = typing.TypedDict('VSkullStripTouchUpParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@SkullStrip_TouchUp": v__skull_strip_touch_up_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@SkullStrip_TouchUp": v__skull_strip_touch_up_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSkullStripTouchUpOutputs(typing.NamedTuple):

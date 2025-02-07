@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ROBUSTFOV_METADATA = Metadata(
     id="fe07b11b244bac46a02d5373b67ae5b1735d6731.boutiques",
@@ -25,7 +24,7 @@ RobustfovParameters = typing.TypedDict('RobustfovParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "robustfov": robustfov_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "robustfov": robustfov_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RobustfovOutputs(typing.NamedTuple):

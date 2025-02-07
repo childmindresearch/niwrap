@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_RESAMPLE_METADATA = Metadata(
     id="ad25a4a3ad82533025c83f2571f20342d0bcacf0.boutiques",
@@ -123,7 +122,7 @@ CiftiResampleParameters = typing.TypedDict('CiftiResampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -132,7 +131,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-resample": cifti_resample_cargs,
         "volume_predilate": cifti_resample_volume_predilate_cargs,
         "weighted": cifti_resample_weighted_cargs,
@@ -150,13 +149,12 @@ def dyn_cargs(
         "cerebellum_spheres": cifti_resample_cerebellum_spheres_cargs,
         "cerebellum_area_surfs": cifti_resample_cerebellum_area_surfs_cargs,
         "cerebellum_area_metrics": cifti_resample_cerebellum_area_metrics_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -165,10 +163,25 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-resample": cifti_resample_outputs,
-    }
-    return vt.get(t)
+        "volume_predilate": cifti_resample_volume_predilate_outputs,
+        "weighted": cifti_resample_weighted_outputs,
+        "surface_postdilate": cifti_resample_surface_postdilate_outputs,
+        "weighted": cifti_resample_weighted_outputs_,
+        "affine": cifti_resample_affine_outputs,
+        "flirt": cifti_resample_flirt_outputs,
+        "warpfield": cifti_resample_warpfield_outputs,
+        "left_spheres": cifti_resample_left_spheres_outputs,
+        "left_area_surfs": cifti_resample_left_area_surfs_outputs,
+        "left_area_metrics": cifti_resample_left_area_metrics_outputs,
+        "right_spheres": cifti_resample_right_spheres_outputs,
+        "right_area_surfs": cifti_resample_right_area_surfs_outputs,
+        "right_area_metrics": cifti_resample_right_area_metrics_outputs,
+        "cerebellum_spheres": cifti_resample_cerebellum_spheres_outputs,
+        "cerebellum_area_surfs": cifti_resample_cerebellum_area_surfs_outputs,
+        "cerebellum_area_metrics": cifti_resample_cerebellum_area_metrics_outputs,
+    }.get(t)
 
 
 def cifti_resample_weighted_params(

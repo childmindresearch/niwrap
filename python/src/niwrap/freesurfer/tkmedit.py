@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TKMEDIT_METADATA = Metadata(
     id="215f4c63f4d1d614a5f6ddc04a121949f2f19d48.boutiques",
@@ -21,7 +20,7 @@ TkmeditParameters = typing.TypedDict('TkmeditParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tkmedit": tkmedit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "tkmedit": tkmedit_outputs,
+    }.get(t)
 
 
 class TkmeditOutputs(typing.NamedTuple):

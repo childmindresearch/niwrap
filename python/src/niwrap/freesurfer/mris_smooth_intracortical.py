@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SMOOTH_INTRACORTICAL_METADATA = Metadata(
     id="2d913141d3a964703c9f9e1365f71235771f5c17.boutiques",
@@ -29,7 +28,7 @@ MrisSmoothIntracorticalParameters = typing.TypedDict('MrisSmoothIntracorticalPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_smooth_intracortical": mris_smooth_intracortical_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_smooth_intracortical": mris_smooth_intracortical_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSmoothIntracorticalOutputs(typing.NamedTuple):

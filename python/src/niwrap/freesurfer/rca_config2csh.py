@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RCA_CONFIG2CSH_METADATA = Metadata(
     id="a6974f7a84f9b447ffa3652155f3daff457ba308.boutiques",
@@ -20,7 +19,7 @@ RcaConfig2cshParameters = typing.TypedDict('RcaConfig2cshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rca-config2csh": rca_config2csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "rca-config2csh": rca_config2csh_outputs,
+    }.get(t)
 
 
 class RcaConfig2cshOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_COMPUTE_ACORR_METADATA = Metadata(
     id="c87ef9e1a360bff02be52c7cd358fb4259d79971.boutiques",
@@ -25,7 +24,7 @@ MrisComputeAcorrParameters = typing.TypedDict('MrisComputeAcorrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_compute_acorr": mris_compute_acorr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_compute_acorr": mris_compute_acorr_outputs,
+    }.get(t)
 
 
 class MrisComputeAcorrOutputs(typing.NamedTuple):

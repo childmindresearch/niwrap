@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MEICA_PY_METADATA = Metadata(
     id="4f8853ae256f37ea17513108bcc3c27cb471dc45.boutiques",
@@ -27,7 +26,7 @@ MeicaPyParameters = typing.TypedDict('MeicaPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "meica.py": meica_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "meica.py": meica_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MeicaPyOutputs(typing.NamedTuple):

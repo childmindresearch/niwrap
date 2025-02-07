@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_CHECK_VERSION_METADATA = Metadata(
     id="1bb29df8432be8183122dba0b74d19ba214f7751.boutiques",
@@ -24,7 +23,7 @@ FsCheckVersionParameters = typing.TypedDict('FsCheckVersionParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs-check-version": fs_check_version_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fs-check-version": fs_check_version_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FsCheckVersionOutputs(typing.NamedTuple):

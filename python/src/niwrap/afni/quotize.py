@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QUOTIZE_METADATA = Metadata(
     id="d23de9ba9a8a0ec51eec10d409b73d3f766156d0.boutiques",
@@ -22,7 +21,7 @@ QuotizeParameters = typing.TypedDict('QuotizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "quotize": quotize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "quotize": quotize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class QuotizeOutputs(typing.NamedTuple):

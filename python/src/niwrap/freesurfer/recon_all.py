@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RECON_ALL_METADATA = Metadata(
     id="de72948bacd270ce7d872b3cb30e555b07de540c.boutiques",
@@ -80,7 +79,7 @@ ReconAllParameters = typing.TypedDict('ReconAllParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -89,15 +88,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "recon-all": recon_all_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -106,10 +104,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "recon-all": recon_all_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ReconAllOutputs(typing.NamedTuple):

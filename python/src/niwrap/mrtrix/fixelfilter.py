@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXELFILTER_METADATA = Metadata(
     id="de612300fec8260dbe9407acf8595be232354182.boutiques",
@@ -57,7 +56,7 @@ FixelfilterParameters = typing.TypedDict('FixelfilterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -66,20 +65,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixelfilter": fixelfilter_cargs,
         "config": fixelfilter_config_cargs,
         "VariousString": fixelfilter_various_string_cargs,
         "VariousFile": fixelfilter_various_file_cargs,
         "VariousString": fixelfilter_various_string_cargs_,
         "VariousFile": fixelfilter_various_file_cargs_,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -88,8 +86,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fixelfilter": fixelfilter_outputs,
+        "config": fixelfilter_config_outputs,
+        "VariousString": fixelfilter_various_string_outputs,
+        "VariousFile": fixelfilter_various_file_outputs,
+        "VariousString": fixelfilter_various_string_outputs_,
+        "VariousFile": fixelfilter_various_file_outputs_,
+    }.get(t)
 
 
 def fixelfilter_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_INTENSITY_PROFILE_METADATA = Metadata(
     id="4503435a83a78998ccb884fce0c0c30ed9f78d3b.boutiques",
@@ -33,7 +32,7 @@ MrisIntensityProfileParameters = typing.TypedDict('MrisIntensityProfileParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_intensity_profile": mris_intensity_profile_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_intensity_profile": mris_intensity_profile_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisIntensityProfileOutputs(typing.NamedTuple):

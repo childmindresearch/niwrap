@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SURF_TO_VOL_SPACKLE_METADATA = Metadata(
     id="b0444f30cf6b3a9a0996f5b8c66a1134d87d5052.boutiques",
@@ -33,7 +32,7 @@ VSurfToVolSpackleParameters = typing.TypedDict('VSurfToVolSpackleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@surf_to_vol_spackle": v__surf_to_vol_spackle_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@surf_to_vol_spackle": v__surf_to_vol_spackle_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSurfToVolSpackleOutputs(typing.NamedTuple):

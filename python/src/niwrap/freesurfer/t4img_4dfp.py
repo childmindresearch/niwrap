@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 T4IMG_4DFP_METADATA = Metadata(
     id="57020555f03db47bd822a3164b665430a2020fd9.boutiques",
@@ -22,7 +21,7 @@ T4img4dfpParameters = typing.TypedDict('T4img4dfpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "t4img_4dfp": t4img_4dfp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "t4img_4dfp": t4img_4dfp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class T4img4dfpOutputs(typing.NamedTuple):

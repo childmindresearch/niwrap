@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_MERGEPATHS_METADATA = Metadata(
     id="18bc644100dca612df1989666e60cf3a4214164c.boutiques",
@@ -26,7 +25,7 @@ DmriMergepathsParameters = typing.TypedDict('DmriMergepathsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_mergepaths": dmri_mergepaths_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,8 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dmri_mergepaths": dmri_mergepaths_outputs,
+    }.get(t)
 
 
 class DmriMergepathsOutputs(typing.NamedTuple):

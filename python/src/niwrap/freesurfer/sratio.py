@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SRATIO_METADATA = Metadata(
     id="b9e1c106ac7eb065c902d7e719b87ca6cd2c12c5.boutiques",
@@ -23,7 +22,7 @@ SratioParameters = typing.TypedDict('SratioParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sratio": sratio_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sratio": sratio_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SratioOutputs(typing.NamedTuple):

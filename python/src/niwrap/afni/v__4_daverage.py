@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__4_DAVERAGE_METADATA = Metadata(
     id="539f6118b726725db3041382540750353fc522e5.boutiques",
@@ -20,7 +19,7 @@ V4DaverageParameters = typing.TypedDict('V4DaverageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@4Daverage": v__4_daverage_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@4Daverage": v__4_daverage_outputs,
+    }.get(t)
 
 
 class V4DaverageOutputs(typing.NamedTuple):

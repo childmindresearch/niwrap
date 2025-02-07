@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TEST_ORIENTATION_PLANES_FROM_PARCELLATION_METADATA = Metadata(
     id="4ec44f64124a848bb9ff90699fb3e68885365ff6.boutiques",
@@ -22,7 +21,7 @@ TestOrientationPlanesFromParcellationParameters = typing.TypedDict('TestOrientat
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "testOrientationPlanesFromParcellation": test_orientation_planes_from_parcellation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "testOrientationPlanesFromParcellation": test_orientation_planes_from_parcellation_outputs,
+    }.get(t)
 
 
 class TestOrientationPlanesFromParcellationOutputs(typing.NamedTuple):

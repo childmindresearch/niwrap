@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BETSURF_METADATA = Metadata(
     id="7a094f934968097bde54d5a6fbea512011c9f723.boutiques",
@@ -31,7 +30,7 @@ BetsurfParameters = typing.TypedDict('BetsurfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "betsurf": betsurf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "betsurf": betsurf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BetsurfOutputs(typing.NamedTuple):

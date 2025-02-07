@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCMDIR_INFO_MGH_METADATA = Metadata(
     id="7ccff8790fdd0d584c57e3c31a9bf9ffd1e90e36.boutiques",
@@ -24,7 +23,7 @@ DcmdirInfoMghParameters = typing.TypedDict('DcmdirInfoMghParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcmdir-info-mgh": dcmdir_info_mgh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dcmdir-info-mgh": dcmdir_info_mgh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DcmdirInfoMghOutputs(typing.NamedTuple):

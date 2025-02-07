@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CALC_GRAD_PERC_DEV_METADATA = Metadata(
     id="76e8d6c21efe0b0e70c7144ea3347d4476e917aa.boutiques",
@@ -23,7 +22,7 @@ CalcGradPercDevParameters = typing.TypedDict('CalcGradPercDevParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "calc_grad_perc_dev": calc_grad_perc_dev_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "calc_grad_perc_dev": calc_grad_perc_dev_outputs,
+    }.get(t)
 
 
 class CalcGradPercDevOutputs(typing.NamedTuple):

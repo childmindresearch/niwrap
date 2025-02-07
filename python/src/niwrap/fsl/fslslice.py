@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLSLICE_METADATA = Metadata(
     id="a89f4489f329457c259411cef949573bce403a21.boutiques",
@@ -21,7 +20,7 @@ FslsliceParameters = typing.TypedDict('FslsliceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslslice": fslslice_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslslice": fslslice_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslsliceOutputs(typing.NamedTuple):

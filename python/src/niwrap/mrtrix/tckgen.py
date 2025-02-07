@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKGEN_METADATA = Metadata(
     id="5b475b82cef330ab1e3018809589d1f9c95a6a94.boutiques",
@@ -141,7 +140,7 @@ TckgenParameters = typing.TypedDict('TckgenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -150,7 +149,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tckgen": tckgen_cargs,
         "seed_image": tckgen_seed_image_cargs,
         "seed_sphere": tckgen_seed_sphere_cargs,
@@ -170,13 +169,12 @@ def dyn_cargs(
         "VariousFile": tckgen_various_file_cargs_2,
         "fslgrad": tckgen_fslgrad_cargs,
         "config": tckgen_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -185,10 +183,27 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tckgen": tckgen_outputs,
-    }
-    return vt.get(t)
+        "seed_image": tckgen_seed_image_outputs,
+        "seed_sphere": tckgen_seed_sphere_outputs,
+        "seed_random_per_voxel": tckgen_seed_random_per_voxel_outputs,
+        "seed_grid_per_voxel": tckgen_seed_grid_per_voxel_outputs,
+        "seed_rejection": tckgen_seed_rejection_outputs,
+        "seed_gmwmi": tckgen_seed_gmwmi_outputs,
+        "include": tckgen_include_outputs,
+        "VariousString": tckgen_various_string_outputs,
+        "VariousFile": tckgen_various_file_outputs,
+        "include_ordered": tckgen_include_ordered_outputs,
+        "exclude": tckgen_exclude_outputs,
+        "VariousString": tckgen_various_string_outputs_,
+        "VariousFile": tckgen_various_file_outputs_,
+        "mask": tckgen_mask_outputs,
+        "VariousString": tckgen_various_string_outputs_2,
+        "VariousFile": tckgen_various_file_outputs_2,
+        "fslgrad": tckgen_fslgrad_outputs,
+        "config": tckgen_config_outputs,
+    }.get(t)
 
 
 def tckgen_seed_image_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ESTNOISE_METADATA = Metadata(
     id="bac23422fb853090843f27687afc6c5f426bdf2c.boutiques",
@@ -23,7 +22,7 @@ EstnoiseParameters = typing.TypedDict('EstnoiseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "estnoise": estnoise_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "estnoise": estnoise_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EstnoiseOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_REGISTRATION_SY_NQUICK_SH_METADATA = Metadata(
     id="95f42ebdf9e80a10a0b738811253de777466a830.boutiques",
@@ -24,7 +23,7 @@ AntsRegistrationSyNquickShParameters = typing.TypedDict('AntsRegistrationSyNquic
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsRegistrationSyNQuick.sh": ants_registration_sy_nquick_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsRegistrationSyNQuick.sh": ants_registration_sy_nquick_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsRegistrationSyNquickShOutputs(typing.NamedTuple):

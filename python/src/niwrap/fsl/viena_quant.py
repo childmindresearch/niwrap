@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VIENA_QUANT_METADATA = Metadata(
     id="51ebcfad9ed201b8538ee2a9ad0b420654d85cea.boutiques",
@@ -22,7 +21,7 @@ VienaQuantParameters = typing.TypedDict('VienaQuantParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "viena_quant": viena_quant_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "viena_quant": viena_quant_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VienaQuantOutputs(typing.NamedTuple):

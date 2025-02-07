@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAP_ALL_LABELS_LH_METADATA = Metadata(
     id="569f8a45a5f0082dff949fe6bc883e667d21393b.boutiques",
@@ -24,7 +23,7 @@ MapAllLabelsLhParameters = typing.TypedDict('MapAllLabelsLhParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "map_all_labels-lh": map_all_labels_lh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "map_all_labels-lh": map_all_labels_lh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MapAllLabelsLhOutputs(typing.NamedTuple):

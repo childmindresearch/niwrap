@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REALTIME_RECEIVER_METADATA = Metadata(
     id="558c634c7b6bcd0f07865ebb60363d7d2a9737a2.boutiques",
@@ -31,7 +30,7 @@ RealtimeReceiverParameters = typing.TypedDict('RealtimeReceiverParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "realtime_receiver": realtime_receiver_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,8 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "realtime_receiver": realtime_receiver_outputs,
+    }.get(t)
 
 
 class RealtimeReceiverOutputs(typing.NamedTuple):

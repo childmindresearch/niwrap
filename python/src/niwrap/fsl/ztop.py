@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ZTOP_METADATA = Metadata(
     id="aaa21f331bdaf4f959165aeb5f8d7c495a9d8f9d.boutiques",
@@ -23,7 +22,7 @@ ZtopParameters = typing.TypedDict('ZtopParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ztop": ztop_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ztop": ztop_outputs,
+    }.get(t)
 
 
 class ZtopOutputs(typing.NamedTuple):

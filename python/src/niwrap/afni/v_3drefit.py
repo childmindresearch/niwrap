@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DREFIT_METADATA = Metadata(
     id="c64dae99a72b96a3fc2de9c362a4bcd4492ceffe.boutiques",
@@ -36,7 +35,7 @@ V3drefitParameters = typing.TypedDict('V3drefitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3drefit": v_3drefit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3drefit": v_3drefit_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3drefitOutputs(typing.NamedTuple):

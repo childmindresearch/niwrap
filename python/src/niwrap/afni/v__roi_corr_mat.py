@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ROI_CORR_MAT_METADATA = Metadata(
     id="d30a28b9afde46895088e3c1489b3ceaf2e8ab86.boutiques",
@@ -29,7 +28,7 @@ VRoiCorrMatParameters = typing.TypedDict('VRoiCorrMatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ROI_Corr_Mat": v__roi_corr_mat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ROI_Corr_Mat": v__roi_corr_mat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VRoiCorrMatOutputs(typing.NamedTuple):

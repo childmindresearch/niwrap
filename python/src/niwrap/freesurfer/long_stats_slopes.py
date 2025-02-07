@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LONG_STATS_SLOPES_METADATA = Metadata(
     id="c2f3a04515aabb1b936d652c2eb0e27439e032e8.boutiques",
@@ -46,7 +45,7 @@ LongStatsSlopesParameters = typing.TypedDict('LongStatsSlopesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,15 +54,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "long_stats_slopes": long_stats_slopes_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,8 +70,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "long_stats_slopes": long_stats_slopes_outputs,
+    }.get(t)
 
 
 class LongStatsSlopesOutputs(typing.NamedTuple):

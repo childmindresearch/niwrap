@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SUSAN_METADATA = Metadata(
     id="a4d2f0dce1104c4f1c639410a4021ae8fd4eea82.boutiques",
@@ -30,7 +29,7 @@ SusanParameters = typing.TypedDict('SusanParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "susan": susan_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "susan": susan_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SusanOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DMAXIMA_METADATA = Metadata(
     id="f8ba8da054bfe915efd0d6532d6b8fe26bfcc7a9.boutiques",
@@ -39,7 +38,7 @@ V3dmaximaParameters = typing.TypedDict('V3dmaximaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,15 +47,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dmaxima": v_3dmaxima_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dmaxima": v_3dmaxima_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dmaximaOutputs(typing.NamedTuple):

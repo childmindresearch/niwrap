@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_PATCH_METADATA = Metadata(
     id="1b9f54ccf622083c532013b3e22205e01ab00c46.boutiques",
@@ -40,7 +39,7 @@ SurfPatchParameters = typing.TypedDict('SurfPatchParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,15 +48,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfPatch": surf_patch_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfPatch": surf_patch_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfPatchOutputs(typing.NamedTuple):

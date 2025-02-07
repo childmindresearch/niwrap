@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ANOVA3_METADATA = Metadata(
     id="fe7391c6cb7a9865c9618e3aa5f2eb36c7ee57f4.boutiques",
@@ -28,7 +27,7 @@ V3dAnova3Parameters = typing.TypedDict('V3dAnova3Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dANOVA3": v_3d_anova3_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dANOVA3": v_3d_anova3_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dAnova3Outputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTSJACOBIAN_METADATA = Metadata(
     id="4c1495ce17166625b172b3fbe727bd30b17f079f.boutiques",
@@ -26,7 +25,7 @@ AntsjacobianParameters = typing.TypedDict('AntsjacobianParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ANTSJacobian": antsjacobian_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ANTSJacobian": antsjacobian_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsjacobianOutputs(typing.NamedTuple):

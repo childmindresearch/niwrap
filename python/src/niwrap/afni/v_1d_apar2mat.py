@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_APAR2MAT_METADATA = Metadata(
     id="ca46e845c2aeb2bfc0d1ca66f53ca7adef2d7e64.boutiques",
@@ -31,7 +30,7 @@ V1dApar2matParameters = typing.TypedDict('V1dApar2matParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dApar2mat": v_1d_apar2mat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,8 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "1dApar2mat": v_1d_apar2mat_outputs,
+    }.get(t)
 
 
 class V1dApar2matOutputs(typing.NamedTuple):

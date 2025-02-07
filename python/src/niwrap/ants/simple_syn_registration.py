@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SIMPLE_SYN_REGISTRATION_METADATA = Metadata(
     id="8bdec8bc3a221887858c098adc61e63838dc3139.boutiques",
@@ -23,7 +22,7 @@ SimpleSynRegistrationParameters = typing.TypedDict('SimpleSynRegistrationParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "simpleSynRegistration": simple_syn_registration_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "simpleSynRegistration": simple_syn_registration_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SimpleSynRegistrationOutputs(typing.NamedTuple):

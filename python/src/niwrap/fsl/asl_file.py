@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ASL_FILE_METADATA = Metadata(
     id="cbdbabdffdc0f831f4815b08ad995d7bf14f1cd6.boutiques",
@@ -44,7 +43,7 @@ AslFileParameters = typing.TypedDict('AslFileParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "asl_file": asl_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "asl_file": asl_file_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AslFileOutputs(typing.NamedTuple):

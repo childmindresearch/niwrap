@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADD_NOISE_TO_IMAGE_METADATA = Metadata(
     id="5da8ee75f74c156a91ae2c476ce7533d884a9bda.boutiques",
@@ -24,7 +23,7 @@ AddNoiseToImageParameters = typing.TypedDict('AddNoiseToImageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "AddNoiseToImage": add_noise_to_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "AddNoiseToImage": add_noise_to_image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AddNoiseToImageOutputs(typing.NamedTuple):

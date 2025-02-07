@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 INFLATE_SUBJECT_METADATA = Metadata(
     id="0f453fc5ea15ce4839c856ec25b28572898bd123.boutiques",
@@ -20,7 +19,7 @@ InflateSubjectParameters = typing.TypedDict('InflateSubjectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "inflate_subject": inflate_subject_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "inflate_subject": inflate_subject_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class InflateSubjectOutputs(typing.NamedTuple):

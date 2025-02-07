@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SURF_MASK_METADATA = Metadata(
     id="55dc0c4e1d7ff3d126a0dfcd22e6d94d6ee4130c.boutiques",
@@ -28,7 +27,7 @@ V3dSurfMaskParameters = typing.TypedDict('V3dSurfMaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSurfMask": v_3d_surf_mask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSurfMask": v_3d_surf_mask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSurfMaskOutputs(typing.NamedTuple):

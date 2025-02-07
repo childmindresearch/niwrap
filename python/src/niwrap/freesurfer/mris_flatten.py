@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_FLATTEN_METADATA = Metadata(
     id="c7d351c53d00767efc2edd450d96b67b497b34f9.boutiques",
@@ -27,7 +26,7 @@ MrisFlattenParameters = typing.TypedDict('MrisFlattenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_flatten": mris_flatten_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_flatten": mris_flatten_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisFlattenOutputs(typing.NamedTuple):

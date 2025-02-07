@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_DILATE_METADATA = Metadata(
     id="eee6fb1b034a411630172b233ac3916b4fe3befe.boutiques",
@@ -38,7 +37,7 @@ VolumeDilateParameters = typing.TypedDict('VolumeDilateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,17 +46,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-dilate": volume_dilate_cargs,
         "grad_extrapolate": volume_dilate_grad_extrapolate_cargs,
         "presmooth": volume_dilate_presmooth_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-dilate": volume_dilate_outputs,
-    }
-    return vt.get(t)
+        "grad_extrapolate": volume_dilate_grad_extrapolate_outputs,
+        "presmooth": volume_dilate_presmooth_outputs,
+    }.get(t)
 
 
 def volume_dilate_presmooth_params(

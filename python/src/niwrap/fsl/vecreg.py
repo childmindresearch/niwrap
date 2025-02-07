@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VECREG_METADATA = Metadata(
     id="5ce185cfd72c01474d13d00830ab8b976c5b35f8.boutiques",
@@ -30,7 +29,7 @@ VecregParameters = typing.TypedDict('VecregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "vecreg": vecreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "vecreg": vecreg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VecregOutputs(typing.NamedTuple):

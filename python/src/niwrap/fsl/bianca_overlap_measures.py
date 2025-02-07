@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
     id="07dfbadc968fda1c7126374c9a9779984e529d99.boutiques",
@@ -22,7 +21,7 @@ BiancaOverlapMeasuresParameters = typing.TypedDict('BiancaOverlapMeasuresParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "bianca_overlap_measures": bianca_overlap_measures_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "bianca_overlap_measures": bianca_overlap_measures_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BiancaOverlapMeasuresOutputs(typing.NamedTuple):

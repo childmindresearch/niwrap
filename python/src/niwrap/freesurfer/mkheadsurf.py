@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MKHEADSURF_METADATA = Metadata(
     id="d268c25e144e66d66d451c811baf8b76c969e6ec.boutiques",
@@ -46,7 +45,7 @@ MkheadsurfParameters = typing.TypedDict('MkheadsurfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,15 +54,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mkheadsurf": mkheadsurf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,8 +70,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mkheadsurf": mkheadsurf_outputs,
+    }.get(t)
 
 
 class MkheadsurfOutputs(typing.NamedTuple):

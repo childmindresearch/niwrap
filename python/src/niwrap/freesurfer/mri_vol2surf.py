@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_VOL2SURF_METADATA = Metadata(
     id="9b1f4f0a610312351db96a33b3de116be9ef57ae.boutiques",
@@ -28,7 +27,7 @@ MriVol2surfParameters = typing.TypedDict('MriVol2surfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_vol2surf": mri_vol2surf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_vol2surf": mri_vol2surf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriVol2surfOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UBER_SUBJECT_PY_METADATA = Metadata(
     id="d4f27b8c1311827036baefee6a5e5f22311c1cf3.boutiques",
@@ -62,7 +61,7 @@ UberSubjectPyParameters = typing.TypedDict('UberSubjectPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -71,15 +70,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "uber_subject.py": uber_subject_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -88,8 +86,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "uber_subject.py": uber_subject_py_outputs,
+    }.get(t)
 
 
 class UberSubjectPyOutputs(typing.NamedTuple):

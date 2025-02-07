@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_MESH_SUBDIVIDE_METADATA = Metadata(
     id="fb137b14730056953d8eae8a55716f7ac7551282.boutiques",
@@ -23,7 +22,7 @@ MrisMeshSubdivideParameters = typing.TypedDict('MrisMeshSubdivideParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_mesh_subdivide": mris_mesh_subdivide_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_mesh_subdivide": mris_mesh_subdivide_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisMeshSubdivideOutputs(typing.NamedTuple):

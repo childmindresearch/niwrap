@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKSIFT_METADATA = Metadata(
     id="156a082e7c712bee84c59b6e5b4b9d3ea89cf95f.boutiques",
@@ -51,7 +50,7 @@ TcksiftParameters = typing.TypedDict('TcksiftParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,16 +59,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tcksift": tcksift_cargs,
         "config": tcksift_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,10 +76,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tcksift": tcksift_outputs,
-    }
-    return vt.get(t)
+        "config": tcksift_config_outputs,
+    }.get(t)
 
 
 def tcksift_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_MAKE_BEM_SURFACES_METADATA = Metadata(
     id="991d0fd0e24d64260bc9d9bb27cd91c24fb07fb0.boutiques",
@@ -21,7 +20,7 @@ MriMakeBemSurfacesParameters = typing.TypedDict('MriMakeBemSurfacesParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_make_bem_surfaces": mri_make_bem_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_make_bem_surfaces": mri_make_bem_surfaces_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriMakeBemSurfacesOutputs(typing.NamedTuple):

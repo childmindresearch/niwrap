@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AP_RUN_SIMPLE_REST_METADATA = Metadata(
     id="51acc3d2305cb727e55055aa552281969a79036d.boutiques",
@@ -29,7 +28,7 @@ ApRunSimpleRestParameters = typing.TypedDict('ApRunSimpleRestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ap_run_simple_rest": ap_run_simple_rest_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ap_run_simple_rest": ap_run_simple_rest_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ApRunSimpleRestOutputs(typing.NamedTuple):

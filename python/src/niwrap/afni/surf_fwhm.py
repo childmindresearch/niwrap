@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_FWHM_METADATA = Metadata(
     id="e55aebb6889c141305f83d758c57177bec4ec628.boutiques",
@@ -33,7 +32,7 @@ SurfFwhmParameters = typing.TypedDict('SurfFwhmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfFWHM": surf_fwhm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfFWHM": surf_fwhm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfFwhmOutputs(typing.NamedTuple):

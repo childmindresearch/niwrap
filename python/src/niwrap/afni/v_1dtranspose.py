@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1DTRANSPOSE_METADATA = Metadata(
     id="8aeb8ffe1bc2def81876ed4d22208279a8077957.boutiques",
@@ -21,7 +20,7 @@ V1dtransposeParameters = typing.TypedDict('V1dtransposeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dtranspose": v_1dtranspose_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dtranspose": v_1dtranspose_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dtransposeOutputs(typing.NamedTuple):

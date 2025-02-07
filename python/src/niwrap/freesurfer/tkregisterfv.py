@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TKREGISTERFV_METADATA = Metadata(
     id="5ebc1a63857c8578925dcc917e8e3ae5ac3c4e9b.boutiques",
@@ -51,7 +50,7 @@ TkregisterfvParameters = typing.TypedDict('TkregisterfvParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,15 +59,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tkregisterfv": tkregisterfv_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,8 +75,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "tkregisterfv": tkregisterfv_outputs,
+    }.get(t)
 
 
 class TkregisterfvOutputs(typing.NamedTuple):

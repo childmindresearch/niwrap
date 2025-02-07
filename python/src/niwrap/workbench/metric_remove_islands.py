@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_REMOVE_ISLANDS_METADATA = Metadata(
     id="50ae8c44d611e637f8d8f478a649a1f7b580c947.boutiques",
@@ -23,7 +22,7 @@ MetricRemoveIslandsParameters = typing.TypedDict('MetricRemoveIslandsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-remove-islands": metric_remove_islands_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-remove-islands": metric_remove_islands_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MetricRemoveIslandsOutputs(typing.NamedTuple):

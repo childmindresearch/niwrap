@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
     id="c9144b25b3b7d9cd115a4ceff34091bcdb41ab28.boutiques",
@@ -28,7 +27,7 @@ CiftiLabelToBorderParameters = typing.TypedDict('CiftiLabelToBorderParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,16 +36,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-label-to-border": cifti_label_to_border_cargs,
         "border": cifti_label_to_border_border_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,11 +53,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-label-to-border": cifti_label_to_border_outputs,
         "border": cifti_label_to_border_border_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiLabelToBorderBorderOutputs(typing.NamedTuple):

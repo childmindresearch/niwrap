@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCK2CONNECTOME_METADATA = Metadata(
     id="d7266b72589a1c26b9abb6847aa3a2ba49db356b.boutiques",
@@ -51,7 +50,7 @@ Tck2connectomeParameters = typing.TypedDict('Tck2connectomeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,16 +59,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tck2connectome": tck2connectome_cargs,
         "config": tck2connectome_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,10 +76,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tck2connectome": tck2connectome_outputs,
-    }
-    return vt.get(t)
+        "config": tck2connectome_config_outputs,
+    }.get(t)
 
 
 def tck2connectome_config_params(

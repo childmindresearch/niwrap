@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_CURVATURE_METADATA = Metadata(
     id="b2be5c74ffe0d5cc95cc6e6fc9fb27e6b3355ec4.boutiques",
@@ -33,7 +32,7 @@ MrisCurvatureParameters = typing.TypedDict('MrisCurvatureParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_curvature": mris_curvature_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_curvature": mris_curvature_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisCurvatureOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_VECTOR_OPERATION_METADATA = Metadata(
     id="a16a3d5eebe016ff6fd5576142114de6719372bd.boutiques",
@@ -27,7 +26,7 @@ MetricVectorOperationParameters = typing.TypedDict('MetricVectorOperationParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-vector-operation": metric_vector_operation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-vector-operation": metric_vector_operation_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MetricVectorOperationOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AMP2SH_METADATA = Metadata(
     id="739c6dd01d401b453eb41eade05065e6c9fd17b3.boutiques",
@@ -55,7 +54,7 @@ Amp2shParameters = typing.TypedDict('Amp2shParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -64,19 +63,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "amp2sh": amp2sh_cargs,
         "fslgrad": amp2sh_fslgrad_cargs,
         "VariousString": amp2sh_various_string_cargs,
         "VariousFile": amp2sh_various_file_cargs,
         "config": amp2sh_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -85,10 +83,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "amp2sh": amp2sh_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": amp2sh_fslgrad_outputs,
+        "VariousString": amp2sh_various_string_outputs,
+        "VariousFile": amp2sh_various_file_outputs,
+        "config": amp2sh_config_outputs,
+    }.get(t)
 
 
 def amp2sh_fslgrad_params(

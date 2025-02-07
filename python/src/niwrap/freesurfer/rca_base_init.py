@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RCA_BASE_INIT_METADATA = Metadata(
     id="40035e4c6889519a8062b007d6e932c3e18ff078.boutiques",
@@ -22,7 +21,7 @@ RcaBaseInitParameters = typing.TypedDict('RcaBaseInitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rca-base-init": rca_base_init_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "rca-base-init": rca_base_init_outputs,
+    }.get(t)
 
 
 class RcaBaseInitOutputs(typing.NamedTuple):

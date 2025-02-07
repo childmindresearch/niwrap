@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BALLOON_METADATA = Metadata(
     id="d38a0b74f4c93d5365bdded27c362f4ddc6e6b5f.boutiques",
@@ -23,7 +22,7 @@ BalloonParameters = typing.TypedDict('BalloonParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "balloon": balloon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "balloon": balloon_outputs,
+    }.get(t)
 
 
 class BalloonOutputs(typing.NamedTuple):

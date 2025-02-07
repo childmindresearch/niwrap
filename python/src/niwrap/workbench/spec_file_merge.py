@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPEC_FILE_MERGE_METADATA = Metadata(
     id="2c5e3a5c053998c2a574a6f035a5993430771a18.boutiques",
@@ -22,7 +21,7 @@ SpecFileMergeParameters = typing.TypedDict('SpecFileMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "spec-file-merge": spec_file_merge_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "spec-file-merge": spec_file_merge_outputs,
+    }.get(t)
 
 
 class SpecFileMergeOutputs(typing.NamedTuple):

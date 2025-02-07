@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SURF2VTK_METADATA = Metadata(
     id="bfca7ed52c97191303bf209f7690859dfe93b483.boutiques",
@@ -21,7 +20,7 @@ MrisSurf2vtkParameters = typing.TypedDict('MrisSurf2vtkParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_surf2vtk": mris_surf2vtk_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_surf2vtk": mris_surf2vtk_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSurf2vtkOutputs(typing.NamedTuple):

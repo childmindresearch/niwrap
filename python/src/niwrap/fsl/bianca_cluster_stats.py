@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BIANCA_CLUSTER_STATS_METADATA = Metadata(
     id="7bb9fbd0c4cce5e06e0aa8bae75dec0c569b1f20.boutiques",
@@ -23,7 +22,7 @@ BiancaClusterStatsParameters = typing.TypedDict('BiancaClusterStatsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "bianca_cluster_stats": bianca_cluster_stats_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "bianca_cluster_stats": bianca_cluster_stats_outputs,
+    }.get(t)
 
 
 class BiancaClusterStatsOutputs(typing.NamedTuple):

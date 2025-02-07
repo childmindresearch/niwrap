@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GCA_APPLY_METADATA = Metadata(
     id="004863971f906d9a0b7892c9101381a0f012a5c2.boutiques",
@@ -37,7 +36,7 @@ GcaApplyParameters = typing.TypedDict('GcaApplyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gca-apply": gca_apply_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gca-apply": gca_apply_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GcaApplyOutputs(typing.NamedTuple):

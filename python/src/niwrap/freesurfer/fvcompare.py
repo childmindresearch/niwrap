@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FVCOMPARE_METADATA = Metadata(
     id="84e27ef54cc73075db70cca3ebbdd40631c9472d.boutiques",
@@ -43,7 +42,7 @@ FvcompareParameters = typing.TypedDict('FvcompareParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -52,15 +51,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fvcompare": fvcompare_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,8 +67,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fvcompare": fvcompare_outputs,
+    }.get(t)
 
 
 class FvcompareOutputs(typing.NamedTuple):

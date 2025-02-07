@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ROI2DATASET_METADATA = Metadata(
     id="5ce644f007ce2ecc979c958450e6f9ce7de594be.boutiques",
@@ -30,7 +29,7 @@ Roi2datasetParameters = typing.TypedDict('Roi2datasetParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ROI2dataset": roi2dataset_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ROI2dataset": roi2dataset_outputs,
+    }.get(t)
 
 
 class Roi2datasetOutputs(typing.NamedTuple):

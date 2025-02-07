@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EPI_B0_CORRECT_METADATA = Metadata(
     id="690e7b1a6986e67ced0f065ca6d025cd2006e8eb.boutiques",
@@ -43,7 +42,7 @@ EpiB0CorrectParameters = typing.TypedDict('EpiB0CorrectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -52,15 +51,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "epi_b0_correct": epi_b0_correct_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "epi_b0_correct": epi_b0_correct_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EpiB0CorrectOutputs(typing.NamedTuple):

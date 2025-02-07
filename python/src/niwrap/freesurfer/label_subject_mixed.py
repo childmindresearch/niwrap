@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL_SUBJECT_MIXED_METADATA = Metadata(
     id="c89d204a94ff9a438c87e6af7616b21249be8dd9.boutiques",
@@ -24,7 +23,7 @@ LabelSubjectMixedParameters = typing.TypedDict('LabelSubjectMixedParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label_subject_mixed": label_subject_mixed_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label_subject_mixed": label_subject_mixed_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class LabelSubjectMixedOutputs(typing.NamedTuple):

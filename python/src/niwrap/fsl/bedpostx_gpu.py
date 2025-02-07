@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BEDPOSTX_GPU_METADATA = Metadata(
     id="3f3bab4175d1d6a22bab71654c926ae73e0864f3.boutiques",
@@ -29,7 +28,7 @@ BedpostxGpuParameters = typing.TypedDict('BedpostxGpuParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "bedpostx_gpu": bedpostx_gpu_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "bedpostx_gpu": bedpostx_gpu_outputs,
+    }.get(t)
 
 
 class BedpostxGpuOutputs(typing.NamedTuple):

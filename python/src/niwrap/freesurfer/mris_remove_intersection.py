@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REMOVE_INTERSECTION_METADATA = Metadata(
     id="1ca3bd6841297be89ed7859d4b42f39e0a47e3de.boutiques",
@@ -24,7 +23,7 @@ MrisRemoveIntersectionParameters = typing.TypedDict('MrisRemoveIntersectionParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_remove_intersection": mris_remove_intersection_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_remove_intersection": mris_remove_intersection_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRemoveIntersectionOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GIFTI_CONVERT_METADATA = Metadata(
     id="1119deb060240b3e26f7bbfea7cf6ac914e82758.boutiques",
@@ -22,7 +21,7 @@ GiftiConvertParameters = typing.TypedDict('GiftiConvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gifti-convert": gifti_convert_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gifti-convert": gifti_convert_outputs,
+    }.get(t)
 
 
 class GiftiConvertOutputs(typing.NamedTuple):

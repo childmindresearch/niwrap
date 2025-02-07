@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BASIL_VAR_METADATA = Metadata(
     id="ef2d05e150b63d8d6121c52d86fea7583edc0338.boutiques",
@@ -21,7 +20,7 @@ BasilVarParameters = typing.TypedDict('BasilVarParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "basil_var": basil_var_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "basil_var": basil_var_outputs,
+    }.get(t)
 
 
 class BasilVarOutputs(typing.NamedTuple):

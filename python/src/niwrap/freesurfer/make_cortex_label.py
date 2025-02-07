@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_CORTEX_LABEL_METADATA = Metadata(
     id="f144e3d1e0fdf022a6e2282c867ba8f46fafc1cb.boutiques",
@@ -23,7 +22,7 @@ MakeCortexLabelParameters = typing.TypedDict('MakeCortexLabelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_cortex_label": make_cortex_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_cortex_label": make_cortex_label_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeCortexLabelOutputs(typing.NamedTuple):

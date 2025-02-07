@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_5TT2VIS_METADATA = Metadata(
     id="702b49a5b25df0d2069fb4f29ba6316bbc4674e9.boutiques",
@@ -40,7 +39,7 @@ V5tt2visParameters = typing.TypedDict('V5tt2visParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,16 +48,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "5tt2vis": v_5tt2vis_cargs,
         "config": v_5tt2vis_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -67,10 +65,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "5tt2vis": v_5tt2vis_outputs,
-    }
-    return vt.get(t)
+        "config": v_5tt2vis_config_outputs,
+    }.get(t)
 
 
 def v_5tt2vis_config_params(

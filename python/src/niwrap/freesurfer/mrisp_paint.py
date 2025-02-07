@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRISP_PAINT_METADATA = Metadata(
     id="ee10714d3437e3ff63bdc4e23471b26ed9cb9121.boutiques",
@@ -35,7 +34,7 @@ MrispPaintParameters = typing.TypedDict('MrispPaintParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrisp_paint": mrisp_paint_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrisp_paint": mrisp_paint_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrispPaintOutputs(typing.NamedTuple):

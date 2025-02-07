@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SLICES_SUMMARY_METADATA = Metadata(
     id="c5a3bab21de16027f47ca41d594a765937d99825.boutiques",
@@ -29,7 +28,7 @@ SlicesSummaryParameters = typing.TypedDict('SlicesSummaryParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "slices_summary": slices_summary_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "slices_summary": slices_summary_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SlicesSummaryOutputs(typing.NamedTuple):

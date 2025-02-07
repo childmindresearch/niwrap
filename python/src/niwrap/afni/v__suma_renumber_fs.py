@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SUMA_RENUMBER_FS_METADATA = Metadata(
     id="c19b88d98568eb300b3deddf6a92cffe231ec7b8.boutiques",
@@ -20,7 +19,7 @@ VSumaRenumberFsParameters = typing.TypedDict('VSumaRenumberFsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@SUMA_renumber_FS": v__suma_renumber_fs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@SUMA_renumber_FS": v__suma_renumber_fs_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSumaRenumberFsOutputs(typing.NamedTuple):

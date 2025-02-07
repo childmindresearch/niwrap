@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ABIDS_JSON_TOOL_PY_METADATA = Metadata(
     id="9cd5d1cbe0772f0f1c51d0bd811ef0336e43437f.boutiques",
@@ -23,7 +22,7 @@ AbidsJsonToolPyParameters = typing.TypedDict('AbidsJsonToolPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "abids_json_tool.py": abids_json_tool_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "abids_json_tool.py": abids_json_tool_py_outputs,
+    }.get(t)
 
 
 class AbidsJsonToolPyOutputs(typing.NamedTuple):

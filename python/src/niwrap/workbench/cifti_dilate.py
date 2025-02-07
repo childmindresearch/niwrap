@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_DILATE_METADATA = Metadata(
     id="907e475cef6dbf3556c5c8ea8d183b2219169bf5.boutiques",
@@ -46,7 +45,7 @@ CiftiDilateParameters = typing.TypedDict('CiftiDilateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,18 +54,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-dilate": cifti_dilate_cargs,
         "left_surface": cifti_dilate_left_surface_cargs,
         "right_surface": cifti_dilate_right_surface_cargs,
         "cerebellum_surface": cifti_dilate_cerebellum_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -75,10 +73,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-dilate": cifti_dilate_outputs,
-    }
-    return vt.get(t)
+        "left_surface": cifti_dilate_left_surface_outputs,
+        "right_surface": cifti_dilate_right_surface_outputs,
+        "cerebellum_surface": cifti_dilate_cerebellum_surface_outputs,
+    }.get(t)
 
 
 def cifti_dilate_left_surface_params(

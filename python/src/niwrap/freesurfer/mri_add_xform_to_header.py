@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_ADD_XFORM_TO_HEADER_METADATA = Metadata(
     id="a352e8c6ada4a640929cf21a7797106f093df774.boutiques",
@@ -24,7 +23,7 @@ MriAddXformToHeaderParameters = typing.TypedDict('MriAddXformToHeaderParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_add_xform_to_header": mri_add_xform_to_header_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_add_xform_to_header": mri_add_xform_to_header_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriAddXformToHeaderOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GAUSS_4DFP_METADATA = Metadata(
     id="33be7b3b1fc943cdc73ad39caf02b12c7b7d7be5.boutiques",
@@ -25,7 +24,7 @@ Gauss4dfpParameters = typing.TypedDict('Gauss4dfpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gauss_4dfp": gauss_4dfp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gauss_4dfp": gauss_4dfp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Gauss4dfpOutputs(typing.NamedTuple):

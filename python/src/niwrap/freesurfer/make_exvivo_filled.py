@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_EXVIVO_FILLED_METADATA = Metadata(
     id="ea9e6e6bb03c9eb7e7861ad8386b4df6348f9898.boutiques",
@@ -23,7 +22,7 @@ MakeExvivoFilledParameters = typing.TypedDict('MakeExvivoFilledParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_exvivo_filled": make_exvivo_filled_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "make_exvivo_filled": make_exvivo_filled_outputs,
+    }.get(t)
 
 
 class MakeExvivoFilledOutputs(typing.NamedTuple):

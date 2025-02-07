@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 NEURO_DECONVOLVE_PY_METADATA = Metadata(
     id="429ca6dc167dde226c463210fc24287862627189.boutiques",
@@ -29,7 +28,7 @@ NeuroDeconvolvePyParameters = typing.TypedDict('NeuroDeconvolvePyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "neuro_deconvolve.py": neuro_deconvolve_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "neuro_deconvolve.py": neuro_deconvolve_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class NeuroDeconvolvePyOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWI2FOD_METADATA = Metadata(
     id="9a7e655a0db0138d987e71f2ed64a274b8c286e0.boutiques",
@@ -68,7 +67,7 @@ Dwi2fodParameters = typing.TypedDict('Dwi2fodParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -77,20 +76,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwi2fod": dwi2fod_cargs,
         "fslgrad": dwi2fod_fslgrad_cargs,
         "VariousString": dwi2fod_various_string_cargs,
         "VariousFile": dwi2fod_various_file_cargs,
         "config": dwi2fod_config_cargs,
         "response_odf": dwi2fod_response_odf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -99,11 +97,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwi2fod": dwi2fod_outputs,
+        "fslgrad": dwi2fod_fslgrad_outputs,
+        "VariousString": dwi2fod_various_string_outputs,
+        "VariousFile": dwi2fod_various_file_outputs,
+        "config": dwi2fod_config_outputs,
         "response_odf": dwi2fod_response_odf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dwi2fod_fslgrad_params(

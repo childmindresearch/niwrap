@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_MAT2D_PLOT_PY_METADATA = Metadata(
     id="4a1c04bfb1114a4c4dfde20fda4aea87cabad529.boutiques",
@@ -44,7 +43,7 @@ FatMat2dPlotPyParameters = typing.TypedDict('FatMat2dPlotPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_mat2d_plot.py": fat_mat2d_plot_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_mat2d_plot.py": fat_mat2d_plot_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatMat2dPlotPyOutputs(typing.NamedTuple):

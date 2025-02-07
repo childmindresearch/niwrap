@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DTTEST___METADATA = Metadata(
     id="9816ba0be883f397c48e16a5a699629ad3d438ae.boutiques",
@@ -40,7 +39,7 @@ V3dttestParameters = typing.TypedDict('V3dttestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,15 +48,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dttest++": v_3dttest___cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dttest++": v_3dttest___outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dttestOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TRAC_PATHS_METADATA = Metadata(
     id="e536dea8d1b847571fb37c90fba034bc59556c4c.boutiques",
@@ -32,7 +31,7 @@ TracPathsParameters = typing.TypedDict('TracPathsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "trac-paths": trac_paths_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "trac-paths": trac_paths_outputs,
+    }.get(t)
 
 
 class TracPathsOutputs(typing.NamedTuple):

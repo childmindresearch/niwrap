@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMG2STDCOORD_METADATA = Metadata(
     id="1d7099e68b2ebab0fcf6f19fecfa832c5ec7908f.boutiques",
@@ -30,7 +29,7 @@ Img2stdcoordParameters = typing.TypedDict('Img2stdcoordParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "img2stdcoord": img2stdcoord_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "img2stdcoord": img2stdcoord_outputs,
+    }.get(t)
 
 
 class Img2stdcoordOutputs(typing.NamedTuple):

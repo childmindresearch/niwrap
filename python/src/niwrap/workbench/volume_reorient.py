@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_REORIENT_METADATA = Metadata(
     id="64a53eb5b1219001c981ca04003ea946af095932.boutiques",
@@ -22,7 +21,7 @@ VolumeReorientParameters = typing.TypedDict('VolumeReorientParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-reorient": volume_reorient_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-reorient": volume_reorient_outputs,
+    }.get(t)
 
 
 class VolumeReorientOutputs(typing.NamedTuple):

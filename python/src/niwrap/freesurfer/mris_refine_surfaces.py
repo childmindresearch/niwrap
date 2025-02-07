@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REFINE_SURFACES_METADATA = Metadata(
     id="afa5fdcf50348032d468a3e07292675e06d5374e.boutiques",
@@ -27,7 +26,7 @@ MrisRefineSurfacesParameters = typing.TypedDict('MrisRefineSurfacesParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_refine_surfaces": mris_refine_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_refine_surfaces": mris_refine_surfaces_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRefineSurfacesOutputs(typing.NamedTuple):

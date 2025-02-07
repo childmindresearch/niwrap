@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_REORIENT_LR_CSH_METADATA = Metadata(
     id="44b9d6ba4983462289bb74a35e46ca2bc4fb3a6c.boutiques",
@@ -26,7 +25,7 @@ MriReorientLrCshParameters = typing.TypedDict('MriReorientLrCshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_reorient_LR.csh": mri_reorient_lr_csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_reorient_LR.csh": mri_reorient_lr_csh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriReorientLrCshOutputs(typing.NamedTuple):

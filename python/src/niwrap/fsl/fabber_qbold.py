@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FABBER_QBOLD_METADATA = Metadata(
     id="2e600bbcac1e7e271e2d687cec37980ee3a87346.boutiques",
@@ -54,7 +53,7 @@ FabberQboldParameters = typing.TypedDict('FabberQboldParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -63,15 +62,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fabber_qbold": fabber_qbold_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -80,10 +78,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fabber_qbold": fabber_qbold_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FabberQboldOutputs(typing.NamedTuple):

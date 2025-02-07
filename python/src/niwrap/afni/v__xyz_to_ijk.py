@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__XYZ_TO_IJK_METADATA = Metadata(
     id="0cb41267f9ba92100e532b1ea585dcb9d2d9ce27.boutiques",
@@ -24,7 +23,7 @@ VXyzToIjkParameters = typing.TypedDict('VXyzToIjkParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@xyz_to_ijk": v__xyz_to_ijk_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@xyz_to_ijk": v__xyz_to_ijk_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VXyzToIjkOutputs(typing.NamedTuple):

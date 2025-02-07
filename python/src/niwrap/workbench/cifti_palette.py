@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_PALETTE_METADATA = Metadata(
     id="8c5387e03727c83c4273037ac0182b9b07d3c792.boutiques",
@@ -61,7 +60,7 @@ CiftiPaletteParameters = typing.TypedDict('CiftiPaletteParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -70,20 +69,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-palette": cifti_palette_cargs,
         "pos_percent": cifti_palette_pos_percent_cargs,
         "neg_percent": cifti_palette_neg_percent_cargs,
         "pos_user": cifti_palette_pos_user_cargs,
         "neg_user": cifti_palette_neg_user_cargs,
         "thresholding": cifti_palette_thresholding_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -92,10 +90,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-palette": cifti_palette_outputs,
-    }
-    return vt.get(t)
+        "pos_percent": cifti_palette_pos_percent_outputs,
+        "neg_percent": cifti_palette_neg_percent_outputs,
+        "pos_user": cifti_palette_pos_user_outputs,
+        "neg_user": cifti_palette_neg_user_outputs,
+        "thresholding": cifti_palette_thresholding_outputs,
+    }.get(t)
 
 
 def cifti_palette_pos_percent_params(

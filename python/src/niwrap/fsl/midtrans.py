@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MIDTRANS_METADATA = Metadata(
     id="199624ee421c21ddcb5318e1c0213bf85f4d3c9a.boutiques",
@@ -25,7 +24,7 @@ MidtransParameters = typing.TypedDict('MidtransParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "midtrans": midtrans_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "midtrans": midtrans_outputs,
+    }.get(t)
 
 
 class MidtransOutputs(typing.NamedTuple):

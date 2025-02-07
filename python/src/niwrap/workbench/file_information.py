@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FILE_INFORMATION_METADATA = Metadata(
     id="12389474c2f36cd256667daa74a103d07ac49064.boutiques",
@@ -33,7 +32,7 @@ FileInformationParameters = typing.TypedDict('FileInformationParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,16 +41,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "file-information": file_information_cargs,
         "only_metadata": file_information_only_metadata_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,8 +58,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "file-information": file_information_outputs,
+        "only_metadata": file_information_only_metadata_outputs,
+    }.get(t)
 
 
 def file_information_only_metadata_params(

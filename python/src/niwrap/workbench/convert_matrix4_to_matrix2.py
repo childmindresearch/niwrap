@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
     id="48a77936cf53d052fce7b98678ac0929264dbd4c.boutiques",
@@ -29,7 +28,7 @@ ConvertMatrix4ToMatrix2Parameters = typing.TypedDict('ConvertMatrix4ToMatrix2Par
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,16 +37,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "convert-matrix4-to-matrix2": convert_matrix4_to_matrix2_cargs,
         "individual_fibers": convert_matrix4_to_matrix2_individual_fibers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,11 +54,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "convert-matrix4-to-matrix2": convert_matrix4_to_matrix2_outputs,
         "individual_fibers": convert_matrix4_to_matrix2_individual_fibers_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ConvertMatrix4ToMatrix2IndividualFibersOutputs(typing.NamedTuple):

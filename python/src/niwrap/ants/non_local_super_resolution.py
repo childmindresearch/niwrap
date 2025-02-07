@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 NON_LOCAL_SUPER_RESOLUTION_METADATA = Metadata(
     id="51aada9b4dbce0b9d25369841901cb709639d1e3.boutiques",
@@ -31,7 +30,7 @@ NonLocalSuperResolutionParameters = typing.TypedDict('NonLocalSuperResolutionPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "NonLocalSuperResolution": non_local_super_resolution_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "NonLocalSuperResolution": non_local_super_resolution_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class NonLocalSuperResolutionOutputs(typing.NamedTuple):

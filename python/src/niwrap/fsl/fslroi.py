@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLROI_METADATA = Metadata(
     id="45183ec4bb8a750b44a18fccbebc359100289e66.boutiques",
@@ -29,7 +28,7 @@ FslroiParameters = typing.TypedDict('FslroiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslroi": fslroi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslroi": fslroi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslroiOutputs(typing.NamedTuple):

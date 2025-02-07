@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UNIQ_IMAGES_METADATA = Metadata(
     id="78da67a816d6d0b1ae55b072a61c7cc76bbe87da.boutiques",
@@ -20,7 +19,7 @@ UniqImagesParameters = typing.TypedDict('UniqImagesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "uniq_images": uniq_images_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "uniq_images": uniq_images_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class UniqImagesOutputs(typing.NamedTuple):

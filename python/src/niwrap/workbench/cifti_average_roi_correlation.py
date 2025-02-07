@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
     id="7b5902af5aa6e0d4082fef7ea4ef3c5534e86ad4.boutiques",
@@ -38,7 +37,7 @@ CiftiAverageRoiCorrelationParameters = typing.TypedDict('CiftiAverageRoiCorrelat
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,17 +46,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-average-roi-correlation": cifti_average_roi_correlation_cargs,
         "cifti_roi": cifti_average_roi_correlation_cifti_roi_cargs,
         "cifti": cifti_average_roi_correlation_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-average-roi-correlation": cifti_average_roi_correlation_outputs,
-    }
-    return vt.get(t)
+        "cifti_roi": cifti_average_roi_correlation_cifti_roi_outputs,
+        "cifti": cifti_average_roi_correlation_cifti_outputs,
+    }.get(t)
 
 
 def cifti_average_roi_correlation_cifti_roi_params(

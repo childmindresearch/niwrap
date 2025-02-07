@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_WEIGHTED_STATS_METADATA = Metadata(
     id="0c4c1a860d6333e14904c17da15583cc5bc1a9b4.boutiques",
@@ -47,7 +46,7 @@ CiftiWeightedStatsParameters = typing.TypedDict('CiftiWeightedStatsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,18 +55,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-weighted-stats": cifti_weighted_stats_cargs,
         "spatial_weights": cifti_weighted_stats_spatial_weights_cargs,
         "roi": cifti_weighted_stats_roi_cargs,
         "stdev": cifti_weighted_stats_stdev_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -76,8 +74,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-weighted-stats": cifti_weighted_stats_outputs,
+        "spatial_weights": cifti_weighted_stats_spatial_weights_outputs,
+        "roi": cifti_weighted_stats_roi_outputs,
+        "stdev": cifti_weighted_stats_stdev_outputs,
+    }.get(t)
 
 
 def cifti_weighted_stats_spatial_weights_params(

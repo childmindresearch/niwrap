@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DEFECT2SEG_METADATA = Metadata(
     id="a0c3f2a6d8ce1bf2e14e38a191f684088ba5acc6.boutiques",
@@ -28,7 +27,7 @@ Defect2segParameters = typing.TypedDict('Defect2segParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "defect2seg": defect2seg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "defect2seg": defect2seg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Defect2segOutputs(typing.NamedTuple):

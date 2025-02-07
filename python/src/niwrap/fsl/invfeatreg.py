@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 INVFEATREG_METADATA = Metadata(
     id="dfd93a0e3c77ac7d8350f0e55ba782b5705b1969.boutiques",
@@ -20,7 +19,7 @@ InvfeatregParameters = typing.TypedDict('InvfeatregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "invfeatreg": invfeatreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "invfeatreg": invfeatreg_outputs,
+    }.get(t)
 
 
 class InvfeatregOutputs(typing.NamedTuple):

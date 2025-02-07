@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_TILED_MOSAIC_METADATA = Metadata(
     id="3d9613f574ee8ff2d48c4509a9a508bfd56f8d3d.boutiques",
@@ -31,7 +30,7 @@ CreateTiledMosaicParameters = typing.TypedDict('CreateTiledMosaicParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CreateTiledMosaic": create_tiled_mosaic_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "CreateTiledMosaic": create_tiled_mosaic_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateTiledMosaicOutputs(typing.NamedTuple):

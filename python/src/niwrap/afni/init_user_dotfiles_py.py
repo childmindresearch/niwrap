@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 INIT_USER_DOTFILES_PY_METADATA = Metadata(
     id="8d4c58837ffe3486d2bbcb23d32442b108816c2b.boutiques",
@@ -36,7 +35,7 @@ InitUserDotfilesPyParameters = typing.TypedDict('InitUserDotfilesPyParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "init_user_dotfiles.py": init_user_dotfiles_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "init_user_dotfiles.py": init_user_dotfiles_py_outputs,
+    }.get(t)
 
 
 class InitUserDotfilesPyOutputs(typing.NamedTuple):

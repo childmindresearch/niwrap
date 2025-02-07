@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_SEGMENT_HYPOTHALAMIC_SUBUNITS_METADATA = Metadata(
     id="f03ac3b7165171b1e5dc19884858113ebce6c791.boutiques",
@@ -30,7 +29,7 @@ MriSegmentHypothalamicSubunitsParameters = typing.TypedDict('MriSegmentHypothala
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_segment_hypothalamic_subunits": mri_segment_hypothalamic_subunits_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_segment_hypothalamic_subunits": mri_segment_hypothalamic_subunits_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriSegmentHypothalamicSubunitsOutputs(typing.NamedTuple):

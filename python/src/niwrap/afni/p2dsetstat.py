@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 P2DSETSTAT_METADATA = Metadata(
     id="425596bb580582f82bf97f7e288cb9c38b721949.boutiques",
@@ -23,7 +22,7 @@ P2dsetstatParameters = typing.TypedDict('P2dsetstatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "p2dsetstat": p2dsetstat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "p2dsetstat": p2dsetstat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class P2dsetstatOutputs(typing.NamedTuple):

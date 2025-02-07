@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 THICKDIFFMAP_METADATA = Metadata(
     id="386d35dd120f181e0cd722b783b2ab7dab134ec4.boutiques",
@@ -24,7 +23,7 @@ ThickdiffmapParameters = typing.TypedDict('ThickdiffmapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "thickdiffmap": thickdiffmap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "thickdiffmap": thickdiffmap_outputs,
+    }.get(t)
 
 
 class ThickdiffmapOutputs(typing.NamedTuple):

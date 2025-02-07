@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_TUTORIAL_DATA_METADATA = Metadata(
     id="80182cd74220da19e2c55dc09c1599b0b78de72e.boutiques",
@@ -20,7 +19,7 @@ FsTutorialDataParameters = typing.TypedDict('FsTutorialDataParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs_tutorial_data": fs_tutorial_data_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fs_tutorial_data": fs_tutorial_data_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FsTutorialDataOutputs(typing.NamedTuple):

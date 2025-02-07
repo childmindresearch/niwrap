@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GCAINIT_METADATA = Metadata(
     id="00dfdd96c6b86f2b1c5b47fc4b41253a5bcd0e9f.boutiques",
@@ -20,7 +19,7 @@ GcainitParameters = typing.TypedDict('GcainitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gcainit": gcainit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gcainit": gcainit_outputs,
+    }.get(t)
 
 
 class GcainitOutputs(typing.NamedTuple):

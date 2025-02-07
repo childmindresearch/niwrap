@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 I_MATH_METADATA = Metadata(
     id="82da58a8a784459b76c3083f4eca6f26d139e8c9.boutiques",
@@ -24,7 +23,7 @@ IMathParameters = typing.TypedDict('IMathParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "iMath": i_math_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "iMath": i_math_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class IMathOutputs(typing.NamedTuple):

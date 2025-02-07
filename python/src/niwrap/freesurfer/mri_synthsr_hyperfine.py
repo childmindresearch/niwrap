@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_SYNTHSR_HYPERFINE_METADATA = Metadata(
     id="8af5c94607ef31a7bceecdbe213a0b0e78928e27.boutiques",
@@ -24,7 +23,7 @@ MriSynthsrHyperfineParameters = typing.TypedDict('MriSynthsrHyperfineParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_synthsr_hyperfine": mri_synthsr_hyperfine_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_synthsr_hyperfine": mri_synthsr_hyperfine_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriSynthsrHyperfineOutputs(typing.NamedTuple):

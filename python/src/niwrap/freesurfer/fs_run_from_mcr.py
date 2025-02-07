@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_RUN_FROM_MCR_METADATA = Metadata(
     id="cde2b930dda53cf7f6ac5ac2d3c81e82bcafc347.boutiques",
@@ -23,7 +22,7 @@ FsRunFromMcrParameters = typing.TypedDict('FsRunFromMcrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs_run_from_mcr": fs_run_from_mcr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fs_run_from_mcr": fs_run_from_mcr_outputs,
+    }.get(t)
 
 
 class FsRunFromMcrOutputs(typing.NamedTuple):

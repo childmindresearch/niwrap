@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_TEMP_DIR_METADATA = Metadata(
     id="eed642f69e179f132dedff65309afb7749a5e059.boutiques",
@@ -21,7 +20,7 @@ FsTempDirParameters = typing.TypedDict('FsTempDirParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fs_temp_dir": fs_temp_dir_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fs_temp_dir": fs_temp_dir_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FsTempDirOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_LOCALSTAT_METADATA = Metadata(
     id="f927c9d4ad8b0ef0fa566fe0b9648789d0b3eb44.boutiques",
@@ -39,7 +38,7 @@ V3dLocalstatParameters = typing.TypedDict('V3dLocalstatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,15 +47,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dLocalstat": v_3d_localstat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dLocalstat": v_3d_localstat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dLocalstatOutputs(typing.NamedTuple):

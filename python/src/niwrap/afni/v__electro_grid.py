@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ELECTRO_GRID_METADATA = Metadata(
     id="8d964e948445e43b1078948d73794b4d6f87e09a.boutiques",
@@ -25,7 +24,7 @@ VElectroGridParameters = typing.TypedDict('VElectroGridParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ElectroGrid": v__electro_grid_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ElectroGrid": v__electro_grid_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VElectroGridOutputs(typing.NamedTuple):

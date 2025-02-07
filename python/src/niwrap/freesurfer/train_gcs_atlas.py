@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TRAIN_GCS_ATLAS_METADATA = Metadata(
     id="915555870bf5ee316610cc5c539e20a5e0db415f.boutiques",
@@ -29,7 +28,7 @@ TrainGcsAtlasParameters = typing.TypedDict('TrainGcsAtlasParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "train-gcs-atlas": train_gcs_atlas_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "train-gcs-atlas": train_gcs_atlas_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TrainGcsAtlasOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 OPTSEQ2_METADATA = Metadata(
     id="0f4e820b7a3fa22c2de66e83252857cc8c403a78.boutiques",
@@ -51,7 +50,7 @@ Optseq2Parameters = typing.TypedDict('Optseq2Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,15 +59,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "optseq2": optseq2_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,10 +75,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "optseq2": optseq2_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Optseq2Outputs(typing.NamedTuple):

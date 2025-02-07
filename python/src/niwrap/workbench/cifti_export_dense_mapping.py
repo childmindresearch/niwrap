@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
     id="fb57b1ad6ea2cecd7c20af72044952f21f5e3510.boutiques",
@@ -42,7 +41,7 @@ CiftiExportDenseMappingParameters = typing.TypedDict('CiftiExportDenseMappingPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,18 +50,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-export-dense-mapping": cifti_export_dense_mapping_cargs,
         "volume_all": cifti_export_dense_mapping_volume_all_cargs,
         "surface": cifti_export_dense_mapping_surface_cargs,
         "volume": cifti_export_dense_mapping_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,8 +69,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-export-dense-mapping": cifti_export_dense_mapping_outputs,
+        "volume_all": cifti_export_dense_mapping_volume_all_outputs,
+        "surface": cifti_export_dense_mapping_surface_outputs,
+        "volume": cifti_export_dense_mapping_volume_outputs,
+    }.get(t)
 
 
 def cifti_export_dense_mapping_volume_all_params(

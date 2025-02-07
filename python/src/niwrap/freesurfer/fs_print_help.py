@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FS_PRINT_HELP_METADATA = Metadata(
     id="a91a6c5c64fb27bc188a085d7211176975d7d7d4.boutiques",
@@ -20,7 +19,7 @@ FsPrintHelpParameters = typing.TypedDict('FsPrintHelpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsPrintHelp": fs_print_help_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fsPrintHelp": fs_print_help_outputs,
+    }.get(t)
 
 
 class FsPrintHelpOutputs(typing.NamedTuple):

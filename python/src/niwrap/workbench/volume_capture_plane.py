@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_CAPTURE_PLANE_METADATA = Metadata(
     id="b2bfd3d4513396540148947511ec229d0418fc44.boutiques",
@@ -36,7 +35,7 @@ VolumeCapturePlaneParameters = typing.TypedDict('VolumeCapturePlaneParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-capture-plane": volume_capture_plane_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-capture-plane": volume_capture_plane_outputs,
+    }.get(t)
 
 
 class VolumeCapturePlaneOutputs(typing.NamedTuple):

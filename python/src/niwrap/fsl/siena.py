@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SIENA_METADATA = Metadata(
     id="47ef815d5c11feced43d973c4029f264ed025ea0.boutiques",
@@ -32,7 +31,7 @@ SienaParameters = typing.TypedDict('SienaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "siena": siena_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "siena": siena_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SienaOutputs(typing.NamedTuple):

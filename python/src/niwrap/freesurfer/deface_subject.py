@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DEFACE_SUBJECT_METADATA = Metadata(
     id="274e5ad239a83bd50707ef1a9dcf8ce7c5e84775.boutiques",
@@ -23,7 +22,7 @@ DefaceSubjectParameters = typing.TypedDict('DefaceSubjectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "deface_subject": deface_subject_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "deface_subject": deface_subject_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DefaceSubjectOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SPHARM_EXAMPLES_METADATA = Metadata(
     id="7b9dbc8f033f538b7638320e8d57980c476bb1cc.boutiques",
@@ -25,7 +24,7 @@ VSpharmExamplesParameters = typing.TypedDict('VSpharmExamplesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Spharm.examples": v__spharm_examples_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@Spharm.examples": v__spharm_examples_outputs,
+    }.get(t)
 
 
 class VSpharmExamplesOutputs(typing.NamedTuple):

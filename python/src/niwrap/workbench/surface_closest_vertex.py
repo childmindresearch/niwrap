@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
     id="b247f4f20d018925392cfcdef99f6eaa3f24d896.boutiques",
@@ -22,7 +21,7 @@ SurfaceClosestVertexParameters = typing.TypedDict('SurfaceClosestVertexParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-closest-vertex": surface_closest_vertex_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "surface-closest-vertex": surface_closest_vertex_outputs,
+    }.get(t)
 
 
 class SurfaceClosestVertexOutputs(typing.NamedTuple):

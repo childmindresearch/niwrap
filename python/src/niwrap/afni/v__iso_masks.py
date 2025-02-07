@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ISO_MASKS_METADATA = Metadata(
     id="efb13b19016645aff7a7273058c6f68edcfc682d.boutiques",
@@ -21,7 +20,7 @@ VIsoMasksParameters = typing.TypedDict('VIsoMasksParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@IsoMasks": v__iso_masks_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@IsoMasks": v__iso_masks_outputs,
+    }.get(t)
 
 
 class VIsoMasksOutputs(typing.NamedTuple):

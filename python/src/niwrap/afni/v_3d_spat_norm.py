@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SPAT_NORM_METADATA = Metadata(
     id="3dfa068ac2f6a03026257ba621a4c3d853de135b.boutiques",
@@ -28,7 +27,7 @@ V3dSpatNormParameters = typing.TypedDict('V3dSpatNormParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSpatNorm": v_3d_spat_norm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSpatNorm": v_3d_spat_norm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSpatNormOutputs(typing.NamedTuple):

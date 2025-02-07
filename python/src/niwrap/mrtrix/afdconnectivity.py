@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFDCONNECTIVITY_METADATA = Metadata(
     id="3290302704162d6eadb785f29be4535da532166f.boutiques",
@@ -37,7 +36,7 @@ AfdconnectivityParameters = typing.TypedDict('AfdconnectivityParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,16 +45,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "afdconnectivity": afdconnectivity_cargs,
         "config": afdconnectivity_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "afdconnectivity": afdconnectivity_outputs,
-    }
-    return vt.get(t)
+        "config": afdconnectivity_config_outputs,
+    }.get(t)
 
 
 def afdconnectivity_config_params(

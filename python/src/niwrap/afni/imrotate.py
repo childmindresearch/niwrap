@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMROTATE_METADATA = Metadata(
     id="046eb12264816ed4b6d2246d2d697caf596e0670.boutiques",
@@ -25,7 +24,7 @@ ImrotateParameters = typing.TypedDict('ImrotateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imrotate": imrotate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imrotate": imrotate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImrotateOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SMOOTHEST_METADATA = Metadata(
     id="aa6b4d1f0119965283e907af7439d677cd5d313c.boutiques",
@@ -24,7 +23,7 @@ SmoothestParameters = typing.TypedDict('SmoothestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "smoothest": smoothest_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "smoothest": smoothest_outputs,
+    }.get(t)
 
 
 class SmoothestOutputs(typing.NamedTuple):

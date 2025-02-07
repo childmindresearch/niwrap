@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONVERT_AFFINE_METADATA = Metadata(
     id="3b8860ef222f898c6a65c82c6ffa70dc64abc45b.boutiques",
@@ -47,7 +46,7 @@ ConvertAffineParameters = typing.TypedDict('ConvertAffineParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,19 +55,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "convert-affine": convert_affine_cargs,
         "from_world": convert_affine_from_world_cargs,
         "from_flirt": convert_affine_from_flirt_cargs,
         "to_world": convert_affine_to_world_cargs,
         "to_flirt": convert_affine_to_flirt_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,8 +75,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "convert-affine": convert_affine_outputs,
+        "from_world": convert_affine_from_world_outputs,
+        "from_flirt": convert_affine_from_flirt_outputs,
+        "to_world": convert_affine_to_world_outputs,
+        "to_flirt": convert_affine_to_flirt_outputs,
+    }.get(t)
 
 
 def convert_affine_from_world_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_COR2LABEL_METADATA = Metadata(
     id="af9da52f4b4f506776cedf44bf8558f6771cc4d7.boutiques",
@@ -31,7 +30,7 @@ MriCor2labelParameters = typing.TypedDict('MriCor2labelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_cor2label": mri_cor2label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_cor2label": mri_cor2label_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriCor2labelOutputs(typing.NamedTuple):

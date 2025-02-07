@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SCENE_FILE_MERGE_METADATA = Metadata(
     id="682d92959d5b639ad450c25e7395cfcdbb3c5643.boutiques",
@@ -36,7 +35,7 @@ SceneFileMergeParameters = typing.TypedDict('SceneFileMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,18 +44,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "scene-file-merge": scene_file_merge_cargs,
         "scene_file": scene_file_merge_scene_file_cargs,
         "scene": scene_file_merge_scene_cargs,
         "up_to": scene_file_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,8 +63,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "scene-file-merge": scene_file_merge_outputs,
+        "scene_file": scene_file_merge_scene_file_outputs,
+        "scene": scene_file_merge_scene_outputs,
+        "up_to": scene_file_merge_up_to_outputs,
+    }.get(t)
 
 
 def scene_file_merge_up_to_params(

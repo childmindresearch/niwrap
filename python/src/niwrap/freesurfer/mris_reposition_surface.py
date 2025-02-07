@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REPOSITION_SURFACE_METADATA = Metadata(
     id="41b35ee93a58eac699b67d7d488cbcc2df5c677b.boutiques",
@@ -26,7 +25,7 @@ MrisRepositionSurfaceParameters = typing.TypedDict('MrisRepositionSurfaceParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_reposition_surface": mris_reposition_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_reposition_surface": mris_reposition_surface_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRepositionSurfaceOutputs(typing.NamedTuple):

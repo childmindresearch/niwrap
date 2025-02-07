@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_SMOOTHING_METADATA = Metadata(
     id="efc8ed90d5c8dc7e0daf04e8183ee2af2ee3a11c.boutiques",
@@ -26,7 +25,7 @@ VolumeSmoothingParameters = typing.TypedDict('VolumeSmoothingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-smoothing": volume_smoothing_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-smoothing": volume_smoothing_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeSmoothingOutputs(typing.NamedTuple):

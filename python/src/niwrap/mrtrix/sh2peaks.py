@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SH2PEAKS_METADATA = Metadata(
     id="dc59048f9a978e195396202a13dd54ccebc30173.boutiques",
@@ -46,7 +45,7 @@ Sh2peaksParameters = typing.TypedDict('Sh2peaksParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,17 +54,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sh2peaks": sh2peaks_cargs,
         "direction": sh2peaks_direction_cargs,
         "config": sh2peaks_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sh2peaks": sh2peaks_outputs,
-    }
-    return vt.get(t)
+        "direction": sh2peaks_direction_outputs,
+        "config": sh2peaks_config_outputs,
+    }.get(t)
 
 
 def sh2peaks_direction_params(

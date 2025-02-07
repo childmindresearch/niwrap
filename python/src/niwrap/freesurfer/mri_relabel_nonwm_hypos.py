@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_RELABEL_NONWM_HYPOS_METADATA = Metadata(
     id="93faec099d80076ace8a12bddc7f7a4affe02681.boutiques",
@@ -25,7 +24,7 @@ MriRelabelNonwmHyposParameters = typing.TypedDict('MriRelabelNonwmHyposParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_relabel_nonwm_hypos": mri_relabel_nonwm_hypos_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_relabel_nonwm_hypos": mri_relabel_nonwm_hypos_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriRelabelNonwmHyposOutputs(typing.NamedTuple):

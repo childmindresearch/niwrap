@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RESPONSEMEAN_METADATA = Metadata(
     id="e6c56f5745cf6a8cbb9c9387ca97dbcce3e44b95.boutiques",
@@ -33,7 +32,7 @@ ResponsemeanParameters = typing.TypedDict('ResponsemeanParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "responsemean": responsemean_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "responsemean": responsemean_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ResponsemeanOutputs(typing.NamedTuple):

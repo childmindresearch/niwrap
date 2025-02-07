@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
     id="d80d15a560fc4c793db12ebf8002bfc2ce611bb6.boutiques",
@@ -35,7 +34,7 @@ CiftiRoisFromExtremaParameters = typing.TypedDict('CiftiRoisFromExtremaParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-rois-from-extrema": cifti_rois_from_extrema_cargs,
         "gaussian": cifti_rois_from_extrema_gaussian_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-rois-from-extrema": cifti_rois_from_extrema_outputs,
-    }
-    return vt.get(t)
+        "gaussian": cifti_rois_from_extrema_gaussian_outputs,
+    }.get(t)
 
 
 def cifti_rois_from_extrema_gaussian_params(

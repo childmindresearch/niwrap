@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_LABEL_EXPORT_TABLE_METADATA = Metadata(
     id="8e3356d3b69610a5d7c07175dfe70d7c516f705f.boutiques",
@@ -22,7 +21,7 @@ CiftiLabelExportTableParameters = typing.TypedDict('CiftiLabelExportTableParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-label-export-table": cifti_label_export_table_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-label-export-table": cifti_label_export_table_outputs,
+    }.get(t)
 
 
 class CiftiLabelExportTableOutputs(typing.NamedTuple):

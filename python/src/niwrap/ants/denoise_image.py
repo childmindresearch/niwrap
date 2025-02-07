@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DENOISE_IMAGE_METADATA = Metadata(
     id="510d45985961f8069b7889eeca0f9b9d13f57a86.boutiques",
@@ -29,7 +28,7 @@ DenoiseImageParameters = typing.TypedDict('DenoiseImageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "DenoiseImage": denoise_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "DenoiseImage": denoise_image_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DenoiseImageOutputs(typing.NamedTuple):

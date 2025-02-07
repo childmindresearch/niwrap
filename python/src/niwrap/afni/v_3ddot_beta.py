@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DDOT_BETA_METADATA = Metadata(
     id="3ccc06408d9c3d573076ee49d8aa6d0e1e01b141.boutiques",
@@ -23,7 +22,7 @@ V3ddotBetaParameters = typing.TypedDict('V3ddotBetaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3ddot_beta": v_3ddot_beta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3ddot_beta": v_3ddot_beta_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3ddotBetaOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_FILL_HOLES_METADATA = Metadata(
     id="96ff203654f51b0fbf464f9740941d18d8533b77.boutiques",
@@ -23,7 +22,7 @@ MetricFillHolesParameters = typing.TypedDict('MetricFillHolesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-fill-holes": metric_fill_holes_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-fill-holes": metric_fill_holes_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MetricFillHolesOutputs(typing.NamedTuple):

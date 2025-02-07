@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANALYZE_TRACE_METADATA = Metadata(
     id="3d880a6da4a3639545433e9f6739d09c2df6cf76.boutiques",
@@ -30,7 +29,7 @@ AnalyzeTraceParameters = typing.TypedDict('AnalyzeTraceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "AnalyzeTrace": analyze_trace_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "AnalyzeTrace": analyze_trace_outputs,
+    }.get(t)
 
 
 class AnalyzeTraceOutputs(typing.NamedTuple):

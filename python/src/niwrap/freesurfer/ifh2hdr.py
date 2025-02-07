@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IFH2HDR_METADATA = Metadata(
     id="e59ad437a43879fdeda8a194eb2d5e26f853b35c.boutiques",
@@ -21,7 +20,7 @@ Ifh2hdrParameters = typing.TypedDict('Ifh2hdrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ifh2hdr": ifh2hdr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ifh2hdr": ifh2hdr_outputs,
+    }.get(t)
 
 
 class Ifh2hdrOutputs(typing.NamedTuple):

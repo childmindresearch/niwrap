@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
     id="4d680bc675d44917986d0a7dc537117e07489d00.boutiques",
@@ -36,7 +35,7 @@ C3dAffineToolParameters = typing.TypedDict('C3dAffineToolParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "c3d_affine_tool": c3d_affine_tool_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "c3d_affine_tool": c3d_affine_tool_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class C3dAffineToolOutputs(typing.NamedTuple):

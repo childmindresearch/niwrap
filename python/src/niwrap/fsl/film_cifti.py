@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FILM_CIFTI_METADATA = Metadata(
     id="7e2504e3ecb6cdf617162ea7e2b85cf9bf443541.boutiques",
@@ -28,7 +27,7 @@ FilmCiftiParameters = typing.TypedDict('FilmCiftiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "film_cifti": film_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "film_cifti": film_cifti_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FilmCiftiOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_MODIFY_SPHERE_METADATA = Metadata(
     id="7ba7bdfa9f75a3f280b0446651d5074e673b22aa.boutiques",
@@ -23,7 +22,7 @@ SurfaceModifySphereParameters = typing.TypedDict('SurfaceModifySphereParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-modify-sphere": surface_modify_sphere_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-modify-sphere": surface_modify_sphere_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceModifySphereOutputs(typing.NamedTuple):

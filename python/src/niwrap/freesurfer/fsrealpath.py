@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSREALPATH_METADATA = Metadata(
     id="ef28f86a2514a0354df33824818f45a5947ff878.boutiques",
@@ -21,7 +20,7 @@ FsrealpathParameters = typing.TypedDict('FsrealpathParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsrealpath": fsrealpath_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fsrealpath": fsrealpath_outputs,
+    }.get(t)
 
 
 class FsrealpathOutputs(typing.NamedTuple):

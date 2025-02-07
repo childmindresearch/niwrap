@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SUMA_CHANGE_SPEC_METADATA = Metadata(
     id="4bf222ffae950010f81275acc0be3c92fdd2d01c.boutiques",
@@ -25,7 +24,7 @@ SumaChangeSpecParameters = typing.TypedDict('SumaChangeSpecParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "suma_change_spec": suma_change_spec_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "suma_change_spec": suma_change_spec_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SumaChangeSpecOutputs(typing.NamedTuple):

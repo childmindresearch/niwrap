@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_SET_SPACE_METADATA = Metadata(
     id="cc06a5ed74f7b2995a9e56b76a45660865d0ab11.boutiques",
@@ -54,7 +53,7 @@ VolumeSetSpaceParameters = typing.TypedDict('VolumeSetSpaceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -63,18 +62,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-set-space": volume_set_space_cargs,
         "plumb": volume_set_space_plumb_cargs,
         "sform": volume_set_space_sform_cargs,
         "file": volume_set_space_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -83,8 +81,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-set-space": volume_set_space_outputs,
+        "plumb": volume_set_space_plumb_outputs,
+        "sform": volume_set_space_sform_outputs,
+        "file": volume_set_space_file_outputs,
+    }.get(t)
 
 
 def volume_set_space_plumb_params(

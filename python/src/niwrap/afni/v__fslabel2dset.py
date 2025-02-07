@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__FSLABEL2DSET_METADATA = Metadata(
     id="9fe2630c3f97cdc57615a68de7b89685d793afec.boutiques",
@@ -24,7 +23,7 @@ VFslabel2dsetParameters = typing.TypedDict('VFslabel2dsetParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@FSlabel2dset": v__fslabel2dset_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@FSlabel2dset": v__fslabel2dset_outputs,
+    }.get(t)
 
 
 class VFslabel2dsetOutputs(typing.NamedTuple):

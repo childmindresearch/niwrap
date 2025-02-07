@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_SURF2SURF_METADATA = Metadata(
     id="d67a0abaca8f23d784a32410fdaa560c5667746c.boutiques",
@@ -75,7 +74,7 @@ MriSurf2surfParameters = typing.TypedDict('MriSurf2surfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -84,15 +83,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_surf2surf": mri_surf2surf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -101,10 +99,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_surf2surf": mri_surf2surf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriSurf2surfOutputs(typing.NamedTuple):

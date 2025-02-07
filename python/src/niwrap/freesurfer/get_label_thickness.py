@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GET_LABEL_THICKNESS_METADATA = Metadata(
     id="dee540c5d6addffa9eea35a7fd1572afd491a587.boutiques",
@@ -20,7 +19,7 @@ GetLabelThicknessParameters = typing.TypedDict('GetLabelThicknessParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "get_label_thickness": get_label_thickness_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "get_label_thickness": get_label_thickness_outputs,
+    }.get(t)
 
 
 class GetLabelThicknessOutputs(typing.NamedTuple):

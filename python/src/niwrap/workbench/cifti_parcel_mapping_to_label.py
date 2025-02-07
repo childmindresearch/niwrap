@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
     id="56ab9aee6d0be0b2fb7ecc7bcc331cfd24c3bb57.boutiques",
@@ -23,7 +22,7 @@ CiftiParcelMappingToLabelParameters = typing.TypedDict('CiftiParcelMappingToLabe
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-parcel-mapping-to-label": cifti_parcel_mapping_to_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-parcel-mapping-to-label": cifti_parcel_mapping_to_label_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiParcelMappingToLabelOutputs(typing.NamedTuple):

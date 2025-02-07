@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SNAPSHOT_VOLREG_METADATA = Metadata(
     id="edc900ca58d61107bee2b644d2625f19238f5714.boutiques",
@@ -23,7 +22,7 @@ VSnapshotVolregParameters = typing.TypedDict('VSnapshotVolregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@snapshot_volreg": v__snapshot_volreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@snapshot_volreg": v__snapshot_volreg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSnapshotVolregOutputs(typing.NamedTuple):

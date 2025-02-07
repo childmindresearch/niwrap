@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSVGLRUN_METADATA = Metadata(
     id="5ac643a495dfd3b7b90655e3aff808accc7f76dd.boutiques",
@@ -24,7 +23,7 @@ FsvglrunParameters = typing.TypedDict('FsvglrunParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsvglrun": fsvglrun_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fsvglrun": fsvglrun_outputs,
+    }.get(t)
 
 
 class FsvglrunOutputs(typing.NamedTuple):

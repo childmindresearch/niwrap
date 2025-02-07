@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FLIRT_FSL_METADATA = Metadata(
     id="398eadb6f9dd1993cfd24de7b26c3a35c5d0f1cd.boutiques",
@@ -57,7 +56,7 @@ FlirtFslParameters = typing.TypedDict('FlirtFslParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -66,15 +65,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "flirt.fsl": flirt_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -83,10 +81,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "flirt.fsl": flirt_fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FlirtFslOutputs(typing.NamedTuple):

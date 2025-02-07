@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
     id="34a251de0c81f7f2fc2da3a56752e5c868f22a46.boutiques",
@@ -21,7 +20,7 @@ VSumaFsvolToBrikParameters = typing.TypedDict('VSumaFsvolToBrikParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@SUMA_FSvolToBRIK": v__suma_fsvol_to_brik_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@SUMA_FSvolToBRIK": v__suma_fsvol_to_brik_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSumaFsvolToBrikOutputs(typing.NamedTuple):

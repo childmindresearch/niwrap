@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMAGE_SET_STATISTICS_METADATA = Metadata(
     id="9329b484e2f67dba69c548b9b9a373ea2a072aa8.boutiques",
@@ -25,7 +24,7 @@ ImageSetStatisticsParameters = typing.TypedDict('ImageSetStatisticsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ImageSetStatistics": image_set_statistics_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ImageSetStatistics": image_set_statistics_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImageSetStatisticsOutputs(typing.NamedTuple):

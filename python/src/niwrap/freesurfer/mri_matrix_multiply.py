@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_MATRIX_MULTIPLY_METADATA = Metadata(
     id="e27af9270450150cf8e376927c002e9ad9bce68e.boutiques",
@@ -26,7 +25,7 @@ MriMatrixMultiplyParameters = typing.TypedDict('MriMatrixMultiplyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_matrix_multiply": mri_matrix_multiply_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_matrix_multiply": mri_matrix_multiply_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriMatrixMultiplyOutputs(typing.NamedTuple):

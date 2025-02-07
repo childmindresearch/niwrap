@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
     id="a915b7fc618e0a145c90d97ad0abe25a3af42c2f.boutiques",
@@ -21,7 +20,7 @@ VolumeRemoveIslandsParameters = typing.TypedDict('VolumeRemoveIslandsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-remove-islands": volume_remove_islands_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-remove-islands": volume_remove_islands_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeRemoveIslandsOutputs(typing.NamedTuple):

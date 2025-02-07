@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PRINT_HEADER_METADATA = Metadata(
     id="514e4dbae6f3b5a425925fca62d2ade89ff0b0c2.boutiques",
@@ -21,7 +20,7 @@ PrintHeaderParameters = typing.TypedDict('PrintHeaderParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "PrintHeader": print_header_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "PrintHeader": print_header_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PrintHeaderOutputs(typing.NamedTuple):

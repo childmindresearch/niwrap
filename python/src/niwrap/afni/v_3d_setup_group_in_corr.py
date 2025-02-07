@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SETUP_GROUP_IN_CORR_METADATA = Metadata(
     id="de29e68b50548580e79210d656042b141dbd77c7.boutiques",
@@ -28,7 +27,7 @@ V3dSetupGroupInCorrParameters = typing.TypedDict('V3dSetupGroupInCorrParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSetupGroupInCorr": v_3d_setup_group_in_corr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSetupGroupInCorr": v_3d_setup_group_in_corr_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSetupGroupInCorrOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADD_TO_SPEC_FILE_METADATA = Metadata(
     id="8d95258c4b8b7da6fe7fb5dd7fbf6d4b4129e340.boutiques",
@@ -22,7 +21,7 @@ AddToSpecFileParameters = typing.TypedDict('AddToSpecFileParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "add-to-spec-file": add_to_spec_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "add-to-spec-file": add_to_spec_file_outputs,
+    }.get(t)
 
 
 class AddToSpecFileOutputs(typing.NamedTuple):

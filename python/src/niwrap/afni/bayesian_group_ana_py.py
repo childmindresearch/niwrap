@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BAYESIAN_GROUP_ANA_PY_METADATA = Metadata(
     id="e49086bdbe64c248fa7b140fd8ae072e880fa9a7.boutiques",
@@ -33,7 +32,7 @@ BayesianGroupAnaPyParameters = typing.TypedDict('BayesianGroupAnaPyParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "BayesianGroupAna.py": bayesian_group_ana_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "BayesianGroupAna.py": bayesian_group_ana_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BayesianGroupAnaPyOutputs(typing.NamedTuple):

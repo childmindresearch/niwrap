@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VECTORSTATS_METADATA = Metadata(
     id="a8a67c93f9ad1cdf03ad2a1e473010538e53830b.boutiques",
@@ -51,7 +50,7 @@ VectorstatsParameters = typing.TypedDict('VectorstatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,17 +59,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "vectorstats": vectorstats_cargs,
         "column": vectorstats_column_cargs,
         "config": vectorstats_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,8 +77,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "vectorstats": vectorstats_outputs,
+        "column": vectorstats_column_outputs,
+        "config": vectorstats_config_outputs,
+    }.get(t)
 
 
 def vectorstats_column_params(

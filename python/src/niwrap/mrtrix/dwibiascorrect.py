@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWIBIASCORRECT_METADATA = Metadata(
     id="e83d9f4b1c64834e7ce4b8084fa8aefaad7cc322.boutiques",
@@ -45,7 +44,7 @@ DwibiascorrectParameters = typing.TypedDict('DwibiascorrectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,16 +53,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwibiascorrect": dwibiascorrect_cargs,
         "fslgrad": dwibiascorrect_fslgrad_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,10 +70,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwibiascorrect": dwibiascorrect_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": dwibiascorrect_fslgrad_outputs,
+    }.get(t)
 
 
 def dwibiascorrect_fslgrad_params(

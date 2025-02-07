@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMGLOB_METADATA = Metadata(
     id="048af28afaecb36fea36a9848ee9d39cc57bafae.boutiques",
@@ -21,7 +20,7 @@ ImglobParameters = typing.TypedDict('ImglobParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imglob": imglob_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "imglob": imglob_outputs,
+    }.get(t)
 
 
 class ImglobOutputs(typing.NamedTuple):

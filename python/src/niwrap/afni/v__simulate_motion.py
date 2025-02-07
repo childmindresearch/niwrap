@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SIMULATE_MOTION_METADATA = Metadata(
     id="5fc17ce508dbb62923e813f5cff61e70e1accb2d.boutiques",
@@ -35,7 +34,7 @@ VSimulateMotionParameters = typing.TypedDict('VSimulateMotionParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@simulate_motion": v__simulate_motion_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@simulate_motion": v__simulate_motion_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSimulateMotionOutputs(typing.NamedTuple):

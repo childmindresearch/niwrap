@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_EXTREMA_METADATA = Metadata(
     id="e9d75f775311f476c1aed2479a50033eb3b4b197.boutiques",
@@ -40,7 +39,7 @@ VolumeExtremaParameters = typing.TypedDict('VolumeExtremaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,17 +48,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-extrema": volume_extrema_cargs,
         "presmooth": volume_extrema_presmooth_cargs,
         "threshold": volume_extrema_threshold_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,10 +66,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-extrema": volume_extrema_outputs,
-    }
-    return vt.get(t)
+        "presmooth": volume_extrema_presmooth_outputs,
+        "threshold": volume_extrema_threshold_outputs,
+    }.get(t)
 
 
 def volume_extrema_presmooth_params(

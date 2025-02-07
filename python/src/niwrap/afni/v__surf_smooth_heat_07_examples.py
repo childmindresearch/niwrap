@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA = Metadata(
     id="dc0b150ee17a89e1651ca52dbda01cc2f717b438.boutiques",
@@ -20,7 +19,7 @@ VSurfSmoothHeat07ExamplesParameters = typing.TypedDict('VSurfSmoothHeat07Example
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@SurfSmooth.HEAT_07.examples": v__surf_smooth_heat_07_examples_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@SurfSmooth.HEAT_07.examples": v__surf_smooth_heat_07_examples_outputs,
+    }.get(t)
 
 
 class VSurfSmoothHeat07ExamplesOutputs(typing.NamedTuple):

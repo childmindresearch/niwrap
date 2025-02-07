@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMMASK_METADATA = Metadata(
     id="9c1f93c0cb09202023e9490b9f3feb5a319f6f59.boutiques",
@@ -24,7 +23,7 @@ ImmaskParameters = typing.TypedDict('ImmaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "immask": immask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "immask": immask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImmaskOutputs(typing.NamedTuple):

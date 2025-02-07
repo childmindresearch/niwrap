@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIRST_METADATA = Metadata(
     id="c4a03ae0d22afadc00267f860cc2f855e085bed1.boutiques",
@@ -34,7 +33,7 @@ FirstParameters = typing.TypedDict('FirstParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "first": first_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "first": first_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FirstOutputs(typing.NamedTuple):

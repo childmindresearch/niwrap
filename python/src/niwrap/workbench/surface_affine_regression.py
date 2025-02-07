@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
     id="8987a9d606f580c73d1000395b1f79455846aab9.boutiques",
@@ -22,7 +21,7 @@ SurfaceAffineRegressionParameters = typing.TypedDict('SurfaceAffineRegressionPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-affine-regression": surface_affine_regression_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "surface-affine-regression": surface_affine_regression_outputs,
+    }.get(t)
 
 
 class SurfaceAffineRegressionOutputs(typing.NamedTuple):

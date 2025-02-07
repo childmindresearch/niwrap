@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SUMA_ACKNOWLEDGE_METADATA = Metadata(
     id="a8f4715fa5105c4c0609bd564b7d507bb058f088.boutiques",
@@ -26,7 +25,7 @@ VSumaAcknowledgeParameters = typing.TypedDict('VSumaAcknowledgeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@suma_acknowledge": v__suma_acknowledge_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@suma_acknowledge": v__suma_acknowledge_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VSumaAcknowledgeOutputs(typing.NamedTuple):

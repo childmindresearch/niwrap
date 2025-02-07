@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_SAVE_HISTOGRAMS_METADATA = Metadata(
     id="ee8d1ca09c1b2241dc168157801f106029c44920.boutiques",
@@ -24,7 +23,7 @@ DmriSaveHistogramsParameters = typing.TypedDict('DmriSaveHistogramsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_saveHistograms": dmri_save_histograms_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dmri_saveHistograms": dmri_save_histograms_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DmriSaveHistogramsOutputs(typing.NamedTuple):

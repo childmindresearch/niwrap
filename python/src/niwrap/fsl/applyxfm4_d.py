@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 APPLYXFM4_D_METADATA = Metadata(
     id="0b7f726faa4dcd12d271bb6690d77ab6c74bf458.boutiques",
@@ -23,7 +22,7 @@ Applyxfm4DParameters = typing.TypedDict('Applyxfm4DParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "applyxfm4D": applyxfm4_d_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "applyxfm4D": applyxfm4_d_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Applyxfm4DOutputs(typing.NamedTuple):

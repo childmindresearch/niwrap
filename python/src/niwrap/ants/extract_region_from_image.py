@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EXTRACT_REGION_FROM_IMAGE_METADATA = Metadata(
     id="ae946f4d1bb246c4c0e1a26e1d18d3d6f5ce930d.boutiques",
@@ -41,7 +40,7 @@ ExtractRegionFromImageParameters = typing.TypedDict('ExtractRegionFromImageParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,19 +49,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ExtractRegionFromImage": extract_region_from_image_cargs,
         "region_min_max_index": extract_region_from_image_region_min_max_index_cargs,
         "region_label": extract_region_from_image_region_label_cargs,
         "region_domain_image": extract_region_from_image_region_domain_image_cargs,
         "region_label_with_image": extract_region_from_image_region_label_with_image_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,10 +69,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ExtractRegionFromImage": extract_region_from_image_outputs,
-    }
-    return vt.get(t)
+        "region_min_max_index": extract_region_from_image_region_min_max_index_outputs,
+        "region_label": extract_region_from_image_region_label_outputs,
+        "region_domain_image": extract_region_from_image_region_domain_image_outputs,
+        "region_label_with_image": extract_region_from_image_region_label_with_image_outputs,
+    }.get(t)
 
 
 def extract_region_from_image_region_min_max_index_params(

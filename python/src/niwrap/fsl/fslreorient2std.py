@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLREORIENT2STD_METADATA = Metadata(
     id="9d744e19ce2bb5b88fa76e50bb16323a2b9a65dd.boutiques",
@@ -22,7 +21,7 @@ Fslreorient2stdParameters = typing.TypedDict('Fslreorient2stdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslreorient2std": fslreorient2std_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslreorient2std": fslreorient2std_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Fslreorient2stdOutputs(typing.NamedTuple):

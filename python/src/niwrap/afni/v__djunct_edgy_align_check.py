@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_EDGY_ALIGN_CHECK_METADATA = Metadata(
     id="b256b5bb4b47e9c6b85c30cb947f43710826ac49.boutiques",
@@ -36,7 +35,7 @@ VDjunctEdgyAlignCheckParameters = typing.TypedDict('VDjunctEdgyAlignCheckParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_edgy_align_check": v__djunct_edgy_align_check_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@djunct_edgy_align_check": v__djunct_edgy_align_check_outputs,
+    }.get(t)
 
 
 class VDjunctEdgyAlignCheckOutputs(typing.NamedTuple):

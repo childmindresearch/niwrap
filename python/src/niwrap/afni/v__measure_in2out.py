@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__MEASURE_IN2OUT_METADATA = Metadata(
     id="24cc5193feb14e3737f192161109e71637dc1422.boutiques",
@@ -31,7 +30,7 @@ VMeasureIn2outParameters = typing.TypedDict('VMeasureIn2outParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@measure_in2out": v__measure_in2out_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@measure_in2out": v__measure_in2out_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VMeasureIn2outOutputs(typing.NamedTuple):

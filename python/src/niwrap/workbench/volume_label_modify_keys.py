@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
     id="f52535d3e5a2690d3eb95fcebf26bd4dfa8db089.boutiques",
@@ -23,7 +22,7 @@ VolumeLabelModifyKeysParameters = typing.TypedDict('VolumeLabelModifyKeysParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-label-modify-keys": volume_label_modify_keys_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-label-modify-keys": volume_label_modify_keys_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeLabelModifyKeysOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GEN_GROUP_COMMAND_METADATA = Metadata(
     id="4fe3201bf131205f747bb9a5634cc52a3ce35255.boutiques",
@@ -31,7 +30,7 @@ GenGroupCommandParameters = typing.TypedDict('GenGroupCommandParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gen_group_command": gen_group_command_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gen_group_command": gen_group_command_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GenGroupCommandOutputs(typing.NamedTuple):

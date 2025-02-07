@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
     id="015b2b1c66a3f929dc8b7bc80bb3691f68a641ef.boutiques",
@@ -44,7 +43,7 @@ MakeRandomTimingPyParameters = typing.TypedDict('MakeRandomTimingPyParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_random_timing.py": make_random_timing_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_random_timing.py": make_random_timing_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeRandomTimingPyOutputs(typing.NamedTuple):

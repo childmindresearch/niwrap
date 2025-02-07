@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__FIX_FSSPHERE_METADATA = Metadata(
     id="b742177d5b0ebe3a73650e2f92bfe87238f0bcca.boutiques",
@@ -25,7 +24,7 @@ VFixFssphereParameters = typing.TypedDict('VFixFssphereParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@fix_FSsphere": v__fix_fssphere_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@fix_FSsphere": v__fix_fssphere_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VFixFssphereOutputs(typing.NamedTuple):

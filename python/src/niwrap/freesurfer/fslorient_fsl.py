@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLORIENT_FSL_METADATA = Metadata(
     id="91c87d301655f1a487272843a72c1efbca6dd79a.boutiques",
@@ -23,7 +22,7 @@ FslorientFslParameters = typing.TypedDict('FslorientFslParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslorient.fsl": fslorient_fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,8 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fslorient.fsl": fslorient_fsl_outputs,
+    }.get(t)
 
 
 class FslorientFslOutputs(typing.NamedTuple):

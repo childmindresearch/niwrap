@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_CA_TISSUE_PARMS_METADATA = Metadata(
     id="1d6429470b2b62de7212566259b4407543b03a79.boutiques",
@@ -23,7 +22,7 @@ MriCaTissueParmsParameters = typing.TypedDict('MriCaTissueParmsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_ca_tissue_parms": mri_ca_tissue_parms_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_ca_tissue_parms": mri_ca_tissue_parms_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriCaTissueParmsOutputs(typing.NamedTuple):

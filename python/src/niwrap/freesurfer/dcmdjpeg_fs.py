@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DCMDJPEG_FS_METADATA = Metadata(
     id="72def5b0b090531bebd9d33b2cf8001287532af2.boutiques",
@@ -60,7 +59,7 @@ DcmdjpegFsParameters = typing.TypedDict('DcmdjpegFsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -69,15 +68,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dcmdjpeg.fs": dcmdjpeg_fs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -86,10 +84,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dcmdjpeg.fs": dcmdjpeg_fs_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DcmdjpegFsOutputs(typing.NamedTuple):

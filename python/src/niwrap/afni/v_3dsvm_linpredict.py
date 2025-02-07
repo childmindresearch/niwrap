@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DSVM_LINPREDICT_METADATA = Metadata(
     id="162a26d7cd1e95514fe2260fa414829582d88bd4.boutiques",
@@ -22,7 +21,7 @@ V3dsvmLinpredictParameters = typing.TypedDict('V3dsvmLinpredictParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dsvm_linpredict": v_3dsvm_linpredict_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dsvm_linpredict": v_3dsvm_linpredict_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dsvmLinpredictOutputs(typing.NamedTuple):

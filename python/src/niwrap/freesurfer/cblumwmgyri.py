@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CBLUMWMGYRI_METADATA = Metadata(
     id="fe20341079c6df1e8a587d62997fab1a4bf8a4d8.boutiques",
@@ -25,7 +24,7 @@ CblumwmgyriParameters = typing.TypedDict('CblumwmgyriParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cblumwmgyri": cblumwmgyri_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cblumwmgyri": cblumwmgyri_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CblumwmgyriOutputs(typing.NamedTuple):

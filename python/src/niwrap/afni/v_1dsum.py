@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1DSUM_METADATA = Metadata(
     id="bc19d515e82be4f6b3c9c9f81c1a201e83b798ea.boutiques",
@@ -25,7 +24,7 @@ V1dsumParameters = typing.TypedDict('V1dsumParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dsum": v_1dsum_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dsum": v_1dsum_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dsumOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ADD_EDGE_METADATA = Metadata(
     id="e1c15db21c7ca3b4679541ce445b80838292b240.boutiques",
@@ -34,7 +33,7 @@ VAddEdgeParameters = typing.TypedDict('VAddEdgeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@AddEdge": v__add_edge_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@AddEdge": v__add_edge_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAddEdgeOutputs(typing.NamedTuple):

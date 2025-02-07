@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_CONCATENATE_GCAM_METADATA = Metadata(
     id="f2136516d8c43c1484d6b8f54f1f6627fae4ebe7.boutiques",
@@ -26,7 +25,7 @@ MriConcatenateGcamParameters = typing.TypedDict('MriConcatenateGcamParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_concatenate_gcam": mri_concatenate_gcam_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_concatenate_gcam": mri_concatenate_gcam_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriConcatenateGcamOutputs(typing.NamedTuple):

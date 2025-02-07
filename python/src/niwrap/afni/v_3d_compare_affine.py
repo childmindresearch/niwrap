@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_COMPARE_AFFINE_METADATA = Metadata(
     id="05a5d8e8f58b82dd3d94b8878f12307d386f682c.boutiques",
@@ -22,7 +21,7 @@ V3dCompareAffineParameters = typing.TypedDict('V3dCompareAffineParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dCompareAffine": v_3d_compare_affine_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dCompareAffine": v_3d_compare_affine_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dCompareAffineOutputs(typing.NamedTuple):

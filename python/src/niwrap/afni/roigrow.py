@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ROIGROW_METADATA = Metadata(
     id="12bb44f9721e85ea23d86fcfc727735d33f56b50.boutiques",
@@ -27,7 +26,7 @@ RoigrowParameters = typing.TypedDict('RoigrowParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ROIgrow": roigrow_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ROIgrow": roigrow_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RoigrowOutputs(typing.NamedTuple):

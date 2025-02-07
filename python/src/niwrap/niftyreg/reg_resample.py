@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_RESAMPLE_METADATA = Metadata(
     id="2ccb8532ef070b252ef142cb969c94469f490a69.boutiques",
@@ -29,7 +28,7 @@ RegResampleParameters = typing.TypedDict('RegResampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg_resample": reg_resample_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg_resample": reg_resample_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegResampleOutputs(typing.NamedTuple):

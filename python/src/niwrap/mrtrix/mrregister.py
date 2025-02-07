@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRREGISTER_METADATA = Metadata(
     id="8bd7ed4526083be2350c2edade3ae34d8bed4865.boutiques",
@@ -106,7 +105,7 @@ MrregisterParameters = typing.TypedDict('MrregisterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -115,19 +114,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrregister": mrregister_cargs,
         "transformed": mrregister_transformed_cargs,
         "transformed_midway": mrregister_transformed_midway_cargs,
         "nl_warp": mrregister_nl_warp_cargs,
         "config": mrregister_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -136,13 +134,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrregister": mrregister_outputs,
         "transformed": mrregister_transformed_outputs,
         "transformed_midway": mrregister_transformed_midway_outputs,
         "nl_warp": mrregister_nl_warp_outputs,
-    }
-    return vt.get(t)
+        "config": mrregister_config_outputs,
+    }.get(t)
 
 
 class MrregisterTransformedOutputs(typing.NamedTuple):

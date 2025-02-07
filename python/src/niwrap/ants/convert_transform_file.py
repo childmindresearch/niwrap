@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONVERT_TRANSFORM_FILE_METADATA = Metadata(
     id="224c137774aff43d94d1fecb5c8b4a19ae81816c.boutiques",
@@ -22,7 +21,7 @@ ConvertTransformFileParameters = typing.TypedDict('ConvertTransformFileParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ConvertTransformFile": convert_transform_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ConvertTransformFile": convert_transform_file_outputs,
+    }.get(t)
 
 
 class ConvertTransformFileOutputs(typing.NamedTuple):

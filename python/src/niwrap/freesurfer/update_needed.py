@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UPDATE_NEEDED_METADATA = Metadata(
     id="81ad1ec598b447ced529bab2b15819d597e08ec9.boutiques",
@@ -21,7 +20,7 @@ UpdateNeededParameters = typing.TypedDict('UpdateNeededParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "UpdateNeeded": update_needed_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "UpdateNeeded": update_needed_outputs,
+    }.get(t)
 
 
 class UpdateNeededOutputs(typing.NamedTuple):

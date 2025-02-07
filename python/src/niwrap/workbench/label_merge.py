@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL_MERGE_METADATA = Metadata(
     id="23abeff64ad6c7ec293da11e92c329b37b1711f7.boutiques",
@@ -36,7 +35,7 @@ LabelMergeParameters = typing.TypedDict('LabelMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,18 +44,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label-merge": label_merge_cargs,
         "label": label_merge_label_cargs,
         "column": label_merge_column_cargs,
         "up_to": label_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label-merge": label_merge_outputs,
-    }
-    return vt.get(t)
+        "label": label_merge_label_outputs,
+        "column": label_merge_column_outputs,
+        "up_to": label_merge_up_to_outputs,
+    }.get(t)
 
 
 def label_merge_up_to_params(

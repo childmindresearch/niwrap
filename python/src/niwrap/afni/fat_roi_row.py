@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_ROI_ROW_METADATA = Metadata(
     id="027b80948cf0bd1ac046353e98ebb2ca04186002.boutiques",
@@ -23,7 +22,7 @@ FatRoiRowParameters = typing.TypedDict('FatRoiRowParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_roi_row": fat_roi_row_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_roi_row": fat_roi_row_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatRoiRowOutputs(typing.NamedTuple):

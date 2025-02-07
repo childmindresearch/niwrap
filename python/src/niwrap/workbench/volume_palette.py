@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_PALETTE_METADATA = Metadata(
     id="a0edce5c96b3bd1fbd6749de6e28e5cd8461794e.boutiques",
@@ -60,7 +59,7 @@ VolumePaletteParameters = typing.TypedDict('VolumePaletteParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -69,20 +68,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-palette": volume_palette_cargs,
         "pos_percent": volume_palette_pos_percent_cargs,
         "neg_percent": volume_palette_neg_percent_cargs,
         "pos_user": volume_palette_pos_user_cargs,
         "neg_user": volume_palette_neg_user_cargs,
         "thresholding": volume_palette_thresholding_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -91,8 +89,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-palette": volume_palette_outputs,
+        "pos_percent": volume_palette_pos_percent_outputs,
+        "neg_percent": volume_palette_neg_percent_outputs,
+        "pos_user": volume_palette_pos_user_outputs,
+        "neg_user": volume_palette_neg_user_outputs,
+        "thresholding": volume_palette_thresholding_outputs,
+    }.get(t)
 
 
 def volume_palette_pos_percent_params(

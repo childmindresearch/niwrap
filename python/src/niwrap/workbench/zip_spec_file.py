@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ZIP_SPEC_FILE_METADATA = Metadata(
     id="990bcafbdd158caacb4567de9823ced2ae25e8d9.boutiques",
@@ -24,7 +23,7 @@ ZipSpecFileParameters = typing.TypedDict('ZipSpecFileParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "zip-spec-file": zip_spec_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "zip-spec-file": zip_spec_file_outputs,
+    }.get(t)
 
 
 class ZipSpecFileOutputs(typing.NamedTuple):

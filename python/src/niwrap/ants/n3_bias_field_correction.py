@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 N3_BIAS_FIELD_CORRECTION_METADATA = Metadata(
     id="12e6ca015aa736902ad4369af67b842768a91549.boutiques",
@@ -30,7 +29,7 @@ N3BiasFieldCorrectionParameters = typing.TypedDict('N3BiasFieldCorrectionParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "N3BiasFieldCorrection": n3_bias_field_correction_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "N3BiasFieldCorrection": n3_bias_field_correction_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class N3BiasFieldCorrectionOutputs(typing.NamedTuple):

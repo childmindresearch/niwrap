@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCONVERT_METADATA = Metadata(
     id="698958e49f436a4dfeb7113aafd856076c1a7be7.boutiques",
@@ -110,7 +109,7 @@ MrconvertParameters = typing.TypedDict('MrconvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -119,7 +118,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrconvert": mrconvert_cargs,
         "coord": mrconvert_coord_cargs,
         "clear_property": mrconvert_clear_property_cargs,
@@ -134,13 +133,12 @@ def dyn_cargs(
         "import_pe_eddy": mrconvert_import_pe_eddy_cargs,
         "export_pe_eddy": mrconvert_export_pe_eddy_cargs,
         "config": mrconvert_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -149,12 +147,22 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrconvert": mrconvert_outputs,
+        "coord": mrconvert_coord_outputs,
+        "clear_property": mrconvert_clear_property_outputs,
+        "set_property": mrconvert_set_property_outputs,
+        "append_property": mrconvert_append_property_outputs,
+        "VariousString": mrconvert_various_string_outputs,
+        "VariousFile": mrconvert_various_file_outputs,
+        "VariousString": mrconvert_various_string_outputs_,
+        "VariousFile": mrconvert_various_file_outputs_,
+        "fslgrad": mrconvert_fslgrad_outputs,
         "export_grad_fsl": mrconvert_export_grad_fsl_outputs,
+        "import_pe_eddy": mrconvert_import_pe_eddy_outputs,
         "export_pe_eddy": mrconvert_export_pe_eddy_outputs,
-    }
-    return vt.get(t)
+        "config": mrconvert_config_outputs,
+    }.get(t)
 
 
 def mrconvert_coord_params(

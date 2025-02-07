@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BORDER_TO_VERTICES_METADATA = Metadata(
     id="e79a75a02c66aa23aaa2fd35713b5557b9d4e7e5.boutiques",
@@ -23,7 +22,7 @@ BorderToVerticesParameters = typing.TypedDict('BorderToVerticesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "border-to-vertices": border_to_vertices_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "border-to-vertices": border_to_vertices_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BorderToVerticesOutputs(typing.NamedTuple):

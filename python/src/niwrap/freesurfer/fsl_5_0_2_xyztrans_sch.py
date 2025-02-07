@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_5_0_2_XYZTRANS_SCH_METADATA = Metadata(
     id="97a334fb37fbd008c00e7f8cd6895c30829fe6b3.boutiques",
@@ -22,7 +21,7 @@ Fsl502XyztransSchParameters = typing.TypedDict('Fsl502XyztransSchParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl.5.0.2.xyztrans.sch": fsl_5_0_2_xyztrans_sch_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fsl.5.0.2.xyztrans.sch": fsl_5_0_2_xyztrans_sch_outputs,
+    }.get(t)
 
 
 class Fsl502XyztransSchOutputs(typing.NamedTuple):

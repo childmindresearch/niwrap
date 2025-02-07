@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UBER_ALIGN_TEST_PY_METADATA = Metadata(
     id="1cdb35a694ecfd6f154d70ecf75d0b5138262e0f.boutiques",
@@ -29,7 +28,7 @@ UberAlignTestPyParameters = typing.TypedDict('UberAlignTestPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "uber_align_test.py": uber_align_test_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "uber_align_test.py": uber_align_test_py_outputs,
+    }.get(t)
 
 
 class UberAlignTestPyOutputs(typing.NamedTuple):

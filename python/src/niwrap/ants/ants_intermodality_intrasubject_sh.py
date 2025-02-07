@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA = Metadata(
     id="e4f43efff74611f07e60c00f682c377a411a79c7.boutiques",
@@ -31,7 +30,7 @@ AntsIntermodalityIntrasubjectShParameters = typing.TypedDict('AntsIntermodalityI
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsIntermodalityIntrasubject.sh": ants_intermodality_intrasubject_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsIntermodalityIntrasubject.sh": ants_intermodality_intrasubject_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsIntermodalityIntrasubjectShOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ISANALYZE_METADATA = Metadata(
     id="3d8f8ed4f2f6a0e189b0b47b6a3b1fc896553e24.boutiques",
@@ -20,7 +19,7 @@ IsanalyzeParameters = typing.TypedDict('IsanalyzeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "isanalyze": isanalyze_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "isanalyze": isanalyze_outputs,
+    }.get(t)
 
 
 class IsanalyzeOutputs(typing.NamedTuple):

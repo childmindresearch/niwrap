@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MESHFILTER_METADATA = Metadata(
     id="60786a8c6290d7bdf51b9e5b7367257fed09c188.boutiques",
@@ -37,7 +36,7 @@ MeshfilterParameters = typing.TypedDict('MeshfilterParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,16 +45,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "meshfilter": meshfilter_cargs,
         "config": meshfilter_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "meshfilter": meshfilter_outputs,
-    }
-    return vt.get(t)
+        "config": meshfilter_config_outputs,
+    }.get(t)
 
 
 def meshfilter_config_params(

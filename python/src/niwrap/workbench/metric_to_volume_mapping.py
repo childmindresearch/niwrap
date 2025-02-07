@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
     id="50b010826c816a4be693bed1b82570665f9ffd49.boutiques",
@@ -33,7 +32,7 @@ MetricToVolumeMappingParameters = typing.TypedDict('MetricToVolumeMappingParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,16 +41,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-to-volume-mapping": metric_to_volume_mapping_cargs,
         "ribbon_constrained": metric_to_volume_mapping_ribbon_constrained_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-to-volume-mapping": metric_to_volume_mapping_outputs,
-    }
-    return vt.get(t)
+        "ribbon_constrained": metric_to_volume_mapping_ribbon_constrained_outputs,
+    }.get(t)
 
 
 def metric_to_volume_mapping_ribbon_constrained_params(

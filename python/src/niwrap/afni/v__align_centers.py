@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ALIGN_CENTERS_METADATA = Metadata(
     id="f29fbec7d33b88a11144d9ab1edf49dc32ae31cf.boutiques",
@@ -33,7 +32,7 @@ VAlignCentersParameters = typing.TypedDict('VAlignCentersParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Align_Centers": v__align_centers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@Align_Centers": v__align_centers_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAlignCentersOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_SEPARATE_METADATA = Metadata(
     id="41d4890a042ed121dafd6bdf71322fef11d629bf.boutiques",
@@ -51,7 +50,7 @@ CiftiSeparateParameters = typing.TypedDict('CiftiSeparateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,19 +59,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-separate": cifti_separate_cargs,
         "volume_all": cifti_separate_volume_all_cargs,
         "label": cifti_separate_label_cargs,
         "metric": cifti_separate_metric_cargs,
         "volume": cifti_separate_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -81,14 +79,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-separate": cifti_separate_outputs,
         "volume_all": cifti_separate_volume_all_outputs,
         "label": cifti_separate_label_outputs,
         "metric": cifti_separate_metric_outputs,
         "volume": cifti_separate_volume_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiSeparateVolumeAllOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FOCI_RESAMPLE_METADATA = Metadata(
     id="d25e8eee3893055f474c3819282ad3f943c97a1d.boutiques",
@@ -41,7 +40,7 @@ FociResampleParameters = typing.TypedDict('FociResampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,18 +49,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "foci-resample": foci_resample_cargs,
         "left_surfaces": foci_resample_left_surfaces_cargs,
         "right_surfaces": foci_resample_right_surfaces_cargs,
         "cerebellum_surfaces": foci_resample_cerebellum_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "foci-resample": foci_resample_outputs,
-    }
-    return vt.get(t)
+        "left_surfaces": foci_resample_left_surfaces_outputs,
+        "right_surfaces": foci_resample_right_surfaces_outputs,
+        "cerebellum_surfaces": foci_resample_cerebellum_surfaces_outputs,
+    }.get(t)
 
 
 def foci_resample_left_surfaces_params(

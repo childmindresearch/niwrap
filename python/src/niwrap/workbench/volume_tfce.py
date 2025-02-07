@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_TFCE_METADATA = Metadata(
     id="b519f30208d2856f0e97cae1316462a8bf1aa7b9.boutiques",
@@ -35,7 +34,7 @@ VolumeTfceParameters = typing.TypedDict('VolumeTfceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,17 +43,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-tfce": volume_tfce_cargs,
         "presmooth": volume_tfce_presmooth_cargs,
         "parameters": volume_tfce_parameters_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-tfce": volume_tfce_outputs,
-    }
-    return vt.get(t)
+        "presmooth": volume_tfce_presmooth_outputs,
+        "parameters": volume_tfce_parameters_outputs,
+    }.get(t)
 
 
 def volume_tfce_presmooth_params(

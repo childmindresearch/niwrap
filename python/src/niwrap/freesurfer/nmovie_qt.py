@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 NMOVIE_QT_METADATA = Metadata(
     id="40a52c883b6ef1eabbaca98341ef5cfeff36ee79.boutiques",
@@ -20,7 +19,7 @@ NmovieQtParameters = typing.TypedDict('NmovieQtParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "nmovie_qt": nmovie_qt_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "nmovie_qt": nmovie_qt_outputs,
+    }.get(t)
 
 
 class NmovieQtOutputs(typing.NamedTuple):

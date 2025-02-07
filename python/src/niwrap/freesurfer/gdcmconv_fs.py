@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GDCMCONV_FS_METADATA = Metadata(
     id="c4cb69979a329deef98f15b2e797b9c57375a6ef.boutiques",
@@ -59,7 +58,7 @@ GdcmconvFsParameters = typing.TypedDict('GdcmconvFsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -68,15 +67,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gdcmconv.fs": gdcmconv_fs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -85,8 +83,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gdcmconv.fs": gdcmconv_fs_outputs,
+    }.get(t)
 
 
 class GdcmconvFsOutputs(typing.NamedTuple):

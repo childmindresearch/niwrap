@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TRK_TOOLS_METADATA = Metadata(
     id="4dc371140c0aeb4d9bc3aacbdf63d35a219d2dd8.boutiques",
@@ -25,7 +24,7 @@ TrkToolsParameters = typing.TypedDict('TrkToolsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "trk_tools": trk_tools_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "trk_tools": trk_tools_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TrkToolsOutputs(typing.NamedTuple):

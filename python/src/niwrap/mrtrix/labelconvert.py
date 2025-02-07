@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABELCONVERT_METADATA = Metadata(
     id="70b1b32bfcb741c07b8d256b92dbe12ed0418e5f.boutiques",
@@ -37,7 +36,7 @@ LabelconvertParameters = typing.TypedDict('LabelconvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,16 +45,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "labelconvert": labelconvert_cargs,
         "config": labelconvert_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "labelconvert": labelconvert_outputs,
-    }
-    return vt.get(t)
+        "config": labelconvert_config_outputs,
+    }.get(t)
 
 
 def labelconvert_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
     id="97f1dd5239568c20aee38b5af5601267807ff55f.boutiques",
@@ -28,7 +27,7 @@ CiftiCreateParcellatedFromTemplateParameters = typing.TypedDict('CiftiCreateParc
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,16 +36,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-create-parcellated-from-template": cifti_create_parcellated_from_template_cargs,
         "cifti": cifti_create_parcellated_from_template_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-create-parcellated-from-template": cifti_create_parcellated_from_template_outputs,
-    }
-    return vt.get(t)
+        "cifti": cifti_create_parcellated_from_template_cifti_outputs,
+    }.get(t)
 
 
 def cifti_create_parcellated_from_template_cifti_params(

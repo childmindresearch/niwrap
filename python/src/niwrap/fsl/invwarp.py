@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 INVWARP_METADATA = Metadata(
     id="e836370154f7a44a264fcff7fdc45d5150a0c0b2.boutiques",
@@ -28,7 +27,7 @@ InvwarpParameters = typing.TypedDict('InvwarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "invwarp": invwarp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "invwarp": invwarp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class InvwarpOutputs(typing.NamedTuple):

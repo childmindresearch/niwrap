@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CSVPRINT_METADATA = Metadata(
     id="88fe426126aea1052da673cfeee9f2078fb01491.boutiques",
@@ -20,7 +19,7 @@ CsvprintParameters = typing.TypedDict('CsvprintParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "csvprint": csvprint_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "csvprint": csvprint_outputs,
+    }.get(t)
 
 
 class CsvprintOutputs(typing.NamedTuple):

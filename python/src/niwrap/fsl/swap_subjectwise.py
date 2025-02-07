@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SWAP_SUBJECTWISE_METADATA = Metadata(
     id="bf7096e8cee698d846878d13e1f8e94c40f80ba1.boutiques",
@@ -26,7 +25,7 @@ SwapSubjectwiseParameters = typing.TypedDict('SwapSubjectwiseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "swap_subjectwise": swap_subjectwise_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,8 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "swap_subjectwise": swap_subjectwise_outputs,
+    }.get(t)
 
 
 class SwapSubjectwiseOutputs(typing.NamedTuple):

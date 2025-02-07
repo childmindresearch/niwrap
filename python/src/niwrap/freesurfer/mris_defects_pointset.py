@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_DEFECTS_POINTSET_METADATA = Metadata(
     id="c8af85590fa0a0f9b7b5b8d2fa658f96e7b162ba.boutiques",
@@ -24,7 +23,7 @@ MrisDefectsPointsetParameters = typing.TypedDict('MrisDefectsPointsetParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_defects_pointset": mris_defects_pointset_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_defects_pointset": mris_defects_pointset_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisDefectsPointsetOutputs(typing.NamedTuple):

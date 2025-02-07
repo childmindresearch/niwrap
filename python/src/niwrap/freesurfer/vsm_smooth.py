@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VSM_SMOOTH_METADATA = Metadata(
     id="c9910f98cd5b5b7c5c6d2ac12c7a50e16ba9d6d7.boutiques",
@@ -23,7 +22,7 @@ VsmSmoothParameters = typing.TypedDict('VsmSmoothParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "vsm-smooth": vsm_smooth_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "vsm-smooth": vsm_smooth_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VsmSmoothOutputs(typing.NamedTuple):

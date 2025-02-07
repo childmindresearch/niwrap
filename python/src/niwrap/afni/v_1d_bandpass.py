@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_BANDPASS_METADATA = Metadata(
     id="69b4e08ff33a85a01f56df929195839c7c7f9208.boutiques",
@@ -26,7 +25,7 @@ V1dBandpassParameters = typing.TypedDict('V1dBandpassParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dBandpass": v_1d_bandpass_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,8 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "1dBandpass": v_1d_bandpass_outputs,
+    }.get(t)
 
 
 class V1dBandpassOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
     id="2c6cadad264ac128829e478e77f82b0c84d405b7.boutiques",
@@ -27,7 +26,7 @@ AnnotationResampleParameters = typing.TypedDict('AnnotationResampleParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,16 +35,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "annotation-resample": annotation_resample_cargs,
         "surface_pair": annotation_resample_surface_pair_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,8 +52,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "annotation-resample": annotation_resample_outputs,
+        "surface_pair": annotation_resample_surface_pair_outputs,
+    }.get(t)
 
 
 def annotation_resample_surface_pair_params(

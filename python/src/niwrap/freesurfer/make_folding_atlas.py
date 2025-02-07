@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAKE_FOLDING_ATLAS_METADATA = Metadata(
     id="cd742cf69eb865650042165331953a619d588ea9.boutiques",
@@ -38,7 +37,7 @@ MakeFoldingAtlasParameters = typing.TypedDict('MakeFoldingAtlasParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "make_folding_atlas": make_folding_atlas_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "make_folding_atlas": make_folding_atlas_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MakeFoldingAtlasOutputs(typing.NamedTuple):

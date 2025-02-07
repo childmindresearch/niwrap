@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EASYTHRESH_METADATA = Metadata(
     id="98fe51731b5eb29a261a330f299532a959122300.boutiques",
@@ -26,7 +25,7 @@ EasythreshParameters = typing.TypedDict('EasythreshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "easythresh": easythresh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "easythresh": easythresh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EasythreshOutputs(typing.NamedTuple):

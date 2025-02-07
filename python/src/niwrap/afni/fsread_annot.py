@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSREAD_ANNOT_METADATA = Metadata(
     id="1aee44cf7efa00cb2630f7f3d7fb84af69eadb4f.boutiques",
@@ -30,7 +29,7 @@ FsreadAnnotParameters = typing.TypedDict('FsreadAnnotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "FSread_annot": fsread_annot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "FSread_annot": fsread_annot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FsreadAnnotOutputs(typing.NamedTuple):

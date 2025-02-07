@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TALSEGPROB_METADATA = Metadata(
     id="ddb70e26f179b8729ed68da2fa771aa79e55b360.boutiques",
@@ -36,7 +35,7 @@ TalsegprobParameters = typing.TypedDict('TalsegprobParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "talsegprob": talsegprob_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "talsegprob": talsegprob_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TalsegprobOutputs(typing.NamedTuple):

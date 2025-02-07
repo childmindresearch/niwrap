@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SURFACE_TO_VOL_DISTANCES_METADATA = Metadata(
     id="b436cdee4792f571a6fb7c9b7311696958c3dc2d.boutiques",
@@ -23,7 +22,7 @@ MrisSurfaceToVolDistancesParameters = typing.TypedDict('MrisSurfaceToVolDistance
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_surface_to_vol_distances": mris_surface_to_vol_distances_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_surface_to_vol_distances": mris_surface_to_vol_distances_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSurfaceToVolDistancesOutputs(typing.NamedTuple):

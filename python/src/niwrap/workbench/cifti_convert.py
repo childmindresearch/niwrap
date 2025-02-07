@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CONVERT_METADATA = Metadata(
     id="b85b4d24a92c6e805a24412eb1977c849550872a.boutiques",
@@ -93,7 +92,7 @@ CiftiConvertParameters = typing.TypedDict('CiftiConvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -102,7 +101,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-convert": cifti_convert_cargs,
         "to_gifti_ext": cifti_convert_to_gifti_ext_cargs,
         "from_gifti_ext": cifti_convert_from_gifti_ext_cargs,
@@ -114,13 +113,12 @@ def dyn_cargs(
         "to_text": cifti_convert_to_text_cargs,
         "from_text": cifti_convert_from_text_cargs,
         "reset_timepoints": cifti_convert_reset_timepoints_cargs_2,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -129,14 +127,19 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-convert": cifti_convert_outputs,
+        "to_gifti_ext": cifti_convert_to_gifti_ext_outputs,
         "from_gifti_ext": cifti_convert_from_gifti_ext_outputs,
+        "reset_timepoints": cifti_convert_reset_timepoints_outputs,
+        "replace_binary": cifti_convert_replace_binary_outputs,
         "to_nifti": cifti_convert_to_nifti_outputs,
         "from_nifti": cifti_convert_from_nifti_outputs,
+        "reset_timepoints": cifti_convert_reset_timepoints_outputs_,
+        "to_text": cifti_convert_to_text_outputs,
         "from_text": cifti_convert_from_text_outputs,
-    }
-    return vt.get(t)
+        "reset_timepoints": cifti_convert_reset_timepoints_outputs_2,
+    }.get(t)
 
 
 def cifti_convert_to_gifti_ext_params(

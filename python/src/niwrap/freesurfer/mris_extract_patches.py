@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_EXTRACT_PATCHES_METADATA = Metadata(
     id="4b1b272c0e5d898fdbf11dee43aa5f15d5fc44a4.boutiques",
@@ -21,7 +20,7 @@ MrisExtractPatchesParameters = typing.TypedDict('MrisExtractPatchesParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_extract_patches": mris_extract_patches_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_extract_patches": mris_extract_patches_outputs,
+    }.get(t)
 
 
 class MrisExtractPatchesOutputs(typing.NamedTuple):

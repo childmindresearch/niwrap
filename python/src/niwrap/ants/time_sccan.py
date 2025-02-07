@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TIME_SCCAN_METADATA = Metadata(
     id="75ab8260eac7574e05f9bdb079e92eb801de348f.boutiques",
@@ -48,7 +47,7 @@ TimeSccanParameters = typing.TypedDict('TimeSccanParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -57,18 +56,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "TimeSCCAN": time_sccan_cargs,
         "timeseriesimage_to_matrix": time_sccan_timeseriesimage_to_matrix_cargs,
         "network_scca": time_sccan_network_scca_cargs,
         "network_region_averaging": time_sccan_network_region_averaging_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,10 +75,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "TimeSCCAN": time_sccan_outputs,
-    }
-    return vt.get(t)
+        "timeseriesimage_to_matrix": time_sccan_timeseriesimage_to_matrix_outputs,
+        "network_scca": time_sccan_network_scca_outputs,
+        "network_region_averaging": time_sccan_network_region_averaging_outputs,
+    }.get(t)
 
 
 def time_sccan_timeseriesimage_to_matrix_params(

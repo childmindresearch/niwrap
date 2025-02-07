@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_RF_LONG_LABEL_METADATA = Metadata(
     id="06cc04cbd7f8fd46c1d7544632fa8c08486bcc37.boutiques",
@@ -20,7 +19,7 @@ MriRfLongLabelParameters = typing.TypedDict('MriRfLongLabelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_rf_long_label": mri_rf_long_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mri_rf_long_label": mri_rf_long_label_outputs,
+    }.get(t)
 
 
 class MriRfLongLabelOutputs(typing.NamedTuple):

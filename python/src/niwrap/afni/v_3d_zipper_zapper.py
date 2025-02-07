@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
     id="345c0ab457fab3fd59e06829b589145ef0e78581.boutiques",
@@ -35,7 +34,7 @@ V3dZipperZapperParameters = typing.TypedDict('V3dZipperZapperParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dZipperZapper": v_3d_zipper_zapper_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dZipperZapper": v_3d_zipper_zapper_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dZipperZapperOutputs(typing.NamedTuple):

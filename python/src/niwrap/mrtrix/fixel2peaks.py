@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXEL2PEAKS_METADATA = Metadata(
     id="06bfc4edb74f24e1df62b484f707ec9d4d317d85.boutiques",
@@ -44,7 +43,7 @@ Fixel2peaksParameters = typing.TypedDict('Fixel2peaksParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,18 +52,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixel2peaks": fixel2peaks_cargs,
         "config": fixel2peaks_config_cargs,
         "VariousString": fixel2peaks_various_string_cargs,
         "VariousFile": fixel2peaks_various_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -73,10 +71,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fixel2peaks": fixel2peaks_outputs,
-    }
-    return vt.get(t)
+        "config": fixel2peaks_config_outputs,
+        "VariousString": fixel2peaks_various_string_outputs,
+        "VariousFile": fixel2peaks_various_file_outputs,
+    }.get(t)
 
 
 def fixel2peaks_config_params(

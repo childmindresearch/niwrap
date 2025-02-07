@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SHBASIS_METADATA = Metadata(
     id="0f5caf03dc726e74e9825e60ca3aa4026a22a7e2.boutiques",
@@ -34,7 +33,7 @@ ShbasisParameters = typing.TypedDict('ShbasisParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "shbasis": shbasis_cargs,
         "config": shbasis_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "shbasis": shbasis_outputs,
+        "config": shbasis_config_outputs,
+    }.get(t)
 
 
 def shbasis_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SCENE_FILE_UPDATE_METADATA = Metadata(
     id="b6179bfd334c9b44420e1478f7f7ccaab55f5073.boutiques",
@@ -41,7 +40,7 @@ SceneFileUpdateParameters = typing.TypedDict('SceneFileUpdateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,18 +49,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "scene-file-update": scene_file_update_cargs,
         "copy_map_one_palette": scene_file_update_copy_map_one_palette_cargs,
         "data_file_add": scene_file_update_data_file_add_cargs,
         "data_file_remove": scene_file_update_data_file_remove_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,8 +68,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "scene-file-update": scene_file_update_outputs,
+        "copy_map_one_palette": scene_file_update_copy_map_one_palette_outputs,
+        "data_file_add": scene_file_update_data_file_add_outputs,
+        "data_file_remove": scene_file_update_data_file_remove_outputs,
+    }.get(t)
 
 
 def scene_file_update_copy_map_one_palette_params(

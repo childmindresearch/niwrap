@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AFNI_HISTORY_METADATA = Metadata(
     id="3239e5f9ea51e57d7e8c381dfe847271931581c5.boutiques",
@@ -40,7 +39,7 @@ AfniHistoryParameters = typing.TypedDict('AfniHistoryParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,15 +48,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "afni_history": afni_history_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,8 +64,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "afni_history": afni_history_outputs,
+    }.get(t)
 
 
 class AfniHistoryOutputs(typing.NamedTuple):

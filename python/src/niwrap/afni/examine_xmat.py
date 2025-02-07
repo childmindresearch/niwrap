@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EXAMINE_XMAT_METADATA = Metadata(
     id="5dc4f1bb85e99556ff1ac2fbae72bb95c00b5ac2.boutiques",
@@ -27,7 +26,7 @@ ExamineXmatParameters = typing.TypedDict('ExamineXmatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ExamineXmat": examine_xmat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ExamineXmat": examine_xmat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ExamineXmatOutputs(typing.NamedTuple):

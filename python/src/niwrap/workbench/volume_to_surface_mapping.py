@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
     id="062969529c72d3d31f4af41ed6e96bad6fbe1c61.boutiques",
@@ -58,7 +57,7 @@ VolumeToSurfaceMappingParameters = typing.TypedDict('VolumeToSurfaceMappingParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -67,19 +66,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-to-surface-mapping": volume_to_surface_mapping_cargs,
         "ribbon_constrained": volume_to_surface_mapping_ribbon_constrained_cargs,
         "volume_roi": volume_to_surface_mapping_volume_roi_cargs,
         "output_weights": volume_to_surface_mapping_output_weights_cargs,
         "myelin_style": volume_to_surface_mapping_myelin_style_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -88,12 +86,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-to-surface-mapping": volume_to_surface_mapping_outputs,
         "ribbon_constrained": volume_to_surface_mapping_ribbon_constrained_outputs,
+        "volume_roi": volume_to_surface_mapping_volume_roi_outputs,
         "output_weights": volume_to_surface_mapping_output_weights_outputs,
-    }
-    return vt.get(t)
+        "myelin_style": volume_to_surface_mapping_myelin_style_outputs,
+    }.get(t)
 
 
 def volume_to_surface_mapping_volume_roi_params(

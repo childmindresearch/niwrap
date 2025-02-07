@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FOD2FIXEL_METADATA = Metadata(
     id="4748cd2237541a5061a51ecd86840055b92d34ff.boutiques",
@@ -45,7 +44,7 @@ Fod2fixelParameters = typing.TypedDict('Fod2fixelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -54,16 +53,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fod2fixel": fod2fixel_cargs,
         "config": fod2fixel_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -72,10 +70,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fod2fixel": fod2fixel_outputs,
-    }
-    return vt.get(t)
+        "config": fod2fixel_config_outputs,
+    }.get(t)
 
 
 def fod2fixel_config_params(

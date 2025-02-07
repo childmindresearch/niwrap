@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DIRORDER_METADATA = Metadata(
     id="822332bcb7593b804c24d6da3c7da0a1eb44ba1a.boutiques",
@@ -35,7 +34,7 @@ DirorderParameters = typing.TypedDict('DirorderParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dirorder": dirorder_cargs,
         "config": dirorder_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dirorder": dirorder_outputs,
-    }
-    return vt.get(t)
+        "config": dirorder_config_outputs,
+    }.get(t)
 
 
 def dirorder_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 NIFTI_INFORMATION_METADATA = Metadata(
     id="aae86bd1571798a6e19c7191f8f0421755a39411.boutiques",
@@ -31,7 +30,7 @@ NiftiInformationParameters = typing.TypedDict('NiftiInformationParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,17 +39,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "nifti-information": nifti_information_cargs,
         "print_header": nifti_information_print_header_cargs,
         "print_xml": nifti_information_print_xml_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,8 +57,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "nifti-information": nifti_information_outputs,
+        "print_header": nifti_information_print_header_outputs,
+        "print_xml": nifti_information_print_xml_outputs,
+    }.get(t)
 
 
 def nifti_information_print_header_params(

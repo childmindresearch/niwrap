@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TSFSMOOTH_METADATA = Metadata(
     id="1bd18089dd58ce974ce680ff8776c1dbf16317a9.boutiques",
@@ -35,7 +34,7 @@ TsfsmoothParameters = typing.TypedDict('TsfsmoothParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tsfsmooth": tsfsmooth_cargs,
         "config": tsfsmooth_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tsfsmooth": tsfsmooth_outputs,
-    }
-    return vt.get(t)
+        "config": tsfsmooth_config_outputs,
+    }.get(t)
 
 
 def tsfsmooth_config_params(

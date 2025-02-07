@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PTOZ_METADATA = Metadata(
     id="07a7d478f230453c0f17bbad9b04c275d5cf2843.boutiques",
@@ -22,7 +21,7 @@ PtozParameters = typing.TypedDict('PtozParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ptoz": ptoz_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "ptoz": ptoz_outputs,
+    }.get(t)
 
 
 class PtozOutputs(typing.NamedTuple):

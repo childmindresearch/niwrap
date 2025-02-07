@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IREPIFITVOL_METADATA = Metadata(
     id="a2bd7dc06ae3c68248647867b862df791e5ba76b.boutiques",
@@ -21,7 +20,7 @@ IrepifitvolParameters = typing.TypedDict('IrepifitvolParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "irepifitvol": irepifitvol_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "irepifitvol": irepifitvol_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class IrepifitvolOutputs(typing.NamedTuple):

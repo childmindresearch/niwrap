@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DICOM_HDR_METADATA = Metadata(
     id="f1dd7c5e97c664a21c6f4e09518ffc5513e4e54f.boutiques",
@@ -29,7 +28,7 @@ DicomHdrParameters = typing.TypedDict('DicomHdrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dicom_hdr": dicom_hdr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dicom_hdr": dicom_hdr_outputs,
+    }.get(t)
 
 
 class DicomHdrOutputs(typing.NamedTuple):

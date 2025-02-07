@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_REMLFIT_METADATA = Metadata(
     id="847ea79f5b61b9773e10438597e56d4e78c62c2e.boutiques",
@@ -30,7 +29,7 @@ V3dRemlfitParameters = typing.TypedDict('V3dRemlfitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dREMLfit": v_3d_remlfit_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dREMLfit": v_3d_remlfit_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dRemlfitOutputs(typing.NamedTuple):

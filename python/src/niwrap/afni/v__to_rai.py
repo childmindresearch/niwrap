@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__TO_RAI_METADATA = Metadata(
     id="ae5bb83cce00bf51d61da1e1b21d495548f69a92.boutiques",
@@ -19,7 +18,7 @@ VToRaiParameters = typing.TypedDict('VToRaiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -28,15 +27,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ToRAI": v__to_rai_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -45,8 +43,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@ToRAI": v__to_rai_outputs,
+    }.get(t)
 
 
 class VToRaiOutputs(typing.NamedTuple):

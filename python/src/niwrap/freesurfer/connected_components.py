@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CONNECTED_COMPONENTS_METADATA = Metadata(
     id="415ac7eebb3cd7123aaeb6ad6eb398b6cc1343ba.boutiques",
@@ -19,7 +18,7 @@ ConnectedComponentsParameters = typing.TypedDict('ConnectedComponentsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -28,15 +27,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "connected_components": connected_components_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -45,10 +43,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "connected_components": connected_components_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ConnectedComponentsOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_COMPUTE_LGI_METADATA = Metadata(
     id="336847c2bd9448a616f5ba616c1806f2492345d6.boutiques",
@@ -25,7 +24,7 @@ MrisComputeLgiParameters = typing.TypedDict('MrisComputeLgiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_compute_lgi": mris_compute_lgi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_compute_lgi": mris_compute_lgi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisComputeLgiOutputs(typing.NamedTuple):

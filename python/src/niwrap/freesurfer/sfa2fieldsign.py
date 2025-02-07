@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SFA2FIELDSIGN_METADATA = Metadata(
     id="673483cb133e81114140c357c0715b77a189756a.boutiques",
@@ -29,7 +28,7 @@ Sfa2fieldsignParameters = typing.TypedDict('Sfa2fieldsignParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sfa2fieldsign": sfa2fieldsign_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "sfa2fieldsign": sfa2fieldsign_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Sfa2fieldsignOutputs(typing.NamedTuple):

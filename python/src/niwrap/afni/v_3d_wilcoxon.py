@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_WILCOXON_METADATA = Metadata(
     id="463bd0c7f172cd1b8be0a6f1adaeefb51a0010ea.boutiques",
@@ -24,7 +23,7 @@ V3dWilcoxonParameters = typing.TypedDict('V3dWilcoxonParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dWilcoxon": v_3d_wilcoxon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dWilcoxon": v_3d_wilcoxon_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dWilcoxonOutputs(typing.NamedTuple):

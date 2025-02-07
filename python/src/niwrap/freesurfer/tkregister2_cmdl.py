@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TKREGISTER2_CMDL_METADATA = Metadata(
     id="a084019981b8c19c88bf65a10695c9febf690ada.boutiques",
@@ -79,7 +78,7 @@ Tkregister2CmdlParameters = typing.TypedDict('Tkregister2CmdlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -88,15 +87,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tkregister2_cmdl": tkregister2_cmdl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -105,8 +103,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "tkregister2_cmdl": tkregister2_cmdl_outputs,
+    }.get(t)
 
 
 class Tkregister2CmdlOutputs(typing.NamedTuple):

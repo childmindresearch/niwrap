@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BACKEND_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
     id="92d29c21c9c3c279b64b735c2a3ea9a41a57d6cd.boutiques",
@@ -21,7 +20,7 @@ BackendAverageRoiCorrelationParameters = typing.TypedDict('BackendAverageRoiCorr
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "backend-average-roi-correlation": backend_average_roi_correlation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "backend-average-roi-correlation": backend_average_roi_correlation_outputs,
+    }.get(t)
 
 
 class BackendAverageRoiCorrelationOutputs(typing.NamedTuple):

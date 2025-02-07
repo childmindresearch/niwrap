@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_VOLMASK_VTK_METADATA = Metadata(
     id="800007184636ff21baf1531ccc9b9b9b778933b9.boutiques",
@@ -37,7 +36,7 @@ MrisVolmaskVtkParameters = typing.TypedDict('MrisVolmaskVtkParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,15 +45,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_volmask_vtk": mris_volmask_vtk_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,10 +61,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_volmask_vtk": mris_volmask_vtk_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisVolmaskVtkOutputs(typing.NamedTuple):

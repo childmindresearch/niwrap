@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MASK_TO_ASCII_METADATA = Metadata(
     id="00c7066c6c38f027299750536983f490b1c220de.boutiques",
@@ -21,7 +20,7 @@ V3dMaskToAsciiParameters = typing.TypedDict('V3dMaskToAsciiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMaskToASCII": v_3d_mask_to_ascii_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMaskToASCII": v_3d_mask_to_ascii_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMaskToAsciiOutputs(typing.NamedTuple):

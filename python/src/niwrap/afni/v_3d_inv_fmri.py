@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_INV_FMRI_METADATA = Metadata(
     id="0e98d6cd57d0addd162bfa97a9fce6949e7b4f85.boutiques",
@@ -30,7 +29,7 @@ V3dInvFmriParameters = typing.TypedDict('V3dInvFmriParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dInvFMRI": v_3d_inv_fmri_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dInvFMRI": v_3d_inv_fmri_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dInvFmriOutputs(typing.NamedTuple):

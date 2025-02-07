@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 APPLYTOPUP_METADATA = Metadata(
     id="28ab631a68595bc2447ad41e586fe5e30606d0a6.boutiques",
@@ -28,7 +27,7 @@ ApplytopupParameters = typing.TypedDict('ApplytopupParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "applytopup": applytopup_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "applytopup": applytopup_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ApplytopupOutputs(typing.NamedTuple):

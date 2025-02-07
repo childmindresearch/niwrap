@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_EDU_01_SCALE_METADATA = Metadata(
     id="421ae3b97be6019b8194c6bf2db5b0b7024dbd25.boutiques",
@@ -23,7 +22,7 @@ V3dEdu01ScaleParameters = typing.TypedDict('V3dEdu01ScaleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dEdu_01_scale": v_3d_edu_01_scale_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dEdu_01_scale": v_3d_edu_01_scale_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dEdu01ScaleOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMCAT_METADATA = Metadata(
     id="aaf3852ed2e5487ca6e742c661a53a14976a9a76.boutiques",
@@ -44,7 +43,7 @@ ImcatParameters = typing.TypedDict('ImcatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imcat": imcat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imcat": imcat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImcatOutputs(typing.NamedTuple):

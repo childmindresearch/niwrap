@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_24SWAP_METADATA = Metadata(
     id="bf5fd18b81c5c9e1a6698d3e136d7e97296fa6fb.boutiques",
@@ -22,7 +21,7 @@ V24swapParameters = typing.TypedDict('V24swapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "24swap": v_24swap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "24swap": v_24swap_outputs,
+    }.get(t)
 
 
 class V24swapOutputs(typing.NamedTuple):

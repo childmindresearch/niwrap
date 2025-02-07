@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
     id="a166bee9e05b7717d215d29b5221c732cd06e6fb.boutiques",
@@ -49,7 +48,7 @@ ProbtrackxDotConvertParameters = typing.TypedDict('ProbtrackxDotConvertParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -58,19 +57,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "probtrackx-dot-convert": probtrackx_dot_convert_cargs,
         "row_voxels": probtrackx_dot_convert_row_voxels_cargs,
         "row_cifti": probtrackx_dot_convert_row_cifti_cargs,
         "col_voxels": probtrackx_dot_convert_col_voxels_cargs,
         "col_cifti": probtrackx_dot_convert_col_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -79,10 +77,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "probtrackx-dot-convert": probtrackx_dot_convert_outputs,
-    }
-    return vt.get(t)
+        "row_voxels": probtrackx_dot_convert_row_voxels_outputs,
+        "row_cifti": probtrackx_dot_convert_row_cifti_outputs,
+        "col_voxels": probtrackx_dot_convert_col_voxels_outputs,
+        "col_cifti": probtrackx_dot_convert_col_cifti_outputs,
+    }.get(t)
 
 
 def probtrackx_dot_convert_row_voxels_params(

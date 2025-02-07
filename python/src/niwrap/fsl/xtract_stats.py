@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 XTRACT_STATS_METADATA = Metadata(
     id="e725669f09830b40ddd91ee1f55f1928db5f4c9e.boutiques",
@@ -22,7 +21,7 @@ XtractStatsParameters = typing.TypedDict('XtractStatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "xtract_stats": xtract_stats_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "xtract_stats": xtract_stats_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class XtractStatsOutputs(typing.NamedTuple):

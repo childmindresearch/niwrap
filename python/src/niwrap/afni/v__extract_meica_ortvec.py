@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__EXTRACT_MEICA_ORTVEC_METADATA = Metadata(
     id="32a644ffdca9e88d2f5a1524f50f811fcef33a2e.boutiques",
@@ -25,7 +24,7 @@ VExtractMeicaOrtvecParameters = typing.TypedDict('VExtractMeicaOrtvecParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@extract_meica_ortvec": v__extract_meica_ortvec_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@extract_meica_ortvec": v__extract_meica_ortvec_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VExtractMeicaOrtvecOutputs(typing.NamedTuple):

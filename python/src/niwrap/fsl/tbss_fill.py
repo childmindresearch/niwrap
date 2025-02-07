@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TBSS_FILL_METADATA = Metadata(
     id="302dc5d0a540004a061db44ab4beabb876bbf335.boutiques",
@@ -24,7 +23,7 @@ TbssFillParameters = typing.TypedDict('TbssFillParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tbss_fill": tbss_fill_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tbss_fill": tbss_fill_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TbssFillOutputs(typing.NamedTuple):

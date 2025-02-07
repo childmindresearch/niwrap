@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MORPH_ONLY_SUBJECT_LH_METADATA = Metadata(
     id="352935372f9b953d29e77e48bc48053d0bb7123b.boutiques",
@@ -20,7 +19,7 @@ MorphOnlySubjectLhParameters = typing.TypedDict('MorphOnlySubjectLhParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "morph_only_subject-lh": morph_only_subject_lh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "morph_only_subject-lh": morph_only_subject_lh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MorphOnlySubjectLhOutputs(typing.NamedTuple):

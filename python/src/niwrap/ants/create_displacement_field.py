@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_DISPLACEMENT_FIELD_METADATA = Metadata(
     id="4dbaa9ddf35cec6b6f78e7c9efdb17f6f5f6d1e2.boutiques",
@@ -23,7 +22,7 @@ CreateDisplacementFieldParameters = typing.TypedDict('CreateDisplacementFieldPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CreateDisplacementField": create_displacement_field_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "CreateDisplacementField": create_displacement_field_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateDisplacementFieldOutputs(typing.NamedTuple):

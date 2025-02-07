@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SPHERE_SUBJECT_RH_METADATA = Metadata(
     id="844b29d70c1496f2da433daa0b47df80e286dc3b.boutiques",
@@ -20,7 +19,7 @@ SphereSubjectRhParameters = typing.TypedDict('SphereSubjectRhParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "sphere_subject-rh": sphere_subject_rh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "sphere_subject-rh": sphere_subject_rh_outputs,
+    }.get(t)
 
 
 class SphereSubjectRhOutputs(typing.NamedTuple):

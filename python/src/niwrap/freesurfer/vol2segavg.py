@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOL2SEGAVG_METADATA = Metadata(
     id="9d9d31cfe51a606166834e1114b170012714797f.boutiques",
@@ -34,7 +33,7 @@ Vol2segavgParameters = typing.TypedDict('Vol2segavgParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "vol2segavg": vol2segavg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "vol2segavg": vol2segavg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Vol2segavgOutputs(typing.NamedTuple):

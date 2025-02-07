@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SMOOTH_METADATA = Metadata(
     id="75bc8e87c534738bfed1dc6d67307d0c1e29317a.boutiques",
@@ -30,7 +29,7 @@ MrisSmoothParameters = typing.TypedDict('MrisSmoothParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_smooth": mris_smooth_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_smooth": mris_smooth_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSmoothOutputs(typing.NamedTuple):

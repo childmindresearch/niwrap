@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SURF2_VOL_METADATA = Metadata(
     id="d846efb04834ca6fcc9a5960307e8d15eacf8fd2.boutiques",
@@ -44,7 +43,7 @@ V3dSurf2VolParameters = typing.TypedDict('V3dSurf2VolParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,15 +52,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSurf2Vol": v_3d_surf2_vol_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSurf2Vol": v_3d_surf2_vol_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSurf2VolOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_WATERSHED_METADATA = Metadata(
     id="1390c3e2e9ad7d6fa430f8cfd5c3863c2de5ce50.boutiques",
@@ -50,7 +49,7 @@ MriWatershedParameters = typing.TypedDict('MriWatershedParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -59,15 +58,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_watershed": mri_watershed_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -76,10 +74,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_watershed": mri_watershed_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriWatershedOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_ESTIMATE_WM_METADATA = Metadata(
     id="cac77a4401a904ea7c3d8eb641009c3991349f87.boutiques",
@@ -28,7 +27,7 @@ MrisEstimateWmParameters = typing.TypedDict('MrisEstimateWmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_estimate_wm": mris_estimate_wm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,8 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_estimate_wm": mris_estimate_wm_outputs,
+    }.get(t)
 
 
 class MrisEstimateWmOutputs(typing.NamedTuple):

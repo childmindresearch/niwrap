@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANNOT2STD_METADATA = Metadata(
     id="fcdd66f979c54df988b9364c89c1d5056e322ab6.boutiques",
@@ -34,7 +33,7 @@ Annot2stdParameters = typing.TypedDict('Annot2stdParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "annot2std": annot2std_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "annot2std": annot2std_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Annot2stdOutputs(typing.NamedTuple):

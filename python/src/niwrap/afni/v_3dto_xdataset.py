@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DTO_XDATASET_METADATA = Metadata(
     id="c99be10f2d1ab4a4b340c919e77eeca80ea43268.boutiques",
@@ -22,7 +21,7 @@ V3dtoXdatasetParameters = typing.TypedDict('V3dtoXdatasetParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dtoXdataset": v_3dto_xdataset_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dtoXdataset": v_3dto_xdataset_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dtoXdatasetOutputs(typing.NamedTuple):

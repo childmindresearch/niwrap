@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_LUT_METADATA = Metadata(
     id="927e39579e62b2b6321d61476b9d896179d49b27.boutiques",
@@ -20,7 +19,7 @@ CreateLutParameters = typing.TypedDict('CreateLutParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "create_lut": create_lut_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "create_lut": create_lut_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateLutOutputs(typing.NamedTuple):

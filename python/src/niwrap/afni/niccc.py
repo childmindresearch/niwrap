@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 NICCC_METADATA = Metadata(
     id="ecc865fc2143792b2c5c1c0adc6ffbd967c02c7f.boutiques",
@@ -31,7 +30,7 @@ NicccParameters = typing.TypedDict('NicccParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "niccc": niccc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "niccc": niccc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class NicccOutputs(typing.NamedTuple):

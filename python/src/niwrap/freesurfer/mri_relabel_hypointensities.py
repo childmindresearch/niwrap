@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_RELABEL_HYPOINTENSITIES_METADATA = Metadata(
     id="fdccbcea8d0b7d6372e7bb2e7e4ef70fd6f7ab26.boutiques",
@@ -22,7 +21,7 @@ MriRelabelHypointensitiesParameters = typing.TypedDict('MriRelabelHypointensitie
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_relabel_hypointensities": mri_relabel_hypointensities_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_relabel_hypointensities": mri_relabel_hypointensities_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriRelabelHypointensitiesOutputs(typing.NamedTuple):

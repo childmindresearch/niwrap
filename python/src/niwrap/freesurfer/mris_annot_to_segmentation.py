@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_ANNOT_TO_SEGMENTATION_METADATA = Metadata(
     id="a6fe77811c128028277a69a99f1e7f945cb0ac57.boutiques",
@@ -25,7 +24,7 @@ MrisAnnotToSegmentationParameters = typing.TypedDict('MrisAnnotToSegmentationPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_annot_to_segmentation": mris_annot_to_segmentation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_annot_to_segmentation": mris_annot_to_segmentation_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisAnnotToSegmentationOutputs(typing.NamedTuple):

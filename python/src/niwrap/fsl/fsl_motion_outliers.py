@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_MOTION_OUTLIERS_METADATA = Metadata(
     id="f6b6f5bc24c4f96b4e06e73ce63e58c1defb7bdf.boutiques",
@@ -34,7 +33,7 @@ FslMotionOutliersParameters = typing.TypedDict('FslMotionOutliersParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl_motion_outliers": fsl_motion_outliers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fsl_motion_outliers": fsl_motion_outliers_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslMotionOutliersOutputs(typing.NamedTuple):

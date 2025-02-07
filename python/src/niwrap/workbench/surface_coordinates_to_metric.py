@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
     id="0f7e2511cce185227bdef48e1289a112b38532ef.boutiques",
@@ -21,7 +20,7 @@ SurfaceCoordinatesToMetricParameters = typing.TypedDict('SurfaceCoordinatesToMet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-coordinates-to-metric": surface_coordinates_to_metric_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-coordinates-to-metric": surface_coordinates_to_metric_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceCoordinatesToMetricOutputs(typing.NamedTuple):

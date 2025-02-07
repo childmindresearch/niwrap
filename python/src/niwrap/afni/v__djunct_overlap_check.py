@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
     id="61eef1d6dc1535a1dc4452ab3c3b8b5da02a1e6d.boutiques",
@@ -43,7 +42,7 @@ VDjunctOverlapCheckParameters = typing.TypedDict('VDjunctOverlapCheckParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -52,15 +51,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_overlap_check": v__djunct_overlap_check_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,8 +67,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@djunct_overlap_check": v__djunct_overlap_check_outputs,
+    }.get(t)
 
 
 class VDjunctOverlapCheckOutputs(typing.NamedTuple):

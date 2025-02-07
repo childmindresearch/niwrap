@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_STOPMASK_METADATA = Metadata(
     id="e7f2a3c2cfe3f7fafce248b01fa340177fa54cc2.boutiques",
@@ -31,7 +30,7 @@ MriStopmaskParameters = typing.TypedDict('MriStopmaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_stopmask": mri_stopmask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_stopmask": mri_stopmask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriStopmaskOutputs(typing.NamedTuple):

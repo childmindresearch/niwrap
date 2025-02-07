@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 COMPUTE_VOX2VOX_METADATA = Metadata(
     id="cac931a71ca00f1e6fd4a05be9aebaf5ca0482ec.boutiques",
@@ -22,7 +21,7 @@ ComputeVox2voxParameters = typing.TypedDict('ComputeVox2voxParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "compute_vox2vox": compute_vox2vox_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "compute_vox2vox": compute_vox2vox_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ComputeVox2voxOutputs(typing.NamedTuple):

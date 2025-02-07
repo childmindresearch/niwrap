@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL_TO_BORDER_METADATA = Metadata(
     id="857759c9b572b7d74e3d73a701d7e698c1933481.boutiques",
@@ -24,7 +23,7 @@ LabelToBorderParameters = typing.TypedDict('LabelToBorderParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label-to-border": label_to_border_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label-to-border": label_to_border_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class LabelToBorderOutputs(typing.NamedTuple):

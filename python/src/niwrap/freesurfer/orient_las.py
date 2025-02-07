@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ORIENT_LAS_METADATA = Metadata(
     id="c8cbae7a0ae48bc5ff23e10ecc70110ddd8919ae.boutiques",
@@ -22,7 +21,7 @@ OrientLasParameters = typing.TypedDict('OrientLasParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "orientLAS": orient_las_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "orientLAS": orient_las_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class OrientLasOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_LABEL_EXPORT_TABLE_METADATA = Metadata(
     id="86c9c9cf58b47541d1d528902747ffa6459b6bac.boutiques",
@@ -22,7 +21,7 @@ VolumeLabelExportTableParameters = typing.TypedDict('VolumeLabelExportTableParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-label-export-table": volume_label_export_table_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-label-export-table": volume_label_export_table_outputs,
+    }.get(t)
 
 
 class VolumeLabelExportTableOutputs(typing.NamedTuple):

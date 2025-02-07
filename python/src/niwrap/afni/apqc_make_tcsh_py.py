@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 APQC_MAKE_TCSH_PY_METADATA = Metadata(
     id="9963574d56b682af5542493c6e37b26eeae1361e.boutiques",
@@ -24,7 +23,7 @@ ApqcMakeTcshPyParameters = typing.TypedDict('ApqcMakeTcshPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "apqc_make_tcsh.py": apqc_make_tcsh_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "apqc_make_tcsh.py": apqc_make_tcsh_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ApqcMakeTcshPyOutputs(typing.NamedTuple):

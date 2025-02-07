@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 HELP_FORMAT_METADATA = Metadata(
     id="2c2e44d1845d44d18c53666d3810111107853205.boutiques",
@@ -20,7 +19,7 @@ HelpFormatParameters = typing.TypedDict('HelpFormatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "help_format": help_format_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "help_format": help_format_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class HelpFormatOutputs(typing.NamedTuple):

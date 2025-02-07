@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
     id="60b32f615cad25bb9b880cab394b4361294d1f30.boutiques",
@@ -59,7 +58,7 @@ CiftiCreateDenseFromTemplateParameters = typing.TypedDict('CiftiCreateDenseFromT
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -68,7 +67,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-create-dense-from-template": cifti_create_dense_from_template_cargs,
         "series": cifti_create_dense_from_template_series_cargs,
         "volume_all": cifti_create_dense_from_template_volume_all_cargs,
@@ -76,13 +75,12 @@ def dyn_cargs(
         "metric": cifti_create_dense_from_template_metric_cargs,
         "label": cifti_create_dense_from_template_label_cargs,
         "volume": cifti_create_dense_from_template_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -91,10 +89,15 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-create-dense-from-template": cifti_create_dense_from_template_outputs,
-    }
-    return vt.get(t)
+        "series": cifti_create_dense_from_template_series_outputs,
+        "volume_all": cifti_create_dense_from_template_volume_all_outputs,
+        "cifti": cifti_create_dense_from_template_cifti_outputs,
+        "metric": cifti_create_dense_from_template_metric_outputs,
+        "label": cifti_create_dense_from_template_label_outputs,
+        "volume": cifti_create_dense_from_template_volume_outputs,
+    }.get(t)
 
 
 def cifti_create_dense_from_template_series_params(

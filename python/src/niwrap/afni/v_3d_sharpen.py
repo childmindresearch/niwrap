@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_SHARPEN_METADATA = Metadata(
     id="44eead3d035544b0d1ef18d1ea40f5df1b442bcb.boutiques",
@@ -22,7 +21,7 @@ V3dSharpenParameters = typing.TypedDict('V3dSharpenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dSharpen": v_3d_sharpen_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dSharpen": v_3d_sharpen_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dSharpenOutputs(typing.NamedTuple):

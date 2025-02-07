@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__QUIET_TALKERS_METADATA = Metadata(
     id="b3ed968e44cf181f4b5122510d5d661ee6ef707c.boutiques",
@@ -27,7 +26,7 @@ VQuietTalkersParameters = typing.TypedDict('VQuietTalkersParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@Quiet_Talkers": v__quiet_talkers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@Quiet_Talkers": v__quiet_talkers_outputs,
+    }.get(t)
 
 
 class VQuietTalkersOutputs(typing.NamedTuple):

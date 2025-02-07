@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ZERO_LT_4DFP_METADATA = Metadata(
     id="5af9fb53b5beb7937f30eebe316bb87929b7202b.boutiques",
@@ -23,7 +22,7 @@ ZeroLt4dfpParameters = typing.TypedDict('ZeroLt4dfpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "zero_lt_4dfp": zero_lt_4dfp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "zero_lt_4dfp": zero_lt_4dfp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ZeroLt4dfpOutputs(typing.NamedTuple):

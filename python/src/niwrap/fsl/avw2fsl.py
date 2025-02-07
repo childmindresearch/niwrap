@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AVW2FSL_METADATA = Metadata(
     id="4bd3a4636820978ce77e10fce31f85d6ab419486.boutiques",
@@ -55,7 +54,7 @@ Avw2fslParameters = typing.TypedDict('Avw2fslParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -64,15 +63,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "avw2fsl": avw2fsl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -81,10 +79,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "avw2fsl": avw2fsl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Avw2fslOutputs(typing.NamedTuple):

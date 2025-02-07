@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__SCALE_VOLUME_METADATA = Metadata(
     id="4000996fdc6423040b991fc320209305f64cb474.boutiques",
@@ -27,7 +26,7 @@ VScaleVolumeParameters = typing.TypedDict('VScaleVolumeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ScaleVolume": v__scale_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ScaleVolume": v__scale_volume_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VScaleVolumeOutputs(typing.NamedTuple):

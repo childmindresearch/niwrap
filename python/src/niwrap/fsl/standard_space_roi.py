@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 STANDARD_SPACE_ROI_METADATA = Metadata(
     id="cc061c48c2d12a1afe15a890d8f2cfe7638fd047.boutiques",
@@ -31,7 +30,7 @@ StandardSpaceRoiParameters = typing.TypedDict('StandardSpaceRoiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "standard_space_roi": standard_space_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "standard_space_roi": standard_space_roi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class StandardSpaceRoiOutputs(typing.NamedTuple):

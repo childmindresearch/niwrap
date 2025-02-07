@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QATOOLS_PY_METADATA = Metadata(
     id="4d18f6a5ac40096b70dbf7ebf5df96bcffd4d1fe.boutiques",
@@ -26,7 +25,7 @@ QatoolsPyParameters = typing.TypedDict('QatoolsPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "qatools.py": qatools_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "qatools.py": qatools_py_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class QatoolsPyOutputs(typing.NamedTuple):

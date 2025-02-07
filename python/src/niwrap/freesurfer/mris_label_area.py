@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_LABEL_AREA_METADATA = Metadata(
     id="af4ae64d94b43274563c0c9b58c9131bb1103886.boutiques",
@@ -27,7 +26,7 @@ MrisLabelAreaParameters = typing.TypedDict('MrisLabelAreaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_label_area": mris_label_area_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_label_area": mris_label_area_outputs,
+    }.get(t)
 
 
 class MrisLabelAreaOutputs(typing.NamedTuple):

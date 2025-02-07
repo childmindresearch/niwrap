@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIBER_DOT_PRODUCTS_METADATA = Metadata(
     id="3aa47399b8a8bcc86a9191cbbb2b9fa4ddbd8bfd.boutiques",
@@ -25,7 +24,7 @@ FiberDotProductsParameters = typing.TypedDict('FiberDotProductsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fiber-dot-products": fiber_dot_products_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fiber-dot-products": fiber_dot_products_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FiberDotProductsOutputs(typing.NamedTuple):

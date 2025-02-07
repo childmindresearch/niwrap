@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_PARCELLATE_METADATA = Metadata(
     id="f83818e02af7839749e8a5ba0f709f710eeb6881.boutiques",
@@ -46,7 +45,7 @@ CiftiParcellateParameters = typing.TypedDict('CiftiParcellateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,17 +54,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-parcellate": cifti_parcellate_cargs,
         "spatial_weights": cifti_parcellate_spatial_weights_cargs,
         "exclude_outliers": cifti_parcellate_exclude_outliers_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-parcellate": cifti_parcellate_outputs,
-    }
-    return vt.get(t)
+        "spatial_weights": cifti_parcellate_spatial_weights_outputs,
+        "exclude_outliers": cifti_parcellate_exclude_outliers_outputs,
+    }.get(t)
 
 
 def cifti_parcellate_spatial_weights_params(

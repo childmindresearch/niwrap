@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_FUNC2SPH_METADATA = Metadata(
     id="07527586a882465863cf7ef1f979d3d044731e6d.boutiques",
@@ -27,7 +26,7 @@ MriFunc2sphParameters = typing.TypedDict('MriFunc2sphParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri-func2sph": mri_func2sph_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,8 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mri-func2sph": mri_func2sph_outputs,
+    }.get(t)
 
 
 class MriFunc2sphOutputs(typing.NamedTuple):

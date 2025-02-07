@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 QUICKSPEC_SL_METADATA = Metadata(
     id="6ad0ef7a3cf68472db5f2c42ec5677d562d0ca24.boutiques",
@@ -27,7 +26,7 @@ QuickspecSlParameters = typing.TypedDict('QuickspecSlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "quickspecSL": quickspec_sl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "quickspecSL": quickspec_sl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class QuickspecSlOutputs(typing.NamedTuple):

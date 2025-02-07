@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
     id="5fcfc75e7e632e5ba205f400361a1c93167286ec.boutiques",
@@ -27,7 +26,7 @@ VolumeEstimateFwhmParameters = typing.TypedDict('VolumeEstimateFwhmParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,16 +35,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-estimate-fwhm": volume_estimate_fwhm_cargs,
         "whole_file": volume_estimate_fwhm_whole_file_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,8 +52,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-estimate-fwhm": volume_estimate_fwhm_outputs,
+        "whole_file": volume_estimate_fwhm_whole_file_outputs,
+    }.get(t)
 
 
 def volume_estimate_fwhm_whole_file_params(

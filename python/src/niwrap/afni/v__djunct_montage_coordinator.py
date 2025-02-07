@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_MONTAGE_COORDINATOR_METADATA = Metadata(
     id="9c2cbb473d95421a680be52f18d9f90f2ec86dfb.boutiques",
@@ -25,7 +24,7 @@ VDjunctMontageCoordinatorParameters = typing.TypedDict('VDjunctMontageCoordinato
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_montage_coordinator": v__djunct_montage_coordinator_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@djunct_montage_coordinator": v__djunct_montage_coordinator_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VDjunctMontageCoordinatorOutputs(typing.NamedTuple):

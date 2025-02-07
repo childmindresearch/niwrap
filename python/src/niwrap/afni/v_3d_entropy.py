@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ENTROPY_METADATA = Metadata(
     id="65268d877950e23f9bd06dfb7ede10b57050e1e9.boutiques",
@@ -21,7 +20,7 @@ V3dEntropyParameters = typing.TypedDict('V3dEntropyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dEntropy": v_3d_entropy_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dEntropy": v_3d_entropy_outputs,
+    }.get(t)
 
 
 class V3dEntropyOutputs(typing.NamedTuple):

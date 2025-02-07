@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 COR_TO_MINC_METADATA = Metadata(
     id="40b8ba63752dc024cdd4c61323a6a2c0ec2b41fb.boutiques",
@@ -21,7 +20,7 @@ CorToMincParameters = typing.TypedDict('CorToMincParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cor_to_minc": cor_to_minc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cor_to_minc": cor_to_minc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CorToMincOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MAP_CENTRAL_SULCUS_METADATA = Metadata(
     id="13b958f09713b9767ab00695cb856a93c2ef9725.boutiques",
@@ -55,7 +54,7 @@ MapCentralSulcusParameters = typing.TypedDict('MapCentralSulcusParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -64,15 +63,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "map_central_sulcus": map_central_sulcus_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -81,10 +79,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "map_central_sulcus": map_central_sulcus_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MapCentralSulcusOutputs(typing.NamedTuple):

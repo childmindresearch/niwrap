@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURF_CLUST_METADATA = Metadata(
     id="2346425eb197f04f33322dea847636dd74a3b8a3.boutiques",
@@ -58,7 +57,7 @@ SurfClustParameters = typing.TypedDict('SurfClustParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -67,15 +66,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SurfClust": surf_clust_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -84,10 +82,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SurfClust": surf_clust_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfClustOutputs(typing.NamedTuple):

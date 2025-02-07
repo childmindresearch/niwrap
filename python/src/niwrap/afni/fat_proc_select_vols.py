@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_SELECT_VOLS_METADATA = Metadata(
     id="797c7f4cdd720c40e5ac1cdfb28e7156b1b6687a.boutiques",
@@ -27,7 +26,7 @@ FatProcSelectVolsParameters = typing.TypedDict('FatProcSelectVolsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_select_vols": fat_proc_select_vols_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_select_vols": fat_proc_select_vols_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcSelectVolsOutputs(typing.NamedTuple):

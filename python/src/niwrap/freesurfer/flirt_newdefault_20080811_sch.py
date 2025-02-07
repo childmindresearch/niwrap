@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FLIRT_NEWDEFAULT_20080811_SCH_METADATA = Metadata(
     id="0d9d4a730463f50ed6f5eaf534671e8d5ad1f460.boutiques",
@@ -22,7 +21,7 @@ FlirtNewdefault20080811SchParameters = typing.TypedDict('FlirtNewdefault20080811
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "flirt.newdefault.20080811.sch": flirt_newdefault_20080811_sch_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,8 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "flirt.newdefault.20080811.sch": flirt_newdefault_20080811_sch_outputs,
+    }.get(t)
 
 
 class FlirtNewdefault20080811SchOutputs(typing.NamedTuple):

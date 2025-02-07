@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__AFNI_REFACER_RUN_METADATA = Metadata(
     id="72757fe4907642f44cb063cfa3ee5dc5dda0045b.boutiques",
@@ -29,7 +28,7 @@ VAfniRefacerRunParameters = typing.TypedDict('VAfniRefacerRunParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@afni_refacer_run": v__afni_refacer_run_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@afni_refacer_run": v__afni_refacer_run_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VAfniRefacerRunOutputs(typing.NamedTuple):

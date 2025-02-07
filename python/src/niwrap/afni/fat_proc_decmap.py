@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_DECMAP_METADATA = Metadata(
     id="a736dc72fa9ccb8800e84305855b09096c833b1d.boutiques",
@@ -30,7 +29,7 @@ FatProcDecmapParameters = typing.TypedDict('FatProcDecmapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_decmap": fat_proc_decmap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_decmap": fat_proc_decmap_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcDecmapOutputs(typing.NamedTuple):

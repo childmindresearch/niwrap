@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MVM_VALIDATOR_METADATA = Metadata(
     id="922fe2d0a794693ed3858b8e880aa7f811995c48.boutiques",
@@ -21,7 +20,7 @@ V3dMvmValidatorParameters = typing.TypedDict('V3dMvmValidatorParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMVM_validator": v_3d_mvm_validator_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMVM_validator": v_3d_mvm_validator_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMvmValidatorOutputs(typing.NamedTuple):

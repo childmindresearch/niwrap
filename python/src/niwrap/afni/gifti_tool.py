@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GIFTI_TOOL_METADATA = Metadata(
     id="4946ede9cc84ec22d01a494ff249ccac8104538c.boutiques",
@@ -41,7 +40,7 @@ GiftiToolParameters = typing.TypedDict('GiftiToolParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,15 +49,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gifti_tool": gifti_tool_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -67,10 +65,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gifti_tool": gifti_tool_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GiftiToolOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LONG_STATS_COMBINE_METADATA = Metadata(
     id="44c43a96c18b3f3b72a80aed68ec585e7b861c9d.boutiques",
@@ -27,7 +26,7 @@ LongStatsCombineParameters = typing.TypedDict('LongStatsCombineParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "long_stats_combine": long_stats_combine_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "long_stats_combine": long_stats_combine_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class LongStatsCombineOutputs(typing.NamedTuple):

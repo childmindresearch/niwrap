@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
     id="a70654cb187bdb9991d41a1bcb7827db58a9c4b0.boutiques",
@@ -42,7 +41,7 @@ AdjunctApqcTsnrGeneralParameters = typing.TypedDict('AdjunctApqcTsnrGeneralParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,15 +50,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_apqc_tsnr_general": adjunct_apqc_tsnr_general_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,8 +66,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "adjunct_apqc_tsnr_general": adjunct_apqc_tsnr_general_outputs,
+    }.get(t)
 
 
 class AdjunctApqcTsnrGeneralOutputs(typing.NamedTuple):

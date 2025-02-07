@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_PARCEL_RESAMPLING_GENERIC_METADATA = Metadata(
     id="e7113dd8a0a5347db7e40dbac5de9fc412670e8d.boutiques",
@@ -27,7 +26,7 @@ VolumeParcelResamplingGenericParameters = typing.TypedDict('VolumeParcelResampli
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-parcel-resampling-generic": volume_parcel_resampling_generic_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-parcel-resampling-generic": volume_parcel_resampling_generic_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeParcelResamplingGenericOutputs(typing.NamedTuple):

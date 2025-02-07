@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 WARPCONVERT_METADATA = Metadata(
     id="aa820be224a359dcdb4d3911882f1ee399c31903.boutiques",
@@ -38,7 +37,7 @@ WarpconvertParameters = typing.TypedDict('WarpconvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,16 +46,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "warpconvert": warpconvert_cargs,
         "config": warpconvert_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "warpconvert": warpconvert_outputs,
-    }
-    return vt.get(t)
+        "config": warpconvert_config_outputs,
+    }.get(t)
 
 
 def warpconvert_config_params(

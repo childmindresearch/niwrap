@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__ROI_MODAL_GROW_METADATA = Metadata(
     id="d33815ad6bfc8ff7ac694bacf23eb5bed10577bf.boutiques",
@@ -25,7 +24,7 @@ VRoiModalGrowParameters = typing.TypedDict('VRoiModalGrowParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ROI_modal_grow": v__roi_modal_grow_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@ROI_modal_grow": v__roi_modal_grow_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VRoiModalGrowOutputs(typing.NamedTuple):

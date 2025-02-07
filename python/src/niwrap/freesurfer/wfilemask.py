@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 WFILEMASK_METADATA = Metadata(
     id="2af18e367bd17f7afc3d6c0507042e5513f946c5.boutiques",
@@ -25,7 +24,7 @@ WfilemaskParameters = typing.TypedDict('WfilemaskParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "wfilemask": wfilemask_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "wfilemask": wfilemask_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class WfilemaskOutputs(typing.NamedTuple):

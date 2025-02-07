@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_PERIODOGRAM_METADATA = Metadata(
     id="9a68bd8e7aa1c6c39962b274d89b8ea010ab603e.boutiques",
@@ -23,7 +22,7 @@ V3dPeriodogramParameters = typing.TypedDict('V3dPeriodogramParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dPeriodogram": v_3d_periodogram_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dPeriodogram": v_3d_periodogram_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dPeriodogramOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_BRAIN_VOYAGERTO_AFNI_METADATA = Metadata(
     id="6e57612e994ff9fb4392a1ea7a2df2f7bddd8e62.boutiques",
@@ -33,7 +32,7 @@ V3dBrainVoyagertoAfniParameters = typing.TypedDict('V3dBrainVoyagertoAfniParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dBRAIN_VOYAGERtoAFNI": v_3d_brain_voyagerto_afni_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dBRAIN_VOYAGERtoAFNI": v_3d_brain_voyagerto_afni_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dBrainVoyagertoAfniOutputs(typing.NamedTuple):

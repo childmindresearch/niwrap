@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PREDICT_V1_SH_METADATA = Metadata(
     id="9dad70e954292a5df8dae706ae1d13ad401174c0.boutiques",
@@ -24,7 +23,7 @@ PredictV1ShParameters = typing.TypedDict('PredictV1ShParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "predict_v1.sh": predict_v1_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "predict_v1.sh": predict_v1_sh_outputs,
+    }.get(t)
 
 
 class PredictV1ShOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCALC_METADATA = Metadata(
     id="f811e9be21119eee4df1778a355c771fb0361c10.boutiques",
@@ -34,7 +33,7 @@ TcalcParameters = typing.TypedDict('TcalcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tcalc": tcalc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tcalc": tcalc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TcalcOutputs(typing.NamedTuple):

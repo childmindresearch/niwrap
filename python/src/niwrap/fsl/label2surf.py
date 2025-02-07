@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL2SURF_METADATA = Metadata(
     id="cd63394affbc5928ed92ba87251a2f8b6f4f20e0.boutiques",
@@ -24,7 +23,7 @@ Label2surfParameters = typing.TypedDict('Label2surfParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label2surf": label2surf_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label2surf": label2surf_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Label2surfOutputs(typing.NamedTuple):

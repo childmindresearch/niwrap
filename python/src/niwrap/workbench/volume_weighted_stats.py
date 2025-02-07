@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
     id="da2eeba1fe23ffefb27247087cb14abe89c34b0c.boutiques",
@@ -42,7 +41,7 @@ VolumeWeightedStatsParameters = typing.TypedDict('VolumeWeightedStatsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,18 +50,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-weighted-stats": volume_weighted_stats_cargs,
         "weight_volume": volume_weighted_stats_weight_volume_cargs,
         "roi": volume_weighted_stats_roi_cargs,
         "stdev": volume_weighted_stats_stdev_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -71,8 +69,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "volume-weighted-stats": volume_weighted_stats_outputs,
+        "weight_volume": volume_weighted_stats_weight_volume_outputs,
+        "roi": volume_weighted_stats_roi_outputs,
+        "stdev": volume_weighted_stats_stdev_outputs,
+    }.get(t)
 
 
 def volume_weighted_stats_weight_volume_params(

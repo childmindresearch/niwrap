@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLINTERLEAVE_METADATA = Metadata(
     id="93b8da65cc073c4d0bd4a959fb87a8823f01227a.boutiques",
@@ -23,7 +22,7 @@ FslinterleaveParameters = typing.TypedDict('FslinterleaveParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslinterleave": fslinterleave_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslinterleave": fslinterleave_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslinterleaveOutputs(typing.NamedTuple):

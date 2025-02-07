@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SWI_PROCESS_METADATA = Metadata(
     id="f14e6e76e9a671b5dc9172a46d7f994a3f809460.boutiques",
@@ -30,7 +29,7 @@ SwiProcessParameters = typing.TypedDict('SwiProcessParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "swi_process": swi_process_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "swi_process": swi_process_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SwiProcessOutputs(typing.NamedTuple):

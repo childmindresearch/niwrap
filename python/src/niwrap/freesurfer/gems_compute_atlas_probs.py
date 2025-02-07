@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GEMS_COMPUTE_ATLAS_PROBS_METADATA = Metadata(
     id="e4708282a3cd6c2187910866f5c82a92aef1d963.boutiques",
@@ -35,7 +34,7 @@ GemsComputeAtlasProbsParameters = typing.TypedDict('GemsComputeAtlasProbsParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gems_compute_atlas_probs": gems_compute_atlas_probs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gems_compute_atlas_probs": gems_compute_atlas_probs_outputs,
+    }.get(t)
 
 
 class GemsComputeAtlasProbsOutputs(typing.NamedTuple):

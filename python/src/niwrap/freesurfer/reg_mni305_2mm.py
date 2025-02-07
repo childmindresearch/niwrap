@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_MNI305_2MM_METADATA = Metadata(
     id="baca96deead4a89fad3eca8defaa337786ee5cdf.boutiques",
@@ -21,7 +20,7 @@ RegMni3052mmParameters = typing.TypedDict('RegMni3052mmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg-mni305.2mm": reg_mni305_2mm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg-mni305.2mm": reg_mni305_2mm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegMni3052mmOutputs(typing.NamedTuple):

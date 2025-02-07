@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__CLUST_EXP_RUN_SHINY_METADATA = Metadata(
     id="fda3a7d2925f29a17f3a4aecaecf82a67d6aa1fc.boutiques",
@@ -21,7 +20,7 @@ VClustExpRunShinyParameters = typing.TypedDict('VClustExpRunShinyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ClustExp_run_shiny": v__clust_exp_run_shiny_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@ClustExp_run_shiny": v__clust_exp_run_shiny_outputs,
+    }.get(t)
 
 
 class VClustExpRunShinyOutputs(typing.NamedTuple):

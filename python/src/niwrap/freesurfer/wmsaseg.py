@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 WMSASEG_METADATA = Metadata(
     id="70413a8a1c01bd4a41bdede39664427061f28431.boutiques",
@@ -30,7 +29,7 @@ WmsasegParameters = typing.TypedDict('WmsasegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "wmsaseg": wmsaseg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "wmsaseg": wmsaseg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class WmsasegOutputs(typing.NamedTuple):

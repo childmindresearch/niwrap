@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1DGEN_ARMA11_METADATA = Metadata(
     id="9fce1559df8cc31e0d2c99d44319f7a47b38ba76.boutiques",
@@ -30,7 +29,7 @@ V1dgenArma11Parameters = typing.TypedDict('V1dgenArma11Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dgenARMA11": v_1dgen_arma11_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "1dgenARMA11": v_1dgen_arma11_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V1dgenArma11Outputs(typing.NamedTuple):

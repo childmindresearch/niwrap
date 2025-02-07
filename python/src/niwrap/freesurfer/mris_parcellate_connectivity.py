@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_PARCELLATE_CONNECTIVITY_METADATA = Metadata(
     id="0c3b840a03cfbf5cf09f4768e47a63ba51235eb2.boutiques",
@@ -23,7 +22,7 @@ MrisParcellateConnectivityParameters = typing.TypedDict('MrisParcellateConnectiv
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_parcellate_connectivity": mris_parcellate_connectivity_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_parcellate_connectivity": mris_parcellate_connectivity_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisParcellateConnectivityOutputs(typing.NamedTuple):

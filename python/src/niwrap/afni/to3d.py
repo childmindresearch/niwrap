@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TO3D_METADATA = Metadata(
     id="f1885e5a598e33eedbd9902b41caded7ca049613.boutiques",
@@ -59,7 +58,7 @@ To3dParameters = typing.TypedDict('To3dParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -68,15 +67,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "to3d": to3d_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -85,10 +83,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "to3d": to3d_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class To3dOutputs(typing.NamedTuple):

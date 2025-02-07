@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCENTROID_METADATA = Metadata(
     id="d45d49e8b930b948a798b910b254792bd30544a6.boutiques",
@@ -35,7 +34,7 @@ MrcentroidParameters = typing.TypedDict('MrcentroidParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrcentroid": mrcentroid_cargs,
         "config": mrcentroid_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mrcentroid": mrcentroid_outputs,
+        "config": mrcentroid_config_outputs,
+    }.get(t)
 
 
 def mrcentroid_config_params(

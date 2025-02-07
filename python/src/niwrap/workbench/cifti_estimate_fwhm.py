@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
     id="5a208f16e948f98d42112e2bc0a3ea2e8dd7f5ff.boutiques",
@@ -33,7 +32,7 @@ CiftiEstimateFwhmParameters = typing.TypedDict('CiftiEstimateFwhmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,17 +41,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-estimate-fwhm": cifti_estimate_fwhm_cargs,
         "whole_file": cifti_estimate_fwhm_whole_file_cargs,
         "surface": cifti_estimate_fwhm_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-estimate-fwhm": cifti_estimate_fwhm_outputs,
+        "whole_file": cifti_estimate_fwhm_whole_file_outputs,
+        "surface": cifti_estimate_fwhm_surface_outputs,
+    }.get(t)
 
 
 def cifti_estimate_fwhm_whole_file_params(

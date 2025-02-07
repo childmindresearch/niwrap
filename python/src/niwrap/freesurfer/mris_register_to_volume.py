@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REGISTER_TO_VOLUME_METADATA = Metadata(
     id="9bdc925a77ef7d3c8dc9cd1fecb43c21110eb66b.boutiques",
@@ -47,7 +46,7 @@ MrisRegisterToVolumeParameters = typing.TypedDict('MrisRegisterToVolumeParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,15 +55,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_register_to_volume": mris_register_to_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -73,8 +71,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mris_register_to_volume": mris_register_to_volume_outputs,
+    }.get(t)
 
 
 class MrisRegisterToVolumeOutputs(typing.NamedTuple):

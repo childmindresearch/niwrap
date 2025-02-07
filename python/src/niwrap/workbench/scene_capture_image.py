@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SCENE_CAPTURE_IMAGE_METADATA = Metadata(
     id="078fa0839e7fb447ecfcb714420be849d801e0ac.boutiques",
@@ -56,7 +55,7 @@ SceneCaptureImageParameters = typing.TypedDict('SceneCaptureImageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -65,19 +64,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "scene-capture-image": scene_capture_image_cargs,
         "size_width_height": scene_capture_image_size_width_height_cargs,
         "resolution": scene_capture_image_resolution_cargs,
         "set_map_yoke": scene_capture_image_set_map_yoke_cargs,
         "conn_db_login": scene_capture_image_conn_db_login_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -86,8 +84,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "scene-capture-image": scene_capture_image_outputs,
+        "size_width_height": scene_capture_image_size_width_height_outputs,
+        "resolution": scene_capture_image_resolution_outputs,
+        "set_map_yoke": scene_capture_image_set_map_yoke_outputs,
+        "conn_db_login": scene_capture_image_conn_db_login_outputs,
+    }.get(t)
 
 
 def scene_capture_image_size_width_height_params(

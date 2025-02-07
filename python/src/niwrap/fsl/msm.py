@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MSM_METADATA = Metadata(
     id="36c2f1fd7109d0e69b48c213ae952c4422d9c88f.boutiques",
@@ -35,7 +34,7 @@ MsmParameters = typing.TypedDict('MsmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "msm": msm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "msm": msm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MsmOutputs(typing.NamedTuple):

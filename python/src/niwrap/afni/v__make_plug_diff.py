@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__MAKE_PLUG_DIFF_METADATA = Metadata(
     id="ed24df6f541e54eb4e1231d905483a763eecd72f.boutiques",
@@ -26,7 +25,7 @@ VMakePlugDiffParameters = typing.TypedDict('VMakePlugDiffParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@make_plug_diff": v__make_plug_diff_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,8 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@make_plug_diff": v__make_plug_diff_outputs,
+    }.get(t)
 
 
 class VMakePlugDiffOutputs(typing.NamedTuple):

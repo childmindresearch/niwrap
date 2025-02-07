@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MMPPSP_METADATA = Metadata(
     id="f81f47b918a5f8423b269d5eccc58eb98d9d2e6f.boutiques",
@@ -30,7 +29,7 @@ MmppspParameters = typing.TypedDict('MmppspParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mmppsp": mmppsp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mmppsp": mmppsp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MmppspOutputs(typing.NamedTuple):

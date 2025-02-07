@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_SPLINE_METADATA = Metadata(
     id="7d3ca3a45eadd41a58c1c4e8f7cf2661b9cc81d4.boutiques",
@@ -27,7 +26,7 @@ DmriSplineParameters = typing.TypedDict('DmriSplineParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_spline": dmri_spline_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dmri_spline": dmri_spline_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DmriSplineOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 UNPACK_IMA_TCL_METADATA = Metadata(
     id="f7bb633c8e2fc57cba56d642be005b58715d8346.boutiques",
@@ -20,7 +19,7 @@ UnpackImaTclParameters = typing.TypedDict('UnpackImaTclParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "unpack_ima.tcl": unpack_ima_tcl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "unpack_ima.tcl": unpack_ima_tcl_outputs,
+    }.get(t)
 
 
 class UnpackImaTclOutputs(typing.NamedTuple):

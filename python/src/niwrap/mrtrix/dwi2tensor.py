@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWI2TENSOR_METADATA = Metadata(
     id="da9a17f80c44190e972d6db8b17af753fd59d62f.boutiques",
@@ -47,7 +46,7 @@ Dwi2tensorParameters = typing.TypedDict('Dwi2tensorParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,17 +55,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwi2tensor": dwi2tensor_cargs,
         "fslgrad": dwi2tensor_fslgrad_cargs,
         "config": dwi2tensor_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -75,10 +73,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwi2tensor": dwi2tensor_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": dwi2tensor_fslgrad_outputs,
+        "config": dwi2tensor_config_outputs,
+    }.get(t)
 
 
 def dwi2tensor_fslgrad_params(

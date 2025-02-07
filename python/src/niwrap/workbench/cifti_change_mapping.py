@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
     id="53f8c510829c70200ad060f067b228f1aa52da65.boutiques",
@@ -40,7 +39,7 @@ CiftiChangeMappingParameters = typing.TypedDict('CiftiChangeMappingParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,18 +48,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-change-mapping": cifti_change_mapping_cargs,
         "series": cifti_change_mapping_series_cargs,
         "scalar": cifti_change_mapping_scalar_cargs,
         "from_cifti": cifti_change_mapping_from_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-change-mapping": cifti_change_mapping_outputs,
-    }
-    return vt.get(t)
+        "series": cifti_change_mapping_series_outputs,
+        "scalar": cifti_change_mapping_scalar_outputs,
+        "from_cifti": cifti_change_mapping_from_cifti_outputs,
+    }.get(t)
 
 
 def cifti_change_mapping_series_params(

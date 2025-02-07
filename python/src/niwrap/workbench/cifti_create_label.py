@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
     id="2de4152aa98a5a2ba317600135a0292a6a69deee.boutiques",
@@ -44,7 +43,7 @@ CiftiCreateLabelParameters = typing.TypedDict('CiftiCreateLabelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,19 +52,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-create-label": cifti_create_label_cargs,
         "volume": cifti_create_label_volume_cargs,
         "left_label": cifti_create_label_left_label_cargs,
         "right_label": cifti_create_label_right_label_cargs,
         "cerebellum_label": cifti_create_label_cerebellum_label_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-create-label": cifti_create_label_outputs,
-    }
-    return vt.get(t)
+        "volume": cifti_create_label_volume_outputs,
+        "left_label": cifti_create_label_left_label_outputs,
+        "right_label": cifti_create_label_right_label_outputs,
+        "cerebellum_label": cifti_create_label_cerebellum_label_outputs,
+    }.get(t)
 
 
 def cifti_create_label_volume_params(

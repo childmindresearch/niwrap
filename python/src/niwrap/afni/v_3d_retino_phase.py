@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_RETINO_PHASE_METADATA = Metadata(
     id="3db78d8b872cbcd25d2278819aa85d3e6ecbba57.boutiques",
@@ -35,7 +34,7 @@ V3dRetinoPhaseParameters = typing.TypedDict('V3dRetinoPhaseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dRetinoPhase": v_3d_retino_phase_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dRetinoPhase": v_3d_retino_phase_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dRetinoPhaseOutputs(typing.NamedTuple):

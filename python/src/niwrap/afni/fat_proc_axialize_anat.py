@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
     id="e138eb56e5029d03d449b78987c687adf3579333.boutiques",
@@ -41,7 +40,7 @@ FatProcAxializeAnatParameters = typing.TypedDict('FatProcAxializeAnatParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,15 +49,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_axialize_anat": fat_proc_axialize_anat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -67,10 +65,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_axialize_anat": fat_proc_axialize_anat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcAxializeAnatOutputs(typing.NamedTuple):

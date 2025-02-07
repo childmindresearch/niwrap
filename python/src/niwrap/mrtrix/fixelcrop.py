@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXELCROP_METADATA = Metadata(
     id="df585f30c2a7738dc8886c2e7c7172b7e6cdc09c.boutiques",
@@ -35,7 +34,7 @@ FixelcropParameters = typing.TypedDict('FixelcropParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixelcrop": fixelcrop_cargs,
         "config": fixelcrop_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fixelcrop": fixelcrop_outputs,
-    }
-    return vt.get(t)
+        "config": fixelcrop_config_outputs,
+    }.get(t)
 
 
 def fixelcrop_config_params(

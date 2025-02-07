@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DECONVOLVE_METADATA = Metadata(
     id="3c5bd8bab8c9c3f4b4586c2e6fc553ef1b03f1e4.boutiques",
@@ -34,7 +33,7 @@ V3dDeconvolveParameters = typing.TypedDict('V3dDeconvolveParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDeconvolve": v_3d_deconvolve_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDeconvolve": v_3d_deconvolve_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDeconvolveOutputs(typing.NamedTuple):

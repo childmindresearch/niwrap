@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GEN_SS_REVIEW_SCRIPTS_METADATA = Metadata(
     id="0b2bced52ccd788df5199b4d3c54d3385072af7d.boutiques",
@@ -38,7 +37,7 @@ GenSsReviewScriptsParameters = typing.TypedDict('GenSsReviewScriptsParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gen_ss_review_scripts": gen_ss_review_scripts_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gen_ss_review_scripts": gen_ss_review_scripts_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GenSsReviewScriptsOutputs(typing.NamedTuple):

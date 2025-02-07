@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IREPIFITVOL_GLNX64_METADATA = Metadata(
     id="e1b3c71003d88eeb91c6bc522cbeb9c8dec5641d.boutiques",
@@ -21,7 +20,7 @@ IrepifitvolGlnx64Parameters = typing.TypedDict('IrepifitvolGlnx64Parameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "irepifitvol.glnx64": irepifitvol_glnx64_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "irepifitvol.glnx64": irepifitvol_glnx64_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class IrepifitvolGlnx64Outputs(typing.NamedTuple):

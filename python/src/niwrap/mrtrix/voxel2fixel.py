@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOXEL2FIXEL_METADATA = Metadata(
     id="5eac19f16617dbecc2080fd5f4f07d1eac6e92da.boutiques",
@@ -36,7 +35,7 @@ Voxel2fixelParameters = typing.TypedDict('Voxel2fixelParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,16 +44,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "voxel2fixel": voxel2fixel_cargs,
         "config": voxel2fixel_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -63,8 +61,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "voxel2fixel": voxel2fixel_outputs,
+        "config": voxel2fixel_config_outputs,
+    }.get(t)
 
 
 def voxel2fixel_config_params(

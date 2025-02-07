@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DAXIALIZE_METADATA = Metadata(
     id="bcc8e30177064f95c8a4e5b95029e8dd46cb1692.boutiques",
@@ -27,7 +26,7 @@ V3daxializeParameters = typing.TypedDict('V3daxializeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3daxialize": v_3daxialize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3daxialize": v_3daxialize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3daxializeOutputs(typing.NamedTuple):

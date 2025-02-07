@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_TSPLIT4_D_METADATA = Metadata(
     id="861535b6c29e168191a0da4498bda4b743f855bf.boutiques",
@@ -23,7 +22,7 @@ V3dTsplit4DParameters = typing.TypedDict('V3dTsplit4DParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dTsplit4D": v_3d_tsplit4_d_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dTsplit4D": v_3d_tsplit4_d_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dTsplit4DOutputs(typing.NamedTuple):

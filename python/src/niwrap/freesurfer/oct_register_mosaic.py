@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 OCT_REGISTER_MOSAIC_METADATA = Metadata(
     id="3c0f1193be4788ada8c34632e6598409865db885.boutiques",
@@ -23,7 +22,7 @@ OctRegisterMosaicParameters = typing.TypedDict('OctRegisterMosaicParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "oct_register_mosaic": oct_register_mosaic_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "oct_register_mosaic": oct_register_mosaic_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class OctRegisterMosaicOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__NOISY_SKULL_STRIP_METADATA = Metadata(
     id="a95b392481360cc4893886c77cddfcea221759d0.boutiques",
@@ -22,7 +21,7 @@ VNoisySkullStripParameters = typing.TypedDict('VNoisySkullStripParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@NoisySkullStrip": v__noisy_skull_strip_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@NoisySkullStrip": v__noisy_skull_strip_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VNoisySkullStripOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
     id="d5a9272c3f48a10e4a40c5ea087b20f4663425f8.boutiques",
@@ -22,7 +21,7 @@ CiftiAllLabelsToRoisParameters = typing.TypedDict('CiftiAllLabelsToRoisParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-all-labels-to-rois": cifti_all_labels_to_rois_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-all-labels-to-rois": cifti_all_labels_to_rois_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiAllLabelsToRoisOutputs(typing.NamedTuple):

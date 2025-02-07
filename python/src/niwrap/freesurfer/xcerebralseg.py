@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 XCEREBRALSEG_METADATA = Metadata(
     id="14c3690bac7554084d7978a923e6d146bea56460.boutiques",
@@ -29,7 +28,7 @@ XcerebralsegParameters = typing.TypedDict('XcerebralsegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "xcerebralseg": xcerebralseg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "xcerebralseg": xcerebralseg_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class XcerebralsegOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PROJ_THRESH_METADATA = Metadata(
     id="2118a504958e3891bd47708738d41c67d1537eb5.boutiques",
@@ -21,7 +20,7 @@ ProjThreshParameters = typing.TypedDict('ProjThreshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "proj_thresh": proj_thresh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "proj_thresh": proj_thresh_outputs,
+    }.get(t)
 
 
 class ProjThreshOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_DTICOHORT_METADATA = Metadata(
     id="b6d3b7b7d3095a9db5e406c42360be21bbfd0ce5.boutiques",
@@ -27,7 +26,7 @@ CreateDticohortParameters = typing.TypedDict('CreateDticohortParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CreateDTICohort": create_dticohort_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "CreateDTICohort": create_dticohort_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateDticohortOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_FILTER_DWIS_METADATA = Metadata(
     id="f1ab079defa2b7a6a0437c119ce099f8d81cc812.boutiques",
@@ -30,7 +29,7 @@ FatProcFilterDwisParameters = typing.TypedDict('FatProcFilterDwisParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_filter_dwis": fat_proc_filter_dwis_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_filter_dwis": fat_proc_filter_dwis_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcFilterDwisOutputs(typing.NamedTuple):

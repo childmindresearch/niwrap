@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRTRANSFORM_METADATA = Metadata(
     id="faaa07c120c0bcc84911ab27778920e0d881a5ea.boutiques",
@@ -76,7 +75,7 @@ MrtransformParameters = typing.TypedDict('MrtransformParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -85,20 +84,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrtransform": mrtransform_cargs,
         "fslgrad": mrtransform_fslgrad_cargs,
         "export_grad_fsl": mrtransform_export_grad_fsl_cargs,
         "VariousString": mrtransform_various_string_cargs,
         "VariousFile": mrtransform_various_file_cargs,
         "config": mrtransform_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -107,11 +105,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrtransform": mrtransform_outputs,
+        "fslgrad": mrtransform_fslgrad_outputs,
         "export_grad_fsl": mrtransform_export_grad_fsl_outputs,
-    }
-    return vt.get(t)
+        "VariousString": mrtransform_various_string_outputs,
+        "VariousFile": mrtransform_various_file_outputs,
+        "config": mrtransform_config_outputs,
+    }.get(t)
 
 
 def mrtransform_fslgrad_params(

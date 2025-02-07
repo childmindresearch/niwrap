@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_SMOOTHING_METADATA = Metadata(
     id="1b524a1db58071d5c0268261da59a7ef3efc97d7.boutiques",
@@ -47,7 +46,7 @@ CiftiSmoothingParameters = typing.TypedDict('CiftiSmoothingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,18 +55,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-smoothing": cifti_smoothing_cargs,
         "left_surface": cifti_smoothing_left_surface_cargs,
         "right_surface": cifti_smoothing_right_surface_cargs,
         "cerebellum_surface": cifti_smoothing_cerebellum_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -76,10 +74,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-smoothing": cifti_smoothing_outputs,
-    }
-    return vt.get(t)
+        "left_surface": cifti_smoothing_left_surface_outputs,
+        "right_surface": cifti_smoothing_right_surface_outputs,
+        "cerebellum_surface": cifti_smoothing_cerebellum_surface_outputs,
+    }.get(t)
 
 
 def cifti_smoothing_left_surface_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 COMPARE_SURFACES_METADATA = Metadata(
     id="fae97b4935dc6acada057829467fb30bd5e3f339.boutiques",
@@ -34,7 +33,7 @@ CompareSurfacesParameters = typing.TypedDict('CompareSurfacesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "CompareSurfaces": compare_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "CompareSurfaces": compare_surfaces_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CompareSurfacesOutputs(typing.NamedTuple):

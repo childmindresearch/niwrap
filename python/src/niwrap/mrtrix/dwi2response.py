@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWI2RESPONSE_METADATA = Metadata(
     id="783031dadad04a0c0a13f937e1015a6d4ff7ac7f.boutiques",
@@ -105,7 +104,7 @@ Dwi2responseParameters = typing.TypedDict('Dwi2responseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -114,7 +113,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwi2response": dwi2response_cargs,
         "dhollander": dwi2response_dhollander_cargs,
         "fa": dwi2response_fa_cargs,
@@ -124,13 +123,12 @@ def dyn_cargs(
         "tournier": dwi2response_tournier_cargs,
         "fslgrad": dwi2response_fslgrad_cargs,
         "config": dwi2response_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -139,7 +137,7 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwi2response": dwi2response_outputs,
         "dhollander": dwi2response_dhollander_outputs,
         "fa": dwi2response_fa_outputs,
@@ -147,8 +145,9 @@ def dyn_outputs(
         "msmt_5tt": dwi2response_msmt_5tt_outputs,
         "tax": dwi2response_tax_outputs,
         "tournier": dwi2response_tournier_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": dwi2response_fslgrad_outputs,
+        "config": dwi2response_config_outputs,
+    }.get(t)
 
 
 class Dwi2responseDhollanderOutputs(typing.NamedTuple):

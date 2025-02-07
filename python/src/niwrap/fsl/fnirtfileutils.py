@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FNIRTFILEUTILS_METADATA = Metadata(
     id="3602fcba77f3571ce6633e4b77bf43d5c917943e.boutiques",
@@ -30,7 +29,7 @@ FnirtfileutilsParameters = typing.TypedDict('FnirtfileutilsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fnirtfileutils": fnirtfileutils_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fnirtfileutils": fnirtfileutils_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FnirtfileutilsOutputs(typing.NamedTuple):

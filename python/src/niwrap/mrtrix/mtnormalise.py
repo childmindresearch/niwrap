@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MTNORMALISE_METADATA = Metadata(
     id="3709b0ca1455372ea3dda75e22e31168270b187c.boutiques",
@@ -46,7 +45,7 @@ MtnormaliseParameters = typing.TypedDict('MtnormaliseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -55,17 +54,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mtnormalise": mtnormalise_cargs,
         "config": mtnormalise_config_cargs,
         "input_output": mtnormalise_input_output_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,11 +72,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mtnormalise": mtnormalise_outputs,
+        "config": mtnormalise_config_outputs,
         "input_output": mtnormalise_input_output_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def mtnormalise_config_params(

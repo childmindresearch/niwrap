@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_DETREND_METADATA = Metadata(
     id="e1acbbed353dee123a530befb4df733e98383a20.boutiques",
@@ -21,7 +20,7 @@ V3dDetrendParameters = typing.TypedDict('V3dDetrendParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dDetrend": v_3d_detrend_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dDetrend": v_3d_detrend_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dDetrendOutputs(typing.NamedTuple):

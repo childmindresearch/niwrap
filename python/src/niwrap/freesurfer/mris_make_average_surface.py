@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_MAKE_AVERAGE_SURFACE_METADATA = Metadata(
     id="c7c7dc6c877d2ef020d99e894c96f070fb1a71d2.boutiques",
@@ -34,7 +33,7 @@ MrisMakeAverageSurfaceParameters = typing.TypedDict('MrisMakeAverageSurfaceParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_make_average_surface": mris_make_average_surface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_make_average_surface": mris_make_average_surface_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisMakeAverageSurfaceOutputs(typing.NamedTuple):

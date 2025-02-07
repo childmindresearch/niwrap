@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_DEFACE_METADATA = Metadata(
     id="3c5f529687f2b3d58e2f151ffcd47a04e323d8ea.boutiques",
@@ -23,7 +22,7 @@ MriDefaceParameters = typing.TypedDict('MriDefaceParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_deface": mri_deface_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_deface": mri_deface_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriDefaceOutputs(typing.NamedTuple):

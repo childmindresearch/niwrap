@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REGISTER_ELDERLY_SUBJECT_METADATA = Metadata(
     id="537220baa60ce5febcf14be16d4b791c3cbbebb9.boutiques",
@@ -25,7 +24,7 @@ RegisterElderlySubjectParameters = typing.TypedDict('RegisterElderlySubjectParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "register_elderly_subject": register_elderly_subject_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "register_elderly_subject": register_elderly_subject_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegisterElderlySubjectOutputs(typing.NamedTuple):

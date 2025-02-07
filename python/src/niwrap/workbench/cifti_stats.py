@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_STATS_METADATA = Metadata(
     id="0f47bef41c97110888e59c7cfd3037199cf66fa3.boutiques",
@@ -30,7 +29,7 @@ CiftiStatsParameters = typing.TypedDict('CiftiStatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,16 +38,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-stats": cifti_stats_cargs,
         "roi": cifti_stats_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,8 +55,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-stats": cifti_stats_outputs,
+        "roi": cifti_stats_roi_outputs,
+    }.get(t)
 
 
 def cifti_stats_roi_params(

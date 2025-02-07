@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__RADIAL_CORRELATE_METADATA = Metadata(
     id="1cbb44d20d4e3ca23ba7981bb4c49932fce75bf0.boutiques",
@@ -39,7 +38,7 @@ VRadialCorrelateParameters = typing.TypedDict('VRadialCorrelateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,15 +47,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@radial_correlate": v__radial_correlate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@radial_correlate": v__radial_correlate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VRadialCorrelateOutputs(typing.NamedTuple):

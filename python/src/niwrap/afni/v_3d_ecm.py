@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ECM_METADATA = Metadata(
     id="c9bc0ce1e3c30699a348a07653407f3b99801a2a.boutiques",
@@ -34,7 +33,7 @@ V3dEcmParameters = typing.TypedDict('V3dEcmParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dECM": v_3d_ecm_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dECM": v_3d_ecm_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dEcmOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_GENERATE_INFLATED_METADATA = Metadata(
     id="6eea5f830d4577873fce8195913d40900b759e3e.boutiques",
@@ -23,7 +22,7 @@ SurfaceGenerateInflatedParameters = typing.TypedDict('SurfaceGenerateInflatedPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-generate-inflated": surface_generate_inflated_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-generate-inflated": surface_generate_inflated_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceGenerateInflatedOutputs(typing.NamedTuple):

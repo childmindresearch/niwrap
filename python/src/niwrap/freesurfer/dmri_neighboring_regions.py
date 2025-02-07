@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_NEIGHBORING_REGIONS_METADATA = Metadata(
     id="0178eb527b86ea0845721b0e3a911c76330df23a.boutiques",
@@ -21,7 +20,7 @@ DmriNeighboringRegionsParameters = typing.TypedDict('DmriNeighboringRegionsParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_neighboringRegions": dmri_neighboring_regions_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dmri_neighboringRegions": dmri_neighboring_regions_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DmriNeighboringRegionsOutputs(typing.NamedTuple):

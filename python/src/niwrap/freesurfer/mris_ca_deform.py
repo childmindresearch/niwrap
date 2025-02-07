@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_CA_DEFORM_METADATA = Metadata(
     id="7a76a6060e94710386328206ab18f500335fc348.boutiques",
@@ -24,7 +23,7 @@ MrisCaDeformParameters = typing.TypedDict('MrisCaDeformParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_ca_deform": mris_ca_deform_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_ca_deform": mris_ca_deform_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisCaDeformOutputs(typing.NamedTuple):

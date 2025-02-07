@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3DDELAY_METADATA = Metadata(
     id="d876295ae5d31352ba81e14a366aedff6fceb582.boutiques",
@@ -43,7 +42,7 @@ V3ddelayParameters = typing.TypedDict('V3ddelayParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -52,15 +51,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3ddelay": v_3ddelay_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3ddelay": v_3ddelay_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3ddelayOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_REGISTRATION_METADATA = Metadata(
     id="d1fb6c3d9e6d56e2bfee183ed29bef10a59da9d1.boutiques",
@@ -247,7 +246,7 @@ AntsRegistrationParameters = typing.TypedDict('AntsRegistrationParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -256,7 +255,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsRegistration": ants_registration_cargs,
         "initial_moving_transform": ants_registration_initial_moving_transform_cargs,
         "initial_moving_transform_use_inverse": ants_registration_initial_moving_transform_use_inverse_cargs,
@@ -289,13 +288,12 @@ def dyn_cargs(
         "convergence": ants_registration_convergence_cargs,
         "winsorize_image_intensities": ants_registration_winsorize_image_intensities_cargs,
         "masks": ants_registration_masks_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -304,10 +302,40 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsRegistration": ants_registration_outputs,
-    }
-    return vt.get(t)
+        "initial_moving_transform": ants_registration_initial_moving_transform_outputs,
+        "initial_moving_transform_use_inverse": ants_registration_initial_moving_transform_use_inverse_outputs,
+        "initial_moving_transform_initialization_feature": ants_registration_initial_moving_transform_initialization_feature_outputs,
+        "stages": ants_registration_stage_outputs,
+        "transform_rigid": ants_registration_transform_rigid_outputs,
+        "transform_affine": ants_registration_transform_affine_outputs,
+        "transform_composite_affine": ants_registration_transform_composite_affine_outputs,
+        "transform_similarity": ants_registration_transform_similarity_outputs,
+        "transform_translation": ants_registration_transform_translation_outputs,
+        "transform_bspline": ants_registration_transform_bspline_outputs,
+        "transform_gaussian_displacement_field": ants_registration_transform_gaussian_displacement_field_outputs,
+        "transform_bspline_displacement_field": ants_registration_transform_bspline_displacement_field_outputs,
+        "transform_time_varying_velocity_field": ants_registration_transform_time_varying_velocity_field_outputs,
+        "transform_time_varying_bspline_velocity_field": ants_registration_transform_time_varying_bspline_velocity_field_outputs,
+        "transform_syn": ants_registration_transform_syn_outputs,
+        "transform_bspline_syn": ants_registration_transform_bspline_syn_outputs,
+        "transform_exponential": ants_registration_transform_exponential_outputs,
+        "transform_bspline_exponential": ants_registration_transform_bspline_exponential_outputs,
+        "metric_ants_neighbourhood_cross_correlation": ants_registration_metric_ants_neighbourhood_cross_correlation_outputs,
+        "metric_mutual_information": ants_registration_metric_mutual_information_outputs,
+        "metric_mattes": ants_registration_metric_mattes_outputs,
+        "metric_mean_squares": ants_registration_metric_mean_squares_outputs,
+        "metric_demons": ants_registration_metric_demons_outputs,
+        "metric_global_correlation": ants_registration_metric_global_correlation_outputs,
+        "metric_euclidean_icp": ants_registration_metric_euclidean_icp_outputs,
+        "metric_point_set_expectation": ants_registration_metric_point_set_expectation_outputs,
+        "metric_jensen_havrda_charvet_tsallis": ants_registration_metric_jensen_havrda_charvet_tsallis_outputs,
+        "metric_igdm": ants_registration_metric_igdm_outputs,
+        "convergence": ants_registration_convergence_outputs,
+        "winsorize_image_intensities": ants_registration_winsorize_image_intensities_outputs,
+        "masks": ants_registration_masks_outputs,
+    }.get(t)
 
 
 def ants_registration_initial_moving_transform_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLANIMATE_METADATA = Metadata(
     id="9c584c848682c3342403e26b38b71bebf6c12536.boutiques",
@@ -22,7 +21,7 @@ FslanimateParameters = typing.TypedDict('FslanimateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslanimate": fslanimate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslanimate": fslanimate_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslanimateOutputs(typing.NamedTuple):

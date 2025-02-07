@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
     id="3d379a6c755dab747292a0a91f754e423ff73eca.boutiques",
@@ -22,7 +21,7 @@ GiftiLabelAddPrefixParameters = typing.TypedDict('GiftiLabelAddPrefixParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gifti-label-add-prefix": gifti_label_add_prefix_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "gifti-label-add-prefix": gifti_label_add_prefix_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class GiftiLabelAddPrefixOutputs(typing.NamedTuple):

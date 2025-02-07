@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_ALADIN_METADATA = Metadata(
     id="0cdcd5294ca36b2c6f5e68cc4ee34d2019bd8f9f.boutiques",
@@ -32,7 +31,7 @@ RegAladinParameters = typing.TypedDict('RegAladinParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg_aladin": reg_aladin_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,10 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg_aladin": reg_aladin_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegAladinOutputs(typing.NamedTuple):

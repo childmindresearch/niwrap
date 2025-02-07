@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TCKSTATS_METADATA = Metadata(
     id="3760b66b1fa3a72514876d654c267f0868d2d468.boutiques",
@@ -42,7 +41,7 @@ TckstatsParameters = typing.TypedDict('TckstatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,17 +50,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tckstats": tckstats_cargs,
         "output": tckstats_output_cargs,
         "config": tckstats_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -70,10 +68,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tckstats": tckstats_outputs,
-    }
-    return vt.get(t)
+        "output": tckstats_output_outputs,
+        "config": tckstats_config_outputs,
+    }.get(t)
 
 
 def tckstats_output_params(

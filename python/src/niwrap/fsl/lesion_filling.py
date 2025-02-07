@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
     id="ed2cf99fe48a14d59b488a818d0b2780af3475ae.boutiques",
@@ -25,7 +24,7 @@ LesionFillingParameters = typing.TypedDict('LesionFillingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "lesion_filling": lesion_filling_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "lesion_filling": lesion_filling_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class LesionFillingOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IM2NIML_METADATA = Metadata(
     id="3c92592db9d506b4424ac028f92405630d2fda18.boutiques",
@@ -20,7 +19,7 @@ Im2nimlParameters = typing.TypedDict('Im2nimlParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "im2niml": im2niml_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "im2niml": im2niml_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Im2nimlOutputs(typing.NamedTuple):

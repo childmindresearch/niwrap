@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__TO_MNI_AWARP_METADATA = Metadata(
     id="93b77f09cd479bf6a950c0693a066eccc0f62501.boutiques",
@@ -21,7 +20,7 @@ VToMniAwarpParameters = typing.TypedDict('VToMniAwarpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@toMNI_Awarp": v__to_mni_awarp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@toMNI_Awarp": v__to_mni_awarp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VToMniAwarpOutputs(typing.NamedTuple):

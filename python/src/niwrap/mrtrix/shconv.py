@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SHCONV_METADATA = Metadata(
     id="3c84c5743ea66d880048dc5dc975db440966a75e.boutiques",
@@ -44,7 +43,7 @@ ShconvParameters = typing.TypedDict('ShconvParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -53,18 +52,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "shconv": shconv_cargs,
         "VariousString": shconv_various_string_cargs,
         "VariousFile": shconv_various_file_cargs,
         "config": shconv_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -73,10 +71,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "shconv": shconv_outputs,
-    }
-    return vt.get(t)
+        "VariousString": shconv_various_string_outputs,
+        "VariousFile": shconv_various_file_outputs,
+        "config": shconv_config_outputs,
+    }.get(t)
 
 
 def shconv_various_string_params(

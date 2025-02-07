@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCLUSTERSTATS_METADATA = Metadata(
     id="d4ce456953cb970b38068a8fa7e2ea3ed5a6da0c.boutiques",
@@ -61,7 +60,7 @@ MrclusterstatsParameters = typing.TypedDict('MrclusterstatsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -70,17 +69,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrclusterstats": mrclusterstats_cargs,
         "column": mrclusterstats_column_cargs,
         "config": mrclusterstats_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -89,8 +87,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mrclusterstats": mrclusterstats_outputs,
+        "column": mrclusterstats_column_outputs,
+        "config": mrclusterstats_config_outputs,
+    }.get(t)
 
 
 def mrclusterstats_column_params(

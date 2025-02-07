@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXUP_MNI_PATHS_METADATA = Metadata(
     id="2bf5837eea05322482ae33a8bcc9d1f47a565a04.boutiques",
@@ -20,7 +19,7 @@ FixupMniPathsParameters = typing.TypedDict('FixupMniPathsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixup_mni_paths": fixup_mni_paths_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fixup_mni_paths": fixup_mni_paths_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FixupMniPathsOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMSTACK_METADATA = Metadata(
     id="4d6200fa2e1b9b6bfc0d03b2731f1be8201a7a22.boutiques",
@@ -22,7 +21,7 @@ ImstackParameters = typing.TypedDict('ImstackParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imstack": imstack_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imstack": imstack_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImstackOutputs(typing.NamedTuple):

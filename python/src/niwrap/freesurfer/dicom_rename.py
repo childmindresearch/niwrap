@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DICOM_RENAME_METADATA = Metadata(
     id="2eb87845c3a6be71bcd6bb57089f0cd879da57d4.boutiques",
@@ -21,7 +20,7 @@ DicomRenameParameters = typing.TypedDict('DicomRenameParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dicom-rename": dicom_rename_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dicom-rename": dicom_rename_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DicomRenameOutputs(typing.NamedTuple):

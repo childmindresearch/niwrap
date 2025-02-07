@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MORPH_RGB_LH_METADATA = Metadata(
     id="8a27176b135c7e00506bbb223dc33d4f8b5c331f.boutiques",
@@ -20,7 +19,7 @@ MorphRgbLhParameters = typing.TypedDict('MorphRgbLhParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "morph_rgb-lh": morph_rgb_lh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "morph_rgb-lh": morph_rgb_lh_outputs,
+    }.get(t)
 
 
 class MorphRgbLhOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_CONGEAL_METADATA = Metadata(
     id="f68a7b50f081a50aa62c0826055ec17d488357b5.boutiques",
@@ -34,7 +33,7 @@ MrisCongealParameters = typing.TypedDict('MrisCongealParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_congeal": mris_congeal_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_congeal": mris_congeal_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisCongealOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SERIAL_HELPER_METADATA = Metadata(
     id="4df7ea7f38a6767c1aba72a89599b9e5c022108c.boutiques",
@@ -31,7 +30,7 @@ SerialHelperParameters = typing.TypedDict('SerialHelperParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "serial_helper": serial_helper_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,8 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "serial_helper": serial_helper_outputs,
+    }.get(t)
 
 
 class SerialHelperOutputs(typing.NamedTuple):

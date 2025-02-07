@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
     id="60ac2c94312fce85a0d90163607df55149e2869d.boutiques",
@@ -28,7 +27,7 @@ VExamineGenFeatDistsParameters = typing.TypedDict('VExamineGenFeatDistsParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@ExamineGenFeatDists": v__examine_gen_feat_dists_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,8 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@ExamineGenFeatDists": v__examine_gen_feat_dists_outputs,
+    }.get(t)
 
 
 class VExamineGenFeatDistsOutputs(typing.NamedTuple):

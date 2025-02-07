@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FNAME2EXT_METADATA = Metadata(
     id="d737533f13debab7b8cdf915ca9c4aa939e7445c.boutiques",
@@ -20,7 +19,7 @@ Fname2extParameters = typing.TypedDict('Fname2extParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fname2ext": fname2ext_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fname2ext": fname2ext_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Fname2extOutputs(typing.NamedTuple):

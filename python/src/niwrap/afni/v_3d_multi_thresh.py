@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MULTI_THRESH_METADATA = Metadata(
     id="ac6c6a539a206612134e8a96c0fd7291780ddc36.boutiques",
@@ -30,7 +29,7 @@ V3dMultiThreshParameters = typing.TypedDict('V3dMultiThreshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMultiThresh": v_3d_multi_thresh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMultiThresh": v_3d_multi_thresh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMultiThreshOutputs(typing.NamedTuple):

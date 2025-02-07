@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_SEG2ANNOT_METADATA = Metadata(
     id="d008c930a065c732716cdd3422ffc514e12ed385.boutiques",
@@ -30,7 +29,7 @@ MrisSeg2annotParameters = typing.TypedDict('MrisSeg2annotParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_seg2annot": mris_seg2annot_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,10 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_seg2annot": mris_seg2annot_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisSeg2annotOutputs(typing.NamedTuple):

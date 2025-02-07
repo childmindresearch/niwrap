@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_EDIT_SEGMENTATION_WITH_SURFACES_METADATA = Metadata(
     id="b7676f431b8610a951f255b96b0e4e26a937a332.boutiques",
@@ -28,7 +27,7 @@ MriEditSegmentationWithSurfacesParameters = typing.TypedDict('MriEditSegmentatio
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_edit_segmentation_with_surfaces": mri_edit_segmentation_with_surfaces_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_edit_segmentation_with_surfaces": mri_edit_segmentation_with_surfaces_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriEditSegmentationWithSurfacesOutputs(typing.NamedTuple):

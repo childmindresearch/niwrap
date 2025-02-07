@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRAVERAGEHEADER_METADATA = Metadata(
     id="a78748366d0d3cfec49f44fdcdebe26755e40891.boutiques",
@@ -38,7 +37,7 @@ MraverageheaderParameters = typing.TypedDict('MraverageheaderParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,16 +46,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mraverageheader": mraverageheader_cargs,
         "config": mraverageheader_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mraverageheader": mraverageheader_outputs,
-    }
-    return vt.get(t)
+        "config": mraverageheader_config_outputs,
+    }.get(t)
 
 
 def mraverageheader_config_params(

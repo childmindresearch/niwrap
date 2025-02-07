@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SEGMENT_SUBFIELDS_T1_LONGITUDINAL_METADATA = Metadata(
     id="255cbc9bcd0a4cdb77830871dfed14d27befa862.boutiques",
@@ -22,7 +21,7 @@ SegmentSubfieldsT1LongitudinalParameters = typing.TypedDict('SegmentSubfieldsT1L
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SegmentSubfieldsT1Longitudinal": segment_subfields_t1_longitudinal_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SegmentSubfieldsT1Longitudinal": segment_subfields_t1_longitudinal_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SegmentSubfieldsT1LongitudinalOutputs(typing.NamedTuple):

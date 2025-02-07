@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REMOVE_NEGATIVE_VERTICES_METADATA = Metadata(
     id="c1064a10c7344f9e696303964c7ecc7e48d65433.boutiques",
@@ -22,7 +21,7 @@ MrisRemoveNegativeVerticesParameters = typing.TypedDict('MrisRemoveNegativeVerti
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_remove_negative_vertices": mris_remove_negative_vertices_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_remove_negative_vertices": mris_remove_negative_vertices_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRemoveNegativeVerticesOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA = Metadata(
     id="e333368d139aab06ce173382ee2a0cb69f091a99.boutiques",
@@ -25,7 +24,7 @@ AdjunctSumaFsMaskAndQcParameters = typing.TypedDict('AdjunctSumaFsMaskAndQcParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "adjunct_suma_fs_mask_and_qc": adjunct_suma_fs_mask_and_qc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "adjunct_suma_fs_mask_and_qc": adjunct_suma_fs_mask_and_qc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AdjunctSumaFsMaskAndQcOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 HISTO_SYNTHESIZE_METADATA = Metadata(
     id="ebfa527b23cadea769992b1ad756ebe6c1f58512.boutiques",
@@ -22,7 +21,7 @@ HistoSynthesizeParameters = typing.TypedDict('HistoSynthesizeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "histo_synthesize": histo_synthesize_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "histo_synthesize": histo_synthesize_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class HistoSynthesizeOutputs(typing.NamedTuple):

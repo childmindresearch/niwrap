@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_5TT2GMWMI_METADATA = Metadata(
     id="0ee6033ccf738011cdec5b8ea67b162a89b7d0c3.boutiques",
@@ -35,7 +34,7 @@ V5tt2gmwmiParameters = typing.TypedDict('V5tt2gmwmiParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "5tt2gmwmi": v_5tt2gmwmi_cargs,
         "config": v_5tt2gmwmi_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "5tt2gmwmi": v_5tt2gmwmi_outputs,
-    }
-    return vt.get(t)
+        "config": v_5tt2gmwmi_config_outputs,
+    }.get(t)
 
 
 def v_5tt2gmwmi_config_params(

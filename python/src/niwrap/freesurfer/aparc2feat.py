@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 APARC2FEAT_METADATA = Metadata(
     id="40a686bfd13826d8c5472e46b643ff5ee20464a4.boutiques",
@@ -26,7 +25,7 @@ Aparc2featParameters = typing.TypedDict('Aparc2featParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "aparc2feat": aparc2feat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "aparc2feat": aparc2feat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Aparc2featOutputs(typing.NamedTuple):

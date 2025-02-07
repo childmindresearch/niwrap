@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DUAL_REGRESSION_METADATA = Metadata(
     id="4ca133e6806abb8249af8771d3f5b7613b9bab63.boutiques",
@@ -27,7 +26,7 @@ DualRegressionParameters = typing.TypedDict('DualRegressionParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dual_regression": dual_regression_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dual_regression": dual_regression_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class DualRegressionOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TSFDIVIDE_METADATA = Metadata(
     id="4ccdf692559c43f81a4682ec0171e369f074e7b7.boutiques",
@@ -35,7 +34,7 @@ TsfdivideParameters = typing.TypedDict('TsfdivideParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tsfdivide": tsfdivide_cargs,
         "config": tsfdivide_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "tsfdivide": tsfdivide_outputs,
-    }
-    return vt.get(t)
+        "config": tsfdivide_config_outputs,
+    }.get(t)
 
 
 def tsfdivide_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PLOT_STRUCTURE_STATS_TCL_METADATA = Metadata(
     id="a74a29bbca7b8c304af58dc63af9e2298f4ac223.boutiques",
@@ -21,7 +20,7 @@ PlotStructureStatsTclParameters = typing.TypedDict('PlotStructureStatsTclParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "plot_structure_stats.tcl": plot_structure_stats_tcl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "plot_structure_stats.tcl": plot_structure_stats_tcl_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PlotStructureStatsTclOutputs(typing.NamedTuple):

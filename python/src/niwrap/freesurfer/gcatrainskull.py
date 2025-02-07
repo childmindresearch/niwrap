@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GCATRAINSKULL_METADATA = Metadata(
     id="89af41167df36313b39cb032d8e1c2c288ba043b.boutiques",
@@ -20,7 +19,7 @@ GcatrainskullParameters = typing.TypedDict('GcatrainskullParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gcatrainskull": gcatrainskull_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gcatrainskull": gcatrainskull_outputs,
+    }.get(t)
 
 
 class GcatrainskullOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IMCP_METADATA = Metadata(
     id="3ce02a1e9e4c018cb776d50ddced228a47e4d1ae.boutiques",
@@ -21,7 +20,7 @@ ImcpParameters = typing.TypedDict('ImcpParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "imcp": imcp_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "imcp": imcp_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ImcpOutputs(typing.NamedTuple):

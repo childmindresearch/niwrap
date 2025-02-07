@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PARC_ATLAS_JACKKNIFE_TEST_METADATA = Metadata(
     id="c3bca782ff73ffb7144b8a68ae203b8cb4791e7f.boutiques",
@@ -31,7 +30,7 @@ ParcAtlasJackknifeTestParameters = typing.TypedDict('ParcAtlasJackknifeTestParam
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "parc_atlas_jackknife_test": parc_atlas_jackknife_test_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "parc_atlas_jackknife_test": parc_atlas_jackknife_test_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class ParcAtlasJackknifeTestOutputs(typing.NamedTuple):

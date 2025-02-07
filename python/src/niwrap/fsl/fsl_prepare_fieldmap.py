@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSL_PREPARE_FIELDMAP_METADATA = Metadata(
     id="5c59e0c61ed0a1488f719131a2d741d2cf4930a5.boutiques",
@@ -25,7 +24,7 @@ FslPrepareFieldmapParameters = typing.TypedDict('FslPrepareFieldmapParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fsl_prepare_fieldmap": fsl_prepare_fieldmap_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fsl_prepare_fieldmap": fsl_prepare_fieldmap_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FslPrepareFieldmapOutputs(typing.NamedTuple):

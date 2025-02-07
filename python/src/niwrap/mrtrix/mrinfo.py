@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRINFO_METADATA = Metadata(
     id="640aec1bccae29356c89f4af6bea995bd8e6eee5.boutiques",
@@ -79,7 +78,7 @@ MrinfoParameters = typing.TypedDict('MrinfoParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -88,20 +87,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrinfo": mrinfo_cargs,
         "property": mrinfo_property_cargs,
         "fslgrad": mrinfo_fslgrad_cargs,
         "export_grad_fsl": mrinfo_export_grad_fsl_cargs,
         "export_pe_eddy": mrinfo_export_pe_eddy_cargs,
         "config": mrinfo_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -110,12 +108,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrinfo": mrinfo_outputs,
+        "property": mrinfo_property_outputs,
+        "fslgrad": mrinfo_fslgrad_outputs,
         "export_grad_fsl": mrinfo_export_grad_fsl_outputs,
         "export_pe_eddy": mrinfo_export_pe_eddy_outputs,
-    }
-    return vt.get(t)
+        "config": mrinfo_config_outputs,
+    }.get(t)
 
 
 def mrinfo_property_params(

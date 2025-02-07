@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GEN_EPI_REVIEW_PY_METADATA = Metadata(
     id="d8d2bfa4cbebb23bdbab47bb389c8686d9524ec8.boutiques",
@@ -29,7 +28,7 @@ GenEpiReviewPyParameters = typing.TypedDict('GenEpiReviewPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "gen_epi_review.py": gen_epi_review_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "gen_epi_review.py": gen_epi_review_py_outputs,
+    }.get(t)
 
 
 class GenEpiReviewPyOutputs(typing.NamedTuple):

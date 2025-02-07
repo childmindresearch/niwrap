@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRHISTOGRAM_METADATA = Metadata(
     id="5dad6acd1b74d4b31384e0d780f065448cd007b5.boutiques",
@@ -39,7 +38,7 @@ MrhistogramParameters = typing.TypedDict('MrhistogramParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -48,16 +47,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrhistogram": mrhistogram_cargs,
         "config": mrhistogram_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -66,10 +64,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrhistogram": mrhistogram_outputs,
-    }
-    return vt.get(t)
+        "config": mrhistogram_config_outputs,
+    }.get(t)
 
 
 def mrhistogram_config_params(

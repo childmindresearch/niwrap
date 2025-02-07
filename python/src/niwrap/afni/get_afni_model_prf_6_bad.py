@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 GET_AFNI_MODEL_PRF_6_BAD_METADATA = Metadata(
     id="f7614b8ced72773ab9bfd46ff569ff9a092b84e3.boutiques",
@@ -25,7 +24,7 @@ GetAfniModelPrf6BadParameters = typing.TypedDict('GetAfniModelPrf6BadParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "get_afni_model_PRF_6_BAD": get_afni_model_prf_6_bad_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "get_afni_model_PRF_6_BAD": get_afni_model_prf_6_bad_outputs,
+    }.get(t)
 
 
 class GetAfniModelPrf6BadOutputs(typing.NamedTuple):

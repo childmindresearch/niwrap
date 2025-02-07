@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MATCH_METADATA = Metadata(
     id="5e79a849f1f76bbe598dfba4e01f90d83d62deb0.boutiques",
@@ -28,7 +27,7 @@ V3dMatchParameters = typing.TypedDict('V3dMatchParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMatch": v_3d_match_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMatch": v_3d_match_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMatchOutputs(typing.NamedTuple):

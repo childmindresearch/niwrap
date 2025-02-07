@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_PALETTE_METADATA = Metadata(
     id="6600f0fd7050affe6aeef2d792aa2f3d3a26d6e8.boutiques",
@@ -60,7 +59,7 @@ MetricPaletteParameters = typing.TypedDict('MetricPaletteParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -69,20 +68,19 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-palette": metric_palette_cargs,
         "pos_percent": metric_palette_pos_percent_cargs,
         "neg_percent": metric_palette_neg_percent_cargs,
         "pos_user": metric_palette_pos_user_cargs,
         "neg_user": metric_palette_neg_user_cargs,
         "thresholding": metric_palette_thresholding_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -91,8 +89,14 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "metric-palette": metric_palette_outputs,
+        "pos_percent": metric_palette_pos_percent_outputs,
+        "neg_percent": metric_palette_neg_percent_outputs,
+        "pos_user": metric_palette_pos_user_outputs,
+        "neg_user": metric_palette_neg_user_outputs,
+        "thresholding": metric_palette_thresholding_outputs,
+    }.get(t)
 
 
 def metric_palette_pos_percent_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLVBM_3_PROC_METADATA = Metadata(
     id="e412ceb5c621d60c9b9b10de2a0a6700c42898c2.boutiques",
@@ -51,7 +50,7 @@ Fslvbm3ProcParameters = typing.TypedDict('Fslvbm3ProcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,15 +59,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslvbm_3_proc": fslvbm_3_proc_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,10 +75,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fslvbm_3_proc": fslvbm_3_proc_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Fslvbm3ProcOutputs(typing.NamedTuple):

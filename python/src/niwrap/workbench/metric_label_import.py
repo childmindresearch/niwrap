@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_LABEL_IMPORT_METADATA = Metadata(
     id="6da1f2a3d32c8f47c15c52c268b4fb47c77b1020.boutiques",
@@ -26,7 +25,7 @@ MetricLabelImportParameters = typing.TypedDict('MetricLabelImportParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-label-import": metric_label_import_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-label-import": metric_label_import_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MetricLabelImportOutputs(typing.NamedTuple):

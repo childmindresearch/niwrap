@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_MERGE_METADATA = Metadata(
     id="a2867c9f1f554b53baadf738fb0efbb3a6746715.boutiques",
@@ -36,7 +35,7 @@ VolumeMergeParameters = typing.TypedDict('VolumeMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,18 +44,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-merge": volume_merge_cargs,
         "volume": volume_merge_volume_cargs,
         "subvolume": volume_merge_subvolume_cargs,
         "up_to": volume_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-merge": volume_merge_outputs,
-    }
-    return vt.get(t)
+        "volume": volume_merge_volume_outputs,
+        "subvolume": volume_merge_subvolume_outputs,
+        "up_to": volume_merge_up_to_outputs,
+    }.get(t)
 
 
 def volume_merge_up_to_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_VOX2VOX_METADATA = Metadata(
     id="c170241b240c3ff4893542415ea2cb91ac0b3c6c.boutiques",
@@ -32,7 +31,7 @@ DmriVox2voxParameters = typing.TypedDict('DmriVox2voxParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_vox2vox": dmri_vox2vox_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dmri_vox2vox": dmri_vox2vox_outputs,
+    }.get(t)
 
 
 class DmriVox2voxOutputs(typing.NamedTuple):

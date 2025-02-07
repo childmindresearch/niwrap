@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXELREORIENT_METADATA = Metadata(
     id="131439582b6a79c991d4bdc5b5ebe9896e2ee937.boutiques",
@@ -35,7 +34,7 @@ FixelreorientParameters = typing.TypedDict('FixelreorientParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixelreorient": fixelreorient_cargs,
         "config": fixelreorient_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fixelreorient": fixelreorient_outputs,
-    }
-    return vt.get(t)
+        "config": fixelreorient_config_outputs,
+    }.get(t)
 
 
 def fixelreorient_config_params(

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 XSANATREG_METADATA = Metadata(
     id="fa7d0e1f8dd94e54884aa8dac608dad32d5de507.boutiques",
@@ -28,7 +27,7 @@ XsanatregParameters = typing.TypedDict('XsanatregParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "xsanatreg": xsanatreg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,8 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "xsanatreg": xsanatreg_outputs,
+    }.get(t)
 
 
 class XsanatregOutputs(typing.NamedTuple):

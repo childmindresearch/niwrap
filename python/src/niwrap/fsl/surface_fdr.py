@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_FDR_METADATA = Metadata(
     id="94b53ea7d88621220b891d96dc62c9924e143dac.boutiques",
@@ -20,7 +19,7 @@ SurfaceFdrParameters = typing.TypedDict('SurfaceFdrParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface_fdr": surface_fdr_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface_fdr": surface_fdr_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceFdrOutputs(typing.NamedTuple):

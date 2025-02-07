@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FILMBABESCRIPT_METADATA = Metadata(
     id="c482f1ace2d9ca2fee7c3ed712be29e7f1ae595a.boutiques",
@@ -21,7 +20,7 @@ FilmbabescriptParameters = typing.TypedDict('FilmbabescriptParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "filmbabescript": filmbabescript_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "filmbabescript": filmbabescript_outputs,
+    }.get(t)
 
 
 class FilmbabescriptOutputs(typing.NamedTuple):

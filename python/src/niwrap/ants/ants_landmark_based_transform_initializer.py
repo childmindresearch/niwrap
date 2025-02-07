@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA = Metadata(
     id="0a1f0f529ca0b132289382b0bfa307fd1e5cda95.boutiques",
@@ -29,7 +28,7 @@ AntsLandmarkBasedTransformInitializerParameters = typing.TypedDict('AntsLandmark
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsLandmarkBasedTransformInitializer": ants_landmark_based_transform_initializer_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsLandmarkBasedTransformInitializer": ants_landmark_based_transform_initializer_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsLandmarkBasedTransformInitializerOutputs(typing.NamedTuple):

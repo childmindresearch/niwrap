@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRCAT_METADATA = Metadata(
     id="b3de92bc09aeac701d99649eaea82387c297125a.boutiques",
@@ -37,7 +36,7 @@ MrcatParameters = typing.TypedDict('MrcatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,16 +45,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mrcat": mrcat_cargs,
         "config": mrcat_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mrcat": mrcat_outputs,
-    }
-    return vt.get(t)
+        "config": mrcat_config_outputs,
+    }.get(t)
 
 
 def mrcat_config_params(

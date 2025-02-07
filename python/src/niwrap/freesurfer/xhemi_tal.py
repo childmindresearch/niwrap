@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 XHEMI_TAL_METADATA = Metadata(
     id="75297464bbd5b47449915f4f1464c80da7860766.boutiques",
@@ -20,7 +19,7 @@ XhemiTalParameters = typing.TypedDict('XhemiTalParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "xhemi-tal": xhemi_tal_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "xhemi-tal": xhemi_tal_outputs,
+    }.get(t)
 
 
 class XhemiTalOutputs(typing.NamedTuple):

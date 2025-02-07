@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__COMPUTE_OC_WEIGHTS_METADATA = Metadata(
     id="4427220e56bd9be0b0fb6b294b7d2992dca6669c.boutiques",
@@ -28,7 +27,7 @@ VComputeOcWeightsParameters = typing.TypedDict('VComputeOcWeightsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@compute_OC_weights": v__compute_oc_weights_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "@compute_OC_weights": v__compute_oc_weights_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VComputeOcWeightsOutputs(typing.NamedTuple):

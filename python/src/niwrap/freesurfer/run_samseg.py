@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RUN_SAMSEG_METADATA = Metadata(
     id="44643a5ac5bf2fd988d84ca267e8388b307ea24d.boutiques",
@@ -51,7 +50,7 @@ RunSamsegParameters = typing.TypedDict('RunSamsegParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -60,15 +59,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "run_samseg": run_samseg_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -77,8 +75,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "run_samseg": run_samseg_outputs,
+    }.get(t)
 
 
 class RunSamsegOutputs(typing.NamedTuple):

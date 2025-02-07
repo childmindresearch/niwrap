@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LISTSUBJ_METADATA = Metadata(
     id="e9369381138405e14a70273bc76d2a91dd2f8045.boutiques",
@@ -20,7 +19,7 @@ ListsubjParameters = typing.TypedDict('ListsubjParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "listsubj": listsubj_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "listsubj": listsubj_outputs,
+    }.get(t)
 
 
 class ListsubjOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BIASFIELD_METADATA = Metadata(
     id="c8391deeed6d412683183d406717be9cba1af3b4.boutiques",
@@ -25,7 +24,7 @@ BiasfieldParameters = typing.TypedDict('BiasfieldParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "biasfield": biasfield_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "biasfield": biasfield_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BiasfieldOutputs(typing.NamedTuple):

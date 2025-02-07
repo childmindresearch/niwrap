@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TSFINFO_METADATA = Metadata(
     id="93e8dd3a8bf3a767eaca6532b13d53b4050811a0.boutiques",
@@ -35,7 +34,7 @@ TsfinfoParameters = typing.TypedDict('TsfinfoParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "tsfinfo": tsfinfo_cargs,
         "config": tsfinfo_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "tsfinfo": tsfinfo_outputs,
+        "config": tsfinfo_config_outputs,
+    }.get(t)
 
 
 def tsfinfo_config_params(

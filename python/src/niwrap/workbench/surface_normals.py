@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_NORMALS_METADATA = Metadata(
     id="bf741b89964614d5dda2065678e1ec762984a361.boutiques",
@@ -21,7 +20,7 @@ SurfaceNormalsParameters = typing.TypedDict('SurfaceNormalsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-normals": surface_normals_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-normals": surface_normals_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceNormalsOutputs(typing.NamedTuple):

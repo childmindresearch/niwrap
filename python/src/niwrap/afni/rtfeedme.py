@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RTFEEDME_METADATA = Metadata(
     id="32964e0c08bfc25e6c4f6eca5347bfc95b91dd98.boutiques",
@@ -30,7 +29,7 @@ RtfeedmeParameters = typing.TypedDict('RtfeedmeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,15 +38,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rtfeedme": rtfeedme_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -56,8 +54,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "rtfeedme": rtfeedme_outputs,
+    }.get(t)
 
 
 class RtfeedmeOutputs(typing.NamedTuple):

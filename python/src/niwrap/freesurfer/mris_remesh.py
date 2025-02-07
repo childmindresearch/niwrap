@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_REMESH_METADATA = Metadata(
     id="f5ca57ee0b80f57d1998800d04224821e0092cc6.boutiques",
@@ -26,7 +25,7 @@ MrisRemeshParameters = typing.TypedDict('MrisRemeshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_remesh": mris_remesh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_remesh": mris_remesh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisRemeshOutputs(typing.NamedTuple):

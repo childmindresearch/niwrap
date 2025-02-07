@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FEATREGAPPLY_METADATA = Metadata(
     id="30c4e6513395f39bf385f62de8b909c189f6d029.boutiques",
@@ -26,7 +25,7 @@ FeatregapplyParameters = typing.TypedDict('FeatregapplyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "featregapply": featregapply_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "featregapply": featregapply_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FeatregapplyOutputs(typing.NamedTuple):

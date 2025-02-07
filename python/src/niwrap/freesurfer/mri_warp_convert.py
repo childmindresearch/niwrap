@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_WARP_CONVERT_METADATA = Metadata(
     id="36b7f6d3b0edf16e088ad567445e656a71a7dd89.boutiques",
@@ -23,7 +22,7 @@ MriWarpConvertParameters = typing.TypedDict('MriWarpConvertParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_warp_convert": mri_warp_convert_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_warp_convert": mri_warp_convert_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriWarpConvertOutputs(typing.NamedTuple):

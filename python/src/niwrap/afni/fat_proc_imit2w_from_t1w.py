@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_PROC_IMIT2W_FROM_T1W_METADATA = Metadata(
     id="6e7211eeaf18937b51ec873d5287062ff3f44746.boutiques",
@@ -27,7 +26,7 @@ FatProcImit2wFromT1wParameters = typing.TypedDict('FatProcImit2wFromT1wParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_proc_imit2w_from_t1w": fat_proc_imit2w_from_t1w_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_proc_imit2w_from_t1w": fat_proc_imit2w_from_t1w_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatProcImit2wFromT1wOutputs(typing.NamedTuple):

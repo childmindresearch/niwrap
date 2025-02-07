@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA = Metadata(
     id="1571ae7852c5d0ff3bb69988315d8db4d363f2a7.boutiques",
@@ -32,7 +31,7 @@ DmriExtractSurfaceMeasurementsParameters = typing.TypedDict('DmriExtractSurfaceM
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dmri_extractSurfaceMeasurements": dmri_extract_surface_measurements_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "dmri_extractSurfaceMeasurements": dmri_extract_surface_measurements_outputs,
+    }.get(t)
 
 
 class DmriExtractSurfaceMeasurementsOutputs(typing.NamedTuple):

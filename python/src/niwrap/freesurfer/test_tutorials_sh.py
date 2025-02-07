@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TEST_TUTORIALS_SH_METADATA = Metadata(
     id="12b91716710dd5b63abd67223200ca5920aafcec.boutiques",
@@ -35,7 +34,7 @@ TestTutorialsShParameters = typing.TypedDict('TestTutorialsShParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,15 +43,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "test_tutorials.sh": test_tutorials_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "test_tutorials.sh": test_tutorials_sh_outputs,
+    }.get(t)
 
 
 class TestTutorialsShOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_CORTEX_LAYER_METADATA = Metadata(
     id="1fb2598f6c40246e1cd4406b005c1caba798780a.boutiques",
@@ -24,7 +23,7 @@ SurfaceCortexLayerParameters = typing.TypedDict('SurfaceCortexLayerParameters', 
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-cortex-layer": surface_cortex_layer_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-cortex-layer": surface_cortex_layer_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceCortexLayerOutputs(typing.NamedTuple):

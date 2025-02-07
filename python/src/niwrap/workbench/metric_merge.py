@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_MERGE_METADATA = Metadata(
     id="5efa0672fc1bec7baa7e42b9ac635bebfd02f4d8.boutiques",
@@ -36,7 +35,7 @@ MetricMergeParameters = typing.TypedDict('MetricMergeParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,18 +44,17 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-merge": metric_merge_cargs,
         "metric": metric_merge_metric_cargs,
         "column": metric_merge_column_cargs,
         "up_to": metric_merge_up_to_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -65,10 +63,12 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-merge": metric_merge_outputs,
-    }
-    return vt.get(t)
+        "metric": metric_merge_metric_outputs,
+        "column": metric_merge_column_outputs,
+        "up_to": metric_merge_up_to_outputs,
+    }.get(t)
 
 
 def metric_merge_up_to_params(

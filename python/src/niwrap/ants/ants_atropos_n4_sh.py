@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_ATROPOS_N4_SH_METADATA = Metadata(
     id="26f6c01fef89c147f9f9fc215073f4d86231d70b.boutiques",
@@ -47,7 +46,7 @@ AntsAtroposN4ShParameters = typing.TypedDict('AntsAtroposN4ShParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -56,16 +55,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsAtroposN4.sh": ants_atropos_n4_sh_cargs,
         "segmentation_priors": ants_atropos_n4_sh_segmentation_priors_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -74,10 +72,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsAtroposN4.sh": ants_atropos_n4_sh_outputs,
-    }
-    return vt.get(t)
+        "segmentation_priors": ants_atropos_n4_sh_segmentation_priors_outputs,
+    }.get(t)
 
 
 def ants_atropos_n4_sh_segmentation_priors_params(

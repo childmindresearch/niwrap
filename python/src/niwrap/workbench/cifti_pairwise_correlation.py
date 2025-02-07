@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
     id="b915f6d8b944ba1576e9632affc392ecdfd65dfe.boutiques",
@@ -24,7 +23,7 @@ CiftiPairwiseCorrelationParameters = typing.TypedDict('CiftiPairwiseCorrelationP
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-pairwise-correlation": cifti_pairwise_correlation_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-pairwise-correlation": cifti_pairwise_correlation_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CiftiPairwiseCorrelationOutputs(typing.NamedTuple):

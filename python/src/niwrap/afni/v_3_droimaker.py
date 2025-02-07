@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3_DROIMAKER_METADATA = Metadata(
     id="52994e672a5f137f27dbb8bbd59f66cee7093ffe.boutiques",
@@ -38,7 +37,7 @@ V3DroimakerParameters = typing.TypedDict('V3DroimakerParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -47,15 +46,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3DROIMaker": v_3_droimaker_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,10 +62,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3DROIMaker": v_3_droimaker_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3DroimakerOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIXELCORRESPONDENCE_METADATA = Metadata(
     id="fad1be9b8243f83bbbf677ed7d4db5308a7e3c5d.boutiques",
@@ -37,7 +36,7 @@ FixelcorrespondenceParameters = typing.TypedDict('FixelcorrespondenceParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -46,16 +45,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fixelcorrespondence": fixelcorrespondence_cargs,
         "config": fixelcorrespondence_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -64,8 +62,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fixelcorrespondence": fixelcorrespondence_outputs,
+        "config": fixelcorrespondence_config_outputs,
+    }.get(t)
 
 
 def fixelcorrespondence_config_params(

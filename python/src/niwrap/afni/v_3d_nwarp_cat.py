@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_NWARP_CAT_METADATA = Metadata(
     id="50ffd879ac4756b7a539af68c646c32f78b68146.boutiques",
@@ -28,7 +27,7 @@ V3dNwarpCatParameters = typing.TypedDict('V3dNwarpCatParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dNwarpCat": v_3d_nwarp_cat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dNwarpCat": v_3d_nwarp_cat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dNwarpCatOutputs(typing.NamedTuple):

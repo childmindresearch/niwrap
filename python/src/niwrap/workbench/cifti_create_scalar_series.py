@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
     id="baeec4f19b77cff9ac7b9fbc51ea7e84c97983f3.boutiques",
@@ -30,7 +29,7 @@ CiftiCreateScalarSeriesParameters = typing.TypedDict('CiftiCreateScalarSeriesPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,16 +38,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-create-scalar-series": cifti_create_scalar_series_cargs,
         "series": cifti_create_scalar_series_series_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-create-scalar-series": cifti_create_scalar_series_outputs,
-    }
-    return vt.get(t)
+        "series": cifti_create_scalar_series_series_outputs,
+    }.get(t)
 
 
 def cifti_create_scalar_series_series_params(

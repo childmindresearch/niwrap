@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_STAT_CLUST_METADATA = Metadata(
     id="fc722addfbc175c71d3a318d604f19ee64fdb599.boutiques",
@@ -26,7 +25,7 @@ V3dStatClustParameters = typing.TypedDict('V3dStatClustParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dStatClust": v_3d_stat_clust_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dStatClust": v_3d_stat_clust_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dStatClustOutputs(typing.NamedTuple):

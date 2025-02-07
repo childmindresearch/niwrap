@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL_RESAMPLE_METADATA = Metadata(
     id="695b221832d5527bc6d781edaf957f7b83318aa6.boutiques",
@@ -40,7 +39,7 @@ LabelResampleParameters = typing.TypedDict('LabelResampleParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -49,17 +48,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label-resample": label_resample_cargs,
         "area_surfs": label_resample_area_surfs_cargs,
         "area_metrics": label_resample_area_metrics_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,10 +66,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label-resample": label_resample_outputs,
-    }
-    return vt.get(t)
+        "area_surfs": label_resample_area_surfs_outputs,
+        "area_metrics": label_resample_area_metrics_outputs,
+    }.get(t)
 
 
 def label_resample_area_surfs_params(

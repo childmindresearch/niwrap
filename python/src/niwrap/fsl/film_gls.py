@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FILM_GLS_METADATA = Metadata(
     id="f39dd7c8e81740062ca1452d21d0bb5ced20f4aa.boutiques",
@@ -42,7 +41,7 @@ FilmGlsParameters = typing.TypedDict('FilmGlsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -51,15 +50,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "film_gls": film_gls_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -68,10 +66,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "film_gls": film_gls_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FilmGlsOutputs(typing.NamedTuple):

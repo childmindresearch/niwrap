@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_TCORR_MAP_METADATA = Metadata(
     id="197d89aea57496a500d08e514c10454efb723051.boutiques",
@@ -36,7 +35,7 @@ V3dTcorrMapParameters = typing.TypedDict('V3dTcorrMapParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -45,15 +44,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dTcorrMap": v_3d_tcorr_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,8 +60,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "3dTcorrMap": v_3d_tcorr_map_outputs,
+    }.get(t)
 
 
 class V3dTcorrMapOutputs(typing.NamedTuple):

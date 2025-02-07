@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_MARK_TEMPORAL_LOBE_METADATA = Metadata(
     id="a5a020bc6a51cd99fe31227a0a5e948147e247bf.boutiques",
@@ -23,7 +22,7 @@ MriMarkTemporalLobeParameters = typing.TypedDict('MriMarkTemporalLobeParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_mark_temporal_lobe": mri_mark_temporal_lobe_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_mark_temporal_lobe": mri_mark_temporal_lobe_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriMarkTemporalLobeOutputs(typing.NamedTuple):

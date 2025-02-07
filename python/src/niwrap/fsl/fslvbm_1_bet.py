@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FSLVBM_1_BET_METADATA = Metadata(
     id="b14f656e797f3613fc30f4f42a5942f8c36bc438.boutiques",
@@ -21,7 +20,7 @@ Fslvbm1BetParameters = typing.TypedDict('Fslvbm1BetParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fslvbm_1_bet": fslvbm_1_bet_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "fslvbm_1_bet": fslvbm_1_bet_outputs,
+    }.get(t)
 
 
 class Fslvbm1BetOutputs(typing.NamedTuple):

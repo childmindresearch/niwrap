@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FAT_MVM_PREP_METADATA = Metadata(
     id="90f6bc657de16af423e425320b0789c1d1f1d2eb.boutiques",
@@ -26,7 +25,7 @@ FatMvmPrepParameters = typing.TypedDict('FatMvmPrepParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fat_mvm_prep": fat_mvm_prep_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fat_mvm_prep": fat_mvm_prep_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FatMvmPrepOutputs(typing.NamedTuple):

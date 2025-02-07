@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SEGMENT_HA_T2_SH_METADATA = Metadata(
     id="e35fef1406f0bc21d5d98039621ba41ed9020379.boutiques",
@@ -21,7 +20,7 @@ SegmentHaT2ShParameters = typing.TypedDict('SegmentHaT2ShParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "segmentHA_T2.sh": segment_ha_t2_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "segmentHA_T2.sh": segment_ha_t2_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SegmentHaT2ShOutputs(typing.NamedTuple):

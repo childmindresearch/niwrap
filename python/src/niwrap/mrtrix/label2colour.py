@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LABEL2COLOUR_METADATA = Metadata(
     id="c1884f48e15f2a0255f7742d85904c1e94ec1214.boutiques",
@@ -35,7 +34,7 @@ Label2colourParameters = typing.TypedDict('Label2colourParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -44,16 +43,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "label2colour": label2colour_cargs,
         "config": label2colour_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -62,10 +60,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "label2colour": label2colour_outputs,
-    }
-    return vt.get(t)
+        "config": label2colour_config_outputs,
+    }.get(t)
 
 
 def label2colour_config_params(

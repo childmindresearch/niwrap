@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
     id="7a851fbc13b146fb391d13bedfc2eac4da52237a.boutiques",
@@ -23,7 +22,7 @@ FociGetProjectionVertexParameters = typing.TypedDict('FociGetProjectionVertexPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "foci-get-projection-vertex": foci_get_projection_vertex_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "foci-get-projection-vertex": foci_get_projection_vertex_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FociGetProjectionVertexOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_F3D_METADATA = Metadata(
     id="1e4f335840b8035582d36ee0767618d0b14f496c.boutiques",
@@ -59,7 +58,7 @@ RegF3dParameters = typing.TypedDict('RegF3dParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -68,15 +67,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg_f3d": reg_f3d_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -85,10 +83,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg_f3d": reg_f3d_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegF3dOutputs(typing.NamedTuple):

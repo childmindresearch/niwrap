@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ASEG2FEAT_METADATA = Metadata(
     id="a171951e01eefa6d930d2f5fc71421003b6f23e3.boutiques",
@@ -28,7 +27,7 @@ Aseg2featParameters = typing.TypedDict('Aseg2featParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "aseg2feat": aseg2feat_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "aseg2feat": aseg2feat_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Aseg2featOutputs(typing.NamedTuple):

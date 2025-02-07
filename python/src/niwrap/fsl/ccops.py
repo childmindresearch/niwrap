@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CCOPS_METADATA = Metadata(
     id="15f914d7513b2d71d9d54891eb8992cdb8593e4a.boutiques",
@@ -33,7 +32,7 @@ CcopsParameters = typing.TypedDict('CcopsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "ccops": ccops_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "ccops": ccops_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CcopsOutputs(typing.NamedTuple):

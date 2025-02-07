@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_MATH_METADATA = Metadata(
     id="528e08f2f90f7ba1a4d53826cb32fb490e132602.boutiques",
@@ -30,7 +29,7 @@ MetricMathParameters = typing.TypedDict('MetricMathParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -39,16 +38,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-math": metric_math_cargs,
         "var": metric_math_var_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-math": metric_math_outputs,
-    }
-    return vt.get(t)
+        "var": metric_math_var_outputs,
+    }.get(t)
 
 
 def metric_math_var_params(

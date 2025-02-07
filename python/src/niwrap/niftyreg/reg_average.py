@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 REG_AVERAGE_METADATA = Metadata(
     id="61e1f607541cf2b120dd32fdab5918c08f2dda1a.boutiques",
@@ -21,7 +20,7 @@ RegAverageParameters = typing.TypedDict('RegAverageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "reg_average": reg_average_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "reg_average": reg_average_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RegAverageOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FLIRT_METADATA = Metadata(
     id="f6fc35e6267b771a9a40d8e09382a09e76789072.boutiques",
@@ -64,7 +63,7 @@ FlirtParameters = typing.TypedDict('FlirtParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -73,15 +72,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "flirt": flirt_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -90,10 +88,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "flirt": flirt_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FlirtOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FEATQUERY_METADATA = Metadata(
     id="96cbd3c005381bc3cb5b8f178d6915f637266ce8.boutiques",
@@ -33,7 +32,7 @@ FeatqueryParameters = typing.TypedDict('FeatqueryParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,15 +41,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "featquery": featquery_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -59,10 +57,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "featquery": featquery_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FeatqueryOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
     id="9c3e18b84a0136395940d5ee50cb45c790ea3cbb.boutiques",
@@ -48,7 +47,7 @@ CiftiReplaceStructureParameters = typing.TypedDict('CiftiReplaceStructureParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -57,19 +56,18 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-replace-structure": cifti_replace_structure_cargs,
         "volume_all": cifti_replace_structure_volume_all_cargs,
         "label": cifti_replace_structure_label_cargs,
         "metric": cifti_replace_structure_metric_cargs,
         "volume": cifti_replace_structure_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,8 +76,13 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "cifti-replace-structure": cifti_replace_structure_outputs,
+        "volume_all": cifti_replace_structure_volume_all_outputs,
+        "label": cifti_replace_structure_label_outputs,
+        "metric": cifti_replace_structure_metric_outputs,
+        "volume": cifti_replace_structure_volume_outputs,
+    }.get(t)
 
 
 def cifti_replace_structure_volume_all_params(

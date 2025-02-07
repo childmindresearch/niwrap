@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SAMSEG2RECON_METADATA = Metadata(
     id="d187c3e2881ef4e68bbc4c2919f41e8e9ad94cca.boutiques",
@@ -31,7 +30,7 @@ Samseg2reconParameters = typing.TypedDict('Samseg2reconParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "samseg2recon": samseg2recon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,10 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "samseg2recon": samseg2recon_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Samseg2reconOutputs(typing.NamedTuple):

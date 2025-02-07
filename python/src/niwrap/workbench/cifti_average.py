@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CIFTI_AVERAGE_METADATA = Metadata(
     id="e8987396c5ff3a27080f32d2b0e28b39d20a3cb7.boutiques",
@@ -33,7 +32,7 @@ CiftiAverageParameters = typing.TypedDict('CiftiAverageParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -42,17 +41,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "cifti-average": cifti_average_cargs,
         "exclude_outliers": cifti_average_exclude_outliers_cargs,
         "cifti": cifti_average_cifti_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,10 +59,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "cifti-average": cifti_average_outputs,
-    }
-    return vt.get(t)
+        "exclude_outliers": cifti_average_exclude_outliers_outputs,
+        "cifti": cifti_average_cifti_outputs,
+    }.get(t)
 
 
 def cifti_average_exclude_outliers_params(

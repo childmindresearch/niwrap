@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BIANCA_METADATA = Metadata(
     id="faece12893f9764ba2ed673c9b5a6791f2ed9a43.boutiques",
@@ -34,7 +33,7 @@ BiancaParameters = typing.TypedDict('BiancaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "bianca": bianca_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "bianca": bianca_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BiancaOutputs(typing.NamedTuple):

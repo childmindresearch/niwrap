@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 TEST_RECON_ALL_CSH_METADATA = Metadata(
     id="8cf72a95ce1a11314c60b7ef805c1a1b7bf68cfb.boutiques",
@@ -25,7 +24,7 @@ TestReconAllCshParameters = typing.TypedDict('TestReconAllCshParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "test_recon-all.csh": test_recon_all_csh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "test_recon-all.csh": test_recon_all_csh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class TestReconAllCshOutputs(typing.NamedTuple):

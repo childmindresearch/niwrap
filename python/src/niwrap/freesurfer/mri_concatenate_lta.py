@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_CONCATENATE_LTA_METADATA = Metadata(
     id="4ebf515f1f226122f61f4db868b19e295a774022.boutiques",
@@ -31,7 +30,7 @@ MriConcatenateLtaParameters = typing.TypedDict('MriConcatenateLtaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -40,15 +39,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_concatenate_lta": mri_concatenate_lta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -57,8 +55,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mri_concatenate_lta": mri_concatenate_lta_outputs,
+    }.get(t)
 
 
 class MriConcatenateLtaOutputs(typing.NamedTuple):

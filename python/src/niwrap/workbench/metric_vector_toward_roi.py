@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
     id="82ce3915240934b58fb359f7a47c43413230f75c.boutiques",
@@ -23,7 +22,7 @@ MetricVectorTowardRoiParameters = typing.TypedDict('MetricVectorTowardRoiParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "metric-vector-toward-roi": metric_vector_toward_roi_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "metric-vector-toward-roi": metric_vector_toward_roi_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MetricVectorTowardRoiOutputs(typing.NamedTuple):

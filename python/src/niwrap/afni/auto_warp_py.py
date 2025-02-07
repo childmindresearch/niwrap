@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 AUTO_WARP_PY_METADATA = Metadata(
     id="a6e140162bdb60ac7b3f82c488330c94eee4e2ab.boutiques",
@@ -52,7 +51,7 @@ AutoWarpPyParameters = typing.TypedDict('AutoWarpPyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -61,15 +60,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "auto_warp.py": auto_warp_py_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -78,8 +76,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "auto_warp.py": auto_warp_py_outputs,
+    }.get(t)
 
 
 class AutoWarpPyOutputs(typing.NamedTuple):

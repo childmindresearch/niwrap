@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 FIX_SUBJECT_CORRECTED_RH_METADATA = Metadata(
     id="52da465b947b94728415b771545cea34c0073071.boutiques",
@@ -20,7 +19,7 @@ FixSubjectCorrectedRhParameters = typing.TypedDict('FixSubjectCorrectedRhParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "fix_subject_corrected-rh": fix_subject_corrected_rh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,10 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "fix_subject_corrected-rh": fix_subject_corrected_rh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class FixSubjectCorrectedRhOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SLICEDELAY_METADATA = Metadata(
     id="e0e78eeb6a32014e4f62ce730e136633e9ef9494.boutiques",
@@ -23,7 +22,7 @@ SlicedelayParameters = typing.TypedDict('SlicedelayParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "slicedelay": slicedelay_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "slicedelay": slicedelay_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SlicedelayOutputs(typing.NamedTuple):

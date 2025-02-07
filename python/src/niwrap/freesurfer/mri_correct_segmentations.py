@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_CORRECT_SEGMENTATIONS_METADATA = Metadata(
     id="bc3ea4572fe4ebef8155dbeace0ea841cbc2a21c.boutiques",
@@ -21,7 +20,7 @@ MriCorrectSegmentationsParameters = typing.TypedDict('MriCorrectSegmentationsPar
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_correct_segmentations": mri_correct_segmentations_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,8 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "mri_correct_segmentations": mri_correct_segmentations_outputs,
+    }.get(t)
 
 
 class MriCorrectSegmentationsOutputs(typing.NamedTuple):

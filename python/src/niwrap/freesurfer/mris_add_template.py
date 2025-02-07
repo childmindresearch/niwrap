@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRIS_ADD_TEMPLATE_METADATA = Metadata(
     id="cad5f1397d4979ef787014fa2412a1f0a10cfe8b.boutiques",
@@ -19,7 +18,7 @@ MrisAddTemplateParameters = typing.TypedDict('MrisAddTemplateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -28,15 +27,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mris_add_template": mris_add_template_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -45,10 +43,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mris_add_template": mris_add_template_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MrisAddTemplateOutputs(typing.NamedTuple):

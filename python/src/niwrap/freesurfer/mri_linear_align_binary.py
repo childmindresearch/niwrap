@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MRI_LINEAR_ALIGN_BINARY_METADATA = Metadata(
     id="8f952429c373760f2ebf14b9f290bc6f0c53127a.boutiques",
@@ -23,7 +22,7 @@ MriLinearAlignBinaryParameters = typing.TypedDict('MriLinearAlignBinaryParameter
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mri_linear_align_binary": mri_linear_align_binary_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mri_linear_align_binary": mri_linear_align_binary_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MriLinearAlignBinaryOutputs(typing.NamedTuple):

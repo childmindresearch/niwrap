@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_MANN_WHITNEY_METADATA = Metadata(
     id="796cea2f9bbd9b908f3b7f4c7deae22683bec6f0.boutiques",
@@ -24,7 +23,7 @@ V3dMannWhitneyParameters = typing.TypedDict('V3dMannWhitneyParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dMannWhitney": v_3d_mann_whitney_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,10 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dMannWhitney": v_3d_mann_whitney_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dMannWhitneyOutputs(typing.NamedTuple):

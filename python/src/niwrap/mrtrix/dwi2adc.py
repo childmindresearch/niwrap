@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 DWI2ADC_METADATA = Metadata(
     id="1ddf7b2c6bfbca7b535b58b3a0e9ad2e95b300d3.boutiques",
@@ -41,7 +40,7 @@ Dwi2adcParameters = typing.TypedDict('Dwi2adcParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -50,17 +49,16 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "dwi2adc": dwi2adc_cargs,
         "fslgrad": dwi2adc_fslgrad_cargs,
         "config": dwi2adc_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -69,10 +67,11 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "dwi2adc": dwi2adc_outputs,
-    }
-    return vt.get(t)
+        "fslgrad": dwi2adc_fslgrad_outputs,
+        "config": dwi2adc_config_outputs,
+    }.get(t)
 
 
 def dwi2adc_fslgrad_params(

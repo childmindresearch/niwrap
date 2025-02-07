@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
     id="8209354b35fca6222f53525ec72fc9f4429a7c4a.boutiques",
@@ -103,7 +102,7 @@ AntsApplyTransformsParameters = typing.TypedDict('AntsApplyTransformsParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -112,7 +111,7 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsApplyTransforms": ants_apply_transforms_cargs,
         "warpedOutput": ants_apply_transforms_warped_output_cargs,
         "compositeDisplacementFieldOutput": ants_apply_transforms_composite_displacement_field_output_cargs,
@@ -133,13 +132,12 @@ def dyn_cargs(
         "genericLabel": ants_apply_transforms_generic_label_cargs,
         "transformFileName": ants_apply_transforms_transform_file_name_cargs,
         "useInverse": ants_apply_transforms_use_inverse_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -148,13 +146,28 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsApplyTransforms": ants_apply_transforms_outputs,
         "warpedOutput": ants_apply_transforms_warped_output_outputs,
         "compositeDisplacementFieldOutput": ants_apply_transforms_composite_displacement_field_output_outputs,
         "genericAffineTransformOutput": ants_apply_transforms_generic_affine_transform_output_outputs,
-    }
-    return vt.get(t)
+        "linear": ants_apply_transforms_linear_outputs,
+        "nearestNeighbor": ants_apply_transforms_nearest_neighbor_outputs,
+        "multiLabelnoparams": ants_apply_transforms_multi_labelnoparams_outputs,
+        "multiLabel": ants_apply_transforms_multi_label_outputs,
+        "params": ants_apply_transforms_param_outputs,
+        "sigma": ants_apply_transforms_sigma_outputs,
+        "alpha": ants_apply_transforms_alpha_outputs,
+        "gaussian": ants_apply_transforms_gaussian_outputs,
+        "bspline": ants_apply_transforms_bspline_outputs,
+        "cosineWindowedSinc": ants_apply_transforms_cosine_windowed_sinc_outputs,
+        "welchWindowedSinc": ants_apply_transforms_welch_windowed_sinc_outputs,
+        "hammingWindowedSinc": ants_apply_transforms_hamming_windowed_sinc_outputs,
+        "lanczosWindowedSinc": ants_apply_transforms_lanczos_windowed_sinc_outputs,
+        "genericLabel": ants_apply_transforms_generic_label_outputs,
+        "transformFileName": ants_apply_transforms_transform_file_name_outputs,
+        "useInverse": ants_apply_transforms_use_inverse_outputs,
+    }.get(t)
 
 
 class AntsApplyTransformsWarpedOutputOutputs(typing.NamedTuple):

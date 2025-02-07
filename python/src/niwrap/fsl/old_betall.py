@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 OLD_BETALL_METADATA = Metadata(
     id="08636e6ec0271b921d070eb58b4f14fcb6768064.boutiques",
@@ -21,7 +20,7 @@ OldBetallParameters = typing.TypedDict('OldBetallParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "old_betall": old_betall_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "old_betall": old_betall_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class OldBetallOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BAYCEST_METADATA = Metadata(
     id="ffa911443435512ed82ba839a63fc8ccf60823bc.boutiques",
@@ -27,7 +26,7 @@ BaycestParameters = typing.TypedDict('BaycestParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "baycest": baycest_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "baycest": baycest_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class BaycestOutputs(typing.NamedTuple):

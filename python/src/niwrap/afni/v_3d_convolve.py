@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_CONVOLVE_METADATA = Metadata(
     id="98f37303338db7321cbe065f60581ee844d011e4.boutiques",
@@ -22,7 +21,7 @@ V3dConvolveParameters = typing.TypedDict('V3dConvolveParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -31,15 +30,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dConvolve": v_3d_convolve_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -48,10 +46,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dConvolve": v_3d_convolve_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dConvolveOutputs(typing.NamedTuple):

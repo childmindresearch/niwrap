@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 IS_LTA_METADATA = Metadata(
     id="566d24838e7313b28a22f432de359c9b90571b0e.boutiques",
@@ -21,7 +20,7 @@ IsLtaParameters = typing.TypedDict('IsLtaParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "IsLTA": is_lta_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "IsLTA": is_lta_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class IsLtaOutputs(typing.NamedTuple):

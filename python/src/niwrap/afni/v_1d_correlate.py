@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_1D_CORRELATE_METADATA = Metadata(
     id="be0ac3e4b1a192ead53f328b4b3ecf125d8d36fe.boutiques",
@@ -24,7 +23,7 @@ V1dCorrelateParameters = typing.TypedDict('V1dCorrelateParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -33,15 +32,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "1dCorrelate": v_1d_correlate_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -50,8 +48,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "1dCorrelate": v_1d_correlate_outputs,
+    }.get(t)
 
 
 class V1dCorrelateOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_PAR2_AFNI_METADATA = Metadata(
     id="955afce507c339e4fbf43caaf056ad39a659f439.boutiques",
@@ -26,7 +25,7 @@ V3dPar2AfniParameters = typing.TypedDict('V3dPar2AfniParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -35,15 +34,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dPAR2AFNI": v_3d_par2_afni_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -52,10 +50,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dPAR2AFNI": v_3d_par2_afni_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dPar2AfniOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_5TTCHECK_METADATA = Metadata(
     id="81b3e0b2961a573a6a802146cca2c10ffb8d0868.boutiques",
@@ -34,7 +33,7 @@ V5ttcheckParameters = typing.TypedDict('V5ttcheckParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,16 +42,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "5ttcheck": v_5ttcheck_cargs,
         "config": v_5ttcheck_config_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -61,8 +59,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "5ttcheck": v_5ttcheck_outputs,
+        "config": v_5ttcheck_config_outputs,
+    }.get(t)
 
 
 def v_5ttcheck_config_params(

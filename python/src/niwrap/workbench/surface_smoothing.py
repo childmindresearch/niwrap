@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SURFACE_SMOOTHING_METADATA = Metadata(
     id="5893cea5d893eb8491f51d6b37d8233414b94239.boutiques",
@@ -23,7 +22,7 @@ SurfaceSmoothingParameters = typing.TypedDict('SurfaceSmoothingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "surface-smoothing": surface_smoothing_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "surface-smoothing": surface_smoothing_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SurfaceSmoothingOutputs(typing.NamedTuple):

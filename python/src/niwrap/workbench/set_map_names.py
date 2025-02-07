@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SET_MAP_NAMES_METADATA = Metadata(
     id="bce830848c483141d8dd3ed3a4c7191047ce4ffe.boutiques",
@@ -28,7 +27,7 @@ SetMapNamesParameters = typing.TypedDict('SetMapNamesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,16 +36,15 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "set-map-names": set_map_names_cargs,
         "map": set_map_names_map_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,8 +53,10 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "set-map-names": set_map_names_outputs,
+        "map": set_map_names_map_outputs,
+    }.get(t)
 
 
 def set_map_names_map_params(

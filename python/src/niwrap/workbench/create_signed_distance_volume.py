@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
     id="731fd28e261e758f0a5e308e118201b414f3a4c8.boutiques",
@@ -28,7 +27,7 @@ CreateSignedDistanceVolumeParameters = typing.TypedDict('CreateSignedDistanceVol
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "create-signed-distance-volume": create_signed_distance_volume_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "create-signed-distance-volume": create_signed_distance_volume_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class CreateSignedDistanceVolumeOutputs(typing.NamedTuple):

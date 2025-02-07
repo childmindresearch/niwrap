@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PREWHITEN_METADATA = Metadata(
     id="7908b2674351c8eda706fea6c142d2b26d298d0f.boutiques",
@@ -21,7 +20,7 @@ PrewhitenParameters = typing.TypedDict('PrewhitenParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "prewhiten": prewhiten_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "prewhiten": prewhiten_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class PrewhitenOutputs(typing.NamedTuple):

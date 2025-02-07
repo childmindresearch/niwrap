@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 BROWSE_MINC_HEADER_TCL_METADATA = Metadata(
     id="d9e64b68673469631420a82f8e3342cb78163bcc.boutiques",
@@ -20,7 +19,7 @@ BrowseMincHeaderTclParameters = typing.TypedDict('BrowseMincHeaderTclParameters'
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "browse-minc-header.tcl": browse_minc_header_tcl_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "browse-minc-header.tcl": browse_minc_header_tcl_outputs,
+    }.get(t)
 
 
 class BrowseMincHeaderTclOutputs(typing.NamedTuple):

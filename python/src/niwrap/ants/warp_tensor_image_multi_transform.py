@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
     id="14d19d5d0cd63cddc6a5dbd0cf982ba44c0b6d8b.boutiques",
@@ -27,7 +26,7 @@ WarpTensorImageMultiTransformParameters = typing.TypedDict('WarpTensorImageMulti
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -36,15 +35,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "WarpTensorImageMultiTransform": warp_tensor_image_multi_transform_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -53,10 +51,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "WarpTensorImageMultiTransform": warp_tensor_image_multi_transform_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class WarpTensorImageMultiTransformOutputs(typing.NamedTuple):

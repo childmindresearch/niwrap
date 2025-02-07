@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA = Metadata(
     id="e230f79426f6158216707401554de44362bbaefe.boutiques",
@@ -32,7 +31,7 @@ VDjunctSswIntermedEdgeImgsParameters = typing.TypedDict('VDjunctSswIntermedEdgeI
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "@djunct_ssw_intermed_edge_imgs": v__djunct_ssw_intermed_edge_imgs_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "@djunct_ssw_intermed_edge_imgs": v__djunct_ssw_intermed_edge_imgs_outputs,
+    }.get(t)
 
 
 class VDjunctSswIntermedEdgeImgsOutputs(typing.NamedTuple):

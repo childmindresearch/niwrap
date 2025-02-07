@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MINC2SEQINFO_METADATA = Metadata(
     id="30fbf462a54b5ca1f7c6f0f4e71bda9dbde0712d.boutiques",
@@ -21,7 +20,7 @@ Minc2seqinfoParameters = typing.TypedDict('Minc2seqinfoParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "minc2seqinfo": minc2seqinfo_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "minc2seqinfo": minc2seqinfo_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class Minc2seqinfoOutputs(typing.NamedTuple):

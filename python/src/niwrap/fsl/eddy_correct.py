@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 EDDY_CORRECT_METADATA = Metadata(
     id="02952b63ff7a435bc981ecebb28837bbe6e3e7cb.boutiques",
@@ -23,7 +22,7 @@ EddyCorrectParameters = typing.TypedDict('EddyCorrectParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "eddy_correct": eddy_correct_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "eddy_correct": eddy_correct_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class EddyCorrectOutputs(typing.NamedTuple):

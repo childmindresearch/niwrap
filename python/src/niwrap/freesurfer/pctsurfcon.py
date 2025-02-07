@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 PCTSURFCON_METADATA = Metadata(
     id="0e082a082c6b181a71427db52d685c35d4270743.boutiques",
@@ -32,7 +31,7 @@ PctsurfconParameters = typing.TypedDict('PctsurfconParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -41,15 +40,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "pctsurfcon": pctsurfcon_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -58,8 +56,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "pctsurfcon": pctsurfcon_outputs,
+    }.get(t)
 
 
 class PctsurfconOutputs(typing.NamedTuple):

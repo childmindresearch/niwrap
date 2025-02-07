@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
     id="1f8c451b98f93c105aed231bb6898634ea958829.boutiques",
@@ -34,7 +33,7 @@ AntsBrainExtractionShParameters = typing.TypedDict('AntsBrainExtractionShParamet
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -43,15 +42,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsBrainExtraction.sh": ants_brain_extraction_sh_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -60,10 +58,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsBrainExtraction.sh": ants_brain_extraction_sh_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsBrainExtractionShOutputs(typing.NamedTuple):

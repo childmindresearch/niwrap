@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 V_3D_ZREGRID_METADATA = Metadata(
     id="2597cdebba8fe75de8a28bb8bff140590938cb2b.boutiques",
@@ -25,7 +24,7 @@ V3dZregridParameters = typing.TypedDict('V3dZregridParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "3dZregrid": v_3d_zregrid_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "3dZregrid": v_3d_zregrid_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class V3dZregridOutputs(typing.NamedTuple):

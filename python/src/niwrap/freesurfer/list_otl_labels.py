@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 LIST_OTL_LABELS_METADATA = Metadata(
     id="2093ee83fcca985e5be56e6cc6e4676af4aa43df.boutiques",
@@ -20,7 +19,7 @@ ListOtlLabelsParameters = typing.TypedDict('ListOtlLabelsParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -29,15 +28,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "list_otl_labels": list_otl_labels_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -46,8 +44,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "list_otl_labels": list_otl_labels_outputs,
+    }.get(t)
 
 
 class ListOtlLabelsOutputs(typing.NamedTuple):

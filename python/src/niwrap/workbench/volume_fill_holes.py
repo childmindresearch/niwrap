@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 VOLUME_FILL_HOLES_METADATA = Metadata(
     id="38d91cd88583667f26e3c3c5a803f7aabc4c2228.boutiques",
@@ -21,7 +20,7 @@ VolumeFillHolesParameters = typing.TypedDict('VolumeFillHolesParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "volume-fill-holes": volume_fill_holes_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "volume-fill-holes": volume_fill_holes_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class VolumeFillHolesOutputs(typing.NamedTuple):

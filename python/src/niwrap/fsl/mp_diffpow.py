@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 MP_DIFFPOW_METADATA = Metadata(
     id="5d6f81008119f2f4a31e758201b79a4cc2a55918.boutiques",
@@ -21,7 +20,7 @@ MpDiffpowParameters = typing.TypedDict('MpDiffpowParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -30,15 +29,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "mp_diffpow": mp_diffpow_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -47,10 +45,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "mp_diffpow": mp_diffpow_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class MpDiffpowOutputs(typing.NamedTuple):

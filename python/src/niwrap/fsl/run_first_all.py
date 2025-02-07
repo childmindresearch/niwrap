@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RUN_FIRST_ALL_METADATA = Metadata(
     id="969df88743cb206b767170e9a9d7af5b9fccc839.boutiques",
@@ -28,7 +27,7 @@ RunFirstAllParameters = typing.TypedDict('RunFirstAllParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -37,15 +36,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "run_first_all": run_first_all_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -54,10 +52,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "run_first_all": run_first_all_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class RunFirstAllOutputs(typing.NamedTuple):

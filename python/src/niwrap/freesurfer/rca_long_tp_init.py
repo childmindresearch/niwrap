@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 RCA_LONG_TP_INIT_METADATA = Metadata(
     id="e1c2f3934aa898b95f24c40fa06a81fee30ac0e8.boutiques",
@@ -25,7 +24,7 @@ RcaLongTpInitParameters = typing.TypedDict('RcaLongTpInitParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "rca-long-tp-init": rca_long_tp_init_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,8 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {}
-    return vt.get(t)
+    return {
+        "rca-long-tp-init": rca_long_tp_init_outputs,
+    }.get(t)
 
 
 class RcaLongTpInitOutputs(typing.NamedTuple):

@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA = Metadata(
     id="f5c4948fa2560385a828a453a54af7e3a4ab4be7.boutiques",
@@ -29,7 +28,7 @@ AntsSliceRegularizedRegistrationParameters = typing.TypedDict('AntsSliceRegulari
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -38,15 +37,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "antsSliceRegularizedRegistration": ants_slice_regularized_registration_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -55,10 +53,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "antsSliceRegularizedRegistration": ants_slice_regularized_registration_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class AntsSliceRegularizedRegistrationOutputs(typing.NamedTuple):

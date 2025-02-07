@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SYSTEMNOISE_METADATA = Metadata(
     id="5c166913c2e3126a839b19b3bfd5214597c6e32c.boutiques",
@@ -25,7 +24,7 @@ SystemnoiseParameters = typing.TypedDict('SystemnoiseParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -34,15 +33,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "systemnoise": systemnoise_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -51,10 +49,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "systemnoise": systemnoise_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SystemnoiseOutputs(typing.NamedTuple):

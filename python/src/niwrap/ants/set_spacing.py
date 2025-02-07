@@ -4,7 +4,6 @@
 import typing
 import pathlib
 from styxdefs import *
-import dataclasses
 
 SET_SPACING_METADATA = Metadata(
     id="5a66a083de7d100e80817b6862541b3b2eb2b1ed.boutiques",
@@ -23,7 +22,7 @@ SetSpacingParameters = typing.TypedDict('SetSpacingParameters', {
 
 def dyn_cargs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build cargs function by command type.
     
@@ -32,15 +31,14 @@ def dyn_cargs(
     Returns:
         Build cargs function.
     """
-    vt = {
+    return {
         "SetSpacing": set_spacing_cargs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 def dyn_outputs(
     t: str,
-) -> None:
+) -> typing.Any:
     """
     Get build outputs function by command type.
     
@@ -49,10 +47,9 @@ def dyn_outputs(
     Returns:
         Build outputs function.
     """
-    vt = {
+    return {
         "SetSpacing": set_spacing_outputs,
-    }
-    return vt.get(t)
+    }.get(t)
 
 
 class SetSpacingOutputs(typing.NamedTuple):
