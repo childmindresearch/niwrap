@@ -20,6 +20,7 @@
 | [Connectome Workbench](https://github.com/Washington-University/workbench) | Experimental | [`1.5.0`](https://hub.docker.com/r/brainlife/connectome_workbench) | 202/202 (100% 🎉) |
 | [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | Experimental | [`1.1.0`](https://hub.docker.com/r/pyushkevich/itksnap) | 2/2 (100% 🎉) |
 | [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | Experimental | [`6.0.5`](https://hub.docker.com/r/brainlife/fsl) | 239/310 (77.1%) |
+| [FastSurfer](https://github.com/Deep-MI/FastSurfer) | Experimental | [`2.3.3`](https://hub.docker.com/r/deepmi/fastsurfer) | 1/1 (100% 🎉) |
 | [FreeSurfer](https://github.com/freesurfer/freesurfer) | Experimental | [`7.4.1`](https://hub.docker.com/r/freesurfer/freesurfer) | 707/800 (88.4%) |
 | [Greedy](https://sites.google.com/view/greedyreg/about) | Experimental | [`1.0.1`](https://hub.docker.com/r/pyushkevich/itksnap) | 1/1 (100% 🎉) |
 | [MRTrix3](https://www.mrtrix.org/) | Well tested | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 115/121 (95.0%) |
