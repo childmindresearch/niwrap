@@ -259,50 +259,49 @@
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    Returns:</span>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        NamedTuple of outputs (described in `V3dXyzcatOutputs`).</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_xyzcat</span><span class="p">(</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dXyzcatOutputs</span><span class="p">:</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Catenates datasets spatially.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    </span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    </span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    </span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    Args:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        datasets: Input datasets to concatenate.</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        direction: Catenate along direction &#39;Q&#39; (X, Y, Z, or their synonyms I,\</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            J, K).</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        prefix: Use &#39;pname&#39; for the output dataset prefix name.</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        verbose: Print out some verbositiness as the program proceeds.</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    Returns:</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        NamedTuple of outputs (described in `V3dXyzcatOutputs`).</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_XYZCAT_METADATA</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">v_3d_xyzcat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_xyzcat</span><span class="p">(</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dXyzcatOutputs</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Catenates datasets spatially.</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    </span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    </span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    </span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    Args:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        datasets: Input datasets to concatenate.</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        direction: Catenate along direction &#39;Q&#39; (X, Y, Z, or their synonyms I,\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            J, K).</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        prefix: Use &#39;pname&#39; for the output dataset prefix name.</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        verbose: Print out some verbositiness as the program proceeds.</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Returns:</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        NamedTuple of outputs (described in `V3dXyzcatOutputs`).</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_XYZCAT_METADATA</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">v_3d_xyzcat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;V3dXyzcatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;V3dXyzcatParameters&quot;</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="s2">&quot;V_3D_XYZCAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="s2">&quot;v_3d_xyzcat&quot;</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="s2">&quot;v_3d_xyzcat_params&quot;</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="p">]</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;V3dXyzcatOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;V3dXyzcatParameters&quot;</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;V_3D_XYZCAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="s2">&quot;v_3d_xyzcat&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="s2">&quot;v_3d_xyzcat_params&quot;</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -470,34 +469,34 @@
 
     </div>
     <a class="headerlink" href="#v_3d_xyzcat"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_xyzcat-174"><a href="#v_3d_xyzcat-174"><span class="linenos">174</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_xyzcat</span><span class="p">(</span>
-</span><span id="v_3d_xyzcat-175"><a href="#v_3d_xyzcat-175"><span class="linenos">175</span></a>    <span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="v_3d_xyzcat-176"><a href="#v_3d_xyzcat-176"><span class="linenos">176</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_xyzcat-177"><a href="#v_3d_xyzcat-177"><span class="linenos">177</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_xyzcat-178"><a href="#v_3d_xyzcat-178"><span class="linenos">178</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v_3d_xyzcat-179"><a href="#v_3d_xyzcat-179"><span class="linenos">179</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_xyzcat-180"><a href="#v_3d_xyzcat-180"><span class="linenos">180</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dXyzcatOutputs</span><span class="p">:</span>
-</span><span id="v_3d_xyzcat-181"><a href="#v_3d_xyzcat-181"><span class="linenos">181</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_xyzcat-182"><a href="#v_3d_xyzcat-182"><span class="linenos">182</span></a><span class="sd">    Catenates datasets spatially.</span>
-</span><span id="v_3d_xyzcat-183"><a href="#v_3d_xyzcat-183"><span class="linenos">183</span></a><span class="sd">    </span>
-</span><span id="v_3d_xyzcat-184"><a href="#v_3d_xyzcat-184"><span class="linenos">184</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v_3d_xyzcat-185"><a href="#v_3d_xyzcat-185"><span class="linenos">185</span></a><span class="sd">    </span>
-</span><span id="v_3d_xyzcat-186"><a href="#v_3d_xyzcat-186"><span class="linenos">186</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v_3d_xyzcat-187"><a href="#v_3d_xyzcat-187"><span class="linenos">187</span></a><span class="sd">    </span>
-</span><span id="v_3d_xyzcat-188"><a href="#v_3d_xyzcat-188"><span class="linenos">188</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_xyzcat-189"><a href="#v_3d_xyzcat-189"><span class="linenos">189</span></a><span class="sd">        datasets: Input datasets to concatenate.</span>
-</span><span id="v_3d_xyzcat-190"><a href="#v_3d_xyzcat-190"><span class="linenos">190</span></a><span class="sd">        direction: Catenate along direction &#39;Q&#39; (X, Y, Z, or their synonyms I,\</span>
-</span><span id="v_3d_xyzcat-191"><a href="#v_3d_xyzcat-191"><span class="linenos">191</span></a><span class="sd">            J, K).</span>
-</span><span id="v_3d_xyzcat-192"><a href="#v_3d_xyzcat-192"><span class="linenos">192</span></a><span class="sd">        prefix: Use &#39;pname&#39; for the output dataset prefix name.</span>
-</span><span id="v_3d_xyzcat-193"><a href="#v_3d_xyzcat-193"><span class="linenos">193</span></a><span class="sd">        verbose: Print out some verbositiness as the program proceeds.</span>
-</span><span id="v_3d_xyzcat-194"><a href="#v_3d_xyzcat-194"><span class="linenos">194</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_xyzcat-195"><a href="#v_3d_xyzcat-195"><span class="linenos">195</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_xyzcat-196"><a href="#v_3d_xyzcat-196"><span class="linenos">196</span></a><span class="sd">        NamedTuple of outputs (described in `V3dXyzcatOutputs`).</span>
-</span><span id="v_3d_xyzcat-197"><a href="#v_3d_xyzcat-197"><span class="linenos">197</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_xyzcat-198"><a href="#v_3d_xyzcat-198"><span class="linenos">198</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_xyzcat-199"><a href="#v_3d_xyzcat-199"><span class="linenos">199</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_XYZCAT_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_xyzcat-200"><a href="#v_3d_xyzcat-200"><span class="linenos">200</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
-</span><span id="v_3d_xyzcat-201"><a href="#v_3d_xyzcat-201"><span class="linenos">201</span></a>    <span class="k">return</span> <span class="n">v_3d_xyzcat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v_3d_xyzcat-173"><a href="#v_3d_xyzcat-173"><span class="linenos">173</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v_3d_xyzcat</span><span class="p">(</span>
+</span><span id="v_3d_xyzcat-174"><a href="#v_3d_xyzcat-174"><span class="linenos">174</span></a>    <span class="n">datasets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="v_3d_xyzcat-175"><a href="#v_3d_xyzcat-175"><span class="linenos">175</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_xyzcat-176"><a href="#v_3d_xyzcat-176"><span class="linenos">176</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_xyzcat-177"><a href="#v_3d_xyzcat-177"><span class="linenos">177</span></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_xyzcat-178"><a href="#v_3d_xyzcat-178"><span class="linenos">178</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_xyzcat-179"><a href="#v_3d_xyzcat-179"><span class="linenos">179</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dXyzcatOutputs</span><span class="p">:</span>
+</span><span id="v_3d_xyzcat-180"><a href="#v_3d_xyzcat-180"><span class="linenos">180</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_xyzcat-181"><a href="#v_3d_xyzcat-181"><span class="linenos">181</span></a><span class="sd">    Catenates datasets spatially.</span>
+</span><span id="v_3d_xyzcat-182"><a href="#v_3d_xyzcat-182"><span class="linenos">182</span></a><span class="sd">    </span>
+</span><span id="v_3d_xyzcat-183"><a href="#v_3d_xyzcat-183"><span class="linenos">183</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v_3d_xyzcat-184"><a href="#v_3d_xyzcat-184"><span class="linenos">184</span></a><span class="sd">    </span>
+</span><span id="v_3d_xyzcat-185"><a href="#v_3d_xyzcat-185"><span class="linenos">185</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_xyzcat-186"><a href="#v_3d_xyzcat-186"><span class="linenos">186</span></a><span class="sd">    </span>
+</span><span id="v_3d_xyzcat-187"><a href="#v_3d_xyzcat-187"><span class="linenos">187</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_xyzcat-188"><a href="#v_3d_xyzcat-188"><span class="linenos">188</span></a><span class="sd">        datasets: Input datasets to concatenate.</span>
+</span><span id="v_3d_xyzcat-189"><a href="#v_3d_xyzcat-189"><span class="linenos">189</span></a><span class="sd">        direction: Catenate along direction &#39;Q&#39; (X, Y, Z, or their synonyms I,\</span>
+</span><span id="v_3d_xyzcat-190"><a href="#v_3d_xyzcat-190"><span class="linenos">190</span></a><span class="sd">            J, K).</span>
+</span><span id="v_3d_xyzcat-191"><a href="#v_3d_xyzcat-191"><span class="linenos">191</span></a><span class="sd">        prefix: Use &#39;pname&#39; for the output dataset prefix name.</span>
+</span><span id="v_3d_xyzcat-192"><a href="#v_3d_xyzcat-192"><span class="linenos">192</span></a><span class="sd">        verbose: Print out some verbositiness as the program proceeds.</span>
+</span><span id="v_3d_xyzcat-193"><a href="#v_3d_xyzcat-193"><span class="linenos">193</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_xyzcat-194"><a href="#v_3d_xyzcat-194"><span class="linenos">194</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_xyzcat-195"><a href="#v_3d_xyzcat-195"><span class="linenos">195</span></a><span class="sd">        NamedTuple of outputs (described in `V3dXyzcatOutputs`).</span>
+</span><span id="v_3d_xyzcat-196"><a href="#v_3d_xyzcat-196"><span class="linenos">196</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_xyzcat-197"><a href="#v_3d_xyzcat-197"><span class="linenos">197</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_xyzcat-198"><a href="#v_3d_xyzcat-198"><span class="linenos">198</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_XYZCAT_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_xyzcat-199"><a href="#v_3d_xyzcat-199"><span class="linenos">199</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v_3d_xyzcat_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
+</span><span id="v_3d_xyzcat-200"><a href="#v_3d_xyzcat-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">v_3d_xyzcat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

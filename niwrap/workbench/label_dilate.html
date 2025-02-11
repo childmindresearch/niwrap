@@ -292,66 +292,65 @@
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    Returns:</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">label_dilate_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">label_dilate_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">label_dilate_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">label_dilate_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_dilate</span><span class="p">(</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">dilate_dist</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelDilateOutputs</span><span class="p">:</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Dilate a label file.</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Fills in label information for all vertices designated as bad, up to the</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    specified distance away from other labels. If -bad-vertex-roi is specified,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    all vertices, including those with the unlabeled key, are good, except for</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        label: the input label.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        surface: the surface to dilate on.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        label_out: the output label file.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            or name.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            metric.</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    Returns:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_dilate_params</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">dilate_dist</span><span class="o">=</span><span class="n">dilate_dist</span><span class="p">,</span> <span class="n">label_out</span><span class="o">=</span><span class="n">label_out</span><span class="p">,</span> <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="o">=</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="k">return</span> <span class="n">label_dilate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_dilate</span><span class="p">(</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">dilate_dist</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelDilateOutputs</span><span class="p">:</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Dilate a label file.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    Fills in label information for all vertices designated as bad, up to the</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    specified distance away from other labels. If -bad-vertex-roi is specified,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    all vertices, including those with the unlabeled key, are good, except for</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Args:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        label: the input label.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        surface: the surface to dilate on.</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        label_out: the output label file.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            or name.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            metric.</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    Returns:</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_dilate_params</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">dilate_dist</span><span class="o">=</span><span class="n">dilate_dist</span><span class="p">,</span> <span class="n">label_out</span><span class="o">=</span><span class="n">label_out</span><span class="p">,</span> <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="o">=</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">return</span> <span class="n">label_dilate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>
 </span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;LABEL_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;LabelDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;LabelDilateParameters&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;label_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;label_dilate_params&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="p">]</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;LABEL_DILATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="s2">&quot;LabelDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;LabelDilateParameters&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;label_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;label_dilate_params&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -537,50 +536,50 @@
 
     </div>
     <a class="headerlink" href="#label_dilate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="label_dilate-201"><a href="#label_dilate-201"><span class="linenos">201</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_dilate</span><span class="p">(</span>
-</span><span id="label_dilate-202"><a href="#label_dilate-202"><span class="linenos">202</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_dilate-203"><a href="#label_dilate-203"><span class="linenos">203</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_dilate-204"><a href="#label_dilate-204"><span class="linenos">204</span></a>    <span class="n">dilate_dist</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="label_dilate-205"><a href="#label_dilate-205"><span class="linenos">205</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="label_dilate-206"><a href="#label_dilate-206"><span class="linenos">206</span></a>    <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_dilate-207"><a href="#label_dilate-207"><span class="linenos">207</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_dilate-208"><a href="#label_dilate-208"><span class="linenos">208</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_dilate-209"><a href="#label_dilate-209"><span class="linenos">209</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_dilate-210"><a href="#label_dilate-210"><span class="linenos">210</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelDilateOutputs</span><span class="p">:</span>
-</span><span id="label_dilate-211"><a href="#label_dilate-211"><span class="linenos">211</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="label_dilate-212"><a href="#label_dilate-212"><span class="linenos">212</span></a><span class="sd">    Dilate a label file.</span>
-</span><span id="label_dilate-213"><a href="#label_dilate-213"><span class="linenos">213</span></a><span class="sd">    </span>
-</span><span id="label_dilate-214"><a href="#label_dilate-214"><span class="linenos">214</span></a><span class="sd">    Fills in label information for all vertices designated as bad, up to the</span>
-</span><span id="label_dilate-215"><a href="#label_dilate-215"><span class="linenos">215</span></a><span class="sd">    specified distance away from other labels. If -bad-vertex-roi is specified,</span>
-</span><span id="label_dilate-216"><a href="#label_dilate-216"><span class="linenos">216</span></a><span class="sd">    all vertices, including those with the unlabeled key, are good, except for</span>
-</span><span id="label_dilate-217"><a href="#label_dilate-217"><span class="linenos">217</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
-</span><span id="label_dilate-218"><a href="#label_dilate-218"><span class="linenos">218</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
-</span><span id="label_dilate-219"><a href="#label_dilate-219"><span class="linenos">219</span></a><span class="sd">    </span>
-</span><span id="label_dilate-220"><a href="#label_dilate-220"><span class="linenos">220</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="label_dilate-221"><a href="#label_dilate-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="label_dilate-222"><a href="#label_dilate-222"><span class="linenos">222</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="label_dilate-223"><a href="#label_dilate-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="label_dilate-224"><a href="#label_dilate-224"><span class="linenos">224</span></a><span class="sd">    Args:</span>
-</span><span id="label_dilate-225"><a href="#label_dilate-225"><span class="linenos">225</span></a><span class="sd">        label: the input label.</span>
-</span><span id="label_dilate-226"><a href="#label_dilate-226"><span class="linenos">226</span></a><span class="sd">        surface: the surface to dilate on.</span>
-</span><span id="label_dilate-227"><a href="#label_dilate-227"><span class="linenos">227</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
-</span><span id="label_dilate-228"><a href="#label_dilate-228"><span class="linenos">228</span></a><span class="sd">        label_out: the output label file.</span>
-</span><span id="label_dilate-229"><a href="#label_dilate-229"><span class="linenos">229</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
-</span><span id="label_dilate-230"><a href="#label_dilate-230"><span class="linenos">230</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
-</span><span id="label_dilate-231"><a href="#label_dilate-231"><span class="linenos">231</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
-</span><span id="label_dilate-232"><a href="#label_dilate-232"><span class="linenos">232</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
-</span><span id="label_dilate-233"><a href="#label_dilate-233"><span class="linenos">233</span></a><span class="sd">            or name.</span>
-</span><span id="label_dilate-234"><a href="#label_dilate-234"><span class="linenos">234</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="label_dilate-235"><a href="#label_dilate-235"><span class="linenos">235</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="label_dilate-236"><a href="#label_dilate-236"><span class="linenos">236</span></a><span class="sd">            metric.</span>
-</span><span id="label_dilate-237"><a href="#label_dilate-237"><span class="linenos">237</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="label_dilate-238"><a href="#label_dilate-238"><span class="linenos">238</span></a><span class="sd">    Returns:</span>
-</span><span id="label_dilate-239"><a href="#label_dilate-239"><span class="linenos">239</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
-</span><span id="label_dilate-240"><a href="#label_dilate-240"><span class="linenos">240</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="label_dilate-241"><a href="#label_dilate-241"><span class="linenos">241</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="label_dilate-242"><a href="#label_dilate-242"><span class="linenos">242</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="label_dilate-243"><a href="#label_dilate-243"><span class="linenos">243</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_dilate_params</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">dilate_dist</span><span class="o">=</span><span class="n">dilate_dist</span><span class="p">,</span> <span class="n">label_out</span><span class="o">=</span><span class="n">label_out</span><span class="p">,</span> <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="o">=</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="label_dilate-244"><a href="#label_dilate-244"><span class="linenos">244</span></a>    <span class="k">return</span> <span class="n">label_dilate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="label_dilate-200"><a href="#label_dilate-200"><span class="linenos">200</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_dilate</span><span class="p">(</span>
+</span><span id="label_dilate-201"><a href="#label_dilate-201"><span class="linenos">201</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_dilate-202"><a href="#label_dilate-202"><span class="linenos">202</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_dilate-203"><a href="#label_dilate-203"><span class="linenos">203</span></a>    <span class="n">dilate_dist</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="label_dilate-204"><a href="#label_dilate-204"><span class="linenos">204</span></a>    <span class="n">label_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="label_dilate-205"><a href="#label_dilate-205"><span class="linenos">205</span></a>    <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_dilate-206"><a href="#label_dilate-206"><span class="linenos">206</span></a>    <span class="n">opt_column_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_dilate-207"><a href="#label_dilate-207"><span class="linenos">207</span></a>    <span class="n">opt_corrected_areas_area_metric</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_dilate-208"><a href="#label_dilate-208"><span class="linenos">208</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_dilate-209"><a href="#label_dilate-209"><span class="linenos">209</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelDilateOutputs</span><span class="p">:</span>
+</span><span id="label_dilate-210"><a href="#label_dilate-210"><span class="linenos">210</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="label_dilate-211"><a href="#label_dilate-211"><span class="linenos">211</span></a><span class="sd">    Dilate a label file.</span>
+</span><span id="label_dilate-212"><a href="#label_dilate-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="label_dilate-213"><a href="#label_dilate-213"><span class="linenos">213</span></a><span class="sd">    Fills in label information for all vertices designated as bad, up to the</span>
+</span><span id="label_dilate-214"><a href="#label_dilate-214"><span class="linenos">214</span></a><span class="sd">    specified distance away from other labels. If -bad-vertex-roi is specified,</span>
+</span><span id="label_dilate-215"><a href="#label_dilate-215"><span class="linenos">215</span></a><span class="sd">    all vertices, including those with the unlabeled key, are good, except for</span>
+</span><span id="label_dilate-216"><a href="#label_dilate-216"><span class="linenos">216</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
+</span><span id="label_dilate-217"><a href="#label_dilate-217"><span class="linenos">217</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
+</span><span id="label_dilate-218"><a href="#label_dilate-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="label_dilate-219"><a href="#label_dilate-219"><span class="linenos">219</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="label_dilate-220"><a href="#label_dilate-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="label_dilate-221"><a href="#label_dilate-221"><span class="linenos">221</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="label_dilate-222"><a href="#label_dilate-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="label_dilate-223"><a href="#label_dilate-223"><span class="linenos">223</span></a><span class="sd">    Args:</span>
+</span><span id="label_dilate-224"><a href="#label_dilate-224"><span class="linenos">224</span></a><span class="sd">        label: the input label.</span>
+</span><span id="label_dilate-225"><a href="#label_dilate-225"><span class="linenos">225</span></a><span class="sd">        surface: the surface to dilate on.</span>
+</span><span id="label_dilate-226"><a href="#label_dilate-226"><span class="linenos">226</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
+</span><span id="label_dilate-227"><a href="#label_dilate-227"><span class="linenos">227</span></a><span class="sd">        label_out: the output label file.</span>
+</span><span id="label_dilate-228"><a href="#label_dilate-228"><span class="linenos">228</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
+</span><span id="label_dilate-229"><a href="#label_dilate-229"><span class="linenos">229</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
+</span><span id="label_dilate-230"><a href="#label_dilate-230"><span class="linenos">230</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
+</span><span id="label_dilate-231"><a href="#label_dilate-231"><span class="linenos">231</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
+</span><span id="label_dilate-232"><a href="#label_dilate-232"><span class="linenos">232</span></a><span class="sd">            or name.</span>
+</span><span id="label_dilate-233"><a href="#label_dilate-233"><span class="linenos">233</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="label_dilate-234"><a href="#label_dilate-234"><span class="linenos">234</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="label_dilate-235"><a href="#label_dilate-235"><span class="linenos">235</span></a><span class="sd">            metric.</span>
+</span><span id="label_dilate-236"><a href="#label_dilate-236"><span class="linenos">236</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="label_dilate-237"><a href="#label_dilate-237"><span class="linenos">237</span></a><span class="sd">    Returns:</span>
+</span><span id="label_dilate-238"><a href="#label_dilate-238"><span class="linenos">238</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
+</span><span id="label_dilate-239"><a href="#label_dilate-239"><span class="linenos">239</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="label_dilate-240"><a href="#label_dilate-240"><span class="linenos">240</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="label_dilate-241"><a href="#label_dilate-241"><span class="linenos">241</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="label_dilate-242"><a href="#label_dilate-242"><span class="linenos">242</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_dilate_params</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">dilate_dist</span><span class="o">=</span><span class="n">dilate_dist</span><span class="p">,</span> <span class="n">label_out</span><span class="o">=</span><span class="n">label_out</span><span class="p">,</span> <span class="n">opt_bad_vertex_roi_roi_metric</span><span class="o">=</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">,</span> <span class="n">opt_column_column</span><span class="o">=</span><span class="n">opt_column_column</span><span class="p">,</span> <span class="n">opt_corrected_areas_area_metric</span><span class="o">=</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="label_dilate-243"><a href="#label_dilate-243"><span class="linenos">243</span></a>    <span class="k">return</span> <span class="n">label_dilate_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

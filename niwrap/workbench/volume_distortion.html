@@ -271,65 +271,64 @@
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Returns:</span>
 </span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDistortionOutputs`).</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_distortion_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_distortion_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_distortion_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_distortion_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_distortion</span><span class="p">(</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">opt_circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeDistortionOutputs</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    Calculate volume warpfield distortion.</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    Calculates isotropic and anisotropic distortions in the volume warpfield. At</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    each voxel, the gradient of the absolute warpfield is computed to obtain the</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    local affine transforms for each voxel (jacobian matrices), and strain</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    tensors are derived from them. The isotropic component (volumetric expansion</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    ratio) is the product of the three principal strains. The default measure</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    (&#39;elongation&#39;) for the anisotropic component is the largest principal strain</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    divided by the smallest.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    </span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    The -circular option instead calculates the anisotropic component by</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    transforming the principal strains into log space, considering them as</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    x-values of points on a circle 120 degrees apart, finds the circle&#39;s</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    diameter, and transforms that back to a ratio.</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    </span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Args:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        warpfield: the warpfield to compute the distortion of.</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        volume_out: the output distortion measures.</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">            source volume used when generating the warpfield.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        opt_circular: use the circle-based formula for the anisotropic measure.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDistortionOutputs`).</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DISTORTION_METADATA</span><span class="p">)</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_distortion_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">opt_circular</span><span class="o">=</span><span class="n">opt_circular</span><span class="p">,</span> <span class="n">opt_log2</span><span class="o">=</span><span class="n">opt_log2</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">return</span> <span class="n">volume_distortion_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_distortion</span><span class="p">(</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">opt_circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeDistortionOutputs</span><span class="p">:</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Calculate volume warpfield distortion.</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    Calculates isotropic and anisotropic distortions in the volume warpfield. At</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    each voxel, the gradient of the absolute warpfield is computed to obtain the</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    local affine transforms for each voxel (jacobian matrices), and strain</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    tensors are derived from them. The isotropic component (volumetric expansion</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    ratio) is the product of the three principal strains. The default measure</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    (&#39;elongation&#39;) for the anisotropic component is the largest principal strain</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    divided by the smallest.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    </span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    The -circular option instead calculates the anisotropic component by</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    transforming the principal strains into log space, considering them as</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    x-values of points on a circle 120 degrees apart, finds the circle&#39;s</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    diameter, and transforms that back to a ratio.</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    </span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    </span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    Args:</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        warpfield: the warpfield to compute the distortion of.</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        volume_out: the output distortion measures.</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            source volume used when generating the warpfield.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        opt_circular: use the circle-based formula for the anisotropic measure.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Returns:</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDistortionOutputs`).</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DISTORTION_METADATA</span><span class="p">)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_distortion_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">opt_circular</span><span class="o">=</span><span class="n">opt_circular</span><span class="p">,</span> <span class="n">opt_log2</span><span class="o">=</span><span class="n">opt_log2</span><span class="p">)</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">return</span> <span class="n">volume_distortion_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;VOLUME_DISTORTION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;VolumeDistortionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;VolumeDistortionParameters&quot;</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;volume_distortion&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;volume_distortion_params&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="p">]</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="s2">&quot;VOLUME_DISTORTION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;VolumeDistortionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;VolumeDistortionParameters&quot;</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;volume_distortion&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;volume_distortion_params&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -493,49 +492,49 @@
 
     </div>
     <a class="headerlink" href="#volume_distortion"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_distortion-186"><a href="#volume_distortion-186"><span class="linenos">186</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_distortion</span><span class="p">(</span>
-</span><span id="volume_distortion-187"><a href="#volume_distortion-187"><span class="linenos">187</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_distortion-188"><a href="#volume_distortion-188"><span class="linenos">188</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_distortion-189"><a href="#volume_distortion-189"><span class="linenos">189</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_distortion-190"><a href="#volume_distortion-190"><span class="linenos">190</span></a>    <span class="n">opt_circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_distortion-191"><a href="#volume_distortion-191"><span class="linenos">191</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_distortion-192"><a href="#volume_distortion-192"><span class="linenos">192</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_distortion-193"><a href="#volume_distortion-193"><span class="linenos">193</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeDistortionOutputs</span><span class="p">:</span>
-</span><span id="volume_distortion-194"><a href="#volume_distortion-194"><span class="linenos">194</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_distortion-195"><a href="#volume_distortion-195"><span class="linenos">195</span></a><span class="sd">    Calculate volume warpfield distortion.</span>
-</span><span id="volume_distortion-196"><a href="#volume_distortion-196"><span class="linenos">196</span></a><span class="sd">    </span>
-</span><span id="volume_distortion-197"><a href="#volume_distortion-197"><span class="linenos">197</span></a><span class="sd">    Calculates isotropic and anisotropic distortions in the volume warpfield. At</span>
-</span><span id="volume_distortion-198"><a href="#volume_distortion-198"><span class="linenos">198</span></a><span class="sd">    each voxel, the gradient of the absolute warpfield is computed to obtain the</span>
-</span><span id="volume_distortion-199"><a href="#volume_distortion-199"><span class="linenos">199</span></a><span class="sd">    local affine transforms for each voxel (jacobian matrices), and strain</span>
-</span><span id="volume_distortion-200"><a href="#volume_distortion-200"><span class="linenos">200</span></a><span class="sd">    tensors are derived from them. The isotropic component (volumetric expansion</span>
-</span><span id="volume_distortion-201"><a href="#volume_distortion-201"><span class="linenos">201</span></a><span class="sd">    ratio) is the product of the three principal strains. The default measure</span>
-</span><span id="volume_distortion-202"><a href="#volume_distortion-202"><span class="linenos">202</span></a><span class="sd">    (&#39;elongation&#39;) for the anisotropic component is the largest principal strain</span>
-</span><span id="volume_distortion-203"><a href="#volume_distortion-203"><span class="linenos">203</span></a><span class="sd">    divided by the smallest.</span>
-</span><span id="volume_distortion-204"><a href="#volume_distortion-204"><span class="linenos">204</span></a><span class="sd">    </span>
-</span><span id="volume_distortion-205"><a href="#volume_distortion-205"><span class="linenos">205</span></a><span class="sd">    The -circular option instead calculates the anisotropic component by</span>
-</span><span id="volume_distortion-206"><a href="#volume_distortion-206"><span class="linenos">206</span></a><span class="sd">    transforming the principal strains into log space, considering them as</span>
-</span><span id="volume_distortion-207"><a href="#volume_distortion-207"><span class="linenos">207</span></a><span class="sd">    x-values of points on a circle 120 degrees apart, finds the circle&#39;s</span>
-</span><span id="volume_distortion-208"><a href="#volume_distortion-208"><span class="linenos">208</span></a><span class="sd">    diameter, and transforms that back to a ratio.</span>
-</span><span id="volume_distortion-209"><a href="#volume_distortion-209"><span class="linenos">209</span></a><span class="sd">    </span>
-</span><span id="volume_distortion-210"><a href="#volume_distortion-210"><span class="linenos">210</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_distortion-211"><a href="#volume_distortion-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="volume_distortion-212"><a href="#volume_distortion-212"><span class="linenos">212</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_distortion-213"><a href="#volume_distortion-213"><span class="linenos">213</span></a><span class="sd">    </span>
-</span><span id="volume_distortion-214"><a href="#volume_distortion-214"><span class="linenos">214</span></a><span class="sd">    Args:</span>
-</span><span id="volume_distortion-215"><a href="#volume_distortion-215"><span class="linenos">215</span></a><span class="sd">        warpfield: the warpfield to compute the distortion of.</span>
-</span><span id="volume_distortion-216"><a href="#volume_distortion-216"><span class="linenos">216</span></a><span class="sd">        volume_out: the output distortion measures.</span>
-</span><span id="volume_distortion-217"><a href="#volume_distortion-217"><span class="linenos">217</span></a><span class="sd">        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\</span>
-</span><span id="volume_distortion-218"><a href="#volume_distortion-218"><span class="linenos">218</span></a><span class="sd">            source volume used when generating the warpfield.</span>
-</span><span id="volume_distortion-219"><a href="#volume_distortion-219"><span class="linenos">219</span></a><span class="sd">        opt_circular: use the circle-based formula for the anisotropic measure.</span>
-</span><span id="volume_distortion-220"><a href="#volume_distortion-220"><span class="linenos">220</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
-</span><span id="volume_distortion-221"><a href="#volume_distortion-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_distortion-222"><a href="#volume_distortion-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_distortion-223"><a href="#volume_distortion-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDistortionOutputs`).</span>
-</span><span id="volume_distortion-224"><a href="#volume_distortion-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_distortion-225"><a href="#volume_distortion-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_distortion-226"><a href="#volume_distortion-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DISTORTION_METADATA</span><span class="p">)</span>
-</span><span id="volume_distortion-227"><a href="#volume_distortion-227"><span class="linenos">227</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_distortion_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">opt_circular</span><span class="o">=</span><span class="n">opt_circular</span><span class="p">,</span> <span class="n">opt_log2</span><span class="o">=</span><span class="n">opt_log2</span><span class="p">)</span>
-</span><span id="volume_distortion-228"><a href="#volume_distortion-228"><span class="linenos">228</span></a>    <span class="k">return</span> <span class="n">volume_distortion_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_distortion-185"><a href="#volume_distortion-185"><span class="linenos">185</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_distortion</span><span class="p">(</span>
+</span><span id="volume_distortion-186"><a href="#volume_distortion-186"><span class="linenos">186</span></a>    <span class="n">warpfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_distortion-187"><a href="#volume_distortion-187"><span class="linenos">187</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_distortion-188"><a href="#volume_distortion-188"><span class="linenos">188</span></a>    <span class="n">opt_fnirt_source_volume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_distortion-189"><a href="#volume_distortion-189"><span class="linenos">189</span></a>    <span class="n">opt_circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_distortion-190"><a href="#volume_distortion-190"><span class="linenos">190</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_distortion-191"><a href="#volume_distortion-191"><span class="linenos">191</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_distortion-192"><a href="#volume_distortion-192"><span class="linenos">192</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeDistortionOutputs</span><span class="p">:</span>
+</span><span id="volume_distortion-193"><a href="#volume_distortion-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_distortion-194"><a href="#volume_distortion-194"><span class="linenos">194</span></a><span class="sd">    Calculate volume warpfield distortion.</span>
+</span><span id="volume_distortion-195"><a href="#volume_distortion-195"><span class="linenos">195</span></a><span class="sd">    </span>
+</span><span id="volume_distortion-196"><a href="#volume_distortion-196"><span class="linenos">196</span></a><span class="sd">    Calculates isotropic and anisotropic distortions in the volume warpfield. At</span>
+</span><span id="volume_distortion-197"><a href="#volume_distortion-197"><span class="linenos">197</span></a><span class="sd">    each voxel, the gradient of the absolute warpfield is computed to obtain the</span>
+</span><span id="volume_distortion-198"><a href="#volume_distortion-198"><span class="linenos">198</span></a><span class="sd">    local affine transforms for each voxel (jacobian matrices), and strain</span>
+</span><span id="volume_distortion-199"><a href="#volume_distortion-199"><span class="linenos">199</span></a><span class="sd">    tensors are derived from them. The isotropic component (volumetric expansion</span>
+</span><span id="volume_distortion-200"><a href="#volume_distortion-200"><span class="linenos">200</span></a><span class="sd">    ratio) is the product of the three principal strains. The default measure</span>
+</span><span id="volume_distortion-201"><a href="#volume_distortion-201"><span class="linenos">201</span></a><span class="sd">    (&#39;elongation&#39;) for the anisotropic component is the largest principal strain</span>
+</span><span id="volume_distortion-202"><a href="#volume_distortion-202"><span class="linenos">202</span></a><span class="sd">    divided by the smallest.</span>
+</span><span id="volume_distortion-203"><a href="#volume_distortion-203"><span class="linenos">203</span></a><span class="sd">    </span>
+</span><span id="volume_distortion-204"><a href="#volume_distortion-204"><span class="linenos">204</span></a><span class="sd">    The -circular option instead calculates the anisotropic component by</span>
+</span><span id="volume_distortion-205"><a href="#volume_distortion-205"><span class="linenos">205</span></a><span class="sd">    transforming the principal strains into log space, considering them as</span>
+</span><span id="volume_distortion-206"><a href="#volume_distortion-206"><span class="linenos">206</span></a><span class="sd">    x-values of points on a circle 120 degrees apart, finds the circle&#39;s</span>
+</span><span id="volume_distortion-207"><a href="#volume_distortion-207"><span class="linenos">207</span></a><span class="sd">    diameter, and transforms that back to a ratio.</span>
+</span><span id="volume_distortion-208"><a href="#volume_distortion-208"><span class="linenos">208</span></a><span class="sd">    </span>
+</span><span id="volume_distortion-209"><a href="#volume_distortion-209"><span class="linenos">209</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_distortion-210"><a href="#volume_distortion-210"><span class="linenos">210</span></a><span class="sd">    </span>
+</span><span id="volume_distortion-211"><a href="#volume_distortion-211"><span class="linenos">211</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_distortion-212"><a href="#volume_distortion-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="volume_distortion-213"><a href="#volume_distortion-213"><span class="linenos">213</span></a><span class="sd">    Args:</span>
+</span><span id="volume_distortion-214"><a href="#volume_distortion-214"><span class="linenos">214</span></a><span class="sd">        warpfield: the warpfield to compute the distortion of.</span>
+</span><span id="volume_distortion-215"><a href="#volume_distortion-215"><span class="linenos">215</span></a><span class="sd">        volume_out: the output distortion measures.</span>
+</span><span id="volume_distortion-216"><a href="#volume_distortion-216"><span class="linenos">216</span></a><span class="sd">        opt_fnirt_source_volume: MUST be used if using a fnirt warpfield: the\</span>
+</span><span id="volume_distortion-217"><a href="#volume_distortion-217"><span class="linenos">217</span></a><span class="sd">            source volume used when generating the warpfield.</span>
+</span><span id="volume_distortion-218"><a href="#volume_distortion-218"><span class="linenos">218</span></a><span class="sd">        opt_circular: use the circle-based formula for the anisotropic measure.</span>
+</span><span id="volume_distortion-219"><a href="#volume_distortion-219"><span class="linenos">219</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
+</span><span id="volume_distortion-220"><a href="#volume_distortion-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_distortion-221"><a href="#volume_distortion-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_distortion-222"><a href="#volume_distortion-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDistortionOutputs`).</span>
+</span><span id="volume_distortion-223"><a href="#volume_distortion-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_distortion-224"><a href="#volume_distortion-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_distortion-225"><a href="#volume_distortion-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DISTORTION_METADATA</span><span class="p">)</span>
+</span><span id="volume_distortion-226"><a href="#volume_distortion-226"><span class="linenos">226</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_distortion_params</span><span class="p">(</span><span class="n">warpfield</span><span class="o">=</span><span class="n">warpfield</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_fnirt_source_volume</span><span class="o">=</span><span class="n">opt_fnirt_source_volume</span><span class="p">,</span> <span class="n">opt_circular</span><span class="o">=</span><span class="n">opt_circular</span><span class="p">,</span> <span class="n">opt_log2</span><span class="o">=</span><span class="n">opt_log2</span><span class="p">)</span>
+</span><span id="volume_distortion-227"><a href="#volume_distortion-227"><span class="linenos">227</span></a>    <span class="k">return</span> <span class="n">volume_distortion_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

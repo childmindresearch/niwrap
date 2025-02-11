@@ -249,56 +249,55 @@
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Returns:</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_parcel_mapping_to_label</span><span class="p">(</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">dlabel_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiParcelMappingToLabelOutputs</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    Create dlabel from parcellated file.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    </span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    This command will output a dlabel file, useful for doing the same</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    parcellation to another dense file.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    </span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    For ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    &lt;direction&gt; will work.</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    </span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    </span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    </span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    Args:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        cifti_in: the input parcellated file.</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        direction: which dimension to take the parcel map from, ROW or COLUMN.</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        template_cifti: a cifti file with the desired dense mapping along\</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            column.</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        dlabel_out: the output dense label file.</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Returns:</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA</span><span class="p">)</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">dlabel_out</span><span class="o">=</span><span class="n">dlabel_out</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">cifti_parcel_mapping_to_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_parcel_mapping_to_label</span><span class="p">(</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">dlabel_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiParcelMappingToLabelOutputs</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Create dlabel from parcellated file.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    This command will output a dlabel file, useful for doing the same</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    parcellation to another dense file.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    For ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    &lt;direction&gt; will work.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    </span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    </span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    </span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    Args:</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        cifti_in: the input parcellated file.</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        direction: which dimension to take the parcel map from, ROW or COLUMN.</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        template_cifti: a cifti file with the desired dense mapping along\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            column.</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        dlabel_out: the output dense label file.</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Returns:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">dlabel_out</span><span class="o">=</span><span class="n">dlabel_out</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">return</span> <span class="n">cifti_parcel_mapping_to_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;CiftiParcelMappingToLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;CiftiParcelMappingToLabelParameters&quot;</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="s2">&quot;cifti_parcel_mapping_to_label&quot;</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="s2">&quot;cifti_parcel_mapping_to_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="p">]</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;CiftiParcelMappingToLabelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;CiftiParcelMappingToLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;cifti_parcel_mapping_to_label&quot;</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="s2">&quot;cifti_parcel_mapping_to_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -451,40 +450,40 @@
 
     </div>
     <a class="headerlink" href="#cifti_parcel_mapping_to_label"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_parcel_mapping_to_label-167"><a href="#cifti_parcel_mapping_to_label-167"><span class="linenos">167</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_parcel_mapping_to_label</span><span class="p">(</span>
-</span><span id="cifti_parcel_mapping_to_label-168"><a href="#cifti_parcel_mapping_to_label-168"><span class="linenos">168</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_parcel_mapping_to_label-169"><a href="#cifti_parcel_mapping_to_label-169"><span class="linenos">169</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_parcel_mapping_to_label-170"><a href="#cifti_parcel_mapping_to_label-170"><span class="linenos">170</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cifti_parcel_mapping_to_label-171"><a href="#cifti_parcel_mapping_to_label-171"><span class="linenos">171</span></a>    <span class="n">dlabel_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_parcel_mapping_to_label-172"><a href="#cifti_parcel_mapping_to_label-172"><span class="linenos">172</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_parcel_mapping_to_label-173"><a href="#cifti_parcel_mapping_to_label-173"><span class="linenos">173</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiParcelMappingToLabelOutputs</span><span class="p">:</span>
-</span><span id="cifti_parcel_mapping_to_label-174"><a href="#cifti_parcel_mapping_to_label-174"><span class="linenos">174</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_parcel_mapping_to_label-175"><a href="#cifti_parcel_mapping_to_label-175"><span class="linenos">175</span></a><span class="sd">    Create dlabel from parcellated file.</span>
-</span><span id="cifti_parcel_mapping_to_label-176"><a href="#cifti_parcel_mapping_to_label-176"><span class="linenos">176</span></a><span class="sd">    </span>
-</span><span id="cifti_parcel_mapping_to_label-177"><a href="#cifti_parcel_mapping_to_label-177"><span class="linenos">177</span></a><span class="sd">    This command will output a dlabel file, useful for doing the same</span>
-</span><span id="cifti_parcel_mapping_to_label-178"><a href="#cifti_parcel_mapping_to_label-178"><span class="linenos">178</span></a><span class="sd">    parcellation to another dense file.</span>
-</span><span id="cifti_parcel_mapping_to_label-179"><a href="#cifti_parcel_mapping_to_label-179"><span class="linenos">179</span></a><span class="sd">    </span>
-</span><span id="cifti_parcel_mapping_to_label-180"><a href="#cifti_parcel_mapping_to_label-180"><span class="linenos">180</span></a><span class="sd">    For ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for</span>
-</span><span id="cifti_parcel_mapping_to_label-181"><a href="#cifti_parcel_mapping_to_label-181"><span class="linenos">181</span></a><span class="sd">    &lt;direction&gt; will work.</span>
-</span><span id="cifti_parcel_mapping_to_label-182"><a href="#cifti_parcel_mapping_to_label-182"><span class="linenos">182</span></a><span class="sd">    </span>
-</span><span id="cifti_parcel_mapping_to_label-183"><a href="#cifti_parcel_mapping_to_label-183"><span class="linenos">183</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="cifti_parcel_mapping_to_label-184"><a href="#cifti_parcel_mapping_to_label-184"><span class="linenos">184</span></a><span class="sd">    </span>
-</span><span id="cifti_parcel_mapping_to_label-185"><a href="#cifti_parcel_mapping_to_label-185"><span class="linenos">185</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="cifti_parcel_mapping_to_label-186"><a href="#cifti_parcel_mapping_to_label-186"><span class="linenos">186</span></a><span class="sd">    </span>
-</span><span id="cifti_parcel_mapping_to_label-187"><a href="#cifti_parcel_mapping_to_label-187"><span class="linenos">187</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_parcel_mapping_to_label-188"><a href="#cifti_parcel_mapping_to_label-188"><span class="linenos">188</span></a><span class="sd">        cifti_in: the input parcellated file.</span>
-</span><span id="cifti_parcel_mapping_to_label-189"><a href="#cifti_parcel_mapping_to_label-189"><span class="linenos">189</span></a><span class="sd">        direction: which dimension to take the parcel map from, ROW or COLUMN.</span>
-</span><span id="cifti_parcel_mapping_to_label-190"><a href="#cifti_parcel_mapping_to_label-190"><span class="linenos">190</span></a><span class="sd">        template_cifti: a cifti file with the desired dense mapping along\</span>
-</span><span id="cifti_parcel_mapping_to_label-191"><a href="#cifti_parcel_mapping_to_label-191"><span class="linenos">191</span></a><span class="sd">            column.</span>
-</span><span id="cifti_parcel_mapping_to_label-192"><a href="#cifti_parcel_mapping_to_label-192"><span class="linenos">192</span></a><span class="sd">        dlabel_out: the output dense label file.</span>
-</span><span id="cifti_parcel_mapping_to_label-193"><a href="#cifti_parcel_mapping_to_label-193"><span class="linenos">193</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_parcel_mapping_to_label-194"><a href="#cifti_parcel_mapping_to_label-194"><span class="linenos">194</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_parcel_mapping_to_label-195"><a href="#cifti_parcel_mapping_to_label-195"><span class="linenos">195</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).</span>
-</span><span id="cifti_parcel_mapping_to_label-196"><a href="#cifti_parcel_mapping_to_label-196"><span class="linenos">196</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_parcel_mapping_to_label-197"><a href="#cifti_parcel_mapping_to_label-197"><span class="linenos">197</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_parcel_mapping_to_label-198"><a href="#cifti_parcel_mapping_to_label-198"><span class="linenos">198</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA</span><span class="p">)</span>
-</span><span id="cifti_parcel_mapping_to_label-199"><a href="#cifti_parcel_mapping_to_label-199"><span class="linenos">199</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">dlabel_out</span><span class="o">=</span><span class="n">dlabel_out</span><span class="p">)</span>
-</span><span id="cifti_parcel_mapping_to_label-200"><a href="#cifti_parcel_mapping_to_label-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">cifti_parcel_mapping_to_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_parcel_mapping_to_label-166"><a href="#cifti_parcel_mapping_to_label-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_parcel_mapping_to_label</span><span class="p">(</span>
+</span><span id="cifti_parcel_mapping_to_label-167"><a href="#cifti_parcel_mapping_to_label-167"><span class="linenos">167</span></a>    <span class="n">cifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_parcel_mapping_to_label-168"><a href="#cifti_parcel_mapping_to_label-168"><span class="linenos">168</span></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_parcel_mapping_to_label-169"><a href="#cifti_parcel_mapping_to_label-169"><span class="linenos">169</span></a>    <span class="n">template_cifti</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cifti_parcel_mapping_to_label-170"><a href="#cifti_parcel_mapping_to_label-170"><span class="linenos">170</span></a>    <span class="n">dlabel_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cifti_parcel_mapping_to_label-171"><a href="#cifti_parcel_mapping_to_label-171"><span class="linenos">171</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_parcel_mapping_to_label-172"><a href="#cifti_parcel_mapping_to_label-172"><span class="linenos">172</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiParcelMappingToLabelOutputs</span><span class="p">:</span>
+</span><span id="cifti_parcel_mapping_to_label-173"><a href="#cifti_parcel_mapping_to_label-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_parcel_mapping_to_label-174"><a href="#cifti_parcel_mapping_to_label-174"><span class="linenos">174</span></a><span class="sd">    Create dlabel from parcellated file.</span>
+</span><span id="cifti_parcel_mapping_to_label-175"><a href="#cifti_parcel_mapping_to_label-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="cifti_parcel_mapping_to_label-176"><a href="#cifti_parcel_mapping_to_label-176"><span class="linenos">176</span></a><span class="sd">    This command will output a dlabel file, useful for doing the same</span>
+</span><span id="cifti_parcel_mapping_to_label-177"><a href="#cifti_parcel_mapping_to_label-177"><span class="linenos">177</span></a><span class="sd">    parcellation to another dense file.</span>
+</span><span id="cifti_parcel_mapping_to_label-178"><a href="#cifti_parcel_mapping_to_label-178"><span class="linenos">178</span></a><span class="sd">    </span>
+</span><span id="cifti_parcel_mapping_to_label-179"><a href="#cifti_parcel_mapping_to_label-179"><span class="linenos">179</span></a><span class="sd">    For ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for</span>
+</span><span id="cifti_parcel_mapping_to_label-180"><a href="#cifti_parcel_mapping_to_label-180"><span class="linenos">180</span></a><span class="sd">    &lt;direction&gt; will work.</span>
+</span><span id="cifti_parcel_mapping_to_label-181"><a href="#cifti_parcel_mapping_to_label-181"><span class="linenos">181</span></a><span class="sd">    </span>
+</span><span id="cifti_parcel_mapping_to_label-182"><a href="#cifti_parcel_mapping_to_label-182"><span class="linenos">182</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="cifti_parcel_mapping_to_label-183"><a href="#cifti_parcel_mapping_to_label-183"><span class="linenos">183</span></a><span class="sd">    </span>
+</span><span id="cifti_parcel_mapping_to_label-184"><a href="#cifti_parcel_mapping_to_label-184"><span class="linenos">184</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_parcel_mapping_to_label-185"><a href="#cifti_parcel_mapping_to_label-185"><span class="linenos">185</span></a><span class="sd">    </span>
+</span><span id="cifti_parcel_mapping_to_label-186"><a href="#cifti_parcel_mapping_to_label-186"><span class="linenos">186</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_parcel_mapping_to_label-187"><a href="#cifti_parcel_mapping_to_label-187"><span class="linenos">187</span></a><span class="sd">        cifti_in: the input parcellated file.</span>
+</span><span id="cifti_parcel_mapping_to_label-188"><a href="#cifti_parcel_mapping_to_label-188"><span class="linenos">188</span></a><span class="sd">        direction: which dimension to take the parcel map from, ROW or COLUMN.</span>
+</span><span id="cifti_parcel_mapping_to_label-189"><a href="#cifti_parcel_mapping_to_label-189"><span class="linenos">189</span></a><span class="sd">        template_cifti: a cifti file with the desired dense mapping along\</span>
+</span><span id="cifti_parcel_mapping_to_label-190"><a href="#cifti_parcel_mapping_to_label-190"><span class="linenos">190</span></a><span class="sd">            column.</span>
+</span><span id="cifti_parcel_mapping_to_label-191"><a href="#cifti_parcel_mapping_to_label-191"><span class="linenos">191</span></a><span class="sd">        dlabel_out: the output dense label file.</span>
+</span><span id="cifti_parcel_mapping_to_label-192"><a href="#cifti_parcel_mapping_to_label-192"><span class="linenos">192</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_parcel_mapping_to_label-193"><a href="#cifti_parcel_mapping_to_label-193"><span class="linenos">193</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_parcel_mapping_to_label-194"><a href="#cifti_parcel_mapping_to_label-194"><span class="linenos">194</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).</span>
+</span><span id="cifti_parcel_mapping_to_label-195"><a href="#cifti_parcel_mapping_to_label-195"><span class="linenos">195</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_parcel_mapping_to_label-196"><a href="#cifti_parcel_mapping_to_label-196"><span class="linenos">196</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_parcel_mapping_to_label-197"><a href="#cifti_parcel_mapping_to_label-197"><span class="linenos">197</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA</span><span class="p">)</span>
+</span><span id="cifti_parcel_mapping_to_label-198"><a href="#cifti_parcel_mapping_to_label-198"><span class="linenos">198</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cifti_parcel_mapping_to_label_params</span><span class="p">(</span><span class="n">cifti_in</span><span class="o">=</span><span class="n">cifti_in</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">template_cifti</span><span class="o">=</span><span class="n">template_cifti</span><span class="p">,</span> <span class="n">dlabel_out</span><span class="o">=</span><span class="n">dlabel_out</span><span class="p">)</span>
+</span><span id="cifti_parcel_mapping_to_label-199"><a href="#cifti_parcel_mapping_to_label-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">cifti_parcel_mapping_to_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

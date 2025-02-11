@@ -242,49 +242,48 @@
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    Returns:</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        NamedTuple of outputs (described in `MriCaLabelOutputs`).</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mri_ca_label_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mri_ca_label_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mri_ca_label_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mri_ca_label_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_ca_label</span><span class="p">(</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">input_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">transform_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriCaLabelOutputs</span><span class="p">:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    MRI cortical annotation labeler using atlas prior (GCA).</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    </span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    </span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Args:</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        input_volumes: Input MRI volumes.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        transform_file: Transform file for the registration.</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        gca_file: GCA file for the atlas.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        output_volume: Output labeled volume.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    Returns:</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        NamedTuple of outputs (described in `MriCaLabelOutputs`).</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_CA_LABEL_METADATA</span><span class="p">)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_ca_label_params</span><span class="p">(</span><span class="n">input_volumes</span><span class="o">=</span><span class="n">input_volumes</span><span class="p">,</span> <span class="n">transform_file</span><span class="o">=</span><span class="n">transform_file</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">return</span> <span class="n">mri_ca_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_ca_label</span><span class="p">(</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">input_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">transform_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriCaLabelOutputs</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    MRI cortical annotation labeler using atlas prior (GCA).</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    </span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    </span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    </span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Args:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        input_volumes: Input MRI volumes.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        transform_file: Transform file for the registration.</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        gca_file: GCA file for the atlas.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        output_volume: Output labeled volume.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    Returns:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        NamedTuple of outputs (described in `MriCaLabelOutputs`).</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_CA_LABEL_METADATA</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_ca_label_params</span><span class="p">(</span><span class="n">input_volumes</span><span class="o">=</span><span class="n">input_volumes</span><span class="p">,</span> <span class="n">transform_file</span><span class="o">=</span><span class="n">transform_file</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">return</span> <span class="n">mri_ca_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>
 </span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="s2">&quot;MRI_CA_LABEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="s2">&quot;MriCaLabelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;MriCaLabelParameters&quot;</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;mri_ca_label&quot;</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;mri_ca_label_params&quot;</span><span class="p">,</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="p">]</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="s2">&quot;MRI_CA_LABEL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="s2">&quot;MriCaLabelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="s2">&quot;MriCaLabelParameters&quot;</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;mri_ca_label&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;mri_ca_label_params&quot;</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -437,33 +436,33 @@
 
     </div>
     <a class="headerlink" href="#mri_ca_label"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mri_ca_label-160"><a href="#mri_ca_label-160"><span class="linenos">160</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_ca_label</span><span class="p">(</span>
-</span><span id="mri_ca_label-161"><a href="#mri_ca_label-161"><span class="linenos">161</span></a>    <span class="n">input_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
-</span><span id="mri_ca_label-162"><a href="#mri_ca_label-162"><span class="linenos">162</span></a>    <span class="n">transform_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mri_ca_label-163"><a href="#mri_ca_label-163"><span class="linenos">163</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mri_ca_label-164"><a href="#mri_ca_label-164"><span class="linenos">164</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mri_ca_label-165"><a href="#mri_ca_label-165"><span class="linenos">165</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_ca_label-166"><a href="#mri_ca_label-166"><span class="linenos">166</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriCaLabelOutputs</span><span class="p">:</span>
-</span><span id="mri_ca_label-167"><a href="#mri_ca_label-167"><span class="linenos">167</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mri_ca_label-168"><a href="#mri_ca_label-168"><span class="linenos">168</span></a><span class="sd">    MRI cortical annotation labeler using atlas prior (GCA).</span>
-</span><span id="mri_ca_label-169"><a href="#mri_ca_label-169"><span class="linenos">169</span></a><span class="sd">    </span>
-</span><span id="mri_ca_label-170"><a href="#mri_ca_label-170"><span class="linenos">170</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mri_ca_label-171"><a href="#mri_ca_label-171"><span class="linenos">171</span></a><span class="sd">    </span>
-</span><span id="mri_ca_label-172"><a href="#mri_ca_label-172"><span class="linenos">172</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mri_ca_label-173"><a href="#mri_ca_label-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="mri_ca_label-174"><a href="#mri_ca_label-174"><span class="linenos">174</span></a><span class="sd">    Args:</span>
-</span><span id="mri_ca_label-175"><a href="#mri_ca_label-175"><span class="linenos">175</span></a><span class="sd">        input_volumes: Input MRI volumes.</span>
-</span><span id="mri_ca_label-176"><a href="#mri_ca_label-176"><span class="linenos">176</span></a><span class="sd">        transform_file: Transform file for the registration.</span>
-</span><span id="mri_ca_label-177"><a href="#mri_ca_label-177"><span class="linenos">177</span></a><span class="sd">        gca_file: GCA file for the atlas.</span>
-</span><span id="mri_ca_label-178"><a href="#mri_ca_label-178"><span class="linenos">178</span></a><span class="sd">        output_volume: Output labeled volume.</span>
-</span><span id="mri_ca_label-179"><a href="#mri_ca_label-179"><span class="linenos">179</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mri_ca_label-180"><a href="#mri_ca_label-180"><span class="linenos">180</span></a><span class="sd">    Returns:</span>
-</span><span id="mri_ca_label-181"><a href="#mri_ca_label-181"><span class="linenos">181</span></a><span class="sd">        NamedTuple of outputs (described in `MriCaLabelOutputs`).</span>
-</span><span id="mri_ca_label-182"><a href="#mri_ca_label-182"><span class="linenos">182</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mri_ca_label-183"><a href="#mri_ca_label-183"><span class="linenos">183</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mri_ca_label-184"><a href="#mri_ca_label-184"><span class="linenos">184</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_CA_LABEL_METADATA</span><span class="p">)</span>
-</span><span id="mri_ca_label-185"><a href="#mri_ca_label-185"><span class="linenos">185</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_ca_label_params</span><span class="p">(</span><span class="n">input_volumes</span><span class="o">=</span><span class="n">input_volumes</span><span class="p">,</span> <span class="n">transform_file</span><span class="o">=</span><span class="n">transform_file</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
-</span><span id="mri_ca_label-186"><a href="#mri_ca_label-186"><span class="linenos">186</span></a>    <span class="k">return</span> <span class="n">mri_ca_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mri_ca_label-159"><a href="#mri_ca_label-159"><span class="linenos">159</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_ca_label</span><span class="p">(</span>
+</span><span id="mri_ca_label-160"><a href="#mri_ca_label-160"><span class="linenos">160</span></a>    <span class="n">input_volumes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InputPathType</span><span class="p">],</span>
+</span><span id="mri_ca_label-161"><a href="#mri_ca_label-161"><span class="linenos">161</span></a>    <span class="n">transform_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mri_ca_label-162"><a href="#mri_ca_label-162"><span class="linenos">162</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mri_ca_label-163"><a href="#mri_ca_label-163"><span class="linenos">163</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mri_ca_label-164"><a href="#mri_ca_label-164"><span class="linenos">164</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_ca_label-165"><a href="#mri_ca_label-165"><span class="linenos">165</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriCaLabelOutputs</span><span class="p">:</span>
+</span><span id="mri_ca_label-166"><a href="#mri_ca_label-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mri_ca_label-167"><a href="#mri_ca_label-167"><span class="linenos">167</span></a><span class="sd">    MRI cortical annotation labeler using atlas prior (GCA).</span>
+</span><span id="mri_ca_label-168"><a href="#mri_ca_label-168"><span class="linenos">168</span></a><span class="sd">    </span>
+</span><span id="mri_ca_label-169"><a href="#mri_ca_label-169"><span class="linenos">169</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mri_ca_label-170"><a href="#mri_ca_label-170"><span class="linenos">170</span></a><span class="sd">    </span>
+</span><span id="mri_ca_label-171"><a href="#mri_ca_label-171"><span class="linenos">171</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mri_ca_label-172"><a href="#mri_ca_label-172"><span class="linenos">172</span></a><span class="sd">    </span>
+</span><span id="mri_ca_label-173"><a href="#mri_ca_label-173"><span class="linenos">173</span></a><span class="sd">    Args:</span>
+</span><span id="mri_ca_label-174"><a href="#mri_ca_label-174"><span class="linenos">174</span></a><span class="sd">        input_volumes: Input MRI volumes.</span>
+</span><span id="mri_ca_label-175"><a href="#mri_ca_label-175"><span class="linenos">175</span></a><span class="sd">        transform_file: Transform file for the registration.</span>
+</span><span id="mri_ca_label-176"><a href="#mri_ca_label-176"><span class="linenos">176</span></a><span class="sd">        gca_file: GCA file for the atlas.</span>
+</span><span id="mri_ca_label-177"><a href="#mri_ca_label-177"><span class="linenos">177</span></a><span class="sd">        output_volume: Output labeled volume.</span>
+</span><span id="mri_ca_label-178"><a href="#mri_ca_label-178"><span class="linenos">178</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mri_ca_label-179"><a href="#mri_ca_label-179"><span class="linenos">179</span></a><span class="sd">    Returns:</span>
+</span><span id="mri_ca_label-180"><a href="#mri_ca_label-180"><span class="linenos">180</span></a><span class="sd">        NamedTuple of outputs (described in `MriCaLabelOutputs`).</span>
+</span><span id="mri_ca_label-181"><a href="#mri_ca_label-181"><span class="linenos">181</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mri_ca_label-182"><a href="#mri_ca_label-182"><span class="linenos">182</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mri_ca_label-183"><a href="#mri_ca_label-183"><span class="linenos">183</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_CA_LABEL_METADATA</span><span class="p">)</span>
+</span><span id="mri_ca_label-184"><a href="#mri_ca_label-184"><span class="linenos">184</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_ca_label_params</span><span class="p">(</span><span class="n">input_volumes</span><span class="o">=</span><span class="n">input_volumes</span><span class="p">,</span> <span class="n">transform_file</span><span class="o">=</span><span class="n">transform_file</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
+</span><span id="mri_ca_label-185"><a href="#mri_ca_label-185"><span class="linenos">185</span></a>    <span class="k">return</span> <span class="n">mri_ca_label_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

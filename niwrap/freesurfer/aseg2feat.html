@@ -309,62 +309,61 @@
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    Returns:</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        NamedTuple of outputs (described in `Aseg2featOutputs`).</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">aseg2feat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">aseg2feat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">aseg2feat_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">aseg2feat_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aseg2feat</span><span class="p">(</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">feat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">aparc_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">svstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">standard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aseg2featOutputs</span><span class="p">:</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Resamples the FreeSurfer automatic subcortical segmentation (aseg) to the FEAT</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    functional space.</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        feat: FEAT output directory. Multiple --feat arguments can be supplied.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Can be used in\</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            conjunction with --feat.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        seg: Change segmentation volume, default is aseg.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        aparc_aseg: Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        svstats: Save result in featdir/stats instead of featdir/reg/freesurfer.</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        standard: Map results to standard space instead of native functional\</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            space. Implies --svstats.</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        debug: Turn on debugging.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `Aseg2featOutputs`).</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ASEG2FEAT_METADATA</span><span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aseg2feat_params</span><span class="p">(</span><span class="n">feat</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="n">seg</span><span class="p">,</span> <span class="n">aparc_aseg</span><span class="o">=</span><span class="n">aparc_aseg</span><span class="p">,</span> <span class="n">svstats</span><span class="o">=</span><span class="n">svstats</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="n">standard</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">return</span> <span class="n">aseg2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aseg2feat</span><span class="p">(</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">feat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">aparc_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">svstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">standard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aseg2featOutputs</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Resamples the FreeSurfer automatic subcortical segmentation (aseg) to the FEAT</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    functional space.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        feat: FEAT output directory. Multiple --feat arguments can be supplied.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Can be used in\</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            conjunction with --feat.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        seg: Change segmentation volume, default is aseg.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        aparc_aseg: Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        svstats: Save result in featdir/stats instead of featdir/reg/freesurfer.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        standard: Map results to standard space instead of native functional\</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            space. Implies --svstats.</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        debug: Turn on debugging.</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    Returns:</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        NamedTuple of outputs (described in `Aseg2featOutputs`).</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ASEG2FEAT_METADATA</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aseg2feat_params</span><span class="p">(</span><span class="n">feat</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="n">seg</span><span class="p">,</span> <span class="n">aparc_aseg</span><span class="o">=</span><span class="n">aparc_aseg</span><span class="p">,</span> <span class="n">svstats</span><span class="o">=</span><span class="n">svstats</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="n">standard</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="k">return</span> <span class="n">aseg2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
 </span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;ASEG2FEAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;Aseg2featOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;Aseg2featParameters&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;aseg2feat&quot;</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;aseg2feat_params&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="p">]</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;ASEG2FEAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;Aseg2featOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;Aseg2featParameters&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;aseg2feat&quot;</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;aseg2feat_params&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -587,46 +586,46 @@
 
     </div>
     <a class="headerlink" href="#aseg2feat"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="aseg2feat-209"><a href="#aseg2feat-209"><span class="linenos">209</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aseg2feat</span><span class="p">(</span>
-</span><span id="aseg2feat-210"><a href="#aseg2feat-210"><span class="linenos">210</span></a>    <span class="n">feat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="aseg2feat-211"><a href="#aseg2feat-211"><span class="linenos">211</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aseg2feat-212"><a href="#aseg2feat-212"><span class="linenos">212</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aseg2feat-213"><a href="#aseg2feat-213"><span class="linenos">213</span></a>    <span class="n">aparc_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-214"><a href="#aseg2feat-214"><span class="linenos">214</span></a>    <span class="n">svstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-215"><a href="#aseg2feat-215"><span class="linenos">215</span></a>    <span class="n">standard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-216"><a href="#aseg2feat-216"><span class="linenos">216</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-217"><a href="#aseg2feat-217"><span class="linenos">217</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-218"><a href="#aseg2feat-218"><span class="linenos">218</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="aseg2feat-219"><a href="#aseg2feat-219"><span class="linenos">219</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="aseg2feat-220"><a href="#aseg2feat-220"><span class="linenos">220</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aseg2featOutputs</span><span class="p">:</span>
-</span><span id="aseg2feat-221"><a href="#aseg2feat-221"><span class="linenos">221</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="aseg2feat-222"><a href="#aseg2feat-222"><span class="linenos">222</span></a><span class="sd">    Resamples the FreeSurfer automatic subcortical segmentation (aseg) to the FEAT</span>
-</span><span id="aseg2feat-223"><a href="#aseg2feat-223"><span class="linenos">223</span></a><span class="sd">    functional space.</span>
-</span><span id="aseg2feat-224"><a href="#aseg2feat-224"><span class="linenos">224</span></a><span class="sd">    </span>
-</span><span id="aseg2feat-225"><a href="#aseg2feat-225"><span class="linenos">225</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="aseg2feat-226"><a href="#aseg2feat-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="aseg2feat-227"><a href="#aseg2feat-227"><span class="linenos">227</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="aseg2feat-228"><a href="#aseg2feat-228"><span class="linenos">228</span></a><span class="sd">    </span>
-</span><span id="aseg2feat-229"><a href="#aseg2feat-229"><span class="linenos">229</span></a><span class="sd">    Args:</span>
-</span><span id="aseg2feat-230"><a href="#aseg2feat-230"><span class="linenos">230</span></a><span class="sd">        feat: FEAT output directory. Multiple --feat arguments can be supplied.</span>
-</span><span id="aseg2feat-231"><a href="#aseg2feat-231"><span class="linenos">231</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Can be used in\</span>
-</span><span id="aseg2feat-232"><a href="#aseg2feat-232"><span class="linenos">232</span></a><span class="sd">            conjunction with --feat.</span>
-</span><span id="aseg2feat-233"><a href="#aseg2feat-233"><span class="linenos">233</span></a><span class="sd">        seg: Change segmentation volume, default is aseg.</span>
-</span><span id="aseg2feat-234"><a href="#aseg2feat-234"><span class="linenos">234</span></a><span class="sd">        aparc_aseg: Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.</span>
-</span><span id="aseg2feat-235"><a href="#aseg2feat-235"><span class="linenos">235</span></a><span class="sd">        svstats: Save result in featdir/stats instead of featdir/reg/freesurfer.</span>
-</span><span id="aseg2feat-236"><a href="#aseg2feat-236"><span class="linenos">236</span></a><span class="sd">        standard: Map results to standard space instead of native functional\</span>
-</span><span id="aseg2feat-237"><a href="#aseg2feat-237"><span class="linenos">237</span></a><span class="sd">            space. Implies --svstats.</span>
-</span><span id="aseg2feat-238"><a href="#aseg2feat-238"><span class="linenos">238</span></a><span class="sd">        debug: Turn on debugging.</span>
-</span><span id="aseg2feat-239"><a href="#aseg2feat-239"><span class="linenos">239</span></a><span class="sd">        help_: Print help and exit.</span>
-</span><span id="aseg2feat-240"><a href="#aseg2feat-240"><span class="linenos">240</span></a><span class="sd">        version: Print version and exit.</span>
-</span><span id="aseg2feat-241"><a href="#aseg2feat-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="aseg2feat-242"><a href="#aseg2feat-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
-</span><span id="aseg2feat-243"><a href="#aseg2feat-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `Aseg2featOutputs`).</span>
-</span><span id="aseg2feat-244"><a href="#aseg2feat-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="aseg2feat-245"><a href="#aseg2feat-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="aseg2feat-246"><a href="#aseg2feat-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ASEG2FEAT_METADATA</span><span class="p">)</span>
-</span><span id="aseg2feat-247"><a href="#aseg2feat-247"><span class="linenos">247</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aseg2feat_params</span><span class="p">(</span><span class="n">feat</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="n">seg</span><span class="p">,</span> <span class="n">aparc_aseg</span><span class="o">=</span><span class="n">aparc_aseg</span><span class="p">,</span> <span class="n">svstats</span><span class="o">=</span><span class="n">svstats</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="n">standard</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
-</span><span id="aseg2feat-248"><a href="#aseg2feat-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">aseg2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="aseg2feat-208"><a href="#aseg2feat-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">aseg2feat</span><span class="p">(</span>
+</span><span id="aseg2feat-209"><a href="#aseg2feat-209"><span class="linenos">209</span></a>    <span class="n">feat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="aseg2feat-210"><a href="#aseg2feat-210"><span class="linenos">210</span></a>    <span class="n">featdirfile</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aseg2feat-211"><a href="#aseg2feat-211"><span class="linenos">211</span></a>    <span class="n">seg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aseg2feat-212"><a href="#aseg2feat-212"><span class="linenos">212</span></a>    <span class="n">aparc_aseg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-213"><a href="#aseg2feat-213"><span class="linenos">213</span></a>    <span class="n">svstats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-214"><a href="#aseg2feat-214"><span class="linenos">214</span></a>    <span class="n">standard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-215"><a href="#aseg2feat-215"><span class="linenos">215</span></a>    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-216"><a href="#aseg2feat-216"><span class="linenos">216</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-217"><a href="#aseg2feat-217"><span class="linenos">217</span></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="aseg2feat-218"><a href="#aseg2feat-218"><span class="linenos">218</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="aseg2feat-219"><a href="#aseg2feat-219"><span class="linenos">219</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aseg2featOutputs</span><span class="p">:</span>
+</span><span id="aseg2feat-220"><a href="#aseg2feat-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="aseg2feat-221"><a href="#aseg2feat-221"><span class="linenos">221</span></a><span class="sd">    Resamples the FreeSurfer automatic subcortical segmentation (aseg) to the FEAT</span>
+</span><span id="aseg2feat-222"><a href="#aseg2feat-222"><span class="linenos">222</span></a><span class="sd">    functional space.</span>
+</span><span id="aseg2feat-223"><a href="#aseg2feat-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="aseg2feat-224"><a href="#aseg2feat-224"><span class="linenos">224</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="aseg2feat-225"><a href="#aseg2feat-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="aseg2feat-226"><a href="#aseg2feat-226"><span class="linenos">226</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="aseg2feat-227"><a href="#aseg2feat-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="aseg2feat-228"><a href="#aseg2feat-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
+</span><span id="aseg2feat-229"><a href="#aseg2feat-229"><span class="linenos">229</span></a><span class="sd">        feat: FEAT output directory. Multiple --feat arguments can be supplied.</span>
+</span><span id="aseg2feat-230"><a href="#aseg2feat-230"><span class="linenos">230</span></a><span class="sd">        featdirfile: File with a list of FEAT directories. Can be used in\</span>
+</span><span id="aseg2feat-231"><a href="#aseg2feat-231"><span class="linenos">231</span></a><span class="sd">            conjunction with --feat.</span>
+</span><span id="aseg2feat-232"><a href="#aseg2feat-232"><span class="linenos">232</span></a><span class="sd">        seg: Change segmentation volume, default is aseg.</span>
+</span><span id="aseg2feat-233"><a href="#aseg2feat-233"><span class="linenos">233</span></a><span class="sd">        aparc_aseg: Use aparc+aseg.mgz. Same as --seg aparc+aseg.mgz.</span>
+</span><span id="aseg2feat-234"><a href="#aseg2feat-234"><span class="linenos">234</span></a><span class="sd">        svstats: Save result in featdir/stats instead of featdir/reg/freesurfer.</span>
+</span><span id="aseg2feat-235"><a href="#aseg2feat-235"><span class="linenos">235</span></a><span class="sd">        standard: Map results to standard space instead of native functional\</span>
+</span><span id="aseg2feat-236"><a href="#aseg2feat-236"><span class="linenos">236</span></a><span class="sd">            space. Implies --svstats.</span>
+</span><span id="aseg2feat-237"><a href="#aseg2feat-237"><span class="linenos">237</span></a><span class="sd">        debug: Turn on debugging.</span>
+</span><span id="aseg2feat-238"><a href="#aseg2feat-238"><span class="linenos">238</span></a><span class="sd">        help_: Print help and exit.</span>
+</span><span id="aseg2feat-239"><a href="#aseg2feat-239"><span class="linenos">239</span></a><span class="sd">        version: Print version and exit.</span>
+</span><span id="aseg2feat-240"><a href="#aseg2feat-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="aseg2feat-241"><a href="#aseg2feat-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
+</span><span id="aseg2feat-242"><a href="#aseg2feat-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `Aseg2featOutputs`).</span>
+</span><span id="aseg2feat-243"><a href="#aseg2feat-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="aseg2feat-244"><a href="#aseg2feat-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="aseg2feat-245"><a href="#aseg2feat-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ASEG2FEAT_METADATA</span><span class="p">)</span>
+</span><span id="aseg2feat-246"><a href="#aseg2feat-246"><span class="linenos">246</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">aseg2feat_params</span><span class="p">(</span><span class="n">feat</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">featdirfile</span><span class="o">=</span><span class="n">featdirfile</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="n">seg</span><span class="p">,</span> <span class="n">aparc_aseg</span><span class="o">=</span><span class="n">aparc_aseg</span><span class="p">,</span> <span class="n">svstats</span><span class="o">=</span><span class="n">svstats</span><span class="p">,</span> <span class="n">standard</span><span class="o">=</span><span class="n">standard</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+</span><span id="aseg2feat-247"><a href="#aseg2feat-247"><span class="linenos">247</span></a>    <span class="k">return</span> <span class="n">aseg2feat_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

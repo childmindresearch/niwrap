@@ -324,68 +324,67 @@
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Returns:</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        NamedTuple of outputs (described in `VFastRoiOutputs`).</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v__fast_roi_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v__fast_roi_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v__fast_roi_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v__fast_roi_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__fast_roi</span><span class="p">(</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">anat</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">roi_grid</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">drawn_roi</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">anat_ns</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">twopass</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VFastRoiOutputs</span><span class="p">:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    Creates Atlas-based ROI masked in ANAT&#39;s original space. The script executes</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    rapidly for realtime fMRI applications.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    </span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    </span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    </span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    Args:</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        region: Symbolic atlas-based region name. Use repeated instances to\</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">            specify a mask of numerous regions. Each region is assigned a power of\</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">            2 integer in the output mask.</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">        anat: ANAT is the volume to be put in standard space. If ANAT is\</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">            already in TLRC space, there is no need for -base option.</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        base: Name of the reference TLRC volume.</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">        roi_grid: The volume that defines the final ROI&#39;s grid.</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">        prefix: Prefix used to tag the names the ROIs output.</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">        drawn_roi: A user drawn ROI in standard (tlrc) space. This ROI gets\</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">            added with the REGION ROI.</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">        anat_ns: Same as -anat, but indicates that the skull has been removed\</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">            already.</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">        time_: Output elapsed time reports.</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">        twopass: Make TLRC transformation more robust. Use it if TLRC transform\</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">            step fails.</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">        help_: Output help message.</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    Returns:</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">        NamedTuple of outputs (described in `VFastRoiOutputs`).</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__FAST_ROI_METADATA</span><span class="p">)</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__fast_roi_params</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">drawn_roi</span><span class="o">=</span><span class="n">drawn_roi</span><span class="p">,</span> <span class="n">anat</span><span class="o">=</span><span class="n">anat</span><span class="p">,</span> <span class="n">anat_ns</span><span class="o">=</span><span class="n">anat_ns</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">roi_grid</span><span class="o">=</span><span class="n">roi_grid</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">time_</span><span class="o">=</span><span class="n">time_</span><span class="p">,</span> <span class="n">twopass</span><span class="o">=</span><span class="n">twopass</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">return</span> <span class="n">v__fast_roi_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__fast_roi</span><span class="p">(</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">anat</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">roi_grid</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">drawn_roi</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">anat_ns</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">twopass</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VFastRoiOutputs</span><span class="p">:</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">    Creates Atlas-based ROI masked in ANAT&#39;s original space. The script executes</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">    rapidly for realtime fMRI applications.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    </span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    </span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    </span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    Args:</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        region: Symbolic atlas-based region name. Use repeated instances to\</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">            specify a mask of numerous regions. Each region is assigned a power of\</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">            2 integer in the output mask.</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        anat: ANAT is the volume to be put in standard space. If ANAT is\</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">            already in TLRC space, there is no need for -base option.</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">        base: Name of the reference TLRC volume.</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        roi_grid: The volume that defines the final ROI&#39;s grid.</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">        prefix: Prefix used to tag the names the ROIs output.</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">        drawn_roi: A user drawn ROI in standard (tlrc) space. This ROI gets\</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">            added with the REGION ROI.</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">        anat_ns: Same as -anat, but indicates that the skull has been removed\</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">            already.</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">        time_: Output elapsed time reports.</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">        twopass: Make TLRC transformation more robust. Use it if TLRC transform\</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">            step fails.</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        help_: Output help message.</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    Returns:</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">        NamedTuple of outputs (described in `VFastRoiOutputs`).</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__FAST_ROI_METADATA</span><span class="p">)</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__fast_roi_params</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">drawn_roi</span><span class="o">=</span><span class="n">drawn_roi</span><span class="p">,</span> <span class="n">anat</span><span class="o">=</span><span class="n">anat</span><span class="p">,</span> <span class="n">anat_ns</span><span class="o">=</span><span class="n">anat_ns</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">roi_grid</span><span class="o">=</span><span class="n">roi_grid</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">time_</span><span class="o">=</span><span class="n">time_</span><span class="p">,</span> <span class="n">twopass</span><span class="o">=</span><span class="n">twopass</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="k">return</span> <span class="n">v__fast_roi_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>
 </span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;VFastRoiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;VFastRoiParameters&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;V__FAST_ROI_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="s2">&quot;v__fast_roi&quot;</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;v__fast_roi_params&quot;</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="p">]</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="s2">&quot;VFastRoiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="s2">&quot;VFastRoiParameters&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="s2">&quot;V__FAST_ROI_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="s2">&quot;v__fast_roi&quot;</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="s2">&quot;v__fast_roi_params&quot;</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -604,52 +603,52 @@
 
     </div>
     <a class="headerlink" href="#v__fast_roi"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v__fast_roi-224"><a href="#v__fast_roi-224"><span class="linenos">224</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__fast_roi</span><span class="p">(</span>
-</span><span id="v__fast_roi-225"><a href="#v__fast_roi-225"><span class="linenos">225</span></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="v__fast_roi-226"><a href="#v__fast_roi-226"><span class="linenos">226</span></a>    <span class="n">anat</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="v__fast_roi-227"><a href="#v__fast_roi-227"><span class="linenos">227</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="v__fast_roi-228"><a href="#v__fast_roi-228"><span class="linenos">228</span></a>    <span class="n">roi_grid</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="v__fast_roi-229"><a href="#v__fast_roi-229"><span class="linenos">229</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="v__fast_roi-230"><a href="#v__fast_roi-230"><span class="linenos">230</span></a>    <span class="n">drawn_roi</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__fast_roi-231"><a href="#v__fast_roi-231"><span class="linenos">231</span></a>    <span class="n">anat_ns</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__fast_roi-232"><a href="#v__fast_roi-232"><span class="linenos">232</span></a>    <span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v__fast_roi-233"><a href="#v__fast_roi-233"><span class="linenos">233</span></a>    <span class="n">twopass</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v__fast_roi-234"><a href="#v__fast_roi-234"><span class="linenos">234</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="v__fast_roi-235"><a href="#v__fast_roi-235"><span class="linenos">235</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__fast_roi-236"><a href="#v__fast_roi-236"><span class="linenos">236</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VFastRoiOutputs</span><span class="p">:</span>
-</span><span id="v__fast_roi-237"><a href="#v__fast_roi-237"><span class="linenos">237</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v__fast_roi-238"><a href="#v__fast_roi-238"><span class="linenos">238</span></a><span class="sd">    Creates Atlas-based ROI masked in ANAT&#39;s original space. The script executes</span>
-</span><span id="v__fast_roi-239"><a href="#v__fast_roi-239"><span class="linenos">239</span></a><span class="sd">    rapidly for realtime fMRI applications.</span>
-</span><span id="v__fast_roi-240"><a href="#v__fast_roi-240"><span class="linenos">240</span></a><span class="sd">    </span>
-</span><span id="v__fast_roi-241"><a href="#v__fast_roi-241"><span class="linenos">241</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v__fast_roi-242"><a href="#v__fast_roi-242"><span class="linenos">242</span></a><span class="sd">    </span>
-</span><span id="v__fast_roi-243"><a href="#v__fast_roi-243"><span class="linenos">243</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v__fast_roi-244"><a href="#v__fast_roi-244"><span class="linenos">244</span></a><span class="sd">    </span>
-</span><span id="v__fast_roi-245"><a href="#v__fast_roi-245"><span class="linenos">245</span></a><span class="sd">    Args:</span>
-</span><span id="v__fast_roi-246"><a href="#v__fast_roi-246"><span class="linenos">246</span></a><span class="sd">        region: Symbolic atlas-based region name. Use repeated instances to\</span>
-</span><span id="v__fast_roi-247"><a href="#v__fast_roi-247"><span class="linenos">247</span></a><span class="sd">            specify a mask of numerous regions. Each region is assigned a power of\</span>
-</span><span id="v__fast_roi-248"><a href="#v__fast_roi-248"><span class="linenos">248</span></a><span class="sd">            2 integer in the output mask.</span>
-</span><span id="v__fast_roi-249"><a href="#v__fast_roi-249"><span class="linenos">249</span></a><span class="sd">        anat: ANAT is the volume to be put in standard space. If ANAT is\</span>
-</span><span id="v__fast_roi-250"><a href="#v__fast_roi-250"><span class="linenos">250</span></a><span class="sd">            already in TLRC space, there is no need for -base option.</span>
-</span><span id="v__fast_roi-251"><a href="#v__fast_roi-251"><span class="linenos">251</span></a><span class="sd">        base: Name of the reference TLRC volume.</span>
-</span><span id="v__fast_roi-252"><a href="#v__fast_roi-252"><span class="linenos">252</span></a><span class="sd">        roi_grid: The volume that defines the final ROI&#39;s grid.</span>
-</span><span id="v__fast_roi-253"><a href="#v__fast_roi-253"><span class="linenos">253</span></a><span class="sd">        prefix: Prefix used to tag the names the ROIs output.</span>
-</span><span id="v__fast_roi-254"><a href="#v__fast_roi-254"><span class="linenos">254</span></a><span class="sd">        drawn_roi: A user drawn ROI in standard (tlrc) space. This ROI gets\</span>
-</span><span id="v__fast_roi-255"><a href="#v__fast_roi-255"><span class="linenos">255</span></a><span class="sd">            added with the REGION ROI.</span>
-</span><span id="v__fast_roi-256"><a href="#v__fast_roi-256"><span class="linenos">256</span></a><span class="sd">        anat_ns: Same as -anat, but indicates that the skull has been removed\</span>
-</span><span id="v__fast_roi-257"><a href="#v__fast_roi-257"><span class="linenos">257</span></a><span class="sd">            already.</span>
-</span><span id="v__fast_roi-258"><a href="#v__fast_roi-258"><span class="linenos">258</span></a><span class="sd">        time_: Output elapsed time reports.</span>
-</span><span id="v__fast_roi-259"><a href="#v__fast_roi-259"><span class="linenos">259</span></a><span class="sd">        twopass: Make TLRC transformation more robust. Use it if TLRC transform\</span>
-</span><span id="v__fast_roi-260"><a href="#v__fast_roi-260"><span class="linenos">260</span></a><span class="sd">            step fails.</span>
-</span><span id="v__fast_roi-261"><a href="#v__fast_roi-261"><span class="linenos">261</span></a><span class="sd">        help_: Output help message.</span>
-</span><span id="v__fast_roi-262"><a href="#v__fast_roi-262"><span class="linenos">262</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__fast_roi-263"><a href="#v__fast_roi-263"><span class="linenos">263</span></a><span class="sd">    Returns:</span>
-</span><span id="v__fast_roi-264"><a href="#v__fast_roi-264"><span class="linenos">264</span></a><span class="sd">        NamedTuple of outputs (described in `VFastRoiOutputs`).</span>
-</span><span id="v__fast_roi-265"><a href="#v__fast_roi-265"><span class="linenos">265</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__fast_roi-266"><a href="#v__fast_roi-266"><span class="linenos">266</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__fast_roi-267"><a href="#v__fast_roi-267"><span class="linenos">267</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__FAST_ROI_METADATA</span><span class="p">)</span>
-</span><span id="v__fast_roi-268"><a href="#v__fast_roi-268"><span class="linenos">268</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__fast_roi_params</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">drawn_roi</span><span class="o">=</span><span class="n">drawn_roi</span><span class="p">,</span> <span class="n">anat</span><span class="o">=</span><span class="n">anat</span><span class="p">,</span> <span class="n">anat_ns</span><span class="o">=</span><span class="n">anat_ns</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">roi_grid</span><span class="o">=</span><span class="n">roi_grid</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">time_</span><span class="o">=</span><span class="n">time_</span><span class="p">,</span> <span class="n">twopass</span><span class="o">=</span><span class="n">twopass</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
-</span><span id="v__fast_roi-269"><a href="#v__fast_roi-269"><span class="linenos">269</span></a>    <span class="k">return</span> <span class="n">v__fast_roi_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v__fast_roi-223"><a href="#v__fast_roi-223"><span class="linenos">223</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__fast_roi</span><span class="p">(</span>
+</span><span id="v__fast_roi-224"><a href="#v__fast_roi-224"><span class="linenos">224</span></a>    <span class="n">region</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="v__fast_roi-225"><a href="#v__fast_roi-225"><span class="linenos">225</span></a>    <span class="n">anat</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v__fast_roi-226"><a href="#v__fast_roi-226"><span class="linenos">226</span></a>    <span class="n">base</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v__fast_roi-227"><a href="#v__fast_roi-227"><span class="linenos">227</span></a>    <span class="n">roi_grid</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="v__fast_roi-228"><a href="#v__fast_roi-228"><span class="linenos">228</span></a>    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="v__fast_roi-229"><a href="#v__fast_roi-229"><span class="linenos">229</span></a>    <span class="n">drawn_roi</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__fast_roi-230"><a href="#v__fast_roi-230"><span class="linenos">230</span></a>    <span class="n">anat_ns</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__fast_roi-231"><a href="#v__fast_roi-231"><span class="linenos">231</span></a>    <span class="n">time_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v__fast_roi-232"><a href="#v__fast_roi-232"><span class="linenos">232</span></a>    <span class="n">twopass</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v__fast_roi-233"><a href="#v__fast_roi-233"><span class="linenos">233</span></a>    <span class="n">help_</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v__fast_roi-234"><a href="#v__fast_roi-234"><span class="linenos">234</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__fast_roi-235"><a href="#v__fast_roi-235"><span class="linenos">235</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VFastRoiOutputs</span><span class="p">:</span>
+</span><span id="v__fast_roi-236"><a href="#v__fast_roi-236"><span class="linenos">236</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v__fast_roi-237"><a href="#v__fast_roi-237"><span class="linenos">237</span></a><span class="sd">    Creates Atlas-based ROI masked in ANAT&#39;s original space. The script executes</span>
+</span><span id="v__fast_roi-238"><a href="#v__fast_roi-238"><span class="linenos">238</span></a><span class="sd">    rapidly for realtime fMRI applications.</span>
+</span><span id="v__fast_roi-239"><a href="#v__fast_roi-239"><span class="linenos">239</span></a><span class="sd">    </span>
+</span><span id="v__fast_roi-240"><a href="#v__fast_roi-240"><span class="linenos">240</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v__fast_roi-241"><a href="#v__fast_roi-241"><span class="linenos">241</span></a><span class="sd">    </span>
+</span><span id="v__fast_roi-242"><a href="#v__fast_roi-242"><span class="linenos">242</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__fast_roi-243"><a href="#v__fast_roi-243"><span class="linenos">243</span></a><span class="sd">    </span>
+</span><span id="v__fast_roi-244"><a href="#v__fast_roi-244"><span class="linenos">244</span></a><span class="sd">    Args:</span>
+</span><span id="v__fast_roi-245"><a href="#v__fast_roi-245"><span class="linenos">245</span></a><span class="sd">        region: Symbolic atlas-based region name. Use repeated instances to\</span>
+</span><span id="v__fast_roi-246"><a href="#v__fast_roi-246"><span class="linenos">246</span></a><span class="sd">            specify a mask of numerous regions. Each region is assigned a power of\</span>
+</span><span id="v__fast_roi-247"><a href="#v__fast_roi-247"><span class="linenos">247</span></a><span class="sd">            2 integer in the output mask.</span>
+</span><span id="v__fast_roi-248"><a href="#v__fast_roi-248"><span class="linenos">248</span></a><span class="sd">        anat: ANAT is the volume to be put in standard space. If ANAT is\</span>
+</span><span id="v__fast_roi-249"><a href="#v__fast_roi-249"><span class="linenos">249</span></a><span class="sd">            already in TLRC space, there is no need for -base option.</span>
+</span><span id="v__fast_roi-250"><a href="#v__fast_roi-250"><span class="linenos">250</span></a><span class="sd">        base: Name of the reference TLRC volume.</span>
+</span><span id="v__fast_roi-251"><a href="#v__fast_roi-251"><span class="linenos">251</span></a><span class="sd">        roi_grid: The volume that defines the final ROI&#39;s grid.</span>
+</span><span id="v__fast_roi-252"><a href="#v__fast_roi-252"><span class="linenos">252</span></a><span class="sd">        prefix: Prefix used to tag the names the ROIs output.</span>
+</span><span id="v__fast_roi-253"><a href="#v__fast_roi-253"><span class="linenos">253</span></a><span class="sd">        drawn_roi: A user drawn ROI in standard (tlrc) space. This ROI gets\</span>
+</span><span id="v__fast_roi-254"><a href="#v__fast_roi-254"><span class="linenos">254</span></a><span class="sd">            added with the REGION ROI.</span>
+</span><span id="v__fast_roi-255"><a href="#v__fast_roi-255"><span class="linenos">255</span></a><span class="sd">        anat_ns: Same as -anat, but indicates that the skull has been removed\</span>
+</span><span id="v__fast_roi-256"><a href="#v__fast_roi-256"><span class="linenos">256</span></a><span class="sd">            already.</span>
+</span><span id="v__fast_roi-257"><a href="#v__fast_roi-257"><span class="linenos">257</span></a><span class="sd">        time_: Output elapsed time reports.</span>
+</span><span id="v__fast_roi-258"><a href="#v__fast_roi-258"><span class="linenos">258</span></a><span class="sd">        twopass: Make TLRC transformation more robust. Use it if TLRC transform\</span>
+</span><span id="v__fast_roi-259"><a href="#v__fast_roi-259"><span class="linenos">259</span></a><span class="sd">            step fails.</span>
+</span><span id="v__fast_roi-260"><a href="#v__fast_roi-260"><span class="linenos">260</span></a><span class="sd">        help_: Output help message.</span>
+</span><span id="v__fast_roi-261"><a href="#v__fast_roi-261"><span class="linenos">261</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__fast_roi-262"><a href="#v__fast_roi-262"><span class="linenos">262</span></a><span class="sd">    Returns:</span>
+</span><span id="v__fast_roi-263"><a href="#v__fast_roi-263"><span class="linenos">263</span></a><span class="sd">        NamedTuple of outputs (described in `VFastRoiOutputs`).</span>
+</span><span id="v__fast_roi-264"><a href="#v__fast_roi-264"><span class="linenos">264</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__fast_roi-265"><a href="#v__fast_roi-265"><span class="linenos">265</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__fast_roi-266"><a href="#v__fast_roi-266"><span class="linenos">266</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__FAST_ROI_METADATA</span><span class="p">)</span>
+</span><span id="v__fast_roi-267"><a href="#v__fast_roi-267"><span class="linenos">267</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__fast_roi_params</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">drawn_roi</span><span class="o">=</span><span class="n">drawn_roi</span><span class="p">,</span> <span class="n">anat</span><span class="o">=</span><span class="n">anat</span><span class="p">,</span> <span class="n">anat_ns</span><span class="o">=</span><span class="n">anat_ns</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">,</span> <span class="n">roi_grid</span><span class="o">=</span><span class="n">roi_grid</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">time_</span><span class="o">=</span><span class="n">time_</span><span class="p">,</span> <span class="n">twopass</span><span class="o">=</span><span class="n">twopass</span><span class="p">,</span> <span class="n">help_</span><span class="o">=</span><span class="n">help_</span><span class="p">)</span>
+</span><span id="v__fast_roi-268"><a href="#v__fast_roi-268"><span class="linenos">268</span></a>    <span class="k">return</span> <span class="n">v__fast_roi_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

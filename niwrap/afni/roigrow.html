@@ -308,66 +308,65 @@
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    Returns:</span>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        NamedTuple of outputs (described in `RoigrowOutputs`).</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">roigrow_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">roigrow_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">roigrow_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">roigrow_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="k">def</span><span class="w"> </span><span class="nf">roigrow</span><span class="p">(</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">input_surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">roi_labels</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">lim_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">full_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">grow_from_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">insphere_diameter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">inbox_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RoigrowOutputs</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    A program to expand an ROI on the surface.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    </span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    </span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Args:</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        input_surface: Specify input surface. You can also use -t* and -spec\</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">            and -surf methods to input surfaces.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        roi_labels: Data column containing integer labels of ROIs. Each integer\</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            label gets grown separately.</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        lim_distance: Distance to cover from each node. The units of LIM are\</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            those of the surface&#39;s node coordinates. Distances are calculated along\</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">            the surface&#39;s mesh.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        full_list: Output a row for each node on the surface. Nodes not in the\</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">            grown ROI, receive a 0 for a label. This option is ONLY for use with\</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">            -roi_labels.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        grow_from_edge: Grow ROIs from their edges rather than the brute force\</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            default. This might make the program faster on large ROIs and large\</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">            surfaces.</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        insphere_diameter: Diameter of the sphere inside which nodes are added\</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">            instead of growing along the surface.</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">        inbox_edges: Use a box of edge widths E1, E2, E3 instead of DIA.</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">    Returns:</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">        NamedTuple of outputs (described in `RoigrowOutputs`).</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROIGROW_METADATA</span><span class="p">)</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">roigrow_params</span><span class="p">(</span><span class="n">input_surface</span><span class="o">=</span><span class="n">input_surface</span><span class="p">,</span> <span class="n">roi_labels</span><span class="o">=</span><span class="n">roi_labels</span><span class="p">,</span> <span class="n">lim_distance</span><span class="o">=</span><span class="n">lim_distance</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">full_list</span><span class="o">=</span><span class="n">full_list</span><span class="p">,</span> <span class="n">grow_from_edge</span><span class="o">=</span><span class="n">grow_from_edge</span><span class="p">,</span> <span class="n">insphere_diameter</span><span class="o">=</span><span class="n">insphere_diameter</span><span class="p">,</span> <span class="n">inbox_edges</span><span class="o">=</span><span class="n">inbox_edges</span><span class="p">)</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">return</span> <span class="n">roigrow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="k">def</span><span class="w"> </span><span class="nf">roigrow</span><span class="p">(</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">input_surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">roi_labels</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">lim_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">full_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">grow_from_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">insphere_diameter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">inbox_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RoigrowOutputs</span><span class="p">:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    A program to expand an ROI on the surface.</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    </span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    </span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Args:</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        input_surface: Specify input surface. You can also use -t* and -spec\</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            and -surf methods to input surfaces.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        roi_labels: Data column containing integer labels of ROIs. Each integer\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            label gets grown separately.</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        lim_distance: Distance to cover from each node. The units of LIM are\</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            those of the surface&#39;s node coordinates. Distances are calculated along\</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            the surface&#39;s mesh.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        full_list: Output a row for each node on the surface. Nodes not in the\</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            grown ROI, receive a 0 for a label. This option is ONLY for use with\</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">            -roi_labels.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        grow_from_edge: Grow ROIs from their edges rather than the brute force\</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            default. This might make the program faster on large ROIs and large\</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">            surfaces.</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        insphere_diameter: Diameter of the sphere inside which nodes are added\</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">            instead of growing along the surface.</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">        inbox_edges: Use a box of edge widths E1, E2, E3 instead of DIA.</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">    Returns:</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">        NamedTuple of outputs (described in `RoigrowOutputs`).</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROIGROW_METADATA</span><span class="p">)</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">roigrow_params</span><span class="p">(</span><span class="n">input_surface</span><span class="o">=</span><span class="n">input_surface</span><span class="p">,</span> <span class="n">roi_labels</span><span class="o">=</span><span class="n">roi_labels</span><span class="p">,</span> <span class="n">lim_distance</span><span class="o">=</span><span class="n">lim_distance</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">full_list</span><span class="o">=</span><span class="n">full_list</span><span class="p">,</span> <span class="n">grow_from_edge</span><span class="o">=</span><span class="n">grow_from_edge</span><span class="p">,</span> <span class="n">insphere_diameter</span><span class="o">=</span><span class="n">insphere_diameter</span><span class="p">,</span> <span class="n">inbox_edges</span><span class="o">=</span><span class="n">inbox_edges</span><span class="p">)</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">return</span> <span class="n">roigrow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;ROIGROW_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;RoigrowOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;RoigrowParameters&quot;</span><span class="p">,</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;roigrow&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;roigrow_params&quot;</span><span class="p">,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="p">]</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;ROIGROW_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;RoigrowOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;RoigrowParameters&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;roigrow&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;roigrow_params&quot;</span><span class="p">,</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -564,50 +563,50 @@
 
     </div>
     <a class="headerlink" href="#roigrow"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="roigrow-214"><a href="#roigrow-214"><span class="linenos">214</span></a><span class="k">def</span><span class="w"> </span><span class="nf">roigrow</span><span class="p">(</span>
-</span><span id="roigrow-215"><a href="#roigrow-215"><span class="linenos">215</span></a>    <span class="n">input_surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="roigrow-216"><a href="#roigrow-216"><span class="linenos">216</span></a>    <span class="n">roi_labels</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="roigrow-217"><a href="#roigrow-217"><span class="linenos">217</span></a>    <span class="n">lim_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="roigrow-218"><a href="#roigrow-218"><span class="linenos">218</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="roigrow-219"><a href="#roigrow-219"><span class="linenos">219</span></a>    <span class="n">full_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="roigrow-220"><a href="#roigrow-220"><span class="linenos">220</span></a>    <span class="n">grow_from_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="roigrow-221"><a href="#roigrow-221"><span class="linenos">221</span></a>    <span class="n">insphere_diameter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="roigrow-222"><a href="#roigrow-222"><span class="linenos">222</span></a>    <span class="n">inbox_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="roigrow-223"><a href="#roigrow-223"><span class="linenos">223</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="roigrow-224"><a href="#roigrow-224"><span class="linenos">224</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RoigrowOutputs</span><span class="p">:</span>
-</span><span id="roigrow-225"><a href="#roigrow-225"><span class="linenos">225</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="roigrow-226"><a href="#roigrow-226"><span class="linenos">226</span></a><span class="sd">    A program to expand an ROI on the surface.</span>
-</span><span id="roigrow-227"><a href="#roigrow-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="roigrow-228"><a href="#roigrow-228"><span class="linenos">228</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="roigrow-229"><a href="#roigrow-229"><span class="linenos">229</span></a><span class="sd">    </span>
-</span><span id="roigrow-230"><a href="#roigrow-230"><span class="linenos">230</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="roigrow-231"><a href="#roigrow-231"><span class="linenos">231</span></a><span class="sd">    </span>
-</span><span id="roigrow-232"><a href="#roigrow-232"><span class="linenos">232</span></a><span class="sd">    Args:</span>
-</span><span id="roigrow-233"><a href="#roigrow-233"><span class="linenos">233</span></a><span class="sd">        input_surface: Specify input surface. You can also use -t* and -spec\</span>
-</span><span id="roigrow-234"><a href="#roigrow-234"><span class="linenos">234</span></a><span class="sd">            and -surf methods to input surfaces.</span>
-</span><span id="roigrow-235"><a href="#roigrow-235"><span class="linenos">235</span></a><span class="sd">        roi_labels: Data column containing integer labels of ROIs. Each integer\</span>
-</span><span id="roigrow-236"><a href="#roigrow-236"><span class="linenos">236</span></a><span class="sd">            label gets grown separately.</span>
-</span><span id="roigrow-237"><a href="#roigrow-237"><span class="linenos">237</span></a><span class="sd">        lim_distance: Distance to cover from each node. The units of LIM are\</span>
-</span><span id="roigrow-238"><a href="#roigrow-238"><span class="linenos">238</span></a><span class="sd">            those of the surface&#39;s node coordinates. Distances are calculated along\</span>
-</span><span id="roigrow-239"><a href="#roigrow-239"><span class="linenos">239</span></a><span class="sd">            the surface&#39;s mesh.</span>
-</span><span id="roigrow-240"><a href="#roigrow-240"><span class="linenos">240</span></a><span class="sd">        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.</span>
-</span><span id="roigrow-241"><a href="#roigrow-241"><span class="linenos">241</span></a><span class="sd">        full_list: Output a row for each node on the surface. Nodes not in the\</span>
-</span><span id="roigrow-242"><a href="#roigrow-242"><span class="linenos">242</span></a><span class="sd">            grown ROI, receive a 0 for a label. This option is ONLY for use with\</span>
-</span><span id="roigrow-243"><a href="#roigrow-243"><span class="linenos">243</span></a><span class="sd">            -roi_labels.</span>
-</span><span id="roigrow-244"><a href="#roigrow-244"><span class="linenos">244</span></a><span class="sd">        grow_from_edge: Grow ROIs from their edges rather than the brute force\</span>
-</span><span id="roigrow-245"><a href="#roigrow-245"><span class="linenos">245</span></a><span class="sd">            default. This might make the program faster on large ROIs and large\</span>
-</span><span id="roigrow-246"><a href="#roigrow-246"><span class="linenos">246</span></a><span class="sd">            surfaces.</span>
-</span><span id="roigrow-247"><a href="#roigrow-247"><span class="linenos">247</span></a><span class="sd">        insphere_diameter: Diameter of the sphere inside which nodes are added\</span>
-</span><span id="roigrow-248"><a href="#roigrow-248"><span class="linenos">248</span></a><span class="sd">            instead of growing along the surface.</span>
-</span><span id="roigrow-249"><a href="#roigrow-249"><span class="linenos">249</span></a><span class="sd">        inbox_edges: Use a box of edge widths E1, E2, E3 instead of DIA.</span>
-</span><span id="roigrow-250"><a href="#roigrow-250"><span class="linenos">250</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="roigrow-251"><a href="#roigrow-251"><span class="linenos">251</span></a><span class="sd">    Returns:</span>
-</span><span id="roigrow-252"><a href="#roigrow-252"><span class="linenos">252</span></a><span class="sd">        NamedTuple of outputs (described in `RoigrowOutputs`).</span>
-</span><span id="roigrow-253"><a href="#roigrow-253"><span class="linenos">253</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="roigrow-254"><a href="#roigrow-254"><span class="linenos">254</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="roigrow-255"><a href="#roigrow-255"><span class="linenos">255</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROIGROW_METADATA</span><span class="p">)</span>
-</span><span id="roigrow-256"><a href="#roigrow-256"><span class="linenos">256</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">roigrow_params</span><span class="p">(</span><span class="n">input_surface</span><span class="o">=</span><span class="n">input_surface</span><span class="p">,</span> <span class="n">roi_labels</span><span class="o">=</span><span class="n">roi_labels</span><span class="p">,</span> <span class="n">lim_distance</span><span class="o">=</span><span class="n">lim_distance</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">full_list</span><span class="o">=</span><span class="n">full_list</span><span class="p">,</span> <span class="n">grow_from_edge</span><span class="o">=</span><span class="n">grow_from_edge</span><span class="p">,</span> <span class="n">insphere_diameter</span><span class="o">=</span><span class="n">insphere_diameter</span><span class="p">,</span> <span class="n">inbox_edges</span><span class="o">=</span><span class="n">inbox_edges</span><span class="p">)</span>
-</span><span id="roigrow-257"><a href="#roigrow-257"><span class="linenos">257</span></a>    <span class="k">return</span> <span class="n">roigrow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="roigrow-213"><a href="#roigrow-213"><span class="linenos">213</span></a><span class="k">def</span><span class="w"> </span><span class="nf">roigrow</span><span class="p">(</span>
+</span><span id="roigrow-214"><a href="#roigrow-214"><span class="linenos">214</span></a>    <span class="n">input_surface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="roigrow-215"><a href="#roigrow-215"><span class="linenos">215</span></a>    <span class="n">roi_labels</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="roigrow-216"><a href="#roigrow-216"><span class="linenos">216</span></a>    <span class="n">lim_distance</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="roigrow-217"><a href="#roigrow-217"><span class="linenos">217</span></a>    <span class="n">output_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="roigrow-218"><a href="#roigrow-218"><span class="linenos">218</span></a>    <span class="n">full_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="roigrow-219"><a href="#roigrow-219"><span class="linenos">219</span></a>    <span class="n">grow_from_edge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="roigrow-220"><a href="#roigrow-220"><span class="linenos">220</span></a>    <span class="n">insphere_diameter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="roigrow-221"><a href="#roigrow-221"><span class="linenos">221</span></a>    <span class="n">inbox_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="roigrow-222"><a href="#roigrow-222"><span class="linenos">222</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="roigrow-223"><a href="#roigrow-223"><span class="linenos">223</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RoigrowOutputs</span><span class="p">:</span>
+</span><span id="roigrow-224"><a href="#roigrow-224"><span class="linenos">224</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="roigrow-225"><a href="#roigrow-225"><span class="linenos">225</span></a><span class="sd">    A program to expand an ROI on the surface.</span>
+</span><span id="roigrow-226"><a href="#roigrow-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="roigrow-227"><a href="#roigrow-227"><span class="linenos">227</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="roigrow-228"><a href="#roigrow-228"><span class="linenos">228</span></a><span class="sd">    </span>
+</span><span id="roigrow-229"><a href="#roigrow-229"><span class="linenos">229</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="roigrow-230"><a href="#roigrow-230"><span class="linenos">230</span></a><span class="sd">    </span>
+</span><span id="roigrow-231"><a href="#roigrow-231"><span class="linenos">231</span></a><span class="sd">    Args:</span>
+</span><span id="roigrow-232"><a href="#roigrow-232"><span class="linenos">232</span></a><span class="sd">        input_surface: Specify input surface. You can also use -t* and -spec\</span>
+</span><span id="roigrow-233"><a href="#roigrow-233"><span class="linenos">233</span></a><span class="sd">            and -surf methods to input surfaces.</span>
+</span><span id="roigrow-234"><a href="#roigrow-234"><span class="linenos">234</span></a><span class="sd">        roi_labels: Data column containing integer labels of ROIs. Each integer\</span>
+</span><span id="roigrow-235"><a href="#roigrow-235"><span class="linenos">235</span></a><span class="sd">            label gets grown separately.</span>
+</span><span id="roigrow-236"><a href="#roigrow-236"><span class="linenos">236</span></a><span class="sd">        lim_distance: Distance to cover from each node. The units of LIM are\</span>
+</span><span id="roigrow-237"><a href="#roigrow-237"><span class="linenos">237</span></a><span class="sd">            those of the surface&#39;s node coordinates. Distances are calculated along\</span>
+</span><span id="roigrow-238"><a href="#roigrow-238"><span class="linenos">238</span></a><span class="sd">            the surface&#39;s mesh.</span>
+</span><span id="roigrow-239"><a href="#roigrow-239"><span class="linenos">239</span></a><span class="sd">        output_prefix: Prefix of 1D output dataset. Default is ROIgrow.</span>
+</span><span id="roigrow-240"><a href="#roigrow-240"><span class="linenos">240</span></a><span class="sd">        full_list: Output a row for each node on the surface. Nodes not in the\</span>
+</span><span id="roigrow-241"><a href="#roigrow-241"><span class="linenos">241</span></a><span class="sd">            grown ROI, receive a 0 for a label. This option is ONLY for use with\</span>
+</span><span id="roigrow-242"><a href="#roigrow-242"><span class="linenos">242</span></a><span class="sd">            -roi_labels.</span>
+</span><span id="roigrow-243"><a href="#roigrow-243"><span class="linenos">243</span></a><span class="sd">        grow_from_edge: Grow ROIs from their edges rather than the brute force\</span>
+</span><span id="roigrow-244"><a href="#roigrow-244"><span class="linenos">244</span></a><span class="sd">            default. This might make the program faster on large ROIs and large\</span>
+</span><span id="roigrow-245"><a href="#roigrow-245"><span class="linenos">245</span></a><span class="sd">            surfaces.</span>
+</span><span id="roigrow-246"><a href="#roigrow-246"><span class="linenos">246</span></a><span class="sd">        insphere_diameter: Diameter of the sphere inside which nodes are added\</span>
+</span><span id="roigrow-247"><a href="#roigrow-247"><span class="linenos">247</span></a><span class="sd">            instead of growing along the surface.</span>
+</span><span id="roigrow-248"><a href="#roigrow-248"><span class="linenos">248</span></a><span class="sd">        inbox_edges: Use a box of edge widths E1, E2, E3 instead of DIA.</span>
+</span><span id="roigrow-249"><a href="#roigrow-249"><span class="linenos">249</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="roigrow-250"><a href="#roigrow-250"><span class="linenos">250</span></a><span class="sd">    Returns:</span>
+</span><span id="roigrow-251"><a href="#roigrow-251"><span class="linenos">251</span></a><span class="sd">        NamedTuple of outputs (described in `RoigrowOutputs`).</span>
+</span><span id="roigrow-252"><a href="#roigrow-252"><span class="linenos">252</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="roigrow-253"><a href="#roigrow-253"><span class="linenos">253</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="roigrow-254"><a href="#roigrow-254"><span class="linenos">254</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROIGROW_METADATA</span><span class="p">)</span>
+</span><span id="roigrow-255"><a href="#roigrow-255"><span class="linenos">255</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">roigrow_params</span><span class="p">(</span><span class="n">input_surface</span><span class="o">=</span><span class="n">input_surface</span><span class="p">,</span> <span class="n">roi_labels</span><span class="o">=</span><span class="n">roi_labels</span><span class="p">,</span> <span class="n">lim_distance</span><span class="o">=</span><span class="n">lim_distance</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_prefix</span><span class="p">,</span> <span class="n">full_list</span><span class="o">=</span><span class="n">full_list</span><span class="p">,</span> <span class="n">grow_from_edge</span><span class="o">=</span><span class="n">grow_from_edge</span><span class="p">,</span> <span class="n">insphere_diameter</span><span class="o">=</span><span class="n">insphere_diameter</span><span class="p">,</span> <span class="n">inbox_edges</span><span class="o">=</span><span class="n">inbox_edges</span><span class="p">)</span>
+</span><span id="roigrow-256"><a href="#roigrow-256"><span class="linenos">256</span></a>    <span class="k">return</span> <span class="n">roigrow_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

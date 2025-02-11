@@ -252,51 +252,50 @@
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Returns:</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">label_subject_mixed_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">label_subject_mixed_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">label_subject_mixed_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">label_subject_mixed_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_subject_mixed</span><span class="p">(</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">norm_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">aseg_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelSubjectMixedOutputs</span><span class="p">:</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Automatic labeling of brain regions using a Gaussian classifier array.</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    </span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    </span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        brain_mask: Brain mask to be used for final labeling.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        norm_volume: Normalized volume.</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        transform: Transform file in LTA format.</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        gca_file: Gaussian classifier array (GCA) file.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        aseg_output: Output aseg file.</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    Returns:</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_SUBJECT_MIXED_METADATA</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_subject_mixed_params</span><span class="p">(</span><span class="n">brain_mask</span><span class="o">=</span><span class="n">brain_mask</span><span class="p">,</span> <span class="n">norm_volume</span><span class="o">=</span><span class="n">norm_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">aseg_output</span><span class="o">=</span><span class="n">aseg_output</span><span class="p">)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">label_subject_mixed_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_subject_mixed</span><span class="p">(</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">norm_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">aseg_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelSubjectMixedOutputs</span><span class="p">:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    Automatic labeling of brain regions using a Gaussian classifier array.</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    </span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        brain_mask: Brain mask to be used for final labeling.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        norm_volume: Normalized volume.</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        transform: Transform file in LTA format.</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        gca_file: Gaussian classifier array (GCA) file.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        aseg_output: Output aseg file.</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    Returns:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_SUBJECT_MIXED_METADATA</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_subject_mixed_params</span><span class="p">(</span><span class="n">brain_mask</span><span class="o">=</span><span class="n">brain_mask</span><span class="p">,</span> <span class="n">norm_volume</span><span class="o">=</span><span class="n">norm_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">aseg_output</span><span class="o">=</span><span class="n">aseg_output</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">label_subject_mixed_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;LABEL_SUBJECT_MIXED_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;LabelSubjectMixedOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;LabelSubjectMixedParameters&quot;</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;label_subject_mixed&quot;</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;label_subject_mixed_params&quot;</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="p">]</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="s2">&quot;LABEL_SUBJECT_MIXED_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;LabelSubjectMixedOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;LabelSubjectMixedParameters&quot;</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;label_subject_mixed&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;label_subject_mixed_params&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -460,35 +459,35 @@
 
     </div>
     <a class="headerlink" href="#label_subject_mixed"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="label_subject_mixed-167"><a href="#label_subject_mixed-167"><span class="linenos">167</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_subject_mixed</span><span class="p">(</span>
-</span><span id="label_subject_mixed-168"><a href="#label_subject_mixed-168"><span class="linenos">168</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_subject_mixed-169"><a href="#label_subject_mixed-169"><span class="linenos">169</span></a>    <span class="n">norm_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_subject_mixed-170"><a href="#label_subject_mixed-170"><span class="linenos">170</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_subject_mixed-171"><a href="#label_subject_mixed-171"><span class="linenos">171</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="label_subject_mixed-172"><a href="#label_subject_mixed-172"><span class="linenos">172</span></a>    <span class="n">aseg_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="label_subject_mixed-173"><a href="#label_subject_mixed-173"><span class="linenos">173</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="label_subject_mixed-174"><a href="#label_subject_mixed-174"><span class="linenos">174</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelSubjectMixedOutputs</span><span class="p">:</span>
-</span><span id="label_subject_mixed-175"><a href="#label_subject_mixed-175"><span class="linenos">175</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="label_subject_mixed-176"><a href="#label_subject_mixed-176"><span class="linenos">176</span></a><span class="sd">    Automatic labeling of brain regions using a Gaussian classifier array.</span>
-</span><span id="label_subject_mixed-177"><a href="#label_subject_mixed-177"><span class="linenos">177</span></a><span class="sd">    </span>
-</span><span id="label_subject_mixed-178"><a href="#label_subject_mixed-178"><span class="linenos">178</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="label_subject_mixed-179"><a href="#label_subject_mixed-179"><span class="linenos">179</span></a><span class="sd">    </span>
-</span><span id="label_subject_mixed-180"><a href="#label_subject_mixed-180"><span class="linenos">180</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="label_subject_mixed-181"><a href="#label_subject_mixed-181"><span class="linenos">181</span></a><span class="sd">    </span>
-</span><span id="label_subject_mixed-182"><a href="#label_subject_mixed-182"><span class="linenos">182</span></a><span class="sd">    Args:</span>
-</span><span id="label_subject_mixed-183"><a href="#label_subject_mixed-183"><span class="linenos">183</span></a><span class="sd">        brain_mask: Brain mask to be used for final labeling.</span>
-</span><span id="label_subject_mixed-184"><a href="#label_subject_mixed-184"><span class="linenos">184</span></a><span class="sd">        norm_volume: Normalized volume.</span>
-</span><span id="label_subject_mixed-185"><a href="#label_subject_mixed-185"><span class="linenos">185</span></a><span class="sd">        transform: Transform file in LTA format.</span>
-</span><span id="label_subject_mixed-186"><a href="#label_subject_mixed-186"><span class="linenos">186</span></a><span class="sd">        gca_file: Gaussian classifier array (GCA) file.</span>
-</span><span id="label_subject_mixed-187"><a href="#label_subject_mixed-187"><span class="linenos">187</span></a><span class="sd">        aseg_output: Output aseg file.</span>
-</span><span id="label_subject_mixed-188"><a href="#label_subject_mixed-188"><span class="linenos">188</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="label_subject_mixed-189"><a href="#label_subject_mixed-189"><span class="linenos">189</span></a><span class="sd">    Returns:</span>
-</span><span id="label_subject_mixed-190"><a href="#label_subject_mixed-190"><span class="linenos">190</span></a><span class="sd">        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).</span>
-</span><span id="label_subject_mixed-191"><a href="#label_subject_mixed-191"><span class="linenos">191</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="label_subject_mixed-192"><a href="#label_subject_mixed-192"><span class="linenos">192</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="label_subject_mixed-193"><a href="#label_subject_mixed-193"><span class="linenos">193</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_SUBJECT_MIXED_METADATA</span><span class="p">)</span>
-</span><span id="label_subject_mixed-194"><a href="#label_subject_mixed-194"><span class="linenos">194</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_subject_mixed_params</span><span class="p">(</span><span class="n">brain_mask</span><span class="o">=</span><span class="n">brain_mask</span><span class="p">,</span> <span class="n">norm_volume</span><span class="o">=</span><span class="n">norm_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">aseg_output</span><span class="o">=</span><span class="n">aseg_output</span><span class="p">)</span>
-</span><span id="label_subject_mixed-195"><a href="#label_subject_mixed-195"><span class="linenos">195</span></a>    <span class="k">return</span> <span class="n">label_subject_mixed_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="label_subject_mixed-166"><a href="#label_subject_mixed-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">label_subject_mixed</span><span class="p">(</span>
+</span><span id="label_subject_mixed-167"><a href="#label_subject_mixed-167"><span class="linenos">167</span></a>    <span class="n">brain_mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_subject_mixed-168"><a href="#label_subject_mixed-168"><span class="linenos">168</span></a>    <span class="n">norm_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_subject_mixed-169"><a href="#label_subject_mixed-169"><span class="linenos">169</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_subject_mixed-170"><a href="#label_subject_mixed-170"><span class="linenos">170</span></a>    <span class="n">gca_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="label_subject_mixed-171"><a href="#label_subject_mixed-171"><span class="linenos">171</span></a>    <span class="n">aseg_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="label_subject_mixed-172"><a href="#label_subject_mixed-172"><span class="linenos">172</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="label_subject_mixed-173"><a href="#label_subject_mixed-173"><span class="linenos">173</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelSubjectMixedOutputs</span><span class="p">:</span>
+</span><span id="label_subject_mixed-174"><a href="#label_subject_mixed-174"><span class="linenos">174</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="label_subject_mixed-175"><a href="#label_subject_mixed-175"><span class="linenos">175</span></a><span class="sd">    Automatic labeling of brain regions using a Gaussian classifier array.</span>
+</span><span id="label_subject_mixed-176"><a href="#label_subject_mixed-176"><span class="linenos">176</span></a><span class="sd">    </span>
+</span><span id="label_subject_mixed-177"><a href="#label_subject_mixed-177"><span class="linenos">177</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="label_subject_mixed-178"><a href="#label_subject_mixed-178"><span class="linenos">178</span></a><span class="sd">    </span>
+</span><span id="label_subject_mixed-179"><a href="#label_subject_mixed-179"><span class="linenos">179</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="label_subject_mixed-180"><a href="#label_subject_mixed-180"><span class="linenos">180</span></a><span class="sd">    </span>
+</span><span id="label_subject_mixed-181"><a href="#label_subject_mixed-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
+</span><span id="label_subject_mixed-182"><a href="#label_subject_mixed-182"><span class="linenos">182</span></a><span class="sd">        brain_mask: Brain mask to be used for final labeling.</span>
+</span><span id="label_subject_mixed-183"><a href="#label_subject_mixed-183"><span class="linenos">183</span></a><span class="sd">        norm_volume: Normalized volume.</span>
+</span><span id="label_subject_mixed-184"><a href="#label_subject_mixed-184"><span class="linenos">184</span></a><span class="sd">        transform: Transform file in LTA format.</span>
+</span><span id="label_subject_mixed-185"><a href="#label_subject_mixed-185"><span class="linenos">185</span></a><span class="sd">        gca_file: Gaussian classifier array (GCA) file.</span>
+</span><span id="label_subject_mixed-186"><a href="#label_subject_mixed-186"><span class="linenos">186</span></a><span class="sd">        aseg_output: Output aseg file.</span>
+</span><span id="label_subject_mixed-187"><a href="#label_subject_mixed-187"><span class="linenos">187</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="label_subject_mixed-188"><a href="#label_subject_mixed-188"><span class="linenos">188</span></a><span class="sd">    Returns:</span>
+</span><span id="label_subject_mixed-189"><a href="#label_subject_mixed-189"><span class="linenos">189</span></a><span class="sd">        NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).</span>
+</span><span id="label_subject_mixed-190"><a href="#label_subject_mixed-190"><span class="linenos">190</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="label_subject_mixed-191"><a href="#label_subject_mixed-191"><span class="linenos">191</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="label_subject_mixed-192"><a href="#label_subject_mixed-192"><span class="linenos">192</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_SUBJECT_MIXED_METADATA</span><span class="p">)</span>
+</span><span id="label_subject_mixed-193"><a href="#label_subject_mixed-193"><span class="linenos">193</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">label_subject_mixed_params</span><span class="p">(</span><span class="n">brain_mask</span><span class="o">=</span><span class="n">brain_mask</span><span class="p">,</span> <span class="n">norm_volume</span><span class="o">=</span><span class="n">norm_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">gca_file</span><span class="o">=</span><span class="n">gca_file</span><span class="p">,</span> <span class="n">aseg_output</span><span class="o">=</span><span class="n">aseg_output</span><span class="p">)</span>
+</span><span id="label_subject_mixed-194"><a href="#label_subject_mixed-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">label_subject_mixed_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

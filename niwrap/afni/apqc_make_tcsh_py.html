@@ -276,61 +276,60 @@
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Returns:</span>
 </span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="k">def</span><span class="w"> </span><span class="nf">apqc_make_tcsh_py</span><span class="p">(</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">uvar_json</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">subj_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">review_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">mot_grayplot_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">vstat_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApqcMakeTcshPyOutputs</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    This program creates the single subject (ss) HTML review script</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    &#39;@ss_review_html&#39; which generates images and text for the afni_proc.py quality</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    control (APQC) HTML.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    </span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    </span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    </span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    Args:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        uvar_json: Text file of user variables created by gen_ss_review.py that\</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            catalogs important files in the results directory for the APQC.</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">        subj_dir: Location of AP results directory (often &#39;.&#39;, as this program\</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            is often run from within the AP results directory).</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        review_style: The &#39;style&#39; of the APQC HTML output HTML. Allowed\</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">            keywords are: {none, basic, pythonic}. Using &#39;pythonic&#39; is recommended.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        mot_grayplot_off: Turn off the grayplot generation. This option was\</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">            created for a specific case with a large dataset. Not recommended to\</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            use generally.</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        vstat_list: Provide a list of label items to specify which volume&#39;s\</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">            images should appear in the vstat QC block. Each item should correspond\</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            to subbrick label basename in the stats_dset. &#39;Full_Fstat&#39; is always\</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            included. If not used, default logic picks up to 5 items to show.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APQC_MAKE_TCSH_PY_METADATA</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_params</span><span class="p">(</span><span class="n">uvar_json</span><span class="o">=</span><span class="n">uvar_json</span><span class="p">,</span> <span class="n">subj_dir</span><span class="o">=</span><span class="n">subj_dir</span><span class="p">,</span> <span class="n">review_style</span><span class="o">=</span><span class="n">review_style</span><span class="p">,</span> <span class="n">mot_grayplot_off</span><span class="o">=</span><span class="n">mot_grayplot_off</span><span class="p">,</span> <span class="n">vstat_list</span><span class="o">=</span><span class="n">vstat_list</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">return</span> <span class="n">apqc_make_tcsh_py_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="k">def</span><span class="w"> </span><span class="nf">apqc_make_tcsh_py</span><span class="p">(</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">uvar_json</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">subj_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">review_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">mot_grayplot_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">vstat_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApqcMakeTcshPyOutputs</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    This program creates the single subject (ss) HTML review script</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    &#39;@ss_review_html&#39; which generates images and text for the afni_proc.py quality</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    control (APQC) HTML.</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    </span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    </span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    </span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    Args:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        uvar_json: Text file of user variables created by gen_ss_review.py that\</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">            catalogs important files in the results directory for the APQC.</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        subj_dir: Location of AP results directory (often &#39;.&#39;, as this program\</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            is often run from within the AP results directory).</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        review_style: The &#39;style&#39; of the APQC HTML output HTML. Allowed\</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            keywords are: {none, basic, pythonic}. Using &#39;pythonic&#39; is recommended.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        mot_grayplot_off: Turn off the grayplot generation. This option was\</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">            created for a specific case with a large dataset. Not recommended to\</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">            use generally.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        vstat_list: Provide a list of label items to specify which volume&#39;s\</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">            images should appear in the vstat QC block. Each item should correspond\</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">            to subbrick label basename in the stats_dset. &#39;Full_Fstat&#39; is always\</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            included. If not used, default logic picks up to 5 items to show.</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APQC_MAKE_TCSH_PY_METADATA</span><span class="p">)</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_params</span><span class="p">(</span><span class="n">uvar_json</span><span class="o">=</span><span class="n">uvar_json</span><span class="p">,</span> <span class="n">subj_dir</span><span class="o">=</span><span class="n">subj_dir</span><span class="p">,</span> <span class="n">review_style</span><span class="o">=</span><span class="n">review_style</span><span class="p">,</span> <span class="n">mot_grayplot_off</span><span class="o">=</span><span class="n">mot_grayplot_off</span><span class="p">,</span> <span class="n">vstat_list</span><span class="o">=</span><span class="n">vstat_list</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">return</span> <span class="n">apqc_make_tcsh_py_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;APQC_MAKE_TCSH_PY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;ApqcMakeTcshPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;ApqcMakeTcshPyParameters&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;apqc_make_tcsh_py&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;apqc_make_tcsh_py_params&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="p">]</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="s2">&quot;APQC_MAKE_TCSH_PY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="s2">&quot;ApqcMakeTcshPyOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;ApqcMakeTcshPyParameters&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;apqc_make_tcsh_py&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;apqc_make_tcsh_py_params&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -494,45 +493,45 @@
 
     </div>
     <a class="headerlink" href="#apqc_make_tcsh_py"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="apqc_make_tcsh_py-191"><a href="#apqc_make_tcsh_py-191"><span class="linenos">191</span></a><span class="k">def</span><span class="w"> </span><span class="nf">apqc_make_tcsh_py</span><span class="p">(</span>
-</span><span id="apqc_make_tcsh_py-192"><a href="#apqc_make_tcsh_py-192"><span class="linenos">192</span></a>    <span class="n">uvar_json</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-193"><a href="#apqc_make_tcsh_py-193"><span class="linenos">193</span></a>    <span class="n">subj_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-194"><a href="#apqc_make_tcsh_py-194"><span class="linenos">194</span></a>    <span class="n">review_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-195"><a href="#apqc_make_tcsh_py-195"><span class="linenos">195</span></a>    <span class="n">mot_grayplot_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-196"><a href="#apqc_make_tcsh_py-196"><span class="linenos">196</span></a>    <span class="n">vstat_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-197"><a href="#apqc_make_tcsh_py-197"><span class="linenos">197</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="apqc_make_tcsh_py-198"><a href="#apqc_make_tcsh_py-198"><span class="linenos">198</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApqcMakeTcshPyOutputs</span><span class="p">:</span>
-</span><span id="apqc_make_tcsh_py-199"><a href="#apqc_make_tcsh_py-199"><span class="linenos">199</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="apqc_make_tcsh_py-200"><a href="#apqc_make_tcsh_py-200"><span class="linenos">200</span></a><span class="sd">    This program creates the single subject (ss) HTML review script</span>
-</span><span id="apqc_make_tcsh_py-201"><a href="#apqc_make_tcsh_py-201"><span class="linenos">201</span></a><span class="sd">    &#39;@ss_review_html&#39; which generates images and text for the afni_proc.py quality</span>
-</span><span id="apqc_make_tcsh_py-202"><a href="#apqc_make_tcsh_py-202"><span class="linenos">202</span></a><span class="sd">    control (APQC) HTML.</span>
-</span><span id="apqc_make_tcsh_py-203"><a href="#apqc_make_tcsh_py-203"><span class="linenos">203</span></a><span class="sd">    </span>
-</span><span id="apqc_make_tcsh_py-204"><a href="#apqc_make_tcsh_py-204"><span class="linenos">204</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="apqc_make_tcsh_py-205"><a href="#apqc_make_tcsh_py-205"><span class="linenos">205</span></a><span class="sd">    </span>
-</span><span id="apqc_make_tcsh_py-206"><a href="#apqc_make_tcsh_py-206"><span class="linenos">206</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="apqc_make_tcsh_py-207"><a href="#apqc_make_tcsh_py-207"><span class="linenos">207</span></a><span class="sd">    </span>
-</span><span id="apqc_make_tcsh_py-208"><a href="#apqc_make_tcsh_py-208"><span class="linenos">208</span></a><span class="sd">    Args:</span>
-</span><span id="apqc_make_tcsh_py-209"><a href="#apqc_make_tcsh_py-209"><span class="linenos">209</span></a><span class="sd">        uvar_json: Text file of user variables created by gen_ss_review.py that\</span>
-</span><span id="apqc_make_tcsh_py-210"><a href="#apqc_make_tcsh_py-210"><span class="linenos">210</span></a><span class="sd">            catalogs important files in the results directory for the APQC.</span>
-</span><span id="apqc_make_tcsh_py-211"><a href="#apqc_make_tcsh_py-211"><span class="linenos">211</span></a><span class="sd">        subj_dir: Location of AP results directory (often &#39;.&#39;, as this program\</span>
-</span><span id="apqc_make_tcsh_py-212"><a href="#apqc_make_tcsh_py-212"><span class="linenos">212</span></a><span class="sd">            is often run from within the AP results directory).</span>
-</span><span id="apqc_make_tcsh_py-213"><a href="#apqc_make_tcsh_py-213"><span class="linenos">213</span></a><span class="sd">        review_style: The &#39;style&#39; of the APQC HTML output HTML. Allowed\</span>
-</span><span id="apqc_make_tcsh_py-214"><a href="#apqc_make_tcsh_py-214"><span class="linenos">214</span></a><span class="sd">            keywords are: {none, basic, pythonic}. Using &#39;pythonic&#39; is recommended.</span>
-</span><span id="apqc_make_tcsh_py-215"><a href="#apqc_make_tcsh_py-215"><span class="linenos">215</span></a><span class="sd">        mot_grayplot_off: Turn off the grayplot generation. This option was\</span>
-</span><span id="apqc_make_tcsh_py-216"><a href="#apqc_make_tcsh_py-216"><span class="linenos">216</span></a><span class="sd">            created for a specific case with a large dataset. Not recommended to\</span>
-</span><span id="apqc_make_tcsh_py-217"><a href="#apqc_make_tcsh_py-217"><span class="linenos">217</span></a><span class="sd">            use generally.</span>
-</span><span id="apqc_make_tcsh_py-218"><a href="#apqc_make_tcsh_py-218"><span class="linenos">218</span></a><span class="sd">        vstat_list: Provide a list of label items to specify which volume&#39;s\</span>
-</span><span id="apqc_make_tcsh_py-219"><a href="#apqc_make_tcsh_py-219"><span class="linenos">219</span></a><span class="sd">            images should appear in the vstat QC block. Each item should correspond\</span>
-</span><span id="apqc_make_tcsh_py-220"><a href="#apqc_make_tcsh_py-220"><span class="linenos">220</span></a><span class="sd">            to subbrick label basename in the stats_dset. &#39;Full_Fstat&#39; is always\</span>
-</span><span id="apqc_make_tcsh_py-221"><a href="#apqc_make_tcsh_py-221"><span class="linenos">221</span></a><span class="sd">            included. If not used, default logic picks up to 5 items to show.</span>
-</span><span id="apqc_make_tcsh_py-222"><a href="#apqc_make_tcsh_py-222"><span class="linenos">222</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="apqc_make_tcsh_py-223"><a href="#apqc_make_tcsh_py-223"><span class="linenos">223</span></a><span class="sd">    Returns:</span>
-</span><span id="apqc_make_tcsh_py-224"><a href="#apqc_make_tcsh_py-224"><span class="linenos">224</span></a><span class="sd">        NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).</span>
-</span><span id="apqc_make_tcsh_py-225"><a href="#apqc_make_tcsh_py-225"><span class="linenos">225</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="apqc_make_tcsh_py-226"><a href="#apqc_make_tcsh_py-226"><span class="linenos">226</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="apqc_make_tcsh_py-227"><a href="#apqc_make_tcsh_py-227"><span class="linenos">227</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APQC_MAKE_TCSH_PY_METADATA</span><span class="p">)</span>
-</span><span id="apqc_make_tcsh_py-228"><a href="#apqc_make_tcsh_py-228"><span class="linenos">228</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_params</span><span class="p">(</span><span class="n">uvar_json</span><span class="o">=</span><span class="n">uvar_json</span><span class="p">,</span> <span class="n">subj_dir</span><span class="o">=</span><span class="n">subj_dir</span><span class="p">,</span> <span class="n">review_style</span><span class="o">=</span><span class="n">review_style</span><span class="p">,</span> <span class="n">mot_grayplot_off</span><span class="o">=</span><span class="n">mot_grayplot_off</span><span class="p">,</span> <span class="n">vstat_list</span><span class="o">=</span><span class="n">vstat_list</span><span class="p">)</span>
-</span><span id="apqc_make_tcsh_py-229"><a href="#apqc_make_tcsh_py-229"><span class="linenos">229</span></a>    <span class="k">return</span> <span class="n">apqc_make_tcsh_py_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="apqc_make_tcsh_py-190"><a href="#apqc_make_tcsh_py-190"><span class="linenos">190</span></a><span class="k">def</span><span class="w"> </span><span class="nf">apqc_make_tcsh_py</span><span class="p">(</span>
+</span><span id="apqc_make_tcsh_py-191"><a href="#apqc_make_tcsh_py-191"><span class="linenos">191</span></a>    <span class="n">uvar_json</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-192"><a href="#apqc_make_tcsh_py-192"><span class="linenos">192</span></a>    <span class="n">subj_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-193"><a href="#apqc_make_tcsh_py-193"><span class="linenos">193</span></a>    <span class="n">review_style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-194"><a href="#apqc_make_tcsh_py-194"><span class="linenos">194</span></a>    <span class="n">mot_grayplot_off</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-195"><a href="#apqc_make_tcsh_py-195"><span class="linenos">195</span></a>    <span class="n">vstat_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-196"><a href="#apqc_make_tcsh_py-196"><span class="linenos">196</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="apqc_make_tcsh_py-197"><a href="#apqc_make_tcsh_py-197"><span class="linenos">197</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApqcMakeTcshPyOutputs</span><span class="p">:</span>
+</span><span id="apqc_make_tcsh_py-198"><a href="#apqc_make_tcsh_py-198"><span class="linenos">198</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="apqc_make_tcsh_py-199"><a href="#apqc_make_tcsh_py-199"><span class="linenos">199</span></a><span class="sd">    This program creates the single subject (ss) HTML review script</span>
+</span><span id="apqc_make_tcsh_py-200"><a href="#apqc_make_tcsh_py-200"><span class="linenos">200</span></a><span class="sd">    &#39;@ss_review_html&#39; which generates images and text for the afni_proc.py quality</span>
+</span><span id="apqc_make_tcsh_py-201"><a href="#apqc_make_tcsh_py-201"><span class="linenos">201</span></a><span class="sd">    control (APQC) HTML.</span>
+</span><span id="apqc_make_tcsh_py-202"><a href="#apqc_make_tcsh_py-202"><span class="linenos">202</span></a><span class="sd">    </span>
+</span><span id="apqc_make_tcsh_py-203"><a href="#apqc_make_tcsh_py-203"><span class="linenos">203</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="apqc_make_tcsh_py-204"><a href="#apqc_make_tcsh_py-204"><span class="linenos">204</span></a><span class="sd">    </span>
+</span><span id="apqc_make_tcsh_py-205"><a href="#apqc_make_tcsh_py-205"><span class="linenos">205</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="apqc_make_tcsh_py-206"><a href="#apqc_make_tcsh_py-206"><span class="linenos">206</span></a><span class="sd">    </span>
+</span><span id="apqc_make_tcsh_py-207"><a href="#apqc_make_tcsh_py-207"><span class="linenos">207</span></a><span class="sd">    Args:</span>
+</span><span id="apqc_make_tcsh_py-208"><a href="#apqc_make_tcsh_py-208"><span class="linenos">208</span></a><span class="sd">        uvar_json: Text file of user variables created by gen_ss_review.py that\</span>
+</span><span id="apqc_make_tcsh_py-209"><a href="#apqc_make_tcsh_py-209"><span class="linenos">209</span></a><span class="sd">            catalogs important files in the results directory for the APQC.</span>
+</span><span id="apqc_make_tcsh_py-210"><a href="#apqc_make_tcsh_py-210"><span class="linenos">210</span></a><span class="sd">        subj_dir: Location of AP results directory (often &#39;.&#39;, as this program\</span>
+</span><span id="apqc_make_tcsh_py-211"><a href="#apqc_make_tcsh_py-211"><span class="linenos">211</span></a><span class="sd">            is often run from within the AP results directory).</span>
+</span><span id="apqc_make_tcsh_py-212"><a href="#apqc_make_tcsh_py-212"><span class="linenos">212</span></a><span class="sd">        review_style: The &#39;style&#39; of the APQC HTML output HTML. Allowed\</span>
+</span><span id="apqc_make_tcsh_py-213"><a href="#apqc_make_tcsh_py-213"><span class="linenos">213</span></a><span class="sd">            keywords are: {none, basic, pythonic}. Using &#39;pythonic&#39; is recommended.</span>
+</span><span id="apqc_make_tcsh_py-214"><a href="#apqc_make_tcsh_py-214"><span class="linenos">214</span></a><span class="sd">        mot_grayplot_off: Turn off the grayplot generation. This option was\</span>
+</span><span id="apqc_make_tcsh_py-215"><a href="#apqc_make_tcsh_py-215"><span class="linenos">215</span></a><span class="sd">            created for a specific case with a large dataset. Not recommended to\</span>
+</span><span id="apqc_make_tcsh_py-216"><a href="#apqc_make_tcsh_py-216"><span class="linenos">216</span></a><span class="sd">            use generally.</span>
+</span><span id="apqc_make_tcsh_py-217"><a href="#apqc_make_tcsh_py-217"><span class="linenos">217</span></a><span class="sd">        vstat_list: Provide a list of label items to specify which volume&#39;s\</span>
+</span><span id="apqc_make_tcsh_py-218"><a href="#apqc_make_tcsh_py-218"><span class="linenos">218</span></a><span class="sd">            images should appear in the vstat QC block. Each item should correspond\</span>
+</span><span id="apqc_make_tcsh_py-219"><a href="#apqc_make_tcsh_py-219"><span class="linenos">219</span></a><span class="sd">            to subbrick label basename in the stats_dset. &#39;Full_Fstat&#39; is always\</span>
+</span><span id="apqc_make_tcsh_py-220"><a href="#apqc_make_tcsh_py-220"><span class="linenos">220</span></a><span class="sd">            included. If not used, default logic picks up to 5 items to show.</span>
+</span><span id="apqc_make_tcsh_py-221"><a href="#apqc_make_tcsh_py-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="apqc_make_tcsh_py-222"><a href="#apqc_make_tcsh_py-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
+</span><span id="apqc_make_tcsh_py-223"><a href="#apqc_make_tcsh_py-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).</span>
+</span><span id="apqc_make_tcsh_py-224"><a href="#apqc_make_tcsh_py-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="apqc_make_tcsh_py-225"><a href="#apqc_make_tcsh_py-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="apqc_make_tcsh_py-226"><a href="#apqc_make_tcsh_py-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">APQC_MAKE_TCSH_PY_METADATA</span><span class="p">)</span>
+</span><span id="apqc_make_tcsh_py-227"><a href="#apqc_make_tcsh_py-227"><span class="linenos">227</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">apqc_make_tcsh_py_params</span><span class="p">(</span><span class="n">uvar_json</span><span class="o">=</span><span class="n">uvar_json</span><span class="p">,</span> <span class="n">subj_dir</span><span class="o">=</span><span class="n">subj_dir</span><span class="p">,</span> <span class="n">review_style</span><span class="o">=</span><span class="n">review_style</span><span class="p">,</span> <span class="n">mot_grayplot_off</span><span class="o">=</span><span class="n">mot_grayplot_off</span><span class="p">,</span> <span class="n">vstat_list</span><span class="o">=</span><span class="n">vstat_list</span><span class="p">)</span>
+</span><span id="apqc_make_tcsh_py-228"><a href="#apqc_make_tcsh_py-228"><span class="linenos">228</span></a>    <span class="k">return</span> <span class="n">apqc_make_tcsh_py_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

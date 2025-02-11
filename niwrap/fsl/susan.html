@@ -310,68 +310,67 @@
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    Returns:</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        NamedTuple of outputs (described in `SusanOutputs`).</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">susan_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">susan_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">susan_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">susan_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>
 </span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">susan</span><span class="p">(</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">brightness_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">spatial_size</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">dimensionality</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">use_median_filter</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">n_usans</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">usan1</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">brightness_threshold1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">usan2</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">brightness_threshold2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SusanOutputs</span><span class="p">:</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Non-linear noise reduction filtering tool.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    </span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        input_file: Input image file.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        brightness_threshold: Brightness threshold; should be greater than\</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            noise level and less than contrast of edges to be preserved.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in\</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            mm.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            3D (3) smoothing.</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        use_median_filter: Use median filter for cases where single-point noise\</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            is detected (0 or 1).</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        n_usans: Determine if the smoothing area is found from secondary images\</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">            (0, 1 or 2).</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        output_file: Output image file.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        usan1: First USAN image file.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        brightness_threshold1: Brightness threshold for first USAN image.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        usan2: Second USAN image file.</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        brightness_threshold2: Brightness threshold for second USAN image.</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">    Returns:</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        NamedTuple of outputs (described in `SusanOutputs`).</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SUSAN_METADATA</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">susan_params</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="n">input_file</span><span class="p">,</span> <span class="n">brightness_threshold</span><span class="o">=</span><span class="n">brightness_threshold</span><span class="p">,</span> <span class="n">spatial_size</span><span class="o">=</span><span class="n">spatial_size</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span> <span class="n">use_median_filter</span><span class="o">=</span><span class="n">use_median_filter</span><span class="p">,</span> <span class="n">n_usans</span><span class="o">=</span><span class="n">n_usans</span><span class="p">,</span> <span class="n">usan1</span><span class="o">=</span><span class="n">usan1</span><span class="p">,</span> <span class="n">brightness_threshold1</span><span class="o">=</span><span class="n">brightness_threshold1</span><span class="p">,</span> <span class="n">usan2</span><span class="o">=</span><span class="n">usan2</span><span class="p">,</span> <span class="n">brightness_threshold2</span><span class="o">=</span><span class="n">brightness_threshold2</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">)</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">susan_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="k">def</span><span class="w"> </span><span class="nf">susan</span><span class="p">(</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">brightness_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">spatial_size</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">dimensionality</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">use_median_filter</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">n_usans</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">usan1</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">brightness_threshold1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">usan2</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">brightness_threshold2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SusanOutputs</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Non-linear noise reduction filtering tool.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Args:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        input_file: Input image file.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        brightness_threshold: Brightness threshold; should be greater than\</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            noise level and less than contrast of edges to be preserved.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in\</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            mm.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully\</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">            3D (3) smoothing.</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        use_median_filter: Use median filter for cases where single-point noise\</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            is detected (0 or 1).</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        n_usans: Determine if the smoothing area is found from secondary images\</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            (0, 1 or 2).</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        output_file: Output image file.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        usan1: First USAN image file.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        brightness_threshold1: Brightness threshold for first USAN image.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        usan2: Second USAN image file.</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        brightness_threshold2: Brightness threshold for second USAN image.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    Returns:</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        NamedTuple of outputs (described in `SusanOutputs`).</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SUSAN_METADATA</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">susan_params</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="n">input_file</span><span class="p">,</span> <span class="n">brightness_threshold</span><span class="o">=</span><span class="n">brightness_threshold</span><span class="p">,</span> <span class="n">spatial_size</span><span class="o">=</span><span class="n">spatial_size</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span> <span class="n">use_median_filter</span><span class="o">=</span><span class="n">use_median_filter</span><span class="p">,</span> <span class="n">n_usans</span><span class="o">=</span><span class="n">n_usans</span><span class="p">,</span> <span class="n">usan1</span><span class="o">=</span><span class="n">usan1</span><span class="p">,</span> <span class="n">brightness_threshold1</span><span class="o">=</span><span class="n">brightness_threshold1</span><span class="p">,</span> <span class="n">usan2</span><span class="o">=</span><span class="n">usan2</span><span class="p">,</span> <span class="n">brightness_threshold2</span><span class="o">=</span><span class="n">brightness_threshold2</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">)</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">return</span> <span class="n">susan_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>
 </span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;SUSAN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;SusanOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;SusanParameters&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;susan&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;susan_params&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="p">]</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;SUSAN_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;SusanOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;SusanParameters&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;susan&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;susan_params&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -601,52 +600,52 @@
 
     </div>
     <a class="headerlink" href="#susan"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="susan-207"><a href="#susan-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">susan</span><span class="p">(</span>
-</span><span id="susan-208"><a href="#susan-208"><span class="linenos">208</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="susan-209"><a href="#susan-209"><span class="linenos">209</span></a>    <span class="n">brightness_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="susan-210"><a href="#susan-210"><span class="linenos">210</span></a>    <span class="n">spatial_size</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="susan-211"><a href="#susan-211"><span class="linenos">211</span></a>    <span class="n">dimensionality</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="susan-212"><a href="#susan-212"><span class="linenos">212</span></a>    <span class="n">use_median_filter</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="susan-213"><a href="#susan-213"><span class="linenos">213</span></a>    <span class="n">n_usans</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="susan-214"><a href="#susan-214"><span class="linenos">214</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="susan-215"><a href="#susan-215"><span class="linenos">215</span></a>    <span class="n">usan1</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="susan-216"><a href="#susan-216"><span class="linenos">216</span></a>    <span class="n">brightness_threshold1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="susan-217"><a href="#susan-217"><span class="linenos">217</span></a>    <span class="n">usan2</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="susan-218"><a href="#susan-218"><span class="linenos">218</span></a>    <span class="n">brightness_threshold2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="susan-219"><a href="#susan-219"><span class="linenos">219</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="susan-220"><a href="#susan-220"><span class="linenos">220</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SusanOutputs</span><span class="p">:</span>
-</span><span id="susan-221"><a href="#susan-221"><span class="linenos">221</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="susan-222"><a href="#susan-222"><span class="linenos">222</span></a><span class="sd">    Non-linear noise reduction filtering tool.</span>
-</span><span id="susan-223"><a href="#susan-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="susan-224"><a href="#susan-224"><span class="linenos">224</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="susan-225"><a href="#susan-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="susan-226"><a href="#susan-226"><span class="linenos">226</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="susan-227"><a href="#susan-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="susan-228"><a href="#susan-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
-</span><span id="susan-229"><a href="#susan-229"><span class="linenos">229</span></a><span class="sd">        input_file: Input image file.</span>
-</span><span id="susan-230"><a href="#susan-230"><span class="linenos">230</span></a><span class="sd">        brightness_threshold: Brightness threshold; should be greater than\</span>
-</span><span id="susan-231"><a href="#susan-231"><span class="linenos">231</span></a><span class="sd">            noise level and less than contrast of edges to be preserved.</span>
-</span><span id="susan-232"><a href="#susan-232"><span class="linenos">232</span></a><span class="sd">        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in\</span>
-</span><span id="susan-233"><a href="#susan-233"><span class="linenos">233</span></a><span class="sd">            mm.</span>
-</span><span id="susan-234"><a href="#susan-234"><span class="linenos">234</span></a><span class="sd">        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully\</span>
-</span><span id="susan-235"><a href="#susan-235"><span class="linenos">235</span></a><span class="sd">            3D (3) smoothing.</span>
-</span><span id="susan-236"><a href="#susan-236"><span class="linenos">236</span></a><span class="sd">        use_median_filter: Use median filter for cases where single-point noise\</span>
-</span><span id="susan-237"><a href="#susan-237"><span class="linenos">237</span></a><span class="sd">            is detected (0 or 1).</span>
-</span><span id="susan-238"><a href="#susan-238"><span class="linenos">238</span></a><span class="sd">        n_usans: Determine if the smoothing area is found from secondary images\</span>
-</span><span id="susan-239"><a href="#susan-239"><span class="linenos">239</span></a><span class="sd">            (0, 1 or 2).</span>
-</span><span id="susan-240"><a href="#susan-240"><span class="linenos">240</span></a><span class="sd">        output_file: Output image file.</span>
-</span><span id="susan-241"><a href="#susan-241"><span class="linenos">241</span></a><span class="sd">        usan1: First USAN image file.</span>
-</span><span id="susan-242"><a href="#susan-242"><span class="linenos">242</span></a><span class="sd">        brightness_threshold1: Brightness threshold for first USAN image.</span>
-</span><span id="susan-243"><a href="#susan-243"><span class="linenos">243</span></a><span class="sd">        usan2: Second USAN image file.</span>
-</span><span id="susan-244"><a href="#susan-244"><span class="linenos">244</span></a><span class="sd">        brightness_threshold2: Brightness threshold for second USAN image.</span>
-</span><span id="susan-245"><a href="#susan-245"><span class="linenos">245</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="susan-246"><a href="#susan-246"><span class="linenos">246</span></a><span class="sd">    Returns:</span>
-</span><span id="susan-247"><a href="#susan-247"><span class="linenos">247</span></a><span class="sd">        NamedTuple of outputs (described in `SusanOutputs`).</span>
-</span><span id="susan-248"><a href="#susan-248"><span class="linenos">248</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="susan-249"><a href="#susan-249"><span class="linenos">249</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="susan-250"><a href="#susan-250"><span class="linenos">250</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SUSAN_METADATA</span><span class="p">)</span>
-</span><span id="susan-251"><a href="#susan-251"><span class="linenos">251</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">susan_params</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="n">input_file</span><span class="p">,</span> <span class="n">brightness_threshold</span><span class="o">=</span><span class="n">brightness_threshold</span><span class="p">,</span> <span class="n">spatial_size</span><span class="o">=</span><span class="n">spatial_size</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span> <span class="n">use_median_filter</span><span class="o">=</span><span class="n">use_median_filter</span><span class="p">,</span> <span class="n">n_usans</span><span class="o">=</span><span class="n">n_usans</span><span class="p">,</span> <span class="n">usan1</span><span class="o">=</span><span class="n">usan1</span><span class="p">,</span> <span class="n">brightness_threshold1</span><span class="o">=</span><span class="n">brightness_threshold1</span><span class="p">,</span> <span class="n">usan2</span><span class="o">=</span><span class="n">usan2</span><span class="p">,</span> <span class="n">brightness_threshold2</span><span class="o">=</span><span class="n">brightness_threshold2</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">)</span>
-</span><span id="susan-252"><a href="#susan-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">susan_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="susan-206"><a href="#susan-206"><span class="linenos">206</span></a><span class="k">def</span><span class="w"> </span><span class="nf">susan</span><span class="p">(</span>
+</span><span id="susan-207"><a href="#susan-207"><span class="linenos">207</span></a>    <span class="n">input_file</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="susan-208"><a href="#susan-208"><span class="linenos">208</span></a>    <span class="n">brightness_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="susan-209"><a href="#susan-209"><span class="linenos">209</span></a>    <span class="n">spatial_size</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="susan-210"><a href="#susan-210"><span class="linenos">210</span></a>    <span class="n">dimensionality</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="susan-211"><a href="#susan-211"><span class="linenos">211</span></a>    <span class="n">use_median_filter</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="susan-212"><a href="#susan-212"><span class="linenos">212</span></a>    <span class="n">n_usans</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="susan-213"><a href="#susan-213"><span class="linenos">213</span></a>    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="susan-214"><a href="#susan-214"><span class="linenos">214</span></a>    <span class="n">usan1</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="susan-215"><a href="#susan-215"><span class="linenos">215</span></a>    <span class="n">brightness_threshold1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="susan-216"><a href="#susan-216"><span class="linenos">216</span></a>    <span class="n">usan2</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="susan-217"><a href="#susan-217"><span class="linenos">217</span></a>    <span class="n">brightness_threshold2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="susan-218"><a href="#susan-218"><span class="linenos">218</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="susan-219"><a href="#susan-219"><span class="linenos">219</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SusanOutputs</span><span class="p">:</span>
+</span><span id="susan-220"><a href="#susan-220"><span class="linenos">220</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="susan-221"><a href="#susan-221"><span class="linenos">221</span></a><span class="sd">    Non-linear noise reduction filtering tool.</span>
+</span><span id="susan-222"><a href="#susan-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="susan-223"><a href="#susan-223"><span class="linenos">223</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="susan-224"><a href="#susan-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="susan-225"><a href="#susan-225"><span class="linenos">225</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="susan-226"><a href="#susan-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="susan-227"><a href="#susan-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
+</span><span id="susan-228"><a href="#susan-228"><span class="linenos">228</span></a><span class="sd">        input_file: Input image file.</span>
+</span><span id="susan-229"><a href="#susan-229"><span class="linenos">229</span></a><span class="sd">        brightness_threshold: Brightness threshold; should be greater than\</span>
+</span><span id="susan-230"><a href="#susan-230"><span class="linenos">230</span></a><span class="sd">            noise level and less than contrast of edges to be preserved.</span>
+</span><span id="susan-231"><a href="#susan-231"><span class="linenos">231</span></a><span class="sd">        spatial_size: Spatial size (sigma, i.e., half-width) of smoothing, in\</span>
+</span><span id="susan-232"><a href="#susan-232"><span class="linenos">232</span></a><span class="sd">            mm.</span>
+</span><span id="susan-233"><a href="#susan-233"><span class="linenos">233</span></a><span class="sd">        dimensionality: Dimensionality (2 or 3), for within-plane (2) or fully\</span>
+</span><span id="susan-234"><a href="#susan-234"><span class="linenos">234</span></a><span class="sd">            3D (3) smoothing.</span>
+</span><span id="susan-235"><a href="#susan-235"><span class="linenos">235</span></a><span class="sd">        use_median_filter: Use median filter for cases where single-point noise\</span>
+</span><span id="susan-236"><a href="#susan-236"><span class="linenos">236</span></a><span class="sd">            is detected (0 or 1).</span>
+</span><span id="susan-237"><a href="#susan-237"><span class="linenos">237</span></a><span class="sd">        n_usans: Determine if the smoothing area is found from secondary images\</span>
+</span><span id="susan-238"><a href="#susan-238"><span class="linenos">238</span></a><span class="sd">            (0, 1 or 2).</span>
+</span><span id="susan-239"><a href="#susan-239"><span class="linenos">239</span></a><span class="sd">        output_file: Output image file.</span>
+</span><span id="susan-240"><a href="#susan-240"><span class="linenos">240</span></a><span class="sd">        usan1: First USAN image file.</span>
+</span><span id="susan-241"><a href="#susan-241"><span class="linenos">241</span></a><span class="sd">        brightness_threshold1: Brightness threshold for first USAN image.</span>
+</span><span id="susan-242"><a href="#susan-242"><span class="linenos">242</span></a><span class="sd">        usan2: Second USAN image file.</span>
+</span><span id="susan-243"><a href="#susan-243"><span class="linenos">243</span></a><span class="sd">        brightness_threshold2: Brightness threshold for second USAN image.</span>
+</span><span id="susan-244"><a href="#susan-244"><span class="linenos">244</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="susan-245"><a href="#susan-245"><span class="linenos">245</span></a><span class="sd">    Returns:</span>
+</span><span id="susan-246"><a href="#susan-246"><span class="linenos">246</span></a><span class="sd">        NamedTuple of outputs (described in `SusanOutputs`).</span>
+</span><span id="susan-247"><a href="#susan-247"><span class="linenos">247</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="susan-248"><a href="#susan-248"><span class="linenos">248</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="susan-249"><a href="#susan-249"><span class="linenos">249</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SUSAN_METADATA</span><span class="p">)</span>
+</span><span id="susan-250"><a href="#susan-250"><span class="linenos">250</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">susan_params</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="n">input_file</span><span class="p">,</span> <span class="n">brightness_threshold</span><span class="o">=</span><span class="n">brightness_threshold</span><span class="p">,</span> <span class="n">spatial_size</span><span class="o">=</span><span class="n">spatial_size</span><span class="p">,</span> <span class="n">dimensionality</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span> <span class="n">use_median_filter</span><span class="o">=</span><span class="n">use_median_filter</span><span class="p">,</span> <span class="n">n_usans</span><span class="o">=</span><span class="n">n_usans</span><span class="p">,</span> <span class="n">usan1</span><span class="o">=</span><span class="n">usan1</span><span class="p">,</span> <span class="n">brightness_threshold1</span><span class="o">=</span><span class="n">brightness_threshold1</span><span class="p">,</span> <span class="n">usan2</span><span class="o">=</span><span class="n">usan2</span><span class="p">,</span> <span class="n">brightness_threshold2</span><span class="o">=</span><span class="n">brightness_threshold2</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="n">output_file</span><span class="p">)</span>
+</span><span id="susan-251"><a href="#susan-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">susan_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

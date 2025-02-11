@@ -292,71 +292,70 @@
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    Returns:</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_vector_operation_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_vector_operation_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">volume_vector_operation_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">volume_vector_operation_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_vector_operation</span><span class="p">(</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">vectors_a</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">vectors_b</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">opt_normalize_a</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">opt_normalize_b</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">opt_normalize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">opt_magnitude</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeVectorOperationOutputs</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Do a vector operation on volume files.</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Does a vector operation on two volume files (that must have a multiple of 3</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    subvolumes). Either of the inputs may have multiple vectors (more than 3</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    subvolumes), but not both (at least one must have exactly 3 subvolumes). The</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    -magnitude and -normalize-output options may not be specified together, or</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    with the DOT operation. The &lt;operation&gt; parameter must be one of the</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    following:</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    DOT</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    CROSS</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    ADD</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    SUBTRACT.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    </span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    </span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    </span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        vectors_a: first vector input file.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        vectors_b: second vector input file.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        operation: what vector operation to do.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        volume_out: the output file.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        opt_normalize_a: normalize vectors of first input.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        opt_normalize_b: normalize vectors of second input.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        opt_normalize_output: normalize output vectors (not valid for dot\</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            product).</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        opt_magnitude: output the magnitude of the result (not valid for dot\</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            product).</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">    Returns:</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_VECTOR_OPERATION_METADATA</span><span class="p">)</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_vector_operation_params</span><span class="p">(</span><span class="n">vectors_a</span><span class="o">=</span><span class="n">vectors_a</span><span class="p">,</span> <span class="n">vectors_b</span><span class="o">=</span><span class="n">vectors_b</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_normalize_a</span><span class="o">=</span><span class="n">opt_normalize_a</span><span class="p">,</span> <span class="n">opt_normalize_b</span><span class="o">=</span><span class="n">opt_normalize_b</span><span class="p">,</span> <span class="n">opt_normalize_output</span><span class="o">=</span><span class="n">opt_normalize_output</span><span class="p">,</span> <span class="n">opt_magnitude</span><span class="o">=</span><span class="n">opt_magnitude</span><span class="p">)</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">return</span> <span class="n">volume_vector_operation_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_vector_operation</span><span class="p">(</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">vectors_a</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">vectors_b</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="n">opt_normalize_a</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="n">opt_normalize_b</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">opt_normalize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">opt_magnitude</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeVectorOperationOutputs</span><span class="p">:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    Do a vector operation on volume files.</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    </span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Does a vector operation on two volume files (that must have a multiple of 3</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    subvolumes). Either of the inputs may have multiple vectors (more than 3</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    subvolumes), but not both (at least one must have exactly 3 subvolumes). The</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    -magnitude and -normalize-output options may not be specified together, or</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    with the DOT operation. The &lt;operation&gt; parameter must be one of the</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    following:</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    DOT</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    CROSS</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    ADD</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    SUBTRACT.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    </span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    </span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">    </span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Args:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        vectors_a: first vector input file.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        vectors_b: second vector input file.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        operation: what vector operation to do.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        volume_out: the output file.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        opt_normalize_a: normalize vectors of first input.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        opt_normalize_b: normalize vectors of second input.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        opt_normalize_output: normalize output vectors (not valid for dot\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            product).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        opt_magnitude: output the magnitude of the result (not valid for dot\</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            product).</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">    Returns:</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_VECTOR_OPERATION_METADATA</span><span class="p">)</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_vector_operation_params</span><span class="p">(</span><span class="n">vectors_a</span><span class="o">=</span><span class="n">vectors_a</span><span class="p">,</span> <span class="n">vectors_b</span><span class="o">=</span><span class="n">vectors_b</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_normalize_a</span><span class="o">=</span><span class="n">opt_normalize_a</span><span class="p">,</span> <span class="n">opt_normalize_b</span><span class="o">=</span><span class="n">opt_normalize_b</span><span class="p">,</span> <span class="n">opt_normalize_output</span><span class="o">=</span><span class="n">opt_normalize_output</span><span class="p">,</span> <span class="n">opt_magnitude</span><span class="o">=</span><span class="n">opt_magnitude</span><span class="p">)</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="k">return</span> <span class="n">volume_vector_operation_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;VOLUME_VECTOR_OPERATION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;VolumeVectorOperationOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;VolumeVectorOperationParameters&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;volume_vector_operation&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;volume_vector_operation_params&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="p">]</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="s2">&quot;VOLUME_VECTOR_OPERATION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="s2">&quot;VolumeVectorOperationOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="s2">&quot;VolumeVectorOperationParameters&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;volume_vector_operation&quot;</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;volume_vector_operation_params&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -553,55 +552,55 @@
 
     </div>
     <a class="headerlink" href="#volume_vector_operation"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_vector_operation-198"><a href="#volume_vector_operation-198"><span class="linenos">198</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_vector_operation</span><span class="p">(</span>
-</span><span id="volume_vector_operation-199"><a href="#volume_vector_operation-199"><span class="linenos">199</span></a>    <span class="n">vectors_a</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_vector_operation-200"><a href="#volume_vector_operation-200"><span class="linenos">200</span></a>    <span class="n">vectors_b</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_vector_operation-201"><a href="#volume_vector_operation-201"><span class="linenos">201</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_vector_operation-202"><a href="#volume_vector_operation-202"><span class="linenos">202</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_vector_operation-203"><a href="#volume_vector_operation-203"><span class="linenos">203</span></a>    <span class="n">opt_normalize_a</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_vector_operation-204"><a href="#volume_vector_operation-204"><span class="linenos">204</span></a>    <span class="n">opt_normalize_b</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_vector_operation-205"><a href="#volume_vector_operation-205"><span class="linenos">205</span></a>    <span class="n">opt_normalize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_vector_operation-206"><a href="#volume_vector_operation-206"><span class="linenos">206</span></a>    <span class="n">opt_magnitude</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_vector_operation-207"><a href="#volume_vector_operation-207"><span class="linenos">207</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_vector_operation-208"><a href="#volume_vector_operation-208"><span class="linenos">208</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeVectorOperationOutputs</span><span class="p">:</span>
-</span><span id="volume_vector_operation-209"><a href="#volume_vector_operation-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_vector_operation-210"><a href="#volume_vector_operation-210"><span class="linenos">210</span></a><span class="sd">    Do a vector operation on volume files.</span>
-</span><span id="volume_vector_operation-211"><a href="#volume_vector_operation-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="volume_vector_operation-212"><a href="#volume_vector_operation-212"><span class="linenos">212</span></a><span class="sd">    Does a vector operation on two volume files (that must have a multiple of 3</span>
-</span><span id="volume_vector_operation-213"><a href="#volume_vector_operation-213"><span class="linenos">213</span></a><span class="sd">    subvolumes). Either of the inputs may have multiple vectors (more than 3</span>
-</span><span id="volume_vector_operation-214"><a href="#volume_vector_operation-214"><span class="linenos">214</span></a><span class="sd">    subvolumes), but not both (at least one must have exactly 3 subvolumes). The</span>
-</span><span id="volume_vector_operation-215"><a href="#volume_vector_operation-215"><span class="linenos">215</span></a><span class="sd">    -magnitude and -normalize-output options may not be specified together, or</span>
-</span><span id="volume_vector_operation-216"><a href="#volume_vector_operation-216"><span class="linenos">216</span></a><span class="sd">    with the DOT operation. The &lt;operation&gt; parameter must be one of the</span>
-</span><span id="volume_vector_operation-217"><a href="#volume_vector_operation-217"><span class="linenos">217</span></a><span class="sd">    following:</span>
-</span><span id="volume_vector_operation-218"><a href="#volume_vector_operation-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="volume_vector_operation-219"><a href="#volume_vector_operation-219"><span class="linenos">219</span></a><span class="sd">    DOT</span>
-</span><span id="volume_vector_operation-220"><a href="#volume_vector_operation-220"><span class="linenos">220</span></a><span class="sd">    CROSS</span>
-</span><span id="volume_vector_operation-221"><a href="#volume_vector_operation-221"><span class="linenos">221</span></a><span class="sd">    ADD</span>
-</span><span id="volume_vector_operation-222"><a href="#volume_vector_operation-222"><span class="linenos">222</span></a><span class="sd">    SUBTRACT.</span>
-</span><span id="volume_vector_operation-223"><a href="#volume_vector_operation-223"><span class="linenos">223</span></a><span class="sd">    </span>
-</span><span id="volume_vector_operation-224"><a href="#volume_vector_operation-224"><span class="linenos">224</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_vector_operation-225"><a href="#volume_vector_operation-225"><span class="linenos">225</span></a><span class="sd">    </span>
-</span><span id="volume_vector_operation-226"><a href="#volume_vector_operation-226"><span class="linenos">226</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_vector_operation-227"><a href="#volume_vector_operation-227"><span class="linenos">227</span></a><span class="sd">    </span>
-</span><span id="volume_vector_operation-228"><a href="#volume_vector_operation-228"><span class="linenos">228</span></a><span class="sd">    Args:</span>
-</span><span id="volume_vector_operation-229"><a href="#volume_vector_operation-229"><span class="linenos">229</span></a><span class="sd">        vectors_a: first vector input file.</span>
-</span><span id="volume_vector_operation-230"><a href="#volume_vector_operation-230"><span class="linenos">230</span></a><span class="sd">        vectors_b: second vector input file.</span>
-</span><span id="volume_vector_operation-231"><a href="#volume_vector_operation-231"><span class="linenos">231</span></a><span class="sd">        operation: what vector operation to do.</span>
-</span><span id="volume_vector_operation-232"><a href="#volume_vector_operation-232"><span class="linenos">232</span></a><span class="sd">        volume_out: the output file.</span>
-</span><span id="volume_vector_operation-233"><a href="#volume_vector_operation-233"><span class="linenos">233</span></a><span class="sd">        opt_normalize_a: normalize vectors of first input.</span>
-</span><span id="volume_vector_operation-234"><a href="#volume_vector_operation-234"><span class="linenos">234</span></a><span class="sd">        opt_normalize_b: normalize vectors of second input.</span>
-</span><span id="volume_vector_operation-235"><a href="#volume_vector_operation-235"><span class="linenos">235</span></a><span class="sd">        opt_normalize_output: normalize output vectors (not valid for dot\</span>
-</span><span id="volume_vector_operation-236"><a href="#volume_vector_operation-236"><span class="linenos">236</span></a><span class="sd">            product).</span>
-</span><span id="volume_vector_operation-237"><a href="#volume_vector_operation-237"><span class="linenos">237</span></a><span class="sd">        opt_magnitude: output the magnitude of the result (not valid for dot\</span>
-</span><span id="volume_vector_operation-238"><a href="#volume_vector_operation-238"><span class="linenos">238</span></a><span class="sd">            product).</span>
-</span><span id="volume_vector_operation-239"><a href="#volume_vector_operation-239"><span class="linenos">239</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_vector_operation-240"><a href="#volume_vector_operation-240"><span class="linenos">240</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_vector_operation-241"><a href="#volume_vector_operation-241"><span class="linenos">241</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).</span>
-</span><span id="volume_vector_operation-242"><a href="#volume_vector_operation-242"><span class="linenos">242</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_vector_operation-243"><a href="#volume_vector_operation-243"><span class="linenos">243</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_vector_operation-244"><a href="#volume_vector_operation-244"><span class="linenos">244</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_VECTOR_OPERATION_METADATA</span><span class="p">)</span>
-</span><span id="volume_vector_operation-245"><a href="#volume_vector_operation-245"><span class="linenos">245</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_vector_operation_params</span><span class="p">(</span><span class="n">vectors_a</span><span class="o">=</span><span class="n">vectors_a</span><span class="p">,</span> <span class="n">vectors_b</span><span class="o">=</span><span class="n">vectors_b</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_normalize_a</span><span class="o">=</span><span class="n">opt_normalize_a</span><span class="p">,</span> <span class="n">opt_normalize_b</span><span class="o">=</span><span class="n">opt_normalize_b</span><span class="p">,</span> <span class="n">opt_normalize_output</span><span class="o">=</span><span class="n">opt_normalize_output</span><span class="p">,</span> <span class="n">opt_magnitude</span><span class="o">=</span><span class="n">opt_magnitude</span><span class="p">)</span>
-</span><span id="volume_vector_operation-246"><a href="#volume_vector_operation-246"><span class="linenos">246</span></a>    <span class="k">return</span> <span class="n">volume_vector_operation_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_vector_operation-197"><a href="#volume_vector_operation-197"><span class="linenos">197</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_vector_operation</span><span class="p">(</span>
+</span><span id="volume_vector_operation-198"><a href="#volume_vector_operation-198"><span class="linenos">198</span></a>    <span class="n">vectors_a</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_vector_operation-199"><a href="#volume_vector_operation-199"><span class="linenos">199</span></a>    <span class="n">vectors_b</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_vector_operation-200"><a href="#volume_vector_operation-200"><span class="linenos">200</span></a>    <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_vector_operation-201"><a href="#volume_vector_operation-201"><span class="linenos">201</span></a>    <span class="n">volume_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_vector_operation-202"><a href="#volume_vector_operation-202"><span class="linenos">202</span></a>    <span class="n">opt_normalize_a</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_vector_operation-203"><a href="#volume_vector_operation-203"><span class="linenos">203</span></a>    <span class="n">opt_normalize_b</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_vector_operation-204"><a href="#volume_vector_operation-204"><span class="linenos">204</span></a>    <span class="n">opt_normalize_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_vector_operation-205"><a href="#volume_vector_operation-205"><span class="linenos">205</span></a>    <span class="n">opt_magnitude</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_vector_operation-206"><a href="#volume_vector_operation-206"><span class="linenos">206</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_vector_operation-207"><a href="#volume_vector_operation-207"><span class="linenos">207</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeVectorOperationOutputs</span><span class="p">:</span>
+</span><span id="volume_vector_operation-208"><a href="#volume_vector_operation-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_vector_operation-209"><a href="#volume_vector_operation-209"><span class="linenos">209</span></a><span class="sd">    Do a vector operation on volume files.</span>
+</span><span id="volume_vector_operation-210"><a href="#volume_vector_operation-210"><span class="linenos">210</span></a><span class="sd">    </span>
+</span><span id="volume_vector_operation-211"><a href="#volume_vector_operation-211"><span class="linenos">211</span></a><span class="sd">    Does a vector operation on two volume files (that must have a multiple of 3</span>
+</span><span id="volume_vector_operation-212"><a href="#volume_vector_operation-212"><span class="linenos">212</span></a><span class="sd">    subvolumes). Either of the inputs may have multiple vectors (more than 3</span>
+</span><span id="volume_vector_operation-213"><a href="#volume_vector_operation-213"><span class="linenos">213</span></a><span class="sd">    subvolumes), but not both (at least one must have exactly 3 subvolumes). The</span>
+</span><span id="volume_vector_operation-214"><a href="#volume_vector_operation-214"><span class="linenos">214</span></a><span class="sd">    -magnitude and -normalize-output options may not be specified together, or</span>
+</span><span id="volume_vector_operation-215"><a href="#volume_vector_operation-215"><span class="linenos">215</span></a><span class="sd">    with the DOT operation. The &lt;operation&gt; parameter must be one of the</span>
+</span><span id="volume_vector_operation-216"><a href="#volume_vector_operation-216"><span class="linenos">216</span></a><span class="sd">    following:</span>
+</span><span id="volume_vector_operation-217"><a href="#volume_vector_operation-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="volume_vector_operation-218"><a href="#volume_vector_operation-218"><span class="linenos">218</span></a><span class="sd">    DOT</span>
+</span><span id="volume_vector_operation-219"><a href="#volume_vector_operation-219"><span class="linenos">219</span></a><span class="sd">    CROSS</span>
+</span><span id="volume_vector_operation-220"><a href="#volume_vector_operation-220"><span class="linenos">220</span></a><span class="sd">    ADD</span>
+</span><span id="volume_vector_operation-221"><a href="#volume_vector_operation-221"><span class="linenos">221</span></a><span class="sd">    SUBTRACT.</span>
+</span><span id="volume_vector_operation-222"><a href="#volume_vector_operation-222"><span class="linenos">222</span></a><span class="sd">    </span>
+</span><span id="volume_vector_operation-223"><a href="#volume_vector_operation-223"><span class="linenos">223</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_vector_operation-224"><a href="#volume_vector_operation-224"><span class="linenos">224</span></a><span class="sd">    </span>
+</span><span id="volume_vector_operation-225"><a href="#volume_vector_operation-225"><span class="linenos">225</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_vector_operation-226"><a href="#volume_vector_operation-226"><span class="linenos">226</span></a><span class="sd">    </span>
+</span><span id="volume_vector_operation-227"><a href="#volume_vector_operation-227"><span class="linenos">227</span></a><span class="sd">    Args:</span>
+</span><span id="volume_vector_operation-228"><a href="#volume_vector_operation-228"><span class="linenos">228</span></a><span class="sd">        vectors_a: first vector input file.</span>
+</span><span id="volume_vector_operation-229"><a href="#volume_vector_operation-229"><span class="linenos">229</span></a><span class="sd">        vectors_b: second vector input file.</span>
+</span><span id="volume_vector_operation-230"><a href="#volume_vector_operation-230"><span class="linenos">230</span></a><span class="sd">        operation: what vector operation to do.</span>
+</span><span id="volume_vector_operation-231"><a href="#volume_vector_operation-231"><span class="linenos">231</span></a><span class="sd">        volume_out: the output file.</span>
+</span><span id="volume_vector_operation-232"><a href="#volume_vector_operation-232"><span class="linenos">232</span></a><span class="sd">        opt_normalize_a: normalize vectors of first input.</span>
+</span><span id="volume_vector_operation-233"><a href="#volume_vector_operation-233"><span class="linenos">233</span></a><span class="sd">        opt_normalize_b: normalize vectors of second input.</span>
+</span><span id="volume_vector_operation-234"><a href="#volume_vector_operation-234"><span class="linenos">234</span></a><span class="sd">        opt_normalize_output: normalize output vectors (not valid for dot\</span>
+</span><span id="volume_vector_operation-235"><a href="#volume_vector_operation-235"><span class="linenos">235</span></a><span class="sd">            product).</span>
+</span><span id="volume_vector_operation-236"><a href="#volume_vector_operation-236"><span class="linenos">236</span></a><span class="sd">        opt_magnitude: output the magnitude of the result (not valid for dot\</span>
+</span><span id="volume_vector_operation-237"><a href="#volume_vector_operation-237"><span class="linenos">237</span></a><span class="sd">            product).</span>
+</span><span id="volume_vector_operation-238"><a href="#volume_vector_operation-238"><span class="linenos">238</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_vector_operation-239"><a href="#volume_vector_operation-239"><span class="linenos">239</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_vector_operation-240"><a href="#volume_vector_operation-240"><span class="linenos">240</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).</span>
+</span><span id="volume_vector_operation-241"><a href="#volume_vector_operation-241"><span class="linenos">241</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_vector_operation-242"><a href="#volume_vector_operation-242"><span class="linenos">242</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_vector_operation-243"><a href="#volume_vector_operation-243"><span class="linenos">243</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_VECTOR_OPERATION_METADATA</span><span class="p">)</span>
+</span><span id="volume_vector_operation-244"><a href="#volume_vector_operation-244"><span class="linenos">244</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">volume_vector_operation_params</span><span class="p">(</span><span class="n">vectors_a</span><span class="o">=</span><span class="n">vectors_a</span><span class="p">,</span> <span class="n">vectors_b</span><span class="o">=</span><span class="n">vectors_b</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">volume_out</span><span class="o">=</span><span class="n">volume_out</span><span class="p">,</span> <span class="n">opt_normalize_a</span><span class="o">=</span><span class="n">opt_normalize_a</span><span class="p">,</span> <span class="n">opt_normalize_b</span><span class="o">=</span><span class="n">opt_normalize_b</span><span class="p">,</span> <span class="n">opt_normalize_output</span><span class="o">=</span><span class="n">opt_normalize_output</span><span class="p">,</span> <span class="n">opt_magnitude</span><span class="o">=</span><span class="n">opt_magnitude</span><span class="p">)</span>
+</span><span id="volume_vector_operation-245"><a href="#volume_vector_operation-245"><span class="linenos">245</span></a>    <span class="k">return</span> <span class="n">volume_vector_operation_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

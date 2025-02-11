@@ -243,51 +243,50 @@
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    Returns:</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).</span>
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_strip_nonwhite</span><span class="p">(</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">input_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">template_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriStripNonwhiteOutputs</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Tool for processing MRI images, transforming volumetric data using provided</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    transformation and template files.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    </span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Args:</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        input_volume: Input MRI volume file.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        transform: Transformation file to be applied to the input volume.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        template_volume: Template volume file used in conjunction with the\</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            transform.</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        output_volume: Name of the output volume file.</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    Returns:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_STRIP_NONWHITE_METADATA</span><span class="p">)</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_params</span><span class="p">(</span><span class="n">input_volume</span><span class="o">=</span><span class="n">input_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">template_volume</span><span class="o">=</span><span class="n">template_volume</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">return</span> <span class="n">mri_strip_nonwhite_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_strip_nonwhite</span><span class="p">(</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">input_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">template_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriStripNonwhiteOutputs</span><span class="p">:</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Tool for processing MRI images, transforming volumetric data using provided</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    transformation and template files.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    </span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    </span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    </span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    Args:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        input_volume: Input MRI volume file.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        transform: Transformation file to be applied to the input volume.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        template_volume: Template volume file used in conjunction with the\</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            transform.</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        output_volume: Name of the output volume file.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Returns:</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_STRIP_NONWHITE_METADATA</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_params</span><span class="p">(</span><span class="n">input_volume</span><span class="o">=</span><span class="n">input_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">template_volume</span><span class="o">=</span><span class="n">template_volume</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">return</span> <span class="n">mri_strip_nonwhite_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;MRI_STRIP_NONWHITE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;MriStripNonwhiteOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="s2">&quot;MriStripNonwhiteParameters&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="s2">&quot;mri_strip_nonwhite&quot;</span><span class="p">,</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="s2">&quot;mri_strip_nonwhite_params&quot;</span><span class="p">,</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="p">]</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;MRI_STRIP_NONWHITE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;MriStripNonwhiteOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;MriStripNonwhiteParameters&quot;</span><span class="p">,</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="s2">&quot;mri_strip_nonwhite&quot;</span><span class="p">,</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="s2">&quot;mri_strip_nonwhite_params&quot;</span><span class="p">,</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -440,35 +439,35 @@
 
     </div>
     <a class="headerlink" href="#mri_strip_nonwhite"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mri_strip_nonwhite-161"><a href="#mri_strip_nonwhite-161"><span class="linenos">161</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_strip_nonwhite</span><span class="p">(</span>
-</span><span id="mri_strip_nonwhite-162"><a href="#mri_strip_nonwhite-162"><span class="linenos">162</span></a>    <span class="n">input_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mri_strip_nonwhite-163"><a href="#mri_strip_nonwhite-163"><span class="linenos">163</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mri_strip_nonwhite-164"><a href="#mri_strip_nonwhite-164"><span class="linenos">164</span></a>    <span class="n">template_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mri_strip_nonwhite-165"><a href="#mri_strip_nonwhite-165"><span class="linenos">165</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mri_strip_nonwhite-166"><a href="#mri_strip_nonwhite-166"><span class="linenos">166</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mri_strip_nonwhite-167"><a href="#mri_strip_nonwhite-167"><span class="linenos">167</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriStripNonwhiteOutputs</span><span class="p">:</span>
-</span><span id="mri_strip_nonwhite-168"><a href="#mri_strip_nonwhite-168"><span class="linenos">168</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mri_strip_nonwhite-169"><a href="#mri_strip_nonwhite-169"><span class="linenos">169</span></a><span class="sd">    Tool for processing MRI images, transforming volumetric data using provided</span>
-</span><span id="mri_strip_nonwhite-170"><a href="#mri_strip_nonwhite-170"><span class="linenos">170</span></a><span class="sd">    transformation and template files.</span>
-</span><span id="mri_strip_nonwhite-171"><a href="#mri_strip_nonwhite-171"><span class="linenos">171</span></a><span class="sd">    </span>
-</span><span id="mri_strip_nonwhite-172"><a href="#mri_strip_nonwhite-172"><span class="linenos">172</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mri_strip_nonwhite-173"><a href="#mri_strip_nonwhite-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="mri_strip_nonwhite-174"><a href="#mri_strip_nonwhite-174"><span class="linenos">174</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mri_strip_nonwhite-175"><a href="#mri_strip_nonwhite-175"><span class="linenos">175</span></a><span class="sd">    </span>
-</span><span id="mri_strip_nonwhite-176"><a href="#mri_strip_nonwhite-176"><span class="linenos">176</span></a><span class="sd">    Args:</span>
-</span><span id="mri_strip_nonwhite-177"><a href="#mri_strip_nonwhite-177"><span class="linenos">177</span></a><span class="sd">        input_volume: Input MRI volume file.</span>
-</span><span id="mri_strip_nonwhite-178"><a href="#mri_strip_nonwhite-178"><span class="linenos">178</span></a><span class="sd">        transform: Transformation file to be applied to the input volume.</span>
-</span><span id="mri_strip_nonwhite-179"><a href="#mri_strip_nonwhite-179"><span class="linenos">179</span></a><span class="sd">        template_volume: Template volume file used in conjunction with the\</span>
-</span><span id="mri_strip_nonwhite-180"><a href="#mri_strip_nonwhite-180"><span class="linenos">180</span></a><span class="sd">            transform.</span>
-</span><span id="mri_strip_nonwhite-181"><a href="#mri_strip_nonwhite-181"><span class="linenos">181</span></a><span class="sd">        output_volume: Name of the output volume file.</span>
-</span><span id="mri_strip_nonwhite-182"><a href="#mri_strip_nonwhite-182"><span class="linenos">182</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mri_strip_nonwhite-183"><a href="#mri_strip_nonwhite-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
-</span><span id="mri_strip_nonwhite-184"><a href="#mri_strip_nonwhite-184"><span class="linenos">184</span></a><span class="sd">        NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).</span>
-</span><span id="mri_strip_nonwhite-185"><a href="#mri_strip_nonwhite-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mri_strip_nonwhite-186"><a href="#mri_strip_nonwhite-186"><span class="linenos">186</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mri_strip_nonwhite-187"><a href="#mri_strip_nonwhite-187"><span class="linenos">187</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_STRIP_NONWHITE_METADATA</span><span class="p">)</span>
-</span><span id="mri_strip_nonwhite-188"><a href="#mri_strip_nonwhite-188"><span class="linenos">188</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_params</span><span class="p">(</span><span class="n">input_volume</span><span class="o">=</span><span class="n">input_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">template_volume</span><span class="o">=</span><span class="n">template_volume</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
-</span><span id="mri_strip_nonwhite-189"><a href="#mri_strip_nonwhite-189"><span class="linenos">189</span></a>    <span class="k">return</span> <span class="n">mri_strip_nonwhite_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mri_strip_nonwhite-160"><a href="#mri_strip_nonwhite-160"><span class="linenos">160</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mri_strip_nonwhite</span><span class="p">(</span>
+</span><span id="mri_strip_nonwhite-161"><a href="#mri_strip_nonwhite-161"><span class="linenos">161</span></a>    <span class="n">input_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mri_strip_nonwhite-162"><a href="#mri_strip_nonwhite-162"><span class="linenos">162</span></a>    <span class="n">transform</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mri_strip_nonwhite-163"><a href="#mri_strip_nonwhite-163"><span class="linenos">163</span></a>    <span class="n">template_volume</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mri_strip_nonwhite-164"><a href="#mri_strip_nonwhite-164"><span class="linenos">164</span></a>    <span class="n">output_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mri_strip_nonwhite-165"><a href="#mri_strip_nonwhite-165"><span class="linenos">165</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mri_strip_nonwhite-166"><a href="#mri_strip_nonwhite-166"><span class="linenos">166</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MriStripNonwhiteOutputs</span><span class="p">:</span>
+</span><span id="mri_strip_nonwhite-167"><a href="#mri_strip_nonwhite-167"><span class="linenos">167</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mri_strip_nonwhite-168"><a href="#mri_strip_nonwhite-168"><span class="linenos">168</span></a><span class="sd">    Tool for processing MRI images, transforming volumetric data using provided</span>
+</span><span id="mri_strip_nonwhite-169"><a href="#mri_strip_nonwhite-169"><span class="linenos">169</span></a><span class="sd">    transformation and template files.</span>
+</span><span id="mri_strip_nonwhite-170"><a href="#mri_strip_nonwhite-170"><span class="linenos">170</span></a><span class="sd">    </span>
+</span><span id="mri_strip_nonwhite-171"><a href="#mri_strip_nonwhite-171"><span class="linenos">171</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mri_strip_nonwhite-172"><a href="#mri_strip_nonwhite-172"><span class="linenos">172</span></a><span class="sd">    </span>
+</span><span id="mri_strip_nonwhite-173"><a href="#mri_strip_nonwhite-173"><span class="linenos">173</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mri_strip_nonwhite-174"><a href="#mri_strip_nonwhite-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="mri_strip_nonwhite-175"><a href="#mri_strip_nonwhite-175"><span class="linenos">175</span></a><span class="sd">    Args:</span>
+</span><span id="mri_strip_nonwhite-176"><a href="#mri_strip_nonwhite-176"><span class="linenos">176</span></a><span class="sd">        input_volume: Input MRI volume file.</span>
+</span><span id="mri_strip_nonwhite-177"><a href="#mri_strip_nonwhite-177"><span class="linenos">177</span></a><span class="sd">        transform: Transformation file to be applied to the input volume.</span>
+</span><span id="mri_strip_nonwhite-178"><a href="#mri_strip_nonwhite-178"><span class="linenos">178</span></a><span class="sd">        template_volume: Template volume file used in conjunction with the\</span>
+</span><span id="mri_strip_nonwhite-179"><a href="#mri_strip_nonwhite-179"><span class="linenos">179</span></a><span class="sd">            transform.</span>
+</span><span id="mri_strip_nonwhite-180"><a href="#mri_strip_nonwhite-180"><span class="linenos">180</span></a><span class="sd">        output_volume: Name of the output volume file.</span>
+</span><span id="mri_strip_nonwhite-181"><a href="#mri_strip_nonwhite-181"><span class="linenos">181</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mri_strip_nonwhite-182"><a href="#mri_strip_nonwhite-182"><span class="linenos">182</span></a><span class="sd">    Returns:</span>
+</span><span id="mri_strip_nonwhite-183"><a href="#mri_strip_nonwhite-183"><span class="linenos">183</span></a><span class="sd">        NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).</span>
+</span><span id="mri_strip_nonwhite-184"><a href="#mri_strip_nonwhite-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mri_strip_nonwhite-185"><a href="#mri_strip_nonwhite-185"><span class="linenos">185</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mri_strip_nonwhite-186"><a href="#mri_strip_nonwhite-186"><span class="linenos">186</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_STRIP_NONWHITE_METADATA</span><span class="p">)</span>
+</span><span id="mri_strip_nonwhite-187"><a href="#mri_strip_nonwhite-187"><span class="linenos">187</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mri_strip_nonwhite_params</span><span class="p">(</span><span class="n">input_volume</span><span class="o">=</span><span class="n">input_volume</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">template_volume</span><span class="o">=</span><span class="n">template_volume</span><span class="p">,</span> <span class="n">output_volume</span><span class="o">=</span><span class="n">output_volume</span><span class="p">)</span>
+</span><span id="mri_strip_nonwhite-188"><a href="#mri_strip_nonwhite-188"><span class="linenos">188</span></a>    <span class="k">return</span> <span class="n">mri_strip_nonwhite_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

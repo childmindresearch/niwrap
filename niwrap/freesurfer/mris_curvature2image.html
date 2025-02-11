@@ -301,57 +301,56 @@
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Returns:</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mris_curvature2image_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mris_curvature2image_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">mris_curvature2image_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">mris_curvature2image_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mris_curvature2image</span><span class="p">(</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">overlay</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MrisCurvature2imageOutputs</span><span class="p">:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Tool to convert surface curvature data to an image using FreeSurfer.</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Args:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        surface: Input surface file.</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        mask: Input mask file.</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        output_overlay: Output overlay image file.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        output_distance: Output distance image file.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        overlay: Overlay file.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        label: Label file.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        radius: Radius value for processing.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        invert_flag: Flag to invert the curvature values.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">    Returns:</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_CURVATURE2IMAGE_METADATA</span><span class="p">)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mris_curvature2image_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">output_overlay</span><span class="o">=</span><span class="n">output_overlay</span><span class="p">,</span> <span class="n">output_distance</span><span class="o">=</span><span class="n">output_distance</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="n">overlay</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">invert_flag</span><span class="o">=</span><span class="n">invert_flag</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">return</span> <span class="n">mris_curvature2image_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mris_curvature2image</span><span class="p">(</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">overlay</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MrisCurvature2imageOutputs</span><span class="p">:</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    Tool to convert surface curvature data to an image using FreeSurfer.</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    </span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Args:</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        surface: Input surface file.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        mask: Input mask file.</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        output_overlay: Output overlay image file.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        output_distance: Output distance image file.</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        overlay: Overlay file.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        label: Label file.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        radius: Radius value for processing.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        invert_flag: Flag to invert the curvature values.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">    Returns:</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_CURVATURE2IMAGE_METADATA</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mris_curvature2image_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">output_overlay</span><span class="o">=</span><span class="n">output_overlay</span><span class="p">,</span> <span class="n">output_distance</span><span class="o">=</span><span class="n">output_distance</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="n">overlay</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">invert_flag</span><span class="o">=</span><span class="n">invert_flag</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">return</span> <span class="n">mris_curvature2image_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>
 </span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;MRIS_CURVATURE2IMAGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;MrisCurvature2imageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;MrisCurvature2imageParameters&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;mris_curvature2image&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;mris_curvature2image_params&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="p">]</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>    <span class="s2">&quot;MRIS_CURVATURE2IMAGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="s2">&quot;MrisCurvature2imageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;MrisCurvature2imageParameters&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;mris_curvature2image&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;mris_curvature2image_params&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -563,41 +562,41 @@
 
     </div>
     <a class="headerlink" href="#mris_curvature2image"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="mris_curvature2image-204"><a href="#mris_curvature2image-204"><span class="linenos">204</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mris_curvature2image</span><span class="p">(</span>
-</span><span id="mris_curvature2image-205"><a href="#mris_curvature2image-205"><span class="linenos">205</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mris_curvature2image-206"><a href="#mris_curvature2image-206"><span class="linenos">206</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mris_curvature2image-207"><a href="#mris_curvature2image-207"><span class="linenos">207</span></a>    <span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mris_curvature2image-208"><a href="#mris_curvature2image-208"><span class="linenos">208</span></a>    <span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="mris_curvature2image-209"><a href="#mris_curvature2image-209"><span class="linenos">209</span></a>    <span class="n">overlay</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mris_curvature2image-210"><a href="#mris_curvature2image-210"><span class="linenos">210</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="mris_curvature2image-211"><a href="#mris_curvature2image-211"><span class="linenos">211</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="mris_curvature2image-212"><a href="#mris_curvature2image-212"><span class="linenos">212</span></a>    <span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="mris_curvature2image-213"><a href="#mris_curvature2image-213"><span class="linenos">213</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mris_curvature2image-214"><a href="#mris_curvature2image-214"><span class="linenos">214</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MrisCurvature2imageOutputs</span><span class="p">:</span>
-</span><span id="mris_curvature2image-215"><a href="#mris_curvature2image-215"><span class="linenos">215</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="mris_curvature2image-216"><a href="#mris_curvature2image-216"><span class="linenos">216</span></a><span class="sd">    Tool to convert surface curvature data to an image using FreeSurfer.</span>
-</span><span id="mris_curvature2image-217"><a href="#mris_curvature2image-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="mris_curvature2image-218"><a href="#mris_curvature2image-218"><span class="linenos">218</span></a><span class="sd">    Author: FreeSurfer Developers</span>
-</span><span id="mris_curvature2image-219"><a href="#mris_curvature2image-219"><span class="linenos">219</span></a><span class="sd">    </span>
-</span><span id="mris_curvature2image-220"><a href="#mris_curvature2image-220"><span class="linenos">220</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
-</span><span id="mris_curvature2image-221"><a href="#mris_curvature2image-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="mris_curvature2image-222"><a href="#mris_curvature2image-222"><span class="linenos">222</span></a><span class="sd">    Args:</span>
-</span><span id="mris_curvature2image-223"><a href="#mris_curvature2image-223"><span class="linenos">223</span></a><span class="sd">        surface: Input surface file.</span>
-</span><span id="mris_curvature2image-224"><a href="#mris_curvature2image-224"><span class="linenos">224</span></a><span class="sd">        mask: Input mask file.</span>
-</span><span id="mris_curvature2image-225"><a href="#mris_curvature2image-225"><span class="linenos">225</span></a><span class="sd">        output_overlay: Output overlay image file.</span>
-</span><span id="mris_curvature2image-226"><a href="#mris_curvature2image-226"><span class="linenos">226</span></a><span class="sd">        output_distance: Output distance image file.</span>
-</span><span id="mris_curvature2image-227"><a href="#mris_curvature2image-227"><span class="linenos">227</span></a><span class="sd">        overlay: Overlay file.</span>
-</span><span id="mris_curvature2image-228"><a href="#mris_curvature2image-228"><span class="linenos">228</span></a><span class="sd">        label: Label file.</span>
-</span><span id="mris_curvature2image-229"><a href="#mris_curvature2image-229"><span class="linenos">229</span></a><span class="sd">        radius: Radius value for processing.</span>
-</span><span id="mris_curvature2image-230"><a href="#mris_curvature2image-230"><span class="linenos">230</span></a><span class="sd">        invert_flag: Flag to invert the curvature values.</span>
-</span><span id="mris_curvature2image-231"><a href="#mris_curvature2image-231"><span class="linenos">231</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mris_curvature2image-232"><a href="#mris_curvature2image-232"><span class="linenos">232</span></a><span class="sd">    Returns:</span>
-</span><span id="mris_curvature2image-233"><a href="#mris_curvature2image-233"><span class="linenos">233</span></a><span class="sd">        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).</span>
-</span><span id="mris_curvature2image-234"><a href="#mris_curvature2image-234"><span class="linenos">234</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mris_curvature2image-235"><a href="#mris_curvature2image-235"><span class="linenos">235</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mris_curvature2image-236"><a href="#mris_curvature2image-236"><span class="linenos">236</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_CURVATURE2IMAGE_METADATA</span><span class="p">)</span>
-</span><span id="mris_curvature2image-237"><a href="#mris_curvature2image-237"><span class="linenos">237</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mris_curvature2image_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">output_overlay</span><span class="o">=</span><span class="n">output_overlay</span><span class="p">,</span> <span class="n">output_distance</span><span class="o">=</span><span class="n">output_distance</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="n">overlay</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">invert_flag</span><span class="o">=</span><span class="n">invert_flag</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
-</span><span id="mris_curvature2image-238"><a href="#mris_curvature2image-238"><span class="linenos">238</span></a>    <span class="k">return</span> <span class="n">mris_curvature2image_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="mris_curvature2image-203"><a href="#mris_curvature2image-203"><span class="linenos">203</span></a><span class="k">def</span><span class="w"> </span><span class="nf">mris_curvature2image</span><span class="p">(</span>
+</span><span id="mris_curvature2image-204"><a href="#mris_curvature2image-204"><span class="linenos">204</span></a>    <span class="n">surface</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mris_curvature2image-205"><a href="#mris_curvature2image-205"><span class="linenos">205</span></a>    <span class="n">mask</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mris_curvature2image-206"><a href="#mris_curvature2image-206"><span class="linenos">206</span></a>    <span class="n">output_overlay</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mris_curvature2image-207"><a href="#mris_curvature2image-207"><span class="linenos">207</span></a>    <span class="n">output_distance</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="mris_curvature2image-208"><a href="#mris_curvature2image-208"><span class="linenos">208</span></a>    <span class="n">overlay</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mris_curvature2image-209"><a href="#mris_curvature2image-209"><span class="linenos">209</span></a>    <span class="n">label</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="mris_curvature2image-210"><a href="#mris_curvature2image-210"><span class="linenos">210</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="mris_curvature2image-211"><a href="#mris_curvature2image-211"><span class="linenos">211</span></a>    <span class="n">invert_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="mris_curvature2image-212"><a href="#mris_curvature2image-212"><span class="linenos">212</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mris_curvature2image-213"><a href="#mris_curvature2image-213"><span class="linenos">213</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MrisCurvature2imageOutputs</span><span class="p">:</span>
+</span><span id="mris_curvature2image-214"><a href="#mris_curvature2image-214"><span class="linenos">214</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="mris_curvature2image-215"><a href="#mris_curvature2image-215"><span class="linenos">215</span></a><span class="sd">    Tool to convert surface curvature data to an image using FreeSurfer.</span>
+</span><span id="mris_curvature2image-216"><a href="#mris_curvature2image-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="mris_curvature2image-217"><a href="#mris_curvature2image-217"><span class="linenos">217</span></a><span class="sd">    Author: FreeSurfer Developers</span>
+</span><span id="mris_curvature2image-218"><a href="#mris_curvature2image-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="mris_curvature2image-219"><a href="#mris_curvature2image-219"><span class="linenos">219</span></a><span class="sd">    URL: https://github.com/freesurfer/freesurfer</span>
+</span><span id="mris_curvature2image-220"><a href="#mris_curvature2image-220"><span class="linenos">220</span></a><span class="sd">    </span>
+</span><span id="mris_curvature2image-221"><a href="#mris_curvature2image-221"><span class="linenos">221</span></a><span class="sd">    Args:</span>
+</span><span id="mris_curvature2image-222"><a href="#mris_curvature2image-222"><span class="linenos">222</span></a><span class="sd">        surface: Input surface file.</span>
+</span><span id="mris_curvature2image-223"><a href="#mris_curvature2image-223"><span class="linenos">223</span></a><span class="sd">        mask: Input mask file.</span>
+</span><span id="mris_curvature2image-224"><a href="#mris_curvature2image-224"><span class="linenos">224</span></a><span class="sd">        output_overlay: Output overlay image file.</span>
+</span><span id="mris_curvature2image-225"><a href="#mris_curvature2image-225"><span class="linenos">225</span></a><span class="sd">        output_distance: Output distance image file.</span>
+</span><span id="mris_curvature2image-226"><a href="#mris_curvature2image-226"><span class="linenos">226</span></a><span class="sd">        overlay: Overlay file.</span>
+</span><span id="mris_curvature2image-227"><a href="#mris_curvature2image-227"><span class="linenos">227</span></a><span class="sd">        label: Label file.</span>
+</span><span id="mris_curvature2image-228"><a href="#mris_curvature2image-228"><span class="linenos">228</span></a><span class="sd">        radius: Radius value for processing.</span>
+</span><span id="mris_curvature2image-229"><a href="#mris_curvature2image-229"><span class="linenos">229</span></a><span class="sd">        invert_flag: Flag to invert the curvature values.</span>
+</span><span id="mris_curvature2image-230"><a href="#mris_curvature2image-230"><span class="linenos">230</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mris_curvature2image-231"><a href="#mris_curvature2image-231"><span class="linenos">231</span></a><span class="sd">    Returns:</span>
+</span><span id="mris_curvature2image-232"><a href="#mris_curvature2image-232"><span class="linenos">232</span></a><span class="sd">        NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).</span>
+</span><span id="mris_curvature2image-233"><a href="#mris_curvature2image-233"><span class="linenos">233</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mris_curvature2image-234"><a href="#mris_curvature2image-234"><span class="linenos">234</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mris_curvature2image-235"><a href="#mris_curvature2image-235"><span class="linenos">235</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRIS_CURVATURE2IMAGE_METADATA</span><span class="p">)</span>
+</span><span id="mris_curvature2image-236"><a href="#mris_curvature2image-236"><span class="linenos">236</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">mris_curvature2image_params</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">output_overlay</span><span class="o">=</span><span class="n">output_overlay</span><span class="p">,</span> <span class="n">output_distance</span><span class="o">=</span><span class="n">output_distance</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="n">overlay</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">invert_flag</span><span class="o">=</span><span class="n">invert_flag</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+</span><span id="mris_curvature2image-237"><a href="#mris_curvature2image-237"><span class="linenos">237</span></a>    <span class="k">return</span> <span class="n">mris_curvature2image_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

@@ -247,48 +247,47 @@
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__suma_make_spec_sf</span><span class="p">(</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">debug_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">surface_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSumaMakeSpecSfOutputs</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    Prepare for surface viewing in SUMA.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    </span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    </span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    </span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        subject_id: Required subject ID for file naming.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        debug_level: Print debug information along the way.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        surface_path: Path to directory containing &#39;SURFACES&#39; and AFNI volume\</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            used in creating the surfaces.</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    Returns:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SUMA_MAKE_SPEC_SF_METADATA</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_params</span><span class="p">(</span><span class="n">debug_level</span><span class="o">=</span><span class="n">debug_level</span><span class="p">,</span> <span class="n">surface_path</span><span class="o">=</span><span class="n">surface_path</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">return</span> <span class="n">v__suma_make_spec_sf_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__suma_make_spec_sf</span><span class="p">(</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">debug_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">surface_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSumaMakeSpecSfOutputs</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Prepare for surface viewing in SUMA.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    </span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    Args:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        subject_id: Required subject ID for file naming.</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        debug_level: Print debug information along the way.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        surface_path: Path to directory containing &#39;SURFACES&#39; and AFNI volume\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            used in creating the surfaces.</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    Returns:</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SUMA_MAKE_SPEC_SF_METADATA</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_params</span><span class="p">(</span><span class="n">debug_level</span><span class="o">=</span><span class="n">debug_level</span><span class="p">,</span> <span class="n">surface_path</span><span class="o">=</span><span class="n">surface_path</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">return</span> <span class="n">v__suma_make_spec_sf_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="s2">&quot;VSumaMakeSpecSfOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="s2">&quot;VSumaMakeSpecSfParameters&quot;</span><span class="p">,</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;V__SUMA_MAKE_SPEC_SF_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;v__suma_make_spec_sf&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;v__suma_make_spec_sf_params&quot;</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="p">]</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="s2">&quot;VSumaMakeSpecSfOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="s2">&quot;VSumaMakeSpecSfParameters&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="s2">&quot;V__SUMA_MAKE_SPEC_SF_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;v__suma_make_spec_sf&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;v__suma_make_spec_sf_params&quot;</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -430,32 +429,32 @@
 
     </div>
     <a class="headerlink" href="#v__suma_make_spec_sf"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="v__suma_make_spec_sf-168"><a href="#v__suma_make_spec_sf-168"><span class="linenos">168</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__suma_make_spec_sf</span><span class="p">(</span>
-</span><span id="v__suma_make_spec_sf-169"><a href="#v__suma_make_spec_sf-169"><span class="linenos">169</span></a>    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="v__suma_make_spec_sf-170"><a href="#v__suma_make_spec_sf-170"><span class="linenos">170</span></a>    <span class="n">debug_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__suma_make_spec_sf-171"><a href="#v__suma_make_spec_sf-171"><span class="linenos">171</span></a>    <span class="n">surface_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__suma_make_spec_sf-172"><a href="#v__suma_make_spec_sf-172"><span class="linenos">172</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__suma_make_spec_sf-173"><a href="#v__suma_make_spec_sf-173"><span class="linenos">173</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSumaMakeSpecSfOutputs</span><span class="p">:</span>
-</span><span id="v__suma_make_spec_sf-174"><a href="#v__suma_make_spec_sf-174"><span class="linenos">174</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v__suma_make_spec_sf-175"><a href="#v__suma_make_spec_sf-175"><span class="linenos">175</span></a><span class="sd">    Prepare for surface viewing in SUMA.</span>
-</span><span id="v__suma_make_spec_sf-176"><a href="#v__suma_make_spec_sf-176"><span class="linenos">176</span></a><span class="sd">    </span>
-</span><span id="v__suma_make_spec_sf-177"><a href="#v__suma_make_spec_sf-177"><span class="linenos">177</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="v__suma_make_spec_sf-178"><a href="#v__suma_make_spec_sf-178"><span class="linenos">178</span></a><span class="sd">    </span>
-</span><span id="v__suma_make_spec_sf-179"><a href="#v__suma_make_spec_sf-179"><span class="linenos">179</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="v__suma_make_spec_sf-180"><a href="#v__suma_make_spec_sf-180"><span class="linenos">180</span></a><span class="sd">    </span>
-</span><span id="v__suma_make_spec_sf-181"><a href="#v__suma_make_spec_sf-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
-</span><span id="v__suma_make_spec_sf-182"><a href="#v__suma_make_spec_sf-182"><span class="linenos">182</span></a><span class="sd">        subject_id: Required subject ID for file naming.</span>
-</span><span id="v__suma_make_spec_sf-183"><a href="#v__suma_make_spec_sf-183"><span class="linenos">183</span></a><span class="sd">        debug_level: Print debug information along the way.</span>
-</span><span id="v__suma_make_spec_sf-184"><a href="#v__suma_make_spec_sf-184"><span class="linenos">184</span></a><span class="sd">        surface_path: Path to directory containing &#39;SURFACES&#39; and AFNI volume\</span>
-</span><span id="v__suma_make_spec_sf-185"><a href="#v__suma_make_spec_sf-185"><span class="linenos">185</span></a><span class="sd">            used in creating the surfaces.</span>
-</span><span id="v__suma_make_spec_sf-186"><a href="#v__suma_make_spec_sf-186"><span class="linenos">186</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__suma_make_spec_sf-187"><a href="#v__suma_make_spec_sf-187"><span class="linenos">187</span></a><span class="sd">    Returns:</span>
-</span><span id="v__suma_make_spec_sf-188"><a href="#v__suma_make_spec_sf-188"><span class="linenos">188</span></a><span class="sd">        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).</span>
-</span><span id="v__suma_make_spec_sf-189"><a href="#v__suma_make_spec_sf-189"><span class="linenos">189</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__suma_make_spec_sf-190"><a href="#v__suma_make_spec_sf-190"><span class="linenos">190</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__suma_make_spec_sf-191"><a href="#v__suma_make_spec_sf-191"><span class="linenos">191</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SUMA_MAKE_SPEC_SF_METADATA</span><span class="p">)</span>
-</span><span id="v__suma_make_spec_sf-192"><a href="#v__suma_make_spec_sf-192"><span class="linenos">192</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_params</span><span class="p">(</span><span class="n">debug_level</span><span class="o">=</span><span class="n">debug_level</span><span class="p">,</span> <span class="n">surface_path</span><span class="o">=</span><span class="n">surface_path</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">)</span>
-</span><span id="v__suma_make_spec_sf-193"><a href="#v__suma_make_spec_sf-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">v__suma_make_spec_sf_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="v__suma_make_spec_sf-167"><a href="#v__suma_make_spec_sf-167"><span class="linenos">167</span></a><span class="k">def</span><span class="w"> </span><span class="nf">v__suma_make_spec_sf</span><span class="p">(</span>
+</span><span id="v__suma_make_spec_sf-168"><a href="#v__suma_make_spec_sf-168"><span class="linenos">168</span></a>    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="v__suma_make_spec_sf-169"><a href="#v__suma_make_spec_sf-169"><span class="linenos">169</span></a>    <span class="n">debug_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__suma_make_spec_sf-170"><a href="#v__suma_make_spec_sf-170"><span class="linenos">170</span></a>    <span class="n">surface_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__suma_make_spec_sf-171"><a href="#v__suma_make_spec_sf-171"><span class="linenos">171</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__suma_make_spec_sf-172"><a href="#v__suma_make_spec_sf-172"><span class="linenos">172</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSumaMakeSpecSfOutputs</span><span class="p">:</span>
+</span><span id="v__suma_make_spec_sf-173"><a href="#v__suma_make_spec_sf-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v__suma_make_spec_sf-174"><a href="#v__suma_make_spec_sf-174"><span class="linenos">174</span></a><span class="sd">    Prepare for surface viewing in SUMA.</span>
+</span><span id="v__suma_make_spec_sf-175"><a href="#v__suma_make_spec_sf-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="v__suma_make_spec_sf-176"><a href="#v__suma_make_spec_sf-176"><span class="linenos">176</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="v__suma_make_spec_sf-177"><a href="#v__suma_make_spec_sf-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="v__suma_make_spec_sf-178"><a href="#v__suma_make_spec_sf-178"><span class="linenos">178</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__suma_make_spec_sf-179"><a href="#v__suma_make_spec_sf-179"><span class="linenos">179</span></a><span class="sd">    </span>
+</span><span id="v__suma_make_spec_sf-180"><a href="#v__suma_make_spec_sf-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
+</span><span id="v__suma_make_spec_sf-181"><a href="#v__suma_make_spec_sf-181"><span class="linenos">181</span></a><span class="sd">        subject_id: Required subject ID for file naming.</span>
+</span><span id="v__suma_make_spec_sf-182"><a href="#v__suma_make_spec_sf-182"><span class="linenos">182</span></a><span class="sd">        debug_level: Print debug information along the way.</span>
+</span><span id="v__suma_make_spec_sf-183"><a href="#v__suma_make_spec_sf-183"><span class="linenos">183</span></a><span class="sd">        surface_path: Path to directory containing &#39;SURFACES&#39; and AFNI volume\</span>
+</span><span id="v__suma_make_spec_sf-184"><a href="#v__suma_make_spec_sf-184"><span class="linenos">184</span></a><span class="sd">            used in creating the surfaces.</span>
+</span><span id="v__suma_make_spec_sf-185"><a href="#v__suma_make_spec_sf-185"><span class="linenos">185</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__suma_make_spec_sf-186"><a href="#v__suma_make_spec_sf-186"><span class="linenos">186</span></a><span class="sd">    Returns:</span>
+</span><span id="v__suma_make_spec_sf-187"><a href="#v__suma_make_spec_sf-187"><span class="linenos">187</span></a><span class="sd">        NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).</span>
+</span><span id="v__suma_make_spec_sf-188"><a href="#v__suma_make_spec_sf-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__suma_make_spec_sf-189"><a href="#v__suma_make_spec_sf-189"><span class="linenos">189</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__suma_make_spec_sf-190"><a href="#v__suma_make_spec_sf-190"><span class="linenos">190</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SUMA_MAKE_SPEC_SF_METADATA</span><span class="p">)</span>
+</span><span id="v__suma_make_spec_sf-191"><a href="#v__suma_make_spec_sf-191"><span class="linenos">191</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">v__suma_make_spec_sf_params</span><span class="p">(</span><span class="n">debug_level</span><span class="o">=</span><span class="n">debug_level</span><span class="p">,</span> <span class="n">surface_path</span><span class="o">=</span><span class="n">surface_path</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">)</span>
+</span><span id="v__suma_make_spec_sf-192"><a href="#v__suma_make_spec_sf-192"><span class="linenos">192</span></a>    <span class="k">return</span> <span class="n">v__suma_make_spec_sf_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 

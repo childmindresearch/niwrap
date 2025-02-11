@@ -274,55 +274,54 @@
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `CjpegOutputs`).</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="c1"># validate constraint checks (or after middlewares?)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cjpeg_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cjpeg_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="n">cjpeg_cargs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">cjpeg_outputs</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cjpeg</span><span class="p">(</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">quality</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">grayscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">baseline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">progressive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CjpegOutputs</span><span class="p">:</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    Compresses an image file to a JPEG file.</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    </span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    </span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    Args:</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        outfile: Output JPEG file.</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        infile: Input image file.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        quality: Quality of JPEG image (0-100).</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        grayscale: Create a grayscale JPEG file.</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        optimize: Optimize Huffman table.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        baseline: Create a baseline JPEG file.</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        progressive: Create a progressive JPEG file.</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    Returns:</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        NamedTuple of outputs (described in `CjpegOutputs`).</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CJPEG_METADATA</span><span class="p">)</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cjpeg_params</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="n">grayscale</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="n">baseline</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="n">progressive</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">infile</span><span class="o">=</span><span class="n">infile</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">cjpeg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cjpeg</span><span class="p">(</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">quality</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">grayscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">baseline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">progressive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CjpegOutputs</span><span class="p">:</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    Compresses an image file to a JPEG file.</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    </span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    </span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    </span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    Args:</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        outfile: Output JPEG file.</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        infile: Input image file.</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        quality: Quality of JPEG image (0-100).</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        grayscale: Create a grayscale JPEG file.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        optimize: Optimize Huffman table.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        baseline: Create a baseline JPEG file.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        progressive: Create a progressive JPEG file.</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    Returns:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        NamedTuple of outputs (described in `CjpegOutputs`).</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CJPEG_METADATA</span><span class="p">)</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cjpeg_params</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="n">grayscale</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="n">baseline</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="n">progressive</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">infile</span><span class="o">=</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">return</span> <span class="n">cjpeg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;CJPEG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;CjpegOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;CjpegParameters&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;cjpeg&quot;</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;cjpeg_params&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="p">]</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="s2">&quot;CJPEG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;CjpegOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;CjpegParameters&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;cjpeg&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;cjpeg_params&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -508,39 +507,39 @@
 
     </div>
     <a class="headerlink" href="#cjpeg"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cjpeg-183"><a href="#cjpeg-183"><span class="linenos">183</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cjpeg</span><span class="p">(</span>
-</span><span id="cjpeg-184"><a href="#cjpeg-184"><span class="linenos">184</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cjpeg-185"><a href="#cjpeg-185"><span class="linenos">185</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="cjpeg-186"><a href="#cjpeg-186"><span class="linenos">186</span></a>    <span class="n">quality</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cjpeg-187"><a href="#cjpeg-187"><span class="linenos">187</span></a>    <span class="n">grayscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cjpeg-188"><a href="#cjpeg-188"><span class="linenos">188</span></a>    <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cjpeg-189"><a href="#cjpeg-189"><span class="linenos">189</span></a>    <span class="n">baseline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cjpeg-190"><a href="#cjpeg-190"><span class="linenos">190</span></a>    <span class="n">progressive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cjpeg-191"><a href="#cjpeg-191"><span class="linenos">191</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cjpeg-192"><a href="#cjpeg-192"><span class="linenos">192</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CjpegOutputs</span><span class="p">:</span>
-</span><span id="cjpeg-193"><a href="#cjpeg-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cjpeg-194"><a href="#cjpeg-194"><span class="linenos">194</span></a><span class="sd">    Compresses an image file to a JPEG file.</span>
-</span><span id="cjpeg-195"><a href="#cjpeg-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="cjpeg-196"><a href="#cjpeg-196"><span class="linenos">196</span></a><span class="sd">    Author: AFNI Developers</span>
-</span><span id="cjpeg-197"><a href="#cjpeg-197"><span class="linenos">197</span></a><span class="sd">    </span>
-</span><span id="cjpeg-198"><a href="#cjpeg-198"><span class="linenos">198</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
-</span><span id="cjpeg-199"><a href="#cjpeg-199"><span class="linenos">199</span></a><span class="sd">    </span>
-</span><span id="cjpeg-200"><a href="#cjpeg-200"><span class="linenos">200</span></a><span class="sd">    Args:</span>
-</span><span id="cjpeg-201"><a href="#cjpeg-201"><span class="linenos">201</span></a><span class="sd">        outfile: Output JPEG file.</span>
-</span><span id="cjpeg-202"><a href="#cjpeg-202"><span class="linenos">202</span></a><span class="sd">        infile: Input image file.</span>
-</span><span id="cjpeg-203"><a href="#cjpeg-203"><span class="linenos">203</span></a><span class="sd">        quality: Quality of JPEG image (0-100).</span>
-</span><span id="cjpeg-204"><a href="#cjpeg-204"><span class="linenos">204</span></a><span class="sd">        grayscale: Create a grayscale JPEG file.</span>
-</span><span id="cjpeg-205"><a href="#cjpeg-205"><span class="linenos">205</span></a><span class="sd">        optimize: Optimize Huffman table.</span>
-</span><span id="cjpeg-206"><a href="#cjpeg-206"><span class="linenos">206</span></a><span class="sd">        baseline: Create a baseline JPEG file.</span>
-</span><span id="cjpeg-207"><a href="#cjpeg-207"><span class="linenos">207</span></a><span class="sd">        progressive: Create a progressive JPEG file.</span>
-</span><span id="cjpeg-208"><a href="#cjpeg-208"><span class="linenos">208</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cjpeg-209"><a href="#cjpeg-209"><span class="linenos">209</span></a><span class="sd">    Returns:</span>
-</span><span id="cjpeg-210"><a href="#cjpeg-210"><span class="linenos">210</span></a><span class="sd">        NamedTuple of outputs (described in `CjpegOutputs`).</span>
-</span><span id="cjpeg-211"><a href="#cjpeg-211"><span class="linenos">211</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cjpeg-212"><a href="#cjpeg-212"><span class="linenos">212</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cjpeg-213"><a href="#cjpeg-213"><span class="linenos">213</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CJPEG_METADATA</span><span class="p">)</span>
-</span><span id="cjpeg-214"><a href="#cjpeg-214"><span class="linenos">214</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cjpeg_params</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="n">grayscale</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="n">baseline</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="n">progressive</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">infile</span><span class="o">=</span><span class="n">infile</span><span class="p">)</span>
-</span><span id="cjpeg-215"><a href="#cjpeg-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">cjpeg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cjpeg-182"><a href="#cjpeg-182"><span class="linenos">182</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cjpeg</span><span class="p">(</span>
+</span><span id="cjpeg-183"><a href="#cjpeg-183"><span class="linenos">183</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="cjpeg-184"><a href="#cjpeg-184"><span class="linenos">184</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="cjpeg-185"><a href="#cjpeg-185"><span class="linenos">185</span></a>    <span class="n">quality</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cjpeg-186"><a href="#cjpeg-186"><span class="linenos">186</span></a>    <span class="n">grayscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cjpeg-187"><a href="#cjpeg-187"><span class="linenos">187</span></a>    <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cjpeg-188"><a href="#cjpeg-188"><span class="linenos">188</span></a>    <span class="n">baseline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cjpeg-189"><a href="#cjpeg-189"><span class="linenos">189</span></a>    <span class="n">progressive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cjpeg-190"><a href="#cjpeg-190"><span class="linenos">190</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cjpeg-191"><a href="#cjpeg-191"><span class="linenos">191</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CjpegOutputs</span><span class="p">:</span>
+</span><span id="cjpeg-192"><a href="#cjpeg-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cjpeg-193"><a href="#cjpeg-193"><span class="linenos">193</span></a><span class="sd">    Compresses an image file to a JPEG file.</span>
+</span><span id="cjpeg-194"><a href="#cjpeg-194"><span class="linenos">194</span></a><span class="sd">    </span>
+</span><span id="cjpeg-195"><a href="#cjpeg-195"><span class="linenos">195</span></a><span class="sd">    Author: AFNI Developers</span>
+</span><span id="cjpeg-196"><a href="#cjpeg-196"><span class="linenos">196</span></a><span class="sd">    </span>
+</span><span id="cjpeg-197"><a href="#cjpeg-197"><span class="linenos">197</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="cjpeg-198"><a href="#cjpeg-198"><span class="linenos">198</span></a><span class="sd">    </span>
+</span><span id="cjpeg-199"><a href="#cjpeg-199"><span class="linenos">199</span></a><span class="sd">    Args:</span>
+</span><span id="cjpeg-200"><a href="#cjpeg-200"><span class="linenos">200</span></a><span class="sd">        outfile: Output JPEG file.</span>
+</span><span id="cjpeg-201"><a href="#cjpeg-201"><span class="linenos">201</span></a><span class="sd">        infile: Input image file.</span>
+</span><span id="cjpeg-202"><a href="#cjpeg-202"><span class="linenos">202</span></a><span class="sd">        quality: Quality of JPEG image (0-100).</span>
+</span><span id="cjpeg-203"><a href="#cjpeg-203"><span class="linenos">203</span></a><span class="sd">        grayscale: Create a grayscale JPEG file.</span>
+</span><span id="cjpeg-204"><a href="#cjpeg-204"><span class="linenos">204</span></a><span class="sd">        optimize: Optimize Huffman table.</span>
+</span><span id="cjpeg-205"><a href="#cjpeg-205"><span class="linenos">205</span></a><span class="sd">        baseline: Create a baseline JPEG file.</span>
+</span><span id="cjpeg-206"><a href="#cjpeg-206"><span class="linenos">206</span></a><span class="sd">        progressive: Create a progressive JPEG file.</span>
+</span><span id="cjpeg-207"><a href="#cjpeg-207"><span class="linenos">207</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cjpeg-208"><a href="#cjpeg-208"><span class="linenos">208</span></a><span class="sd">    Returns:</span>
+</span><span id="cjpeg-209"><a href="#cjpeg-209"><span class="linenos">209</span></a><span class="sd">        NamedTuple of outputs (described in `CjpegOutputs`).</span>
+</span><span id="cjpeg-210"><a href="#cjpeg-210"><span class="linenos">210</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cjpeg-211"><a href="#cjpeg-211"><span class="linenos">211</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cjpeg-212"><a href="#cjpeg-212"><span class="linenos">212</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CJPEG_METADATA</span><span class="p">)</span>
+</span><span id="cjpeg-213"><a href="#cjpeg-213"><span class="linenos">213</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="n">cjpeg_params</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="n">grayscale</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="n">baseline</span><span class="p">,</span> <span class="n">progressive</span><span class="o">=</span><span class="n">progressive</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="n">outfile</span><span class="p">,</span> <span class="n">infile</span><span class="o">=</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="cjpeg-214"><a href="#cjpeg-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">cjpeg_execute</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">execution</span><span class="p">)</span>
 </span></pre></div>
 
 
