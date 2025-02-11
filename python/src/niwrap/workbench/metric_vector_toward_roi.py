@@ -158,7 +158,6 @@ def metric_vector_toward_roi_execute(
     Returns:
         NamedTuple of outputs (described in `MetricVectorTowardRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_vector_toward_roi_cargs(params, execution)
     ret = metric_vector_toward_roi_outputs(params, execution)
     execution.run(cargs)

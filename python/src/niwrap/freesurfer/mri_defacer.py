@@ -68,7 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_defacer": mri_defacer_outputs,
     }.get(t)
 
 
@@ -345,7 +344,6 @@ def mri_defacer_execute(
     Returns:
         NamedTuple of outputs (described in `MriDefacerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_defacer_cargs(params, execution)
     ret = mri_defacer_outputs(params, execution)
     execution.run(cargs)

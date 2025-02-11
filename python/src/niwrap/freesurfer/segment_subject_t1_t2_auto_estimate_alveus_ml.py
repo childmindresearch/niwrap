@@ -151,7 +151,6 @@ def segment_subject_t1_t2_auto_estimate_alveus_ml_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectT1T2AutoEstimateAlveusMlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subject_t1_t2_auto_estimate_alveus_ml_cargs(params, execution)
     ret = segment_subject_t1_t2_auto_estimate_alveus_ml_outputs(params, execution)
     execution.run(cargs)

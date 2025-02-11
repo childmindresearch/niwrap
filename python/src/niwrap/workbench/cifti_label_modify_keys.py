@@ -169,7 +169,6 @@ def cifti_label_modify_keys_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelModifyKeysOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_modify_keys_cargs(params, execution)
     ret = cifti_label_modify_keys_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "predict_v1.sh": predict_v1_sh_outputs,
     }.get(t)
 
 
@@ -163,7 +162,6 @@ def predict_v1_sh_execute(
     Returns:
         NamedTuple of outputs (described in `PredictV1ShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = predict_v1_sh_cargs(params, execution)
     ret = predict_v1_sh_outputs(params, execution)
     execution.run(cargs)

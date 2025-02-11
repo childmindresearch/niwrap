@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@NoPound": v__no_pound_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def v__no_pound_execute(
     Returns:
         NamedTuple of outputs (described in `VNoPoundOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__no_pound_cargs(params, execution)
     ret = v__no_pound_outputs(params, execution)
     execution.run(cargs)

@@ -145,7 +145,6 @@ def v_3dvolreg_afni_execute(
     Returns:
         NamedTuple of outputs (described in `V3dvolregAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dvolreg_afni_cargs(params, execution)
     ret = v_3dvolreg_afni_outputs(params, execution)
     execution.run(cargs)

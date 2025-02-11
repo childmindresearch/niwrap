@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslcc": fslcc_outputs,
     }.get(t)
 
 
@@ -178,7 +177,6 @@ def fslcc_execute(
     Returns:
         NamedTuple of outputs (described in `FslccOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslcc_cargs(params, execution)
     ret = fslcc_outputs(params, execution)
     execution.run(cargs)

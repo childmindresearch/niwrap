@@ -174,7 +174,6 @@ def register_elderly_subject_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterElderlySubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = register_elderly_subject_cargs(params, execution)
     ret = register_elderly_subject_outputs(params, execution)
     execution.run(cargs)

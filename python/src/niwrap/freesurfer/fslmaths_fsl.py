@@ -145,7 +145,6 @@ def fslmaths_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FslmathsFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslmaths_fsl_cargs(params, execution)
     ret = fslmaths_fsl_outputs(params, execution)
     execution.run(cargs)

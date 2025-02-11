@@ -142,7 +142,6 @@ def segment_ha_t2_sh_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentHaT2ShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_ha_t2_sh_cargs(params, execution)
     ret = segment_ha_t2_sh_outputs(params, execution)
     execution.run(cargs)

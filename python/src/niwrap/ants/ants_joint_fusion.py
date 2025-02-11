@@ -287,7 +287,6 @@ def ants_joint_fusion_execute(
     Returns:
         NamedTuple of outputs (described in `AntsJointFusionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_joint_fusion_cargs(params, execution)
     ret = ants_joint_fusion_outputs(params, execution)
     execution.run(cargs)

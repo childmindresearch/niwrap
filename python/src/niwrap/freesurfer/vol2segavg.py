@@ -248,7 +248,6 @@ def vol2segavg_execute(
     Returns:
         NamedTuple of outputs (described in `Vol2segavgOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vol2segavg_cargs(params, execution)
     ret = vol2segavg_outputs(params, execution)
     execution.run(cargs)

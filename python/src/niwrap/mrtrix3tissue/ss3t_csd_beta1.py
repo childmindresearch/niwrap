@@ -70,7 +70,6 @@ def dyn_outputs(
     """
     return {
         "ss3t_csd_beta1": ss3t_csd_beta1_outputs,
-        "config": ss3t_csd_beta1_config_outputs,
         "response_odf": ss3t_csd_beta1_response_odf_outputs,
     }.get(t)
 
@@ -359,7 +358,6 @@ def ss3t_csd_beta1_execute(
     Returns:
         NamedTuple of outputs (described in `Ss3tCsdBeta1Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ss3t_csd_beta1_cargs(params, execution)
     ret = ss3t_csd_beta1_outputs(params, execution)
     execution.run(cargs)

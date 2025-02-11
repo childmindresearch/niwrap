@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "uber_align_test.py": uber_align_test_py_outputs,
     }.get(t)
 
 
@@ -197,7 +196,6 @@ def uber_align_test_py_execute(
     Returns:
         NamedTuple of outputs (described in `UberAlignTestPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = uber_align_test_py_cargs(params, execution)
     ret = uber_align_test_py_outputs(params, execution)
     execution.run(cargs)

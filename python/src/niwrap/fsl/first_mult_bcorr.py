@@ -169,7 +169,6 @@ def first_mult_bcorr_execute(
     Returns:
         NamedTuple of outputs (described in `FirstMultBcorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = first_mult_bcorr_cargs(params, execution)
     ret = first_mult_bcorr_outputs(params, execution)
     execution.run(cargs)

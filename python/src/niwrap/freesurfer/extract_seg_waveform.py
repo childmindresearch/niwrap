@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "extract_seg_waveform": extract_seg_waveform_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def extract_seg_waveform_execute(
     Returns:
         NamedTuple of outputs (described in `ExtractSegWaveformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = extract_seg_waveform_cargs(params, execution)
     ret = extract_seg_waveform_outputs(params, execution)
     execution.run(cargs)

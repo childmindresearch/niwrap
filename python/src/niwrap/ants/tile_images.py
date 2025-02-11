@@ -153,7 +153,6 @@ def tile_images_execute(
     Returns:
         NamedTuple of outputs (described in `TileImagesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tile_images_cargs(params, execution)
     ret = tile_images_outputs(params, execution)
     execution.run(cargs)

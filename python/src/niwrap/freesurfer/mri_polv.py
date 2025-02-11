@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_polv": mri_polv_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def mri_polv_execute(
     Returns:
         NamedTuple of outputs (described in `MriPolvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_polv_cargs(params, execution)
     ret = mri_polv_outputs(params, execution)
     execution.run(cargs)

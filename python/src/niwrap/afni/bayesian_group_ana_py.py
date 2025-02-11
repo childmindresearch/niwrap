@@ -254,7 +254,6 @@ def bayesian_group_ana_py_execute(
     Returns:
         NamedTuple of outputs (described in `BayesianGroupAnaPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bayesian_group_ana_py_cargs(params, execution)
     ret = bayesian_group_ana_py_outputs(params, execution)
     execution.run(cargs)

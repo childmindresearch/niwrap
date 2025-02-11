@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "inflate_subject-lh": inflate_subject_lh_outputs,
     }.get(t)
 
 
@@ -138,7 +137,6 @@ def inflate_subject_lh_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubjectLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = inflate_subject_lh_cargs(params, execution)
     ret = inflate_subject_lh_outputs(params, execution)
     execution.run(cargs)

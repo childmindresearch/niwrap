@@ -170,7 +170,6 @@ def baycest_execute(
     Returns:
         NamedTuple of outputs (described in `BaycestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = baycest_cargs(params, execution)
     ret = baycest_outputs(params, execution)
     execution.run(cargs)

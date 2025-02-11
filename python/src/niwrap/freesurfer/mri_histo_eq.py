@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_histo_eq": mri_histo_eq_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def mri_histo_eq_execute(
     Returns:
         NamedTuple of outputs (described in `MriHistoEqOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_histo_eq_cargs(params, execution)
     ret = mri_histo_eq_outputs(params, execution)
     execution.run(cargs)

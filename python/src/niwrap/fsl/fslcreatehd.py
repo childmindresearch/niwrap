@@ -202,7 +202,6 @@ def fslcreatehd_execute(
     Returns:
         NamedTuple of outputs (described in `FslcreatehdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslcreatehd_cargs(params, execution)
     ret = fslcreatehd_outputs(params, execution)
     execution.run(cargs)

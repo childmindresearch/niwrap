@@ -455,7 +455,6 @@ def mri_robust_template_execute(
     Returns:
         NamedTuple of outputs (described in `MriRobustTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_robust_template_cargs(params, execution)
     ret = mri_robust_template_outputs(params, execution)
     execution.run(cargs)

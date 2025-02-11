@@ -172,7 +172,6 @@ def convert_xfm_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertXfmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_xfm_cargs(params, execution)
     ret = convert_xfm_outputs(params, execution)
     execution.run(cargs)

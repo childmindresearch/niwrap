@@ -145,7 +145,6 @@ def is_lta_execute(
     Returns:
         NamedTuple of outputs (described in `IsLtaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = is_lta_cargs(params, execution)
     ret = is_lta_outputs(params, execution)
     execution.run(cargs)

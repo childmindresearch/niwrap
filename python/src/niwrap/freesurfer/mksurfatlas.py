@@ -201,7 +201,6 @@ def mksurfatlas_execute(
     Returns:
         NamedTuple of outputs (described in `MksurfatlasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mksurfatlas_cargs(params, execution)
     ret = mksurfatlas_outputs(params, execution)
     execution.run(cargs)

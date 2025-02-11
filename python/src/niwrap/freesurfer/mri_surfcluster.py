@@ -523,7 +523,6 @@ def mri_surfcluster_execute(
     Returns:
         NamedTuple of outputs (described in `MriSurfclusterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_surfcluster_cargs(params, execution)
     ret = mri_surfcluster_outputs(params, execution)
     execution.run(cargs)

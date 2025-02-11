@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "fixelreorient": fixelreorient_outputs,
-        "config": fixelreorient_config_outputs,
     }.get(t)
 
 
@@ -266,7 +265,6 @@ def fixelreorient_execute(
     Returns:
         NamedTuple of outputs (described in `FixelreorientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelreorient_cargs(params, execution)
     ret = fixelreorient_outputs(params, execution)
     execution.run(cargs)

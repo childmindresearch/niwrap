@@ -138,7 +138,6 @@ def mri_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `MriReduceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_reduce_cargs(params, execution)
     ret = mri_reduce_outputs(params, execution)
     execution.run(cargs)

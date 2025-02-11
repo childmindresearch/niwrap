@@ -269,7 +269,6 @@ def v__measure_in2out_execute(
     Returns:
         NamedTuple of outputs (described in `VMeasureIn2outOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__measure_in2out_cargs(params, execution)
     ret = v__measure_in2out_outputs(params, execution)
     execution.run(cargs)

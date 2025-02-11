@@ -195,7 +195,6 @@ def mri_make_uchar_execute(
     Returns:
         NamedTuple of outputs (described in `MriMakeUcharOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_make_uchar_cargs(params, execution)
     ret = mri_make_uchar_outputs(params, execution)
     execution.run(cargs)

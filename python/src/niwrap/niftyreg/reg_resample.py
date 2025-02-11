@@ -226,7 +226,6 @@ def reg_resample_execute(
     Returns:
         NamedTuple of outputs (described in `RegResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_resample_cargs(params, execution)
     ret = reg_resample_outputs(params, execution)
     execution.run(cargs)

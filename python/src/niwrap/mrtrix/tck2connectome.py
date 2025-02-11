@@ -78,7 +78,6 @@ def dyn_outputs(
     """
     return {
         "tck2connectome": tck2connectome_outputs,
-        "config": tck2connectome_config_outputs,
     }.get(t)
 
 
@@ -414,7 +413,6 @@ def tck2connectome_execute(
     Returns:
         NamedTuple of outputs (described in `Tck2connectomeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tck2connectome_cargs(params, execution)
     ret = tck2connectome_outputs(params, execution)
     execution.run(cargs)

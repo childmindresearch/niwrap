@@ -59,7 +59,6 @@ def dyn_outputs(
     """
     return {
         "convert-fiber-orientations": convert_fiber_orientations_outputs,
-        "fiber": convert_fiber_orientations_fiber_outputs,
     }.get(t)
 
 
@@ -258,7 +257,6 @@ def convert_fiber_orientations_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_fiber_orientations_cargs(params, execution)
     ret = convert_fiber_orientations_outputs(params, execution)
     execution.run(cargs)

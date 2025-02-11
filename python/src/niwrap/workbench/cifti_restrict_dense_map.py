@@ -206,7 +206,6 @@ def cifti_restrict_dense_map_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiRestrictDenseMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_restrict_dense_map_cargs(params, execution)
     ret = cifti_restrict_dense_map_outputs(params, execution)
     execution.run(cargs)

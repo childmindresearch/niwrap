@@ -441,7 +441,6 @@ def surf_clust_execute(
     Returns:
         NamedTuple of outputs (described in `SurfClustOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_clust_cargs(params, execution)
     ret = surf_clust_outputs(params, execution)
     execution.run(cargs)

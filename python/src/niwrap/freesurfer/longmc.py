@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "longmc": longmc_outputs,
     }.get(t)
 
 
@@ -169,7 +168,6 @@ def longmc_execute(
     Returns:
         NamedTuple of outputs (described in `LongmcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = longmc_cargs(params, execution)
     ret = longmc_outputs(params, execution)
     execution.run(cargs)

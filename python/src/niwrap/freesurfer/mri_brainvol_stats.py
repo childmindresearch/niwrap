@@ -172,7 +172,6 @@ def mri_brainvol_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MriBrainvolStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_brainvol_stats_cargs(params, execution)
     ret = mri_brainvol_stats_outputs(params, execution)
     execution.run(cargs)

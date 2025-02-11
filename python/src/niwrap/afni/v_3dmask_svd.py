@@ -135,7 +135,6 @@ def v_3dmask_svd_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmaskSvdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmask_svd_cargs(params, execution)
     ret = v_3dmask_svd_outputs(params, execution)
     execution.run(cargs)

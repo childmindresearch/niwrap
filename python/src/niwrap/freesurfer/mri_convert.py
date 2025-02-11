@@ -140,7 +140,6 @@ def mri_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MriConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_convert_cargs(params, execution)
     ret = mri_convert_outputs(params, execution)
     execution.run(cargs)

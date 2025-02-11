@@ -249,7 +249,6 @@ def surfreg_execute(
     Returns:
         NamedTuple of outputs (described in `SurfregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surfreg_cargs(params, execution)
     ret = surfreg_outputs(params, execution)
     execution.run(cargs)

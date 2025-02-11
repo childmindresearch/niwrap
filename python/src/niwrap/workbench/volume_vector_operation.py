@@ -187,7 +187,6 @@ def volume_vector_operation_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeVectorOperationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_vector_operation_cargs(params, execution)
     ret = volume_vector_operation_outputs(params, execution)
     execution.run(cargs)

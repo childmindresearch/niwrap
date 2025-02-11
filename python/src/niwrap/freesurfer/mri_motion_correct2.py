@@ -206,7 +206,6 @@ def mri_motion_correct2_execute(
     Returns:
         NamedTuple of outputs (described in `MriMotionCorrect2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_motion_correct2_cargs(params, execution)
     ret = mri_motion_correct2_outputs(params, execution)
     execution.run(cargs)

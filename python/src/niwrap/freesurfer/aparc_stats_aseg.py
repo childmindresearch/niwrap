@@ -66,7 +66,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "aparc_stats_aseg": aparc_stats_aseg_outputs,
     }.get(t)
 
 
@@ -295,7 +294,6 @@ def aparc_stats_aseg_execute(
     Returns:
         NamedTuple of outputs (described in `AparcStatsAsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aparc_stats_aseg_cargs(params, execution)
     ret = aparc_stats_aseg_outputs(params, execution)
     execution.run(cargs)

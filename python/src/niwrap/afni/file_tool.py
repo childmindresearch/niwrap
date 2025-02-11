@@ -414,7 +414,6 @@ def file_tool_execute(
     Returns:
         NamedTuple of outputs (described in `FileToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = file_tool_cargs(params, execution)
     ret = file_tool_outputs(params, execution)
     execution.run(cargs)

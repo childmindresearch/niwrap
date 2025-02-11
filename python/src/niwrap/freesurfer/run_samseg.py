@@ -76,7 +76,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "run_samseg": run_samseg_outputs,
     }.get(t)
 
 
@@ -405,7 +404,6 @@ def run_samseg_execute(
     Returns:
         NamedTuple of outputs (described in `RunSamsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_samseg_cargs(params, execution)
     ret = run_samseg_outputs(params, execution)
     execution.run(cargs)

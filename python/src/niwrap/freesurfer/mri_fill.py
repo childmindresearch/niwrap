@@ -291,7 +291,6 @@ def mri_fill_execute(
     Returns:
         NamedTuple of outputs (described in `MriFillOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fill_cargs(params, execution)
     ret = mri_fill_outputs(params, execution)
     execution.run(cargs)

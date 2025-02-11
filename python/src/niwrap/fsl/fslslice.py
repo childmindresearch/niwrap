@@ -140,7 +140,6 @@ def fslslice_execute(
     Returns:
         NamedTuple of outputs (described in `FslsliceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslslice_cargs(params, execution)
     ret = fslslice_outputs(params, execution)
     execution.run(cargs)

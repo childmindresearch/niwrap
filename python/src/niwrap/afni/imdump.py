@@ -134,7 +134,6 @@ def imdump_execute(
     Returns:
         NamedTuple of outputs (described in `ImdumpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imdump_cargs(params, execution)
     ret = imdump_outputs(params, execution)
     execution.run(cargs)

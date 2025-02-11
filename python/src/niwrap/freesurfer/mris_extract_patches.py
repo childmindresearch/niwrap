@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_extract_patches": mris_extract_patches_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def mris_extract_patches_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExtractPatchesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_extract_patches_cargs(params, execution)
     ret = mris_extract_patches_outputs(params, execution)
     execution.run(cargs)

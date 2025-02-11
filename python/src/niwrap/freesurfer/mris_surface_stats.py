@@ -264,7 +264,6 @@ def mris_surface_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSurfaceStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_surface_stats_cargs(params, execution)
     ret = mris_surface_stats_outputs(params, execution)
     execution.run(cargs)

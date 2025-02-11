@@ -187,7 +187,6 @@ def metric_vector_operation_execute(
     Returns:
         NamedTuple of outputs (described in `MetricVectorOperationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_vector_operation_cargs(params, execution)
     ret = metric_vector_operation_outputs(params, execution)
     execution.run(cargs)

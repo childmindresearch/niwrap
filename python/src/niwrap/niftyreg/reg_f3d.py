@@ -508,7 +508,6 @@ def reg_f3d_execute(
     Returns:
         NamedTuple of outputs (described in `RegF3dOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_f3d_cargs(params, execution)
     ret = reg_f3d_outputs(params, execution)
     execution.run(cargs)

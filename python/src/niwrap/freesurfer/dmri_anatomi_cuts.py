@@ -185,7 +185,6 @@ def dmri_anatomi_cuts_execute(
     Returns:
         NamedTuple of outputs (described in `DmriAnatomiCutsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_anatomi_cuts_cargs(params, execution)
     ret = dmri_anatomi_cuts_outputs(params, execution)
     execution.run(cargs)

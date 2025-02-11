@@ -477,7 +477,6 @@ def mri_rf_label_execute(
     Returns:
         NamedTuple of outputs (described in `MriRfLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_rf_label_cargs(params, execution)
     ret = mri_rf_label_outputs(params, execution)
     execution.run(cargs)

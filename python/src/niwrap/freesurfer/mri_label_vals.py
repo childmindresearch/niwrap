@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_label_vals": mri_label_vals_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def mri_label_vals_execute(
     Returns:
         NamedTuple of outputs (described in `MriLabelValsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_label_vals_cargs(params, execution)
     ret = mri_label_vals_outputs(params, execution)
     execution.run(cargs)

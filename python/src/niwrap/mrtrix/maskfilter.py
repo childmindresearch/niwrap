@@ -79,9 +79,6 @@ def dyn_outputs(
     """
     return {
         "maskfilter": maskfilter_outputs,
-        "VariousString": maskfilter_various_string_outputs,
-        "VariousFile": maskfilter_various_file_outputs,
-        "config": maskfilter_config_outputs,
     }.get(t)
 
 
@@ -412,7 +409,6 @@ def maskfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MaskfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = maskfilter_cargs(params, execution)
     ret = maskfilter_outputs(params, execution)
     execution.run(cargs)

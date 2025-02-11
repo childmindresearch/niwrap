@@ -146,7 +146,6 @@ def labels_disjoint_execute(
     Returns:
         NamedTuple of outputs (described in `LabelsDisjointOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = labels_disjoint_cargs(params, execution)
     ret = labels_disjoint_outputs(params, execution)
     execution.run(cargs)

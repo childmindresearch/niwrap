@@ -506,7 +506,6 @@ def mri_vol2vol_execute(
     Returns:
         NamedTuple of outputs (described in `MriVol2volOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_vol2vol_cargs(params, execution)
     ret = mri_vol2vol_outputs(params, execution)
     execution.run(cargs)

@@ -65,9 +65,6 @@ def dyn_outputs(
     """
     return {
         "label-merge": label_merge_outputs,
-        "label": label_merge_label_outputs,
-        "column": label_merge_column_outputs,
-        "up_to": label_merge_up_to_outputs,
     }.get(t)
 
 
@@ -300,7 +297,6 @@ def label_merge_execute(
     Returns:
         NamedTuple of outputs (described in `LabelMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_merge_cargs(params, execution)
     ret = label_merge_outputs(params, execution)
     execution.run(cargs)

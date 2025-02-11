@@ -157,7 +157,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dinfo": v_3dinfo_outputs,
     }.get(t)
 
 
@@ -861,7 +860,6 @@ def v_3dinfo_execute(
     Returns:
         NamedTuple of outputs (described in `V3dinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dinfo_cargs(params, execution)
     ret = v_3dinfo_outputs(params, execution)
     execution.run(cargs, handle_stdout=lambda s: ret.info.append(s))

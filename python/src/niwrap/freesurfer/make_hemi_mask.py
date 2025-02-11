@@ -145,7 +145,6 @@ def make_hemi_mask_execute(
     Returns:
         NamedTuple of outputs (described in `MakeHemiMaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_hemi_mask_cargs(params, execution)
     ret = make_hemi_mask_outputs(params, execution)
     execution.run(cargs)

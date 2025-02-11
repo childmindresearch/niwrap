@@ -534,7 +534,6 @@ def v_3d_tstat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tstat_cargs(params, execution)
     ret = v_3d_tstat_outputs(params, execution)
     execution.run(cargs)

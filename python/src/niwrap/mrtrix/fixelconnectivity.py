@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "fixelconnectivity": fixelconnectivity_outputs,
-        "config": fixelconnectivity_config_outputs,
     }.get(t)
 
 
@@ -290,7 +289,6 @@ def fixelconnectivity_execute(
     Returns:
         NamedTuple of outputs (described in `FixelconnectivityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelconnectivity_cargs(params, execution)
     ret = fixelconnectivity_outputs(params, execution)
     execution.run(cargs)

@@ -135,7 +135,6 @@ def stem2fname_execute(
     Returns:
         NamedTuple of outputs (described in `Stem2fnameOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = stem2fname_cargs(params, execution)
     ret = stem2fname_outputs(params, execution)
     execution.run(cargs)

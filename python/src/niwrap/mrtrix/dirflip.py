@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "dirflip": dirflip_outputs,
-        "config": dirflip_config_outputs,
     }.get(t)
 
 
@@ -269,7 +268,6 @@ def dirflip_execute(
     Returns:
         NamedTuple of outputs (described in `DirflipOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirflip_cargs(params, execution)
     ret = dirflip_outputs(params, execution)
     execution.run(cargs)

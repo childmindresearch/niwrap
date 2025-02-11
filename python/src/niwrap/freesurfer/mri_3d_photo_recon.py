@@ -254,7 +254,6 @@ def mri_3d_photo_recon_execute(
     Returns:
         NamedTuple of outputs (described in `Mri3dPhotoReconOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_3d_photo_recon_cargs(params, execution)
     ret = mri_3d_photo_recon_outputs(params, execution)
     execution.run(cargs)

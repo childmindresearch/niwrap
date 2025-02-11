@@ -165,7 +165,6 @@ def mris_entropy_execute(
     Returns:
         NamedTuple of outputs (described in `MrisEntropyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_entropy_cargs(params, execution)
     ret = mris_entropy_outputs(params, execution)
     execution.run(cargs)

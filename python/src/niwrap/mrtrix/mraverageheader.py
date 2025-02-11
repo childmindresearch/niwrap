@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "mraverageheader": mraverageheader_outputs,
-        "config": mraverageheader_config_outputs,
     }.get(t)
 
 
@@ -293,7 +292,6 @@ def mraverageheader_execute(
     Returns:
         NamedTuple of outputs (described in `MraverageheaderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mraverageheader_cargs(params, execution)
     ret = mraverageheader_outputs(params, execution)
     execution.run(cargs)

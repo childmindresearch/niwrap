@@ -284,7 +284,6 @@ def fsl_regfilt_execute(
     Returns:
         NamedTuple of outputs (described in `FslRegfiltOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_regfilt_cargs(params, execution)
     ret = fsl_regfilt_outputs(params, execution)
     execution.run(cargs)

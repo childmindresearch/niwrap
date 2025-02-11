@@ -459,7 +459,6 @@ def v__auto_tlrc_execute(
     Returns:
         NamedTuple of outputs (described in `VAutoTlrcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__auto_tlrc_cargs(params, execution)
     ret = v__auto_tlrc_outputs(params, execution)
     execution.run(cargs)

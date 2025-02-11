@@ -223,7 +223,6 @@ def v__afni_refacer_run_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRefacerRunOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_refacer_run_cargs(params, execution)
     ret = v__afni_refacer_run_outputs(params, execution)
     execution.run(cargs)

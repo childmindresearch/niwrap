@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "CreateIcosahedron": create_icosahedron_outputs,
     }.get(t)
 
 
@@ -211,7 +210,6 @@ def create_icosahedron_execute(
     Returns:
         NamedTuple of outputs (described in `CreateIcosahedronOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_icosahedron_cargs(params, execution)
     ret = create_icosahedron_outputs(params, execution)
     execution.run(cargs)

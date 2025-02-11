@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "afni_run_R": afni_run_r_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def afni_run_r_execute(
     Returns:
         NamedTuple of outputs (described in `AfniRunROutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_run_r_cargs(params, execution)
     ret = afni_run_r_outputs(params, execution)
     execution.run(cargs)

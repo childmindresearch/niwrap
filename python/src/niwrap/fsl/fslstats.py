@@ -339,7 +339,6 @@ def fslstats_execute(
     Returns:
         NamedTuple of outputs (described in `FslstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslstats_cargs(params, execution)
     ret = fslstats_outputs(params, execution)
     execution.run(cargs)

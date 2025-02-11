@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "reg2subject": reg2subject_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def reg2subject_execute(
     Returns:
         NamedTuple of outputs (described in `Reg2subjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg2subject_cargs(params, execution)
     ret = reg2subject_outputs(params, execution)
     execution.run(cargs)

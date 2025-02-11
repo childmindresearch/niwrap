@@ -152,7 +152,6 @@ def fslsplit_execute(
     Returns:
         NamedTuple of outputs (described in `FslsplitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslsplit_cargs(params, execution)
     ret = fslsplit_outputs(params, execution)
     execution.run(cargs)

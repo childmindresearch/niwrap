@@ -216,7 +216,6 @@ def v__compute_oc_weights_execute(
     Returns:
         NamedTuple of outputs (described in `VComputeOcWeightsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__compute_oc_weights_cargs(params, execution)
     ret = v__compute_oc_weights_outputs(params, execution)
     execution.run(cargs)

@@ -321,7 +321,6 @@ def mris_apply_reg_execute(
     Returns:
         NamedTuple of outputs (described in `MrisApplyRegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_apply_reg_cargs(params, execution)
     ret = mris_apply_reg_outputs(params, execution)
     execution.run(cargs)

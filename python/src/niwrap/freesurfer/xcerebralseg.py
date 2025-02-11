@@ -218,7 +218,6 @@ def xcerebralseg_execute(
     Returns:
         NamedTuple of outputs (described in `XcerebralsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xcerebralseg_cargs(params, execution)
     ret = xcerebralseg_outputs(params, execution)
     execution.run(cargs)

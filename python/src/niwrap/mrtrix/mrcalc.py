@@ -320,60 +320,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mrcalc": mrcalc_outputs,
-        "abs": mrcalc_abs_outputs,
-        "neg": mrcalc_neg_outputs,
-        "add": mrcalc_add_outputs,
-        "subtract": mrcalc_subtract_outputs,
-        "multiply": mrcalc_multiply_outputs,
-        "divide": mrcalc_divide_outputs,
-        "min": mrcalc_min_outputs,
-        "max": mrcalc_max_outputs,
-        "lt": mrcalc_lt_outputs,
-        "gt": mrcalc_gt_outputs,
-        "le": mrcalc_le_outputs,
-        "ge": mrcalc_ge_outputs,
-        "eq": mrcalc_eq_outputs,
-        "neq": mrcalc_neq_outputs,
-        "if": mrcalc_if_outputs,
-        "replace": mrcalc_replace_outputs,
-        "sqrt": mrcalc_sqrt_outputs,
-        "pow": mrcalc_pow_outputs,
-        "round": mrcalc_round_outputs,
-        "ceil": mrcalc_ceil_outputs,
-        "floor": mrcalc_floor_outputs,
-        "not": mrcalc_not_outputs,
-        "and": mrcalc_and_outputs,
-        "or": mrcalc_or_outputs,
-        "xor": mrcalc_xor_outputs,
-        "isnan": mrcalc_isnan_outputs,
-        "isinf": mrcalc_isinf_outputs,
-        "finite": mrcalc_finite_outputs,
-        "complex": mrcalc_complex_outputs,
-        "polar": mrcalc_polar_outputs,
-        "real": mrcalc_real_outputs,
-        "imag": mrcalc_imag_outputs,
-        "phase": mrcalc_phase_outputs,
-        "conj": mrcalc_conj_outputs,
-        "proj": mrcalc_proj_outputs,
-        "exp": mrcalc_exp_outputs,
-        "log": mrcalc_log_outputs,
-        "log10": mrcalc_log10_outputs,
-        "cos": mrcalc_cos_outputs,
-        "sin": mrcalc_sin_outputs,
-        "tan": mrcalc_tan_outputs,
-        "acos": mrcalc_acos_outputs,
-        "asin": mrcalc_asin_outputs,
-        "atan": mrcalc_atan_outputs,
-        "cosh": mrcalc_cosh_outputs,
-        "sinh": mrcalc_sinh_outputs,
-        "tanh": mrcalc_tanh_outputs,
-        "acosh": mrcalc_acosh_outputs,
-        "asinh": mrcalc_asinh_outputs,
-        "atanh": mrcalc_atanh_outputs,
-        "config": mrcalc_config_outputs,
-        "VariousString": mrcalc_various_string_outputs,
-        "VariousFile": mrcalc_various_file_outputs,
     }.get(t)
 
 
@@ -2622,7 +2568,6 @@ def mrcalc_execute(
     Returns:
         NamedTuple of outputs (described in `MrcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrcalc_cargs(params, execution)
     ret = mrcalc_outputs(params, execution)
     execution.run(cargs)

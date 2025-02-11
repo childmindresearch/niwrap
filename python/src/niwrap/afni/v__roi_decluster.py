@@ -190,7 +190,6 @@ def v__roi_decluster_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiDeclusterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__roi_decluster_cargs(params, execution)
     ret = v__roi_decluster_outputs(params, execution)
     execution.run(cargs)

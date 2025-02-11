@@ -61,8 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tsfinfo": tsfinfo_outputs,
-        "config": tsfinfo_config_outputs,
     }.get(t)
 
 
@@ -258,7 +256,6 @@ def tsfinfo_execute(
     Returns:
         NamedTuple of outputs (described in `TsfinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfinfo_cargs(params, execution)
     ret = tsfinfo_outputs(params, execution)
     execution.run(cargs)

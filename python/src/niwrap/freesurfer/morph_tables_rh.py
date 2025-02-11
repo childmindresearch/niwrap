@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "morph_tables-rh": morph_tables_rh_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def morph_tables_rh_execute(
     Returns:
         NamedTuple of outputs (described in `MorphTablesRhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = morph_tables_rh_cargs(params, execution)
     ret = morph_tables_rh_outputs(params, execution)
     execution.run(cargs)

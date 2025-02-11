@@ -261,7 +261,6 @@ def bianca_execute(
     Returns:
         NamedTuple of outputs (described in `BiancaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bianca_cargs(params, execution)
     ret = bianca_outputs(params, execution)
     execution.run(cargs)

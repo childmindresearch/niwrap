@@ -72,7 +72,6 @@ def dyn_outputs(
     """
     return {
         "tensor2metric": tensor2metric_outputs,
-        "config": tensor2metric_config_outputs,
     }.get(t)
 
 
@@ -411,7 +410,6 @@ def tensor2metric_execute(
     Returns:
         NamedTuple of outputs (described in `Tensor2metricOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tensor2metric_cargs(params, execution)
     ret = tensor2metric_outputs(params, execution)
     execution.run(cargs)

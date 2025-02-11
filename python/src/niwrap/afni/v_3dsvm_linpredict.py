@@ -151,7 +151,6 @@ def v_3dsvm_linpredict_execute(
     Returns:
         NamedTuple of outputs (described in `V3dsvmLinpredictOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dsvm_linpredict_cargs(params, execution)
     ret = v_3dsvm_linpredict_outputs(params, execution)
     execution.run(cargs)

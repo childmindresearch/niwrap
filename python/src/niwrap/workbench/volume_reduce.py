@@ -56,7 +56,6 @@ def dyn_outputs(
     """
     return {
         "volume-reduce": volume_reduce_outputs,
-        "exclude_outliers": volume_reduce_exclude_outliers_outputs,
     }.get(t)
 
 
@@ -228,7 +227,6 @@ def volume_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeReduceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_reduce_cargs(params, execution)
     ret = volume_reduce_outputs(params, execution)
     execution.run(cargs)

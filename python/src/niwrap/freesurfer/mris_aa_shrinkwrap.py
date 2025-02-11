@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_AA_shrinkwrap": mris_aa_shrinkwrap_outputs,
     }.get(t)
 
 
@@ -174,7 +173,6 @@ def mris_aa_shrinkwrap_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAaShrinkwrapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_aa_shrinkwrap_cargs(params, execution)
     ret = mris_aa_shrinkwrap_outputs(params, execution)
     execution.run(cargs)

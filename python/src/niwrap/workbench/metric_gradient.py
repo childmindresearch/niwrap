@@ -66,8 +66,6 @@ def dyn_outputs(
     """
     return {
         "metric-gradient": metric_gradient_outputs,
-        "presmooth": metric_gradient_presmooth_outputs,
-        "roi": metric_gradient_roi_outputs,
     }.get(t)
 
 
@@ -330,7 +328,6 @@ def metric_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `MetricGradientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_gradient_cargs(params, execution)
     ret = metric_gradient_outputs(params, execution)
     execution.run(cargs)

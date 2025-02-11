@@ -129,7 +129,6 @@ def v__to_mni_qwarpar_execute(
     Returns:
         NamedTuple of outputs (described in `VToMniQwarparOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__to_mni_qwarpar_cargs(params, execution)
     ret = v__to_mni_qwarpar_outputs(params, execution)
     execution.run(cargs)

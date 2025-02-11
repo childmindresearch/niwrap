@@ -151,7 +151,6 @@ def siena_cal_execute(
     Returns:
         NamedTuple of outputs (described in `SienaCalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = siena_cal_cargs(params, execution)
     ret = siena_cal_outputs(params, execution)
     execution.run(cargs)

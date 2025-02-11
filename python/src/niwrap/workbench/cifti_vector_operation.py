@@ -187,7 +187,6 @@ def cifti_vector_operation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiVectorOperationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_vector_operation_cargs(params, execution)
     ret = cifti_vector_operation_outputs(params, execution)
     execution.run(cargs)

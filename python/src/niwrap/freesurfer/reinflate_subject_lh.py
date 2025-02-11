@@ -135,7 +135,6 @@ def reinflate_subject_lh_execute(
     Returns:
         NamedTuple of outputs (described in `ReinflateSubjectLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reinflate_subject_lh_cargs(params, execution)
     ret = reinflate_subject_lh_outputs(params, execution)
     execution.run(cargs)

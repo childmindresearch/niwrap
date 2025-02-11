@@ -234,7 +234,6 @@ def create_signed_distance_volume_execute(
     Returns:
         NamedTuple of outputs (described in `CreateSignedDistanceVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_signed_distance_volume_cargs(params, execution)
     ret = create_signed_distance_volume_outputs(params, execution)
     execution.run(cargs)

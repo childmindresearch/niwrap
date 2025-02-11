@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_interpolate_warp": mris_interpolate_warp_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def mris_interpolate_warp_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInterpolateWarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_interpolate_warp_cargs(params, execution)
     ret = mris_interpolate_warp_outputs(params, execution)
     execution.run(cargs)

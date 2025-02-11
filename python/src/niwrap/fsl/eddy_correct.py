@@ -149,7 +149,6 @@ def eddy_correct_execute(
     Returns:
         NamedTuple of outputs (described in `EddyCorrectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = eddy_correct_cargs(params, execution)
     ret = eddy_correct_outputs(params, execution)
     execution.run(cargs)

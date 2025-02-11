@@ -310,7 +310,6 @@ def v__suma_align_to_experiment_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaAlignToExperimentOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_align_to_experiment_cargs(params, execution)
     ret = v__suma_align_to_experiment_outputs(params, execution)
     execution.run(cargs)

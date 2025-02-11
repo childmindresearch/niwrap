@@ -134,7 +134,6 @@ def im2niml_execute(
     Returns:
         NamedTuple of outputs (described in `Im2nimlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = im2niml_cargs(params, execution)
     ret = im2niml_outputs(params, execution)
     execution.run(cargs)

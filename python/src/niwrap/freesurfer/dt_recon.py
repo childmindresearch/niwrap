@@ -287,7 +287,6 @@ def dt_recon_execute(
     Returns:
         NamedTuple of outputs (described in `DtReconOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dt_recon_cargs(params, execution)
     ret = dt_recon_outputs(params, execution)
     execution.run(cargs)

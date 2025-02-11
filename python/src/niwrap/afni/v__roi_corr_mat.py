@@ -206,7 +206,6 @@ def v__roi_corr_mat_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiCorrMatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__roi_corr_mat_cargs(params, execution)
     ret = v__roi_corr_mat_outputs(params, execution)
     execution.run(cargs)

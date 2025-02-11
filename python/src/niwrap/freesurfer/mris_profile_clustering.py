@@ -145,7 +145,6 @@ def mris_profile_clustering_execute(
     Returns:
         NamedTuple of outputs (described in `MrisProfileClusteringOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_profile_clustering_cargs(params, execution)
     ret = mris_profile_clustering_outputs(params, execution)
     execution.run(cargs)

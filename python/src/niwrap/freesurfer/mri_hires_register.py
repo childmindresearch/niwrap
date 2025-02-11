@@ -148,7 +148,6 @@ def mri_hires_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriHiresRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_hires_register_cargs(params, execution)
     ret = mri_hires_register_outputs(params, execution)
     execution.run(cargs)

@@ -104,7 +104,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tkregister2_cmdl": tkregister2_cmdl_outputs,
     }.get(t)
 
 
@@ -641,7 +640,6 @@ def tkregister2_cmdl_execute(
     Returns:
         NamedTuple of outputs (described in `Tkregister2CmdlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tkregister2_cmdl_cargs(params, execution)
     ret = tkregister2_cmdl_outputs(params, execution)
     execution.run(cargs)

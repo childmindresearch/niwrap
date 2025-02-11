@@ -169,7 +169,6 @@ def border_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `BorderToRoisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_to_rois_cargs(params, execution)
     ret = border_to_rois_outputs(params, execution)
     execution.run(cargs)

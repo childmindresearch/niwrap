@@ -191,7 +191,6 @@ def mri_synthstrip_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthstripOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_synthstrip_cargs(params, execution)
     ret = mri_synthstrip_outputs(params, execution)
     execution.run(cargs)

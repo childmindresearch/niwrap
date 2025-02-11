@@ -155,7 +155,6 @@ def sratio_execute(
     Returns:
         NamedTuple of outputs (described in `SratioOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sratio_cargs(params, execution)
     ret = sratio_outputs(params, execution)
     execution.run(cargs)

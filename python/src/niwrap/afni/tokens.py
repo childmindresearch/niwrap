@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tokens": tokens_outputs,
     }.get(t)
 
 
@@ -146,7 +145,6 @@ def tokens_execute(
     Returns:
         NamedTuple of outputs (described in `TokensOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tokens_cargs(params, execution)
     ret = tokens_outputs(params, execution)
     execution.run(cargs)

@@ -170,7 +170,6 @@ def v_3d_friedman_execute(
     Returns:
         NamedTuple of outputs (described in `V3dFriedmanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_friedman_cargs(params, execution)
     ret = v_3d_friedman_outputs(params, execution)
     execution.run(cargs)

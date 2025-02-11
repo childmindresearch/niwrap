@@ -227,7 +227,6 @@ def v_3d_multi_thresh_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMultiThreshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_multi_thresh_cargs(params, execution)
     ret = v_3d_multi_thresh_outputs(params, execution)
     execution.run(cargs)

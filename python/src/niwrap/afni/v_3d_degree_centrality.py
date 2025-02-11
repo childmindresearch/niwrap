@@ -203,7 +203,6 @@ def v_3d_degree_centrality_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDegreeCentralityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_degree_centrality_cargs(params, execution)
     ret = v_3d_degree_centrality_outputs(params, execution)
     execution.run(cargs)

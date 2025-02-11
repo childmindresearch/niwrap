@@ -59,7 +59,6 @@ def dyn_outputs(
     """
     return {
         "volume-label-to-surface-mapping": volume_label_to_surface_mapping_outputs,
-        "ribbon_constrained": volume_label_to_surface_mapping_ribbon_constrained_outputs,
     }.get(t)
 
 
@@ -254,7 +253,6 @@ def volume_label_to_surface_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelToSurfaceMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_label_to_surface_mapping_cargs(params, execution)
     ret = volume_label_to_surface_mapping_outputs(params, execution)
     execution.run(cargs)

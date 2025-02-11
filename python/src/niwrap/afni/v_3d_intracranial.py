@@ -205,7 +205,6 @@ def v_3d_intracranial_execute(
     Returns:
         NamedTuple of outputs (described in `V3dIntracranialOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_intracranial_cargs(params, execution)
     ret = v_3d_intracranial_outputs(params, execution)
     execution.run(cargs)

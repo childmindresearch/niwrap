@@ -248,7 +248,6 @@ def vol2subfield_execute(
     Returns:
         NamedTuple of outputs (described in `Vol2subfieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vol2subfield_cargs(params, execution)
     ret = vol2subfield_outputs(params, execution)
     execution.run(cargs)

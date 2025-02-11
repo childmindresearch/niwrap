@@ -162,7 +162,6 @@ def antsuse_deformation_field_to_get_affine_transform_execute(
     Returns:
         NamedTuple of outputs (described in `AntsuseDeformationFieldToGetAffineTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = antsuse_deformation_field_to_get_affine_transform_cargs(params, execution)
     ret = antsuse_deformation_field_to_get_affine_transform_outputs(params, execution)
     execution.run(cargs)

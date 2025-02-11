@@ -170,7 +170,6 @@ def gauss_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `Gauss4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gauss_4dfp_cargs(params, execution)
     ret = gauss_4dfp_outputs(params, execution)
     execution.run(cargs)

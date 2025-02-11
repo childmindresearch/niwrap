@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dnvals": v_3dnvals_outputs,
     }.get(t)
 
 
@@ -142,7 +141,6 @@ def v_3dnvals_execute(
     Returns:
         NamedTuple of outputs (described in `V3dnvalsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dnvals_cargs(params, execution)
     ret = v_3dnvals_outputs(params, execution)
     execution.run(cargs)

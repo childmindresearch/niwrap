@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslorient.fsl": fslorient_fsl_outputs,
     }.get(t)
 
 
@@ -156,7 +155,6 @@ def fslorient_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FslorientFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslorient_fsl_cargs(params, execution)
     ret = fslorient_fsl_outputs(params, execution)
     execution.run(cargs)

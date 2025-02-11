@@ -164,7 +164,6 @@ def v_3d_nwarp_adjust_execute(
     Returns:
         NamedTuple of outputs (described in `V3dNwarpAdjustOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_nwarp_adjust_cargs(params, execution)
     ret = v_3d_nwarp_adjust_outputs(params, execution)
     execution.run(cargs)

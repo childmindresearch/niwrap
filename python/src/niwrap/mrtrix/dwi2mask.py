@@ -70,8 +70,6 @@ def dyn_outputs(
     """
     return {
         "dwi2mask": dwi2mask_outputs,
-        "fslgrad": dwi2mask_fslgrad_outputs,
-        "config": dwi2mask_config_outputs,
     }.get(t)
 
 
@@ -349,7 +347,6 @@ def dwi2mask_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2maskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwi2mask_cargs(params, execution)
     ret = dwi2mask_outputs(params, execution)
     execution.run(cargs)

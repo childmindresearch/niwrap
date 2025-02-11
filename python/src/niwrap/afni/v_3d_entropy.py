@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dEntropy": v_3d_entropy_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def v_3d_entropy_execute(
     Returns:
         NamedTuple of outputs (described in `V3dEntropyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_entropy_cargs(params, execution)
     ret = v_3d_entropy_outputs(params, execution)
     execution.run(cargs)

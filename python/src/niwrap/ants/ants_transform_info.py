@@ -137,7 +137,6 @@ def ants_transform_info_execute(
     Returns:
         NamedTuple of outputs (described in `AntsTransformInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_transform_info_cargs(params, execution)
     ret = ants_transform_info_outputs(params, execution)
     execution.run(cargs)

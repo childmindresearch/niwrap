@@ -64,10 +64,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "scene-file-merge": scene_file_merge_outputs,
-        "scene_file": scene_file_merge_scene_file_outputs,
-        "scene": scene_file_merge_scene_outputs,
-        "up_to": scene_file_merge_up_to_outputs,
     }.get(t)
 
 
@@ -296,7 +292,6 @@ def scene_file_merge_execute(
     Returns:
         NamedTuple of outputs (described in `SceneFileMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = scene_file_merge_cargs(params, execution)
     ret = scene_file_merge_outputs(params, execution)
     execution.run(cargs)

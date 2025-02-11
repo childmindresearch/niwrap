@@ -145,7 +145,6 @@ def mris_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `MrisGradientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_gradient_cargs(params, execution)
     ret = mris_gradient_outputs(params, execution)
     execution.run(cargs)

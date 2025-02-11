@@ -208,7 +208,6 @@ def mri_sph2surf_execute(
     Returns:
         NamedTuple of outputs (described in `MriSph2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_sph2surf_cargs(params, execution)
     ret = mri_sph2surf_outputs(params, execution)
     execution.run(cargs)

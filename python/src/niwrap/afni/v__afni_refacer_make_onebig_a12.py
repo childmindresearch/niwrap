@@ -134,7 +134,6 @@ def v__afni_refacer_make_onebig_a12_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRefacerMakeOnebigA12Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_refacer_make_onebig_a12_cargs(params, execution)
     ret = v__afni_refacer_make_onebig_a12_outputs(params, execution)
     execution.run(cargs)

@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "make_average_volume": make_average_volume_outputs,
     }.get(t)
 
 
@@ -230,7 +229,6 @@ def make_average_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_average_volume_cargs(params, execution)
     ret = make_average_volume_outputs(params, execution)
     execution.run(cargs)

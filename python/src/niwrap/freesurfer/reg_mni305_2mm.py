@@ -146,7 +146,6 @@ def reg_mni305_2mm_execute(
     Returns:
         NamedTuple of outputs (described in `RegMni3052mmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_mni305_2mm_cargs(params, execution)
     ret = reg_mni305_2mm_outputs(params, execution)
     execution.run(cargs)

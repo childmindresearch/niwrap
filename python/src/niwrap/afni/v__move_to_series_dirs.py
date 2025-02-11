@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@move.to.series.dirs": v__move_to_series_dirs_outputs,
     }.get(t)
 
 
@@ -188,7 +187,6 @@ def v__move_to_series_dirs_execute(
     Returns:
         NamedTuple of outputs (described in `VMoveToSeriesDirsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__move_to_series_dirs_cargs(params, execution)
     ret = v__move_to_series_dirs_outputs(params, execution)
     execution.run(cargs)

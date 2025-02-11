@@ -151,7 +151,6 @@ def imand_execute(
     Returns:
         NamedTuple of outputs (described in `ImandOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imand_cargs(params, execution)
     ret = imand_outputs(params, execution)
     execution.run(cargs)

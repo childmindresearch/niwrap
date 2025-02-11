@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "vno_match_check": vno_match_check_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def vno_match_check_execute(
     Returns:
         NamedTuple of outputs (described in `VnoMatchCheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vno_match_check_cargs(params, execution)
     ret = vno_match_check_outputs(params, execution)
     execution.run(cargs)

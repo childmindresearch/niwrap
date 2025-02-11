@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "get_afni_model_PRF_6": get_afni_model_prf_6_outputs,
     }.get(t)
 
 
@@ -161,7 +160,6 @@ def get_afni_model_prf_6_execute(
     Returns:
         NamedTuple of outputs (described in `GetAfniModelPrf6Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = get_afni_model_prf_6_cargs(params, execution)
     ret = get_afni_model_prf_6_outputs(params, execution)
     execution.run(cargs)

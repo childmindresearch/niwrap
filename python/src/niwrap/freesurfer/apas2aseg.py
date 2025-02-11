@@ -160,7 +160,6 @@ def apas2aseg_execute(
     Returns:
         NamedTuple of outputs (described in `Apas2asegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = apas2aseg_cargs(params, execution)
     ret = apas2aseg_outputs(params, execution)
     execution.run(cargs)

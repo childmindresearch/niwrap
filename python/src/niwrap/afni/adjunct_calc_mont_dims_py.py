@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "adjunct_calc_mont_dims.py": adjunct_calc_mont_dims_py_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def adjunct_calc_mont_dims_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctCalcMontDimsPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_calc_mont_dims_py_cargs(params, execution)
     ret = adjunct_calc_mont_dims_py_outputs(params, execution)
     execution.run(cargs)

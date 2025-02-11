@@ -205,7 +205,6 @@ def stattablediff_execute(
     Returns:
         NamedTuple of outputs (described in `StattablediffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = stattablediff_cargs(params, execution)
     ret = stattablediff_outputs(params, execution)
     execution.run(cargs)

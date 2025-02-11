@@ -228,7 +228,6 @@ def v_3d_brain_voyagerto_afni_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBrainVoyagertoAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_brain_voyagerto_afni_cargs(params, execution)
     ret = v_3d_brain_voyagerto_afni_outputs(params, execution)
     execution.run(cargs)

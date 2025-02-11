@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "proj_thresh": proj_thresh_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def proj_thresh_execute(
     Returns:
         NamedTuple of outputs (described in `ProjThreshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = proj_thresh_cargs(params, execution)
     ret = proj_thresh_outputs(params, execution)
     execution.run(cargs)

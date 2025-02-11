@@ -158,7 +158,6 @@ def v_1d_flag_motion_execute(
     Returns:
         NamedTuple of outputs (described in `V1dFlagMotionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_flag_motion_cargs(params, execution)
     ret = v_1d_flag_motion_outputs(params, execution)
     execution.run(cargs)

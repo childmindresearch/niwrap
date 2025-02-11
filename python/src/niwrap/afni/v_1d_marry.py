@@ -161,7 +161,6 @@ def v_1d_marry_execute(
     Returns:
         NamedTuple of outputs (described in `V1dMarryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_marry_cargs(params, execution)
     ret = v_1d_marry_outputs(params, execution)
     execution.run(cargs)

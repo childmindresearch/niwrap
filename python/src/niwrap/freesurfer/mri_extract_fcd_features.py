@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_extract_fcd_features": mri_extract_fcd_features_outputs,
     }.get(t)
 
 
@@ -151,7 +150,6 @@ def mri_extract_fcd_features_execute(
     Returns:
         NamedTuple of outputs (described in `MriExtractFcdFeaturesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_extract_fcd_features_cargs(params, execution)
     ret = mri_extract_fcd_features_outputs(params, execution)
     execution.run(cargs)

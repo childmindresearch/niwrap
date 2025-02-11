@@ -167,7 +167,6 @@ def fsr_import_execute(
     Returns:
         NamedTuple of outputs (described in `FsrImportOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsr_import_cargs(params, execution)
     ret = fsr_import_outputs(params, execution)
     execution.run(cargs)

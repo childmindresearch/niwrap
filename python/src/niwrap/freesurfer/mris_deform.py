@@ -149,7 +149,6 @@ def mris_deform_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDeformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_deform_cargs(params, execution)
     ret = mris_deform_outputs(params, execution)
     execution.run(cargs)

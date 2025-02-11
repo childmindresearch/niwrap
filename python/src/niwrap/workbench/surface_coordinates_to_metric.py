@@ -141,7 +141,6 @@ def surface_coordinates_to_metric_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCoordinatesToMetricOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_coordinates_to_metric_cargs(params, execution)
     ret = surface_coordinates_to_metric_outputs(params, execution)
     execution.run(cargs)

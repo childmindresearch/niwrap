@@ -183,7 +183,6 @@ def v_3d_getrow_execute(
     Returns:
         NamedTuple of outputs (described in `V3dGetrowOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_getrow_cargs(params, execution)
     ret = v_3d_getrow_outputs(params, execution)
     execution.run(cargs)

@@ -345,7 +345,6 @@ def asegstats2table_execute(
     Returns:
         NamedTuple of outputs (described in `Asegstats2tableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = asegstats2table_cargs(params, execution)
     ret = asegstats2table_outputs(params, execution)
     execution.run(cargs)

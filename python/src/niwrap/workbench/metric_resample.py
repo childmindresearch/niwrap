@@ -68,8 +68,6 @@ def dyn_outputs(
     """
     return {
         "metric-resample": metric_resample_outputs,
-        "area_surfs": metric_resample_area_surfs_outputs,
-        "area_metrics": metric_resample_area_metrics_outputs,
     }.get(t)
 
 
@@ -330,7 +328,6 @@ def metric_resample_execute(
     Returns:
         NamedTuple of outputs (described in `MetricResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_resample_cargs(params, execution)
     ret = metric_resample_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fs_run_from_mcr": fs_run_from_mcr_outputs,
     }.get(t)
 
 
@@ -154,7 +153,6 @@ def fs_run_from_mcr_execute(
     Returns:
         NamedTuple of outputs (described in `FsRunFromMcrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_run_from_mcr_cargs(params, execution)
     ret = fs_run_from_mcr_outputs(params, execution)
     execution.run(cargs)

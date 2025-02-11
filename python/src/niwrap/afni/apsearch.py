@@ -146,7 +146,6 @@ def apsearch_execute(
     Returns:
         NamedTuple of outputs (described in `ApsearchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = apsearch_cargs(params, execution)
     ret = apsearch_outputs(params, execution)
     execution.run(cargs)

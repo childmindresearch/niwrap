@@ -68,7 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslvbm_2_template": fslvbm_2_template_outputs,
     }.get(t)
 
 
@@ -365,7 +364,6 @@ def fslvbm_2_template_execute(
     Returns:
         NamedTuple of outputs (described in `Fslvbm2TemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslvbm_2_template_cargs(params, execution)
     ret = fslvbm_2_template_outputs(params, execution)
     execution.run(cargs)

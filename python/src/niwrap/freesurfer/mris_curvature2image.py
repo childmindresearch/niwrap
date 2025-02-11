@@ -193,7 +193,6 @@ def mris_curvature2image_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCurvature2imageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_curvature2image_cargs(params, execution)
     ret = mris_curvature2image_outputs(params, execution)
     execution.run(cargs)

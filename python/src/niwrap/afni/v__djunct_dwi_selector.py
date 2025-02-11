@@ -143,7 +143,6 @@ def v__djunct_dwi_selector_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctDwiSelectorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_dwi_selector_cargs(params, execution)
     ret = v__djunct_dwi_selector_outputs(params, execution)
     execution.run(cargs)

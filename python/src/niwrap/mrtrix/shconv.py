@@ -73,9 +73,6 @@ def dyn_outputs(
     """
     return {
         "shconv": shconv_outputs,
-        "VariousString": shconv_various_string_outputs,
-        "VariousFile": shconv_various_file_outputs,
-        "config": shconv_config_outputs,
     }.get(t)
 
 
@@ -378,7 +375,6 @@ def shconv_execute(
     Returns:
         NamedTuple of outputs (described in `ShconvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = shconv_cargs(params, execution)
     ret = shconv_outputs(params, execution)
     execution.run(cargs)

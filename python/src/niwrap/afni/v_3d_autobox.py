@@ -58,7 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dAutobox": v_3d_autobox_outputs,
     }.get(t)
 
 
@@ -243,7 +242,6 @@ def v_3d_autobox_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAutoboxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_autobox_cargs(params, execution)
     ret = v_3d_autobox_outputs(params, execution)
     execution.run(cargs)

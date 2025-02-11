@@ -60,7 +60,6 @@ def dyn_outputs(
     """
     return {
         "metric-to-volume-mapping": metric_to_volume_mapping_outputs,
-        "ribbon_constrained": metric_to_volume_mapping_ribbon_constrained_outputs,
     }.get(t)
 
 
@@ -248,7 +247,6 @@ def metric_to_volume_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `MetricToVolumeMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_to_volume_mapping_cargs(params, execution)
     ret = metric_to_volume_mapping_outputs(params, execution)
     execution.run(cargs)

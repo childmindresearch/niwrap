@@ -284,7 +284,6 @@ def mris_ca_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCaLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_ca_label_cargs(params, execution)
     ret = mris_ca_label_outputs(params, execution)
     execution.run(cargs)

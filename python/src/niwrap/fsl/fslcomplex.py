@@ -157,7 +157,6 @@ def fslcomplex_execute(
     Returns:
         NamedTuple of outputs (described in `FslcomplexOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslcomplex_cargs(params, execution)
     ret = fslcomplex_outputs(params, execution)
     execution.run(cargs)

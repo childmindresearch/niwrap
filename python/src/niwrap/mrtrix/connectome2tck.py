@@ -69,8 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "connectome2tck": connectome2tck_outputs,
-        "config": connectome2tck_config_outputs,
     }.get(t)
 
 
@@ -340,7 +338,6 @@ def connectome2tck_execute(
     Returns:
         NamedTuple of outputs (described in `Connectome2tckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = connectome2tck_cargs(params, execution)
     ret = connectome2tck_outputs(params, execution)
     execution.run(cargs)

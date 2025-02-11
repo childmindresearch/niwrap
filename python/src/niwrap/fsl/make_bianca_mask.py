@@ -284,7 +284,6 @@ def make_bianca_mask_execute(
     Returns:
         NamedTuple of outputs (described in `MakeBiancaMaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_bianca_mask_cargs(params, execution)
     ret = make_bianca_mask_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fftest": fftest_outputs,
     }.get(t)
 
 
@@ -146,7 +145,6 @@ def fftest_execute(
     Returns:
         NamedTuple of outputs (described in `FftestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fftest_cargs(params, execution)
     ret = fftest_outputs(params, execution)
     execution.run(cargs)

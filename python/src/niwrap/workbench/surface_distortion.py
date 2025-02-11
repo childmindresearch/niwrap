@@ -63,8 +63,6 @@ def dyn_outputs(
     """
     return {
         "surface-distortion": surface_distortion_outputs,
-        "smooth": surface_distortion_smooth_outputs,
-        "local_affine_method": surface_distortion_local_affine_method_outputs,
     }.get(t)
 
 
@@ -284,7 +282,6 @@ def surface_distortion_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceDistortionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_distortion_cargs(params, execution)
     ret = surface_distortion_outputs(params, execution)
     execution.run(cargs)

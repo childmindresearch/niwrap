@@ -163,7 +163,6 @@ def mccutup_execute(
     Returns:
         NamedTuple of outputs (described in `MccutupOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mccutup_cargs(params, execution)
     ret = mccutup_outputs(params, execution)
     execution.run(cargs)

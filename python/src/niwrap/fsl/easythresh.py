@@ -164,7 +164,6 @@ def easythresh_execute(
     Returns:
         NamedTuple of outputs (described in `EasythreshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = easythresh_cargs(params, execution)
     ret = easythresh_outputs(params, execution)
     execution.run(cargs)

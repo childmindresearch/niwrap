@@ -133,7 +133,6 @@ def register_subject_flash_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterSubjectFlashOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = register_subject_flash_cargs(params, execution)
     ret = register_subject_flash_outputs(params, execution)
     execution.run(cargs)

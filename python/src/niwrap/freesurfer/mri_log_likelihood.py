@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_log_likelihood": mri_log_likelihood_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def mri_log_likelihood_execute(
     Returns:
         NamedTuple of outputs (described in `MriLogLikelihoodOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_log_likelihood_cargs(params, execution)
     ret = mri_log_likelihood_outputs(params, execution)
     execution.run(cargs)

@@ -314,7 +314,6 @@ def v_3d_localstat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_localstat_cargs(params, execution)
     ret = v_3d_localstat_outputs(params, execution)
     execution.run(cargs)

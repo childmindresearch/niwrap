@@ -53,8 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "annotation-resample": annotation_resample_outputs,
-        "surface_pair": annotation_resample_surface_pair_outputs,
     }.get(t)
 
 
@@ -200,7 +198,6 @@ def annotation_resample_execute(
     Returns:
         NamedTuple of outputs (described in `AnnotationResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = annotation_resample_cargs(params, execution)
     ret = annotation_resample_outputs(params, execution)
     execution.run(cargs)

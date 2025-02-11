@@ -259,7 +259,6 @@ def fat_mvm_scripter_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMvmScripterPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mvm_scripter_py_cargs(params, execution)
     ret = fat_mvm_scripter_py_outputs(params, execution)
     execution.run(cargs)

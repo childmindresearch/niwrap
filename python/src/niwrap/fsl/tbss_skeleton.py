@@ -207,7 +207,6 @@ def tbss_skeleton_execute(
     Returns:
         NamedTuple of outputs (described in `TbssSkeletonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_skeleton_cargs(params, execution)
     ret = tbss_skeleton_outputs(params, execution)
     execution.run(cargs)

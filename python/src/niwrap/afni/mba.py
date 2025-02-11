@@ -272,7 +272,6 @@ def mba_execute(
     Returns:
         NamedTuple of outputs (described in `MbaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mba_cargs(params, execution)
     ret = mba_outputs(params, execution)
     execution.run(cargs)

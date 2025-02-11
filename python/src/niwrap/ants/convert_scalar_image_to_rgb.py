@@ -200,7 +200,6 @@ def convert_scalar_image_to_rgb_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertScalarImageToRgbOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_scalar_image_to_rgb_cargs(params, execution)
     ret = convert_scalar_image_to_rgb_outputs(params, execution)
     execution.run(cargs)

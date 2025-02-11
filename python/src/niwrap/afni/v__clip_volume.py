@@ -288,7 +288,6 @@ def v__clip_volume_execute(
     Returns:
         NamedTuple of outputs (described in `VClipVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__clip_volume_cargs(params, execution)
     ret = v__clip_volume_outputs(params, execution)
     execution.run(cargs)

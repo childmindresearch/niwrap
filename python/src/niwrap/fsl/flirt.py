@@ -546,7 +546,6 @@ def flirt_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = flirt_cargs(params, execution)
     ret = flirt_outputs(params, execution)
     execution.run(cargs)

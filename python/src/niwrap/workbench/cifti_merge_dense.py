@@ -54,7 +54,6 @@ def dyn_outputs(
     """
     return {
         "cifti-merge-dense": cifti_merge_dense_outputs,
-        "cifti": cifti_merge_dense_cifti_outputs,
     }.get(t)
 
 
@@ -205,7 +204,6 @@ def cifti_merge_dense_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiMergeDenseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_merge_dense_cargs(params, execution)
     ret = cifti_merge_dense_outputs(params, execution)
     execution.run(cargs)

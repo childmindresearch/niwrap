@@ -554,7 +554,6 @@ def melodic_execute(
     Returns:
         NamedTuple of outputs (described in `MelodicOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = melodic_cargs(params, execution)
     ret = melodic_outputs(params, execution)
     execution.run(cargs)

@@ -74,10 +74,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-label": cifti_create_label_outputs,
-        "volume": cifti_create_label_volume_outputs,
-        "left_label": cifti_create_label_left_label_outputs,
-        "right_label": cifti_create_label_right_label_outputs,
-        "cerebellum_label": cifti_create_label_cerebellum_label_outputs,
     }.get(t)
 
 
@@ -421,7 +417,6 @@ def cifti_create_label_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_label_cargs(params, execution)
     ret = cifti_create_label_outputs(params, execution)
     execution.run(cargs)

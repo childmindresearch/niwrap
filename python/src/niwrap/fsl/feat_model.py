@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "feat_model": feat_model_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def feat_model_execute(
     Returns:
         NamedTuple of outputs (described in `FeatModelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = feat_model_cargs(params, execution)
     ret = feat_model_outputs(params, execution)
     execution.run(cargs)

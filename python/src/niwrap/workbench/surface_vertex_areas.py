@@ -142,7 +142,6 @@ def surface_vertex_areas_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceVertexAreasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_vertex_areas_cargs(params, execution)
     ret = surface_vertex_areas_outputs(params, execution)
     execution.run(cargs)

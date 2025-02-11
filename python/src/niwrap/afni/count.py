@@ -58,7 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "count": count_outputs,
     }.get(t)
 
 
@@ -245,7 +244,6 @@ def count_execute(
     Returns:
         NamedTuple of outputs (described in `CountOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = count_cargs(params, execution)
     ret = count_outputs(params, execution)
     execution.run(cargs)

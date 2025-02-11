@@ -72,7 +72,6 @@ def dyn_outputs(
     """
     return {
         "mrthreshold": mrthreshold_outputs,
-        "config": mrthreshold_config_outputs,
     }.get(t)
 
 
@@ -387,7 +386,6 @@ def mrthreshold_execute(
     Returns:
         NamedTuple of outputs (described in `MrthresholdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrthreshold_cargs(params, execution)
     ret = mrthreshold_outputs(params, execution)
     execution.run(cargs)

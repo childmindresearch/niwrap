@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_estimate_wm": mris_estimate_wm_outputs,
     }.get(t)
 
 
@@ -199,7 +198,6 @@ def mris_estimate_wm_execute(
     Returns:
         NamedTuple of outputs (described in `MrisEstimateWmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_estimate_wm_cargs(params, execution)
     ret = mris_estimate_wm_outputs(params, execution)
     execution.run(cargs)

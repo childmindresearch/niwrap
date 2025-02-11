@@ -74,8 +74,6 @@ def dyn_outputs(
     """
     return {
         "cifti-parcellate": cifti_parcellate_outputs,
-        "spatial_weights": cifti_parcellate_spatial_weights_outputs,
-        "exclude_outliers": cifti_parcellate_exclude_outliers_outputs,
     }.get(t)
 
 
@@ -423,7 +421,6 @@ def cifti_parcellate_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiParcellateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_parcellate_cargs(params, execution)
     ret = cifti_parcellate_outputs(params, execution)
     execution.run(cargs)

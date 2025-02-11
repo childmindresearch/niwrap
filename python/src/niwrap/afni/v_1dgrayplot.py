@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "1dgrayplot": v_1dgrayplot_outputs,
     }.get(t)
 
 
@@ -176,7 +175,6 @@ def v_1dgrayplot_execute(
     Returns:
         NamedTuple of outputs (described in `V1dgrayplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dgrayplot_cargs(params, execution)
     ret = v_1dgrayplot_outputs(params, execution)
     execution.run(cargs)

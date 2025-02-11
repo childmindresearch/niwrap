@@ -172,7 +172,6 @@ def fiber_dot_products_execute(
     Returns:
         NamedTuple of outputs (described in `FiberDotProductsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fiber_dot_products_cargs(params, execution)
     ret = fiber_dot_products_outputs(params, execution)
     execution.run(cargs)

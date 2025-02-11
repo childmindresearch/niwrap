@@ -75,7 +75,6 @@ def dyn_outputs(
     """
     return {
         "dwigradcheck": dwigradcheck_outputs,
-        "fslgrad": dwigradcheck_fslgrad_outputs,
         "export_grad_fsl": dwigradcheck_export_grad_fsl_outputs,
     }.get(t)
 
@@ -423,7 +422,6 @@ def dwigradcheck_execute(
     Returns:
         NamedTuple of outputs (described in `DwigradcheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwigradcheck_cargs(params, execution)
     ret = dwigradcheck_outputs(params, execution)
     execution.run(cargs)

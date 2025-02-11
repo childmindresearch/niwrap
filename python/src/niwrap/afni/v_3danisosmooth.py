@@ -325,7 +325,6 @@ def v_3danisosmooth_execute(
     Returns:
         NamedTuple of outputs (described in `V3danisosmoothOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3danisosmooth_cargs(params, execution)
     ret = v_3danisosmooth_outputs(params, execution)
     execution.run(cargs)

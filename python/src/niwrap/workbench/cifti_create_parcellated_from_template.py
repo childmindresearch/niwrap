@@ -55,7 +55,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-parcellated-from-template": cifti_create_parcellated_from_template_outputs,
-        "cifti": cifti_create_parcellated_from_template_cifti_outputs,
     }.get(t)
 
 
@@ -213,7 +212,6 @@ def cifti_create_parcellated_from_template_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateParcellatedFromTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_parcellated_from_template_cargs(params, execution)
     ret = cifti_create_parcellated_from_template_outputs(params, execution)
     execution.run(cargs)

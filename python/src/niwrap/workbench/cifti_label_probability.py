@@ -152,7 +152,6 @@ def cifti_label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelProbabilityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_probability_cargs(params, execution)
     ret = cifti_label_probability_outputs(params, execution)
     execution.run(cargs)

@@ -143,7 +143,6 @@ def mri_nl_align_binary_execute(
     Returns:
         NamedTuple of outputs (described in `MriNlAlignBinaryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_nl_align_binary_cargs(params, execution)
     ret = mri_nl_align_binary_outputs(params, execution)
     execution.run(cargs)

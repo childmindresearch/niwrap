@@ -236,7 +236,6 @@ def metric_find_clusters_execute(
     Returns:
         NamedTuple of outputs (described in `MetricFindClustersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_find_clusters_cargs(params, execution)
     ret = metric_find_clusters_outputs(params, execution)
     execution.run(cargs)

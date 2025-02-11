@@ -61,7 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mm": mm_outputs,
     }.get(t)
 
 
@@ -270,7 +269,6 @@ def mm_execute(
     Returns:
         NamedTuple of outputs (described in `MmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mm_cargs(params, execution)
     ret = mm_outputs(params, execution)
     execution.run(cargs)

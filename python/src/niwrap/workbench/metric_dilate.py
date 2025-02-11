@@ -246,7 +246,6 @@ def metric_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `MetricDilateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_dilate_cargs(params, execution)
     ret = metric_dilate_outputs(params, execution)
     execution.run(cargs)

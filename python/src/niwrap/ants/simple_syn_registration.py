@@ -151,7 +151,6 @@ def simple_syn_registration_execute(
     Returns:
         NamedTuple of outputs (described in `SimpleSynRegistrationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = simple_syn_registration_cargs(params, execution)
     ret = simple_syn_registration_outputs(params, execution)
     execution.run(cargs)

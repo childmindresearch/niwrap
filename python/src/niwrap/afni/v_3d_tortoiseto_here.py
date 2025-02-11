@@ -177,7 +177,6 @@ def v_3d_tortoiseto_here_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTortoisetoHereOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tortoiseto_here_cargs(params, execution)
     ret = v_3d_tortoiseto_here_outputs(params, execution)
     execution.run(cargs)

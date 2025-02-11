@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "fixelcrop": fixelcrop_outputs,
-        "config": fixelcrop_config_outputs,
     }.get(t)
 
 
@@ -258,7 +257,6 @@ def fixelcrop_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcropOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelcrop_cargs(params, execution)
     ret = fixelcrop_outputs(params, execution)
     execution.run(cargs)

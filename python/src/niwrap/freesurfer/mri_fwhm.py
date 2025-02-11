@@ -455,7 +455,6 @@ def mri_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MriFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fwhm_cargs(params, execution)
     ret = mri_fwhm_outputs(params, execution)
     execution.run(cargs)

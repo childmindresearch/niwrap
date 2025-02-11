@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_compute_acorr": mris_compute_acorr_outputs,
     }.get(t)
 
 
@@ -159,7 +158,6 @@ def mris_compute_acorr_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeAcorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_compute_acorr_cargs(params, execution)
     ret = mris_compute_acorr_outputs(params, execution)
     execution.run(cargs)

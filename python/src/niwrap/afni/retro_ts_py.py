@@ -352,7 +352,6 @@ def retro_ts_py_execute(
     Returns:
         NamedTuple of outputs (described in `RetroTsPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = retro_ts_py_cargs(params, execution)
     ret = retro_ts_py_outputs(params, execution)
     execution.run(cargs)

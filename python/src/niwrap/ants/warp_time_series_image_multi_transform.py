@@ -170,7 +170,6 @@ def warp_time_series_image_multi_transform_execute(
     Returns:
         NamedTuple of outputs (described in `WarpTimeSeriesImageMultiTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warp_time_series_image_multi_transform_cargs(params, execution)
     ret = warp_time_series_image_multi_transform_outputs(params, execution)
     execution.run(cargs)

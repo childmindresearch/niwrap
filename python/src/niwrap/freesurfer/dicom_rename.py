@@ -144,7 +144,6 @@ def dicom_rename_execute(
     Returns:
         NamedTuple of outputs (described in `DicomRenameOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dicom_rename_cargs(params, execution)
     ret = dicom_rename_outputs(params, execution)
     execution.run(cargs)

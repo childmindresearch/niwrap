@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "xsanatreg": xsanatreg_outputs,
     }.get(t)
 
 
@@ -203,7 +202,6 @@ def xsanatreg_execute(
     Returns:
         NamedTuple of outputs (described in `XsanatregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xsanatreg_cargs(params, execution)
     ret = xsanatreg_outputs(params, execution)
     execution.run(cargs)

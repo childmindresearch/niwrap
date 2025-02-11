@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_average_curvature": mris_average_curvature_outputs,
     }.get(t)
 
 
@@ -166,7 +165,6 @@ def mris_average_curvature_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAverageCurvatureOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_average_curvature_cargs(params, execution)
     ret = mris_average_curvature_outputs(params, execution)
     execution.run(cargs)

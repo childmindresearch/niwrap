@@ -425,7 +425,6 @@ def mri_ms_fitparms_execute(
     Returns:
         NamedTuple of outputs (described in `MriMsFitparmsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_ms_fitparms_cargs(params, execution)
     ret = mri_ms_fitparms_outputs(params, execution)
     execution.run(cargs)

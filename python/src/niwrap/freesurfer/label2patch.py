@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "label2patch": label2patch_outputs,
     }.get(t)
 
 
@@ -203,7 +202,6 @@ def label2patch_execute(
     Returns:
         NamedTuple of outputs (described in `Label2patchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label2patch_cargs(params, execution)
     ret = label2patch_outputs(params, execution)
     execution.run(cargs)

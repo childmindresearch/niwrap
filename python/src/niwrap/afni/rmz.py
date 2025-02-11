@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rmz": rmz_outputs,
     }.get(t)
 
 
@@ -152,7 +151,6 @@ def rmz_execute(
     Returns:
         NamedTuple of outputs (described in `RmzOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rmz_cargs(params, execution)
     ret = rmz_outputs(params, execution)
     execution.run(cargs)

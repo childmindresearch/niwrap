@@ -316,7 +316,6 @@ def ants_registration_sy_n_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsRegistrationSyNShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_registration_sy_n_sh_cargs(params, execution)
     ret = ants_registration_sy_n_sh_outputs(params, execution)
     execution.run(cargs)

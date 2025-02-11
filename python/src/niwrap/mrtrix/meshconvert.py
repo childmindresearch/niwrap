@@ -69,8 +69,6 @@ def dyn_outputs(
     """
     return {
         "meshconvert": meshconvert_outputs,
-        "transform": meshconvert_transform_outputs,
-        "config": meshconvert_config_outputs,
     }.get(t)
 
 
@@ -316,7 +314,6 @@ def meshconvert_execute(
     Returns:
         NamedTuple of outputs (described in `MeshconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = meshconvert_cargs(params, execution)
     ret = meshconvert_outputs(params, execution)
     execution.run(cargs)

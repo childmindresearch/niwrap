@@ -296,7 +296,6 @@ def gca_apply_execute(
     Returns:
         NamedTuple of outputs (described in `GcaApplyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gca_apply_cargs(params, execution)
     ret = gca_apply_outputs(params, execution)
     execution.run(cargs)

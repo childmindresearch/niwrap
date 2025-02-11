@@ -306,7 +306,6 @@ def dtifit_execute(
     Returns:
         NamedTuple of outputs (described in `DtifitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dtifit_cargs(params, execution)
     ret = dtifit_outputs(params, execution)
     execution.run(cargs)

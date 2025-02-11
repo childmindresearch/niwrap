@@ -69,9 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dcmedit": dcmedit_outputs,
-        "tag": dcmedit_tag_outputs,
-        "config": dcmedit_config_outputs,
     }.get(t)
 
 
@@ -333,7 +330,6 @@ def dcmedit_execute(
     Returns:
         NamedTuple of outputs (described in `DcmeditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmedit_cargs(params, execution)
     ret = dcmedit_outputs(params, execution)
     execution.run(cargs)

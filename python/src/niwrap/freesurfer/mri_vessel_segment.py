@@ -166,7 +166,6 @@ def mri_vessel_segment_execute(
     Returns:
         NamedTuple of outputs (described in `MriVesselSegmentOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_vessel_segment_cargs(params, execution)
     ret = mri_vessel_segment_outputs(params, execution)
     execution.run(cargs)

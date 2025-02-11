@@ -744,7 +744,6 @@ def mri_glmfit_execute(
     Returns:
         NamedTuple of outputs (described in `MriGlmfitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_glmfit_cargs(params, execution)
     ret = mri_glmfit_outputs(params, execution)
     execution.run(cargs)

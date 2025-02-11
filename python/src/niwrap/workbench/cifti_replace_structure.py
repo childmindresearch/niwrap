@@ -77,11 +77,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-replace-structure": cifti_replace_structure_outputs,
-        "volume_all": cifti_replace_structure_volume_all_outputs,
-        "label": cifti_replace_structure_label_outputs,
-        "metric": cifti_replace_structure_metric_outputs,
-        "volume": cifti_replace_structure_volume_outputs,
     }.get(t)
 
 
@@ -428,7 +423,6 @@ def cifti_replace_structure_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReplaceStructureOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_replace_structure_cargs(params, execution)
     ret = cifti_replace_structure_outputs(params, execution)
     execution.run(cargs)

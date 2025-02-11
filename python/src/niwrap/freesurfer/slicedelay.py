@@ -161,7 +161,6 @@ def slicedelay_execute(
     Returns:
         NamedTuple of outputs (described in `SlicedelayOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slicedelay_cargs(params, execution)
     ret = slicedelay_outputs(params, execution)
     execution.run(cargs)

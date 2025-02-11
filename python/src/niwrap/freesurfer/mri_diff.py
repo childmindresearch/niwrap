@@ -358,7 +358,6 @@ def mri_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MriDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_diff_cargs(params, execution)
     ret = mri_diff_outputs(params, execution)
     execution.run(cargs)

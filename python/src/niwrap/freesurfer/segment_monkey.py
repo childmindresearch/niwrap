@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "segment_monkey": segment_monkey_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def segment_monkey_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentMonkeyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_monkey_cargs(params, execution)
     ret = segment_monkey_outputs(params, execution)
     execution.run(cargs)

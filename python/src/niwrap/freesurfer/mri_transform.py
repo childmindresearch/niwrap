@@ -159,7 +159,6 @@ def mri_transform_execute(
     Returns:
         NamedTuple of outputs (described in `MriTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_transform_cargs(params, execution)
     ret = mri_transform_outputs(params, execution)
     execution.run(cargs)

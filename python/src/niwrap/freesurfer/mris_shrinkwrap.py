@@ -155,7 +155,6 @@ def mris_shrinkwrap_execute(
     Returns:
         NamedTuple of outputs (described in `MrisShrinkwrapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_shrinkwrap_cargs(params, execution)
     ret = mris_shrinkwrap_outputs(params, execution)
     execution.run(cargs)

@@ -63,7 +63,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_annotation2label": mri_annotation2label_outputs,
     }.get(t)
 
 
@@ -306,7 +305,6 @@ def mri_annotation2label_execute(
     Returns:
         NamedTuple of outputs (described in `MriAnnotation2labelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_annotation2label_cargs(params, execution)
     ret = mri_annotation2label_outputs(params, execution)
     execution.run(cargs)

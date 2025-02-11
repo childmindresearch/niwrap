@@ -209,7 +209,6 @@ def dmri_match_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMatchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_match_cargs(params, execution)
     ret = dmri_match_outputs(params, execution)
     execution.run(cargs)

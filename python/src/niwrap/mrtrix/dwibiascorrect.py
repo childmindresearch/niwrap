@@ -72,7 +72,6 @@ def dyn_outputs(
     """
     return {
         "dwibiascorrect": dwibiascorrect_outputs,
-        "fslgrad": dwibiascorrect_fslgrad_outputs,
     }.get(t)
 
 
@@ -361,7 +360,6 @@ def dwibiascorrect_execute(
     Returns:
         NamedTuple of outputs (described in `DwibiascorrectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwibiascorrect_cargs(params, execution)
     ret = dwibiascorrect_outputs(params, execution)
     execution.run(cargs)

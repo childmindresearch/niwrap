@@ -162,7 +162,6 @@ def imstat_execute(
     Returns:
         NamedTuple of outputs (described in `ImstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imstat_cargs(params, execution)
     ret = imstat_outputs(params, execution)
     execution.run(cargs)

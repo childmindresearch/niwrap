@@ -281,7 +281,6 @@ def fsl_tsplot_execute(
     Returns:
         NamedTuple of outputs (described in `FslTsplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_tsplot_cargs(params, execution)
     ret = fsl_tsplot_outputs(params, execution)
     execution.run(cargs)

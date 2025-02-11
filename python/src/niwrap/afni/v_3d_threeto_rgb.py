@@ -197,7 +197,6 @@ def v_3d_threeto_rgb_execute(
     Returns:
         NamedTuple of outputs (described in `V3dThreetoRgbOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_threeto_rgb_cargs(params, execution)
     ret = v_3d_threeto_rgb_outputs(params, execution)
     execution.run(cargs)

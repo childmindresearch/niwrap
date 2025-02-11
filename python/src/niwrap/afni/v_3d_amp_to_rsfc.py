@@ -203,7 +203,6 @@ def v_3d_amp_to_rsfc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAmpToRsfcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_amp_to_rsfc_cargs(params, execution)
     ret = v_3d_amp_to_rsfc_outputs(params, execution)
     execution.run(cargs)

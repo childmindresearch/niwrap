@@ -193,7 +193,6 @@ def first_flirt_execute(
     Returns:
         NamedTuple of outputs (described in `FirstFlirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = first_flirt_cargs(params, execution)
     ret = first_flirt_outputs(params, execution)
     execution.run(cargs)

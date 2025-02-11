@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "1dTsort": v_1d_tsort_outputs,
     }.get(t)
 
 
@@ -160,7 +159,6 @@ def v_1d_tsort_execute(
     Returns:
         NamedTuple of outputs (described in `V1dTsortOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_tsort_cargs(params, execution)
     ret = v_1d_tsort_outputs(params, execution)
     execution.run(cargs)

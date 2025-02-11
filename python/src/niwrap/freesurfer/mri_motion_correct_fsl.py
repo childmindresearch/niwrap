@@ -139,7 +139,6 @@ def mri_motion_correct_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `MriMotionCorrectFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_motion_correct_fsl_cargs(params, execution)
     ret = mri_motion_correct_fsl_outputs(params, execution)
     execution.run(cargs)

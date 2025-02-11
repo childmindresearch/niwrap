@@ -167,7 +167,6 @@ def mri_compute_change_map_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeChangeMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_compute_change_map_cargs(params, execution)
     ret = mri_compute_change_map_outputs(params, execution)
     execution.run(cargs)

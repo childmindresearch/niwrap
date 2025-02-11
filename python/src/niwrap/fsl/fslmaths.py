@@ -152,7 +152,6 @@ def dyn_outputs(
     """
     return {
         "fslmaths": fslmaths_outputs,
-        "operations": fslmaths_operation_outputs,
     }.get(t)
 
 
@@ -952,7 +951,6 @@ def fslmaths_execute(
     Returns:
         NamedTuple of outputs (described in `FslmathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslmaths_cargs(params, execution)
     ret = fslmaths_outputs(params, execution)
     execution.run(cargs)

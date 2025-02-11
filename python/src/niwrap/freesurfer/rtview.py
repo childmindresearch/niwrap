@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rtview": rtview_outputs,
     }.get(t)
 
 
@@ -220,7 +219,6 @@ def rtview_execute(
     Returns:
         NamedTuple of outputs (described in `RtviewOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rtview_cargs(params, execution)
     ret = rtview_outputs(params, execution)
     execution.run(cargs)

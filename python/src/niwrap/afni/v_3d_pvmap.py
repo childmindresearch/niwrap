@@ -167,7 +167,6 @@ def v_3d_pvmap_execute(
     Returns:
         NamedTuple of outputs (described in `V3dPvmapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_pvmap_cargs(params, execution)
     ret = v_3d_pvmap_outputs(params, execution)
     execution.run(cargs)

@@ -215,7 +215,6 @@ def fat_mat_tableize_execute(
     Returns:
         NamedTuple of outputs (described in `FatMatTableizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mat_tableize_cargs(params, execution)
     ret = fat_mat_tableize_outputs(params, execution)
     execution.run(cargs)

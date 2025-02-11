@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "trac-paths": trac_paths_outputs,
     }.get(t)
 
 
@@ -224,7 +223,6 @@ def trac_paths_execute(
     Returns:
         NamedTuple of outputs (described in `TracPathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = trac_paths_cargs(params, execution)
     ret = trac_paths_outputs(params, execution)
     execution.run(cargs)

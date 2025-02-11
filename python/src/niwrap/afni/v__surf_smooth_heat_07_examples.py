@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@SurfSmooth.HEAT_07.examples": v__surf_smooth_heat_07_examples_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def v__surf_smooth_heat_07_examples_execute(
     Returns:
         NamedTuple of outputs (described in `VSurfSmoothHeat07ExamplesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__surf_smooth_heat_07_examples_cargs(params, execution)
     ret = v__surf_smooth_heat_07_examples_outputs(params, execution)
     execution.run(cargs)

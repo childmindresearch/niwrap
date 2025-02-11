@@ -225,7 +225,6 @@ def v_3dmerge_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmerge_cargs(params, execution)
     ret = v_3dmerge_outputs(params, execution)
     execution.run(cargs)

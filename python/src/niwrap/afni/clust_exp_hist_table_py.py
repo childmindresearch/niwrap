@@ -164,7 +164,6 @@ def clust_exp_hist_table_py_execute(
     Returns:
         NamedTuple of outputs (described in `ClustExpHistTablePyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = clust_exp_hist_table_py_cargs(params, execution)
     ret = clust_exp_hist_table_py_outputs(params, execution)
     execution.run(cargs)

@@ -78,7 +78,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "probtrackx": probtrackx_outputs,
     }.get(t)
 
 
@@ -434,7 +433,6 @@ def probtrackx_execute(
     Returns:
         NamedTuple of outputs (described in `ProbtrackxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = probtrackx_cargs(params, execution)
     ret = probtrackx_outputs(params, execution)
     execution.run(cargs)

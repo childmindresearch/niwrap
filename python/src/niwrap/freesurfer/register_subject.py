@@ -174,7 +174,6 @@ def register_subject_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = register_subject_cargs(params, execution)
     ret = register_subject_outputs(params, execution)
     execution.run(cargs)

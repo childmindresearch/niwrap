@@ -170,7 +170,6 @@ def mri_twoclass_execute(
     Returns:
         NamedTuple of outputs (described in `MriTwoclassOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_twoclass_cargs(params, execution)
     ret = mri_twoclass_outputs(params, execution)
     execution.run(cargs)

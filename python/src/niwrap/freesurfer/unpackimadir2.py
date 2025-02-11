@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "unpackimadir2": unpackimadir2_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def unpackimadir2_execute(
     Returns:
         NamedTuple of outputs (described in `Unpackimadir2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpackimadir2_cargs(params, execution)
     ret = unpackimadir2_outputs(params, execution)
     execution.run(cargs)

@@ -138,7 +138,6 @@ def mris_extract_main_component_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExtractMainComponentOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_extract_main_component_cargs(params, execution)
     ret = mris_extract_main_component_outputs(params, execution)
     execution.run(cargs)

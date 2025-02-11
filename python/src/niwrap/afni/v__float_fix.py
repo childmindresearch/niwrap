@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@float_fix": v__float_fix_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def v__float_fix_execute(
     Returns:
         NamedTuple of outputs (described in `VFloatFixOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__float_fix_cargs(params, execution)
     ret = v__float_fix_outputs(params, execution)
     execution.run(cargs)

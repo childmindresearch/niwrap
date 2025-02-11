@@ -88,7 +88,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_place_surface": mris_place_surface_outputs,
     }.get(t)
 
 
@@ -517,7 +516,6 @@ def mris_place_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MrisPlaceSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_place_surface_cargs(params, execution)
     ret = mris_place_surface_outputs(params, execution)
     execution.run(cargs)

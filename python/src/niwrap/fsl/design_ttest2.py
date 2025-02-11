@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "design_ttest2": design_ttest2_outputs,
     }.get(t)
 
 
@@ -146,7 +145,6 @@ def design_ttest2_execute(
     Returns:
         NamedTuple of outputs (described in `DesignTtest2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = design_ttest2_cargs(params, execution)
     ret = design_ttest2_outputs(params, execution)
     execution.run(cargs)

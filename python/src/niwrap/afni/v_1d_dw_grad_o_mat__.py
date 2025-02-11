@@ -311,7 +311,6 @@ def v_1d_dw_grad_o_mat___execute(
     Returns:
         NamedTuple of outputs (described in `V1dDwGradOMatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_dw_grad_o_mat___cargs(params, execution)
     ret = v_1d_dw_grad_o_mat___outputs(params, execution)
     execution.run(cargs)

@@ -260,7 +260,6 @@ def v_3d_mean_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMeanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mean_cargs(params, execution)
     ret = v_3d_mean_outputs(params, execution)
     execution.run(cargs)

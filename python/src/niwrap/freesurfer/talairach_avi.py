@@ -171,7 +171,6 @@ def talairach_avi_execute(
     Returns:
         NamedTuple of outputs (described in `TalairachAviOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = talairach_avi_cargs(params, execution)
     ret = talairach_avi_outputs(params, execution)
     execution.run(cargs)

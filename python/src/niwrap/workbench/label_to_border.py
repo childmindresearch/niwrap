@@ -170,7 +170,6 @@ def label_to_border_execute(
     Returns:
         NamedTuple of outputs (described in `LabelToBorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_to_border_cargs(params, execution)
     ret = label_to_border_outputs(params, execution)
     execution.run(cargs)

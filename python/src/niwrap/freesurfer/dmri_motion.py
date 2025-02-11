@@ -223,7 +223,6 @@ def dmri_motion_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMotionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_motion_cargs(params, execution)
     ret = dmri_motion_outputs(params, execution)
     execution.run(cargs)

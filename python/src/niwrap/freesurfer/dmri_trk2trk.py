@@ -380,7 +380,6 @@ def dmri_trk2trk_execute(
     Returns:
         NamedTuple of outputs (described in `DmriTrk2trkOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_trk2trk_cargs(params, execution)
     ret = dmri_trk2trk_outputs(params, execution)
     execution.run(cargs)

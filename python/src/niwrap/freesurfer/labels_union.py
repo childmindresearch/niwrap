@@ -144,7 +144,6 @@ def labels_union_execute(
     Returns:
         NamedTuple of outputs (described in `LabelsUnionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = labels_union_cargs(params, execution)
     ret = labels_union_outputs(params, execution)
     execution.run(cargs)

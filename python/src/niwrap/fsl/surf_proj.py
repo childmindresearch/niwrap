@@ -227,7 +227,6 @@ def surf_proj_execute(
     Returns:
         NamedTuple of outputs (described in `SurfProjOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_proj_cargs(params, execution)
     ret = surf_proj_outputs(params, execution)
     execution.run(cargs)

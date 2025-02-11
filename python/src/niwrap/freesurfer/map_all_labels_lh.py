@@ -157,7 +157,6 @@ def map_all_labels_lh_execute(
     Returns:
         NamedTuple of outputs (described in `MapAllLabelsLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = map_all_labels_lh_cargs(params, execution)
     ret = map_all_labels_lh_outputs(params, execution)
     execution.run(cargs)

@@ -194,7 +194,6 @@ def fslroi_execute(
     Returns:
         NamedTuple of outputs (described in `FslroiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslroi_cargs(params, execution)
     ret = fslroi_outputs(params, execution)
     execution.run(cargs)

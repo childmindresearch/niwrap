@@ -157,7 +157,6 @@ def v__suma_make_spec_sf_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecSfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_make_spec_sf_cargs(params, execution)
     ret = v__suma_make_spec_sf_outputs(params, execution)
     execution.run(cargs)

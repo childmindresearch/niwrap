@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fs_update": fs_update_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def fs_update_execute(
     Returns:
         NamedTuple of outputs (described in `FsUpdateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_update_cargs(params, execution)
     ret = fs_update_outputs(params, execution)
     execution.run(cargs)

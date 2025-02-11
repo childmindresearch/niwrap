@@ -172,7 +172,6 @@ def mris_compute_volume_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeVolumeFractionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_compute_volume_fractions_cargs(params, execution)
     ret = mris_compute_volume_fractions_outputs(params, execution)
     execution.run(cargs)

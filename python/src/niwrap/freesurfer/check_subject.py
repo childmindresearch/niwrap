@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "check_subject": check_subject_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def check_subject_execute(
     Returns:
         NamedTuple of outputs (described in `CheckSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = check_subject_cargs(params, execution)
     ret = check_subject_outputs(params, execution)
     execution.run(cargs)

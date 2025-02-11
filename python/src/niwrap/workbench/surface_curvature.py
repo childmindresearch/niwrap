@@ -162,7 +162,6 @@ def surface_curvature_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCurvatureOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_curvature_cargs(params, execution)
     ret = surface_curvature_outputs(params, execution)
     execution.run(cargs)

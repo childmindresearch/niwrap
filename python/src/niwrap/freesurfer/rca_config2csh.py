@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rca-config2csh": rca_config2csh_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def rca_config2csh_execute(
     Returns:
         NamedTuple of outputs (described in `RcaConfig2cshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rca_config2csh_cargs(params, execution)
     ret = rca_config2csh_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "SUMA_glxdino": suma_glxdino_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def suma_glxdino_execute(
     Returns:
         NamedTuple of outputs (described in `SumaGlxdinoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = suma_glxdino_cargs(params, execution)
     ret = suma_glxdino_outputs(params, execution)
     execution.run(cargs)

@@ -154,7 +154,6 @@ def avscale_execute(
     Returns:
         NamedTuple of outputs (described in `AvscaleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = avscale_cargs(params, execution)
     ret = avscale_outputs(params, execution)
     execution.run(cargs)

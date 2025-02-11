@@ -138,7 +138,6 @@ def nsize_execute(
     Returns:
         NamedTuple of outputs (described in `NsizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = nsize_cargs(params, execution)
     ret = nsize_outputs(params, execution)
     execution.run(cargs)

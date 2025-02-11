@@ -363,7 +363,6 @@ def v_2dcat_execute(
     Returns:
         NamedTuple of outputs (described in `V2dcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_2dcat_cargs(params, execution)
     ret = v_2dcat_outputs(params, execution)
     execution.run(cargs)

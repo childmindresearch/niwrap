@@ -188,7 +188,6 @@ def qatools_py_execute(
     Returns:
         NamedTuple of outputs (described in `QatoolsPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = qatools_py_cargs(params, execution)
     ret = qatools_py_outputs(params, execution)
     execution.run(cargs)

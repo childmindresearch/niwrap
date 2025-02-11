@@ -66,7 +66,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "make_average_surface": make_average_surface_outputs,
     }.get(t)
 
 
@@ -293,7 +292,6 @@ def make_average_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_average_surface_cargs(params, execution)
     ret = make_average_surface_outputs(params, execution)
     execution.run(cargs)

@@ -144,7 +144,6 @@ def mris_surf2vtk_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSurf2vtkOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_surf2vtk_cargs(params, execution)
     ret = mris_surf2vtk_outputs(params, execution)
     execution.run(cargs)

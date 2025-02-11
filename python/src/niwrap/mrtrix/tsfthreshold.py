@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "tsfthreshold": tsfthreshold_outputs,
-        "config": tsfthreshold_config_outputs,
     }.get(t)
 
 
@@ -260,7 +259,6 @@ def tsfthreshold_execute(
     Returns:
         NamedTuple of outputs (described in `TsfthresholdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfthreshold_cargs(params, execution)
     ret = tsfthreshold_outputs(params, execution)
     execution.run(cargs)

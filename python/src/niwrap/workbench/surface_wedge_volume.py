@@ -148,7 +148,6 @@ def surface_wedge_volume_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceWedgeVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_wedge_volume_cargs(params, execution)
     ret = surface_wedge_volume_outputs(params, execution)
     execution.run(cargs)

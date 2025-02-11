@@ -270,7 +270,6 @@ def v_3dclust_execute(
     Returns:
         NamedTuple of outputs (described in `V3dclustOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dclust_cargs(params, execution)
     ret = v_3dclust_outputs(params, execution)
     execution.run(cargs)

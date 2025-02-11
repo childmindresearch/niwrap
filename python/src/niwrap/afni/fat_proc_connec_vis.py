@@ -246,7 +246,6 @@ def fat_proc_connec_vis_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcConnecVisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_connec_vis_cargs(params, execution)
     ret = fat_proc_connec_vis_outputs(params, execution)
     execution.run(cargs)

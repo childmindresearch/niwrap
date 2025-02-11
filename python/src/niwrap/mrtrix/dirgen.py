@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "dirgen": dirgen_outputs,
-        "config": dirgen_config_outputs,
     }.get(t)
 
 
@@ -308,7 +307,6 @@ def dirgen_execute(
     Returns:
         NamedTuple of outputs (described in `DirgenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirgen_cargs(params, execution)
     ret = dirgen_outputs(params, execution)
     execution.run(cargs)

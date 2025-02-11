@@ -154,7 +154,6 @@ def mris_parcellate_connectivity_execute(
     Returns:
         NamedTuple of outputs (described in `MrisParcellateConnectivityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_parcellate_connectivity_cargs(params, execution)
     ret = mris_parcellate_connectivity_outputs(params, execution)
     execution.run(cargs)

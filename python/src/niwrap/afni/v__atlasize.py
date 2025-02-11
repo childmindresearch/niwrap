@@ -296,7 +296,6 @@ def v__atlasize_execute(
     Returns:
         NamedTuple of outputs (described in `VAtlasizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__atlasize_cargs(params, execution)
     ret = v__atlasize_outputs(params, execution)
     execution.run(cargs)

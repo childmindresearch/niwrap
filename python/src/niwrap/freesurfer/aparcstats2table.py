@@ -277,7 +277,6 @@ def aparcstats2table_execute(
     Returns:
         NamedTuple of outputs (described in `Aparcstats2tableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aparcstats2table_cargs(params, execution)
     ret = aparcstats2table_outputs(params, execution)
     execution.run(cargs)

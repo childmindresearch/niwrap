@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@VolCenter": v__vol_center_outputs,
     }.get(t)
 
 
@@ -143,7 +142,6 @@ def v__vol_center_execute(
     Returns:
         NamedTuple of outputs (described in `VVolCenterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__vol_center_cargs(params, execution)
     ret = v__vol_center_outputs(params, execution)
     execution.run(cargs)

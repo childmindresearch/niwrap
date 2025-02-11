@@ -69,10 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "scene-file-update": scene_file_update_outputs,
-        "copy_map_one_palette": scene_file_update_copy_map_one_palette_outputs,
-        "data_file_add": scene_file_update_data_file_add_outputs,
-        "data_file_remove": scene_file_update_data_file_remove_outputs,
     }.get(t)
 
 
@@ -362,7 +358,6 @@ def scene_file_update_execute(
     Returns:
         NamedTuple of outputs (described in `SceneFileUpdateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = scene_file_update_cargs(params, execution)
     ret = scene_file_update_outputs(params, execution)
     execution.run(cargs)

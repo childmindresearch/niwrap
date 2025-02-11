@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "pngappend": pngappend_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def pngappend_execute(
     Returns:
         NamedTuple of outputs (described in `PngappendOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pngappend_cargs(params, execution)
     ret = pngappend_outputs(params, execution)
     execution.run(cargs)

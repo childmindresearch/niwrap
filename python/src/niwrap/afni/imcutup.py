@@ -177,7 +177,6 @@ def imcutup_execute(
     Returns:
         NamedTuple of outputs (described in `ImcutupOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imcutup_cargs(params, execution)
     ret = imcutup_outputs(params, execution)
     execution.run(cargs)

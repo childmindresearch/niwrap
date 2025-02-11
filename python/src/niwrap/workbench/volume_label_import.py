@@ -206,7 +206,6 @@ def volume_label_import_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelImportOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_label_import_cargs(params, execution)
     ret = volume_label_import_outputs(params, execution)
     execution.run(cargs)

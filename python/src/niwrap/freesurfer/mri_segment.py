@@ -421,7 +421,6 @@ def mri_segment_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_segment_cargs(params, execution)
     ret = mri_segment_outputs(params, execution)
     execution.run(cargs)

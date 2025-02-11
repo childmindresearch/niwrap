@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@FromRAI": v__from_rai_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def v__from_rai_execute(
     Returns:
         NamedTuple of outputs (described in `VFromRaiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__from_rai_cargs(params, execution)
     ret = v__from_rai_outputs(params, execution)
     execution.run(cargs)

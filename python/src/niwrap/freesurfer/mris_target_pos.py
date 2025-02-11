@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_target_pos": mris_target_pos_outputs,
     }.get(t)
 
 
@@ -229,7 +228,6 @@ def mris_target_pos_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTargetPosOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_target_pos_cargs(params, execution)
     ret = mris_target_pos_outputs(params, execution)
     execution.run(cargs)

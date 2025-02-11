@@ -68,8 +68,6 @@ def dyn_outputs(
     """
     return {
         "label-resample": label_resample_outputs,
-        "area_surfs": label_resample_area_surfs_outputs,
-        "area_metrics": label_resample_area_metrics_outputs,
     }.get(t)
 
 
@@ -328,7 +326,6 @@ def label_resample_execute(
     Returns:
         NamedTuple of outputs (described in `LabelResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_resample_cargs(params, execution)
     ret = label_resample_outputs(params, execution)
     execution.run(cargs)

@@ -44,7 +44,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsfirst.fsl": fsfirst_fsl_outputs,
     }.get(t)
 
 
@@ -126,7 +125,6 @@ def fsfirst_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `FsfirstFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsfirst_fsl_cargs(params, execution)
     ret = fsfirst_fsl_outputs(params, execution)
     execution.run(cargs)

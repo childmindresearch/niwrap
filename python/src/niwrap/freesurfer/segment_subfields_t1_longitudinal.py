@@ -143,7 +143,6 @@ def segment_subfields_t1_longitudinal_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubfieldsT1LongitudinalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subfields_t1_longitudinal_cargs(params, execution)
     ret = segment_subfields_t1_longitudinal_outputs(params, execution)
     execution.run(cargs)

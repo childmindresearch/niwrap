@@ -64,7 +64,6 @@ def dyn_outputs(
     """
     return {
         "afdconnectivity": afdconnectivity_outputs,
-        "config": afdconnectivity_config_outputs,
     }.get(t)
 
 
@@ -314,7 +313,6 @@ def afdconnectivity_execute(
     Returns:
         NamedTuple of outputs (described in `AfdconnectivityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afdconnectivity_cargs(params, execution)
     ret = afdconnectivity_outputs(params, execution)
     execution.run(cargs)

@@ -89,9 +89,7 @@ def dyn_outputs(
     return {
         "volume-to-surface-mapping": volume_to_surface_mapping_outputs,
         "ribbon_constrained": volume_to_surface_mapping_ribbon_constrained_outputs,
-        "volume_roi": volume_to_surface_mapping_volume_roi_outputs,
         "output_weights": volume_to_surface_mapping_output_weights_outputs,
-        "myelin_style": volume_to_surface_mapping_myelin_style_outputs,
     }.get(t)
 
 
@@ -570,7 +568,6 @@ def volume_to_surface_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeToSurfaceMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_to_surface_mapping_cargs(params, execution)
     ret = volume_to_surface_mapping_outputs(params, execution)
     execution.run(cargs)

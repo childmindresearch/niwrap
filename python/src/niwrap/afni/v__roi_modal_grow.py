@@ -191,7 +191,6 @@ def v__roi_modal_grow_execute(
     Returns:
         NamedTuple of outputs (described in `VRoiModalGrowOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__roi_modal_grow_cargs(params, execution)
     ret = v__roi_modal_grow_outputs(params, execution)
     execution.run(cargs)

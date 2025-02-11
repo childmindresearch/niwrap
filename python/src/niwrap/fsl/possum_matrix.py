@@ -186,7 +186,6 @@ def possum_matrix_execute(
     Returns:
         NamedTuple of outputs (described in `PossumMatrixOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = possum_matrix_cargs(params, execution)
     ret = possum_matrix_outputs(params, execution)
     execution.run(cargs)

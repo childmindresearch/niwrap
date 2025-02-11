@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dTSgen": v_3d_tsgen_outputs,
     }.get(t)
 
 
@@ -236,7 +235,6 @@ def v_3d_tsgen_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTsgenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tsgen_cargs(params, execution)
     ret = v_3d_tsgen_outputs(params, execution)
     execution.run(cargs)

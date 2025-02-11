@@ -64,8 +64,6 @@ def dyn_outputs(
     """
     return {
         "cifti-math": cifti_math_outputs,
-        "var": cifti_math_var_outputs,
-        "select": cifti_math_select_outputs,
     }.get(t)
 
 
@@ -347,7 +345,6 @@ def cifti_math_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiMathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_math_cargs(params, execution)
     ret = cifti_math_outputs(params, execution)
     execution.run(cargs)

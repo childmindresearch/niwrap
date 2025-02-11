@@ -234,7 +234,6 @@ def fslmeants_execute(
     Returns:
         NamedTuple of outputs (described in `FslmeantsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslmeants_cargs(params, execution)
     ret = fslmeants_outputs(params, execution)
     execution.run(cargs)

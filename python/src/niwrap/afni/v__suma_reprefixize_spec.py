@@ -166,7 +166,6 @@ def v__suma_reprefixize_spec_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaReprefixizeSpecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_reprefixize_spec_cargs(params, execution)
     ret = v__suma_reprefixize_spec_outputs(params, execution)
     execution.run(cargs)

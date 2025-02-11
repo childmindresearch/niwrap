@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "metadata-string-replace": metadata_string_replace_outputs,
     }.get(t)
 
 
@@ -155,7 +154,6 @@ def metadata_string_replace_execute(
     Returns:
         NamedTuple of outputs (described in `MetadataStringReplaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metadata_string_replace_cargs(params, execution)
     ret = metadata_string_replace_outputs(params, execution)
     execution.run(cargs)

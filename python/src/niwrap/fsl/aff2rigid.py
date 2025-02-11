@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "aff2rigid": aff2rigid_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def aff2rigid_execute(
     Returns:
         NamedTuple of outputs (described in `Aff2rigidOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aff2rigid_cargs(params, execution)
     ret = aff2rigid_outputs(params, execution)
     execution.run(cargs)

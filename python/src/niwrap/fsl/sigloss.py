@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "sigloss": sigloss_outputs,
     }.get(t)
 
 
@@ -177,7 +176,6 @@ def sigloss_execute(
     Returns:
         NamedTuple of outputs (described in `SiglossOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sigloss_cargs(params, execution)
     ret = sigloss_outputs(params, execution)
     execution.run(cargs)

@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslcpgeom": fslcpgeom_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def fslcpgeom_execute(
     Returns:
         NamedTuple of outputs (described in `FslcpgeomOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslcpgeom_cargs(params, execution)
     ret = fslcpgeom_outputs(params, execution)
     execution.run(cargs)

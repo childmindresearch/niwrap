@@ -142,7 +142,6 @@ def v_3d_mask_to_ascii_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMaskToAsciiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mask_to_ascii_cargs(params, execution)
     ret = v_3d_mask_to_ascii_outputs(params, execution)
     execution.run(cargs)

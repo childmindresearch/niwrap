@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "FATCAT_matplot": fatcat_matplot_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def fatcat_matplot_execute(
     Returns:
         NamedTuple of outputs (described in `FatcatMatplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fatcat_matplot_cargs(params, execution)
     ret = fatcat_matplot_outputs(params, execution)
     execution.run(cargs)

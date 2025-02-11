@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "backend-average-dense-roi": backend_average_dense_roi_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def backend_average_dense_roi_execute(
     Returns:
         NamedTuple of outputs (described in `BackendAverageDenseRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = backend_average_dense_roi_cargs(params, execution)
     ret = backend_average_dense_roi_outputs(params, execution)
     execution.run(cargs)

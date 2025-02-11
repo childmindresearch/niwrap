@@ -176,7 +176,6 @@ def create_morph_execute(
     Returns:
         NamedTuple of outputs (described in `CreateMorphOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_morph_cargs(params, execution)
     ret = create_morph_outputs(params, execution)
     execution.run(cargs)

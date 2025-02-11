@@ -288,7 +288,6 @@ def rbbr_execute(
     Returns:
         NamedTuple of outputs (described in `RbbrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rbbr_cargs(params, execution)
     ret = rbbr_outputs(params, execution)
     execution.run(cargs)

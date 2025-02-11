@@ -151,7 +151,6 @@ def volume_label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelProbabilityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_label_probability_cargs(params, execution)
     ret = volume_label_probability_outputs(params, execution)
     execution.run(cargs)

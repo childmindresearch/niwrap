@@ -146,7 +146,6 @@ def surface_flip_normals_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceFlipNormalsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_flip_normals_cargs(params, execution)
     ret = surface_flip_normals_outputs(params, execution)
     execution.run(cargs)

@@ -144,7 +144,6 @@ def unconfound_execute(
     Returns:
         NamedTuple of outputs (described in `UnconfoundOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unconfound_cargs(params, execution)
     ret = unconfound_outputs(params, execution)
     execution.run(cargs)

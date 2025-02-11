@@ -345,7 +345,6 @@ def fat_mat_sel_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMatSelPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mat_sel_py_cargs(params, execution)
     ret = fat_mat_sel_py_outputs(params, execution)
     execution.run(cargs)

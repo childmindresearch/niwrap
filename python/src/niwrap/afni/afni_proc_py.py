@@ -206,7 +206,6 @@ def afni_proc_py_execute(
     Returns:
         NamedTuple of outputs (described in `AfniProcPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_proc_py_cargs(params, execution)
     ret = afni_proc_py_outputs(params, execution)
     execution.run(cargs)

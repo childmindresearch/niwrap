@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_errors": mris_errors_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def mris_errors_execute(
     Returns:
         NamedTuple of outputs (described in `MrisErrorsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_errors_cargs(params, execution)
     ret = mris_errors_outputs(params, execution)
     execution.run(cargs)

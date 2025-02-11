@@ -188,7 +188,6 @@ def seg2filled_execute(
     Returns:
         NamedTuple of outputs (described in `Seg2filledOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = seg2filled_cargs(params, execution)
     ret = seg2filled_outputs(params, execution)
     execution.run(cargs)

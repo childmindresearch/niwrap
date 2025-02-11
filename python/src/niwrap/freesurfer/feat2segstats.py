@@ -282,7 +282,6 @@ def feat2segstats_execute(
     Returns:
         NamedTuple of outputs (described in `Feat2segstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = feat2segstats_cargs(params, execution)
     ret = feat2segstats_outputs(params, execution)
     execution.run(cargs)

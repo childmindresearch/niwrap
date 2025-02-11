@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bianca_cluster_stats": bianca_cluster_stats_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def bianca_cluster_stats_execute(
     Returns:
         NamedTuple of outputs (described in `BiancaClusterStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bianca_cluster_stats_cargs(params, execution)
     ret = bianca_cluster_stats_outputs(params, execution)
     execution.run(cargs)

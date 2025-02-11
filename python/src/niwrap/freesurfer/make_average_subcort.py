@@ -142,7 +142,6 @@ def make_average_subcort_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageSubcortOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_average_subcort_cargs(params, execution)
     ret = make_average_subcort_outputs(params, execution)
     execution.run(cargs)

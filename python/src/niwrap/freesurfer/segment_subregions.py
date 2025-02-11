@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "segment_subregions": segment_subregions_outputs,
     }.get(t)
 
 
@@ -212,7 +211,6 @@ def segment_subregions_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubregionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subregions_cargs(params, execution)
     ret = segment_subregions_outputs(params, execution)
     execution.run(cargs)

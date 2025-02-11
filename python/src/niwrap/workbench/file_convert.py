@@ -69,10 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "file-convert": file_convert_outputs,
-        "border_version_convert": file_convert_border_version_convert_outputs,
-        "nifti_version_convert": file_convert_nifti_version_convert_outputs,
-        "cifti_version_convert": file_convert_cifti_version_convert_outputs,
     }.get(t)
 
 
@@ -320,7 +316,6 @@ def file_convert_execute(
     Returns:
         NamedTuple of outputs (described in `FileConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = file_convert_cargs(params, execution)
     ret = file_convert_outputs(params, execution)
     execution.run(cargs)

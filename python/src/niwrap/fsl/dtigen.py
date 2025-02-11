@@ -195,7 +195,6 @@ def dtigen_execute(
     Returns:
         NamedTuple of outputs (described in `DtigenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dtigen_cargs(params, execution)
     ret = dtigen_outputs(params, execution)
     execution.run(cargs)

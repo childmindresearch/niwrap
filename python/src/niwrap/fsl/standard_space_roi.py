@@ -220,7 +220,6 @@ def standard_space_roi_execute(
     Returns:
         NamedTuple of outputs (described in `StandardSpaceRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = standard_space_roi_cargs(params, execution)
     ret = standard_space_roi_outputs(params, execution)
     execution.run(cargs)

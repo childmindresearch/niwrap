@@ -158,7 +158,6 @@ def make_dyadic_vectors_execute(
     Returns:
         NamedTuple of outputs (described in `MakeDyadicVectorsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_dyadic_vectors_cargs(params, execution)
     ret = make_dyadic_vectors_outputs(params, execution)
     execution.run(cargs)

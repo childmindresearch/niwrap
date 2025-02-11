@@ -148,7 +148,6 @@ def mri_label_histo_execute(
     Returns:
         NamedTuple of outputs (described in `MriLabelHistoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_label_histo_cargs(params, execution)
     ret = mri_label_histo_outputs(params, execution)
     execution.run(cargs)

@@ -90,12 +90,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-palette": volume_palette_outputs,
-        "pos_percent": volume_palette_pos_percent_outputs,
-        "neg_percent": volume_palette_neg_percent_outputs,
-        "pos_user": volume_palette_pos_user_outputs,
-        "neg_user": volume_palette_neg_user_outputs,
-        "thresholding": volume_palette_thresholding_outputs,
     }.get(t)
 
 
@@ -572,7 +566,6 @@ def volume_palette_execute(
     Returns:
         NamedTuple of outputs (described in `VolumePaletteOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_palette_cargs(params, execution)
     ret = volume_palette_outputs(params, execution)
     execution.run(cargs)

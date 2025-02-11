@@ -143,7 +143,6 @@ def labels_intersect_execute(
     Returns:
         NamedTuple of outputs (described in `LabelsIntersectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = labels_intersect_cargs(params, execution)
     ret = labels_intersect_outputs(params, execution)
     execution.run(cargs)

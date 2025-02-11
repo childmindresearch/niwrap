@@ -61,7 +61,6 @@ def dyn_outputs(
     """
     return {
         "metric-smoothing": metric_smoothing_outputs,
-        "roi": metric_smoothing_roi_outputs,
     }.get(t)
 
 
@@ -297,7 +296,6 @@ def metric_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `MetricSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_smoothing_cargs(params, execution)
     ret = metric_smoothing_outputs(params, execution)
     execution.run(cargs)

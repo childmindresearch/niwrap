@@ -193,7 +193,6 @@ def v_3dresample_execute(
     Returns:
         NamedTuple of outputs (described in `V3dresampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dresample_cargs(params, execution)
     ret = v_3dresample_outputs(params, execution)
     execution.run(cargs)

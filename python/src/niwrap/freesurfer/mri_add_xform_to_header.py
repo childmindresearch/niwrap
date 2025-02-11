@@ -155,7 +155,6 @@ def mri_add_xform_to_header_execute(
     Returns:
         NamedTuple of outputs (described in `MriAddXformToHeaderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_add_xform_to_header_cargs(params, execution)
     ret = mri_add_xform_to_header_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_rf_label": mris_rf_label_outputs,
     }.get(t)
 
 
@@ -160,7 +159,6 @@ def mris_rf_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRfLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_rf_label_cargs(params, execution)
     ret = mris_rf_label_outputs(params, execution)
     execution.run(cargs)

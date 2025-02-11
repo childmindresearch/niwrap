@@ -212,7 +212,6 @@ def t4imgs_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `T4imgs4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = t4imgs_4dfp_cargs(params, execution)
     ret = t4imgs_4dfp_outputs(params, execution)
     execution.run(cargs)

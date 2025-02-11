@@ -183,7 +183,6 @@ def warp_tensor_image_multi_transform_execute(
     Returns:
         NamedTuple of outputs (described in `WarpTensorImageMultiTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warp_tensor_image_multi_transform_cargs(params, execution)
     ret = warp_tensor_image_multi_transform_outputs(params, execution)
     execution.run(cargs)

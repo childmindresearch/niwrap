@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "feat_gm_prepare": feat_gm_prepare_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def feat_gm_prepare_execute(
     Returns:
         NamedTuple of outputs (described in `FeatGmPrepareOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = feat_gm_prepare_cargs(params, execution)
     ret = feat_gm_prepare_outputs(params, execution)
     execution.run(cargs)

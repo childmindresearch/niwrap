@@ -204,7 +204,6 @@ def grad_unwarp_execute(
     Returns:
         NamedTuple of outputs (described in `GradUnwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = grad_unwarp_cargs(params, execution)
     ret = grad_unwarp_outputs(params, execution)
     execution.run(cargs)

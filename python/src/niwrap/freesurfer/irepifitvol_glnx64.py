@@ -139,7 +139,6 @@ def irepifitvol_glnx64_execute(
     Returns:
         NamedTuple of outputs (described in `IrepifitvolGlnx64Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = irepifitvol_glnx64_cargs(params, execution)
     ret = irepifitvol_glnx64_outputs(params, execution)
     execution.run(cargs)

@@ -218,7 +218,6 @@ def neuro_deconvolve_py_execute(
     Returns:
         NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = neuro_deconvolve_py_cargs(params, execution)
     ret = neuro_deconvolve_py_outputs(params, execution)
     execution.run(cargs)

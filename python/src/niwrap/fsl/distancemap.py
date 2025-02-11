@@ -222,7 +222,6 @@ def distancemap_execute(
     Returns:
         NamedTuple of outputs (described in `DistancemapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = distancemap_cargs(params, execution)
     ret = distancemap_outputs(params, execution)
     execution.run(cargs)

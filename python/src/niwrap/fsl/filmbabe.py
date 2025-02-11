@@ -284,7 +284,6 @@ def filmbabe_execute(
     Returns:
         NamedTuple of outputs (described in `FilmbabeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = filmbabe_cargs(params, execution)
     ret = filmbabe_outputs(params, execution)
     execution.run(cargs)

@@ -70,7 +70,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_fix_topology": mris_fix_topology_outputs,
     }.get(t)
 
 
@@ -328,7 +327,6 @@ def mris_fix_topology_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFixTopologyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_fix_topology_cargs(params, execution)
     ret = mris_fix_topology_outputs(params, execution)
     execution.run(cargs)

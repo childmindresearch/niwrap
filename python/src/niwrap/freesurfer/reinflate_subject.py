@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "reinflate_subject": reinflate_subject_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def reinflate_subject_execute(
     Returns:
         NamedTuple of outputs (described in `ReinflateSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reinflate_subject_cargs(params, execution)
     ret = reinflate_subject_outputs(params, execution)
     execution.run(cargs)

@@ -145,7 +145,6 @@ def orient_las_execute(
     Returns:
         NamedTuple of outputs (described in `OrientLasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = orient_las_cargs(params, execution)
     ret = orient_las_outputs(params, execution)
     execution.run(cargs)

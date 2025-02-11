@@ -219,7 +219,6 @@ def adwarp_execute(
     Returns:
         NamedTuple of outputs (described in `AdwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adwarp_cargs(params, execution)
     ret = adwarp_outputs(params, execution)
     execution.run(cargs)

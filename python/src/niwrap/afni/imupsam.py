@@ -151,7 +151,6 @@ def imupsam_execute(
     Returns:
         NamedTuple of outputs (described in `ImupsamOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imupsam_cargs(params, execution)
     ret = imupsam_outputs(params, execution)
     execution.run(cargs)

@@ -90,12 +90,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "metric-palette": metric_palette_outputs,
-        "pos_percent": metric_palette_pos_percent_outputs,
-        "neg_percent": metric_palette_neg_percent_outputs,
-        "pos_user": metric_palette_pos_user_outputs,
-        "neg_user": metric_palette_neg_user_outputs,
-        "thresholding": metric_palette_thresholding_outputs,
     }.get(t)
 
 
@@ -571,7 +565,6 @@ def metric_palette_execute(
     Returns:
         NamedTuple of outputs (described in `MetricPaletteOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_palette_cargs(params, execution)
     ret = metric_palette_outputs(params, execution)
     execution.run(cargs)

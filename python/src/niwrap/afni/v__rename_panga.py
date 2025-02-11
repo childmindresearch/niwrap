@@ -203,7 +203,6 @@ def v__rename_panga_execute(
     Returns:
         NamedTuple of outputs (described in `VRenamePangaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__rename_panga_cargs(params, execution)
     ret = v__rename_panga_outputs(params, execution)
     execution.run(cargs)

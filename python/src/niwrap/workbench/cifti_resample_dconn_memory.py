@@ -164,22 +164,6 @@ def dyn_outputs(
     """
     return {
         "cifti-resample-dconn-memory": cifti_resample_dconn_memory_outputs,
-        "volume_predilate": cifti_resample_dconn_memory_volume_predilate_outputs,
-        "weighted": cifti_resample_dconn_memory_weighted_outputs,
-        "surface_postdilate": cifti_resample_dconn_memory_surface_postdilate_outputs,
-        "weighted": cifti_resample_dconn_memory_weighted_outputs_,
-        "affine": cifti_resample_dconn_memory_affine_outputs,
-        "flirt": cifti_resample_dconn_memory_flirt_outputs,
-        "warpfield": cifti_resample_dconn_memory_warpfield_outputs,
-        "left_spheres": cifti_resample_dconn_memory_left_spheres_outputs,
-        "left_area_surfs": cifti_resample_dconn_memory_left_area_surfs_outputs,
-        "left_area_metrics": cifti_resample_dconn_memory_left_area_metrics_outputs,
-        "right_spheres": cifti_resample_dconn_memory_right_spheres_outputs,
-        "right_area_surfs": cifti_resample_dconn_memory_right_area_surfs_outputs,
-        "right_area_metrics": cifti_resample_dconn_memory_right_area_metrics_outputs,
-        "cerebellum_spheres": cifti_resample_dconn_memory_cerebellum_spheres_outputs,
-        "cerebellum_area_surfs": cifti_resample_dconn_memory_cerebellum_area_surfs_outputs,
-        "cerebellum_area_metrics": cifti_resample_dconn_memory_cerebellum_area_metrics_outputs,
     }.get(t)
 
 
@@ -1113,7 +1097,6 @@ def cifti_resample_dconn_memory_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiResampleDconnMemoryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_resample_dconn_memory_cargs(params, execution)
     ret = cifti_resample_dconn_memory_outputs(params, execution)
     execution.run(cargs)

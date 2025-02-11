@@ -252,7 +252,6 @@ def non_local_super_resolution_execute(
     Returns:
         NamedTuple of outputs (described in `NonLocalSuperResolutionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = non_local_super_resolution_cargs(params, execution)
     ret = non_local_super_resolution_outputs(params, execution)
     execution.run(cargs)

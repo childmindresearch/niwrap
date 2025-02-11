@@ -209,7 +209,6 @@ def makevol_execute(
     Returns:
         NamedTuple of outputs (described in `MakevolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = makevol_cargs(params, execution)
     ret = makevol_outputs(params, execution)
     execution.run(cargs)

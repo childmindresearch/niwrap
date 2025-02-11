@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_multiscale_stats": mris_multiscale_stats_outputs,
     }.get(t)
 
 
@@ -159,7 +158,6 @@ def mris_multiscale_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMultiscaleStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_multiscale_stats_cargs(params, execution)
     ret = mris_multiscale_stats_outputs(params, execution)
     execution.run(cargs)

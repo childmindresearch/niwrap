@@ -187,7 +187,6 @@ def invwarp_execute(
     Returns:
         NamedTuple of outputs (described in `InvwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = invwarp_cargs(params, execution)
     ret = invwarp_outputs(params, execution)
     execution.run(cargs)

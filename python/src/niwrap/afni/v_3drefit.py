@@ -298,7 +298,6 @@ def v_3drefit_execute(
     Returns:
         NamedTuple of outputs (described in `V3drefitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3drefit_cargs(params, execution)
     ret = v_3drefit_outputs(params, execution)
     execution.run(cargs)

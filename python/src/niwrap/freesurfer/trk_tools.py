@@ -186,7 +186,6 @@ def trk_tools_execute(
     Returns:
         NamedTuple of outputs (described in `TrkToolsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = trk_tools_cargs(params, execution)
     ret = trk_tools_outputs(params, execution)
     execution.run(cargs)

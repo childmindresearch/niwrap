@@ -133,7 +133,6 @@ def help_format_execute(
     Returns:
         NamedTuple of outputs (described in `HelpFormatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = help_format_cargs(params, execution)
     ret = help_format_outputs(params, execution)
     execution.run(cargs)

@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cluster2html": cluster2html_outputs,
     }.get(t)
 
 
@@ -142,7 +141,6 @@ def cluster2html_execute(
     Returns:
         NamedTuple of outputs (described in `Cluster2htmlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cluster2html_cargs(params, execution)
     ret = cluster2html_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_aparc2wmseg": mri_aparc2wmseg_outputs,
     }.get(t)
 
 
@@ -154,7 +153,6 @@ def mri_aparc2wmseg_execute(
     Returns:
         NamedTuple of outputs (described in `MriAparc2wmsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_aparc2wmseg_cargs(params, execution)
     ret = mri_aparc2wmseg_outputs(params, execution)
     execution.run(cargs)

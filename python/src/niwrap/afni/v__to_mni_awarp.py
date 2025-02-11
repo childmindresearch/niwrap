@@ -140,7 +140,6 @@ def v__to_mni_awarp_execute(
     Returns:
         NamedTuple of outputs (described in `VToMniAwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__to_mni_awarp_cargs(params, execution)
     ret = v__to_mni_awarp_outputs(params, execution)
     execution.run(cargs)

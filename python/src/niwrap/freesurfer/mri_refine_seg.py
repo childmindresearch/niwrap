@@ -151,7 +151,6 @@ def mri_refine_seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriRefineSegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_refine_seg_cargs(params, execution)
     ret = mri_refine_seg_outputs(params, execution)
     execution.run(cargs)

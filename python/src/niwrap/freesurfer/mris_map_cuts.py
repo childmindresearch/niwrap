@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_map_cuts": mris_map_cuts_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def mris_map_cuts_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMapCutsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_map_cuts_cargs(params, execution)
     ret = mris_map_cuts_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslvbm_1_bet": fslvbm_1_bet_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def fslvbm_1_bet_execute(
     Returns:
         NamedTuple of outputs (described in `Fslvbm1BetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslvbm_1_bet_cargs(params, execution)
     ret = fslvbm_1_bet_outputs(params, execution)
     execution.run(cargs)

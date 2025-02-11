@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_violinPlots": dmri_violin_plots_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def dmri_violin_plots_execute(
     Returns:
         NamedTuple of outputs (described in `DmriViolinPlotsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_violin_plots_cargs(params, execution)
     ret = dmri_violin_plots_outputs(params, execution)
     execution.run(cargs)

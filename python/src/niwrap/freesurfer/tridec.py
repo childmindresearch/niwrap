@@ -148,7 +148,6 @@ def tridec_execute(
     Returns:
         NamedTuple of outputs (described in `TridecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tridec_cargs(params, execution)
     ret = tridec_outputs(params, execution)
     execution.run(cargs)

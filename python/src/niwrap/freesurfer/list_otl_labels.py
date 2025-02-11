@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "list_otl_labels": list_otl_labels_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def list_otl_labels_execute(
     Returns:
         NamedTuple of outputs (described in `ListOtlLabelsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = list_otl_labels_cargs(params, execution)
     ret = list_otl_labels_outputs(params, execution)
     execution.run(cargs)

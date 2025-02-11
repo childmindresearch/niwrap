@@ -52,8 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "wbsparse-merge-dense": wbsparse_merge_dense_outputs,
-        "wbsparse": wbsparse_merge_dense_wbsparse_outputs,
     }.get(t)
 
 
@@ -190,7 +188,6 @@ def wbsparse_merge_dense_execute(
     Returns:
         NamedTuple of outputs (described in `WbsparseMergeDenseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wbsparse_merge_dense_cargs(params, execution)
     ret = wbsparse_merge_dense_outputs(params, execution)
     execution.run(cargs)

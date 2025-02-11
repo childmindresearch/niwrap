@@ -183,7 +183,6 @@ def mri_matrix_multiply_execute(
     Returns:
         NamedTuple of outputs (described in `MriMatrixMultiplyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_matrix_multiply_cargs(params, execution)
     ret = mri_matrix_multiply_outputs(params, execution)
     execution.run(cargs)

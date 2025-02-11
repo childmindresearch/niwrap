@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "apqc_make_html": apqc_make_html_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def apqc_make_html_execute(
     Returns:
         NamedTuple of outputs (described in `ApqcMakeHtmlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = apqc_make_html_cargs(params, execution)
     ret = apqc_make_html_outputs(params, execution)
     execution.run(cargs)

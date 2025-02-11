@@ -211,7 +211,6 @@ def mri_jacobian_execute(
     Returns:
         NamedTuple of outputs (described in `MriJacobianOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_jacobian_cargs(params, execution)
     ret = mri_jacobian_outputs(params, execution)
     execution.run(cargs)

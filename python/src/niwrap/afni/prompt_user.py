@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "prompt_user": prompt_user_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def prompt_user_execute(
     Returns:
         NamedTuple of outputs (described in `PromptUserOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = prompt_user_cargs(params, execution)
     ret = prompt_user_outputs(params, execution)
     execution.run(cargs)

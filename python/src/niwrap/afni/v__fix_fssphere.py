@@ -177,7 +177,6 @@ def v__fix_fssphere_execute(
     Returns:
         NamedTuple of outputs (described in `VFixFssphereOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__fix_fssphere_cargs(params, execution)
     ret = v__fix_fssphere_outputs(params, execution)
     execution.run(cargs)

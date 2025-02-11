@@ -183,7 +183,6 @@ def v_3d_zregrid_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZregridOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_zregrid_cargs(params, execution)
     ret = v_3d_zregrid_outputs(params, execution)
     execution.run(cargs)

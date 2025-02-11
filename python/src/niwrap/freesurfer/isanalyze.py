@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "isanalyze": isanalyze_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def isanalyze_execute(
     Returns:
         NamedTuple of outputs (described in `IsanalyzeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = isanalyze_cargs(params, execution)
     ret = isanalyze_outputs(params, execution)
     execution.run(cargs)

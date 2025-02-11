@@ -157,7 +157,6 @@ def v__2dwarper_allin_execute(
     Returns:
         NamedTuple of outputs (described in `V2dwarperAllinOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__2dwarper_allin_cargs(params, execution)
     ret = v__2dwarper_allin_outputs(params, execution)
     execution.run(cargs)

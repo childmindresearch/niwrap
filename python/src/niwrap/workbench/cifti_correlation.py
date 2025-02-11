@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "cifti-correlation": cifti_correlation_outputs,
-        "roi_override": cifti_correlation_roi_override_outputs,
     }.get(t)
 
 
@@ -295,7 +294,6 @@ def cifti_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_correlation_cargs(params, execution)
     ret = cifti_correlation_outputs(params, execution)
     execution.run(cargs)

@@ -139,7 +139,6 @@ def sliceanimate_execute(
     Returns:
         NamedTuple of outputs (described in `SliceanimateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sliceanimate_cargs(params, execution)
     ret = sliceanimate_outputs(params, execution)
     execution.run(cargs)

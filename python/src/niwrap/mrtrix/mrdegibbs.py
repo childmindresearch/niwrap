@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "mrdegibbs": mrdegibbs_outputs,
-        "config": mrdegibbs_config_outputs,
     }.get(t)
 
 
@@ -322,7 +321,6 @@ def mrdegibbs_execute(
     Returns:
         NamedTuple of outputs (described in `MrdegibbsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrdegibbs_cargs(params, execution)
     ret = mrdegibbs_outputs(params, execution)
     execution.run(cargs)

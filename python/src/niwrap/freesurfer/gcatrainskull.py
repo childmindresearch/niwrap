@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gcatrainskull": gcatrainskull_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def gcatrainskull_execute(
     Returns:
         NamedTuple of outputs (described in `GcatrainskullOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gcatrainskull_cargs(params, execution)
     ret = gcatrainskull_outputs(params, execution)
     execution.run(cargs)

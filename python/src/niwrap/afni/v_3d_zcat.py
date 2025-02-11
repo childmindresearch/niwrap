@@ -189,7 +189,6 @@ def v_3d_zcat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_zcat_cargs(params, execution)
     ret = v_3d_zcat_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ccalc": ccalc_outputs,
     }.get(t)
 
 
@@ -145,7 +144,6 @@ def ccalc_execute(
     Returns:
         NamedTuple of outputs (described in `CcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ccalc_cargs(params, execution)
     ret = ccalc_outputs(params, execution)
     execution.run(cargs)

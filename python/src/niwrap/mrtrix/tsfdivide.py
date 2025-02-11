@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "tsfdivide": tsfdivide_outputs,
-        "config": tsfdivide_config_outputs,
     }.get(t)
 
 
@@ -254,7 +253,6 @@ def tsfdivide_execute(
     Returns:
         NamedTuple of outputs (described in `TsfdivideOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfdivide_cargs(params, execution)
     ret = tsfdivide_outputs(params, execution)
     execution.run(cargs)

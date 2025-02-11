@@ -416,7 +416,6 @@ def run_fastsurfer_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunFastsurferShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_fastsurfer_sh_cargs(params, execution)
     ret = run_fastsurfer_sh_outputs(params, execution)
     execution.run(cargs)

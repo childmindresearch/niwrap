@@ -169,7 +169,6 @@ def antsjacobian_execute(
     Returns:
         NamedTuple of outputs (described in `AntsjacobianOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = antsjacobian_cargs(params, execution)
     ret = antsjacobian_outputs(params, execution)
     execution.run(cargs)

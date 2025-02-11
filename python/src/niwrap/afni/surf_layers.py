@@ -228,7 +228,6 @@ def surf_layers_execute(
     Returns:
         NamedTuple of outputs (described in `SurfLayersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_layers_cargs(params, execution)
     ret = surf_layers_outputs(params, execution)
     execution.run(cargs)

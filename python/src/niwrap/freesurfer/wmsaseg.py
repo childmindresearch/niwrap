@@ -211,7 +211,6 @@ def wmsaseg_execute(
     Returns:
         NamedTuple of outputs (described in `WmsasegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wmsaseg_cargs(params, execution)
     ret = wmsaseg_outputs(params, execution)
     execution.run(cargs)

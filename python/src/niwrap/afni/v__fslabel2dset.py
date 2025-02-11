@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@FSlabel2dset": v__fslabel2dset_outputs,
     }.get(t)
 
 
@@ -162,7 +161,6 @@ def v__fslabel2dset_execute(
     Returns:
         NamedTuple of outputs (described in `VFslabel2dsetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__fslabel2dset_cargs(params, execution)
     ret = v__fslabel2dset_outputs(params, execution)
     execution.run(cargs)

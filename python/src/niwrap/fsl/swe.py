@@ -431,7 +431,6 @@ def swe_execute(
     Returns:
         NamedTuple of outputs (described in `SweOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = swe_cargs(params, execution)
     ret = swe_outputs(params, execution)
     execution.run(cargs)

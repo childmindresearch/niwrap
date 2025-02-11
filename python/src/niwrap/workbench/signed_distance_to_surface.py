@@ -174,7 +174,6 @@ def signed_distance_to_surface_execute(
     Returns:
         NamedTuple of outputs (described in `SignedDistanceToSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = signed_distance_to_surface_cargs(params, execution)
     ret = signed_distance_to_surface_outputs(params, execution)
     execution.run(cargs)

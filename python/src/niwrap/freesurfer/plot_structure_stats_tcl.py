@@ -138,7 +138,6 @@ def plot_structure_stats_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `PlotStructureStatsTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = plot_structure_stats_tcl_cargs(params, execution)
     ret = plot_structure_stats_tcl_outputs(params, execution)
     execution.run(cargs)

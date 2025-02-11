@@ -235,7 +235,6 @@ def fnirtfileutils_execute(
     Returns:
         NamedTuple of outputs (described in `FnirtfileutilsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fnirtfileutils_cargs(params, execution)
     ret = fnirtfileutils_outputs(params, execution)
     execution.run(cargs)

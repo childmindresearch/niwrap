@@ -266,7 +266,6 @@ def convertwarp_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convertwarp_cargs(params, execution)
     ret = convertwarp_outputs(params, execution)
     execution.run(cargs)

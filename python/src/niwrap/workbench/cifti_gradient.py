@@ -74,9 +74,6 @@ def dyn_outputs(
     """
     return {
         "cifti-gradient": cifti_gradient_outputs,
-        "left_surface": cifti_gradient_left_surface_outputs,
-        "right_surface": cifti_gradient_right_surface_outputs,
-        "cerebellum_surface": cifti_gradient_cerebellum_surface_outputs,
     }.get(t)
 
 
@@ -388,7 +385,6 @@ def cifti_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiGradientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_gradient_cargs(params, execution)
     ret = cifti_gradient_outputs(params, execution)
     execution.run(cargs)

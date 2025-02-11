@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsPrintHelp": fs_print_help_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def fs_print_help_execute(
     Returns:
         NamedTuple of outputs (described in `FsPrintHelpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_print_help_cargs(params, execution)
     ret = fs_print_help_outputs(params, execution)
     execution.run(cargs)

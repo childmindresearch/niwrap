@@ -76,7 +76,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tkregisterfv": tkregisterfv_outputs,
     }.get(t)
 
 
@@ -386,7 +385,6 @@ def tkregisterfv_execute(
     Returns:
         NamedTuple of outputs (described in `TkregisterfvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tkregisterfv_cargs(params, execution)
     ret = tkregisterfv_outputs(params, execution)
     execution.run(cargs)

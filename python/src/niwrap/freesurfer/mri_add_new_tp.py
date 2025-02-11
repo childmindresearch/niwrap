@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_add_new_tp": mri_add_new_tp_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def mri_add_new_tp_execute(
     Returns:
         NamedTuple of outputs (described in `MriAddNewTpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_add_new_tp_cargs(params, execution)
     ret = mri_add_new_tp_outputs(params, execution)
     execution.run(cargs)

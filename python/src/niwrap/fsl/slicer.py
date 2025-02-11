@@ -316,7 +316,6 @@ def slicer_execute(
     Returns:
         NamedTuple of outputs (described in `SlicerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slicer_cargs(params, execution)
     ret = slicer_outputs(params, execution)
     execution.run(cargs)

@@ -312,7 +312,6 @@ def afni_execute(
     Returns:
         NamedTuple of outputs (described in `AfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_cargs(params, execution)
     ret = afni_outputs(params, execution)
     execution.run(cargs)

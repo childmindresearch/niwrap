@@ -193,7 +193,6 @@ def v__suma_acknowledge_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaAcknowledgeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_acknowledge_cargs(params, execution)
     ret = v__suma_acknowledge_outputs(params, execution)
     execution.run(cargs)

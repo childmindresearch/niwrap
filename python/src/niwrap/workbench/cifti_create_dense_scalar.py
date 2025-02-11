@@ -75,10 +75,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-dense-scalar": cifti_create_dense_scalar_outputs,
-        "volume": cifti_create_dense_scalar_volume_outputs,
-        "left_metric": cifti_create_dense_scalar_left_metric_outputs,
-        "right_metric": cifti_create_dense_scalar_right_metric_outputs,
-        "cerebellum_metric": cifti_create_dense_scalar_cerebellum_metric_outputs,
     }.get(t)
 
 
@@ -427,7 +423,6 @@ def cifti_create_dense_scalar_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_dense_scalar_cargs(params, execution)
     ret = cifti_create_dense_scalar_outputs(params, execution)
     execution.run(cargs)

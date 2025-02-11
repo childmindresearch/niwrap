@@ -198,7 +198,6 @@ def aseg2feat_execute(
     Returns:
         NamedTuple of outputs (described in `Aseg2featOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aseg2feat_cargs(params, execution)
     ret = aseg2feat_outputs(params, execution)
     execution.run(cargs)

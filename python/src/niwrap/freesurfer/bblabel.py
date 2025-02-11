@@ -221,7 +221,6 @@ def bblabel_execute(
     Returns:
         NamedTuple of outputs (described in `BblabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bblabel_cargs(params, execution)
     ret = bblabel_outputs(params, execution)
     execution.run(cargs)

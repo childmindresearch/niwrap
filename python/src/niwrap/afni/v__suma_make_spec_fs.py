@@ -137,7 +137,6 @@ def v__suma_make_spec_fs_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_make_spec_fs_cargs(params, execution)
     ret = v__suma_make_spec_fs_outputs(params, execution)
     execution.run(cargs)

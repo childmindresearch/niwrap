@@ -246,7 +246,6 @@ def surf_to_surf_execute(
     Returns:
         NamedTuple of outputs (described in `SurfToSurfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_to_surf_cargs(params, execution)
     ret = surf_to_surf_outputs(params, execution)
     execution.run(cargs)

@@ -236,7 +236,6 @@ def v__anaticor_execute(
     Returns:
         NamedTuple of outputs (described in `VAnaticorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__anaticor_cargs(params, execution)
     ret = v__anaticor_outputs(params, execution)
     execution.run(cargs)

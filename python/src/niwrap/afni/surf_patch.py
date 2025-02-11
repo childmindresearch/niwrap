@@ -297,7 +297,6 @@ def surf_patch_execute(
     Returns:
         NamedTuple of outputs (described in `SurfPatchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_patch_cargs(params, execution)
     ret = surf_patch_outputs(params, execution)
     execution.run(cargs)

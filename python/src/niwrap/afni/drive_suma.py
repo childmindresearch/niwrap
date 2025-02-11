@@ -75,7 +75,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "DriveSuma": drive_suma_outputs,
     }.get(t)
 
 
@@ -387,7 +386,6 @@ def drive_suma_execute(
     Returns:
         NamedTuple of outputs (described in `DriveSumaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = drive_suma_cargs(params, execution)
     ret = drive_suma_outputs(params, execution)
     execution.run(cargs)

@@ -331,7 +331,6 @@ def dcmdrle_fs_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdrleFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmdrle_fs_cargs(params, execution)
     ret = dcmdrle_fs_outputs(params, execution)
     execution.run(cargs)

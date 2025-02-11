@@ -227,7 +227,6 @@ def mris_smooth_intracortical_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSmoothIntracorticalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_smooth_intracortical_cargs(params, execution)
     ret = mris_smooth_intracortical_outputs(params, execution)
     execution.run(cargs)

@@ -278,7 +278,6 @@ def xmat_tool_py_execute(
     Returns:
         NamedTuple of outputs (described in `XmatToolPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xmat_tool_py_cargs(params, execution)
     ret = xmat_tool_py_outputs(params, execution)
     execution.run(cargs)

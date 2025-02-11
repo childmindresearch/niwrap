@@ -435,7 +435,6 @@ def mris_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MrisConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_convert_cargs(params, execution)
     ret = mris_convert_outputs(params, execution)
     execution.run(cargs)

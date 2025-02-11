@@ -107,11 +107,7 @@ def dyn_outputs(
     """
     return {
         "mrtransform": mrtransform_outputs,
-        "fslgrad": mrtransform_fslgrad_outputs,
         "export_grad_fsl": mrtransform_export_grad_fsl_outputs,
-        "VariousString": mrtransform_various_string_outputs,
-        "VariousFile": mrtransform_various_file_outputs,
-        "config": mrtransform_config_outputs,
     }.get(t)
 
 
@@ -790,7 +786,6 @@ def mrtransform_execute(
     Returns:
         NamedTuple of outputs (described in `MrtransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrtransform_cargs(params, execution)
     ret = mrtransform_outputs(params, execution)
     execution.run(cargs)

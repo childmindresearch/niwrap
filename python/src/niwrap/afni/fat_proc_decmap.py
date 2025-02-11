@@ -243,7 +243,6 @@ def fat_proc_decmap_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcDecmapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_decmap_cargs(params, execution)
     ret = fat_proc_decmap_outputs(params, execution)
     execution.run(cargs)

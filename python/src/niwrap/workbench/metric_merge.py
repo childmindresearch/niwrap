@@ -65,9 +65,6 @@ def dyn_outputs(
     """
     return {
         "metric-merge": metric_merge_outputs,
-        "metric": metric_merge_metric_outputs,
-        "column": metric_merge_column_outputs,
-        "up_to": metric_merge_up_to_outputs,
     }.get(t)
 
 
@@ -300,7 +297,6 @@ def metric_merge_execute(
     Returns:
         NamedTuple of outputs (described in `MetricMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_merge_cargs(params, execution)
     ret = metric_merge_outputs(params, execution)
     execution.run(cargs)

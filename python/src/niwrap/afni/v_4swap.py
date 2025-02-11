@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "4swap": v_4swap_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def v_4swap_execute(
     Returns:
         NamedTuple of outputs (described in `V4swapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_4swap_cargs(params, execution)
     ret = v_4swap_outputs(params, execution)
     execution.run(cargs)

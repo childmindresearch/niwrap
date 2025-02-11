@@ -253,7 +253,6 @@ def mri_synthmorph_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthmorphOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_synthmorph_cargs(params, execution)
     ret = mri_synthmorph_outputs(params, execution)
     execution.run(cargs)

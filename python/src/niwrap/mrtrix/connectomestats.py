@@ -87,9 +87,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "connectomestats": connectomestats_outputs,
-        "column": connectomestats_column_outputs,
-        "config": connectomestats_config_outputs,
     }.get(t)
 
 
@@ -547,7 +544,6 @@ def connectomestats_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectomestatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = connectomestats_cargs(params, execution)
     ret = connectomestats_outputs(params, execution)
     execution.run(cargs)

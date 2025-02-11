@@ -57,7 +57,6 @@ def dyn_outputs(
     """
     return {
         "volume-gradient": volume_gradient_outputs,
-        "presmooth": volume_gradient_presmooth_outputs,
     }.get(t)
 
 
@@ -239,7 +238,6 @@ def volume_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeGradientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_gradient_cargs(params, execution)
     ret = volume_gradient_outputs(params, execution)
     execution.run(cargs)

@@ -545,7 +545,6 @@ def mri_nl_align_execute(
     Returns:
         NamedTuple of outputs (described in `MriNlAlignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_nl_align_cargs(params, execution)
     ret = mri_nl_align_outputs(params, execution)
     execution.run(cargs)

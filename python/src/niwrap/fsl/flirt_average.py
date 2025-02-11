@@ -166,7 +166,6 @@ def flirt_average_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = flirt_average_cargs(params, execution)
     ret = flirt_average_outputs(params, execution)
     execution.run(cargs)

@@ -136,7 +136,6 @@ def convert_to_jpg_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertToJpgOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_to_jpg_cargs(params, execution)
     ret = convert_to_jpg_outputs(params, execution)
     execution.run(cargs)

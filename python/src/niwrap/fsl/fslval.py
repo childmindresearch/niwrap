@@ -138,7 +138,6 @@ def fslval_execute(
     Returns:
         NamedTuple of outputs (described in `FslvalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslval_cargs(params, execution)
     ret = fslval_outputs(params, execution)
     execution.run(cargs)

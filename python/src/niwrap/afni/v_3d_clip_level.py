@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dClipLevel": v_3d_clip_level_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def v_3d_clip_level_execute(
     Returns:
         NamedTuple of outputs (described in `V3dClipLevelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_clip_level_cargs(params, execution)
     ret = v_3d_clip_level_outputs(params, execution)
     execution.run(cargs)

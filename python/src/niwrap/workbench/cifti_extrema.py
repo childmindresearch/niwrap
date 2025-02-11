@@ -68,7 +68,6 @@ def dyn_outputs(
     """
     return {
         "cifti-extrema": cifti_extrema_outputs,
-        "threshold": cifti_extrema_threshold_outputs,
     }.get(t)
 
 
@@ -313,7 +312,6 @@ def cifti_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_extrema_cargs(params, execution)
     ret = cifti_extrema_outputs(params, execution)
     execution.run(cargs)

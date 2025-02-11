@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rbox": rbox_outputs,
     }.get(t)
 
 
@@ -184,7 +183,6 @@ def rbox_execute(
     Returns:
         NamedTuple of outputs (described in `RboxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rbox_cargs(params, execution)
     ret = rbox_outputs(params, execution)
     execution.run(cargs)

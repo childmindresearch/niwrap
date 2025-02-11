@@ -147,7 +147,6 @@ def v_3d_dtto_dwi_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDttoDwiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_dtto_dwi_cargs(params, execution)
     ret = v_3d_dtto_dwi_outputs(params, execution)
     execution.run(cargs)

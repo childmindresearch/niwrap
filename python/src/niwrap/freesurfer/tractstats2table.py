@@ -205,7 +205,6 @@ def tractstats2table_execute(
     Returns:
         NamedTuple of outputs (described in `Tractstats2tableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tractstats2table_cargs(params, execution)
     ret = tractstats2table_outputs(params, execution)
     execution.run(cargs)

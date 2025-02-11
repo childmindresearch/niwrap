@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsl.5.0.2.xyztrans.sch": fsl_5_0_2_xyztrans_sch_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def fsl_5_0_2_xyztrans_sch_execute(
     Returns:
         NamedTuple of outputs (described in `Fsl502XyztransSchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_5_0_2_xyztrans_sch_cargs(params, execution)
     ret = fsl_5_0_2_xyztrans_sch_outputs(params, execution)
     execution.run(cargs)

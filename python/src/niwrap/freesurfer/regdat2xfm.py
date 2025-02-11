@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "regdat2xfm": regdat2xfm_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def regdat2xfm_execute(
     Returns:
         NamedTuple of outputs (described in `Regdat2xfmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = regdat2xfm_cargs(params, execution)
     ret = regdat2xfm_outputs(params, execution)
     execution.run(cargs)

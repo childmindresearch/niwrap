@@ -303,7 +303,6 @@ def topup_execute(
     Returns:
         NamedTuple of outputs (described in `TopupOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = topup_cargs(params, execution)
     ret = topup_outputs(params, execution)
     execution.run(cargs)

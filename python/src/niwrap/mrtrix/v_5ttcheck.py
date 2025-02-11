@@ -60,8 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "5ttcheck": v_5ttcheck_outputs,
-        "config": v_5ttcheck_config_outputs,
     }.get(t)
 
 
@@ -253,7 +251,6 @@ def v_5ttcheck_execute(
     Returns:
         NamedTuple of outputs (described in `V5ttcheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_5ttcheck_cargs(params, execution)
     ret = v_5ttcheck_outputs(params, execution)
     execution.run(cargs)

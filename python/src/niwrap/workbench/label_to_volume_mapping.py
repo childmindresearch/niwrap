@@ -60,7 +60,6 @@ def dyn_outputs(
     """
     return {
         "label-to-volume-mapping": label_to_volume_mapping_outputs,
-        "ribbon_constrained": label_to_volume_mapping_ribbon_constrained_outputs,
     }.get(t)
 
 
@@ -246,7 +245,6 @@ def label_to_volume_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_to_volume_mapping_cargs(params, execution)
     ret = label_to_volume_mapping_outputs(params, execution)
     execution.run(cargs)

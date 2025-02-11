@@ -134,7 +134,6 @@ def v__get_afni_version_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniVersionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_version_cargs(params, execution)
     ret = v__get_afni_version_outputs(params, execution)
     execution.run(cargs)

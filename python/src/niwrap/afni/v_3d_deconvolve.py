@@ -281,7 +281,6 @@ def v_3d_deconvolve_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDeconvolveOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_deconvolve_cargs(params, execution)
     ret = v_3d_deconvolve_outputs(params, execution)
     execution.run(cargs)

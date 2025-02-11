@@ -165,22 +165,6 @@ def dyn_outputs(
     """
     return {
         "cifti-resample": cifti_resample_outputs,
-        "volume_predilate": cifti_resample_volume_predilate_outputs,
-        "weighted": cifti_resample_weighted_outputs,
-        "surface_postdilate": cifti_resample_surface_postdilate_outputs,
-        "weighted": cifti_resample_weighted_outputs_,
-        "affine": cifti_resample_affine_outputs,
-        "flirt": cifti_resample_flirt_outputs,
-        "warpfield": cifti_resample_warpfield_outputs,
-        "left_spheres": cifti_resample_left_spheres_outputs,
-        "left_area_surfs": cifti_resample_left_area_surfs_outputs,
-        "left_area_metrics": cifti_resample_left_area_metrics_outputs,
-        "right_spheres": cifti_resample_right_spheres_outputs,
-        "right_area_surfs": cifti_resample_right_area_surfs_outputs,
-        "right_area_metrics": cifti_resample_right_area_metrics_outputs,
-        "cerebellum_spheres": cifti_resample_cerebellum_spheres_outputs,
-        "cerebellum_area_surfs": cifti_resample_cerebellum_area_surfs_outputs,
-        "cerebellum_area_metrics": cifti_resample_cerebellum_area_metrics_outputs,
     }.get(t)
 
 
@@ -1123,7 +1107,6 @@ def cifti_resample_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_resample_cargs(params, execution)
     ret = cifti_resample_outputs(params, execution)
     execution.run(cargs)

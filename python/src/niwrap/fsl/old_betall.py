@@ -141,7 +141,6 @@ def old_betall_execute(
     Returns:
         NamedTuple of outputs (described in `OldBetallOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = old_betall_cargs(params, execution)
     ret = old_betall_outputs(params, execution)
     execution.run(cargs)

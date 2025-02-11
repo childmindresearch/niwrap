@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_label_area": mris_label_area_outputs,
     }.get(t)
 
 
@@ -177,7 +176,6 @@ def mris_label_area_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLabelAreaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_label_area_cargs(params, execution)
     ret = mris_label_area_outputs(params, execution)
     execution.run(cargs)

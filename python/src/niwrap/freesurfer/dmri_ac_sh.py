@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_ac.sh": dmri_ac_sh_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def dmri_ac_sh_execute(
     Returns:
         NamedTuple of outputs (described in `DmriAcShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_ac_sh_cargs(params, execution)
     ret = dmri_ac_sh_outputs(params, execution)
     execution.run(cargs)

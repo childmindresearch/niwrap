@@ -74,7 +74,6 @@ def dyn_outputs(
     """
     return {
         "mtnormalise": mtnormalise_outputs,
-        "config": mtnormalise_config_outputs,
         "input_output": mtnormalise_input_output_outputs,
     }.get(t)
 
@@ -447,7 +446,6 @@ def mtnormalise_execute(
     Returns:
         NamedTuple of outputs (described in `MtnormaliseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mtnormalise_cargs(params, execution)
     ret = mtnormalise_outputs(params, execution)
     execution.run(cargs)

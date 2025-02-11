@@ -151,7 +151,6 @@ def imaver_execute(
     Returns:
         NamedTuple of outputs (described in `ImaverOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imaver_cargs(params, execution)
     ret = imaver_outputs(params, execution)
     execution.run(cargs)

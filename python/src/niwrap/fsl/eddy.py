@@ -491,7 +491,6 @@ def eddy_execute(
     Returns:
         NamedTuple of outputs (described in `EddyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = eddy_cargs(params, execution)
     ret = eddy_outputs(params, execution)
     execution.run(cargs)

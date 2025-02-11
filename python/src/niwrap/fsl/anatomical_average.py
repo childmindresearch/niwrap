@@ -201,7 +201,6 @@ def anatomical_average_execute(
     Returns:
         NamedTuple of outputs (described in `AnatomicalAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = anatomical_average_cargs(params, execution)
     ret = anatomical_average_outputs(params, execution)
     execution.run(cargs)

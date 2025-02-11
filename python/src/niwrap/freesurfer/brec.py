@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "brec": brec_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def brec_execute(
     Returns:
         NamedTuple of outputs (described in `BrecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = brec_cargs(params, execution)
     ret = brec_outputs(params, execution)
     execution.run(cargs)

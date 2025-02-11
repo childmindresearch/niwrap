@@ -228,7 +228,6 @@ def vecreg_execute(
     Returns:
         NamedTuple of outputs (described in `VecregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vecreg_cargs(params, execution)
     ret = vecreg_outputs(params, execution)
     execution.run(cargs)

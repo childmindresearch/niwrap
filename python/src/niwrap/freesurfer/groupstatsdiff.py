@@ -64,7 +64,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "groupstatsdiff": groupstatsdiff_outputs,
     }.get(t)
 
 
@@ -272,7 +271,6 @@ def groupstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `GroupstatsdiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = groupstatsdiff_cargs(params, execution)
     ret = groupstatsdiff_outputs(params, execution)
     execution.run(cargs)

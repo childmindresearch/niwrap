@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "imglob": imglob_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def imglob_execute(
     Returns:
         NamedTuple of outputs (described in `ImglobOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imglob_cargs(params, execution)
     ret = imglob_outputs(params, execution)
     execution.run(cargs)

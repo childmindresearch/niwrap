@@ -332,7 +332,6 @@ def epidewarp_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `EpidewarpFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = epidewarp_fsl_cargs(params, execution)
     ret = epidewarp_fsl_outputs(params, execution)
     execution.run(cargs)

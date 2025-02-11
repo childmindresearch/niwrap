@@ -60,7 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "test_tutorials.sh": test_tutorials_sh_outputs,
     }.get(t)
 
 
@@ -224,7 +223,6 @@ def test_tutorials_sh_execute(
     Returns:
         NamedTuple of outputs (described in `TestTutorialsShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = test_tutorials_sh_cargs(params, execution)
     ret = test_tutorials_sh_outputs(params, execution)
     execution.run(cargs)

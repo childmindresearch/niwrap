@@ -403,7 +403,6 @@ def fabber_dualecho_execute(
     Returns:
         NamedTuple of outputs (described in `FabberDualechoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_dualecho_cargs(params, execution)
     ret = fabber_dualecho_outputs(params, execution)
     execution.run(cargs)

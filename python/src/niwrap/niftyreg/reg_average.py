@@ -139,7 +139,6 @@ def reg_average_execute(
     Returns:
         NamedTuple of outputs (described in `RegAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_average_cargs(params, execution)
     ret = reg_average_outputs(params, execution)
     execution.run(cargs)

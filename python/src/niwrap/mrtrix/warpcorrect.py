@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "warpcorrect": warpcorrect_outputs,
-        "config": warpcorrect_config_outputs,
     }.get(t)
 
 
@@ -274,7 +273,6 @@ def warpcorrect_execute(
     Returns:
         NamedTuple of outputs (described in `WarpcorrectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warpcorrect_cargs(params, execution)
     ret = warpcorrect_outputs(params, execution)
     execution.run(cargs)

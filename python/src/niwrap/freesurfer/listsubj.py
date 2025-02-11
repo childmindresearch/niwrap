@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "listsubj": listsubj_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def listsubj_execute(
     Returns:
         NamedTuple of outputs (described in `ListsubjOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = listsubj_cargs(params, execution)
     ret = listsubj_outputs(params, execution)
     execution.run(cargs)

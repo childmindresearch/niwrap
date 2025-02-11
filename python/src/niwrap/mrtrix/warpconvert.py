@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "warpconvert": warpconvert_outputs,
-        "config": warpconvert_config_outputs,
     }.get(t)
 
 
@@ -298,7 +297,6 @@ def warpconvert_execute(
     Returns:
         NamedTuple of outputs (described in `WarpconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warpconvert_cargs(params, execution)
     ret = warpconvert_outputs(params, execution)
     execution.run(cargs)

@@ -148,7 +148,6 @@ def label2flat_execute(
     Returns:
         NamedTuple of outputs (described in `Label2flatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label2flat_cargs(params, execution)
     ret = label2flat_outputs(params, execution)
     execution.run(cargs)

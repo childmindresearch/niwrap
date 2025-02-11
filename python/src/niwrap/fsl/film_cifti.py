@@ -212,7 +212,6 @@ def film_cifti_execute(
     Returns:
         NamedTuple of outputs (described in `FilmCiftiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = film_cifti_cargs(params, execution)
     ret = film_cifti_outputs(params, execution)
     execution.run(cargs)

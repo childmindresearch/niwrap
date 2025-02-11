@@ -156,7 +156,6 @@ def label_geometry_measures_execute(
     Returns:
         NamedTuple of outputs (described in `LabelGeometryMeasuresOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_geometry_measures_cargs(params, execution)
     ret = label_geometry_measures_outputs(params, execution)
     execution.run(cargs)

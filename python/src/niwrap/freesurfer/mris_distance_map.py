@@ -140,7 +140,6 @@ def mris_distance_map_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDistanceMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_distance_map_cargs(params, execution)
     ret = mris_distance_map_outputs(params, execution)
     execution.run(cargs)

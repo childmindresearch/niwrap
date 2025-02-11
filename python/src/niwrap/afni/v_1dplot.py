@@ -98,7 +98,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "1dplot": v_1dplot_outputs,
     }.get(t)
 
 
@@ -607,7 +606,6 @@ def v_1dplot_execute(
     Returns:
         NamedTuple of outputs (described in `V1dplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dplot_cargs(params, execution)
     ret = v_1dplot_outputs(params, execution)
     execution.run(cargs)

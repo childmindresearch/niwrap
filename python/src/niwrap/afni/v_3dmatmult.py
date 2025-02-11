@@ -172,7 +172,6 @@ def v_3dmatmult_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmatmultOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmatmult_cargs(params, execution)
     ret = v_3dmatmult_outputs(params, execution)
     execution.run(cargs)

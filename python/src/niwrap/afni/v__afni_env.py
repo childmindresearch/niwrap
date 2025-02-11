@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@AfniEnv": v__afni_env_outputs,
     }.get(t)
 
 
@@ -190,7 +189,6 @@ def v__afni_env_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniEnvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_env_cargs(params, execution)
     ret = v__afni_env_outputs(params, execution)
     execution.run(cargs)

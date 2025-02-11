@@ -64,8 +64,6 @@ def dyn_outputs(
     """
     return {
         "SimulateDisplacementField": simulate_displacement_field_outputs,
-        "bspline_options": simulate_displacement_field_bspline_options_outputs,
-        "exponential_options": simulate_displacement_field_exponential_options_outputs,
     }.get(t)
 
 
@@ -277,7 +275,6 @@ def simulate_displacement_field_execute(
     Returns:
         NamedTuple of outputs (described in `SimulateDisplacementFieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = simulate_displacement_field_cargs(params, execution)
     ret = simulate_displacement_field_outputs(params, execution)
     execution.run(cargs)

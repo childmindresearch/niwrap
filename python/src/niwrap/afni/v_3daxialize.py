@@ -186,7 +186,6 @@ def v_3daxialize_execute(
     Returns:
         NamedTuple of outputs (described in `V3daxializeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3daxialize_cargs(params, execution)
     ret = v_3daxialize_outputs(params, execution)
     execution.run(cargs)

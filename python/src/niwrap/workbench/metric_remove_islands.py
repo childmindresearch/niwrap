@@ -159,7 +159,6 @@ def metric_remove_islands_execute(
     Returns:
         NamedTuple of outputs (described in `MetricRemoveIslandsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_remove_islands_cargs(params, execution)
     ret = metric_remove_islands_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dWarp": v_3d_warp_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def v_3d_warp_execute(
     Returns:
         NamedTuple of outputs (described in `V3dWarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_warp_cargs(params, execution)
     ret = v_3d_warp_outputs(params, execution)
     execution.run(cargs)

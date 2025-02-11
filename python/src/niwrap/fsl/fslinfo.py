@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslinfo": fslinfo_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def fslinfo_execute(
     Returns:
         NamedTuple of outputs (described in `FslinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslinfo_cargs(params, execution)
     ret = fslinfo_outputs(params, execution)
     execution.run(cargs)

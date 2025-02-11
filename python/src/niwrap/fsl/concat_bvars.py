@@ -134,7 +134,6 @@ def concat_bvars_execute(
     Returns:
         NamedTuple of outputs (described in `ConcatBvarsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = concat_bvars_cargs(params, execution)
     ret = concat_bvars_outputs(params, execution)
     execution.run(cargs)

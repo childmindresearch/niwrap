@@ -208,7 +208,6 @@ def test_recon_all_csh_execute(
     Returns:
         NamedTuple of outputs (described in `TestReconAllCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = test_recon_all_csh_cargs(params, execution)
     ret = test_recon_all_csh_outputs(params, execution)
     execution.run(cargs)

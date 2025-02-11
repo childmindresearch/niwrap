@@ -260,7 +260,6 @@ def mris_curvature_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCurvatureOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_curvature_cargs(params, execution)
     ret = mris_curvature_outputs(params, execution)
     execution.run(cargs)

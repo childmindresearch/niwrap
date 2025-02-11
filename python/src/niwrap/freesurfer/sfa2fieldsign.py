@@ -228,7 +228,6 @@ def sfa2fieldsign_execute(
     Returns:
         NamedTuple of outputs (described in `Sfa2fieldsignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sfa2fieldsign_cargs(params, execution)
     ret = sfa2fieldsign_outputs(params, execution)
     execution.run(cargs)

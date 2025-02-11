@@ -252,7 +252,6 @@ def v_3dpc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dpcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dpc_cargs(params, execution)
     ret = v_3dpc_outputs(params, execution)
     execution.run(cargs)

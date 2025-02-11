@@ -346,7 +346,6 @@ def mri_cvs_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriCvsRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_cvs_register_cargs(params, execution)
     ret = mri_cvs_register_outputs(params, execution)
     execution.run(cargs)

@@ -220,7 +220,6 @@ def make_segvol_table_execute(
     Returns:
         NamedTuple of outputs (described in `MakeSegvolTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_segvol_table_cargs(params, execution)
     ret = make_segvol_table_outputs(params, execution)
     execution.run(cargs)

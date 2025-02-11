@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "metadata-remove-provenance": metadata_remove_provenance_outputs,
     }.get(t)
 
 
@@ -138,7 +137,6 @@ def metadata_remove_provenance_execute(
     Returns:
         NamedTuple of outputs (described in `MetadataRemoveProvenanceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metadata_remove_provenance_cargs(params, execution)
     ret = metadata_remove_provenance_outputs(params, execution)
     execution.run(cargs)

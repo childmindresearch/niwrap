@@ -69,10 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "convert-warpfield": convert_warpfield_outputs,
-        "from_world": convert_warpfield_from_world_outputs,
-        "from_fnirt": convert_warpfield_from_fnirt_outputs,
-        "to_fnirt": convert_warpfield_to_fnirt_outputs,
     }.get(t)
 
 
@@ -346,7 +342,6 @@ def convert_warpfield_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertWarpfieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_warpfield_cargs(params, execution)
     ret = convert_warpfield_outputs(params, execution)
     execution.run(cargs)

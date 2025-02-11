@@ -172,7 +172,6 @@ def stimband_execute(
     Returns:
         NamedTuple of outputs (described in `StimbandOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = stimband_cargs(params, execution)
     ret = stimband_outputs(params, execution)
     execution.run(cargs)

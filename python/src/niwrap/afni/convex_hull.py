@@ -287,7 +287,6 @@ def convex_hull_execute(
     Returns:
         NamedTuple of outputs (described in `ConvexHullOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convex_hull_cargs(params, execution)
     ret = convex_hull_outputs(params, execution)
     execution.run(cargs)

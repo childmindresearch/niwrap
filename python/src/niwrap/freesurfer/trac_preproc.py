@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "trac-preproc": trac_preproc_outputs,
     }.get(t)
 
 
@@ -216,7 +215,6 @@ def trac_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `TracPreprocOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = trac_preproc_cargs(params, execution)
     ret = trac_preproc_outputs(params, execution)
     execution.run(cargs)

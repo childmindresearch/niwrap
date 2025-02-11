@@ -143,7 +143,6 @@ def slicesmask_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slicesmask_cargs(params, execution)
     ret = slicesmask_outputs(params, execution)
     execution.run(cargs)

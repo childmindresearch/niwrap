@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "morph_subject-rh": morph_subject_rh_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def morph_subject_rh_execute(
     Returns:
         NamedTuple of outputs (described in `MorphSubjectRhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = morph_subject_rh_cargs(params, execution)
     ret = morph_subject_rh_outputs(params, execution)
     execution.run(cargs)

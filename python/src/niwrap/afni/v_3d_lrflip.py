@@ -151,7 +151,6 @@ def v_3d_lrflip_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLrflipOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_lrflip_cargs(params, execution)
     ret = v_3d_lrflip_outputs(params, execution)
     execution.run(cargs)

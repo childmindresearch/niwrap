@@ -71,9 +71,6 @@ def dyn_outputs(
     """
     return {
         "cifti-false-correlation": cifti_false_correlation_outputs,
-        "left_surface": cifti_false_correlation_left_surface_outputs,
-        "right_surface": cifti_false_correlation_right_surface_outputs,
-        "cerebellum_surface": cifti_false_correlation_cerebellum_surface_outputs,
     }.get(t)
 
 
@@ -344,7 +341,6 @@ def cifti_false_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiFalseCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_false_correlation_cargs(params, execution)
     ret = cifti_false_correlation_outputs(params, execution)
     execution.run(cargs)

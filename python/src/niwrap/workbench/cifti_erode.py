@@ -72,9 +72,6 @@ def dyn_outputs(
     """
     return {
         "cifti-erode": cifti_erode_outputs,
-        "left_surface": cifti_erode_left_surface_outputs,
-        "right_surface": cifti_erode_right_surface_outputs,
-        "cerebellum_surface": cifti_erode_cerebellum_surface_outputs,
     }.get(t)
 
 
@@ -356,7 +353,6 @@ def cifti_erode_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiErodeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_erode_cargs(params, execution)
     ret = cifti_erode_outputs(params, execution)
     execution.run(cargs)

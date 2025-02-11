@@ -183,7 +183,6 @@ def v_3d_tnorm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTnormOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tnorm_cargs(params, execution)
     ret = v_3d_tnorm_outputs(params, execution)
     execution.run(cargs)

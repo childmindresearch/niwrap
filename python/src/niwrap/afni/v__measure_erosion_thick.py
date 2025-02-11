@@ -251,7 +251,6 @@ def v__measure_erosion_thick_execute(
     Returns:
         NamedTuple of outputs (described in `VMeasureErosionThickOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__measure_erosion_thick_cargs(params, execution)
     ret = v__measure_erosion_thick_outputs(params, execution)
     execution.run(cargs)

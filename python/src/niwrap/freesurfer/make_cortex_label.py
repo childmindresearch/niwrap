@@ -164,7 +164,6 @@ def make_cortex_label_execute(
     Returns:
         NamedTuple of outputs (described in `MakeCortexLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_cortex_label_cargs(params, execution)
     ret = make_cortex_label_outputs(params, execution)
     execution.run(cargs)

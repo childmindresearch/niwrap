@@ -307,7 +307,6 @@ def v__radial_correlate_execute(
     Returns:
         NamedTuple of outputs (described in `VRadialCorrelateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__radial_correlate_cargs(params, execution)
     ret = v__radial_correlate_outputs(params, execution)
     execution.run(cargs)

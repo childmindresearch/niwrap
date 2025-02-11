@@ -229,7 +229,6 @@ def feat2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Feat2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = feat2surf_cargs(params, execution)
     ret = feat2surf_outputs(params, execution)
     execution.run(cargs)

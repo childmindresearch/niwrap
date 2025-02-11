@@ -66,8 +66,6 @@ def dyn_outputs(
     """
     return {
         "cifti-average-roi-correlation": cifti_average_roi_correlation_outputs,
-        "cifti_roi": cifti_average_roi_correlation_cifti_roi_outputs,
-        "cifti": cifti_average_roi_correlation_cifti_outputs,
     }.get(t)
 
 
@@ -326,7 +324,6 @@ def cifti_average_roi_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAverageRoiCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_average_roi_correlation_cargs(params, execution)
     ret = cifti_average_roi_correlation_outputs(params, execution)
     execution.run(cargs)

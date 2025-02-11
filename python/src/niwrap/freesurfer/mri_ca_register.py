@@ -457,7 +457,6 @@ def mri_ca_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriCaRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_ca_register_cargs(params, execution)
     ret = mri_ca_register_outputs(params, execution)
     execution.run(cargs)

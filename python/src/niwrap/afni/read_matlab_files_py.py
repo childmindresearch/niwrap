@@ -167,7 +167,6 @@ def read_matlab_files_py_execute(
     Returns:
         NamedTuple of outputs (described in `ReadMatlabFilesPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = read_matlab_files_py_cargs(params, execution)
     ret = read_matlab_files_py_outputs(params, execution)
     execution.run(cargs)

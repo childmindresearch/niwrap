@@ -311,7 +311,6 @@ def metric_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MetricConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_convert_cargs(params, execution)
     ret = metric_convert_outputs(params, execution)
     execution.run(cargs)

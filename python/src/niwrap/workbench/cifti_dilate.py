@@ -75,9 +75,6 @@ def dyn_outputs(
     """
     return {
         "cifti-dilate": cifti_dilate_outputs,
-        "left_surface": cifti_dilate_left_surface_outputs,
-        "right_surface": cifti_dilate_right_surface_outputs,
-        "cerebellum_surface": cifti_dilate_cerebellum_surface_outputs,
     }.get(t)
 
 
@@ -388,7 +385,6 @@ def cifti_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiDilateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_dilate_cargs(params, execution)
     ret = cifti_dilate_outputs(params, execution)
     execution.run(cargs)

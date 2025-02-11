@@ -264,7 +264,6 @@ def surf_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `SurfFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_fwhm_cargs(params, execution)
     ret = surf_fwhm_outputs(params, execution)
     execution.run(cargs)

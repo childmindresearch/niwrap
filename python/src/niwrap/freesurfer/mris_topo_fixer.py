@@ -138,7 +138,6 @@ def mris_topo_fixer_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTopoFixerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_topo_fixer_cargs(params, execution)
     ret = mris_topo_fixer_outputs(params, execution)
     execution.run(cargs)

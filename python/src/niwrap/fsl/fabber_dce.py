@@ -413,7 +413,6 @@ def fabber_dce_execute(
     Returns:
         NamedTuple of outputs (described in `FabberDceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_dce_cargs(params, execution)
     ret = fabber_dce_outputs(params, execution)
     execution.run(cargs)

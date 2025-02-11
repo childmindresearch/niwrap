@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "imrm": imrm_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def imrm_execute(
     Returns:
         NamedTuple of outputs (described in `ImrmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imrm_cargs(params, execution)
     ret = imrm_outputs(params, execution)
     execution.run(cargs)

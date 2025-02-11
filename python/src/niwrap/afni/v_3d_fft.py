@@ -225,7 +225,6 @@ def v_3d_fft_execute(
     Returns:
         NamedTuple of outputs (described in `V3dFftOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_fft_cargs(params, execution)
     ret = v_3d_fft_outputs(params, execution)
     execution.run(cargs)

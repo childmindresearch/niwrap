@@ -147,7 +147,6 @@ def connectedcomp_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectedcompOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = connectedcomp_cargs(params, execution)
     ret = connectedcomp_outputs(params, execution)
     execution.run(cargs)

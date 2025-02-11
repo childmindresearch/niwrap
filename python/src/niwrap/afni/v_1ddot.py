@@ -181,7 +181,6 @@ def v_1ddot_execute(
     Returns:
         NamedTuple of outputs (described in `V1ddotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1ddot_cargs(params, execution)
     ret = v_1ddot_outputs(params, execution)
     execution.run(cargs)

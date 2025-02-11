@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "check_recons.sh": check_recons_sh_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def check_recons_sh_execute(
     Returns:
         NamedTuple of outputs (described in `CheckReconsShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = check_recons_sh_cargs(params, execution)
     ret = check_recons_sh_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "unpack_ima.tcl": unpack_ima_tcl_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def unpack_ima_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackImaTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpack_ima_tcl_cargs(params, execution)
     ret = unpack_ima_tcl_outputs(params, execution)
     execution.run(cargs)

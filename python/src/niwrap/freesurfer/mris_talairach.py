@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_talairach": mris_talairach_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def mris_talairach_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTalairachOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_talairach_cargs(params, execution)
     ret = mris_talairach_outputs(params, execution)
     execution.run(cargs)

@@ -189,7 +189,6 @@ def slices_summary_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesSummaryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slices_summary_cargs(params, execution)
     ret = slices_summary_outputs(params, execution)
     execution.run(cargs)

@@ -163,7 +163,6 @@ def beta2sxa_execute(
     Returns:
         NamedTuple of outputs (described in `Beta2sxaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = beta2sxa_cargs(params, execution)
     ret = beta2sxa_outputs(params, execution)
     execution.run(cargs)

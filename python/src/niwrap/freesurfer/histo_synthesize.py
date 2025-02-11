@@ -144,7 +144,6 @@ def histo_synthesize_execute(
     Returns:
         NamedTuple of outputs (described in `HistoSynthesizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = histo_synthesize_cargs(params, execution)
     ret = histo_synthesize_outputs(params, execution)
     execution.run(cargs)

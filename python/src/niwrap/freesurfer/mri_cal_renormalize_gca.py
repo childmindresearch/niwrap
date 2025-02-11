@@ -153,7 +153,6 @@ def mri_cal_renormalize_gca_execute(
     Returns:
         NamedTuple of outputs (described in `MriCalRenormalizeGcaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_cal_renormalize_gca_cargs(params, execution)
     ret = mri_cal_renormalize_gca_outputs(params, execution)
     execution.run(cargs)

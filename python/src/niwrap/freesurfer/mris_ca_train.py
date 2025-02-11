@@ -333,7 +333,6 @@ def mris_ca_train_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCaTrainOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_ca_train_cargs(params, execution)
     ret = mris_ca_train_outputs(params, execution)
     execution.run(cargs)

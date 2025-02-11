@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "freeview": freeview_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def freeview_execute(
     Returns:
         NamedTuple of outputs (described in `FreeviewOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = freeview_cargs(params, execution)
     ret = freeview_outputs(params, execution)
     execution.run(cargs)

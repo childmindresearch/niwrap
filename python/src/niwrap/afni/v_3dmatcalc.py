@@ -167,7 +167,6 @@ def v_3dmatcalc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmatcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmatcalc_cargs(params, execution)
     ret = v_3dmatcalc_outputs(params, execution)
     execution.run(cargs)

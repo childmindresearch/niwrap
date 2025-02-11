@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "diffusionUtils": diffusion_utils_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def diffusion_utils_execute(
     Returns:
         NamedTuple of outputs (described in `DiffusionUtilsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = diffusion_utils_cargs(params, execution)
     ret = diffusion_utils_outputs(params, execution)
     execution.run(cargs)

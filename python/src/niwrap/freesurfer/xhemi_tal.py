@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "xhemi-tal": xhemi_tal_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def xhemi_tal_execute(
     Returns:
         NamedTuple of outputs (described in `XhemiTalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xhemi_tal_cargs(params, execution)
     ret = xhemi_tal_outputs(params, execution)
     execution.run(cargs)

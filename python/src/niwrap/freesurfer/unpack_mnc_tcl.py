@@ -154,7 +154,6 @@ def unpack_mnc_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackMncTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpack_mnc_tcl_cargs(params, execution)
     ret = unpack_mnc_tcl_outputs(params, execution)
     execution.run(cargs)

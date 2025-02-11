@@ -228,7 +228,6 @@ def v_2d_im_reg_execute(
     Returns:
         NamedTuple of outputs (described in `V2dImRegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_2d_im_reg_cargs(params, execution)
     ret = v_2d_im_reg_outputs(params, execution)
     execution.run(cargs)

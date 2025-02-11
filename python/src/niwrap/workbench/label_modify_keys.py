@@ -169,7 +169,6 @@ def label_modify_keys_execute(
     Returns:
         NamedTuple of outputs (described in `LabelModifyKeysOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_modify_keys_cargs(params, execution)
     ret = label_modify_keys_outputs(params, execution)
     execution.run(cargs)

@@ -142,7 +142,6 @@ def morph_tables_lh_execute(
     Returns:
         NamedTuple of outputs (described in `MorphTablesLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = morph_tables_lh_cargs(params, execution)
     ret = morph_tables_lh_outputs(params, execution)
     execution.run(cargs)

@@ -208,7 +208,6 @@ def pta_execute(
     Returns:
         NamedTuple of outputs (described in `PtaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pta_cargs(params, execution)
     ret = pta_outputs(params, execution)
     execution.run(cargs)

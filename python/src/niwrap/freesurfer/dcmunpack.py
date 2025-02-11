@@ -82,7 +82,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dcmunpack": dcmunpack_outputs,
     }.get(t)
 
 
@@ -432,7 +431,6 @@ def dcmunpack_execute(
     Returns:
         NamedTuple of outputs (described in `DcmunpackOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmunpack_cargs(params, execution)
     ret = dcmunpack_outputs(params, execution)
     execution.run(cargs)

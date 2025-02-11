@@ -580,7 +580,6 @@ def mri_volcluster_execute(
     Returns:
         NamedTuple of outputs (described in `MriVolclusterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_volcluster_cargs(params, execution)
     ret = mri_volcluster_outputs(params, execution)
     execution.run(cargs)

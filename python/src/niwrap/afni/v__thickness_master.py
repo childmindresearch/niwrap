@@ -162,7 +162,6 @@ def v__thickness_master_execute(
     Returns:
         NamedTuple of outputs (described in `VThicknessMasterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__thickness_master_cargs(params, execution)
     ret = v__thickness_master_outputs(params, execution)
     execution.run(cargs)

@@ -68,9 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mrstats": mrstats_outputs,
-        "output": mrstats_output_outputs,
-        "config": mrstats_config_outputs,
     }.get(t)
 
 
@@ -326,7 +323,6 @@ def mrstats_execute(
     Returns:
         NamedTuple of outputs (described in `MrstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrstats_cargs(params, execution)
     ret = mrstats_outputs(params, execution)
     execution.run(cargs)

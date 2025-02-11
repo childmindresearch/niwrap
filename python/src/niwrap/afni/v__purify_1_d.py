@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@Purify_1D": v__purify_1_d_outputs,
     }.get(t)
 
 
@@ -152,7 +151,6 @@ def v__purify_1_d_execute(
     Returns:
         NamedTuple of outputs (described in `VPurify1DOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__purify_1_d_cargs(params, execution)
     ret = v__purify_1_d_outputs(params, execution)
     execution.run(cargs)

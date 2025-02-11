@@ -141,7 +141,6 @@ def mri_brain_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MriBrainVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_brain_volume_cargs(params, execution)
     ret = mri_brain_volume_outputs(params, execution)
     execution.run(cargs)

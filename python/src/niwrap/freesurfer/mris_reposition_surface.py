@@ -190,7 +190,6 @@ def mris_reposition_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRepositionSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_reposition_surface_cargs(params, execution)
     ret = mris_reposition_surface_outputs(params, execution)
     execution.run(cargs)

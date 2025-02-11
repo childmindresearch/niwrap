@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fs_lib_check": fs_lib_check_outputs,
     }.get(t)
 
 
@@ -155,7 +154,6 @@ def fs_lib_check_execute(
     Returns:
         NamedTuple of outputs (described in `FsLibCheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_lib_check_cargs(params, execution)
     ret = fs_lib_check_outputs(params, execution)
     execution.run(cargs)

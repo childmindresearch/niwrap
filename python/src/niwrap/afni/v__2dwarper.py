@@ -133,7 +133,6 @@ def v__2dwarper_execute(
     Returns:
         NamedTuple of outputs (described in `V2dwarperOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__2dwarper_cargs(params, execution)
     ret = v__2dwarper_outputs(params, execution)
     execution.run(cargs)

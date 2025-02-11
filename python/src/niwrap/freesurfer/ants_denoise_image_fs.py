@@ -151,7 +151,6 @@ def ants_denoise_image_fs_execute(
     Returns:
         NamedTuple of outputs (described in `AntsDenoiseImageFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_denoise_image_fs_cargs(params, execution)
     ret = ants_denoise_image_fs_outputs(params, execution)
     execution.run(cargs)

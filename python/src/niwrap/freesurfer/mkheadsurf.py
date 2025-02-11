@@ -71,7 +71,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mkheadsurf": mkheadsurf_outputs,
     }.get(t)
 
 
@@ -369,7 +368,6 @@ def mkheadsurf_execute(
     Returns:
         NamedTuple of outputs (described in `MkheadsurfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mkheadsurf_cargs(params, execution)
     ret = mkheadsurf_outputs(params, execution)
     execution.run(cargs)

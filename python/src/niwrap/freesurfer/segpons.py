@@ -174,7 +174,6 @@ def segpons_execute(
     Returns:
         NamedTuple of outputs (described in `SegponsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segpons_cargs(params, execution)
     ret = segpons_outputs(params, execution)
     execution.run(cargs)

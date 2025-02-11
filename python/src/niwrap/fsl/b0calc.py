@@ -265,7 +265,6 @@ def b0calc_execute(
     Returns:
         NamedTuple of outputs (described in `B0calcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = b0calc_cargs(params, execution)
     ret = b0calc_outputs(params, execution)
     execution.run(cargs)

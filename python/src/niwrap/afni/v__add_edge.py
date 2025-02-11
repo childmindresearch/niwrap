@@ -257,7 +257,6 @@ def v__add_edge_execute(
     Returns:
         NamedTuple of outputs (described in `VAddEdgeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__add_edge_cargs(params, execution)
     ret = v__add_edge_outputs(params, execution)
     execution.run(cargs)

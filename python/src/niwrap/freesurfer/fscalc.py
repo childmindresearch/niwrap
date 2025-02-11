@@ -197,7 +197,6 @@ def fscalc_execute(
     Returns:
         NamedTuple of outputs (described in `FscalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fscalc_cargs(params, execution)
     ret = fscalc_outputs(params, execution)
     execution.run(cargs)

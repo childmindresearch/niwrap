@@ -171,7 +171,6 @@ def surface_cortex_layer_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCortexLayerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_cortex_layer_cargs(params, execution)
     ret = surface_cortex_layer_outputs(params, execution)
     execution.run(cargs)

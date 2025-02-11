@@ -205,7 +205,6 @@ def fsl_boxplot_execute(
     Returns:
         NamedTuple of outputs (described in `FslBoxplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_boxplot_cargs(params, execution)
     ret = fsl_boxplot_outputs(params, execution)
     execution.run(cargs)

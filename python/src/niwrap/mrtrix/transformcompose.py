@@ -71,10 +71,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "transformcompose": transformcompose_outputs,
-        "config": transformcompose_config_outputs,
-        "VariousString": transformcompose_various_string_outputs,
-        "VariousFile": transformcompose_various_file_outputs,
     }.get(t)
 
 
@@ -357,7 +353,6 @@ def transformcompose_execute(
     Returns:
         NamedTuple of outputs (described in `TransformcomposeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = transformcompose_cargs(params, execution)
     ret = transformcompose_outputs(params, execution)
     execution.run(cargs)

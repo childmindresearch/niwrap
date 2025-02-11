@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "talairach_afd": talairach_afd_outputs,
     }.get(t)
 
 
@@ -172,7 +171,6 @@ def talairach_afd_execute(
     Returns:
         NamedTuple of outputs (described in `TalairachAfdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = talairach_afd_cargs(params, execution)
     ret = talairach_afd_outputs(params, execution)
     execution.run(cargs)

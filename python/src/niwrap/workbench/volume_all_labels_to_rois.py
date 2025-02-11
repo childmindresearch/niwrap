@@ -148,7 +148,6 @@ def volume_all_labels_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeAllLabelsToRoisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_all_labels_to_rois_cargs(params, execution)
     ret = volume_all_labels_to_rois_outputs(params, execution)
     execution.run(cargs)

@@ -416,7 +416,6 @@ def fabber_dwi_execute(
     Returns:
         NamedTuple of outputs (described in `FabberDwiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_dwi_cargs(params, execution)
     ret = fabber_dwi_outputs(params, execution)
     execution.run(cargs)

@@ -81,9 +81,6 @@ def dyn_outputs(
     """
     return {
         "tckconvert": tckconvert_outputs,
-        "config": tckconvert_config_outputs,
-        "VariousString": tckconvert_various_string_outputs,
-        "VariousFile": tckconvert_various_file_outputs,
     }.get(t)
 
 
@@ -441,7 +438,6 @@ def tckconvert_execute(
     Returns:
         NamedTuple of outputs (described in `TckconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckconvert_cargs(params, execution)
     ret = tckconvert_outputs(params, execution)
     execution.run(cargs)

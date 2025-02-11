@@ -187,7 +187,6 @@ def map_track_id_execute(
     Returns:
         NamedTuple of outputs (described in `MapTrackIdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = map_track_id_cargs(params, execution)
     ret = map_track_id_outputs(params, execution)
     execution.run(cargs)

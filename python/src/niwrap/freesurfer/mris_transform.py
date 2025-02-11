@@ -172,7 +172,6 @@ def mris_transform_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_transform_cargs(params, execution)
     ret = mris_transform_outputs(params, execution)
     execution.run(cargs)

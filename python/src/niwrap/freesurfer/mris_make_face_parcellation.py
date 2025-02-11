@@ -153,7 +153,6 @@ def mris_make_face_parcellation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMakeFaceParcellationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_make_face_parcellation_cargs(params, execution)
     ret = mris_make_face_parcellation_outputs(params, execution)
     execution.run(cargs)

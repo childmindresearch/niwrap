@@ -162,7 +162,6 @@ def v__noisy_skull_strip_execute(
     Returns:
         NamedTuple of outputs (described in `VNoisySkullStripOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__noisy_skull_strip_cargs(params, execution)
     ret = v__noisy_skull_strip_outputs(params, execution)
     execution.run(cargs)

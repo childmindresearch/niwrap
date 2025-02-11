@@ -134,7 +134,6 @@ def fname2ext_execute(
     Returns:
         NamedTuple of outputs (described in `Fname2extOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fname2ext_cargs(params, execution)
     ret = fname2ext_outputs(params, execution)
     execution.run(cargs)

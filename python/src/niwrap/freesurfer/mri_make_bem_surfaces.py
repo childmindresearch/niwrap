@@ -143,7 +143,6 @@ def mri_make_bem_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MriMakeBemSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_make_bem_surfaces_cargs(params, execution)
     ret = mri_make_bem_surfaces_outputs(params, execution)
     execution.run(cargs)

@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri-func2sph": mri_func2sph_outputs,
     }.get(t)
 
 
@@ -197,7 +196,6 @@ def mri_func2sph_execute(
     Returns:
         NamedTuple of outputs (described in `MriFunc2sphOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_func2sph_cargs(params, execution)
     ret = mri_func2sph_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsvglrun": fsvglrun_outputs,
     }.get(t)
 
 
@@ -161,7 +160,6 @@ def fsvglrun_execute(
     Returns:
         NamedTuple of outputs (described in `FsvglrunOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsvglrun_cargs(params, execution)
     ret = fsvglrun_outputs(params, execution)
     execution.run(cargs)

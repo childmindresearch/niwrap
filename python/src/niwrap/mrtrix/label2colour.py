@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "label2colour": label2colour_outputs,
-        "config": label2colour_config_outputs,
     }.get(t)
 
 
@@ -262,7 +261,6 @@ def label2colour_execute(
     Returns:
         NamedTuple of outputs (described in `Label2colourOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label2colour_cargs(params, execution)
     ret = label2colour_outputs(params, execution)
     execution.run(cargs)

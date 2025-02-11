@@ -186,7 +186,6 @@ def dual_regression_execute(
     Returns:
         NamedTuple of outputs (described in `DualRegressionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dual_regression_cargs(params, execution)
     ret = dual_regression_outputs(params, execution)
     execution.run(cargs)

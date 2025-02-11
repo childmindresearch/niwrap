@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "plugout_tta": plugout_tta_outputs,
     }.get(t)
 
 
@@ -213,7 +212,6 @@ def plugout_tta_execute(
     Returns:
         NamedTuple of outputs (described in `PlugoutTtaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = plugout_tta_cargs(params, execution)
     ret = plugout_tta_outputs(params, execution)
     execution.run(cargs)

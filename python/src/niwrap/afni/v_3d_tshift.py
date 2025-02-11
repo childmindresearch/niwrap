@@ -251,7 +251,6 @@ def v_3d_tshift_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTshiftOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tshift_cargs(params, execution)
     ret = v_3d_tshift_outputs(params, execution)
     execution.run(cargs)

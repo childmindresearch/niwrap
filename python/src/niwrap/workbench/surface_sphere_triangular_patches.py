@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surface-sphere-triangular-patches": surface_sphere_triangular_patches_outputs,
     }.get(t)
 
 
@@ -145,7 +144,6 @@ def surface_sphere_triangular_patches_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_sphere_triangular_patches_cargs(params, execution)
     ret = surface_sphere_triangular_patches_outputs(params, execution)
     execution.run(cargs)

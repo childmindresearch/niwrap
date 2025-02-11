@@ -168,7 +168,6 @@ def surf_retino_map_execute(
     Returns:
         NamedTuple of outputs (described in `SurfRetinoMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_retino_map_cargs(params, execution)
     ret = surf_retino_map_outputs(params, execution)
     execution.run(cargs)

@@ -54,8 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "set-map-names": set_map_names_outputs,
-        "map": set_map_names_map_outputs,
     }.get(t)
 
 
@@ -213,7 +211,6 @@ def set_map_names_execute(
     Returns:
         NamedTuple of outputs (described in `SetMapNamesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = set_map_names_cargs(params, execution)
     ret = set_map_names_outputs(params, execution)
     execution.run(cargs)

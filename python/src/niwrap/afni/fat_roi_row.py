@@ -173,7 +173,6 @@ def fat_roi_row_execute(
     Returns:
         NamedTuple of outputs (described in `FatRoiRowOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_roi_row_cargs(params, execution)
     ret = fat_roi_row_outputs(params, execution)
     execution.run(cargs)

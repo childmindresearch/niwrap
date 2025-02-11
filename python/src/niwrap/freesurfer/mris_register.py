@@ -688,7 +688,6 @@ def mris_register_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_register_cargs(params, execution)
     ret = mris_register_outputs(params, execution)
     execution.run(cargs)

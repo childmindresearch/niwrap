@@ -151,22 +151,6 @@ def dyn_outputs(
         "warpedOutput": ants_apply_transforms_warped_output_outputs,
         "compositeDisplacementFieldOutput": ants_apply_transforms_composite_displacement_field_output_outputs,
         "genericAffineTransformOutput": ants_apply_transforms_generic_affine_transform_output_outputs,
-        "linear": ants_apply_transforms_linear_outputs,
-        "nearestNeighbor": ants_apply_transforms_nearest_neighbor_outputs,
-        "multiLabelnoparams": ants_apply_transforms_multi_labelnoparams_outputs,
-        "multiLabel": ants_apply_transforms_multi_label_outputs,
-        "params": ants_apply_transforms_param_outputs,
-        "sigma": ants_apply_transforms_sigma_outputs,
-        "alpha": ants_apply_transforms_alpha_outputs,
-        "gaussian": ants_apply_transforms_gaussian_outputs,
-        "bspline": ants_apply_transforms_bspline_outputs,
-        "cosineWindowedSinc": ants_apply_transforms_cosine_windowed_sinc_outputs,
-        "welchWindowedSinc": ants_apply_transforms_welch_windowed_sinc_outputs,
-        "hammingWindowedSinc": ants_apply_transforms_hamming_windowed_sinc_outputs,
-        "lanczosWindowedSinc": ants_apply_transforms_lanczos_windowed_sinc_outputs,
-        "genericLabel": ants_apply_transforms_generic_label_outputs,
-        "transformFileName": ants_apply_transforms_transform_file_name_outputs,
-        "useInverse": ants_apply_transforms_use_inverse_outputs,
     }.get(t)
 
 
@@ -1162,7 +1146,6 @@ def ants_apply_transforms_execute(
     Returns:
         NamedTuple of outputs (described in `AntsApplyTransformsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_apply_transforms_cargs(params, execution)
     ret = ants_apply_transforms_outputs(params, execution)
     execution.run(cargs)

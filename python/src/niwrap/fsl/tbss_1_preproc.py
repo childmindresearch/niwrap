@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tbss_1_preproc": tbss_1_preproc_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def tbss_1_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss1PreprocOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_1_preproc_cargs(params, execution)
     ret = tbss_1_preproc_outputs(params, execution)
     execution.run(cargs)

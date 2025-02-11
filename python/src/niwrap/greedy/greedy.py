@@ -179,13 +179,9 @@ def dyn_outputs(
     """
     return {
         "greedy": greedy_outputs,
-        "input_images": greedy_input_images_outputs,
         "invert": greedy_invert_outputs,
         "root": greedy_root_outputs,
         "jacobian": greedy_jacobian_outputs,
-        "metric": greedy_metric_outputs,
-        "tjr": greedy_tjr_outputs,
-        "search": greedy_search_outputs,
         "reslice_moving_image": greedy_reslice_moving_image_outputs,
         "reslice_surface": greedy_reslice_surface_outputs,
         "reslice_simplex_jacobian": greedy_reslice_simplex_jacobian_outputs,
@@ -1483,7 +1479,6 @@ def greedy_execute(
     Returns:
         NamedTuple of outputs (described in `GreedyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = greedy_cargs(params, execution)
     ret = greedy_outputs(params, execution)
     execution.run(cargs)

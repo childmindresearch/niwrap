@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "run_segmentSubjectT2_autoEstimateAlveusML.sh": run_segment_subject_t2_auto_estimate_alveus_ml_sh_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def run_segment_subject_t2_auto_estimate_alveus_ml_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunSegmentSubjectT2AutoEstimateAlveusMlShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_segment_subject_t2_auto_estimate_alveus_ml_sh_cargs(params, execution)
     ret = run_segment_subject_t2_auto_estimate_alveus_ml_sh_outputs(params, execution)
     execution.run(cargs)

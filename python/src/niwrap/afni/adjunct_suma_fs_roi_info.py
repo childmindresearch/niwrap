@@ -172,7 +172,6 @@ def adjunct_suma_fs_roi_info_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctSumaFsRoiInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_suma_fs_roi_info_cargs(params, execution)
     ret = adjunct_suma_fs_roi_info_outputs(params, execution)
     execution.run(cargs)

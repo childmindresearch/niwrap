@@ -416,7 +416,6 @@ def fslvbm_3_proc_execute(
     Returns:
         NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslvbm_3_proc_cargs(params, execution)
     ret = fslvbm_3_proc_outputs(params, execution)
     execution.run(cargs)

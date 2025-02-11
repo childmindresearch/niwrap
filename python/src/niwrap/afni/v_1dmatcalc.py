@@ -136,7 +136,6 @@ def v_1dmatcalc_execute(
     Returns:
         NamedTuple of outputs (described in `V1dmatcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dmatcalc_cargs(params, execution)
     ret = v_1dmatcalc_outputs(params, execution)
     execution.run(cargs)

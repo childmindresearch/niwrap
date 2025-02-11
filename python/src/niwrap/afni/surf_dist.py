@@ -155,7 +155,6 @@ def surf_dist_execute(
     Returns:
         NamedTuple of outputs (described in `SurfDistOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_dist_cargs(params, execution)
     ret = surf_dist_outputs(params, execution)
     execution.run(cargs)

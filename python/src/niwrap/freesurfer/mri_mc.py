@@ -151,7 +151,6 @@ def mri_mc_execute(
     Returns:
         NamedTuple of outputs (described in `MriMcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_mc_cargs(params, execution)
     ret = mri_mc_outputs(params, execution)
     execution.run(cargs)

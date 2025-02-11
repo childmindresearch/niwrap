@@ -317,7 +317,6 @@ def mideface_execute(
     Returns:
         NamedTuple of outputs (described in `MidefaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mideface_cargs(params, execution)
     ret = mideface_outputs(params, execution)
     execution.run(cargs)

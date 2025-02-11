@@ -55,7 +55,6 @@ def dyn_outputs(
     """
     return {
         "surface-apply-affine": surface_apply_affine_outputs,
-        "flirt": surface_apply_affine_flirt_outputs,
     }.get(t)
 
 
@@ -205,7 +204,6 @@ def surface_apply_affine_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_apply_affine_cargs(params, execution)
     ret = surface_apply_affine_outputs(params, execution)
     execution.run(cargs)

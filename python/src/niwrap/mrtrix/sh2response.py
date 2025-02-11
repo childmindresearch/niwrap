@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "sh2response": sh2response_outputs,
-        "config": sh2response_config_outputs,
     }.get(t)
 
 
@@ -291,7 +290,6 @@ def sh2response_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2responseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sh2response_cargs(params, execution)
     ret = sh2response_outputs(params, execution)
     execution.run(cargs)

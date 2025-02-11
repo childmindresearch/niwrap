@@ -180,7 +180,6 @@ def trac_all_execute(
     Returns:
         NamedTuple of outputs (described in `TracAllOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = trac_all_cargs(params, execution)
     ret = trac_all_outputs(params, execution)
     execution.run(cargs)

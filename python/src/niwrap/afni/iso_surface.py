@@ -260,7 +260,6 @@ def iso_surface_execute(
     Returns:
         NamedTuple of outputs (described in `IsoSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = iso_surface_cargs(params, execution)
     ret = iso_surface_outputs(params, execution)
     execution.run(cargs)

@@ -190,7 +190,6 @@ def metric_erode_execute(
     Returns:
         NamedTuple of outputs (described in `MetricErodeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_erode_cargs(params, execution)
     ret = metric_erode_outputs(params, execution)
     execution.run(cargs)

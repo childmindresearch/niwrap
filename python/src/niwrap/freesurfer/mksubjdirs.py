@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mksubjdirs": mksubjdirs_outputs,
     }.get(t)
 
 
@@ -171,7 +170,6 @@ def mksubjdirs_execute(
     Returns:
         NamedTuple of outputs (described in `MksubjdirsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mksubjdirs_cargs(params, execution)
     ret = mksubjdirs_outputs(params, execution)
     execution.run(cargs)

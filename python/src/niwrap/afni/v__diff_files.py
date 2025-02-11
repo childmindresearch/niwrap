@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@diff.files": v__diff_files_outputs,
     }.get(t)
 
 
@@ -201,7 +200,6 @@ def v__diff_files_execute(
     Returns:
         NamedTuple of outputs (described in `VDiffFilesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__diff_files_cargs(params, execution)
     ret = v__diff_files_outputs(params, execution)
     execution.run(cargs)

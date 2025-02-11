@@ -148,7 +148,6 @@ def fsl_label2voxel_execute(
     Returns:
         NamedTuple of outputs (described in `FslLabel2voxelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_label2voxel_cargs(params, execution)
     ret = fsl_label2voxel_outputs(params, execution)
     execution.run(cargs)

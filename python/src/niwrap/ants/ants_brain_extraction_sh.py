@@ -260,7 +260,6 @@ def ants_brain_extraction_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsBrainExtractionShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_brain_extraction_sh_cargs(params, execution)
     ret = ants_brain_extraction_sh_outputs(params, execution)
     execution.run(cargs)

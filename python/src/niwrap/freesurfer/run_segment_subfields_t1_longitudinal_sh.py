@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "run_SegmentSubfieldsT1Longitudinal.sh": run_segment_subfields_t1_longitudinal_sh_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def run_segment_subfields_t1_longitudinal_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunSegmentSubfieldsT1LongitudinalShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_segment_subfields_t1_longitudinal_sh_cargs(params, execution)
     ret = run_segment_subfields_t1_longitudinal_sh_outputs(params, execution)
     execution.run(cargs)

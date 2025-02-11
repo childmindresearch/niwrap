@@ -186,7 +186,6 @@ def mri_segcentroids_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegcentroidsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_segcentroids_cargs(params, execution)
     ret = mri_segcentroids_outputs(params, execution)
     execution.run(cargs)

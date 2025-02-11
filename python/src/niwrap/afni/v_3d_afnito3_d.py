@@ -134,7 +134,6 @@ def v_3d_afnito3_d_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAfnito3DOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_afnito3_d_cargs(params, execution)
     ret = v_3d_afnito3_d_outputs(params, execution)
     execution.run(cargs)

@@ -134,7 +134,6 @@ def v__statauxcode_execute(
     Returns:
         NamedTuple of outputs (described in `VStatauxcodeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__statauxcode_cargs(params, execution)
     ret = v__statauxcode_outputs(params, execution)
     execution.run(cargs)

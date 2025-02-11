@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@ExamineGenFeatDists": v__examine_gen_feat_dists_outputs,
     }.get(t)
 
 
@@ -208,7 +207,6 @@ def v__examine_gen_feat_dists_execute(
     Returns:
         NamedTuple of outputs (described in `VExamineGenFeatDistsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__examine_gen_feat_dists_cargs(params, execution)
     ret = v__examine_gen_feat_dists_outputs(params, execution)
     execution.run(cargs)

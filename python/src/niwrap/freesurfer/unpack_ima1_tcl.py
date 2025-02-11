@@ -140,7 +140,6 @@ def unpack_ima1_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackIma1TclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpack_ima1_tcl_cargs(params, execution)
     ret = unpack_ima1_tcl_outputs(params, execution)
     execution.run(cargs)

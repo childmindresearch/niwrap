@@ -235,7 +235,6 @@ def v_3d_inv_fmri_execute(
     Returns:
         NamedTuple of outputs (described in `V3dInvFmriOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_inv_fmri_cargs(params, execution)
     ret = v_3d_inv_fmri_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "balloon": balloon_outputs,
     }.get(t)
 
 
@@ -153,7 +152,6 @@ def balloon_execute(
     Returns:
         NamedTuple of outputs (described in `BalloonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = balloon_cargs(params, execution)
     ret = balloon_outputs(params, execution)
     execution.run(cargs)

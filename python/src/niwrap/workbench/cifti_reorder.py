@@ -158,7 +158,6 @@ def cifti_reorder_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_reorder_cargs(params, execution)
     ret = cifti_reorder_outputs(params, execution)
     execution.run(cargs)

@@ -268,7 +268,6 @@ def mris_autodet_gwstats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAutodetGwstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_autodet_gwstats_cargs(params, execution)
     ret = mris_autodet_gwstats_outputs(params, execution)
     execution.run(cargs)

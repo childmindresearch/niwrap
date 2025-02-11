@@ -177,7 +177,6 @@ def cifti_label_adjacency_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelAdjacencyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_adjacency_cargs(params, execution)
     ret = cifti_label_adjacency_outputs(params, execution)
     execution.run(cargs)

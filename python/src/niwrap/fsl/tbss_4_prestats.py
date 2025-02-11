@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tbss_4_prestats": tbss_4_prestats_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def tbss_4_prestats_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss4PrestatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_4_prestats_cargs(params, execution)
     ret = tbss_4_prestats_outputs(params, execution)
     execution.run(cargs)

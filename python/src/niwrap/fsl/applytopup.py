@@ -183,7 +183,6 @@ def applytopup_execute(
     Returns:
         NamedTuple of outputs (described in `ApplytopupOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = applytopup_cargs(params, execution)
     ret = applytopup_outputs(params, execution)
     execution.run(cargs)

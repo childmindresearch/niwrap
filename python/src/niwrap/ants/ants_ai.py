@@ -254,7 +254,6 @@ def ants_ai_execute(
     Returns:
         NamedTuple of outputs (described in `AntsAiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_ai_cargs(params, execution)
     ret = ants_ai_outputs(params, execution)
     execution.run(cargs)

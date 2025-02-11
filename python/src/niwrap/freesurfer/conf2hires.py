@@ -59,7 +59,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "conf2hires": conf2hires_outputs,
     }.get(t)
 
 
@@ -239,7 +238,6 @@ def conf2hires_execute(
     Returns:
         NamedTuple of outputs (described in `Conf2hiresOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = conf2hires_cargs(params, execution)
     ret = conf2hires_outputs(params, execution)
     execution.run(cargs)

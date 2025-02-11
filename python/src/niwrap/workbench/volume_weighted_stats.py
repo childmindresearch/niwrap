@@ -70,10 +70,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-weighted-stats": volume_weighted_stats_outputs,
-        "weight_volume": volume_weighted_stats_weight_volume_outputs,
-        "roi": volume_weighted_stats_roi_outputs,
-        "stdev": volume_weighted_stats_stdev_outputs,
     }.get(t)
 
 
@@ -347,7 +343,6 @@ def volume_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_weighted_stats_cargs(params, execution)
     ret = volume_weighted_stats_outputs(params, execution)
     execution.run(cargs)

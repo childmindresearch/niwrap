@@ -148,7 +148,6 @@ def make_pq_script_py_execute(
     Returns:
         NamedTuple of outputs (described in `MakePqScriptPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_pq_script_py_cargs(params, execution)
     ret = make_pq_script_py_outputs(params, execution)
     execution.run(cargs)

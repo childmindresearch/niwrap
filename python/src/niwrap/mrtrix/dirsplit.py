@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "dirsplit": dirsplit_outputs,
-        "config": dirsplit_config_outputs,
     }.get(t)
 
 
@@ -267,7 +266,6 @@ def dirsplit_execute(
     Returns:
         NamedTuple of outputs (described in `DirsplitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirsplit_cargs(params, execution)
     ret = dirsplit_outputs(params, execution)
     execution.run(cargs)

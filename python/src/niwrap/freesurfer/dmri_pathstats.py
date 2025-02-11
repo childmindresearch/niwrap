@@ -307,7 +307,6 @@ def dmri_pathstats_execute(
     Returns:
         NamedTuple of outputs (described in `DmriPathstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_pathstats_cargs(params, execution)
     ret = dmri_pathstats_outputs(params, execution)
     execution.run(cargs)

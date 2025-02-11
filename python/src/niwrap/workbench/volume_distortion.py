@@ -175,7 +175,6 @@ def volume_distortion_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeDistortionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_distortion_cargs(params, execution)
     ret = volume_distortion_outputs(params, execution)
     execution.run(cargs)

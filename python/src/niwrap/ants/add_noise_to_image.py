@@ -176,7 +176,6 @@ def add_noise_to_image_execute(
     Returns:
         NamedTuple of outputs (described in `AddNoiseToImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = add_noise_to_image_cargs(params, execution)
     ret = add_noise_to_image_outputs(params, execution)
     execution.run(cargs)

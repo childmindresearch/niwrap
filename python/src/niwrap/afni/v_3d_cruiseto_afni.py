@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dCRUISEtoAFNI": v_3d_cruiseto_afni_outputs,
     }.get(t)
 
 
@@ -193,7 +192,6 @@ def v_3d_cruiseto_afni_execute(
     Returns:
         NamedTuple of outputs (described in `V3dCruisetoAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_cruiseto_afni_cargs(params, execution)
     ret = v_3d_cruiseto_afni_outputs(params, execution)
     execution.run(cargs)

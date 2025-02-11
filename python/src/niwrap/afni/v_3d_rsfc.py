@@ -148,7 +148,6 @@ def v_3d_rsfc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRsfcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_rsfc_cargs(params, execution)
     ret = v_3d_rsfc_outputs(params, execution)
     execution.run(cargs)

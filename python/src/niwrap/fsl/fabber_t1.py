@@ -402,7 +402,6 @@ def fabber_t1_execute(
     Returns:
         NamedTuple of outputs (described in `FabberT1Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_t1_cargs(params, execution)
     ret = fabber_t1_outputs(params, execution)
     execution.run(cargs)

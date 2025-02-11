@@ -56,7 +56,6 @@ def dyn_outputs(
     """
     return {
         "metric-reduce": metric_reduce_outputs,
-        "exclude_outliers": metric_reduce_exclude_outliers_outputs,
     }.get(t)
 
 
@@ -228,7 +227,6 @@ def metric_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `MetricReduceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_reduce_cargs(params, execution)
     ret = metric_reduce_outputs(params, execution)
     execution.run(cargs)

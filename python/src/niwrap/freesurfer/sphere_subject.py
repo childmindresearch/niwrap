@@ -145,7 +145,6 @@ def sphere_subject_execute(
     Returns:
         NamedTuple of outputs (described in `SphereSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sphere_subject_cargs(params, execution)
     ret = sphere_subject_outputs(params, execution)
     execution.run(cargs)

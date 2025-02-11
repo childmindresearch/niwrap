@@ -145,7 +145,6 @@ def quantify_thalamic_nuclei_sh_execute(
     Returns:
         NamedTuple of outputs (described in `QuantifyThalamicNucleiShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quantify_thalamic_nuclei_sh_cargs(params, execution)
     ret = quantify_thalamic_nuclei_sh_outputs(params, execution)
     execution.run(cargs)

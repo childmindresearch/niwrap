@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tal_QC_AZS": tal_qc_azs_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def tal_qc_azs_execute(
     Returns:
         NamedTuple of outputs (described in `TalQcAzsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tal_qc_azs_cargs(params, execution)
     ret = tal_qc_azs_outputs(params, execution)
     execution.run(cargs)

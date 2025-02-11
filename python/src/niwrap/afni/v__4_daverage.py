@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@4Daverage": v__4_daverage_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def v__4_daverage_execute(
     Returns:
         NamedTuple of outputs (described in `V4DaverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__4_daverage_cargs(params, execution)
     ret = v__4_daverage_outputs(params, execution)
     execution.run(cargs)

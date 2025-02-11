@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "voxel2mesh": voxel2mesh_outputs,
-        "config": voxel2mesh_config_outputs,
     }.get(t)
 
 
@@ -276,7 +275,6 @@ def voxel2mesh_execute(
     Returns:
         NamedTuple of outputs (described in `Voxel2meshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = voxel2mesh_cargs(params, execution)
     ret = voxel2mesh_outputs(params, execution)
     execution.run(cargs)

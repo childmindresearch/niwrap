@@ -86,12 +86,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fixelconvert": fixelconvert_outputs,
-        "config": fixelconvert_config_outputs,
-        "VariousString": fixelconvert_various_string_outputs,
-        "VariousFile": fixelconvert_various_file_outputs,
-        "VariousString": fixelconvert_various_string_outputs_,
-        "VariousFile": fixelconvert_various_file_outputs_,
     }.get(t)
 
 
@@ -471,7 +465,6 @@ def fixelconvert_execute(
     Returns:
         NamedTuple of outputs (described in `FixelconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelconvert_cargs(params, execution)
     ret = fixelconvert_outputs(params, execution)
     execution.run(cargs)

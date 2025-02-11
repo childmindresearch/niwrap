@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_validate_skull_stripped": mri_validate_skull_stripped_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def mri_validate_skull_stripped_execute(
     Returns:
         NamedTuple of outputs (described in `MriValidateSkullStrippedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_validate_skull_stripped_cargs(params, execution)
     ret = mri_validate_skull_stripped_outputs(params, execution)
     execution.run(cargs)

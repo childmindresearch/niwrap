@@ -143,7 +143,6 @@ def mri_copy_values_execute(
     Returns:
         NamedTuple of outputs (described in `MriCopyValuesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_copy_values_cargs(params, execution)
     ret = mri_copy_values_outputs(params, execution)
     execution.run(cargs)

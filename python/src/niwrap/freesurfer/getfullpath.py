@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "getfullpath": getfullpath_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def getfullpath_execute(
     Returns:
         NamedTuple of outputs (described in `GetfullpathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = getfullpath_cargs(params, execution)
     ret = getfullpath_outputs(params, execution)
     execution.run(cargs)

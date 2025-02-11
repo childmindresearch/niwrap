@@ -161,7 +161,6 @@ def cifti_pairwise_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiPairwiseCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_pairwise_correlation_cargs(params, execution)
     ret = cifti_pairwise_correlation_outputs(params, execution)
     execution.run(cargs)

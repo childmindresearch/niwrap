@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "mrhistmatch": mrhistmatch_outputs,
-        "config": mrhistmatch_config_outputs,
     }.get(t)
 
 
@@ -297,7 +296,6 @@ def mrhistmatch_execute(
     Returns:
         NamedTuple of outputs (described in `MrhistmatchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrhistmatch_cargs(params, execution)
     ret = mrhistmatch_outputs(params, execution)
     execution.run(cargs)

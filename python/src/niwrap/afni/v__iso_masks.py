@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@IsoMasks": v__iso_masks_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def v__iso_masks_execute(
     Returns:
         NamedTuple of outputs (described in `VIsoMasksOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__iso_masks_cargs(params, execution)
     ret = v__iso_masks_outputs(params, execution)
     execution.run(cargs)

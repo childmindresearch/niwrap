@@ -293,7 +293,6 @@ def surf2vol_execute(
     Returns:
         NamedTuple of outputs (described in `Surf2volOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf2vol_cargs(params, execution)
     ret = surf2vol_outputs(params, execution)
     execution.run(cargs)

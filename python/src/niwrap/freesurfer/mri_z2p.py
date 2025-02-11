@@ -222,7 +222,6 @@ def mri_z2p_execute(
     Returns:
         NamedTuple of outputs (described in `MriZ2pOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_z2p_cargs(params, execution)
     ret = mri_z2p_outputs(params, execution)
     execution.run(cargs)

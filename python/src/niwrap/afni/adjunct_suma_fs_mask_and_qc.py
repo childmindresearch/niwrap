@@ -189,7 +189,6 @@ def adjunct_suma_fs_mask_and_qc_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctSumaFsMaskAndQcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_suma_fs_mask_and_qc_cargs(params, execution)
     ret = adjunct_suma_fs_mask_and_qc_outputs(params, execution)
     execution.run(cargs)

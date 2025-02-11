@@ -255,7 +255,6 @@ def v_3dedgedog_execute(
     Returns:
         NamedTuple of outputs (described in `V3dedgedogOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dedgedog_cargs(params, execution)
     ret = v_3dedgedog_outputs(params, execution)
     execution.run(cargs)

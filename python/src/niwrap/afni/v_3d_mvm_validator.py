@@ -144,7 +144,6 @@ def v_3d_mvm_validator_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMvmValidatorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mvm_validator_cargs(params, execution)
     ret = v_3d_mvm_validator_outputs(params, execution)
     execution.run(cargs)

@@ -186,7 +186,6 @@ def mri_extract_largest_cc_execute(
     Returns:
         NamedTuple of outputs (described in `MriExtractLargestCcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_extract_largest_cc_cargs(params, execution)
     ret = mri_extract_largest_cc_outputs(params, execution)
     execution.run(cargs)

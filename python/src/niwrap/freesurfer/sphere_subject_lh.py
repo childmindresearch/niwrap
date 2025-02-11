@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "sphere_subject-lh": sphere_subject_lh_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def sphere_subject_lh_execute(
     Returns:
         NamedTuple of outputs (described in `SphereSubjectLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sphere_subject_lh_cargs(params, execution)
     ret = sphere_subject_lh_outputs(params, execution)
     execution.run(cargs)

@@ -199,7 +199,6 @@ def export_gcam_execute(
     Returns:
         NamedTuple of outputs (described in `ExportGcamOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = export_gcam_cargs(params, execution)
     ret = export_gcam_outputs(params, execution)
     execution.run(cargs)

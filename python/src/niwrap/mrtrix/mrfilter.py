@@ -90,9 +90,6 @@ def dyn_outputs(
     """
     return {
         "mrfilter": mrfilter_outputs,
-        "VariousString": mrfilter_various_string_outputs,
-        "VariousFile": mrfilter_various_file_outputs,
-        "config": mrfilter_config_outputs,
     }.get(t)
 
 
@@ -536,7 +533,6 @@ def mrfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MrfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrfilter_cargs(params, execution)
     ret = mrfilter_outputs(params, execution)
     execution.run(cargs)

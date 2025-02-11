@@ -257,7 +257,6 @@ def seg2recon_execute(
     Returns:
         NamedTuple of outputs (described in `Seg2reconOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = seg2recon_cargs(params, execution)
     ret = seg2recon_outputs(params, execution)
     execution.run(cargs)

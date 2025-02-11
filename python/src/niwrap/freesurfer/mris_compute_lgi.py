@@ -182,7 +182,6 @@ def mris_compute_lgi_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeLgiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_compute_lgi_cargs(params, execution)
     ret = mris_compute_lgi_outputs(params, execution)
     execution.run(cargs)

@@ -145,7 +145,6 @@ def surface_flip_lr_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceFlipLrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_flip_lr_cargs(params, execution)
     ret = surface_flip_lr_outputs(params, execution)
     execution.run(cargs)

@@ -227,7 +227,6 @@ def mri_gradunwarp_execute(
     Returns:
         NamedTuple of outputs (described in `MriGradunwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_gradunwarp_cargs(params, execution)
     ret = mri_gradunwarp_outputs(params, execution)
     execution.run(cargs)

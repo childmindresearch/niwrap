@@ -92,7 +92,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_preproc": mris_preproc_outputs,
     }.get(t)
 
 
@@ -544,7 +543,6 @@ def mris_preproc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisPreprocOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_preproc_cargs(params, execution)
     ret = mris_preproc_outputs(params, execution)
     execution.run(cargs)

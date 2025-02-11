@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "1dCorrelate": v_1d_correlate_outputs,
     }.get(t)
 
 
@@ -163,7 +162,6 @@ def v_1d_correlate_execute(
     Returns:
         NamedTuple of outputs (described in `V1dCorrelateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_correlate_cargs(params, execution)
     ret = v_1d_correlate_outputs(params, execution)
     execution.run(cargs)

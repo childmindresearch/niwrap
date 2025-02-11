@@ -161,7 +161,6 @@ def aparcstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `AparcstatsdiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aparcstatsdiff_cargs(params, execution)
     ret = aparcstatsdiff_outputs(params, execution)
     execution.run(cargs)

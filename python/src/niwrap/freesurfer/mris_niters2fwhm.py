@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_niters2fwhm": mris_niters2fwhm_outputs,
     }.get(t)
 
 
@@ -189,7 +188,6 @@ def mris_niters2fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MrisNiters2fwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_niters2fwhm_cargs(params, execution)
     ret = mris_niters2fwhm_outputs(params, execution)
     execution.run(cargs)

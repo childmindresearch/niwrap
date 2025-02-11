@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "prompt_popup": prompt_popup_outputs,
     }.get(t)
 
 
@@ -156,7 +155,6 @@ def prompt_popup_execute(
     Returns:
         NamedTuple of outputs (described in `PromptPopupOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = prompt_popup_cargs(params, execution)
     ret = prompt_popup_outputs(params, execution)
     execution.run(cargs)

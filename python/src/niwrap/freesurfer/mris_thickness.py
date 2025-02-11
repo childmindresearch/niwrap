@@ -183,7 +183,6 @@ def mris_thickness_execute(
     Returns:
         NamedTuple of outputs (described in `MrisThicknessOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_thickness_cargs(params, execution)
     ret = mris_thickness_outputs(params, execution)
     execution.run(cargs)

@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslsmoothfill": fslsmoothfill_outputs,
     }.get(t)
 
 
@@ -175,7 +174,6 @@ def fslsmoothfill_execute(
     Returns:
         NamedTuple of outputs (described in `FslsmoothfillOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslsmoothfill_cargs(params, execution)
     ret = fslsmoothfill_outputs(params, execution)
     execution.run(cargs)

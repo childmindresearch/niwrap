@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "run_SegmentThalamicNuclei.sh": run_segment_thalamic_nuclei_sh_outputs,
     }.get(t)
 
 
@@ -138,7 +137,6 @@ def run_segment_thalamic_nuclei_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunSegmentThalamicNucleiShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_segment_thalamic_nuclei_sh_cargs(params, execution)
     ret = run_segment_thalamic_nuclei_sh_outputs(params, execution)
     execution.run(cargs)

@@ -221,7 +221,6 @@ def v_3d_isc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dIscOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_isc_cargs(params, execution)
     ret = v_3d_isc_outputs(params, execution)
     execution.run(cargs)

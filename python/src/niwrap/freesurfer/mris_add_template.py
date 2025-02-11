@@ -128,7 +128,6 @@ def mris_add_template_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAddTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_add_template_cargs(params, execution)
     ret = mris_add_template_outputs(params, execution)
     execution.run(cargs)

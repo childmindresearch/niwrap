@@ -161,7 +161,6 @@ def segment_subject_sc_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectScOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subject_sc_cargs(params, execution)
     ret = segment_subject_sc_outputs(params, execution)
     execution.run(cargs)

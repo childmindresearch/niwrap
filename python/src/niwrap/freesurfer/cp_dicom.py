@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cp-dicom": cp_dicom_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def cp_dicom_execute(
     Returns:
         NamedTuple of outputs (described in `CpDicomOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cp_dicom_cargs(params, execution)
     ret = cp_dicom_outputs(params, execution)
     execution.run(cargs)

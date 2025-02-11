@@ -143,7 +143,6 @@ def first_roi_slicesdir_execute(
     Returns:
         NamedTuple of outputs (described in `FirstRoiSlicesdirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = first_roi_slicesdir_cargs(params, execution)
     ret = first_roi_slicesdir_outputs(params, execution)
     execution.run(cargs)

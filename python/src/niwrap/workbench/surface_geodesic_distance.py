@@ -189,7 +189,6 @@ def surface_geodesic_distance_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_geodesic_distance_cargs(params, execution)
     ret = surface_geodesic_distance_outputs(params, execution)
     execution.run(cargs)

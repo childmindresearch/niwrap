@@ -249,7 +249,6 @@ def fsl_mvlm_execute(
     Returns:
         NamedTuple of outputs (described in `FslMvlmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_mvlm_cargs(params, execution)
     ret = fsl_mvlm_outputs(params, execution)
     execution.run(cargs)

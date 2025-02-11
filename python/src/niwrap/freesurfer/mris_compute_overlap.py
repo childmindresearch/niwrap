@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_compute_overlap": mris_compute_overlap_outputs,
     }.get(t)
 
 
@@ -176,7 +175,6 @@ def mris_compute_overlap_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeOverlapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_compute_overlap_cargs(params, execution)
     ret = mris_compute_overlap_outputs(params, execution)
     execution.run(cargs)

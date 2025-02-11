@@ -159,7 +159,6 @@ def metric_mask_execute(
     Returns:
         NamedTuple of outputs (described in `MetricMaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_mask_cargs(params, execution)
     ret = metric_mask_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "nmovie_qt": nmovie_qt_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def nmovie_qt_execute(
     Returns:
         NamedTuple of outputs (described in `NmovieQtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = nmovie_qt_cargs(params, execution)
     ret = nmovie_qt_outputs(params, execution)
     execution.run(cargs)

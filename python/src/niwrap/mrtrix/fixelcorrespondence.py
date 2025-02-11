@@ -63,8 +63,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fixelcorrespondence": fixelcorrespondence_outputs,
-        "config": fixelcorrespondence_config_outputs,
     }.get(t)
 
 
@@ -273,7 +271,6 @@ def fixelcorrespondence_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcorrespondenceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelcorrespondence_cargs(params, execution)
     ret = fixelcorrespondence_outputs(params, execution)
     execution.run(cargs)

@@ -190,7 +190,6 @@ def aparc2feat_execute(
     Returns:
         NamedTuple of outputs (described in `Aparc2featOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aparc2feat_cargs(params, execution)
     ret = aparc2feat_outputs(params, execution)
     execution.run(cargs)

@@ -243,7 +243,6 @@ def reg_tools_execute(
     Returns:
         NamedTuple of outputs (described in `RegToolsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_tools_cargs(params, execution)
     ret = reg_tools_outputs(params, execution)
     execution.run(cargs)

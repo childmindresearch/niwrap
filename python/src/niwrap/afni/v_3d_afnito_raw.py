@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dAFNItoRaw": v_3d_afnito_raw_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def v_3d_afnito_raw_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAfnitoRawOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_afnito_raw_cargs(params, execution)
     ret = v_3d_afnito_raw_outputs(params, execution)
     execution.run(cargs)

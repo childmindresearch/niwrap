@@ -230,7 +230,6 @@ def responsemean_execute(
     Returns:
         NamedTuple of outputs (described in `ResponsemeanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = responsemean_cargs(params, execution)
     ret = responsemean_outputs(params, execution)
     execution.run(cargs)

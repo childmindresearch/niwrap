@@ -353,7 +353,6 @@ def mri_entowm_seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriEntowmSegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_entowm_seg_cargs(params, execution)
     ret = mri_entowm_seg_outputs(params, execution)
     execution.run(cargs)

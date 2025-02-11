@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "border-length": border_length_outputs,
     }.get(t)
 
 
@@ -169,7 +168,6 @@ def border_length_execute(
     Returns:
         NamedTuple of outputs (described in `BorderLengthOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_length_cargs(params, execution)
     ret = border_length_outputs(params, execution)
     execution.run(cargs)

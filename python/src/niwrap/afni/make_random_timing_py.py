@@ -356,7 +356,6 @@ def make_random_timing_py_execute(
     Returns:
         NamedTuple of outputs (described in `MakeRandomTimingPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_random_timing_py_cargs(params, execution)
     ret = make_random_timing_py_outputs(params, execution)
     execution.run(cargs)

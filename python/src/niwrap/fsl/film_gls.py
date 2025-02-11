@@ -344,7 +344,6 @@ def film_gls_execute(
     Returns:
         NamedTuple of outputs (described in `FilmGlsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = film_gls_cargs(params, execution)
     ret = film_gls_outputs(params, execution)
     execution.run(cargs)

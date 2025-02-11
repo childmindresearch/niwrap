@@ -328,7 +328,6 @@ def cluster_execute(
     Returns:
         NamedTuple of outputs (described in `ClusterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cluster_cargs(params, execution)
     ret = cluster_outputs(params, execution)
     execution.run(cargs)

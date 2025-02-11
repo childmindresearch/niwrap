@@ -342,7 +342,6 @@ def waver_execute(
     Returns:
         NamedTuple of outputs (described in `WaverOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = waver_cargs(params, execution)
     ret = waver_outputs(params, execution)
     execution.run(cargs)

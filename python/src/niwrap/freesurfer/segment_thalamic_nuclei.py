@@ -138,7 +138,6 @@ def segment_thalamic_nuclei_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentThalamicNucleiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_thalamic_nuclei_cargs(params, execution)
     ret = segment_thalamic_nuclei_outputs(params, execution)
     execution.run(cargs)

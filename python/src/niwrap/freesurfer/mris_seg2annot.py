@@ -220,7 +220,6 @@ def mris_seg2annot_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSeg2annotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_seg2annot_cargs(params, execution)
     ret = mris_seg2annot_outputs(params, execution)
     execution.run(cargs)

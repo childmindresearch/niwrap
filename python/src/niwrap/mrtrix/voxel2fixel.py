@@ -62,8 +62,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "voxel2fixel": voxel2fixel_outputs,
-        "config": voxel2fixel_config_outputs,
     }.get(t)
 
 
@@ -259,7 +257,6 @@ def voxel2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Voxel2fixelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = voxel2fixel_cargs(params, execution)
     ret = voxel2fixel_outputs(params, execution)
     execution.run(cargs)

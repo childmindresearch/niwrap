@@ -152,7 +152,6 @@ def mri_mark_temporal_lobe_execute(
     Returns:
         NamedTuple of outputs (described in `MriMarkTemporalLobeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_mark_temporal_lobe_cargs(params, execution)
     ret = mri_mark_temporal_lobe_outputs(params, execution)
     execution.run(cargs)

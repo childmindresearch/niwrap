@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "csvprint": csvprint_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def csvprint_execute(
     Returns:
         NamedTuple of outputs (described in `CsvprintOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = csvprint_cargs(params, execution)
     ret = csvprint_outputs(params, execution)
     execution.run(cargs)

@@ -186,7 +186,6 @@ def texture_run_length_features_execute(
     Returns:
         NamedTuple of outputs (described in `TextureRunLengthFeaturesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = texture_run_length_features_cargs(params, execution)
     ret = texture_run_length_features_outputs(params, execution)
     execution.run(cargs)

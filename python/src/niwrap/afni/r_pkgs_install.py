@@ -168,7 +168,6 @@ def r_pkgs_install_execute(
     Returns:
         NamedTuple of outputs (described in `RPkgsInstallOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = r_pkgs_install_cargs(params, execution)
     ret = r_pkgs_install_outputs(params, execution)
     execution.run(cargs)

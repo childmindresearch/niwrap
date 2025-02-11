@@ -187,7 +187,6 @@ def featregapply_execute(
     Returns:
         NamedTuple of outputs (described in `FeatregapplyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = featregapply_cargs(params, execution)
     ret = featregapply_outputs(params, execution)
     execution.run(cargs)

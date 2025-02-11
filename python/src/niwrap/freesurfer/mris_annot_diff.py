@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_annot_diff": mris_annot_diff_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def mris_annot_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAnnotDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_annot_diff_cargs(params, execution)
     ret = mris_annot_diff_outputs(params, execution)
     execution.run(cargs)

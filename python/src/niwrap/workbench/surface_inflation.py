@@ -167,7 +167,6 @@ def surface_inflation_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceInflationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_inflation_cargs(params, execution)
     ret = surface_inflation_outputs(params, execution)
     execution.run(cargs)

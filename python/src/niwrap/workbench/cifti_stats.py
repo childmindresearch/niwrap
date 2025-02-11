@@ -56,8 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-stats": cifti_stats_outputs,
-        "roi": cifti_stats_roi_outputs,
     }.get(t)
 
 
@@ -254,7 +252,6 @@ def cifti_stats_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_stats_cargs(params, execution)
     ret = cifti_stats_outputs(params, execution)
     execution.run(cargs)

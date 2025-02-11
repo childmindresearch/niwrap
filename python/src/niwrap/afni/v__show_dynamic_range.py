@@ -139,7 +139,6 @@ def v__show_dynamic_range_execute(
     Returns:
         NamedTuple of outputs (described in `VShowDynamicRangeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__show_dynamic_range_cargs(params, execution)
     ret = v__show_dynamic_range_outputs(params, execution)
     execution.run(cargs)

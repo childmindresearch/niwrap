@@ -151,7 +151,6 @@ def label_elderly_subject_execute(
     Returns:
         NamedTuple of outputs (described in `LabelElderlySubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_elderly_subject_cargs(params, execution)
     ret = label_elderly_subject_outputs(params, execution)
     execution.run(cargs)

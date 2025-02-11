@@ -164,7 +164,6 @@ def mri_warp_convert_execute(
     Returns:
         NamedTuple of outputs (described in `MriWarpConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_warp_convert_cargs(params, execution)
     ret = mri_warp_convert_outputs(params, execution)
     execution.run(cargs)

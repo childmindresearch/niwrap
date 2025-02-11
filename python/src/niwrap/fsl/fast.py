@@ -341,7 +341,6 @@ def fast_execute(
     Returns:
         NamedTuple of outputs (described in `FastOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fast_cargs(params, execution)
     ret = fast_outputs(params, execution)
     execution.run(cargs)

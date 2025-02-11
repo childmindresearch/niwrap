@@ -149,7 +149,6 @@ def dtistudio_fiberto_segments_execute(
     Returns:
         NamedTuple of outputs (described in `DtistudioFibertoSegmentsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dtistudio_fiberto_segments_cargs(params, execution)
     ret = dtistudio_fiberto_segments_outputs(params, execution)
     execution.run(cargs)

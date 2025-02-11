@@ -373,7 +373,6 @@ def fabber_asl_execute(
     Returns:
         NamedTuple of outputs (described in `FabberAslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_asl_cargs(params, execution)
     ret = fabber_asl_outputs(params, execution)
     execution.run(cargs)

@@ -154,7 +154,6 @@ def mris_hausdorff_dist_execute(
     Returns:
         NamedTuple of outputs (described in `MrisHausdorffDistOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_hausdorff_dist_cargs(params, execution)
     ret = mris_hausdorff_dist_outputs(params, execution)
     execution.run(cargs)

@@ -74,8 +74,6 @@ def dyn_outputs(
     """
     return {
         "sh2peaks": sh2peaks_outputs,
-        "direction": sh2peaks_direction_outputs,
-        "config": sh2peaks_config_outputs,
     }.get(t)
 
 
@@ -381,7 +379,6 @@ def sh2peaks_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2peaksOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sh2peaks_cargs(params, execution)
     ret = sh2peaks_outputs(params, execution)
     execution.run(cargs)

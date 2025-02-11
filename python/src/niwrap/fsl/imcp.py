@@ -138,7 +138,6 @@ def imcp_execute(
     Returns:
         NamedTuple of outputs (described in `ImcpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imcp_cargs(params, execution)
     ret = imcp_outputs(params, execution)
     execution.run(cargs)

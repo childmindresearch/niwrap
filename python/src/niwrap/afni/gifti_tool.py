@@ -320,7 +320,6 @@ def gifti_tool_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gifti_tool_cargs(params, execution)
     ret = gifti_tool_outputs(params, execution)
     execution.run(cargs)

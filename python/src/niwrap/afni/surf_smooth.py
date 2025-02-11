@@ -288,7 +288,6 @@ def surf_smooth_execute(
     Returns:
         NamedTuple of outputs (described in `SurfSmoothOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_smooth_cargs(params, execution)
     ret = surf_smooth_outputs(params, execution)
     execution.run(cargs)

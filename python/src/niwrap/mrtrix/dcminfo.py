@@ -69,9 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dcminfo": dcminfo_outputs,
-        "tag": dcminfo_tag_outputs,
-        "config": dcminfo_config_outputs,
     }.get(t)
 
 
@@ -320,7 +317,6 @@ def dcminfo_execute(
     Returns:
         NamedTuple of outputs (described in `DcminfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcminfo_cargs(params, execution)
     ret = dcminfo_outputs(params, execution)
     execution.run(cargs)

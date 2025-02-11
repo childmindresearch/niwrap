@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "recon-all-clinical.sh": recon_all_clinical_sh_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def recon_all_clinical_sh_execute(
     Returns:
         NamedTuple of outputs (described in `ReconAllClinicalShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = recon_all_clinical_sh_cargs(params, execution)
     ret = recon_all_clinical_sh_outputs(params, execution)
     execution.run(cargs)

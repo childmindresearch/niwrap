@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@djunct_ssw_intermed_edge_imgs": v__djunct_ssw_intermed_edge_imgs_outputs,
     }.get(t)
 
 
@@ -233,7 +232,6 @@ def v__djunct_ssw_intermed_edge_imgs_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctSswIntermedEdgeImgsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_ssw_intermed_edge_imgs_cargs(params, execution)
     ret = v__djunct_ssw_intermed_edge_imgs_outputs(params, execution)
     execution.run(cargs)

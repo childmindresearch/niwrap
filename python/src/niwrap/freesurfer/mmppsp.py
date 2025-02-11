@@ -212,7 +212,6 @@ def mmppsp_execute(
     Returns:
         NamedTuple of outputs (described in `MmppspOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mmppsp_cargs(params, execution)
     ret = mmppsp_outputs(params, execution)
     execution.run(cargs)

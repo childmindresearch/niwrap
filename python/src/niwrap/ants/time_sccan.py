@@ -77,9 +77,6 @@ def dyn_outputs(
     """
     return {
         "TimeSCCAN": time_sccan_outputs,
-        "timeseriesimage_to_matrix": time_sccan_timeseriesimage_to_matrix_outputs,
-        "network_scca": time_sccan_network_scca_outputs,
-        "network_region_averaging": time_sccan_network_region_averaging_outputs,
     }.get(t)
 
 
@@ -413,7 +410,6 @@ def time_sccan_execute(
     Returns:
         NamedTuple of outputs (described in `TimeSccanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = time_sccan_cargs(params, execution)
     ret = time_sccan_outputs(params, execution)
     execution.run(cargs)

@@ -299,7 +299,6 @@ def ants_motion_corr_execute(
     Returns:
         NamedTuple of outputs (described in `AntsMotionCorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_motion_corr_cargs(params, execution)
     ret = ants_motion_corr_outputs(params, execution)
     execution.run(cargs)

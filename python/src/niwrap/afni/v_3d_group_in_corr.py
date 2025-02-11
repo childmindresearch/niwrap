@@ -353,7 +353,6 @@ def v_3d_group_in_corr_execute(
     Returns:
         NamedTuple of outputs (described in `V3dGroupInCorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_group_in_corr_cargs(params, execution)
     ret = v_3d_group_in_corr_outputs(params, execution)
     execution.run(cargs)

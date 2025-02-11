@@ -340,7 +340,6 @@ def possum_execute(
     Returns:
         NamedTuple of outputs (described in `PossumOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = possum_cargs(params, execution)
     ret = possum_outputs(params, execution)
     execution.run(cargs)

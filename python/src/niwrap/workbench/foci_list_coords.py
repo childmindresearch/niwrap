@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "foci-list-coords": foci_list_coords_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def foci_list_coords_execute(
     Returns:
         NamedTuple of outputs (described in `FociListCoordsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = foci_list_coords_cargs(params, execution)
     ret = foci_list_coords_outputs(params, execution)
     execution.run(cargs)

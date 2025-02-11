@@ -348,7 +348,6 @@ def fim2_execute(
     Returns:
         NamedTuple of outputs (described in `Fim2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fim2_cargs(params, execution)
     ret = fim2_outputs(params, execution)
     execution.run(cargs)

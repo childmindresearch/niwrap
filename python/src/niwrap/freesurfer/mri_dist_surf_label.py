@@ -143,7 +143,6 @@ def mri_dist_surf_label_execute(
     Returns:
         NamedTuple of outputs (described in `MriDistSurfLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_dist_surf_label_cargs(params, execution)
     ret = mri_dist_surf_label_outputs(params, execution)
     execution.run(cargs)

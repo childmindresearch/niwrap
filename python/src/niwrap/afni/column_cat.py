@@ -156,7 +156,6 @@ def column_cat_execute(
     Returns:
         NamedTuple of outputs (described in `ColumnCatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = column_cat_cargs(params, execution)
     ret = column_cat_outputs(params, execution)
     execution.run(cargs)

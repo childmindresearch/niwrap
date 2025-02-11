@@ -65,9 +65,6 @@ def dyn_outputs(
     """
     return {
         "volume-merge": volume_merge_outputs,
-        "volume": volume_merge_volume_outputs,
-        "subvolume": volume_merge_subvolume_outputs,
-        "up_to": volume_merge_up_to_outputs,
     }.get(t)
 
 
@@ -300,7 +297,6 @@ def volume_merge_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_merge_cargs(params, execution)
     ret = volume_merge_outputs(params, execution)
     execution.run(cargs)

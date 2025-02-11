@@ -134,7 +134,6 @@ def v__djunct_4d_slices_to_3d_vol_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunct4dSlicesTo3dVolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_4d_slices_to_3d_vol_cargs(params, execution)
     ret = v__djunct_4d_slices_to_3d_vol_outputs(params, execution)
     execution.run(cargs)

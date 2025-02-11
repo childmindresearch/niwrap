@@ -217,7 +217,6 @@ def surf_info_execute(
     Returns:
         NamedTuple of outputs (described in `SurfInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_info_cargs(params, execution)
     ret = surf_info_outputs(params, execution)
     execution.run(cargs)

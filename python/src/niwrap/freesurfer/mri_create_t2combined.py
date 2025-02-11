@@ -171,7 +171,6 @@ def mri_create_t2combined_execute(
     Returns:
         NamedTuple of outputs (described in `MriCreateT2combinedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_create_t2combined_cargs(params, execution)
     ret = mri_create_t2combined_outputs(params, execution)
     execution.run(cargs)

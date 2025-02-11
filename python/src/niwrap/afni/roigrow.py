@@ -203,7 +203,6 @@ def roigrow_execute(
     Returns:
         NamedTuple of outputs (described in `RoigrowOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = roigrow_cargs(params, execution)
     ret = roigrow_outputs(params, execution)
     execution.run(cargs)

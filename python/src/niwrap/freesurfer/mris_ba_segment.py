@@ -149,7 +149,6 @@ def mris_ba_segment_execute(
     Returns:
         NamedTuple of outputs (described in `MrisBaSegmentOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_ba_segment_cargs(params, execution)
     ret = mris_ba_segment_outputs(params, execution)
     execution.run(cargs)

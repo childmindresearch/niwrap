@@ -156,7 +156,6 @@ def mris_fill_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFillOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_fill_cargs(params, execution)
     ret = mris_fill_outputs(params, execution)
     execution.run(cargs)

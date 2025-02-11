@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gcaprepone": gcaprepone_outputs,
     }.get(t)
 
 
@@ -170,7 +169,6 @@ def gcaprepone_execute(
     Returns:
         NamedTuple of outputs (described in `GcapreponeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gcaprepone_cargs(params, execution)
     ret = gcaprepone_outputs(params, execution)
     execution.run(cargs)

@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tksurferfv": tksurferfv_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def tksurferfv_execute(
     Returns:
         NamedTuple of outputs (described in `TksurferfvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tksurferfv_cargs(params, execution)
     ret = tksurferfv_outputs(params, execution)
     execution.run(cargs)

@@ -235,7 +235,6 @@ def mri_fit_bias_execute(
     Returns:
         NamedTuple of outputs (described in `MriFitBiasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fit_bias_cargs(params, execution)
     ret = mri_fit_bias_outputs(params, execution)
     execution.run(cargs)

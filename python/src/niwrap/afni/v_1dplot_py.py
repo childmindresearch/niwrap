@@ -429,7 +429,6 @@ def v_1dplot_py_execute(
     Returns:
         NamedTuple of outputs (described in `V1dplotPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dplot_py_cargs(params, execution)
     ret = v_1dplot_py_outputs(params, execution)
     execution.run(cargs)

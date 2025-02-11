@@ -148,7 +148,6 @@ def mist_fa_reg_execute(
     Returns:
         NamedTuple of outputs (described in `MistFaRegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mist_fa_reg_cargs(params, execution)
     ret = mist_fa_reg_outputs(params, execution)
     execution.run(cargs)

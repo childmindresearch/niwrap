@@ -225,7 +225,6 @@ def mri_segment_thalamic_nuclei_dti_cnn_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentThalamicNucleiDtiCnnOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_segment_thalamic_nuclei_dti_cnn_cargs(params, execution)
     ret = mri_segment_thalamic_nuclei_dti_cnn_outputs(params, execution)
     execution.run(cargs)

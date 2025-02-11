@@ -190,7 +190,6 @@ def fat_mvm_prep_execute(
     Returns:
         NamedTuple of outputs (described in `FatMvmPrepOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mvm_prep_cargs(params, execution)
     ret = fat_mvm_prep_outputs(params, execution)
     execution.run(cargs)

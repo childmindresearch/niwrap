@@ -351,7 +351,6 @@ def xfibres_execute(
     Returns:
         NamedTuple of outputs (described in `XfibresOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xfibres_cargs(params, execution)
     ret = xfibres_outputs(params, execution)
     execution.run(cargs)

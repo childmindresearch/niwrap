@@ -147,7 +147,6 @@ def fslchfiletype_execute(
     Returns:
         NamedTuple of outputs (described in `FslchfiletypeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslchfiletype_cargs(params, execution)
     ret = fslchfiletype_outputs(params, execution)
     execution.run(cargs)

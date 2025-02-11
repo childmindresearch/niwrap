@@ -133,7 +133,6 @@ def v__is_oblique_execute(
     Returns:
         NamedTuple of outputs (described in `VIsObliqueOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__is_oblique_cargs(params, execution)
     ret = v__is_oblique_outputs(params, execution)
     execution.run(cargs)

@@ -158,7 +158,6 @@ def map_all_labels_execute(
     Returns:
         NamedTuple of outputs (described in `MapAllLabelsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = map_all_labels_cargs(params, execution)
     ret = map_all_labels_outputs(params, execution)
     execution.run(cargs)

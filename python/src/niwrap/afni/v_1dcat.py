@@ -194,7 +194,6 @@ def v_1dcat_execute(
     Returns:
         NamedTuple of outputs (described in `V1dcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dcat_cargs(params, execution)
     ret = v_1dcat_outputs(params, execution)
     execution.run(cargs)

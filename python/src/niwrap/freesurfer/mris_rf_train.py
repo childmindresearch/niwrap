@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_rf_train": mris_rf_train_outputs,
     }.get(t)
 
 
@@ -156,7 +155,6 @@ def mris_rf_train_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRfTrainOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_rf_train_cargs(params, execution)
     ret = mris_rf_train_outputs(params, execution)
     execution.run(cargs)

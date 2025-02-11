@@ -164,7 +164,6 @@ def surface_generate_inflated_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGenerateInflatedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_generate_inflated_cargs(params, execution)
     ret = surface_generate_inflated_outputs(params, execution)
     execution.run(cargs)

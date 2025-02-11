@@ -172,7 +172,6 @@ def map_to_base_execute(
     Returns:
         NamedTuple of outputs (described in `MapToBaseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = map_to_base_cargs(params, execution)
     ret = map_to_base_outputs(params, execution)
     execution.run(cargs)

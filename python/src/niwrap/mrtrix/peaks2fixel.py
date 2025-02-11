@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "peaks2fixel": peaks2fixel_outputs,
-        "config": peaks2fixel_config_outputs,
     }.get(t)
 
 
@@ -261,7 +260,6 @@ def peaks2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Peaks2fixelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = peaks2fixel_cargs(params, execution)
     ret = peaks2fixel_outputs(params, execution)
     execution.run(cargs)

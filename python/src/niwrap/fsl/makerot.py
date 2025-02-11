@@ -188,7 +188,6 @@ def makerot_execute(
     Returns:
         NamedTuple of outputs (described in `MakerotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = makerot_cargs(params, execution)
     ret = makerot_outputs(params, execution)
     execution.run(cargs)

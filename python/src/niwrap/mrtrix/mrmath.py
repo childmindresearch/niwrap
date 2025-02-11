@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "mrmath": mrmath_outputs,
-        "config": mrmath_config_outputs,
     }.get(t)
 
 
@@ -299,7 +298,6 @@ def mrmath_execute(
     Returns:
         NamedTuple of outputs (described in `MrmathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrmath_cargs(params, execution)
     ret = mrmath_outputs(params, execution)
     execution.run(cargs)

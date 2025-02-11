@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_mergepaths": dmri_mergepaths_outputs,
     }.get(t)
 
 
@@ -177,7 +176,6 @@ def dmri_mergepaths_execute(
     Returns:
         NamedTuple of outputs (described in `DmriMergepathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_mergepaths_cargs(params, execution)
     ret = dmri_mergepaths_outputs(params, execution)
     execution.run(cargs)

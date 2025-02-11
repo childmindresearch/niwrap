@@ -196,7 +196,6 @@ def mris_ms_refine_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMsRefineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_ms_refine_cargs(params, execution)
     ret = mris_ms_refine_outputs(params, execution)
     execution.run(cargs)

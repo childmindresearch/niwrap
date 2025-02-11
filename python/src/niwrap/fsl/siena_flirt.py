@@ -143,7 +143,6 @@ def siena_flirt_execute(
     Returns:
         NamedTuple of outputs (described in `SienaFlirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = siena_flirt_cargs(params, execution)
     ret = siena_flirt_outputs(params, execution)
     execution.run(cargs)

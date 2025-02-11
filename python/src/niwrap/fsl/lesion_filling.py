@@ -174,7 +174,6 @@ def lesion_filling_execute(
     Returns:
         NamedTuple of outputs (described in `LesionFillingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = lesion_filling_cargs(params, execution)
     ret = lesion_filling_outputs(params, execution)
     execution.run(cargs)

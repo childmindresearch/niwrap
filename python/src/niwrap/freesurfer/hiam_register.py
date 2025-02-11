@@ -144,7 +144,6 @@ def hiam_register_execute(
     Returns:
         NamedTuple of outputs (described in `HiamRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = hiam_register_cargs(params, execution)
     ret = hiam_register_outputs(params, execution)
     execution.run(cargs)

@@ -67,7 +67,6 @@ def dyn_outputs(
     """
     return {
         "5tt2vis": v_5tt2vis_outputs,
-        "config": v_5tt2vis_config_outputs,
     }.get(t)
 
 
@@ -310,7 +309,6 @@ def v_5tt2vis_execute(
     Returns:
         NamedTuple of outputs (described in `V5tt2visOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_5tt2vis_cargs(params, execution)
     ret = v_5tt2vis_outputs(params, execution)
     execution.run(cargs)

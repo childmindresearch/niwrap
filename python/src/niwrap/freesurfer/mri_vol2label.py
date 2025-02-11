@@ -243,7 +243,6 @@ def mri_vol2label_execute(
     Returns:
         NamedTuple of outputs (described in `MriVol2labelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_vol2label_cargs(params, execution)
     ret = mri_vol2label_outputs(params, execution)
     execution.run(cargs)

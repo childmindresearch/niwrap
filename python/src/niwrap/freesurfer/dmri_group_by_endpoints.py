@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_groupByEndpoints": dmri_group_by_endpoints_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def dmri_group_by_endpoints_execute(
     Returns:
         NamedTuple of outputs (described in `DmriGroupByEndpointsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_group_by_endpoints_cargs(params, execution)
     ret = dmri_group_by_endpoints_outputs(params, execution)
     execution.run(cargs)

@@ -202,7 +202,6 @@ def v_3d_brain_sync_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBrainSyncOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_brain_sync_cargs(params, execution)
     ret = v_3d_brain_sync_outputs(params, execution)
     execution.run(cargs)

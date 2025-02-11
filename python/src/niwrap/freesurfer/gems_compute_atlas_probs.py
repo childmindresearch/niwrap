@@ -60,7 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gems_compute_atlas_probs": gems_compute_atlas_probs_outputs,
     }.get(t)
 
 
@@ -257,7 +256,6 @@ def gems_compute_atlas_probs_execute(
     Returns:
         NamedTuple of outputs (described in `GemsComputeAtlasProbsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gems_compute_atlas_probs_cargs(params, execution)
     ret = gems_compute_atlas_probs_outputs(params, execution)
     execution.run(cargs)

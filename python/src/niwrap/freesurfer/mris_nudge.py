@@ -154,7 +154,6 @@ def mris_nudge_execute(
     Returns:
         NamedTuple of outputs (described in `MrisNudgeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_nudge_cargs(params, execution)
     ret = mris_nudge_outputs(params, execution)
     execution.run(cargs)

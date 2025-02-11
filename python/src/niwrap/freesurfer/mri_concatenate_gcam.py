@@ -180,7 +180,6 @@ def mri_concatenate_gcam_execute(
     Returns:
         NamedTuple of outputs (described in `MriConcatenateGcamOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_concatenate_gcam_cargs(params, execution)
     ret = mri_concatenate_gcam_outputs(params, execution)
     execution.run(cargs)

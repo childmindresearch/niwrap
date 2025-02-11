@@ -164,7 +164,6 @@ def label2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Label2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label2surf_cargs(params, execution)
     ret = label2surf_outputs(params, execution)
     execution.run(cargs)

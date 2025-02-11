@@ -204,7 +204,6 @@ def metric_label_import_execute(
     Returns:
         NamedTuple of outputs (described in `MetricLabelImportOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_label_import_cargs(params, execution)
     ret = metric_label_import_outputs(params, execution)
     execution.run(cargs)

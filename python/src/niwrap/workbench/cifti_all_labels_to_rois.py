@@ -151,7 +151,6 @@ def cifti_all_labels_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAllLabelsToRoisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_all_labels_to_rois_cargs(params, execution)
     ret = cifti_all_labels_to_rois_outputs(params, execution)
     execution.run(cargs)

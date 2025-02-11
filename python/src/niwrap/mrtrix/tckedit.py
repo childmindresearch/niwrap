@@ -125,17 +125,6 @@ def dyn_outputs(
     """
     return {
         "tckedit": tckedit_outputs,
-        "include": tckedit_include_outputs,
-        "VariousString": tckedit_various_string_outputs,
-        "VariousFile": tckedit_various_file_outputs,
-        "include_ordered": tckedit_include_ordered_outputs,
-        "exclude": tckedit_exclude_outputs,
-        "VariousString": tckedit_various_string_outputs_,
-        "VariousFile": tckedit_various_file_outputs_,
-        "mask": tckedit_mask_outputs,
-        "VariousString": tckedit_various_string_outputs_2,
-        "VariousFile": tckedit_various_file_outputs_2,
-        "config": tckedit_config_outputs,
     }.get(t)
 
 
@@ -827,7 +816,6 @@ def tckedit_execute(
     Returns:
         NamedTuple of outputs (described in `TckeditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckedit_cargs(params, execution)
     ret = tckedit_outputs(params, execution)
     execution.run(cargs)

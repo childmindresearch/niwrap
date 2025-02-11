@@ -68,7 +68,6 @@ def dyn_outputs(
     """
     return {
         "amp2response": amp2response_outputs,
-        "config": amp2response_config_outputs,
     }.get(t)
 
 
@@ -325,7 +324,6 @@ def amp2response_execute(
     Returns:
         NamedTuple of outputs (described in `Amp2responseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = amp2response_cargs(params, execution)
     ret = amp2response_outputs(params, execution)
     execution.run(cargs)

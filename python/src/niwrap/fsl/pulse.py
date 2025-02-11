@@ -374,7 +374,6 @@ def pulse_execute(
     Returns:
         NamedTuple of outputs (described in `PulseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pulse_cargs(params, execution)
     ret = pulse_outputs(params, execution)
     execution.run(cargs)

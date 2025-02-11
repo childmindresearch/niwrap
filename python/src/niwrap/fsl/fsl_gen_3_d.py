@@ -138,7 +138,6 @@ def fsl_gen_3_d_execute(
     Returns:
         NamedTuple of outputs (described in `FslGen3DOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_gen_3_d_cargs(params, execution)
     ret = fsl_gen_3_d_outputs(params, execution)
     execution.run(cargs)

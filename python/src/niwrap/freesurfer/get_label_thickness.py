@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "get_label_thickness": get_label_thickness_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def get_label_thickness_execute(
     Returns:
         NamedTuple of outputs (described in `GetLabelThicknessOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = get_label_thickness_cargs(params, execution)
     ret = get_label_thickness_outputs(params, execution)
     execution.run(cargs)

@@ -88,9 +88,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mrclusterstats": mrclusterstats_outputs,
-        "column": mrclusterstats_column_outputs,
-        "config": mrclusterstats_config_outputs,
     }.get(t)
 
 
@@ -533,7 +530,6 @@ def mrclusterstats_execute(
     Returns:
         NamedTuple of outputs (described in `MrclusterstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrclusterstats_cargs(params, execution)
     ret = mrclusterstats_outputs(params, execution)
     execution.run(cargs)

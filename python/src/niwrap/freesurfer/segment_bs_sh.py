@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "segmentBS.sh": segment_bs_sh_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def segment_bs_sh_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentBsShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_bs_sh_cargs(params, execution)
     ret = segment_bs_sh_outputs(params, execution)
     execution.run(cargs)

@@ -268,7 +268,6 @@ def v_3d_ecm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dEcmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_ecm_cargs(params, execution)
     ret = v_3d_ecm_outputs(params, execution)
     execution.run(cargs)

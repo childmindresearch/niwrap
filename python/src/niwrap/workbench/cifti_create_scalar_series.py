@@ -57,7 +57,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-scalar-series": cifti_create_scalar_series_outputs,
-        "series": cifti_create_scalar_series_series_outputs,
     }.get(t)
 
 
@@ -228,7 +227,6 @@ def cifti_create_scalar_series_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateScalarSeriesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_scalar_series_cargs(params, execution)
     ret = cifti_create_scalar_series_outputs(params, execution)
     execution.run(cargs)

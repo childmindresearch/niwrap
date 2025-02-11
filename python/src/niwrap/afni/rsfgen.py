@@ -247,7 +247,6 @@ def rsfgen_execute(
     Returns:
         NamedTuple of outputs (described in `RsfgenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rsfgen_cargs(params, execution)
     ret = rsfgen_outputs(params, execution)
     execution.run(cargs)

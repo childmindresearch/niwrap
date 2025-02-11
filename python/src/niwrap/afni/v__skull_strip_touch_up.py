@@ -168,7 +168,6 @@ def v__skull_strip_touch_up_execute(
     Returns:
         NamedTuple of outputs (described in `VSkullStripTouchUpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__skull_strip_touch_up_cargs(params, execution)
     ret = v__skull_strip_touch_up_outputs(params, execution)
     execution.run(cargs)

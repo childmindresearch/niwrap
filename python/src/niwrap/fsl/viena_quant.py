@@ -143,7 +143,6 @@ def viena_quant_execute(
     Returns:
         NamedTuple of outputs (described in `VienaQuantOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = viena_quant_cargs(params, execution)
     ret = viena_quant_outputs(params, execution)
     execution.run(cargs)

@@ -170,7 +170,6 @@ def super_resolution_execute(
     Returns:
         NamedTuple of outputs (described in `SuperResolutionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = super_resolution_cargs(params, execution)
     ret = super_resolution_outputs(params, execution)
     execution.run(cargs)

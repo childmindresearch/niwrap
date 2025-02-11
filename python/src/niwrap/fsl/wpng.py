@@ -180,7 +180,6 @@ def wpng_execute(
     Returns:
         NamedTuple of outputs (described in `WpngOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wpng_cargs(params, execution)
     ret = wpng_outputs(params, execution)
     execution.run(cargs)

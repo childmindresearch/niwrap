@@ -66,7 +66,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "make_average_subject": make_average_subject_outputs,
     }.get(t)
 
 
@@ -295,7 +294,6 @@ def make_average_subject_execute(
     Returns:
         NamedTuple of outputs (described in `MakeAverageSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_average_subject_cargs(params, execution)
     ret = make_average_subject_outputs(params, execution)
     execution.run(cargs)

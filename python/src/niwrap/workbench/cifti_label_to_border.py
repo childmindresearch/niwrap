@@ -245,7 +245,6 @@ def cifti_label_to_border_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelToBorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_to_border_cargs(params, execution)
     ret = cifti_label_to_border_outputs(params, execution)
     execution.run(cargs)

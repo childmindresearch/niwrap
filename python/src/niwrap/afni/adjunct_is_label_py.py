@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "adjunct_is_label.py": adjunct_is_label_py_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def adjunct_is_label_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctIsLabelPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_is_label_py_cargs(params, execution)
     ret = adjunct_is_label_py_outputs(params, execution)
     execution.run(cargs)

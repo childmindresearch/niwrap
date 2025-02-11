@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "uber_proc.py": uber_proc_py_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def uber_proc_py_execute(
     Returns:
         NamedTuple of outputs (described in `UberProcPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = uber_proc_py_cargs(params, execution)
     ret = uber_proc_py_outputs(params, execution)
     execution.run(cargs)

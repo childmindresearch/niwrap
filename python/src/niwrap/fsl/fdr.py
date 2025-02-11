@@ -222,7 +222,6 @@ def fdr_execute(
     Returns:
         NamedTuple of outputs (described in `FdrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fdr_cargs(params, execution)
     ret = fdr_outputs(params, execution)
     execution.run(cargs)

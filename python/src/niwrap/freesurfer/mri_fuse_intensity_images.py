@@ -149,7 +149,6 @@ def mri_fuse_intensity_images_execute(
     Returns:
         NamedTuple of outputs (described in `MriFuseIntensityImagesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fuse_intensity_images_cargs(params, execution)
     ret = mri_fuse_intensity_images_outputs(params, execution)
     execution.run(cargs)

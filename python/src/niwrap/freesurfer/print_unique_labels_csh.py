@@ -142,7 +142,6 @@ def print_unique_labels_csh_execute(
     Returns:
         NamedTuple of outputs (described in `PrintUniqueLabelsCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = print_unique_labels_csh_cargs(params, execution)
     ret = print_unique_labels_csh_outputs(params, execution)
     execution.run(cargs)

@@ -269,7 +269,6 @@ def v_3dvolreg_execute(
     Returns:
         NamedTuple of outputs (described in `V3dvolregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dvolreg_cargs(params, execution)
     ret = v_3dvolreg_outputs(params, execution)
     execution.run(cargs)

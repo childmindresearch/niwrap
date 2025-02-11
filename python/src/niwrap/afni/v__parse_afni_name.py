@@ -143,7 +143,6 @@ def v__parse_afni_name_execute(
     Returns:
         NamedTuple of outputs (described in `VParseAfniNameOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__parse_afni_name_cargs(params, execution)
     ret = v__parse_afni_name_outputs(params, execution)
     execution.run(cargs)

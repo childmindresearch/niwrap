@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fs_temp_file": fs_temp_file_outputs,
     }.get(t)
 
 
@@ -159,7 +158,6 @@ def fs_temp_file_execute(
     Returns:
         NamedTuple of outputs (described in `FsTempFileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_temp_file_cargs(params, execution)
     ret = fs_temp_file_outputs(params, execution)
     execution.run(cargs)

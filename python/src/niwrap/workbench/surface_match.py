@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surface-match": surface_match_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def surface_match_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceMatchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_match_cargs(params, execution)
     ret = surface_match_outputs(params, execution)
     execution.run(cargs)

@@ -194,7 +194,6 @@ def quickspec_execute(
     Returns:
         NamedTuple of outputs (described in `QuickspecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quickspec_cargs(params, execution)
     ret = quickspec_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "nicat": nicat_outputs,
     }.get(t)
 
 
@@ -154,7 +153,6 @@ def nicat_execute(
     Returns:
         NamedTuple of outputs (described in `NicatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = nicat_cargs(params, execution)
     ret = nicat_outputs(params, execution)
     execution.run(cargs)

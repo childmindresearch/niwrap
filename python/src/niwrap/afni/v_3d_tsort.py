@@ -196,7 +196,6 @@ def v_3d_tsort_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTsortOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tsort_cargs(params, execution)
     ret = v_3d_tsort_outputs(params, execution)
     execution.run(cargs)

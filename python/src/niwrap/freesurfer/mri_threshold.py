@@ -170,7 +170,6 @@ def mri_threshold_execute(
     Returns:
         NamedTuple of outputs (described in `MriThresholdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_threshold_cargs(params, execution)
     ret = mri_threshold_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "build_desikan_killiany_gcs.csh": build_desikan_killiany_gcs_csh_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def build_desikan_killiany_gcs_csh_execute(
     Returns:
         NamedTuple of outputs (described in `BuildDesikanKillianyGcsCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = build_desikan_killiany_gcs_csh_cargs(params, execution)
     ret = build_desikan_killiany_gcs_csh_outputs(params, execution)
     execution.run(cargs)

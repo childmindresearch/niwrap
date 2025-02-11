@@ -64,7 +64,6 @@ def dyn_outputs(
     """
     return {
         "labelconvert": labelconvert_outputs,
-        "config": labelconvert_config_outputs,
     }.get(t)
 
 
@@ -277,7 +276,6 @@ def labelconvert_execute(
     Returns:
         NamedTuple of outputs (described in `LabelconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = labelconvert_cargs(params, execution)
     ret = labelconvert_outputs(params, execution)
     execution.run(cargs)

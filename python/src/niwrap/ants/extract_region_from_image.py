@@ -71,10 +71,6 @@ def dyn_outputs(
     """
     return {
         "ExtractRegionFromImage": extract_region_from_image_outputs,
-        "region_min_max_index": extract_region_from_image_region_min_max_index_outputs,
-        "region_label": extract_region_from_image_region_label_outputs,
-        "region_domain_image": extract_region_from_image_region_domain_image_outputs,
-        "region_label_with_image": extract_region_from_image_region_label_with_image_outputs,
     }.get(t)
 
 
@@ -333,7 +329,6 @@ def extract_region_from_image_execute(
     Returns:
         NamedTuple of outputs (described in `ExtractRegionFromImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = extract_region_from_image_cargs(params, execution)
     ret = extract_region_from_image_outputs(params, execution)
     execution.run(cargs)

@@ -224,7 +224,6 @@ def parc_atlas_jackknife_test_execute(
     Returns:
         NamedTuple of outputs (described in `ParcAtlasJackknifeTestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = parc_atlas_jackknife_test_cargs(params, execution)
     ret = parc_atlas_jackknife_test_outputs(params, execution)
     execution.run(cargs)

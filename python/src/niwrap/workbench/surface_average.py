@@ -55,7 +55,6 @@ def dyn_outputs(
     """
     return {
         "surface-average": surface_average_outputs,
-        "surf": surface_average_surf_outputs,
     }.get(t)
 
 
@@ -233,7 +232,6 @@ def surface_average_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_average_cargs(params, execution)
     ret = surface_average_outputs(params, execution)
     execution.run(cargs)

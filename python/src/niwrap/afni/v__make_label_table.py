@@ -440,7 +440,6 @@ def v__make_label_table_execute(
     Returns:
         NamedTuple of outputs (described in `VMakeLabelTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__make_label_table_cargs(params, execution)
     ret = v__make_label_table_outputs(params, execution)
     execution.run(cargs)

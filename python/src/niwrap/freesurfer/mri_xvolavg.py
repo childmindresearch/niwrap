@@ -164,7 +164,6 @@ def mri_xvolavg_execute(
     Returns:
         NamedTuple of outputs (described in `MriXvolavgOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_xvolavg_cargs(params, execution)
     ret = mri_xvolavg_outputs(params, execution)
     execution.run(cargs)

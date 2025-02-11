@@ -188,7 +188,6 @@ def v__extract_meica_ortvec_execute(
     Returns:
         NamedTuple of outputs (described in `VExtractMeicaOrtvecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__extract_meica_ortvec_cargs(params, execution)
     ret = v__extract_meica_ortvec_outputs(params, execution)
     execution.run(cargs)

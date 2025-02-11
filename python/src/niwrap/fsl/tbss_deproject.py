@@ -149,7 +149,6 @@ def tbss_deproject_execute(
     Returns:
         NamedTuple of outputs (described in `TbssDeprojectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_deproject_cargs(params, execution)
     ret = tbss_deproject_outputs(params, execution)
     execution.run(cargs)

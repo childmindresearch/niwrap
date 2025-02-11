@@ -243,7 +243,6 @@ def fsread_annot_execute(
     Returns:
         NamedTuple of outputs (described in `FsreadAnnotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsread_annot_cargs(params, execution)
     ret = fsread_annot_outputs(params, execution)
     execution.run(cargs)

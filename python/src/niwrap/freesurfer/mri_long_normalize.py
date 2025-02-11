@@ -216,7 +216,6 @@ def mri_long_normalize_execute(
     Returns:
         NamedTuple of outputs (described in `MriLongNormalizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_long_normalize_cargs(params, execution)
     ret = mri_long_normalize_outputs(params, execution)
     execution.run(cargs)

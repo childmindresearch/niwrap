@@ -431,7 +431,6 @@ def mri_normalize_execute(
     Returns:
         NamedTuple of outputs (described in `MriNormalizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_normalize_cargs(params, execution)
     ret = mri_normalize_outputs(params, execution)
     execution.run(cargs)

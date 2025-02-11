@@ -150,7 +150,6 @@ def mris_remove_variance_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRemoveVarianceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_remove_variance_cargs(params, execution)
     ret = mris_remove_variance_outputs(params, execution)
     execution.run(cargs)

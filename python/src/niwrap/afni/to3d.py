@@ -476,7 +476,6 @@ def to3d_execute(
     Returns:
         NamedTuple of outputs (described in `To3dOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = to3d_cargs(params, execution)
     ret = to3d_outputs(params, execution)
     execution.run(cargs)

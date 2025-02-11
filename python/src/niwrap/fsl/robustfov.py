@@ -181,7 +181,6 @@ def robustfov_execute(
     Returns:
         NamedTuple of outputs (described in `RobustfovOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = robustfov_cargs(params, execution)
     ret = robustfov_outputs(params, execution)
     execution.run(cargs)

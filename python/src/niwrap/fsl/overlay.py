@@ -206,7 +206,6 @@ def overlay_execute(
     Returns:
         NamedTuple of outputs (described in `OverlayOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = overlay_cargs(params, execution)
     ret = overlay_outputs(params, execution)
     execution.run(cargs)

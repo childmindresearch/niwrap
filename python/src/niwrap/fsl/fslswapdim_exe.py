@@ -163,7 +163,6 @@ def fslswapdim_exe_execute(
     Returns:
         NamedTuple of outputs (described in `FslswapdimExeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslswapdim_exe_cargs(params, execution)
     ret = fslswapdim_exe_outputs(params, execution)
     execution.run(cargs)

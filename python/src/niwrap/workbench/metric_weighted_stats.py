@@ -65,9 +65,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "metric-weighted-stats": metric_weighted_stats_outputs,
-        "roi": metric_weighted_stats_roi_outputs,
-        "stdev": metric_weighted_stats_stdev_outputs,
     }.get(t)
 
 
@@ -315,7 +312,6 @@ def metric_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_weighted_stats_cargs(params, execution)
     ret = metric_weighted_stats_outputs(params, execution)
     execution.run(cargs)

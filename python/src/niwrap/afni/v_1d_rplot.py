@@ -137,7 +137,6 @@ def v_1d_rplot_execute(
     Returns:
         NamedTuple of outputs (described in `V1dRplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_rplot_cargs(params, execution)
     ret = v_1d_rplot_outputs(params, execution)
     execution.run(cargs)

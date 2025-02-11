@@ -153,7 +153,6 @@ def cifti_transpose_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiTransposeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_transpose_cargs(params, execution)
     ret = cifti_transpose_outputs(params, execution)
     execution.run(cargs)

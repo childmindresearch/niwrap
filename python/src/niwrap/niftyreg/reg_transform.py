@@ -406,7 +406,6 @@ def reg_transform_execute(
     Returns:
         NamedTuple of outputs (described in `RegTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_transform_cargs(params, execution)
     ret = reg_transform_outputs(params, execution)
     execution.run(cargs)

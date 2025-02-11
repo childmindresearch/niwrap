@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_ca_train": mri_ca_train_outputs,
     }.get(t)
 
 
@@ -247,7 +246,6 @@ def mri_ca_train_execute(
     Returns:
         NamedTuple of outputs (described in `MriCaTrainOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_ca_train_cargs(params, execution)
     ret = mri_ca_train_outputs(params, execution)
     execution.run(cargs)

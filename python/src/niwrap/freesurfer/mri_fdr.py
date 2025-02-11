@@ -204,7 +204,6 @@ def mri_fdr_execute(
     Returns:
         NamedTuple of outputs (described in `MriFdrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fdr_cargs(params, execution)
     ret = mri_fdr_outputs(params, execution)
     execution.run(cargs)

@@ -209,7 +209,6 @@ def mris_multimodal_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMultimodalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_multimodal_cargs(params, execution)
     ret = mris_multimodal_outputs(params, execution)
     execution.run(cargs)

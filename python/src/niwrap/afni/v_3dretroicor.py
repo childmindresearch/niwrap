@@ -224,7 +224,6 @@ def v_3dretroicor_execute(
     Returns:
         NamedTuple of outputs (described in `V3dretroicorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dretroicor_cargs(params, execution)
     ret = v_3dretroicor_outputs(params, execution)
     execution.run(cargs)

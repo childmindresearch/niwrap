@@ -174,7 +174,6 @@ def wfilemask_execute(
     Returns:
         NamedTuple of outputs (described in `WfilemaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wfilemask_cargs(params, execution)
     ret = wfilemask_outputs(params, execution)
     execution.run(cargs)

@@ -275,7 +275,6 @@ def v_3d_bandpass_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBandpassOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_bandpass_cargs(params, execution)
     ret = v_3d_bandpass_outputs(params, execution)
     execution.run(cargs)

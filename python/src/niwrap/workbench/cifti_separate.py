@@ -616,7 +616,6 @@ def cifti_separate_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiSeparateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_separate_cargs(params, execution)
     ret = cifti_separate_outputs(params, execution)
     execution.run(cargs)

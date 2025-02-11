@@ -185,24 +185,6 @@ def dyn_outputs(
     """
     return {
         "tckgen": tckgen_outputs,
-        "seed_image": tckgen_seed_image_outputs,
-        "seed_sphere": tckgen_seed_sphere_outputs,
-        "seed_random_per_voxel": tckgen_seed_random_per_voxel_outputs,
-        "seed_grid_per_voxel": tckgen_seed_grid_per_voxel_outputs,
-        "seed_rejection": tckgen_seed_rejection_outputs,
-        "seed_gmwmi": tckgen_seed_gmwmi_outputs,
-        "include": tckgen_include_outputs,
-        "VariousString": tckgen_various_string_outputs,
-        "VariousFile": tckgen_various_file_outputs,
-        "include_ordered": tckgen_include_ordered_outputs,
-        "exclude": tckgen_exclude_outputs,
-        "VariousString": tckgen_various_string_outputs_,
-        "VariousFile": tckgen_various_file_outputs_,
-        "mask": tckgen_mask_outputs,
-        "VariousString": tckgen_various_string_outputs_2,
-        "VariousFile": tckgen_various_file_outputs_2,
-        "fslgrad": tckgen_fslgrad_outputs,
-        "config": tckgen_config_outputs,
     }.get(t)
 
 
@@ -1531,7 +1513,6 @@ def tckgen_execute(
     Returns:
         NamedTuple of outputs (described in `TckgenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckgen_cargs(params, execution)
     ret = tckgen_outputs(params, execution)
     execution.run(cargs)

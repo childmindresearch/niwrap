@@ -138,7 +138,6 @@ def mkmnc_index_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `MkmncIndexTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mkmnc_index_tcl_cargs(params, execution)
     ret = mkmnc_index_tcl_outputs(params, execution)
     execution.run(cargs)

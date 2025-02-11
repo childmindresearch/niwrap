@@ -167,7 +167,6 @@ def fs_check_version_execute(
     Returns:
         NamedTuple of outputs (described in `FsCheckVersionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_check_version_cargs(params, execution)
     ret = fs_check_version_outputs(params, execution)
     execution.run(cargs)

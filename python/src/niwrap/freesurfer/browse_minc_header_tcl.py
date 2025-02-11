@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "browse-minc-header.tcl": browse_minc_header_tcl_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def browse_minc_header_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `BrowseMincHeaderTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = browse_minc_header_tcl_cargs(params, execution)
     ret = browse_minc_header_tcl_outputs(params, execution)
     execution.run(cargs)

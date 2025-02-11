@@ -68,8 +68,6 @@ def dyn_outputs(
     """
     return {
         "volume-extrema": volume_extrema_outputs,
-        "presmooth": volume_extrema_presmooth_outputs,
-        "threshold": volume_extrema_threshold_outputs,
     }.get(t)
 
 
@@ -326,7 +324,6 @@ def volume_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_extrema_cargs(params, execution)
     ret = volume_extrema_outputs(params, execution)
     execution.run(cargs)

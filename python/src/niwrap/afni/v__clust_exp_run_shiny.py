@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@ClustExp_run_shiny": v__clust_exp_run_shiny_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def v__clust_exp_run_shiny_execute(
     Returns:
         NamedTuple of outputs (described in `VClustExpRunShinyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__clust_exp_run_shiny_cargs(params, execution)
     ret = v__clust_exp_run_shiny_outputs(params, execution)
     execution.run(cargs)

@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tbss_2_reg": tbss_2_reg_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def tbss_2_reg_execute(
     Returns:
         NamedTuple of outputs (described in `Tbss2RegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_2_reg_cargs(params, execution)
     ret = tbss_2_reg_outputs(params, execution)
     execution.run(cargs)

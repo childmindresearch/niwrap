@@ -214,7 +214,6 @@ def v_3d_blur_in_mask_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBlurInMaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_blur_in_mask_cargs(params, execution)
     ret = v_3d_blur_in_mask_outputs(params, execution)
     execution.run(cargs)

@@ -135,7 +135,6 @@ def fs_tutorial_data_execute(
     Returns:
         NamedTuple of outputs (described in `FsTutorialDataOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_tutorial_data_cargs(params, execution)
     ret = fs_tutorial_data_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_cvs_data_copy": mri_cvs_data_copy_outputs,
     }.get(t)
 
 
@@ -163,7 +162,6 @@ def mri_cvs_data_copy_execute(
     Returns:
         NamedTuple of outputs (described in `MriCvsDataCopyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_cvs_data_copy_cargs(params, execution)
     ret = mri_cvs_data_copy_outputs(params, execution)
     execution.run(cargs)

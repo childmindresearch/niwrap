@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_vox2vox": dmri_vox2vox_outputs,
     }.get(t)
 
 
@@ -227,7 +226,6 @@ def dmri_vox2vox_execute(
     Returns:
         NamedTuple of outputs (described in `DmriVox2voxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_vox2vox_cargs(params, execution)
     ret = dmri_vox2vox_outputs(params, execution)
     execution.run(cargs)

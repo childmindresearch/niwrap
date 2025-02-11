@@ -191,7 +191,6 @@ def whirlgif_execute(
     Returns:
         NamedTuple of outputs (described in `WhirlgifOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = whirlgif_cargs(params, execution)
     ret = whirlgif_outputs(params, execution)
     execution.run(cargs)

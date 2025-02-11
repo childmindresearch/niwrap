@@ -188,7 +188,6 @@ def samsegmesh2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Samsegmesh2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = samsegmesh2surf_cargs(params, execution)
     ret = samsegmesh2surf_outputs(params, execution)
     execution.run(cargs)

@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "dirorder": dirorder_outputs,
-        "config": dirorder_config_outputs,
     }.get(t)
 
 
@@ -258,7 +257,6 @@ def dirorder_execute(
     Returns:
         NamedTuple of outputs (described in `DirorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirorder_cargs(params, execution)
     ret = dirorder_outputs(params, execution)
     execution.run(cargs)

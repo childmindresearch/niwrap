@@ -144,7 +144,6 @@ def quotize_execute(
     Returns:
         NamedTuple of outputs (described in `QuotizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quotize_cargs(params, execution)
     ret = quotize_outputs(params, execution)
     execution.run(cargs)

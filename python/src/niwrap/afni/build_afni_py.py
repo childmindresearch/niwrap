@@ -251,7 +251,6 @@ def build_afni_py_execute(
     Returns:
         NamedTuple of outputs (described in `BuildAfniPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = build_afni_py_cargs(params, execution)
     ret = build_afni_py_outputs(params, execution)
     execution.run(cargs)

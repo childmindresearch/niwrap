@@ -282,7 +282,6 @@ def talsegprob_execute(
     Returns:
         NamedTuple of outputs (described in `TalsegprobOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = talsegprob_cargs(params, execution)
     ret = talsegprob_outputs(params, execution)
     execution.run(cargs)

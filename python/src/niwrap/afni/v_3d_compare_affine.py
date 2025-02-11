@@ -162,7 +162,6 @@ def v_3d_compare_affine_execute(
     Returns:
         NamedTuple of outputs (described in `V3dCompareAffineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_compare_affine_cargs(params, execution)
     ret = v_3d_compare_affine_outputs(params, execution)
     execution.run(cargs)

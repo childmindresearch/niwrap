@@ -167,7 +167,6 @@ def resample_image_execute(
     Returns:
         NamedTuple of outputs (described in `ResampleImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = resample_image_cargs(params, execution)
     ret = resample_image_outputs(params, execution)
     execution.run(cargs)

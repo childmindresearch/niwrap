@@ -159,7 +159,6 @@ def zero_lt_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `ZeroLt4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = zero_lt_4dfp_cargs(params, execution)
     ret = zero_lt_4dfp_outputs(params, execution)
     execution.run(cargs)
