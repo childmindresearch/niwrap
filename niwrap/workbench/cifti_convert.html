@@ -209,6 +209,36 @@
 
             </li>
             <li>
+                    <a class="class" href="#CiftiConvertResetTimepoints1Parameters">CiftiConvertResetTimepoints1Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints1Parameters.timestep">timestep</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints1Parameters.timestart">timestart</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints1Parameters.opt_unit_unit">opt_unit_unit</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CiftiConvertResetTimepoints2Parameters">CiftiConvertResetTimepoints2Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints2Parameters.timestep">timestep</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints2Parameters.timestart">timestart</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiConvertResetTimepoints2Parameters.opt_unit_unit">opt_unit_unit</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#CiftiConvertResetTimepointsParameters">CiftiConvertResetTimepointsParameters</a>
                             <ul class="memberlist">
                         <li>
@@ -219,36 +249,6 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiConvertResetTimepointsParameters.opt_unit_unit">opt_unit_unit</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
-                    <a class="class" href="#CiftiConvertResetTimepointsParameters_">CiftiConvertResetTimepointsParameters_</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_.timestep">timestep</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_.timestart">timestart</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_.opt_unit_unit">opt_unit_unit</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
-                    <a class="class" href="#CiftiConvertResetTimepointsParameters_2">CiftiConvertResetTimepointsParameters_2</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_2.timestep">timestep</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_2.timestart">timestart</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#CiftiConvertResetTimepointsParameters_2.opt_unit_unit">opt_unit_unit</a>
                         </li>
                 </ul>
 
@@ -332,13 +332,13 @@
                     <a class="function" href="#cifti_convert_replace_binary_params">cifti_convert_replace_binary_params</a>
             </li>
             <li>
+                    <a class="function" href="#cifti_convert_reset_timepoints_1_params">cifti_convert_reset_timepoints_1_params</a>
+            </li>
+            <li>
+                    <a class="function" href="#cifti_convert_reset_timepoints_2_params">cifti_convert_reset_timepoints_2_params</a>
+            </li>
+            <li>
                     <a class="function" href="#cifti_convert_reset_timepoints_params">cifti_convert_reset_timepoints_params</a>
-            </li>
-            <li>
-                    <a class="function" href="#cifti_convert_reset_timepoints_params_">cifti_convert_reset_timepoints_params_</a>
-            </li>
-            <li>
-                    <a class="function" href="#cifti_convert_reset_timepoints_params_2">cifti_convert_reset_timepoints_params_2</a>
             </li>
             <li>
                     <a class="function" href="#cifti_convert_to_gifti_ext_params">cifti_convert_to_gifti_ext_params</a>
@@ -416,8 +416,8 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos">  44</span></a>    <span class="s2">&quot;opt_smaller_file&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">  45</span></a>    <span class="s2">&quot;opt_smaller_dims&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">  46</span></a><span class="p">})</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">  47</span></a><span class="n">CiftiConvertResetTimepointsParameters_</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertResetTimepointsParameters_&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">  48</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;reset_timepoints&quot;</span><span class="p">],</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">  47</span></a><span class="n">CiftiConvertResetTimepoints1Parameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertResetTimepoints1Parameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">  48</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;reset_timepoints_1&quot;</span><span class="p">],</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">  49</span></a>    <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">  50</span></a>    <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos">  51</span></a>    <span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
@@ -427,7 +427,7 @@
 </span><span id="L-55"><a href="#L-55"><span class="linenos">  55</span></a>    <span class="s2">&quot;nifti_in&quot;</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos">  56</span></a>    <span class="s2">&quot;cifti_template&quot;</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-57"><a href="#L-57"><span class="linenos">  57</span></a>    <span class="s2">&quot;cifti_out&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">  58</span></a>    <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiConvertResetTimepointsParameters_</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">  58</span></a>    <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiConvertResetTimepoints1Parameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos">  59</span></a>    <span class="s2">&quot;opt_reset_scalars&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos">  60</span></a><span class="p">})</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos">  61</span></a><span class="n">CiftiConvertToTextParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertToTextParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
@@ -436,8 +436,8 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos">  64</span></a>    <span class="s2">&quot;text_out&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">  65</span></a>    <span class="s2">&quot;opt_col_delim_delim_string&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">  66</span></a><span class="p">})</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">  67</span></a><span class="n">CiftiConvertResetTimepointsParameters_2</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertResetTimepointsParameters_2&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">  68</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;reset_timepoints&quot;</span><span class="p">],</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">  67</span></a><span class="n">CiftiConvertResetTimepoints2Parameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertResetTimepoints2Parameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">  68</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;reset_timepoints_2&quot;</span><span class="p">],</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos">  69</span></a>    <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos">  70</span></a>    <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">  71</span></a>    <span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
@@ -448,7 +448,7 @@
 </span><span id="L-76"><a href="#L-76"><span class="linenos">  76</span></a>    <span class="s2">&quot;cifti_template&quot;</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">  77</span></a>    <span class="s2">&quot;cifti_out&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">  78</span></a>    <span class="s2">&quot;opt_col_delim_delim_string&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">  79</span></a>    <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiConvertResetTimepointsParameters_2</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">  79</span></a>    <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiConvertResetTimepoints2Parameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">  80</span></a>    <span class="s2">&quot;opt_reset_scalars&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">  81</span></a><span class="p">})</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">  82</span></a><span class="n">CiftiConvertParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiConvertParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
@@ -481,10 +481,10 @@
 </span><span id="L-109"><a href="#L-109"><span class="linenos"> 109</span></a>        <span class="s2">&quot;replace_binary&quot;</span><span class="p">:</span> <span class="n">cifti_convert_replace_binary_cargs</span><span class="p">,</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos"> 110</span></a>        <span class="s2">&quot;to_nifti&quot;</span><span class="p">:</span> <span class="n">cifti_convert_to_nifti_cargs</span><span class="p">,</span>
 </span><span id="L-111"><a href="#L-111"><span class="linenos"> 111</span></a>        <span class="s2">&quot;from_nifti&quot;</span><span class="p">:</span> <span class="n">cifti_convert_from_nifti_cargs</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos"> 112</span></a>        <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">cifti_convert_reset_timepoints_cargs_</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos"> 112</span></a>        <span class="s2">&quot;reset_timepoints_1&quot;</span><span class="p">:</span> <span class="n">cifti_convert_reset_timepoints_1_cargs</span><span class="p">,</span>
 </span><span id="L-113"><a href="#L-113"><span class="linenos"> 113</span></a>        <span class="s2">&quot;to_text&quot;</span><span class="p">:</span> <span class="n">cifti_convert_to_text_cargs</span><span class="p">,</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos"> 114</span></a>        <span class="s2">&quot;from_text&quot;</span><span class="p">:</span> <span class="n">cifti_convert_from_text_cargs</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos"> 115</span></a>        <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">:</span> <span class="n">cifti_convert_reset_timepoints_cargs_2</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos"> 115</span></a>        <span class="s2">&quot;reset_timepoints_2&quot;</span><span class="p">:</span> <span class="n">cifti_convert_reset_timepoints_2_cargs</span><span class="p">,</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos"> 116</span></a>    <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos"> 117</span></a>
 </span><span id="L-118"><a href="#L-118"><span class="linenos"> 118</span></a>
@@ -825,11 +825,11 @@
 </span><span id="L-453"><a href="#L-453"><span class="linenos"> 453</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-454"><a href="#L-454"><span class="linenos"> 454</span></a>
 </span><span id="L-455"><a href="#L-455"><span class="linenos"> 455</span></a>
-</span><span id="L-456"><a href="#L-456"><span class="linenos"> 456</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_params_</span><span class="p">(</span>
+</span><span id="L-456"><a href="#L-456"><span class="linenos"> 456</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_1_params</span><span class="p">(</span>
 </span><span id="L-457"><a href="#L-457"><span class="linenos"> 457</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-458"><a href="#L-458"><span class="linenos"> 458</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-459"><a href="#L-459"><span class="linenos"> 459</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-460"><a href="#L-460"><span class="linenos"> 460</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepointsParameters_</span><span class="p">:</span>
+</span><span id="L-460"><a href="#L-460"><span class="linenos"> 460</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepoints1Parameters</span><span class="p">:</span>
 </span><span id="L-461"><a href="#L-461"><span class="linenos"> 461</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-462"><a href="#L-462"><span class="linenos"> 462</span></a><span class="sd">    Build parameters.</span>
 </span><span id="L-463"><a href="#L-463"><span class="linenos"> 463</span></a><span class="sd">    </span>
@@ -842,7 +842,7 @@
 </span><span id="L-470"><a href="#L-470"><span class="linenos"> 470</span></a><span class="sd">        Parameter dictionary</span>
 </span><span id="L-471"><a href="#L-471"><span class="linenos"> 471</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-472"><a href="#L-472"><span class="linenos"> 472</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-473"><a href="#L-473"><span class="linenos"> 473</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">,</span>
+</span><span id="L-473"><a href="#L-473"><span class="linenos"> 473</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints_1&quot;</span><span class="p">,</span>
 </span><span id="L-474"><a href="#L-474"><span class="linenos"> 474</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
 </span><span id="L-475"><a href="#L-475"><span class="linenos"> 475</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
 </span><span id="L-476"><a href="#L-476"><span class="linenos"> 476</span></a>    <span class="p">}</span>
@@ -851,8 +851,8 @@
 </span><span id="L-479"><a href="#L-479"><span class="linenos"> 479</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span><span id="L-480"><a href="#L-480"><span class="linenos"> 480</span></a>
 </span><span id="L-481"><a href="#L-481"><span class="linenos"> 481</span></a>
-</span><span id="L-482"><a href="#L-482"><span class="linenos"> 482</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_cargs_</span><span class="p">(</span>
-</span><span id="L-483"><a href="#L-483"><span class="linenos"> 483</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_</span><span class="p">,</span>
+</span><span id="L-482"><a href="#L-482"><span class="linenos"> 482</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_1_cargs</span><span class="p">(</span>
+</span><span id="L-483"><a href="#L-483"><span class="linenos"> 483</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints1Parameters</span><span class="p">,</span>
 </span><span id="L-484"><a href="#L-484"><span class="linenos"> 484</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
 </span><span id="L-485"><a href="#L-485"><span class="linenos"> 485</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-486"><a href="#L-486"><span class="linenos"> 486</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -890,7 +890,7 @@
 </span><span id="L-518"><a href="#L-518"><span class="linenos"> 518</span></a>    <span class="n">nifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-519"><a href="#L-519"><span class="linenos"> 519</span></a>    <span class="n">cifti_template</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-520"><a href="#L-520"><span class="linenos"> 520</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-521"><a href="#L-521"><span class="linenos"> 521</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-521"><a href="#L-521"><span class="linenos"> 521</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-522"><a href="#L-522"><span class="linenos"> 522</span></a>    <span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="L-523"><a href="#L-523"><span class="linenos"> 523</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertFromNiftiParameters</span><span class="p">:</span>
 </span><span id="L-524"><a href="#L-524"><span class="linenos"> 524</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1016,11 +1016,11 @@
 </span><span id="L-644"><a href="#L-644"><span class="linenos"> 644</span></a>    <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-645"><a href="#L-645"><span class="linenos"> 645</span></a>
 </span><span id="L-646"><a href="#L-646"><span class="linenos"> 646</span></a>
-</span><span id="L-647"><a href="#L-647"><span class="linenos"> 647</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_params_2</span><span class="p">(</span>
+</span><span id="L-647"><a href="#L-647"><span class="linenos"> 647</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_2_params</span><span class="p">(</span>
 </span><span id="L-648"><a href="#L-648"><span class="linenos"> 648</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-649"><a href="#L-649"><span class="linenos"> 649</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-650"><a href="#L-650"><span class="linenos"> 650</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-651"><a href="#L-651"><span class="linenos"> 651</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepointsParameters_2</span><span class="p">:</span>
+</span><span id="L-651"><a href="#L-651"><span class="linenos"> 651</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepoints2Parameters</span><span class="p">:</span>
 </span><span id="L-652"><a href="#L-652"><span class="linenos"> 652</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-653"><a href="#L-653"><span class="linenos"> 653</span></a><span class="sd">    Build parameters.</span>
 </span><span id="L-654"><a href="#L-654"><span class="linenos"> 654</span></a><span class="sd">    </span>
@@ -1033,7 +1033,7 @@
 </span><span id="L-661"><a href="#L-661"><span class="linenos"> 661</span></a><span class="sd">        Parameter dictionary</span>
 </span><span id="L-662"><a href="#L-662"><span class="linenos"> 662</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-663"><a href="#L-663"><span class="linenos"> 663</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-664"><a href="#L-664"><span class="linenos"> 664</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">,</span>
+</span><span id="L-664"><a href="#L-664"><span class="linenos"> 664</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints_2&quot;</span><span class="p">,</span>
 </span><span id="L-665"><a href="#L-665"><span class="linenos"> 665</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
 </span><span id="L-666"><a href="#L-666"><span class="linenos"> 666</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
 </span><span id="L-667"><a href="#L-667"><span class="linenos"> 667</span></a>    <span class="p">}</span>
@@ -1042,8 +1042,8 @@
 </span><span id="L-670"><a href="#L-670"><span class="linenos"> 670</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span><span id="L-671"><a href="#L-671"><span class="linenos"> 671</span></a>
 </span><span id="L-672"><a href="#L-672"><span class="linenos"> 672</span></a>
-</span><span id="L-673"><a href="#L-673"><span class="linenos"> 673</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_cargs_2</span><span class="p">(</span>
-</span><span id="L-674"><a href="#L-674"><span class="linenos"> 674</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_2</span><span class="p">,</span>
+</span><span id="L-673"><a href="#L-673"><span class="linenos"> 673</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_2_cargs</span><span class="p">(</span>
+</span><span id="L-674"><a href="#L-674"><span class="linenos"> 674</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints2Parameters</span><span class="p">,</span>
 </span><span id="L-675"><a href="#L-675"><span class="linenos"> 675</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
 </span><span id="L-676"><a href="#L-676"><span class="linenos"> 676</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-677"><a href="#L-677"><span class="linenos"> 677</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1082,7 +1082,7 @@
 </span><span id="L-710"><a href="#L-710"><span class="linenos"> 710</span></a>    <span class="n">cifti_template</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-711"><a href="#L-711"><span class="linenos"> 711</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-712"><a href="#L-712"><span class="linenos"> 712</span></a>    <span class="n">opt_col_delim_delim_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-713"><a href="#L-713"><span class="linenos"> 713</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_2</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-713"><a href="#L-713"><span class="linenos"> 713</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints2Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-714"><a href="#L-714"><span class="linenos"> 714</span></a>    <span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="L-715"><a href="#L-715"><span class="linenos"> 715</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertFromTextParameters</span><span class="p">:</span>
 </span><span id="L-716"><a href="#L-716"><span class="linenos"> 716</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1404,9 +1404,9 @@
 </span><span id="L-1032"><a href="#L-1032"><span class="linenos">1032</span></a>    <span class="s2">&quot;CiftiConvertOutputs&quot;</span><span class="p">,</span>
 </span><span id="L-1033"><a href="#L-1033"><span class="linenos">1033</span></a>    <span class="s2">&quot;CiftiConvertParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1034"><a href="#L-1034"><span class="linenos">1034</span></a>    <span class="s2">&quot;CiftiConvertReplaceBinaryParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1035"><a href="#L-1035"><span class="linenos">1035</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1036"><a href="#L-1036"><span class="linenos">1036</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters_&quot;</span><span class="p">,</span>
-</span><span id="L-1037"><a href="#L-1037"><span class="linenos">1037</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters_2&quot;</span><span class="p">,</span>
+</span><span id="L-1035"><a href="#L-1035"><span class="linenos">1035</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints1Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-1036"><a href="#L-1036"><span class="linenos">1036</span></a>    <span class="s2">&quot;CiftiConvertResetTimepoints2Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-1037"><a href="#L-1037"><span class="linenos">1037</span></a>    <span class="s2">&quot;CiftiConvertResetTimepointsParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1038"><a href="#L-1038"><span class="linenos">1038</span></a>    <span class="s2">&quot;CiftiConvertToGiftiExtParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1039"><a href="#L-1039"><span class="linenos">1039</span></a>    <span class="s2">&quot;CiftiConvertToNiftiOutputs&quot;</span><span class="p">,</span>
 </span><span id="L-1040"><a href="#L-1040"><span class="linenos">1040</span></a>    <span class="s2">&quot;CiftiConvertToNiftiParameters&quot;</span><span class="p">,</span>
@@ -1417,9 +1417,9 @@
 </span><span id="L-1045"><a href="#L-1045"><span class="linenos">1045</span></a>    <span class="s2">&quot;cifti_convert_from_text_params&quot;</span><span class="p">,</span>
 </span><span id="L-1046"><a href="#L-1046"><span class="linenos">1046</span></a>    <span class="s2">&quot;cifti_convert_params&quot;</span><span class="p">,</span>
 </span><span id="L-1047"><a href="#L-1047"><span class="linenos">1047</span></a>    <span class="s2">&quot;cifti_convert_replace_binary_params&quot;</span><span class="p">,</span>
-</span><span id="L-1048"><a href="#L-1048"><span class="linenos">1048</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params&quot;</span><span class="p">,</span>
-</span><span id="L-1049"><a href="#L-1049"><span class="linenos">1049</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params_&quot;</span><span class="p">,</span>
-</span><span id="L-1050"><a href="#L-1050"><span class="linenos">1050</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params_2&quot;</span><span class="p">,</span>
+</span><span id="L-1048"><a href="#L-1048"><span class="linenos">1048</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_1_params&quot;</span><span class="p">,</span>
+</span><span id="L-1049"><a href="#L-1049"><span class="linenos">1049</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_2_params&quot;</span><span class="p">,</span>
+</span><span id="L-1050"><a href="#L-1050"><span class="linenos">1050</span></a>    <span class="s2">&quot;cifti_convert_reset_timepoints_params&quot;</span><span class="p">,</span>
 </span><span id="L-1051"><a href="#L-1051"><span class="linenos">1051</span></a>    <span class="s2">&quot;cifti_convert_to_gifti_ext_params&quot;</span><span class="p">,</span>
 </span><span id="L-1052"><a href="#L-1052"><span class="linenos">1052</span></a>    <span class="s2">&quot;cifti_convert_to_nifti_params&quot;</span><span class="p">,</span>
 </span><span id="L-1053"><a href="#L-1053"><span class="linenos">1053</span></a>    <span class="s2">&quot;cifti_convert_to_text_params&quot;</span><span class="p">,</span>
@@ -1701,7 +1701,7 @@
                             </div>
                             <div id="CiftiConvertFromNiftiParameters.reset_timepoints" class="classattr">
                                 <div class="attr variable">
-            <span class="name">reset_timepoints</span><span class="annotation">: NotRequired[<a href="#CiftiConvertResetTimepointsParameters_">CiftiConvertResetTimepointsParameters_</a> | None]</span>
+            <span class="name">reset_timepoints</span><span class="annotation">: NotRequired[<a href="#CiftiConvertResetTimepoints1Parameters">CiftiConvertResetTimepoints1Parameters</a> | None]</span>
 
         
     </div>
@@ -1847,7 +1847,7 @@
                             </div>
                             <div id="CiftiConvertFromTextParameters.reset_timepoints" class="classattr">
                                 <div class="attr variable">
-            <span class="name">reset_timepoints</span><span class="annotation">: NotRequired[<a href="#CiftiConvertResetTimepointsParameters_2">CiftiConvertResetTimepointsParameters_2</a> | None]</span>
+            <span class="name">reset_timepoints</span><span class="annotation">: NotRequired[<a href="#CiftiConvertResetTimepoints2Parameters">CiftiConvertResetTimepoints2Parameters</a> | None]</span>
 
         
     </div>
@@ -2105,6 +2105,98 @@
 
                             </div>
                 </section>
+                <section id="CiftiConvertResetTimepoints1Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiConvertResetTimepoints1Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints1Parameters"></a>
+    
+    
+
+                            <div id="CiftiConvertResetTimepoints1Parameters.timestep" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timestep</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints1Parameters.timestep"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiConvertResetTimepoints1Parameters.timestart" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timestart</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints1Parameters.timestart"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiConvertResetTimepoints1Parameters.opt_unit_unit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints1Parameters.opt_unit_unit"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="CiftiConvertResetTimepoints2Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiConvertResetTimepoints2Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints2Parameters"></a>
+    
+    
+
+                            <div id="CiftiConvertResetTimepoints2Parameters.timestep" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timestep</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints2Parameters.timestep"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiConvertResetTimepoints2Parameters.timestart" class="classattr">
+                                <div class="attr variable">
+            <span class="name">timestart</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints2Parameters.timestart"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiConvertResetTimepoints2Parameters.opt_unit_unit" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiConvertResetTimepoints2Parameters.opt_unit_unit"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="CiftiConvertResetTimepointsParameters">
                     <div class="attr class">
             
@@ -2146,98 +2238,6 @@
         
     </div>
     <a class="headerlink" href="#CiftiConvertResetTimepointsParameters.opt_unit_unit"></a>
-    
-    
-
-                            </div>
-                </section>
-                <section id="CiftiConvertResetTimepointsParameters_">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">CiftiConvertResetTimepointsParameters_</span><wbr>(<span class="base">typing.TypedDict</span>):
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_"></a>
-    
-    
-
-                            <div id="CiftiConvertResetTimepointsParameters_.timestep" class="classattr">
-                                <div class="attr variable">
-            <span class="name">timestep</span><span class="annotation">: float</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_.timestep"></a>
-    
-    
-
-                            </div>
-                            <div id="CiftiConvertResetTimepointsParameters_.timestart" class="classattr">
-                                <div class="attr variable">
-            <span class="name">timestart</span><span class="annotation">: float</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_.timestart"></a>
-    
-    
-
-                            </div>
-                            <div id="CiftiConvertResetTimepointsParameters_.opt_unit_unit" class="classattr">
-                                <div class="attr variable">
-            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_.opt_unit_unit"></a>
-    
-    
-
-                            </div>
-                </section>
-                <section id="CiftiConvertResetTimepointsParameters_2">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">CiftiConvertResetTimepointsParameters_2</span><wbr>(<span class="base">typing.TypedDict</span>):
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_2"></a>
-    
-    
-
-                            <div id="CiftiConvertResetTimepointsParameters_2.timestep" class="classattr">
-                                <div class="attr variable">
-            <span class="name">timestep</span><span class="annotation">: float</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_2.timestep"></a>
-    
-    
-
-                            </div>
-                            <div id="CiftiConvertResetTimepointsParameters_2.timestart" class="classattr">
-                                <div class="attr variable">
-            <span class="name">timestart</span><span class="annotation">: float</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_2.timestart"></a>
-    
-    
-
-                            </div>
-                            <div id="CiftiConvertResetTimepointsParameters_2.opt_unit_unit" class="classattr">
-                                <div class="attr variable">
-            <span class="name">opt_unit_unit</span><span class="annotation">: NotRequired[str | None]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiConvertResetTimepointsParameters_2.opt_unit_unit"></a>
     
     
 
@@ -2657,7 +2657,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_convert_from_nifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">reset_timepoints</span><span class="p">:</span> <span class="n"><a href="#CiftiConvertResetTimepointsParameters_">CiftiConvertResetTimepointsParameters_</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertFromNiftiParameters">CiftiConvertFromNiftiParameters</a></span>:</span></span>
+        <span class="name">cifti_convert_from_nifti_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">nifti_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">reset_timepoints</span><span class="p">:</span> <span class="n"><a href="#CiftiConvertResetTimepoints1Parameters">CiftiConvertResetTimepoints1Parameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertFromNiftiParameters">CiftiConvertFromNiftiParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_convert_from_nifti_params-view-source"><span>View Source</span></label>
 
@@ -2667,7 +2667,7 @@ RADIAN.</p>
 </span><span id="cifti_convert_from_nifti_params-519"><a href="#cifti_convert_from_nifti_params-519"><span class="linenos">519</span></a>    <span class="n">nifti_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="cifti_convert_from_nifti_params-520"><a href="#cifti_convert_from_nifti_params-520"><span class="linenos">520</span></a>    <span class="n">cifti_template</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="cifti_convert_from_nifti_params-521"><a href="#cifti_convert_from_nifti_params-521"><span class="linenos">521</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="cifti_convert_from_nifti_params-522"><a href="#cifti_convert_from_nifti_params-522"><span class="linenos">522</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert_from_nifti_params-522"><a href="#cifti_convert_from_nifti_params-522"><span class="linenos">522</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="cifti_convert_from_nifti_params-523"><a href="#cifti_convert_from_nifti_params-523"><span class="linenos">523</span></a>    <span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="cifti_convert_from_nifti_params-524"><a href="#cifti_convert_from_nifti_params-524"><span class="linenos">524</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertFromNiftiParameters</span><span class="p">:</span>
 </span><span id="cifti_convert_from_nifti_params-525"><a href="#cifti_convert_from_nifti_params-525"><span class="linenos">525</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2724,7 +2724,7 @@ RADIAN.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_convert_from_text_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">text_in</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_col_delim_delim_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reset_timepoints</span><span class="p">:</span> <span class="n"><a href="#CiftiConvertResetTimepointsParameters_2">CiftiConvertResetTimepointsParameters_2</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertFromTextParameters">CiftiConvertFromTextParameters</a></span>:</span></span>
+        <span class="name">cifti_convert_from_text_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">text_in</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_template</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_col_delim_delim_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">reset_timepoints</span><span class="p">:</span> <span class="n"><a href="#CiftiConvertResetTimepoints2Parameters">CiftiConvertResetTimepoints2Parameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertFromTextParameters">CiftiConvertFromTextParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_convert_from_text_params-view-source"><span>View Source</span></label>
 
@@ -2735,7 +2735,7 @@ RADIAN.</p>
 </span><span id="cifti_convert_from_text_params-711"><a href="#cifti_convert_from_text_params-711"><span class="linenos">711</span></a>    <span class="n">cifti_template</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="cifti_convert_from_text_params-712"><a href="#cifti_convert_from_text_params-712"><span class="linenos">712</span></a>    <span class="n">cifti_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="cifti_convert_from_text_params-713"><a href="#cifti_convert_from_text_params-713"><span class="linenos">713</span></a>    <span class="n">opt_col_delim_delim_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert_from_text_params-714"><a href="#cifti_convert_from_text_params-714"><span class="linenos">714</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepointsParameters_2</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert_from_text_params-714"><a href="#cifti_convert_from_text_params-714"><span class="linenos">714</span></a>    <span class="n">reset_timepoints</span><span class="p">:</span> <span class="n">CiftiConvertResetTimepoints2Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="cifti_convert_from_text_params-715"><a href="#cifti_convert_from_text_params-715"><span class="linenos">715</span></a>    <span class="n">opt_reset_scalars</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="cifti_convert_from_text_params-716"><a href="#cifti_convert_from_text_params-716"><span class="linenos">716</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertFromTextParameters</span><span class="p">:</span>
 </span><span id="cifti_convert_from_text_params-717"><a href="#cifti_convert_from_text_params-717"><span class="linenos">717</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2922,6 +2922,120 @@ RADIAN.</p>
 
 
                 </section>
+                <section id="cifti_convert_reset_timepoints_1_params">
+                            <input id="cifti_convert_reset_timepoints_1_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">cifti_convert_reset_timepoints_1_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertResetTimepoints1Parameters">CiftiConvertResetTimepoints1Parameters</a></span>:</span></span>
+
+                <label class="view-source-button" for="cifti_convert_reset_timepoints_1_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#cifti_convert_reset_timepoints_1_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert_reset_timepoints_1_params-457"><a href="#cifti_convert_reset_timepoints_1_params-457"><span class="linenos">457</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_1_params</span><span class="p">(</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-458"><a href="#cifti_convert_reset_timepoints_1_params-458"><span class="linenos">458</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-459"><a href="#cifti_convert_reset_timepoints_1_params-459"><span class="linenos">459</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-460"><a href="#cifti_convert_reset_timepoints_1_params-460"><span class="linenos">460</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-461"><a href="#cifti_convert_reset_timepoints_1_params-461"><span class="linenos">461</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepoints1Parameters</span><span class="p">:</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-462"><a href="#cifti_convert_reset_timepoints_1_params-462"><span class="linenos">462</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-463"><a href="#cifti_convert_reset_timepoints_1_params-463"><span class="linenos">463</span></a><span class="sd">    Build parameters.</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-464"><a href="#cifti_convert_reset_timepoints_1_params-464"><span class="linenos">464</span></a><span class="sd">    </span>
+</span><span id="cifti_convert_reset_timepoints_1_params-465"><a href="#cifti_convert_reset_timepoints_1_params-465"><span class="linenos">465</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-466"><a href="#cifti_convert_reset_timepoints_1_params-466"><span class="linenos">466</span></a><span class="sd">        timestep: the desired time between frames.</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-467"><a href="#cifti_convert_reset_timepoints_1_params-467"><span class="linenos">467</span></a><span class="sd">        timestart: the desired time offset of the initial frame.</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-468"><a href="#cifti_convert_reset_timepoints_1_params-468"><span class="linenos">468</span></a><span class="sd">        opt_unit_unit: use a unit other than time: unit identifier (default\</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-469"><a href="#cifti_convert_reset_timepoints_1_params-469"><span class="linenos">469</span></a><span class="sd">            SECOND).</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-470"><a href="#cifti_convert_reset_timepoints_1_params-470"><span class="linenos">470</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-471"><a href="#cifti_convert_reset_timepoints_1_params-471"><span class="linenos">471</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-472"><a href="#cifti_convert_reset_timepoints_1_params-472"><span class="linenos">472</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-473"><a href="#cifti_convert_reset_timepoints_1_params-473"><span class="linenos">473</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-474"><a href="#cifti_convert_reset_timepoints_1_params-474"><span class="linenos">474</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints_1&quot;</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-475"><a href="#cifti_convert_reset_timepoints_1_params-475"><span class="linenos">475</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-476"><a href="#cifti_convert_reset_timepoints_1_params-476"><span class="linenos">476</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-477"><a href="#cifti_convert_reset_timepoints_1_params-477"><span class="linenos">477</span></a>    <span class="p">}</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-478"><a href="#cifti_convert_reset_timepoints_1_params-478"><span class="linenos">478</span></a>    <span class="k">if</span> <span class="n">opt_unit_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-479"><a href="#cifti_convert_reset_timepoints_1_params-479"><span class="linenos">479</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_unit_unit</span>
+</span><span id="cifti_convert_reset_timepoints_1_params-480"><a href="#cifti_convert_reset_timepoints_1_params-480"><span class="linenos">480</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>timestep:</strong>  the desired time between frames.</li>
+<li><strong>timestart:</strong>  the desired time offset of the initial frame.</li>
+<li><strong>opt_unit_unit:</strong>  use a unit other than time: unit identifier (default            SECOND).</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="cifti_convert_reset_timepoints_2_params">
+                            <input id="cifti_convert_reset_timepoints_2_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">cifti_convert_reset_timepoints_2_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertResetTimepoints2Parameters">CiftiConvertResetTimepoints2Parameters</a></span>:</span></span>
+
+                <label class="view-source-button" for="cifti_convert_reset_timepoints_2_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#cifti_convert_reset_timepoints_2_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert_reset_timepoints_2_params-648"><a href="#cifti_convert_reset_timepoints_2_params-648"><span class="linenos">648</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_2_params</span><span class="p">(</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-649"><a href="#cifti_convert_reset_timepoints_2_params-649"><span class="linenos">649</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-650"><a href="#cifti_convert_reset_timepoints_2_params-650"><span class="linenos">650</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-651"><a href="#cifti_convert_reset_timepoints_2_params-651"><span class="linenos">651</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-652"><a href="#cifti_convert_reset_timepoints_2_params-652"><span class="linenos">652</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepoints2Parameters</span><span class="p">:</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-653"><a href="#cifti_convert_reset_timepoints_2_params-653"><span class="linenos">653</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-654"><a href="#cifti_convert_reset_timepoints_2_params-654"><span class="linenos">654</span></a><span class="sd">    Build parameters.</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-655"><a href="#cifti_convert_reset_timepoints_2_params-655"><span class="linenos">655</span></a><span class="sd">    </span>
+</span><span id="cifti_convert_reset_timepoints_2_params-656"><a href="#cifti_convert_reset_timepoints_2_params-656"><span class="linenos">656</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-657"><a href="#cifti_convert_reset_timepoints_2_params-657"><span class="linenos">657</span></a><span class="sd">        timestep: the desired time between frames.</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-658"><a href="#cifti_convert_reset_timepoints_2_params-658"><span class="linenos">658</span></a><span class="sd">        timestart: the desired time offset of the initial frame.</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-659"><a href="#cifti_convert_reset_timepoints_2_params-659"><span class="linenos">659</span></a><span class="sd">        opt_unit_unit: use a unit other than time: unit identifier (default\</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-660"><a href="#cifti_convert_reset_timepoints_2_params-660"><span class="linenos">660</span></a><span class="sd">            SECOND).</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-661"><a href="#cifti_convert_reset_timepoints_2_params-661"><span class="linenos">661</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-662"><a href="#cifti_convert_reset_timepoints_2_params-662"><span class="linenos">662</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-663"><a href="#cifti_convert_reset_timepoints_2_params-663"><span class="linenos">663</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-664"><a href="#cifti_convert_reset_timepoints_2_params-664"><span class="linenos">664</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-665"><a href="#cifti_convert_reset_timepoints_2_params-665"><span class="linenos">665</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints_2&quot;</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-666"><a href="#cifti_convert_reset_timepoints_2_params-666"><span class="linenos">666</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-667"><a href="#cifti_convert_reset_timepoints_2_params-667"><span class="linenos">667</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-668"><a href="#cifti_convert_reset_timepoints_2_params-668"><span class="linenos">668</span></a>    <span class="p">}</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-669"><a href="#cifti_convert_reset_timepoints_2_params-669"><span class="linenos">669</span></a>    <span class="k">if</span> <span class="n">opt_unit_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-670"><a href="#cifti_convert_reset_timepoints_2_params-670"><span class="linenos">670</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_unit_unit</span>
+</span><span id="cifti_convert_reset_timepoints_2_params-671"><a href="#cifti_convert_reset_timepoints_2_params-671"><span class="linenos">671</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>timestep:</strong>  the desired time between frames.</li>
+<li><strong>timestart:</strong>  the desired time offset of the initial frame.</li>
+<li><strong>opt_unit_unit:</strong>  use a unit other than time: unit identifier (default            SECOND).</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
+</blockquote>
+</div>
+
+
+                </section>
                 <section id="cifti_convert_reset_timepoints_params">
                             <input id="cifti_convert_reset_timepoints_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -2957,120 +3071,6 @@ RADIAN.</p>
 </span><span id="cifti_convert_reset_timepoints_params-202"><a href="#cifti_convert_reset_timepoints_params-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">opt_unit_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="cifti_convert_reset_timepoints_params-203"><a href="#cifti_convert_reset_timepoints_params-203"><span class="linenos">203</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_unit_unit</span>
 </span><span id="cifti_convert_reset_timepoints_params-204"><a href="#cifti_convert_reset_timepoints_params-204"><span class="linenos">204</span></a>    <span class="k">return</span> <span class="n">params</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Build parameters.</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>timestep:</strong>  the desired time between frames.</li>
-<li><strong>timestart:</strong>  the desired time offset of the initial frame.</li>
-<li><strong>opt_unit_unit:</strong>  use a unit other than time: unit identifier (default            SECOND).</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>Parameter dictionary</p>
-</blockquote>
-</div>
-
-
-                </section>
-                <section id="cifti_convert_reset_timepoints_params_">
-                            <input id="cifti_convert_reset_timepoints_params_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">cifti_convert_reset_timepoints_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertResetTimepointsParameters_">CiftiConvertResetTimepointsParameters_</a></span>:</span></span>
-
-                <label class="view-source-button" for="cifti_convert_reset_timepoints_params_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#cifti_convert_reset_timepoints_params_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert_reset_timepoints_params_-457"><a href="#cifti_convert_reset_timepoints_params_-457"><span class="linenos">457</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_params_</span><span class="p">(</span>
-</span><span id="cifti_convert_reset_timepoints_params_-458"><a href="#cifti_convert_reset_timepoints_params_-458"><span class="linenos">458</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-459"><a href="#cifti_convert_reset_timepoints_params_-459"><span class="linenos">459</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-460"><a href="#cifti_convert_reset_timepoints_params_-460"><span class="linenos">460</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-461"><a href="#cifti_convert_reset_timepoints_params_-461"><span class="linenos">461</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepointsParameters_</span><span class="p">:</span>
-</span><span id="cifti_convert_reset_timepoints_params_-462"><a href="#cifti_convert_reset_timepoints_params_-462"><span class="linenos">462</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_convert_reset_timepoints_params_-463"><a href="#cifti_convert_reset_timepoints_params_-463"><span class="linenos">463</span></a><span class="sd">    Build parameters.</span>
-</span><span id="cifti_convert_reset_timepoints_params_-464"><a href="#cifti_convert_reset_timepoints_params_-464"><span class="linenos">464</span></a><span class="sd">    </span>
-</span><span id="cifti_convert_reset_timepoints_params_-465"><a href="#cifti_convert_reset_timepoints_params_-465"><span class="linenos">465</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_convert_reset_timepoints_params_-466"><a href="#cifti_convert_reset_timepoints_params_-466"><span class="linenos">466</span></a><span class="sd">        timestep: the desired time between frames.</span>
-</span><span id="cifti_convert_reset_timepoints_params_-467"><a href="#cifti_convert_reset_timepoints_params_-467"><span class="linenos">467</span></a><span class="sd">        timestart: the desired time offset of the initial frame.</span>
-</span><span id="cifti_convert_reset_timepoints_params_-468"><a href="#cifti_convert_reset_timepoints_params_-468"><span class="linenos">468</span></a><span class="sd">        opt_unit_unit: use a unit other than time: unit identifier (default\</span>
-</span><span id="cifti_convert_reset_timepoints_params_-469"><a href="#cifti_convert_reset_timepoints_params_-469"><span class="linenos">469</span></a><span class="sd">            SECOND).</span>
-</span><span id="cifti_convert_reset_timepoints_params_-470"><a href="#cifti_convert_reset_timepoints_params_-470"><span class="linenos">470</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_convert_reset_timepoints_params_-471"><a href="#cifti_convert_reset_timepoints_params_-471"><span class="linenos">471</span></a><span class="sd">        Parameter dictionary</span>
-</span><span id="cifti_convert_reset_timepoints_params_-472"><a href="#cifti_convert_reset_timepoints_params_-472"><span class="linenos">472</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_convert_reset_timepoints_params_-473"><a href="#cifti_convert_reset_timepoints_params_-473"><span class="linenos">473</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="cifti_convert_reset_timepoints_params_-474"><a href="#cifti_convert_reset_timepoints_params_-474"><span class="linenos">474</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-475"><a href="#cifti_convert_reset_timepoints_params_-475"><span class="linenos">475</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-476"><a href="#cifti_convert_reset_timepoints_params_-476"><span class="linenos">476</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_-477"><a href="#cifti_convert_reset_timepoints_params_-477"><span class="linenos">477</span></a>    <span class="p">}</span>
-</span><span id="cifti_convert_reset_timepoints_params_-478"><a href="#cifti_convert_reset_timepoints_params_-478"><span class="linenos">478</span></a>    <span class="k">if</span> <span class="n">opt_unit_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_convert_reset_timepoints_params_-479"><a href="#cifti_convert_reset_timepoints_params_-479"><span class="linenos">479</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_unit_unit</span>
-</span><span id="cifti_convert_reset_timepoints_params_-480"><a href="#cifti_convert_reset_timepoints_params_-480"><span class="linenos">480</span></a>    <span class="k">return</span> <span class="n">params</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Build parameters.</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>timestep:</strong>  the desired time between frames.</li>
-<li><strong>timestart:</strong>  the desired time offset of the initial frame.</li>
-<li><strong>opt_unit_unit:</strong>  use a unit other than time: unit identifier (default            SECOND).</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>Parameter dictionary</p>
-</blockquote>
-</div>
-
-
-                </section>
-                <section id="cifti_convert_reset_timepoints_params_2">
-                            <input id="cifti_convert_reset_timepoints_params_2-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">cifti_convert_reset_timepoints_params_2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiConvertResetTimepointsParameters_2">CiftiConvertResetTimepointsParameters_2</a></span>:</span></span>
-
-                <label class="view-source-button" for="cifti_convert_reset_timepoints_params_2-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#cifti_convert_reset_timepoints_params_2"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_convert_reset_timepoints_params_2-648"><a href="#cifti_convert_reset_timepoints_params_2-648"><span class="linenos">648</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_convert_reset_timepoints_params_2</span><span class="p">(</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-649"><a href="#cifti_convert_reset_timepoints_params_2-649"><span class="linenos">649</span></a>    <span class="n">timestep</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-650"><a href="#cifti_convert_reset_timepoints_params_2-650"><span class="linenos">650</span></a>    <span class="n">timestart</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-651"><a href="#cifti_convert_reset_timepoints_params_2-651"><span class="linenos">651</span></a>    <span class="n">opt_unit_unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-652"><a href="#cifti_convert_reset_timepoints_params_2-652"><span class="linenos">652</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiConvertResetTimepointsParameters_2</span><span class="p">:</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-653"><a href="#cifti_convert_reset_timepoints_params_2-653"><span class="linenos">653</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-654"><a href="#cifti_convert_reset_timepoints_params_2-654"><span class="linenos">654</span></a><span class="sd">    Build parameters.</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-655"><a href="#cifti_convert_reset_timepoints_params_2-655"><span class="linenos">655</span></a><span class="sd">    </span>
-</span><span id="cifti_convert_reset_timepoints_params_2-656"><a href="#cifti_convert_reset_timepoints_params_2-656"><span class="linenos">656</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-657"><a href="#cifti_convert_reset_timepoints_params_2-657"><span class="linenos">657</span></a><span class="sd">        timestep: the desired time between frames.</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-658"><a href="#cifti_convert_reset_timepoints_params_2-658"><span class="linenos">658</span></a><span class="sd">        timestart: the desired time offset of the initial frame.</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-659"><a href="#cifti_convert_reset_timepoints_params_2-659"><span class="linenos">659</span></a><span class="sd">        opt_unit_unit: use a unit other than time: unit identifier (default\</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-660"><a href="#cifti_convert_reset_timepoints_params_2-660"><span class="linenos">660</span></a><span class="sd">            SECOND).</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-661"><a href="#cifti_convert_reset_timepoints_params_2-661"><span class="linenos">661</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-662"><a href="#cifti_convert_reset_timepoints_params_2-662"><span class="linenos">662</span></a><span class="sd">        Parameter dictionary</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-663"><a href="#cifti_convert_reset_timepoints_params_2-663"><span class="linenos">663</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-664"><a href="#cifti_convert_reset_timepoints_params_2-664"><span class="linenos">664</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-665"><a href="#cifti_convert_reset_timepoints_params_2-665"><span class="linenos">665</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;reset_timepoints&quot;</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-666"><a href="#cifti_convert_reset_timepoints_params_2-666"><span class="linenos">666</span></a>        <span class="s2">&quot;timestep&quot;</span><span class="p">:</span> <span class="n">timestep</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-667"><a href="#cifti_convert_reset_timepoints_params_2-667"><span class="linenos">667</span></a>        <span class="s2">&quot;timestart&quot;</span><span class="p">:</span> <span class="n">timestart</span><span class="p">,</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-668"><a href="#cifti_convert_reset_timepoints_params_2-668"><span class="linenos">668</span></a>    <span class="p">}</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-669"><a href="#cifti_convert_reset_timepoints_params_2-669"><span class="linenos">669</span></a>    <span class="k">if</span> <span class="n">opt_unit_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-670"><a href="#cifti_convert_reset_timepoints_params_2-670"><span class="linenos">670</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_unit_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_unit_unit</span>
-</span><span id="cifti_convert_reset_timepoints_params_2-671"><a href="#cifti_convert_reset_timepoints_params_2-671"><span class="linenos">671</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span></pre></div>
 
 

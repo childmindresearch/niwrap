@@ -56,6 +56,18 @@
 
             </li>
             <li>
+                    <a class="class" href="#VolumeResampleFlirt1Parameters">VolumeResampleFlirt1Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#VolumeResampleFlirt1Parameters.source_volume">source_volume</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeResampleFlirt1Parameters.target_volume">target_volume</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#VolumeResampleFlirtParameters">VolumeResampleFlirtParameters</a>
                             <ul class="memberlist">
                         <li>
@@ -63,18 +75,6 @@
                         </li>
                         <li>
                                 <a class="variable" href="#VolumeResampleFlirtParameters.target_volume">target_volume</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
-                    <a class="class" href="#VolumeResampleFlirtParameters_">VolumeResampleFlirtParameters_</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="variable" href="#VolumeResampleFlirtParameters_.source_volume">source_volume</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#VolumeResampleFlirtParameters_.target_volume">target_volume</a>
                         </li>
                 </ul>
 
@@ -143,10 +143,10 @@
                     <a class="function" href="#volume_resample_affine_series_params">volume_resample_affine_series_params</a>
             </li>
             <li>
-                    <a class="function" href="#volume_resample_flirt_params">volume_resample_flirt_params</a>
+                    <a class="function" href="#volume_resample_flirt_1_params">volume_resample_flirt_1_params</a>
             </li>
             <li>
-                    <a class="function" href="#volume_resample_flirt_params_">volume_resample_flirt_params_</a>
+                    <a class="function" href="#volume_resample_flirt_params">volume_resample_flirt_params</a>
             </li>
             <li>
                     <a class="function" href="#volume_resample_params">volume_resample_params</a>
@@ -198,15 +198,15 @@
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>    <span class="s2">&quot;affine&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a>    <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">VolumeResampleFlirtParameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="p">})</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="n">VolumeResampleFlirtParameters_</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeResampleFlirtParameters_&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;flirt&quot;</span><span class="p">],</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="n">VolumeResampleFlirt1Parameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeResampleFlirt1Parameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;flirt_1&quot;</span><span class="p">],</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>    <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>    <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="p">})</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="n">VolumeResampleAffineSeriesParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeResampleAffineSeriesParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;affine_series&quot;</span><span class="p">],</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>    <span class="s2">&quot;affine_series&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">VolumeResampleFlirtParameters_</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a>    <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">VolumeResampleFlirt1Parameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="p">})</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="n">VolumeResampleWarpParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;VolumeResampleWarpParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;warp&quot;</span><span class="p">],</span>
@@ -241,7 +241,7 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;affine&quot;</span><span class="p">:</span> <span class="n">volume_resample_affine_cargs</span><span class="p">,</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">volume_resample_flirt_cargs</span><span class="p">,</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="s2">&quot;affine_series&quot;</span><span class="p">:</span> <span class="n">volume_resample_affine_series_cargs</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">volume_resample_flirt_cargs_</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;flirt_1&quot;</span><span class="p">:</span> <span class="n">volume_resample_flirt_1_cargs</span><span class="p">,</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;warp&quot;</span><span class="p">:</span> <span class="n">volume_resample_warp_cargs</span><span class="p">,</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
@@ -346,10 +346,10 @@
 </span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_params_</span><span class="p">(</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_1_params</span><span class="p">(</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleFlirtParameters_</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleFlirt1Parameters</span><span class="p">:</span>
 </span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    Build parameters.</span>
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    </span>
@@ -360,15 +360,15 @@
 </span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        Parameter dictionary</span>
 </span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt_1&quot;</span><span class="p">,</span>
 </span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="n">source_volume</span><span class="p">,</span>
 </span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="p">}</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_cargs_</span><span class="p">(</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeResampleFlirtParameters_</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_1_cargs</span><span class="p">(</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">VolumeResampleFlirt1Parameters</span><span class="p">,</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -389,7 +389,7 @@
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_affine_series_params</span><span class="p">(</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">affine_series</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">VolumeResampleFlirtParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">VolumeResampleFlirt1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleAffineSeriesParameters</span><span class="p">:</span>
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    Build parameters.</span>
@@ -662,16 +662,16 @@
 </span><span id="L-485"><a href="#L-485"><span class="linenos">485</span></a>    <span class="s2">&quot;VOLUME_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
 </span><span id="L-486"><a href="#L-486"><span class="linenos">486</span></a>    <span class="s2">&quot;VolumeResampleAffineParameters&quot;</span><span class="p">,</span>
 </span><span id="L-487"><a href="#L-487"><span class="linenos">487</span></a>    <span class="s2">&quot;VolumeResampleAffineSeriesParameters&quot;</span><span class="p">,</span>
-</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;VolumeResampleFlirtParameters&quot;</span><span class="p">,</span>
-</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;VolumeResampleFlirtParameters_&quot;</span><span class="p">,</span>
+</span><span id="L-488"><a href="#L-488"><span class="linenos">488</span></a>    <span class="s2">&quot;VolumeResampleFlirt1Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-489"><a href="#L-489"><span class="linenos">489</span></a>    <span class="s2">&quot;VolumeResampleFlirtParameters&quot;</span><span class="p">,</span>
 </span><span id="L-490"><a href="#L-490"><span class="linenos">490</span></a>    <span class="s2">&quot;VolumeResampleOutputs&quot;</span><span class="p">,</span>
 </span><span id="L-491"><a href="#L-491"><span class="linenos">491</span></a>    <span class="s2">&quot;VolumeResampleParameters&quot;</span><span class="p">,</span>
 </span><span id="L-492"><a href="#L-492"><span class="linenos">492</span></a>    <span class="s2">&quot;VolumeResampleWarpParameters&quot;</span><span class="p">,</span>
 </span><span id="L-493"><a href="#L-493"><span class="linenos">493</span></a>    <span class="s2">&quot;volume_resample&quot;</span><span class="p">,</span>
 </span><span id="L-494"><a href="#L-494"><span class="linenos">494</span></a>    <span class="s2">&quot;volume_resample_affine_params&quot;</span><span class="p">,</span>
 </span><span id="L-495"><a href="#L-495"><span class="linenos">495</span></a>    <span class="s2">&quot;volume_resample_affine_series_params&quot;</span><span class="p">,</span>
-</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a>    <span class="s2">&quot;volume_resample_flirt_params&quot;</span><span class="p">,</span>
-</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a>    <span class="s2">&quot;volume_resample_flirt_params_&quot;</span><span class="p">,</span>
+</span><span id="L-496"><a href="#L-496"><span class="linenos">496</span></a>    <span class="s2">&quot;volume_resample_flirt_1_params&quot;</span><span class="p">,</span>
+</span><span id="L-497"><a href="#L-497"><span class="linenos">497</span></a>    <span class="s2">&quot;volume_resample_flirt_params&quot;</span><span class="p">,</span>
 </span><span id="L-498"><a href="#L-498"><span class="linenos">498</span></a>    <span class="s2">&quot;volume_resample_params&quot;</span><span class="p">,</span>
 </span><span id="L-499"><a href="#L-499"><span class="linenos">499</span></a>    <span class="s2">&quot;volume_resample_warp_params&quot;</span><span class="p">,</span>
 </span><span id="L-500"><a href="#L-500"><span class="linenos">500</span></a><span class="p">]</span>
@@ -752,11 +752,46 @@
                             </div>
                             <div id="VolumeResampleAffineSeriesParameters.flirt" class="classattr">
                                 <div class="attr variable">
-            <span class="name">flirt</span><span class="annotation">: NotRequired[<a href="#VolumeResampleFlirtParameters_">VolumeResampleFlirtParameters_</a> | None]</span>
+            <span class="name">flirt</span><span class="annotation">: NotRequired[<a href="#VolumeResampleFlirt1Parameters">VolumeResampleFlirt1Parameters</a> | None]</span>
 
         
     </div>
     <a class="headerlink" href="#VolumeResampleAffineSeriesParameters.flirt"></a>
+    
+    
+
+                            </div>
+                </section>
+                <section id="VolumeResampleFlirt1Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">VolumeResampleFlirt1Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeResampleFlirt1Parameters"></a>
+    
+    
+
+                            <div id="VolumeResampleFlirt1Parameters.source_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">source_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeResampleFlirt1Parameters.source_volume"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeResampleFlirt1Parameters.target_volume" class="classattr">
+                                <div class="attr variable">
+            <span class="name">target_volume</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeResampleFlirt1Parameters.target_volume"></a>
     
     
 
@@ -792,41 +827,6 @@
         
     </div>
     <a class="headerlink" href="#VolumeResampleFlirtParameters.target_volume"></a>
-    
-    
-
-                            </div>
-                </section>
-                <section id="VolumeResampleFlirtParameters_">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">VolumeResampleFlirtParameters_</span><wbr>(<span class="base">typing.TypedDict</span>):
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeResampleFlirtParameters_"></a>
-    
-    
-
-                            <div id="VolumeResampleFlirtParameters_.source_volume" class="classattr">
-                                <div class="attr variable">
-            <span class="name">source_volume</span><span class="annotation">: str</span>
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeResampleFlirtParameters_.source_volume"></a>
-    
-    
-
-                            </div>
-                            <div id="VolumeResampleFlirtParameters_.target_volume" class="classattr">
-                                <div class="attr variable">
-            <span class="name">target_volume</span><span class="annotation">: str</span>
-
-        
-    </div>
-    <a class="headerlink" href="#VolumeResampleFlirtParameters_.target_volume"></a>
     
     
 
@@ -1180,7 +1180,7 @@ TRILINEAR.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_resample_affine_series_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">affine_series</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">flirt</span><span class="p">:</span> <span class="n"><a href="#VolumeResampleFlirtParameters_">VolumeResampleFlirtParameters_</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeResampleAffineSeriesParameters">VolumeResampleAffineSeriesParameters</a></span>:</span></span>
+        <span class="name">volume_resample_affine_series_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">affine_series</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">flirt</span><span class="p">:</span> <span class="n"><a href="#VolumeResampleFlirt1Parameters">VolumeResampleFlirt1Parameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeResampleAffineSeriesParameters">VolumeResampleAffineSeriesParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_resample_affine_series_params-view-source"><span>View Source</span></label>
 
@@ -1188,7 +1188,7 @@ TRILINEAR.</p>
     <a class="headerlink" href="#volume_resample_affine_series_params"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="volume_resample_affine_series_params-214"><a href="#volume_resample_affine_series_params-214"><span class="linenos">214</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_affine_series_params</span><span class="p">(</span>
 </span><span id="volume_resample_affine_series_params-215"><a href="#volume_resample_affine_series_params-215"><span class="linenos">215</span></a>    <span class="n">affine_series</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_resample_affine_series_params-216"><a href="#volume_resample_affine_series_params-216"><span class="linenos">216</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">VolumeResampleFlirtParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_resample_affine_series_params-216"><a href="#volume_resample_affine_series_params-216"><span class="linenos">216</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">VolumeResampleFlirt1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="volume_resample_affine_series_params-217"><a href="#volume_resample_affine_series_params-217"><span class="linenos">217</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleAffineSeriesParameters</span><span class="p">:</span>
 </span><span id="volume_resample_affine_series_params-218"><a href="#volume_resample_affine_series_params-218"><span class="linenos">218</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="volume_resample_affine_series_params-219"><a href="#volume_resample_affine_series_params-219"><span class="linenos">219</span></a><span class="sd">    Build parameters.</span>
@@ -1217,6 +1217,57 @@ TRILINEAR.</p>
 <ul>
 <li><strong>affine_series:</strong>  text file containing 12 or 16 numbers per line, each            being a row-major flattened affine.</li>
 <li><strong>flirt:</strong>  MUST be used if the affines are flirt affines.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="volume_resample_flirt_1_params">
+                            <input id="volume_resample_flirt_1_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">volume_resample_flirt_1_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeResampleFlirt1Parameters">VolumeResampleFlirt1Parameters</a></span>:</span></span>
+
+                <label class="view-source-button" for="volume_resample_flirt_1_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#volume_resample_flirt_1_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_resample_flirt_1_params-173"><a href="#volume_resample_flirt_1_params-173"><span class="linenos">173</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_1_params</span><span class="p">(</span>
+</span><span id="volume_resample_flirt_1_params-174"><a href="#volume_resample_flirt_1_params-174"><span class="linenos">174</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_resample_flirt_1_params-175"><a href="#volume_resample_flirt_1_params-175"><span class="linenos">175</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="volume_resample_flirt_1_params-176"><a href="#volume_resample_flirt_1_params-176"><span class="linenos">176</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleFlirt1Parameters</span><span class="p">:</span>
+</span><span id="volume_resample_flirt_1_params-177"><a href="#volume_resample_flirt_1_params-177"><span class="linenos">177</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_resample_flirt_1_params-178"><a href="#volume_resample_flirt_1_params-178"><span class="linenos">178</span></a><span class="sd">    Build parameters.</span>
+</span><span id="volume_resample_flirt_1_params-179"><a href="#volume_resample_flirt_1_params-179"><span class="linenos">179</span></a><span class="sd">    </span>
+</span><span id="volume_resample_flirt_1_params-180"><a href="#volume_resample_flirt_1_params-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
+</span><span id="volume_resample_flirt_1_params-181"><a href="#volume_resample_flirt_1_params-181"><span class="linenos">181</span></a><span class="sd">        source_volume: the source volume used when generating the affine.</span>
+</span><span id="volume_resample_flirt_1_params-182"><a href="#volume_resample_flirt_1_params-182"><span class="linenos">182</span></a><span class="sd">        target_volume: the target volume used when generating the affine.</span>
+</span><span id="volume_resample_flirt_1_params-183"><a href="#volume_resample_flirt_1_params-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_resample_flirt_1_params-184"><a href="#volume_resample_flirt_1_params-184"><span class="linenos">184</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="volume_resample_flirt_1_params-185"><a href="#volume_resample_flirt_1_params-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_resample_flirt_1_params-186"><a href="#volume_resample_flirt_1_params-186"><span class="linenos">186</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="volume_resample_flirt_1_params-187"><a href="#volume_resample_flirt_1_params-187"><span class="linenos">187</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt_1&quot;</span><span class="p">,</span>
+</span><span id="volume_resample_flirt_1_params-188"><a href="#volume_resample_flirt_1_params-188"><span class="linenos">188</span></a>        <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="n">source_volume</span><span class="p">,</span>
+</span><span id="volume_resample_flirt_1_params-189"><a href="#volume_resample_flirt_1_params-189"><span class="linenos">189</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
+</span><span id="volume_resample_flirt_1_params-190"><a href="#volume_resample_flirt_1_params-190"><span class="linenos">190</span></a>    <span class="p">}</span>
+</span><span id="volume_resample_flirt_1_params-191"><a href="#volume_resample_flirt_1_params-191"><span class="linenos">191</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>source_volume:</strong>  the source volume used when generating the affine.</li>
+<li><strong>target_volume:</strong>  the target volume used when generating the affine.</li>
 </ul>
 
 <h6 id="returns">Returns:</h6>
@@ -1258,57 +1309,6 @@ TRILINEAR.</p>
 </span><span id="volume_resample_flirt_params-105"><a href="#volume_resample_flirt_params-105"><span class="linenos">105</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
 </span><span id="volume_resample_flirt_params-106"><a href="#volume_resample_flirt_params-106"><span class="linenos">106</span></a>    <span class="p">}</span>
 </span><span id="volume_resample_flirt_params-107"><a href="#volume_resample_flirt_params-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">params</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Build parameters.</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>source_volume:</strong>  the source volume used when generating the affine.</li>
-<li><strong>target_volume:</strong>  the target volume used when generating the affine.</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>Parameter dictionary</p>
-</blockquote>
-</div>
-
-
-                </section>
-                <section id="volume_resample_flirt_params_">
-                            <input id="volume_resample_flirt_params_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">volume_resample_flirt_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeResampleFlirtParameters_">VolumeResampleFlirtParameters_</a></span>:</span></span>
-
-                <label class="view-source-button" for="volume_resample_flirt_params_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#volume_resample_flirt_params_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_resample_flirt_params_-173"><a href="#volume_resample_flirt_params_-173"><span class="linenos">173</span></a><span class="k">def</span><span class="w"> </span><span class="nf">volume_resample_flirt_params_</span><span class="p">(</span>
-</span><span id="volume_resample_flirt_params_-174"><a href="#volume_resample_flirt_params_-174"><span class="linenos">174</span></a>    <span class="n">source_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_resample_flirt_params_-175"><a href="#volume_resample_flirt_params_-175"><span class="linenos">175</span></a>    <span class="n">target_volume</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="volume_resample_flirt_params_-176"><a href="#volume_resample_flirt_params_-176"><span class="linenos">176</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeResampleFlirtParameters_</span><span class="p">:</span>
-</span><span id="volume_resample_flirt_params_-177"><a href="#volume_resample_flirt_params_-177"><span class="linenos">177</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_resample_flirt_params_-178"><a href="#volume_resample_flirt_params_-178"><span class="linenos">178</span></a><span class="sd">    Build parameters.</span>
-</span><span id="volume_resample_flirt_params_-179"><a href="#volume_resample_flirt_params_-179"><span class="linenos">179</span></a><span class="sd">    </span>
-</span><span id="volume_resample_flirt_params_-180"><a href="#volume_resample_flirt_params_-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
-</span><span id="volume_resample_flirt_params_-181"><a href="#volume_resample_flirt_params_-181"><span class="linenos">181</span></a><span class="sd">        source_volume: the source volume used when generating the affine.</span>
-</span><span id="volume_resample_flirt_params_-182"><a href="#volume_resample_flirt_params_-182"><span class="linenos">182</span></a><span class="sd">        target_volume: the target volume used when generating the affine.</span>
-</span><span id="volume_resample_flirt_params_-183"><a href="#volume_resample_flirt_params_-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_resample_flirt_params_-184"><a href="#volume_resample_flirt_params_-184"><span class="linenos">184</span></a><span class="sd">        Parameter dictionary</span>
-</span><span id="volume_resample_flirt_params_-185"><a href="#volume_resample_flirt_params_-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_resample_flirt_params_-186"><a href="#volume_resample_flirt_params_-186"><span class="linenos">186</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="volume_resample_flirt_params_-187"><a href="#volume_resample_flirt_params_-187"><span class="linenos">187</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;flirt&quot;</span><span class="p">,</span>
-</span><span id="volume_resample_flirt_params_-188"><a href="#volume_resample_flirt_params_-188"><span class="linenos">188</span></a>        <span class="s2">&quot;source_volume&quot;</span><span class="p">:</span> <span class="n">source_volume</span><span class="p">,</span>
-</span><span id="volume_resample_flirt_params_-189"><a href="#volume_resample_flirt_params_-189"><span class="linenos">189</span></a>        <span class="s2">&quot;target_volume&quot;</span><span class="p">:</span> <span class="n">target_volume</span><span class="p">,</span>
-</span><span id="volume_resample_flirt_params_-190"><a href="#volume_resample_flirt_params_-190"><span class="linenos">190</span></a>    <span class="p">}</span>
-</span><span id="volume_resample_flirt_params_-191"><a href="#volume_resample_flirt_params_-191"><span class="linenos">191</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span></pre></div>
 
 

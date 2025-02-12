@@ -293,6 +293,18 @@
 
             </li>
             <li>
+                    <a class="class" href="#CiftiResampleWeighted1Parameters">CiftiResampleWeighted1Parameters</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#CiftiResampleWeighted1Parameters.opt_exponent_exponent">opt_exponent_exponent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#CiftiResampleWeighted1Parameters.opt_legacy_cutoff">opt_legacy_cutoff</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#CiftiResampleWeightedParameters">CiftiResampleWeightedParameters</a>
                             <ul class="memberlist">
                         <li>
@@ -300,18 +312,6 @@
                         </li>
                         <li>
                                 <a class="variable" href="#CiftiResampleWeightedParameters.opt_legacy_cutoff">opt_legacy_cutoff</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
-                    <a class="class" href="#CiftiResampleWeightedParameters_">CiftiResampleWeightedParameters_</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="variable" href="#CiftiResampleWeightedParameters_.opt_exponent_exponent">opt_exponent_exponent</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#CiftiResampleWeightedParameters_.opt_legacy_cutoff">opt_legacy_cutoff</a>
                         </li>
                 </ul>
 
@@ -365,10 +365,10 @@
                     <a class="function" href="#cifti_resample_warpfield_params">cifti_resample_warpfield_params</a>
             </li>
             <li>
-                    <a class="function" href="#cifti_resample_weighted_params">cifti_resample_weighted_params</a>
+                    <a class="function" href="#cifti_resample_weighted_1_params">cifti_resample_weighted_1_params</a>
             </li>
             <li>
-                    <a class="function" href="#cifti_resample_weighted_params_">cifti_resample_weighted_params_</a>
+                    <a class="function" href="#cifti_resample_weighted_params">cifti_resample_weighted_params</a>
             </li>
     </ul>
 
@@ -415,8 +415,8 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">  22</span></a>    <span class="s2">&quot;opt_nearest&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">  23</span></a>    <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiResampleWeightedParameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">  24</span></a><span class="p">})</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">  25</span></a><span class="n">CiftiResampleWeightedParameters_</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiResampleWeightedParameters_&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">  26</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;weighted&quot;</span><span class="p">],</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">  25</span></a><span class="n">CiftiResampleWeighted1Parameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiResampleWeighted1Parameters&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">  26</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;weighted_1&quot;</span><span class="p">],</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">  27</span></a>    <span class="s2">&quot;opt_exponent_exponent&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">  28</span></a>    <span class="s2">&quot;opt_legacy_cutoff&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">  29</span></a><span class="p">})</span>
@@ -425,7 +425,7 @@
 </span><span id="L-32"><a href="#L-32"><span class="linenos">  32</span></a>    <span class="s2">&quot;dilate_mm&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos">  33</span></a>    <span class="s2">&quot;opt_nearest&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">  34</span></a>    <span class="s2">&quot;opt_linear&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">  35</span></a>    <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiResampleWeightedParameters_</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">  35</span></a>    <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">NotRequired</span><span class="p">[</span><span class="n">CiftiResampleWeighted1Parameters</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">  36</span></a><span class="p">})</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">  37</span></a><span class="n">CiftiResampleFlirtParameters</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypedDict</span><span class="p">(</span><span class="s1">&#39;CiftiResampleFlirtParameters&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">  38</span></a>    <span class="s2">&quot;__STYX_TYPE__&quot;</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;flirt&quot;</span><span class="p">],</span>
@@ -529,7 +529,7 @@
 </span><span id="L-136"><a href="#L-136"><span class="linenos"> 136</span></a>        <span class="s2">&quot;volume_predilate&quot;</span><span class="p">:</span> <span class="n">cifti_resample_volume_predilate_cargs</span><span class="p">,</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos"> 137</span></a>        <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="n">cifti_resample_weighted_cargs</span><span class="p">,</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos"> 138</span></a>        <span class="s2">&quot;surface_postdilate&quot;</span><span class="p">:</span> <span class="n">cifti_resample_surface_postdilate_cargs</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos"> 139</span></a>        <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="n">cifti_resample_weighted_cargs_</span><span class="p">,</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos"> 139</span></a>        <span class="s2">&quot;weighted_1&quot;</span><span class="p">:</span> <span class="n">cifti_resample_weighted_1_cargs</span><span class="p">,</span>
 </span><span id="L-140"><a href="#L-140"><span class="linenos"> 140</span></a>        <span class="s2">&quot;affine&quot;</span><span class="p">:</span> <span class="n">cifti_resample_affine_cargs</span><span class="p">,</span>
 </span><span id="L-141"><a href="#L-141"><span class="linenos"> 141</span></a>        <span class="s2">&quot;flirt&quot;</span><span class="p">:</span> <span class="n">cifti_resample_flirt_cargs</span><span class="p">,</span>
 </span><span id="L-142"><a href="#L-142"><span class="linenos"> 142</span></a>        <span class="s2">&quot;warpfield&quot;</span><span class="p">:</span> <span class="n">cifti_resample_warpfield_cargs</span><span class="p">,</span>
@@ -658,10 +658,10 @@
 </span><span id="L-265"><a href="#L-265"><span class="linenos"> 265</span></a>    <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-266"><a href="#L-266"><span class="linenos"> 266</span></a>
 </span><span id="L-267"><a href="#L-267"><span class="linenos"> 267</span></a>
-</span><span id="L-268"><a href="#L-268"><span class="linenos"> 268</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_params_</span><span class="p">(</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos"> 268</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_1_params</span><span class="p">(</span>
 </span><span id="L-269"><a href="#L-269"><span class="linenos"> 269</span></a>    <span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos"> 270</span></a>    <span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos"> 271</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleWeightedParameters_</span><span class="p">:</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos"> 271</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleWeighted1Parameters</span><span class="p">:</span>
 </span><span id="L-272"><a href="#L-272"><span class="linenos"> 272</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-273"><a href="#L-273"><span class="linenos"> 273</span></a><span class="sd">    Build parameters.</span>
 </span><span id="L-274"><a href="#L-274"><span class="linenos"> 274</span></a><span class="sd">    </span>
@@ -674,7 +674,7 @@
 </span><span id="L-281"><a href="#L-281"><span class="linenos"> 281</span></a><span class="sd">        Parameter dictionary</span>
 </span><span id="L-282"><a href="#L-282"><span class="linenos"> 282</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-283"><a href="#L-283"><span class="linenos"> 283</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos"> 284</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted&quot;</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos"> 284</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted_1&quot;</span><span class="p">,</span>
 </span><span id="L-285"><a href="#L-285"><span class="linenos"> 285</span></a>        <span class="s2">&quot;opt_legacy_cutoff&quot;</span><span class="p">:</span> <span class="n">opt_legacy_cutoff</span><span class="p">,</span>
 </span><span id="L-286"><a href="#L-286"><span class="linenos"> 286</span></a>    <span class="p">}</span>
 </span><span id="L-287"><a href="#L-287"><span class="linenos"> 287</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -682,8 +682,8 @@
 </span><span id="L-289"><a href="#L-289"><span class="linenos"> 289</span></a>    <span class="k">return</span> <span class="n">params</span>
 </span><span id="L-290"><a href="#L-290"><span class="linenos"> 290</span></a>
 </span><span id="L-291"><a href="#L-291"><span class="linenos"> 291</span></a>
-</span><span id="L-292"><a href="#L-292"><span class="linenos"> 292</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_cargs_</span><span class="p">(</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos"> 293</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiResampleWeightedParameters_</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos"> 292</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_1_cargs</span><span class="p">(</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos"> 293</span></a>    <span class="n">params</span><span class="p">:</span> <span class="n">CiftiResampleWeighted1Parameters</span><span class="p">,</span>
 </span><span id="L-294"><a href="#L-294"><span class="linenos"> 294</span></a>    <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
 </span><span id="L-295"><a href="#L-295"><span class="linenos"> 295</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 </span><span id="L-296"><a href="#L-296"><span class="linenos"> 296</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -711,7 +711,7 @@
 </span><span id="L-318"><a href="#L-318"><span class="linenos"> 318</span></a>    <span class="n">dilate_mm</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos"> 319</span></a>    <span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="L-320"><a href="#L-320"><span class="linenos"> 320</span></a>    <span class="n">opt_linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos"> 321</span></a>    <span class="n">weighted</span><span class="p">:</span> <span class="n">CiftiResampleWeightedParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos"> 321</span></a>    <span class="n">weighted</span><span class="p">:</span> <span class="n">CiftiResampleWeighted1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-322"><a href="#L-322"><span class="linenos"> 322</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleSurfacePostdilateParameters</span><span class="p">:</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos"> 323</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos"> 324</span></a><span class="sd">    Build parameters.</span>
@@ -1611,8 +1611,8 @@
 </span><span id="L-1218"><a href="#L-1218"><span class="linenos">1218</span></a>    <span class="s2">&quot;CiftiResampleSurfacePostdilateParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1219"><a href="#L-1219"><span class="linenos">1219</span></a>    <span class="s2">&quot;CiftiResampleVolumePredilateParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1220"><a href="#L-1220"><span class="linenos">1220</span></a>    <span class="s2">&quot;CiftiResampleWarpfieldParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1221"><a href="#L-1221"><span class="linenos">1221</span></a>    <span class="s2">&quot;CiftiResampleWeightedParameters&quot;</span><span class="p">,</span>
-</span><span id="L-1222"><a href="#L-1222"><span class="linenos">1222</span></a>    <span class="s2">&quot;CiftiResampleWeightedParameters_&quot;</span><span class="p">,</span>
+</span><span id="L-1221"><a href="#L-1221"><span class="linenos">1221</span></a>    <span class="s2">&quot;CiftiResampleWeighted1Parameters&quot;</span><span class="p">,</span>
+</span><span id="L-1222"><a href="#L-1222"><span class="linenos">1222</span></a>    <span class="s2">&quot;CiftiResampleWeightedParameters&quot;</span><span class="p">,</span>
 </span><span id="L-1223"><a href="#L-1223"><span class="linenos">1223</span></a>    <span class="s2">&quot;cifti_resample&quot;</span><span class="p">,</span>
 </span><span id="L-1224"><a href="#L-1224"><span class="linenos">1224</span></a>    <span class="s2">&quot;cifti_resample_affine_params&quot;</span><span class="p">,</span>
 </span><span id="L-1225"><a href="#L-1225"><span class="linenos">1225</span></a>    <span class="s2">&quot;cifti_resample_cerebellum_area_metrics_params&quot;</span><span class="p">,</span>
@@ -1629,8 +1629,8 @@
 </span><span id="L-1236"><a href="#L-1236"><span class="linenos">1236</span></a>    <span class="s2">&quot;cifti_resample_surface_postdilate_params&quot;</span><span class="p">,</span>
 </span><span id="L-1237"><a href="#L-1237"><span class="linenos">1237</span></a>    <span class="s2">&quot;cifti_resample_volume_predilate_params&quot;</span><span class="p">,</span>
 </span><span id="L-1238"><a href="#L-1238"><span class="linenos">1238</span></a>    <span class="s2">&quot;cifti_resample_warpfield_params&quot;</span><span class="p">,</span>
-</span><span id="L-1239"><a href="#L-1239"><span class="linenos">1239</span></a>    <span class="s2">&quot;cifti_resample_weighted_params&quot;</span><span class="p">,</span>
-</span><span id="L-1240"><a href="#L-1240"><span class="linenos">1240</span></a>    <span class="s2">&quot;cifti_resample_weighted_params_&quot;</span><span class="p">,</span>
+</span><span id="L-1239"><a href="#L-1239"><span class="linenos">1239</span></a>    <span class="s2">&quot;cifti_resample_weighted_1_params&quot;</span><span class="p">,</span>
+</span><span id="L-1240"><a href="#L-1240"><span class="linenos">1240</span></a>    <span class="s2">&quot;cifti_resample_weighted_params&quot;</span><span class="p">,</span>
 </span><span id="L-1241"><a href="#L-1241"><span class="linenos">1241</span></a><span class="p">]</span>
 </span></pre></div>
 
@@ -2392,7 +2392,7 @@
                             </div>
                             <div id="CiftiResampleSurfacePostdilateParameters.weighted" class="classattr">
                                 <div class="attr variable">
-            <span class="name">weighted</span><span class="annotation">: NotRequired[<a href="#CiftiResampleWeightedParameters_">CiftiResampleWeightedParameters_</a> | None]</span>
+            <span class="name">weighted</span><span class="annotation">: NotRequired[<a href="#CiftiResampleWeighted1Parameters">CiftiResampleWeighted1Parameters</a> | None]</span>
 
         
     </div>
@@ -2483,6 +2483,41 @@
 
                             </div>
                 </section>
+                <section id="CiftiResampleWeighted1Parameters">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">CiftiResampleWeighted1Parameters</span><wbr>(<span class="base">typing.TypedDict</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiResampleWeighted1Parameters"></a>
+    
+    
+
+                            <div id="CiftiResampleWeighted1Parameters.opt_exponent_exponent" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_exponent_exponent</span><span class="annotation">: NotRequired[float | None]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiResampleWeighted1Parameters.opt_exponent_exponent"></a>
+    
+    
+
+                            </div>
+                            <div id="CiftiResampleWeighted1Parameters.opt_legacy_cutoff" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_legacy_cutoff</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#CiftiResampleWeighted1Parameters.opt_legacy_cutoff"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="CiftiResampleWeightedParameters">
                     <div class="attr class">
             
@@ -2513,41 +2548,6 @@
         
     </div>
     <a class="headerlink" href="#CiftiResampleWeightedParameters.opt_legacy_cutoff"></a>
-    
-    
-
-                            </div>
-                </section>
-                <section id="CiftiResampleWeightedParameters_">
-                    <div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">CiftiResampleWeightedParameters_</span><wbr>(<span class="base">typing.TypedDict</span>):
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiResampleWeightedParameters_"></a>
-    
-    
-
-                            <div id="CiftiResampleWeightedParameters_.opt_exponent_exponent" class="classattr">
-                                <div class="attr variable">
-            <span class="name">opt_exponent_exponent</span><span class="annotation">: NotRequired[float | None]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiResampleWeightedParameters_.opt_exponent_exponent"></a>
-    
-    
-
-                            </div>
-                            <div id="CiftiResampleWeightedParameters_.opt_legacy_cutoff" class="classattr">
-                                <div class="attr variable">
-            <span class="name">opt_legacy_cutoff</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#CiftiResampleWeightedParameters_.opt_legacy_cutoff"></a>
     
     
 
@@ -3443,7 +3443,7 @@ BARYCENTRIC
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cifti_resample_surface_postdilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dilate_mm</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n"><a href="#CiftiResampleWeightedParameters_">CiftiResampleWeightedParameters_</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiResampleSurfacePostdilateParameters">CiftiResampleSurfacePostdilateParameters</a></span>:</span></span>
+        <span class="name">cifti_resample_surface_postdilate_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dilate_mm</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">weighted</span><span class="p">:</span> <span class="n"><a href="#CiftiResampleWeighted1Parameters">CiftiResampleWeighted1Parameters</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiResampleSurfacePostdilateParameters">CiftiResampleSurfacePostdilateParameters</a></span>:</span></span>
 
                 <label class="view-source-button" for="cifti_resample_surface_postdilate_params-view-source"><span>View Source</span></label>
 
@@ -3453,7 +3453,7 @@ BARYCENTRIC
 </span><span id="cifti_resample_surface_postdilate_params-319"><a href="#cifti_resample_surface_postdilate_params-319"><span class="linenos">319</span></a>    <span class="n">dilate_mm</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="cifti_resample_surface_postdilate_params-320"><a href="#cifti_resample_surface_postdilate_params-320"><span class="linenos">320</span></a>    <span class="n">opt_nearest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="cifti_resample_surface_postdilate_params-321"><a href="#cifti_resample_surface_postdilate_params-321"><span class="linenos">321</span></a>    <span class="n">opt_linear</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cifti_resample_surface_postdilate_params-322"><a href="#cifti_resample_surface_postdilate_params-322"><span class="linenos">322</span></a>    <span class="n">weighted</span><span class="p">:</span> <span class="n">CiftiResampleWeightedParameters_</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_resample_surface_postdilate_params-322"><a href="#cifti_resample_surface_postdilate_params-322"><span class="linenos">322</span></a>    <span class="n">weighted</span><span class="p">:</span> <span class="n">CiftiResampleWeighted1Parameters</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="cifti_resample_surface_postdilate_params-323"><a href="#cifti_resample_surface_postdilate_params-323"><span class="linenos">323</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleSurfacePostdilateParameters</span><span class="p">:</span>
 </span><span id="cifti_resample_surface_postdilate_params-324"><a href="#cifti_resample_surface_postdilate_params-324"><span class="linenos">324</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="cifti_resample_surface_postdilate_params-325"><a href="#cifti_resample_surface_postdilate_params-325"><span class="linenos">325</span></a><span class="sd">    Build parameters.</span>
@@ -3607,6 +3607,60 @@ BARYCENTRIC
 
 
                 </section>
+                <section id="cifti_resample_weighted_1_params">
+                            <input id="cifti_resample_weighted_1_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">cifti_resample_weighted_1_params</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiResampleWeighted1Parameters">CiftiResampleWeighted1Parameters</a></span>:</span></span>
+
+                <label class="view-source-button" for="cifti_resample_weighted_1_params-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#cifti_resample_weighted_1_params"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_resample_weighted_1_params-269"><a href="#cifti_resample_weighted_1_params-269"><span class="linenos">269</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_1_params</span><span class="p">(</span>
+</span><span id="cifti_resample_weighted_1_params-270"><a href="#cifti_resample_weighted_1_params-270"><span class="linenos">270</span></a>    <span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="cifti_resample_weighted_1_params-271"><a href="#cifti_resample_weighted_1_params-271"><span class="linenos">271</span></a>    <span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="cifti_resample_weighted_1_params-272"><a href="#cifti_resample_weighted_1_params-272"><span class="linenos">272</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleWeighted1Parameters</span><span class="p">:</span>
+</span><span id="cifti_resample_weighted_1_params-273"><a href="#cifti_resample_weighted_1_params-273"><span class="linenos">273</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cifti_resample_weighted_1_params-274"><a href="#cifti_resample_weighted_1_params-274"><span class="linenos">274</span></a><span class="sd">    Build parameters.</span>
+</span><span id="cifti_resample_weighted_1_params-275"><a href="#cifti_resample_weighted_1_params-275"><span class="linenos">275</span></a><span class="sd">    </span>
+</span><span id="cifti_resample_weighted_1_params-276"><a href="#cifti_resample_weighted_1_params-276"><span class="linenos">276</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_resample_weighted_1_params-277"><a href="#cifti_resample_weighted_1_params-277"><span class="linenos">277</span></a><span class="sd">        opt_exponent_exponent: specify exponent in weighting function: exponent\</span>
+</span><span id="cifti_resample_weighted_1_params-278"><a href="#cifti_resample_weighted_1_params-278"><span class="linenos">278</span></a><span class="sd">            &#39;n&#39; to use in (area / (distance ^ n)) as the weighting function\</span>
+</span><span id="cifti_resample_weighted_1_params-279"><a href="#cifti_resample_weighted_1_params-279"><span class="linenos">279</span></a><span class="sd">            (default 6).</span>
+</span><span id="cifti_resample_weighted_1_params-280"><a href="#cifti_resample_weighted_1_params-280"><span class="linenos">280</span></a><span class="sd">        opt_legacy_cutoff: use v1.3.2 logic for the kernel cutoff.</span>
+</span><span id="cifti_resample_weighted_1_params-281"><a href="#cifti_resample_weighted_1_params-281"><span class="linenos">281</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_resample_weighted_1_params-282"><a href="#cifti_resample_weighted_1_params-282"><span class="linenos">282</span></a><span class="sd">        Parameter dictionary</span>
+</span><span id="cifti_resample_weighted_1_params-283"><a href="#cifti_resample_weighted_1_params-283"><span class="linenos">283</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_resample_weighted_1_params-284"><a href="#cifti_resample_weighted_1_params-284"><span class="linenos">284</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="cifti_resample_weighted_1_params-285"><a href="#cifti_resample_weighted_1_params-285"><span class="linenos">285</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted_1&quot;</span><span class="p">,</span>
+</span><span id="cifti_resample_weighted_1_params-286"><a href="#cifti_resample_weighted_1_params-286"><span class="linenos">286</span></a>        <span class="s2">&quot;opt_legacy_cutoff&quot;</span><span class="p">:</span> <span class="n">opt_legacy_cutoff</span><span class="p">,</span>
+</span><span id="cifti_resample_weighted_1_params-287"><a href="#cifti_resample_weighted_1_params-287"><span class="linenos">287</span></a>    <span class="p">}</span>
+</span><span id="cifti_resample_weighted_1_params-288"><a href="#cifti_resample_weighted_1_params-288"><span class="linenos">288</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_resample_weighted_1_params-289"><a href="#cifti_resample_weighted_1_params-289"><span class="linenos">289</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_exponent_exponent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_exponent_exponent</span>
+</span><span id="cifti_resample_weighted_1_params-290"><a href="#cifti_resample_weighted_1_params-290"><span class="linenos">290</span></a>    <span class="k">return</span> <span class="n">params</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build parameters.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>opt_exponent_exponent:</strong>  specify exponent in weighting function: exponent            'n' to use in (area / (distance ^ n)) as the weighting function            (default 6).</li>
+<li><strong>opt_legacy_cutoff:</strong>  use v1.3.2 logic for the kernel cutoff.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Parameter dictionary</p>
+</blockquote>
+</div>
+
+
+                </section>
                 <section id="cifti_resample_weighted_params">
                             <input id="cifti_resample_weighted_params-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -3649,60 +3703,6 @@ BARYCENTRIC
 
 <ul>
 <li><strong>opt_exponent_exponent:</strong>  specify exponent in weighting function: exponent            'n' to use in (1 / (distance ^ n)) as the weighting function (default            7).</li>
-<li><strong>opt_legacy_cutoff:</strong>  use v1.3.2 logic for the kernel cutoff.</li>
-</ul>
-
-<h6 id="returns">Returns:</h6>
-
-<blockquote>
-  <p>Parameter dictionary</p>
-</blockquote>
-</div>
-
-
-                </section>
-                <section id="cifti_resample_weighted_params_">
-                            <input id="cifti_resample_weighted_params_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">cifti_resample_weighted_params_</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#CiftiResampleWeightedParameters_">CiftiResampleWeightedParameters_</a></span>:</span></span>
-
-                <label class="view-source-button" for="cifti_resample_weighted_params_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#cifti_resample_weighted_params_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cifti_resample_weighted_params_-269"><a href="#cifti_resample_weighted_params_-269"><span class="linenos">269</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cifti_resample_weighted_params_</span><span class="p">(</span>
-</span><span id="cifti_resample_weighted_params_-270"><a href="#cifti_resample_weighted_params_-270"><span class="linenos">270</span></a>    <span class="n">opt_exponent_exponent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="cifti_resample_weighted_params_-271"><a href="#cifti_resample_weighted_params_-271"><span class="linenos">271</span></a>    <span class="n">opt_legacy_cutoff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="cifti_resample_weighted_params_-272"><a href="#cifti_resample_weighted_params_-272"><span class="linenos">272</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CiftiResampleWeightedParameters_</span><span class="p">:</span>
-</span><span id="cifti_resample_weighted_params_-273"><a href="#cifti_resample_weighted_params_-273"><span class="linenos">273</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cifti_resample_weighted_params_-274"><a href="#cifti_resample_weighted_params_-274"><span class="linenos">274</span></a><span class="sd">    Build parameters.</span>
-</span><span id="cifti_resample_weighted_params_-275"><a href="#cifti_resample_weighted_params_-275"><span class="linenos">275</span></a><span class="sd">    </span>
-</span><span id="cifti_resample_weighted_params_-276"><a href="#cifti_resample_weighted_params_-276"><span class="linenos">276</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_resample_weighted_params_-277"><a href="#cifti_resample_weighted_params_-277"><span class="linenos">277</span></a><span class="sd">        opt_exponent_exponent: specify exponent in weighting function: exponent\</span>
-</span><span id="cifti_resample_weighted_params_-278"><a href="#cifti_resample_weighted_params_-278"><span class="linenos">278</span></a><span class="sd">            &#39;n&#39; to use in (area / (distance ^ n)) as the weighting function\</span>
-</span><span id="cifti_resample_weighted_params_-279"><a href="#cifti_resample_weighted_params_-279"><span class="linenos">279</span></a><span class="sd">            (default 6).</span>
-</span><span id="cifti_resample_weighted_params_-280"><a href="#cifti_resample_weighted_params_-280"><span class="linenos">280</span></a><span class="sd">        opt_legacy_cutoff: use v1.3.2 logic for the kernel cutoff.</span>
-</span><span id="cifti_resample_weighted_params_-281"><a href="#cifti_resample_weighted_params_-281"><span class="linenos">281</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_resample_weighted_params_-282"><a href="#cifti_resample_weighted_params_-282"><span class="linenos">282</span></a><span class="sd">        Parameter dictionary</span>
-</span><span id="cifti_resample_weighted_params_-283"><a href="#cifti_resample_weighted_params_-283"><span class="linenos">283</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_resample_weighted_params_-284"><a href="#cifti_resample_weighted_params_-284"><span class="linenos">284</span></a>    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="cifti_resample_weighted_params_-285"><a href="#cifti_resample_weighted_params_-285"><span class="linenos">285</span></a>        <span class="s2">&quot;__STYXTYPE__&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted&quot;</span><span class="p">,</span>
-</span><span id="cifti_resample_weighted_params_-286"><a href="#cifti_resample_weighted_params_-286"><span class="linenos">286</span></a>        <span class="s2">&quot;opt_legacy_cutoff&quot;</span><span class="p">:</span> <span class="n">opt_legacy_cutoff</span><span class="p">,</span>
-</span><span id="cifti_resample_weighted_params_-287"><a href="#cifti_resample_weighted_params_-287"><span class="linenos">287</span></a>    <span class="p">}</span>
-</span><span id="cifti_resample_weighted_params_-288"><a href="#cifti_resample_weighted_params_-288"><span class="linenos">288</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_resample_weighted_params_-289"><a href="#cifti_resample_weighted_params_-289"><span class="linenos">289</span></a>        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;opt_exponent_exponent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt_exponent_exponent</span>
-</span><span id="cifti_resample_weighted_params_-290"><a href="#cifti_resample_weighted_params_-290"><span class="linenos">290</span></a>    <span class="k">return</span> <span class="n">params</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Build parameters.</p>
-
-<h6 id="arguments">Arguments:</h6>
-
-<ul>
-<li><strong>opt_exponent_exponent:</strong>  specify exponent in weighting function: exponent            'n' to use in (area / (distance ^ n)) as the weighting function            (default 6).</li>
 <li><strong>opt_legacy_cutoff:</strong>  use v1.3.2 logic for the kernel cutoff.</li>
 </ul>
 
