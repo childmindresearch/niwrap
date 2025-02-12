@@ -161,7 +161,6 @@ def multiply_images_execute(
     Returns:
         NamedTuple of outputs (described in `MultiplyImagesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = multiply_images_cargs(params, execution)
     ret = multiply_images_outputs(params, execution)
     execution.run(cargs)

@@ -83,9 +83,6 @@ def dyn_outputs(
     """
     return {
         "tckresample": tckresample_outputs,
-        "line": tckresample_line_outputs,
-        "arc": tckresample_arc_outputs,
-        "config": tckresample_config_outputs,
     }.get(t)
 
 
@@ -452,7 +449,6 @@ def tckresample_execute(
     Returns:
         NamedTuple of outputs (described in `TckresampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckresample_cargs(params, execution)
     ret = tckresample_outputs(params, execution)
     execution.run(cargs)

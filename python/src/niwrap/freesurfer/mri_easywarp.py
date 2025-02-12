@@ -172,7 +172,6 @@ def mri_easywarp_execute(
     Returns:
         NamedTuple of outputs (described in `MriEasywarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_easywarp_cargs(params, execution)
     ret = mri_easywarp_outputs(params, execution)
     execution.run(cargs)

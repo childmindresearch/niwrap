@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "transformcalc": transformcalc_outputs,
-        "config": transformcalc_config_outputs,
     }.get(t)
 
 
@@ -256,7 +255,6 @@ def transformcalc_execute(
     Returns:
         NamedTuple of outputs (described in `TransformcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = transformcalc_cargs(params, execution)
     ret = transformcalc_outputs(params, execution)
     execution.run(cargs)

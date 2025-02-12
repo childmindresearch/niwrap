@@ -173,7 +173,6 @@ def biasfield_execute(
     Returns:
         NamedTuple of outputs (described in `BiasfieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = biasfield_cargs(params, execution)
     ret = biasfield_outputs(params, execution)
     execution.run(cargs)

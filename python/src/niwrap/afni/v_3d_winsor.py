@@ -216,7 +216,6 @@ def v_3d_winsor_execute(
     Returns:
         NamedTuple of outputs (described in `V3dWinsorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_winsor_cargs(params, execution)
     ret = v_3d_winsor_outputs(params, execution)
     execution.run(cargs)

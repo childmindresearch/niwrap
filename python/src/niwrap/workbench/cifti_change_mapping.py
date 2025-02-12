@@ -69,9 +69,6 @@ def dyn_outputs(
     """
     return {
         "cifti-change-mapping": cifti_change_mapping_outputs,
-        "series": cifti_change_mapping_series_outputs,
-        "scalar": cifti_change_mapping_scalar_outputs,
-        "from_cifti": cifti_change_mapping_from_cifti_outputs,
     }.get(t)
 
 
@@ -331,7 +328,6 @@ def cifti_change_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiChangeMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_change_mapping_cargs(params, execution)
     ret = cifti_change_mapping_outputs(params, execution)
     execution.run(cargs)

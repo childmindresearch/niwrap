@@ -265,7 +265,6 @@ def mris_skeletonize_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSkeletonizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_skeletonize_cargs(params, execution)
     ret = mris_skeletonize_outputs(params, execution)
     execution.run(cargs)

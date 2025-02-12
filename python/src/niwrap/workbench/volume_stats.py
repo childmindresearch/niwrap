@@ -56,8 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-stats": volume_stats_outputs,
-        "roi": volume_stats_roi_outputs,
     }.get(t)
 
 
@@ -254,7 +252,6 @@ def volume_stats_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_stats_cargs(params, execution)
     ret = volume_stats_outputs(params, execution)
     execution.run(cargs)

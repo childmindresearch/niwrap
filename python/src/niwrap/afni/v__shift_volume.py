@@ -177,7 +177,6 @@ def v__shift_volume_execute(
     Returns:
         NamedTuple of outputs (described in `VShiftVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__shift_volume_cargs(params, execution)
     ret = v__shift_volume_outputs(params, execution)
     execution.run(cargs)

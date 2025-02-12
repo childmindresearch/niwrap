@@ -252,7 +252,6 @@ def mris_anatomical_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisAnatomicalStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_anatomical_stats_cargs(params, execution)
     ret = mris_anatomical_stats_outputs(params, execution)
     execution.run(cargs)

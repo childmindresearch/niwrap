@@ -63,7 +63,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "SurfDsetInfo": surf_dset_info_outputs,
     }.get(t)
 
 
@@ -256,7 +255,6 @@ def surf_dset_info_execute(
     Returns:
         NamedTuple of outputs (described in `SurfDsetInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_dset_info_cargs(params, execution)
     ret = surf_dset_info_outputs(params, execution)
     execution.run(cargs)

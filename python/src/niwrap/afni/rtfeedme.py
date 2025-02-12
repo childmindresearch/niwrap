@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rtfeedme": rtfeedme_outputs,
     }.get(t)
 
 
@@ -227,7 +226,6 @@ def rtfeedme_execute(
     Returns:
         NamedTuple of outputs (described in `RtfeedmeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rtfeedme_cargs(params, execution)
     ret = rtfeedme_outputs(params, execution)
     execution.run(cargs)

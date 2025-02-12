@@ -274,7 +274,6 @@ def brain_skin_execute(
     Returns:
         NamedTuple of outputs (described in `BrainSkinOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = brain_skin_cargs(params, execution)
     ret = brain_skin_outputs(params, execution)
     execution.run(cargs)

@@ -58,7 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fspalm": fspalm_outputs,
     }.get(t)
 
 
@@ -228,7 +227,6 @@ def fspalm_execute(
     Returns:
         NamedTuple of outputs (described in `FspalmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fspalm_cargs(params, execution)
     ret = fspalm_outputs(params, execution)
     execution.run(cargs)

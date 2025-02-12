@@ -87,7 +87,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_volsynth": mri_volsynth_outputs,
     }.get(t)
 
 
@@ -535,7 +534,6 @@ def mri_volsynth_execute(
     Returns:
         NamedTuple of outputs (described in `MriVolsynthOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_volsynth_cargs(params, execution)
     ret = mri_volsynth_outputs(params, execution)
     execution.run(cargs)

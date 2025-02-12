@@ -75,10 +75,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-weighted-stats": cifti_weighted_stats_outputs,
-        "spatial_weights": cifti_weighted_stats_spatial_weights_outputs,
-        "roi": cifti_weighted_stats_roi_outputs,
-        "stdev": cifti_weighted_stats_stdev_outputs,
     }.get(t)
 
 
@@ -416,7 +412,6 @@ def cifti_weighted_stats_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_weighted_stats_cargs(params, execution)
     ret = cifti_weighted_stats_outputs(params, execution)
     execution.run(cargs)

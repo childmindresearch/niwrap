@@ -164,7 +164,6 @@ def bianca_overlap_measures_execute(
     Returns:
         NamedTuple of outputs (described in `BiancaOverlapMeasuresOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bianca_overlap_measures_cargs(params, execution)
     ret = bianca_overlap_measures_outputs(params, execution)
     execution.run(cargs)

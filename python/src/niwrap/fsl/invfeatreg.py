@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "invfeatreg": invfeatreg_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def invfeatreg_execute(
     Returns:
         NamedTuple of outputs (described in `InvfeatregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = invfeatreg_cargs(params, execution)
     ret = invfeatreg_outputs(params, execution)
     execution.run(cargs)

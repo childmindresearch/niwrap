@@ -167,7 +167,6 @@ def v_3d_periodogram_execute(
     Returns:
         NamedTuple of outputs (described in `V3dPeriodogramOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_periodogram_cargs(params, execution)
     ret = v_3d_periodogram_outputs(params, execution)
     execution.run(cargs)

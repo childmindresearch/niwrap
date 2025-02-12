@@ -149,7 +149,6 @@ def mris_label_calc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLabelCalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_label_calc_cargs(params, execution)
     ret = mris_label_calc_outputs(params, execution)
     execution.run(cargs)

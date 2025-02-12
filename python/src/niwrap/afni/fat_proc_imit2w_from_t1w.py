@@ -213,7 +213,6 @@ def fat_proc_imit2w_from_t1w_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcImit2wFromT1wOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_imit2w_from_t1w_cargs(params, execution)
     ret = fat_proc_imit2w_from_t1w_outputs(params, execution)
     execution.run(cargs)

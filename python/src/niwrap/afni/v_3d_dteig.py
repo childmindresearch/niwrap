@@ -179,7 +179,6 @@ def v_3d_dteig_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDteigOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_dteig_cargs(params, execution)
     ret = v_3d_dteig_outputs(params, execution)
     execution.run(cargs)

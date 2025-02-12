@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fname2stem": fname2stem_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def fname2stem_execute(
     Returns:
         NamedTuple of outputs (described in `Fname2stemOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fname2stem_cargs(params, execution)
     ret = fname2stem_outputs(params, execution)
     execution.run(cargs)

@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_maps2csd": mri_maps2csd_outputs,
     }.get(t)
 
 
@@ -223,7 +222,6 @@ def mri_maps2csd_execute(
     Returns:
         NamedTuple of outputs (described in `MriMaps2csdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_maps2csd_cargs(params, execution)
     ret = mri_maps2csd_outputs(params, execution)
     execution.run(cargs)

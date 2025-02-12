@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris2rgb": mris2rgb_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def mris2rgb_execute(
     Returns:
         NamedTuple of outputs (described in `Mris2rgbOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris2rgb_cargs(params, execution)
     ret = mris2rgb_outputs(params, execution)
     execution.run(cargs)

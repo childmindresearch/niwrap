@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "abids_tool": abids_tool_outputs,
     }.get(t)
 
 
@@ -143,7 +142,6 @@ def abids_tool_execute(
     Returns:
         NamedTuple of outputs (described in `AbidsToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = abids_tool_cargs(params, execution)
     ret = abids_tool_outputs(params, execution)
     execution.run(cargs)

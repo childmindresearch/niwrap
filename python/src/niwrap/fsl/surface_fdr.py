@@ -139,7 +139,6 @@ def surface_fdr_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceFdrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_fdr_cargs(params, execution)
     ret = surface_fdr_outputs(params, execution)
     execution.run(cargs)

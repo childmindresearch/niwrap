@@ -82,10 +82,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-set-space": volume_set_space_outputs,
-        "plumb": volume_set_space_plumb_outputs,
-        "sform": volume_set_space_sform_outputs,
-        "file": volume_set_space_file_outputs,
     }.get(t)
 
 
@@ -384,7 +380,6 @@ def volume_set_space_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeSetSpaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_set_space_cargs(params, execution)
     ret = volume_set_space_outputs(params, execution)
     execution.run(cargs)

@@ -70,8 +70,6 @@ def dyn_outputs(
     """
     return {
         "tckstats": tckstats_outputs,
-        "output": tckstats_output_outputs,
-        "config": tckstats_config_outputs,
     }.get(t)
 
 
@@ -339,7 +337,6 @@ def tckstats_execute(
     Returns:
         NamedTuple of outputs (described in `TckstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckstats_cargs(params, execution)
     ret = tckstats_outputs(params, execution)
     execution.run(cargs)

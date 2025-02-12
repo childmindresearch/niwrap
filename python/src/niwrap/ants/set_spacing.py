@@ -149,7 +149,6 @@ def set_spacing_execute(
     Returns:
         NamedTuple of outputs (described in `SetSpacingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = set_spacing_cargs(params, execution)
     ret = set_spacing_outputs(params, execution)
     execution.run(cargs)

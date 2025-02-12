@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "talairach2": talairach2_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def talairach2_execute(
     Returns:
         NamedTuple of outputs (described in `Talairach2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = talairach2_cargs(params, execution)
     ret = talairach2_outputs(params, execution)
     execution.run(cargs)

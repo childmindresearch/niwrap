@@ -167,7 +167,6 @@ def suma_change_spec_execute(
     Returns:
         NamedTuple of outputs (described in `SumaChangeSpecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = suma_change_spec_cargs(params, execution)
     ret = suma_change_spec_outputs(params, execution)
     execution.run(cargs)

@@ -274,7 +274,6 @@ def tcalc_execute(
     Returns:
         NamedTuple of outputs (described in `TcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tcalc_cargs(params, execution)
     ret = tcalc_outputs(params, execution)
     execution.run(cargs)

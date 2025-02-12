@@ -72,7 +72,6 @@ def dyn_outputs(
     """
     return {
         "fod2fixel": fod2fixel_outputs,
-        "config": fod2fixel_config_outputs,
     }.get(t)
 
 
@@ -386,7 +385,6 @@ def fod2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Fod2fixelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fod2fixel_cargs(params, execution)
     ret = fod2fixel_outputs(params, execution)
     execution.run(cargs)

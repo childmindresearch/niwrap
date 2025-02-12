@@ -171,7 +171,6 @@ def v_3d_pval_execute(
     Returns:
         NamedTuple of outputs (described in `V3dPvalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_pval_cargs(params, execution)
     ret = v_3d_pval_outputs(params, execution)
     execution.run(cargs)

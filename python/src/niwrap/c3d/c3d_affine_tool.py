@@ -271,7 +271,6 @@ def c3d_affine_tool_execute(
     Returns:
         NamedTuple of outputs (described in `C3dAffineToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = c3d_affine_tool_cargs(params, execution)
     ret = c3d_affine_tool_outputs(params, execution)
     execution.run(cargs)

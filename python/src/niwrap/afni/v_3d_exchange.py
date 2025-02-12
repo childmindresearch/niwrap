@@ -169,7 +169,6 @@ def v_3d_exchange_execute(
     Returns:
         NamedTuple of outputs (described in `V3dExchangeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_exchange_cargs(params, execution)
     ret = v_3d_exchange_outputs(params, execution)
     execution.run(cargs)

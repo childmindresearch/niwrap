@@ -139,7 +139,6 @@ def possum_plot_execute(
     Returns:
         NamedTuple of outputs (described in `PossumPlotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = possum_plot_cargs(params, execution)
     ret = possum_plot_outputs(params, execution)
     execution.run(cargs)

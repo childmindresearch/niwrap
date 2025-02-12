@@ -138,7 +138,6 @@ def zeropad_execute(
     Returns:
         NamedTuple of outputs (described in `ZeropadOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = zeropad_cargs(params, execution)
     ret = zeropad_outputs(params, execution)
     execution.run(cargs)

@@ -166,7 +166,6 @@ def bbregister_execute(
     Returns:
         NamedTuple of outputs (described in `BbregisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bbregister_cargs(params, execution)
     ret = bbregister_outputs(params, execution)
     execution.run(cargs)

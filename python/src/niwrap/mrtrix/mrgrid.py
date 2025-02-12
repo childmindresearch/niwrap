@@ -93,10 +93,6 @@ def dyn_outputs(
     """
     return {
         "mrgrid": mrgrid_outputs,
-        "axis": mrgrid_axis_outputs,
-        "VariousString": mrgrid_various_string_outputs,
-        "VariousFile": mrgrid_various_file_outputs,
-        "config": mrgrid_config_outputs,
     }.get(t)
 
 
@@ -611,7 +607,6 @@ def mrgrid_execute(
     Returns:
         NamedTuple of outputs (described in `MrgridOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrgrid_cargs(params, execution)
     ret = mrgrid_outputs(params, execution)
     execution.run(cargs)

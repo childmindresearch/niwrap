@@ -253,7 +253,6 @@ def mrisp_paint_execute(
     Returns:
         NamedTuple of outputs (described in `MrispPaintOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrisp_paint_cargs(params, execution)
     ret = mrisp_paint_outputs(params, execution)
     execution.run(cargs)

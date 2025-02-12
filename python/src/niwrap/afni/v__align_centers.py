@@ -237,7 +237,6 @@ def v__align_centers_execute(
     Returns:
         NamedTuple of outputs (described in `VAlignCentersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__align_centers_cargs(params, execution)
     ret = v__align_centers_outputs(params, execution)
     execution.run(cargs)

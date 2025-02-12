@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "tcktransform": tcktransform_outputs,
-        "config": tcktransform_config_outputs,
     }.get(t)
 
 
@@ -254,7 +253,6 @@ def tcktransform_execute(
     Returns:
         NamedTuple of outputs (described in `TcktransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tcktransform_cargs(params, execution)
     ret = tcktransform_outputs(params, execution)
     execution.run(cargs)

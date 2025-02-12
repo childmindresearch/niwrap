@@ -300,7 +300,6 @@ def mris_volmask_vtk_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolmaskVtkOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_volmask_vtk_cargs(params, execution)
     ret = mris_volmask_vtk_outputs(params, execution)
     execution.run(cargs)

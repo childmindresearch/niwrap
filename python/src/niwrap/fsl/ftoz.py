@@ -153,7 +153,6 @@ def ftoz_execute(
     Returns:
         NamedTuple of outputs (described in `FtozOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ftoz_cargs(params, execution)
     ret = ftoz_outputs(params, execution)
     execution.run(cargs)

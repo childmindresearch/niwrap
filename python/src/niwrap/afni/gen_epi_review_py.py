@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gen_epi_review.py": gen_epi_review_py_outputs,
     }.get(t)
 
 
@@ -223,7 +222,6 @@ def gen_epi_review_py_execute(
     Returns:
         NamedTuple of outputs (described in `GenEpiReviewPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gen_epi_review_py_cargs(params, execution)
     ret = gen_epi_review_py_outputs(params, execution)
     execution.run(cargs)

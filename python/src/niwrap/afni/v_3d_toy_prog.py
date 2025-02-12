@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dToyProg": v_3d_toy_prog_outputs,
     }.get(t)
 
 
@@ -164,7 +163,6 @@ def v_3d_toy_prog_execute(
     Returns:
         NamedTuple of outputs (described in `V3dToyProgOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_toy_prog_cargs(params, execution)
     ret = v_3d_toy_prog_outputs(params, execution)
     execution.run(cargs)

@@ -184,7 +184,6 @@ def mri_pretess_execute(
     Returns:
         NamedTuple of outputs (described in `MriPretessOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_pretess_cargs(params, execution)
     ret = mri_pretess_outputs(params, execution)
     execution.run(cargs)

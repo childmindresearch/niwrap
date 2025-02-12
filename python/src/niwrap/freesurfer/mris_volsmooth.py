@@ -253,7 +253,6 @@ def mris_volsmooth_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolsmoothOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_volsmooth_cargs(params, execution)
     ret = mris_volsmooth_outputs(params, execution)
     execution.run(cargs)

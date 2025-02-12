@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "long_create_base_sigma": long_create_base_sigma_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def long_create_base_sigma_execute(
     Returns:
         NamedTuple of outputs (described in `LongCreateBaseSigmaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_create_base_sigma_cargs(params, execution)
     ret = long_create_base_sigma_outputs(params, execution)
     execution.run(cargs)

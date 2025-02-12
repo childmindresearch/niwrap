@@ -330,7 +330,6 @@ def mcflirt_execute(
     Returns:
         NamedTuple of outputs (described in `McflirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mcflirt_cargs(params, execution)
     ret = mcflirt_outputs(params, execution)
     execution.run(cargs)

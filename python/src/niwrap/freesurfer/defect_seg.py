@@ -168,7 +168,6 @@ def defect_seg_execute(
     Returns:
         NamedTuple of outputs (described in `DefectSegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = defect_seg_cargs(params, execution)
     ret = defect_seg_outputs(params, execution)
     execution.run(cargs)

@@ -176,7 +176,6 @@ def segment_subject_old_skull_strip_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectOldSkullStripOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subject_old_skull_strip_cargs(params, execution)
     ret = segment_subject_old_skull_strip_outputs(params, execution)
     execution.run(cargs)

@@ -209,7 +209,6 @@ def v_3d_toutcount_execute(
     Returns:
         NamedTuple of outputs (described in `V3dToutcountOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_toutcount_cargs(params, execution)
     ret = v_3d_toutcount_outputs(params, execution)
     execution.run(cargs)

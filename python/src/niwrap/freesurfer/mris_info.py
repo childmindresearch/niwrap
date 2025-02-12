@@ -330,7 +330,6 @@ def mris_info_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_info_cargs(params, execution)
     ret = mris_info_outputs(params, execution)
     execution.run(cargs)

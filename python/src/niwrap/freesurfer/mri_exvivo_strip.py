@@ -240,7 +240,6 @@ def mri_exvivo_strip_execute(
     Returns:
         NamedTuple of outputs (described in `MriExvivoStripOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_exvivo_strip_cargs(params, execution)
     ret = mri_exvivo_strip_outputs(params, execution)
     execution.run(cargs)

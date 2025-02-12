@@ -207,7 +207,6 @@ def bedpostx_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bedpostx_cargs(params, execution)
     ret = bedpostx_outputs(params, execution)
     execution.run(cargs)

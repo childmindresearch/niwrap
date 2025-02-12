@@ -177,7 +177,6 @@ def rca_fix_ento_execute(
     Returns:
         NamedTuple of outputs (described in `RcaFixEntoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rca_fix_ento_cargs(params, execution)
     ret = rca_fix_ento_outputs(params, execution)
     execution.run(cargs)

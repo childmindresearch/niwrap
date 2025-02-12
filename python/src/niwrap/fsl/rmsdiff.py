@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rmsdiff": rmsdiff_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def rmsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `RmsdiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rmsdiff_cargs(params, execution)
     ret = rmsdiff_outputs(params, execution)
     execution.run(cargs)

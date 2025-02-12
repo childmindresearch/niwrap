@@ -178,7 +178,6 @@ def v_3d_rankizer_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRankizerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_rankizer_cargs(params, execution)
     ret = v_3d_rankizer_outputs(params, execution)
     execution.run(cargs)

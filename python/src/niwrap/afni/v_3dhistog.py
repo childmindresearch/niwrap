@@ -271,7 +271,6 @@ def v_3dhistog_execute(
     Returns:
         NamedTuple of outputs (described in `V3dhistogOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dhistog_cargs(params, execution)
     ret = v_3dhistog_outputs(params, execution)
     execution.run(cargs)

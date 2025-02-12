@@ -85,10 +85,6 @@ def dyn_outputs(
     """
     return {
         "mredit": mredit_outputs,
-        "plane": mredit_plane_outputs,
-        "sphere": mredit_sphere_outputs,
-        "voxel": mredit_voxel_outputs,
-        "config": mredit_config_outputs,
     }.get(t)
 
 
@@ -437,7 +433,6 @@ def mredit_execute(
     Returns:
         NamedTuple of outputs (described in `MreditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mredit_cargs(params, execution)
     ret = mredit_outputs(params, execution)
     execution.run(cargs)

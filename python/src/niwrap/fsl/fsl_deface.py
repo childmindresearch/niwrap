@@ -268,7 +268,6 @@ def fsl_deface_execute(
     Returns:
         NamedTuple of outputs (described in `FslDefaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_deface_cargs(params, execution)
     ret = fsl_deface_outputs(params, execution)
     execution.run(cargs)

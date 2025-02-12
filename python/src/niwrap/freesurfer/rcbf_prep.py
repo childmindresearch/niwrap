@@ -193,7 +193,6 @@ def rcbf_prep_execute(
     Returns:
         NamedTuple of outputs (described in `RcbfPrepOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rcbf_prep_cargs(params, execution)
     ret = rcbf_prep_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dAFNItoNIML": v_3d_afnito_niml_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def v_3d_afnito_niml_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAfnitoNimlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_afnito_niml_cargs(params, execution)
     ret = v_3d_afnito_niml_outputs(params, execution)
     execution.run(cargs)

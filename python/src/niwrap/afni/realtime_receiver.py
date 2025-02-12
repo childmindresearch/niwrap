@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "realtime_receiver": realtime_receiver_outputs,
     }.get(t)
 
 
@@ -234,7 +233,6 @@ def realtime_receiver_execute(
     Returns:
         NamedTuple of outputs (described in `RealtimeReceiverOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = realtime_receiver_cargs(params, execution)
     ret = realtime_receiver_outputs(params, execution)
     execution.run(cargs)

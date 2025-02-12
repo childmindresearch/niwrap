@@ -156,7 +156,6 @@ def rebase_tensor_image_execute(
     Returns:
         NamedTuple of outputs (described in `RebaseTensorImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rebase_tensor_image_cargs(params, execution)
     ret = rebase_tensor_image_outputs(params, execution)
     execution.run(cargs)

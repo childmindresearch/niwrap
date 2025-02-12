@@ -157,7 +157,6 @@ def label_subject_flash_execute(
     Returns:
         NamedTuple of outputs (described in `LabelSubjectFlashOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_subject_flash_cargs(params, execution)
     ret = label_subject_flash_outputs(params, execution)
     execution.run(cargs)

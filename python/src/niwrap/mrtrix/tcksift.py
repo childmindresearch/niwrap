@@ -78,7 +78,6 @@ def dyn_outputs(
     """
     return {
         "tcksift": tcksift_outputs,
-        "config": tcksift_config_outputs,
     }.get(t)
 
 
@@ -429,7 +428,6 @@ def tcksift_execute(
     Returns:
         NamedTuple of outputs (described in `TcksiftOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tcksift_cargs(params, execution)
     ret = tcksift_outputs(params, execution)
     execution.run(cargs)

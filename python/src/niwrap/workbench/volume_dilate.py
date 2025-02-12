@@ -66,8 +66,6 @@ def dyn_outputs(
     """
     return {
         "volume-dilate": volume_dilate_outputs,
-        "grad_extrapolate": volume_dilate_grad_extrapolate_outputs,
-        "presmooth": volume_dilate_presmooth_outputs,
     }.get(t)
 
 
@@ -324,7 +322,6 @@ def volume_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeDilateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_dilate_cargs(params, execution)
     ret = volume_dilate_outputs(params, execution)
     execution.run(cargs)

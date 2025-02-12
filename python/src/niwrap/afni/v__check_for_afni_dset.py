@@ -134,7 +134,6 @@ def v__check_for_afni_dset_execute(
     Returns:
         NamedTuple of outputs (described in `VCheckForAfniDsetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__check_for_afni_dset_cargs(params, execution)
     ret = v__check_for_afni_dset_outputs(params, execution)
     execution.run(cargs)

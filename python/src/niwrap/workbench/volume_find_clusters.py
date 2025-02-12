@@ -221,7 +221,6 @@ def volume_find_clusters_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeFindClustersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_find_clusters_cargs(params, execution)
     ret = volume_find_clusters_outputs(params, execution)
     execution.run(cargs)

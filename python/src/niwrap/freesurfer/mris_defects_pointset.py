@@ -169,7 +169,6 @@ def mris_defects_pointset_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDefectsPointsetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_defects_pointset_cargs(params, execution)
     ret = mris_defects_pointset_outputs(params, execution)
     execution.run(cargs)

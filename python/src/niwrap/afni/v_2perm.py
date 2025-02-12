@@ -173,7 +173,6 @@ def v_2perm_execute(
     Returns:
         NamedTuple of outputs (described in `V2permOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_2perm_cargs(params, execution)
     ret = v_2perm_outputs(params, execution)
     execution.run(cargs)

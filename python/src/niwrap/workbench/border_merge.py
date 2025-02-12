@@ -65,9 +65,6 @@ def dyn_outputs(
     """
     return {
         "border-merge": border_merge_outputs,
-        "border": border_merge_border_outputs,
-        "select": border_merge_select_outputs,
-        "up_to": border_merge_up_to_outputs,
     }.get(t)
 
 
@@ -299,7 +296,6 @@ def border_merge_execute(
     Returns:
         NamedTuple of outputs (described in `BorderMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_merge_cargs(params, execution)
     ret = border_merge_outputs(params, execution)
     execution.run(cargs)

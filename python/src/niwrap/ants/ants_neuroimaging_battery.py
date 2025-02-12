@@ -171,7 +171,6 @@ def ants_neuroimaging_battery_execute(
     Returns:
         NamedTuple of outputs (described in `AntsNeuroimagingBatteryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_neuroimaging_battery_cargs(params, execution)
     ret = ants_neuroimaging_battery_outputs(params, execution)
     execution.run(cargs)

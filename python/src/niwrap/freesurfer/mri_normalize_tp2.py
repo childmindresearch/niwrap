@@ -224,7 +224,6 @@ def mri_normalize_tp2_execute(
     Returns:
         NamedTuple of outputs (described in `MriNormalizeTp2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_normalize_tp2_cargs(params, execution)
     ret = mri_normalize_tp2_outputs(params, execution)
     execution.run(cargs)

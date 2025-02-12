@@ -133,7 +133,6 @@ def v__get_afni_id_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniIdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_id_cargs(params, execution)
     ret = v__get_afni_id_outputs(params, execution)
     execution.run(cargs)

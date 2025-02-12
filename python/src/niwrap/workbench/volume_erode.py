@@ -170,7 +170,6 @@ def volume_erode_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeErodeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_erode_cargs(params, execution)
     ret = volume_erode_outputs(params, execution)
     execution.run(cargs)

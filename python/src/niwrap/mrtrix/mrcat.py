@@ -64,7 +64,6 @@ def dyn_outputs(
     """
     return {
         "mrcat": mrcat_outputs,
-        "config": mrcat_config_outputs,
     }.get(t)
 
 
@@ -282,7 +281,6 @@ def mrcat_execute(
     Returns:
         NamedTuple of outputs (described in `MrcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrcat_cargs(params, execution)
     ret = mrcat_outputs(params, execution)
     execution.run(cargs)

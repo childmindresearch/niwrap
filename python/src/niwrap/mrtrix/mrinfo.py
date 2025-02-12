@@ -110,11 +110,8 @@ def dyn_outputs(
     """
     return {
         "mrinfo": mrinfo_outputs,
-        "property": mrinfo_property_outputs,
-        "fslgrad": mrinfo_fslgrad_outputs,
         "export_grad_fsl": mrinfo_export_grad_fsl_outputs,
         "export_pe_eddy": mrinfo_export_pe_eddy_outputs,
-        "config": mrinfo_config_outputs,
     }.get(t)
 
 
@@ -765,7 +762,6 @@ def mrinfo_execute(
     Returns:
         NamedTuple of outputs (described in `MrinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrinfo_cargs(params, execution)
     ret = mrinfo_outputs(params, execution)
     execution.run(cargs)

@@ -156,7 +156,6 @@ def label_subject_mixed_execute(
     Returns:
         NamedTuple of outputs (described in `LabelSubjectMixedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_subject_mixed_cargs(params, execution)
     ret = label_subject_mixed_outputs(params, execution)
     execution.run(cargs)

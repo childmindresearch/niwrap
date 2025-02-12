@@ -168,7 +168,6 @@ def mri_tessellate_execute(
     Returns:
         NamedTuple of outputs (described in `MriTessellateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_tessellate_cargs(params, execution)
     ret = mri_tessellate_outputs(params, execution)
     execution.run(cargs)

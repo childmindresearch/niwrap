@@ -64,7 +64,6 @@ def dyn_outputs(
     """
     return {
         "meshfilter": meshfilter_outputs,
-        "config": meshfilter_config_outputs,
     }.get(t)
 
 
@@ -276,7 +275,6 @@ def meshfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MeshfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = meshfilter_cargs(params, execution)
     ret = meshfilter_outputs(params, execution)
     execution.run(cargs)

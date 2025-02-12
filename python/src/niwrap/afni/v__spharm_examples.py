@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@Spharm.examples": v__spharm_examples_outputs,
     }.get(t)
 
 
@@ -167,7 +166,6 @@ def v__spharm_examples_execute(
     Returns:
         NamedTuple of outputs (described in `VSpharmExamplesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__spharm_examples_cargs(params, execution)
     ret = v__spharm_examples_outputs(params, execution)
     execution.run(cargs)

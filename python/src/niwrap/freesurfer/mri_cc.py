@@ -236,7 +236,6 @@ def mri_cc_execute(
     Returns:
         NamedTuple of outputs (described in `MriCcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_cc_cargs(params, execution)
     ret = mri_cc_outputs(params, execution)
     execution.run(cargs)

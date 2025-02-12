@@ -328,7 +328,6 @@ def mri_mcsim_execute(
     Returns:
         NamedTuple of outputs (described in `MriMcsimOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_mcsim_cargs(params, execution)
     ret = mri_mcsim_outputs(params, execution)
     execution.run(cargs)

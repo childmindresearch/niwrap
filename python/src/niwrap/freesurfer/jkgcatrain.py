@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "jkgcatrain": jkgcatrain_outputs,
     }.get(t)
 
 
@@ -165,7 +164,6 @@ def jkgcatrain_execute(
     Returns:
         NamedTuple of outputs (described in `JkgcatrainOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = jkgcatrain_cargs(params, execution)
     ret = jkgcatrain_outputs(params, execution)
     execution.run(cargs)

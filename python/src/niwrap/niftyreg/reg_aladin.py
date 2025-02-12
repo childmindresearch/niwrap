@@ -240,7 +240,6 @@ def reg_aladin_execute(
     Returns:
         NamedTuple of outputs (described in `RegAladinOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_aladin_cargs(params, execution)
     ret = reg_aladin_outputs(params, execution)
     execution.run(cargs)

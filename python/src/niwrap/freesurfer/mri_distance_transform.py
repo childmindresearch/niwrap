@@ -156,7 +156,6 @@ def mri_distance_transform_execute(
     Returns:
         NamedTuple of outputs (described in `MriDistanceTransformOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_distance_transform_cargs(params, execution)
     ret = mri_distance_transform_outputs(params, execution)
     execution.run(cargs)

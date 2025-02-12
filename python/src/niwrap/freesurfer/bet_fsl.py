@@ -326,7 +326,6 @@ def bet_fsl_execute(
     Returns:
         NamedTuple of outputs (described in `BetFslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bet_fsl_cargs(params, execution)
     ret = bet_fsl_outputs(params, execution)
     execution.run(cargs)

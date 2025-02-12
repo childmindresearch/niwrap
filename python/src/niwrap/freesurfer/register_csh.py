@@ -145,7 +145,6 @@ def register_csh_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = register_csh_cargs(params, execution)
     ret = register_csh_outputs(params, execution)
     execution.run(cargs)

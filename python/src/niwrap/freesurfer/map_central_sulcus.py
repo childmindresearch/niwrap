@@ -424,7 +424,6 @@ def map_central_sulcus_execute(
     Returns:
         NamedTuple of outputs (described in `MapCentralSulcusOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = map_central_sulcus_cargs(params, execution)
     ret = map_central_sulcus_outputs(params, execution)
     execution.run(cargs)

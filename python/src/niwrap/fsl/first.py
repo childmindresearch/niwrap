@@ -250,7 +250,6 @@ def first_execute(
     Returns:
         NamedTuple of outputs (described in `FirstOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = first_cargs(params, execution)
     ret = first_outputs(params, execution)
     execution.run(cargs)

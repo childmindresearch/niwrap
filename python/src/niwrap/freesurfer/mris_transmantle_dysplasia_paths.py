@@ -170,7 +170,6 @@ def mris_transmantle_dysplasia_paths_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTransmantleDysplasiaPathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_transmantle_dysplasia_paths_cargs(params, execution)
     ret = mris_transmantle_dysplasia_paths_outputs(params, execution)
     execution.run(cargs)

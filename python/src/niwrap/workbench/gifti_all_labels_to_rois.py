@@ -148,7 +148,6 @@ def gifti_all_labels_to_rois_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiAllLabelsToRoisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gifti_all_labels_to_rois_cargs(params, execution)
     ret = gifti_all_labels_to_rois_outputs(params, execution)
     execution.run(cargs)

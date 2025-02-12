@@ -251,7 +251,6 @@ def mri_segment_hypothalamic_subunits_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegmentHypothalamicSubunitsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_segment_hypothalamic_subunits_cargs(params, execution)
     ret = mri_segment_hypothalamic_subunits_outputs(params, execution)
     execution.run(cargs)

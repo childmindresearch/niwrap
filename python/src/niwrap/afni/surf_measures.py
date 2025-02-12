@@ -278,7 +278,6 @@ def surf_measures_execute(
     Returns:
         NamedTuple of outputs (described in `SurfMeasuresOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_measures_cargs(params, execution)
     ret = surf_measures_outputs(params, execution)
     execution.run(cargs)

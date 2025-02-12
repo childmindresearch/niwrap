@@ -136,7 +136,6 @@ def v__do_examples_execute(
     Returns:
         NamedTuple of outputs (described in `VDoExamplesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__do_examples_cargs(params, execution)
     ret = v__do_examples_outputs(params, execution)
     execution.run(cargs)

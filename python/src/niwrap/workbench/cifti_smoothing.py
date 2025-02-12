@@ -76,9 +76,6 @@ def dyn_outputs(
     """
     return {
         "cifti-smoothing": cifti_smoothing_outputs,
-        "left_surface": cifti_smoothing_left_surface_outputs,
-        "right_surface": cifti_smoothing_right_surface_outputs,
-        "cerebellum_surface": cifti_smoothing_cerebellum_surface_outputs,
     }.get(t)
 
 
@@ -397,7 +394,6 @@ def cifti_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_smoothing_cargs(params, execution)
     ret = cifti_smoothing_outputs(params, execution)
     execution.run(cargs)

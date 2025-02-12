@@ -197,7 +197,6 @@ def v_1dfft_execute(
     Returns:
         NamedTuple of outputs (described in `V1dfftOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dfft_cargs(params, execution)
     ret = v_1dfft_outputs(params, execution)
     execution.run(cargs)

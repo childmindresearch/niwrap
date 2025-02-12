@@ -149,7 +149,6 @@ def mri_deface_execute(
     Returns:
         NamedTuple of outputs (described in `MriDefaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_deface_cargs(params, execution)
     ret = mri_deface_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ms_refine_subject": ms_refine_subject_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def ms_refine_subject_execute(
     Returns:
         NamedTuple of outputs (described in `MsRefineSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ms_refine_subject_cargs(params, execution)
     ret = ms_refine_subject_outputs(params, execution)
     execution.run(cargs)

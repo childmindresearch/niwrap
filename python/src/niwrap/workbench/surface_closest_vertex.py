@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surface-closest-vertex": surface_closest_vertex_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def surface_closest_vertex_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceClosestVertexOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_closest_vertex_cargs(params, execution)
     ret = surface_closest_vertex_outputs(params, execution)
     execution.run(cargs)

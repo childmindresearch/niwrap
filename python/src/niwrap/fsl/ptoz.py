@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ptoz": ptoz_outputs,
     }.get(t)
 
 
@@ -146,7 +145,6 @@ def ptoz_execute(
     Returns:
         NamedTuple of outputs (described in `PtozOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ptoz_cargs(params, execution)
     ret = ptoz_outputs(params, execution)
     execution.run(cargs)

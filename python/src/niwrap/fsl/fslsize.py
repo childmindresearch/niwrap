@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslsize": fslsize_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def fslsize_execute(
     Returns:
         NamedTuple of outputs (described in `FslsizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslsize_cargs(params, execution)
     ret = fslsize_outputs(params, execution)
     execution.run(cargs)

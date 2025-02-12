@@ -170,7 +170,6 @@ def flip_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `Flip4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = flip_4dfp_cargs(params, execution)
     ret = flip_4dfp_outputs(params, execution)
     execution.run(cargs)

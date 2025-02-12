@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_voldiff": mri_voldiff_outputs,
     }.get(t)
 
 
@@ -192,7 +191,6 @@ def mri_voldiff_execute(
     Returns:
         NamedTuple of outputs (described in `MriVoldiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_voldiff_cargs(params, execution)
     ret = mri_voldiff_outputs(params, execution)
     execution.run(cargs)

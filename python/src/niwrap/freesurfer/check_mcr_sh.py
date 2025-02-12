@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "checkMCR.sh": check_mcr_sh_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def check_mcr_sh_execute(
     Returns:
         NamedTuple of outputs (described in `CheckMcrShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = check_mcr_sh_cargs(params, execution)
     ret = check_mcr_sh_outputs(params, execution)
     execution.run(cargs)

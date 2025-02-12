@@ -197,7 +197,6 @@ def swap_voxelwise_execute(
     Returns:
         NamedTuple of outputs (described in `SwapVoxelwiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = swap_voxelwise_cargs(params, execution)
     ret = swap_voxelwise_outputs(params, execution)
     execution.run(cargs)

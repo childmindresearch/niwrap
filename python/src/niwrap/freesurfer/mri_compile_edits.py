@@ -139,7 +139,6 @@ def mri_compile_edits_execute(
     Returns:
         NamedTuple of outputs (described in `MriCompileEditsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_compile_edits_cargs(params, execution)
     ret = mri_compile_edits_outputs(params, execution)
     execution.run(cargs)

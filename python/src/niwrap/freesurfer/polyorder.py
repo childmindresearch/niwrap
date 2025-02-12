@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "polyorder": polyorder_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def polyorder_execute(
     Returns:
         NamedTuple of outputs (described in `PolyorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = polyorder_cargs(params, execution)
     ret = polyorder_outputs(params, execution)
     execution.run(cargs)

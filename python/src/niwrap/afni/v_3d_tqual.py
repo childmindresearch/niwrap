@@ -190,7 +190,6 @@ def v_3d_tqual_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTqualOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tqual_cargs(params, execution)
     ret = v_3d_tqual_outputs(params, execution)
     execution.run(cargs)

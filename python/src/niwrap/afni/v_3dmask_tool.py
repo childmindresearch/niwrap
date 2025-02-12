@@ -246,7 +246,6 @@ def v_3dmask_tool_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmaskToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmask_tool_cargs(params, execution)
     ret = v_3dmask_tool_outputs(params, execution)
     execution.run(cargs)

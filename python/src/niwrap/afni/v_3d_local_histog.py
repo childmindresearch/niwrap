@@ -202,7 +202,6 @@ def v_3d_local_histog_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalHistogOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_local_histog_cargs(params, execution)
     ret = v_3d_local_histog_outputs(params, execution)
     execution.run(cargs)

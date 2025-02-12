@@ -138,7 +138,6 @@ def find_the_biggest_execute(
     Returns:
         NamedTuple of outputs (described in `FindTheBiggestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = find_the_biggest_cargs(params, execution)
     ret = find_the_biggest_outputs(params, execution)
     execution.run(cargs)

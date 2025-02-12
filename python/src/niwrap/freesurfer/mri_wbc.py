@@ -61,7 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_wbc": mri_wbc_outputs,
     }.get(t)
 
 
@@ -277,7 +276,6 @@ def mri_wbc_execute(
     Returns:
         NamedTuple of outputs (described in `MriWbcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_wbc_cargs(params, execution)
     ret = mri_wbc_outputs(params, execution)
     execution.run(cargs)

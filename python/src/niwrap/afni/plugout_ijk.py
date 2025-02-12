@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "plugout_ijk": plugout_ijk_outputs,
     }.get(t)
 
 
@@ -220,7 +219,6 @@ def plugout_ijk_execute(
     Returns:
         NamedTuple of outputs (described in `PlugoutIjkOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = plugout_ijk_cargs(params, execution)
     ret = plugout_ijk_outputs(params, execution)
     execution.run(cargs)

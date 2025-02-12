@@ -383,7 +383,6 @@ def rba_execute(
     Returns:
         NamedTuple of outputs (described in `RbaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rba_cargs(params, execution)
     ret = rba_outputs(params, execution)
     execution.run(cargs)

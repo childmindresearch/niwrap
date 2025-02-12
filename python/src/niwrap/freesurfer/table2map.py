@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "table2map": table2map_outputs,
     }.get(t)
 
 
@@ -182,7 +181,6 @@ def table2map_execute(
     Returns:
         NamedTuple of outputs (described in `Table2mapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = table2map_cargs(params, execution)
     ret = table2map_outputs(params, execution)
     execution.run(cargs)

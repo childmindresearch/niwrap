@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mpr2mni305": mpr2mni305_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def mpr2mni305_execute(
     Returns:
         NamedTuple of outputs (described in `Mpr2mni305Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mpr2mni305_cargs(params, execution)
     ret = mpr2mni305_outputs(params, execution)
     execution.run(cargs)

@@ -480,7 +480,6 @@ def v_3d_vol2_surf_execute(
     Returns:
         NamedTuple of outputs (described in `V3dVol2SurfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_vol2_surf_cargs(params, execution)
     ret = v_3d_vol2_surf_outputs(params, execution)
     execution.run(cargs)

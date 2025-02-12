@@ -162,7 +162,6 @@ def v_3d_edu_01_scale_execute(
     Returns:
         NamedTuple of outputs (described in `V3dEdu01ScaleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_edu_01_scale_cargs(params, execution)
     ret = v_3d_edu_01_scale_outputs(params, execution)
     execution.run(cargs)

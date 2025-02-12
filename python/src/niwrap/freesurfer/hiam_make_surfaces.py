@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "hiam_make_surfaces": hiam_make_surfaces_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def hiam_make_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `HiamMakeSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = hiam_make_surfaces_cargs(params, execution)
     ret = hiam_make_surfaces_outputs(params, execution)
     execution.run(cargs)

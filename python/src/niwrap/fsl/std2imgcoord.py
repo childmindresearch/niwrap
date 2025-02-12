@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "std2imgcoord": std2imgcoord_outputs,
     }.get(t)
 
 
@@ -205,7 +204,6 @@ def std2imgcoord_execute(
     Returns:
         NamedTuple of outputs (described in `Std2imgcoordOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = std2imgcoord_cargs(params, execution)
     ret = std2imgcoord_outputs(params, execution)
     execution.run(cargs)

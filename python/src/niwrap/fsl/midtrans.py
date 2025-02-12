@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "midtrans": midtrans_outputs,
     }.get(t)
 
 
@@ -175,7 +174,6 @@ def midtrans_execute(
     Returns:
         NamedTuple of outputs (described in `MidtransOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = midtrans_cargs(params, execution)
     ret = midtrans_outputs(params, execution)
     execution.run(cargs)

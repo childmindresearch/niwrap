@@ -169,7 +169,6 @@ def eddy_squad_execute(
     Returns:
         NamedTuple of outputs (described in `EddySquadOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = eddy_squad_cargs(params, execution)
     ret = eddy_squad_outputs(params, execution)
     execution.run(cargs)

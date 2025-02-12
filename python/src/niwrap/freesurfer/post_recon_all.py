@@ -60,7 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "post-recon-all": post_recon_all_outputs,
     }.get(t)
 
 
@@ -226,7 +225,6 @@ def post_recon_all_execute(
     Returns:
         NamedTuple of outputs (described in `PostReconAllOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = post_recon_all_cargs(params, execution)
     ret = post_recon_all_outputs(params, execution)
     execution.run(cargs)

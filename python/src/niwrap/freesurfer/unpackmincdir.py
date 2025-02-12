@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "unpackmincdir": unpackmincdir_outputs,
     }.get(t)
 
 
@@ -195,7 +194,6 @@ def unpackmincdir_execute(
     Returns:
         NamedTuple of outputs (described in `UnpackmincdirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpackmincdir_cargs(params, execution)
     ret = unpackmincdir_outputs(params, execution)
     execution.run(cargs)

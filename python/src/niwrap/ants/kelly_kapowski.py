@@ -335,7 +335,6 @@ def kelly_kapowski_execute(
     Returns:
         NamedTuple of outputs (described in `KellyKapowskiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = kelly_kapowski_cargs(params, execution)
     ret = kelly_kapowski_outputs(params, execution)
     execution.run(cargs)

@@ -136,7 +136,6 @@ def v__no_ext_execute(
     Returns:
         NamedTuple of outputs (described in `VNoExtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__no_ext_cargs(params, execution)
     ret = v__no_ext_outputs(params, execution)
     execution.run(cargs)

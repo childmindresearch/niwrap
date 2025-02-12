@@ -168,7 +168,6 @@ def v_4dfptoanalyze_execute(
     Returns:
         NamedTuple of outputs (described in `V4dfptoanalyzeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_4dfptoanalyze_cargs(params, execution)
     ret = v_4dfptoanalyze_outputs(params, execution)
     execution.run(cargs)

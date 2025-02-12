@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "SpharmReco": spharm_reco_outputs,
     }.get(t)
 
 
@@ -204,7 +203,6 @@ def spharm_reco_execute(
     Returns:
         NamedTuple of outputs (described in `SpharmRecoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spharm_reco_cargs(params, execution)
     ret = spharm_reco_outputs(params, execution)
     execution.run(cargs)

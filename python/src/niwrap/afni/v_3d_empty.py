@@ -170,7 +170,6 @@ def v_3d_empty_execute(
     Returns:
         NamedTuple of outputs (described in `V3dEmptyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_empty_cargs(params, execution)
     ret = v_3d_empty_outputs(params, execution)
     execution.run(cargs)

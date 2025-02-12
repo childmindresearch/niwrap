@@ -167,7 +167,6 @@ def compute_label_volumes_csh_execute(
     Returns:
         NamedTuple of outputs (described in `ComputeLabelVolumesCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = compute_label_volumes_csh_cargs(params, execution)
     ret = compute_label_volumes_csh_outputs(params, execution)
     execution.run(cargs)

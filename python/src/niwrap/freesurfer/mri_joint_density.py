@@ -143,7 +143,6 @@ def mri_joint_density_execute(
     Returns:
         NamedTuple of outputs (described in `MriJointDensityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_joint_density_cargs(params, execution)
     ret = mri_joint_density_outputs(params, execution)
     execution.run(cargs)

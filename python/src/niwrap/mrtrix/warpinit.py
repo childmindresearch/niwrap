@@ -61,7 +61,6 @@ def dyn_outputs(
     """
     return {
         "warpinit": warpinit_outputs,
-        "config": warpinit_config_outputs,
     }.get(t)
 
 
@@ -261,7 +260,6 @@ def warpinit_execute(
     Returns:
         NamedTuple of outputs (described in `WarpinitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warpinit_cargs(params, execution)
     ret = warpinit_outputs(params, execution)
     execution.run(cargs)

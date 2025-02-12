@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "stat_normalize": stat_normalize_outputs,
     }.get(t)
 
 
@@ -194,7 +193,6 @@ def stat_normalize_execute(
     Returns:
         NamedTuple of outputs (described in `StatNormalizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = stat_normalize_cargs(params, execution)
     ret = stat_normalize_outputs(params, execution)
     execution.run(cargs)

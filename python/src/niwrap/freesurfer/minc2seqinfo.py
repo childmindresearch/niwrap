@@ -138,7 +138,6 @@ def minc2seqinfo_execute(
     Returns:
         NamedTuple of outputs (described in `Minc2seqinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = minc2seqinfo_cargs(params, execution)
     ret = minc2seqinfo_outputs(params, execution)
     execution.run(cargs)

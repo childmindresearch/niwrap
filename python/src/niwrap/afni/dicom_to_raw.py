@@ -133,7 +133,6 @@ def dicom_to_raw_execute(
     Returns:
         NamedTuple of outputs (described in `DicomToRawOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dicom_to_raw_cargs(params, execution)
     ret = dicom_to_raw_outputs(params, execution)
     execution.run(cargs)

@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "long_submit_postproc": long_submit_postproc_outputs,
     }.get(t)
 
 
@@ -198,7 +197,6 @@ def long_submit_postproc_execute(
     Returns:
         NamedTuple of outputs (described in `LongSubmitPostprocOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_submit_postproc_cargs(params, execution)
     ret = long_submit_postproc_outputs(params, execution)
     execution.run(cargs)

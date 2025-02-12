@@ -101,7 +101,6 @@ def dyn_outputs(
         "fsl": v_5ttgen_fsl_outputs,
         "gif": v_5ttgen_gif_outputs,
         "hsvs": v_5ttgen_hsvs_outputs,
-        "config": v_5ttgen_config_outputs,
     }.get(t)
 
 
@@ -682,7 +681,6 @@ def v_5ttgen_execute(
     Returns:
         NamedTuple of outputs (described in `V5ttgenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_5ttgen_cargs(params, execution)
     ret = v_5ttgen_outputs(params, execution)
     execution.run(cargs)

@@ -155,7 +155,6 @@ def fat_mvm_gridconv_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMvmGridconvPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mvm_gridconv_py_cargs(params, execution)
     ret = fat_mvm_gridconv_py_outputs(params, execution)
     execution.run(cargs)

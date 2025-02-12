@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fs_install_mcr": fs_install_mcr_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def fs_install_mcr_execute(
     Returns:
         NamedTuple of outputs (described in `FsInstallMcrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_install_mcr_cargs(params, execution)
     ret = fs_install_mcr_outputs(params, execution)
     execution.run(cargs)

@@ -183,7 +183,6 @@ def wm_anat_snr_execute(
     Returns:
         NamedTuple of outputs (described in `WmAnatSnrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wm_anat_snr_cargs(params, execution)
     ret = wm_anat_snr_outputs(params, execution)
     execution.run(cargs)

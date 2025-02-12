@@ -174,7 +174,6 @@ def v_3d_kruskal_wallis_execute(
     Returns:
         NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_kruskal_wallis_cargs(params, execution)
     ret = v_3d_kruskal_wallis_outputs(params, execution)
     execution.run(cargs)

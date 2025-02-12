@@ -176,7 +176,6 @@ def v_3d_mann_whitney_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMannWhitneyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mann_whitney_cargs(params, execution)
     ret = v_3d_mann_whitney_outputs(params, execution)
     execution.run(cargs)

@@ -155,7 +155,6 @@ def sbtiv_execute(
     Returns:
         NamedTuple of outputs (described in `SbtivOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sbtiv_cargs(params, execution)
     ret = sbtiv_outputs(params, execution)
     execution.run(cargs)

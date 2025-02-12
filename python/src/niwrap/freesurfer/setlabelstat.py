@@ -159,7 +159,6 @@ def setlabelstat_execute(
     Returns:
         NamedTuple of outputs (described in `SetlabelstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = setlabelstat_cargs(params, execution)
     ret = setlabelstat_outputs(params, execution)
     execution.run(cargs)

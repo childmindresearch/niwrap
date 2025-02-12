@@ -158,7 +158,6 @@ def fslmerge_execute(
     Returns:
         NamedTuple of outputs (described in `FslmergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslmerge_cargs(params, execution)
     ret = fslmerge_outputs(params, execution)
     execution.run(cargs)

@@ -172,7 +172,6 @@ def cjpeg_execute(
     Returns:
         NamedTuple of outputs (described in `CjpegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cjpeg_cargs(params, execution)
     ret = cjpeg_outputs(params, execution)
     execution.run(cargs)

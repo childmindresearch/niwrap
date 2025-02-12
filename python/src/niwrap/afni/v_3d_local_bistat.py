@@ -240,7 +240,6 @@ def v_3d_local_bistat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalBistatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_local_bistat_cargs(params, execution)
     ret = v_3d_local_bistat_outputs(params, execution)
     execution.run(cargs)

@@ -199,7 +199,6 @@ def v_3dedge3_execute(
     Returns:
         NamedTuple of outputs (described in `V3dedge3Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dedge3_cargs(params, execution)
     ret = v_3dedge3_outputs(params, execution)
     execution.run(cargs)

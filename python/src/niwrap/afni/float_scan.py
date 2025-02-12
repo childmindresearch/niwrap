@@ -158,7 +158,6 @@ def float_scan_execute(
     Returns:
         NamedTuple of outputs (described in `FloatScanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = float_scan_cargs(params, execution)
     ret = float_scan_outputs(params, execution)
     execution.run(cargs)

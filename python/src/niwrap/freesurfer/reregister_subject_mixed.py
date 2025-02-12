@@ -152,7 +152,6 @@ def reregister_subject_mixed_execute(
     Returns:
         NamedTuple of outputs (described in `ReregisterSubjectMixedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reregister_subject_mixed_cargs(params, execution)
     ret = reregister_subject_mixed_outputs(params, execution)
     execution.run(cargs)

@@ -167,7 +167,6 @@ def tbss_non_fa_execute(
     Returns:
         NamedTuple of outputs (described in `TbssNonFaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_non_fa_cargs(params, execution)
     ret = tbss_non_fa_outputs(params, execution)
     execution.run(cargs)

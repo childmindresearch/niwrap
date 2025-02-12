@@ -212,7 +212,6 @@ def v_3d_mse_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mse_cargs(params, execution)
     ret = v_3d_mse_outputs(params, execution)
     execution.run(cargs)

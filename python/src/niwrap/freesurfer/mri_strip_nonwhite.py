@@ -150,7 +150,6 @@ def mri_strip_nonwhite_execute(
     Returns:
         NamedTuple of outputs (described in `MriStripNonwhiteOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_strip_nonwhite_cargs(params, execution)
     ret = mri_strip_nonwhite_outputs(params, execution)
     execution.run(cargs)

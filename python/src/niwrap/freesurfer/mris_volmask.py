@@ -62,7 +62,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_volmask": mris_volmask_outputs,
     }.get(t)
 
 
@@ -289,7 +288,6 @@ def mris_volmask_execute(
     Returns:
         NamedTuple of outputs (described in `MrisVolmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_volmask_cargs(params, execution)
     ret = mris_volmask_outputs(params, execution)
     execution.run(cargs)

@@ -199,7 +199,6 @@ def mri_edit_segmentation_with_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MriEditSegmentationWithSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_edit_segmentation_with_surfaces_cargs(params, execution)
     ret = mri_edit_segmentation_with_surfaces_outputs(params, execution)
     execution.run(cargs)

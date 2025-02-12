@@ -176,7 +176,6 @@ def volume_label_to_roi_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelToRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_label_to_roi_cargs(params, execution)
     ret = volume_label_to_roi_outputs(params, execution)
     execution.run(cargs)

@@ -264,7 +264,6 @@ def annot2std_execute(
     Returns:
         NamedTuple of outputs (described in `Annot2stdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = annot2std_cargs(params, execution)
     ret = annot2std_outputs(params, execution)
     execution.run(cargs)

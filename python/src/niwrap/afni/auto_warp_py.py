@@ -77,7 +77,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "auto_warp.py": auto_warp_py_outputs,
     }.get(t)
 
 
@@ -386,7 +385,6 @@ def auto_warp_py_execute(
     Returns:
         NamedTuple of outputs (described in `AutoWarpPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = auto_warp_py_cargs(params, execution)
     ret = auto_warp_py_outputs(params, execution)
     execution.run(cargs)

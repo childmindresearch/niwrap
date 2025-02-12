@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "swap_subjectwise": swap_subjectwise_outputs,
     }.get(t)
 
 
@@ -184,7 +183,6 @@ def swap_subjectwise_execute(
     Returns:
         NamedTuple of outputs (described in `SwapSubjectwiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = swap_subjectwise_cargs(params, execution)
     ret = swap_subjectwise_outputs(params, execution)
     execution.run(cargs)

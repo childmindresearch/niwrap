@@ -164,7 +164,6 @@ def possum_interpmot_execute(
     Returns:
         NamedTuple of outputs (described in `PossumInterpmotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = possum_interpmot_cargs(params, execution)
     ret = possum_interpmot_outputs(params, execution)
     execution.run(cargs)

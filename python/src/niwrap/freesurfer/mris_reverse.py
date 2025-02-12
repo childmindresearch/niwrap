@@ -138,7 +138,6 @@ def mris_reverse_execute(
     Returns:
         NamedTuple of outputs (described in `MrisReverseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_reverse_cargs(params, execution)
     ret = mris_reverse_outputs(params, execution)
     execution.run(cargs)

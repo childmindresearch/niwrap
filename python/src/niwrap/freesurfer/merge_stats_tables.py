@@ -244,7 +244,6 @@ def merge_stats_tables_execute(
     Returns:
         NamedTuple of outputs (described in `MergeStatsTablesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = merge_stats_tables_cargs(params, execution)
     ret = merge_stats_tables_outputs(params, execution)
     execution.run(cargs)

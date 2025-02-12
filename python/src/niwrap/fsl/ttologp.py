@@ -159,7 +159,6 @@ def ttologp_execute(
     Returns:
         NamedTuple of outputs (described in `TtologpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ttologp_cargs(params, execution)
     ret = ttologp_outputs(params, execution)
     execution.run(cargs)

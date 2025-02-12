@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "antsIntroduction.sh": ants_introduction_sh_outputs,
     }.get(t)
 
 
@@ -233,7 +232,6 @@ def ants_introduction_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsIntroductionShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_introduction_sh_cargs(params, execution)
     ret = ants_introduction_sh_outputs(params, execution)
     execution.run(cargs)

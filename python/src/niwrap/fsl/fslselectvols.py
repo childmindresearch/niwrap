@@ -165,7 +165,6 @@ def fslselectvols_execute(
     Returns:
         NamedTuple of outputs (described in `FslselectvolsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslselectvols_cargs(params, execution)
     ret = fslselectvols_outputs(params, execution)
     execution.run(cargs)

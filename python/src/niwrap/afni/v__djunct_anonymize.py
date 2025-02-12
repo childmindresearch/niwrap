@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@djunct_anonymize": v__djunct_anonymize_outputs,
     }.get(t)
 
 
@@ -156,7 +155,6 @@ def v__djunct_anonymize_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctAnonymizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_anonymize_cargs(params, execution)
     ret = v__djunct_anonymize_outputs(params, execution)
     execution.run(cargs)

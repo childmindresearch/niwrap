@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_spherical_average": mris_spherical_average_outputs,
     }.get(t)
 
 
@@ -166,7 +165,6 @@ def mris_spherical_average_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSphericalAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_spherical_average_cargs(params, execution)
     ret = mris_spherical_average_outputs(params, execution)
     execution.run(cargs)

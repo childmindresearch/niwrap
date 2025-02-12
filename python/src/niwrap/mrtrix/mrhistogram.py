@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "mrhistogram": mrhistogram_outputs,
-        "config": mrhistogram_config_outputs,
     }.get(t)
 
 
@@ -293,7 +292,6 @@ def mrhistogram_execute(
     Returns:
         NamedTuple of outputs (described in `MrhistogramOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrhistogram_cargs(params, execution)
     ret = mrhistogram_outputs(params, execution)
     execution.run(cargs)

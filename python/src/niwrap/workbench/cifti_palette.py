@@ -92,11 +92,6 @@ def dyn_outputs(
     """
     return {
         "cifti-palette": cifti_palette_outputs,
-        "pos_percent": cifti_palette_pos_percent_outputs,
-        "neg_percent": cifti_palette_neg_percent_outputs,
-        "pos_user": cifti_palette_pos_user_outputs,
-        "neg_user": cifti_palette_neg_user_outputs,
-        "thresholding": cifti_palette_thresholding_outputs,
     }.get(t)
 
 
@@ -581,7 +576,6 @@ def cifti_palette_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiPaletteOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_palette_cargs(params, execution)
     ret = cifti_palette_outputs(params, execution)
     execution.run(cargs)

@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_init_global_tractography": mris_init_global_tractography_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def mris_init_global_tractography_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInitGlobalTractographyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_init_global_tractography_cargs(params, execution)
     ret = mris_init_global_tractography_outputs(params, execution)
     execution.run(cargs)

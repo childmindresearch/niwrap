@@ -149,7 +149,6 @@ def fslinterleave_execute(
     Returns:
         NamedTuple of outputs (described in `FslinterleaveOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslinterleave_cargs(params, execution)
     ret = fslinterleave_outputs(params, execution)
     execution.run(cargs)

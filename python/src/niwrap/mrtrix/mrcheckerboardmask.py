@@ -64,7 +64,6 @@ def dyn_outputs(
     """
     return {
         "mrcheckerboardmask": mrcheckerboardmask_outputs,
-        "config": mrcheckerboardmask_config_outputs,
     }.get(t)
 
 
@@ -271,7 +270,6 @@ def mrcheckerboardmask_execute(
     Returns:
         NamedTuple of outputs (described in `MrcheckerboardmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrcheckerboardmask_cargs(params, execution)
     ret = mrcheckerboardmask_outputs(params, execution)
     execution.run(cargs)

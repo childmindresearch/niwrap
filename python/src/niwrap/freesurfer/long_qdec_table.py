@@ -173,7 +173,6 @@ def long_qdec_table_execute(
     Returns:
         NamedTuple of outputs (described in `LongQdecTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_qdec_table_cargs(params, execution)
     ret = long_qdec_table_outputs(params, execution)
     execution.run(cargs)

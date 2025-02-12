@@ -69,7 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_surf2volseg": mri_surf2volseg_outputs,
     }.get(t)
 
 
@@ -362,7 +361,6 @@ def mri_surf2volseg_execute(
     Returns:
         NamedTuple of outputs (described in `MriSurf2volsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_surf2volseg_cargs(params, execution)
     ret = mri_surf2volseg_outputs(params, execution)
     execution.run(cargs)

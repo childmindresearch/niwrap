@@ -223,7 +223,6 @@ def estimate_fiber_binghams_execute(
     Returns:
         NamedTuple of outputs (described in `EstimateFiberBinghamsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = estimate_fiber_binghams_cargs(params, execution)
     ret = estimate_fiber_binghams_outputs(params, execution)
     execution.run(cargs)

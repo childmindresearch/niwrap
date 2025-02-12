@@ -264,7 +264,6 @@ def v_3d_polyfit_execute(
     Returns:
         NamedTuple of outputs (described in `V3dPolyfitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_polyfit_cargs(params, execution)
     ret = v_3d_polyfit_outputs(params, execution)
     execution.run(cargs)

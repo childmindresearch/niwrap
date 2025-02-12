@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "morph_rgb-lh": morph_rgb_lh_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def morph_rgb_lh_execute(
     Returns:
         NamedTuple of outputs (described in `MorphRgbLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = morph_rgb_lh_cargs(params, execution)
     ret = morph_rgb_lh_outputs(params, execution)
     execution.run(cargs)

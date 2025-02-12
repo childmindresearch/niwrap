@@ -301,7 +301,6 @@ def fat_proc_axialize_anat_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcAxializeAnatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_axialize_anat_cargs(params, execution)
     ret = fat_proc_axialize_anat_outputs(params, execution)
     execution.run(cargs)

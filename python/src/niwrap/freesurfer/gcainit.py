@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gcainit": gcainit_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def gcainit_execute(
     Returns:
         NamedTuple of outputs (described in `GcainitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gcainit_cargs(params, execution)
     ret = gcainit_outputs(params, execution)
     execution.run(cargs)

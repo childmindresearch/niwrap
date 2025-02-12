@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@TimeDiff": v__time_diff_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def v__time_diff_execute(
     Returns:
         NamedTuple of outputs (described in `VTimeDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__time_diff_cargs(params, execution)
     ret = v__time_diff_outputs(params, execution)
     execution.run(cargs)

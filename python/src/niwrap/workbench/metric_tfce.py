@@ -65,8 +65,6 @@ def dyn_outputs(
     """
     return {
         "metric-tfce": metric_tfce_outputs,
-        "presmooth": metric_tfce_presmooth_outputs,
-        "parameters": metric_tfce_parameters_outputs,
     }.get(t)
 
 
@@ -314,7 +312,6 @@ def metric_tfce_execute(
     Returns:
         NamedTuple of outputs (described in `MetricTfceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_tfce_cargs(params, execution)
     ret = metric_tfce_outputs(params, execution)
     execution.run(cargs)

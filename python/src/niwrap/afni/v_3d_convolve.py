@@ -148,7 +148,6 @@ def v_3d_convolve_execute(
     Returns:
         NamedTuple of outputs (described in `V3dConvolveOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_convolve_cargs(params, execution)
     ret = v_3d_convolve_outputs(params, execution)
     execution.run(cargs)

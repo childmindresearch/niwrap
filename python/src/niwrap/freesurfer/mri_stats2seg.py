@@ -164,7 +164,6 @@ def mri_stats2seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriStats2segOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_stats2seg_cargs(params, execution)
     ret = mri_stats2seg_outputs(params, execution)
     execution.run(cargs)

@@ -133,7 +133,6 @@ def v__demo_prompt_execute(
     Returns:
         NamedTuple of outputs (described in `VDemoPromptOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__demo_prompt_cargs(params, execution)
     ret = v__demo_prompt_outputs(params, execution)
     execution.run(cargs)

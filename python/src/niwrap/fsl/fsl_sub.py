@@ -78,7 +78,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsl_sub": fsl_sub_outputs,
     }.get(t)
 
 
@@ -438,7 +437,6 @@ def fsl_sub_execute(
     Returns:
         NamedTuple of outputs (described in `FslSubOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_sub_cargs(params, execution)
     ret = fsl_sub_outputs(params, execution)
     execution.run(cargs)

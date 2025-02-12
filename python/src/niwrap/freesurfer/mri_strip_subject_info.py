@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_strip_subject_info": mri_strip_subject_info_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def mri_strip_subject_info_execute(
     Returns:
         NamedTuple of outputs (described in `MriStripSubjectInfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_strip_subject_info_cargs(params, execution)
     ret = mri_strip_subject_info_outputs(params, execution)
     execution.run(cargs)

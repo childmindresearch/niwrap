@@ -161,7 +161,6 @@ def fsl_prepare_fieldmap_execute(
     Returns:
         NamedTuple of outputs (described in `FslPrepareFieldmapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_prepare_fieldmap_cargs(params, execution)
     ret = fsl_prepare_fieldmap_outputs(params, execution)
     execution.run(cargs)

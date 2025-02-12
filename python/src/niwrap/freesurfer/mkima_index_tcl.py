@@ -139,7 +139,6 @@ def mkima_index_tcl_execute(
     Returns:
         NamedTuple of outputs (described in `MkimaIndexTclOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mkima_index_tcl_cargs(params, execution)
     ret = mkima_index_tcl_outputs(params, execution)
     execution.run(cargs)

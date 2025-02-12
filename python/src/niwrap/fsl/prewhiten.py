@@ -144,7 +144,6 @@ def prewhiten_execute(
     Returns:
         NamedTuple of outputs (described in `PrewhitenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = prewhiten_cargs(params, execution)
     ret = prewhiten_outputs(params, execution)
     execution.run(cargs)

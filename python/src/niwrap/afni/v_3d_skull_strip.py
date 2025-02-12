@@ -154,7 +154,6 @@ def v_3d_skull_strip_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSkullStripOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_skull_strip_cargs(params, execution)
     ret = v_3d_skull_strip_outputs(params, execution)
     execution.run(cargs)

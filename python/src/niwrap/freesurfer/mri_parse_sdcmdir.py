@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_parse_sdcmdir": mri_parse_sdcmdir_outputs,
     }.get(t)
 
 
@@ -163,7 +162,6 @@ def mri_parse_sdcmdir_execute(
     Returns:
         NamedTuple of outputs (described in `MriParseSdcmdirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_parse_sdcmdir_cargs(params, execution)
     ret = mri_parse_sdcmdir_outputs(params, execution)
     execution.run(cargs)

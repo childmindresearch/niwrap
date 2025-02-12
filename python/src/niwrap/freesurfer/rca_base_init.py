@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rca-base-init": rca_base_init_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def rca_base_init_execute(
     Returns:
         NamedTuple of outputs (described in `RcaBaseInitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rca_base_init_cargs(params, execution)
     ret = rca_base_init_outputs(params, execution)
     execution.run(cargs)

@@ -73,7 +73,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dcm2niix": dcm2niix_outputs,
     }.get(t)
 
 
@@ -406,7 +405,6 @@ def dcm2niix_execute(
     Returns:
         NamedTuple of outputs (described in `Dcm2niixOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcm2niix_cargs(params, execution)
     ret = dcm2niix_outputs(params, execution)
     execution.run(cargs)

@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-label-export-table": volume_label_export_table_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def volume_label_export_table_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeLabelExportTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_label_export_table_cargs(params, execution)
     ret = volume_label_export_table_outputs(params, execution)
     execution.run(cargs)

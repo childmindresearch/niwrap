@@ -163,7 +163,6 @@ def dmri_save_histograms_execute(
     Returns:
         NamedTuple of outputs (described in `DmriSaveHistogramsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_save_histograms_cargs(params, execution)
     ret = dmri_save_histograms_outputs(params, execution)
     execution.run(cargs)

@@ -179,7 +179,6 @@ def v_3d_median_filter_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMedianFilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_median_filter_cargs(params, execution)
     ret = v_3d_median_filter_outputs(params, execution)
     execution.run(cargs)

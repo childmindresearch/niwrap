@@ -82,11 +82,6 @@ def dyn_outputs(
     """
     return {
         "volume-resample": volume_resample_outputs,
-        "affine": volume_resample_affine_outputs,
-        "flirt": volume_resample_flirt_outputs,
-        "affine_series": volume_resample_affine_series_outputs,
-        "flirt": volume_resample_flirt_outputs_,
-        "warp": volume_resample_warp_outputs,
     }.get(t)
 
 
@@ -433,7 +428,6 @@ def volume_resample_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_resample_cargs(params, execution)
     ret = volume_resample_outputs(params, execution)
     execution.run(cargs)

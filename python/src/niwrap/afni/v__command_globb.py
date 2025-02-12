@@ -162,7 +162,6 @@ def v__command_globb_execute(
     Returns:
         NamedTuple of outputs (described in `VCommandGlobbOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__command_globb_cargs(params, execution)
     ret = v__command_globb_outputs(params, execution)
     execution.run(cargs)

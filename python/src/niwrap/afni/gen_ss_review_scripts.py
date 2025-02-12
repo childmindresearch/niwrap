@@ -324,7 +324,6 @@ def gen_ss_review_scripts_execute(
     Returns:
         NamedTuple of outputs (described in `GenSsReviewScriptsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gen_ss_review_scripts_cargs(params, execution)
     ret = gen_ss_review_scripts_outputs(params, execution)
     execution.run(cargs)

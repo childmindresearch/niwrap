@@ -151,7 +151,6 @@ def quantify_hasubregions_sh_execute(
     Returns:
         NamedTuple of outputs (described in `QuantifyHasubregionsShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quantify_hasubregions_sh_cargs(params, execution)
     ret = quantify_hasubregions_sh_outputs(params, execution)
     execution.run(cargs)

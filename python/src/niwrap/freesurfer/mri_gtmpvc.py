@@ -631,7 +631,6 @@ def mri_gtmpvc_execute(
     Returns:
         NamedTuple of outputs (described in `MriGtmpvcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_gtmpvc_cargs(params, execution)
     ret = mri_gtmpvc_outputs(params, execution)
     execution.run(cargs)

@@ -224,7 +224,6 @@ def samseg2recon_execute(
     Returns:
         NamedTuple of outputs (described in `Samseg2reconOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = samseg2recon_cargs(params, execution)
     ret = samseg2recon_outputs(params, execution)
     execution.run(cargs)

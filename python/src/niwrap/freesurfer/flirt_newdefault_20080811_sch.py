@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "flirt.newdefault.20080811.sch": flirt_newdefault_20080811_sch_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def flirt_newdefault_20080811_sch_execute(
     Returns:
         NamedTuple of outputs (described in `FlirtNewdefault20080811SchOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = flirt_newdefault_20080811_sch_cargs(params, execution)
     ret = flirt_newdefault_20080811_sch_outputs(params, execution)
     execution.run(cargs)

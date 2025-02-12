@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "plugout_drive": plugout_drive_outputs,
     }.get(t)
 
 
@@ -193,7 +192,6 @@ def plugout_drive_execute(
     Returns:
         NamedTuple of outputs (described in `PlugoutDriveOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = plugout_drive_cargs(params, execution)
     ret = plugout_drive_outputs(params, execution)
     execution.run(cargs)

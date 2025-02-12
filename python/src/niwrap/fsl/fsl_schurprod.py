@@ -192,7 +192,6 @@ def fsl_schurprod_execute(
     Returns:
         NamedTuple of outputs (described in `FslSchurprodOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_schurprod_cargs(params, execution)
     ret = fsl_schurprod_outputs(params, execution)
     execution.run(cargs)

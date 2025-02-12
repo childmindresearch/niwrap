@@ -155,7 +155,6 @@ def v__chauffeur_afni_execute(
     Returns:
         NamedTuple of outputs (described in `VChauffeurAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__chauffeur_afni_cargs(params, execution)
     ret = v__chauffeur_afni_outputs(params, execution)
     execution.run(cargs)

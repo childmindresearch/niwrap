@@ -128,7 +128,6 @@ def connected_components_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectedComponentsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = connected_components_cargs(params, execution)
     ret = connected_components_outputs(params, execution)
     execution.run(cargs)

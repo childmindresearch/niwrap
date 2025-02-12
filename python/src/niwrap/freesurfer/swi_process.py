@@ -235,7 +235,6 @@ def swi_process_execute(
     Returns:
         NamedTuple of outputs (described in `SwiProcessOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = swi_process_cargs(params, execution)
     ret = swi_process_outputs(params, execution)
     execution.run(cargs)

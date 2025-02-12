@@ -170,7 +170,6 @@ def fixup_mni_paths_execute(
     Returns:
         NamedTuple of outputs (described in `FixupMniPathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixup_mni_paths_cargs(params, execution)
     ret = fixup_mni_paths_outputs(params, execution)
     execution.run(cargs)

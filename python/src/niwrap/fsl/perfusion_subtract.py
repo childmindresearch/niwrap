@@ -146,7 +146,6 @@ def perfusion_subtract_execute(
     Returns:
         NamedTuple of outputs (described in `PerfusionSubtractOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = perfusion_subtract_cargs(params, execution)
     ret = perfusion_subtract_outputs(params, execution)
     execution.run(cargs)

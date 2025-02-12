@@ -285,7 +285,6 @@ def mri_average_execute(
     Returns:
         NamedTuple of outputs (described in `MriAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_average_cargs(params, execution)
     ret = mri_average_outputs(params, execution)
     execution.run(cargs)

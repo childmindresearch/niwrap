@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bedpostx_mgh": bedpostx_mgh_outputs,
     }.get(t)
 
 
@@ -200,7 +199,6 @@ def bedpostx_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxMghOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bedpostx_mgh_cargs(params, execution)
     ret = bedpostx_mgh_outputs(params, execution)
     execution.run(cargs)

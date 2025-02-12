@@ -75,8 +75,6 @@ def dyn_outputs(
     """
     return {
         "tckdfc": tckdfc_outputs,
-        "dynamic": tckdfc_dynamic_outputs,
-        "config": tckdfc_config_outputs,
     }.get(t)
 
 
@@ -402,7 +400,6 @@ def tckdfc_execute(
     Returns:
         NamedTuple of outputs (described in `TckdfcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckdfc_cargs(params, execution)
     ret = tckdfc_outputs(params, execution)
     execution.run(cargs)

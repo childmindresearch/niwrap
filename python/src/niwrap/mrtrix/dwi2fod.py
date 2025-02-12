@@ -99,10 +99,6 @@ def dyn_outputs(
     """
     return {
         "dwi2fod": dwi2fod_outputs,
-        "fslgrad": dwi2fod_fslgrad_outputs,
-        "VariousString": dwi2fod_various_string_outputs,
-        "VariousFile": dwi2fod_various_file_outputs,
-        "config": dwi2fod_config_outputs,
         "response_odf": dwi2fod_response_odf_outputs,
     }.get(t)
 
@@ -677,7 +673,6 @@ def dwi2fod_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2fodOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwi2fod_cargs(params, execution)
     ret = dwi2fod_outputs(params, execution)
     execution.run(cargs)

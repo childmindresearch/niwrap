@@ -78,9 +78,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "vectorstats": vectorstats_outputs,
-        "column": vectorstats_column_outputs,
-        "config": vectorstats_config_outputs,
     }.get(t)
 
 
@@ -429,7 +426,6 @@ def vectorstats_execute(
     Returns:
         NamedTuple of outputs (described in `VectorstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vectorstats_cargs(params, execution)
     ret = vectorstats_outputs(params, execution)
     execution.run(cargs)

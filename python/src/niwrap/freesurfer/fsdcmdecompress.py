@@ -168,7 +168,6 @@ def fsdcmdecompress_execute(
     Returns:
         NamedTuple of outputs (described in `FsdcmdecompressOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsdcmdecompress_cargs(params, execution)
     ret = fsdcmdecompress_outputs(params, execution)
     execution.run(cargs)

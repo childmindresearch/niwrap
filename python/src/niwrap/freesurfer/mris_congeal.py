@@ -243,7 +243,6 @@ def mris_congeal_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCongealOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_congeal_cargs(params, execution)
     ret = mris_congeal_outputs(params, execution)
     execution.run(cargs)

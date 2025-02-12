@@ -157,7 +157,6 @@ def fslreorient2std_execute(
     Returns:
         NamedTuple of outputs (described in `Fslreorient2stdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslreorient2std_cargs(params, execution)
     ret = fslreorient2std_outputs(params, execution)
     execution.run(cargs)

@@ -136,7 +136,6 @@ def ants_multivariate_template_construction2_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsMultivariateTemplateConstruction2ShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_multivariate_template_construction2_sh_cargs(params, execution)
     ret = ants_multivariate_template_construction2_sh_outputs(params, execution)
     execution.run(cargs)

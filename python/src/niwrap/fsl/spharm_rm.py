@@ -171,7 +171,6 @@ def spharm_rm_execute(
     Returns:
         NamedTuple of outputs (described in `SpharmRmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spharm_rm_cargs(params, execution)
     ret = spharm_rm_outputs(params, execution)
     execution.run(cargs)

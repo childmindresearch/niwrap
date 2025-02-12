@@ -53,8 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-estimate-fwhm": volume_estimate_fwhm_outputs,
-        "whole_file": volume_estimate_fwhm_whole_file_outputs,
     }.get(t)
 
 
@@ -210,7 +208,6 @@ def volume_estimate_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_estimate_fwhm_cargs(params, execution)
     ret = volume_estimate_fwhm_outputs(params, execution)
     execution.run(cargs)

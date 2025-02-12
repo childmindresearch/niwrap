@@ -166,7 +166,6 @@ def immask_execute(
     Returns:
         NamedTuple of outputs (described in `ImmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = immask_cargs(params, execution)
     ret = immask_outputs(params, execution)
     execution.run(cargs)

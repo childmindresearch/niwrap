@@ -83,10 +83,6 @@ def dyn_outputs(
     """
     return {
         "sh2amp": sh2amp_outputs,
-        "fslgrad": sh2amp_fslgrad_outputs,
-        "VariousString": sh2amp_various_string_outputs,
-        "VariousFile": sh2amp_various_file_outputs,
-        "config": sh2amp_config_outputs,
     }.get(t)
 
 
@@ -483,7 +479,6 @@ def sh2amp_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2ampOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sh2amp_cargs(params, execution)
     ret = sh2amp_outputs(params, execution)
     execution.run(cargs)

@@ -260,7 +260,6 @@ def create_tiled_mosaic_execute(
     Returns:
         NamedTuple of outputs (described in `CreateTiledMosaicOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_tiled_mosaic_cargs(params, execution)
     ret = create_tiled_mosaic_outputs(params, execution)
     execution.run(cargs)

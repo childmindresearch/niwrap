@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "thickdiffmap": thickdiffmap_outputs,
     }.get(t)
 
 
@@ -152,7 +151,6 @@ def thickdiffmap_execute(
     Returns:
         NamedTuple of outputs (described in `ThickdiffmapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = thickdiffmap_cargs(params, execution)
     ret = thickdiffmap_outputs(params, execution)
     execution.run(cargs)

@@ -156,7 +156,6 @@ def cifti_parcel_mapping_to_label_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiParcelMappingToLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_parcel_mapping_to_label_cargs(params, execution)
     ret = cifti_parcel_mapping_to_label_outputs(params, execution)
     execution.run(cargs)

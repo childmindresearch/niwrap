@@ -158,7 +158,6 @@ def vertexvol_execute(
     Returns:
         NamedTuple of outputs (described in `VertexvolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vertexvol_cargs(params, execution)
     ret = vertexvol_outputs(params, execution)
     execution.run(cargs)

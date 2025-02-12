@@ -61,8 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mrcentroid": mrcentroid_outputs,
-        "config": mrcentroid_config_outputs,
     }.get(t)
 
 
@@ -258,7 +256,6 @@ def mrcentroid_execute(
     Returns:
         NamedTuple of outputs (described in `MrcentroidOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrcentroid_cargs(params, execution)
     ret = mrcentroid_outputs(params, execution)
     execution.run(cargs)

@@ -231,7 +231,6 @@ def signal2image_execute(
     Returns:
         NamedTuple of outputs (described in `Signal2imageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = signal2image_cargs(params, execution)
     ret = signal2image_outputs(params, execution)
     execution.run(cargs)

@@ -63,8 +63,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tck2fixel": tck2fixel_outputs,
-        "config": tck2fixel_config_outputs,
     }.get(t)
 
 
@@ -269,7 +267,6 @@ def tck2fixel_execute(
     Returns:
         NamedTuple of outputs (described in `Tck2fixelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tck2fixel_cargs(params, execution)
     ret = tck2fixel_outputs(params, execution)
     execution.run(cargs)

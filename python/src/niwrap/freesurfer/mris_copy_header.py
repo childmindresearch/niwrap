@@ -145,7 +145,6 @@ def mris_copy_header_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCopyHeaderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_copy_header_cargs(params, execution)
     ret = mris_copy_header_outputs(params, execution)
     execution.run(cargs)

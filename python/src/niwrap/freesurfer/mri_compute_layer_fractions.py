@@ -240,7 +240,6 @@ def mri_compute_layer_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeLayerFractionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_compute_layer_fractions_cargs(params, execution)
     ret = mri_compute_layer_fractions_outputs(params, execution)
     execution.run(cargs)

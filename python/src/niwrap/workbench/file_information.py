@@ -59,8 +59,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "file-information": file_information_outputs,
-        "only_metadata": file_information_only_metadata_outputs,
     }.get(t)
 
 
@@ -284,7 +282,6 @@ def file_information_execute(
     Returns:
         NamedTuple of outputs (described in `FileInformationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = file_information_cargs(params, execution)
     ret = file_information_outputs(params, execution)
     execution.run(cargs)

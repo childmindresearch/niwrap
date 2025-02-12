@@ -181,7 +181,6 @@ def xcorr_execute(
     Returns:
         NamedTuple of outputs (described in `XcorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xcorr_cargs(params, execution)
     ret = xcorr_outputs(params, execution)
     execution.run(cargs)

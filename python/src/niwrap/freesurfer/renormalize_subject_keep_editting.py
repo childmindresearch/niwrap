@@ -129,7 +129,6 @@ def renormalize_subject_keep_editting_execute(
     Returns:
         NamedTuple of outputs (described in `RenormalizeSubjectKeepEdittingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = renormalize_subject_keep_editting_cargs(params, execution)
     ret = renormalize_subject_keep_editting_outputs(params, execution)
     execution.run(cargs)

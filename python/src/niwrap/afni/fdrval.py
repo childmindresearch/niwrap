@@ -175,7 +175,6 @@ def fdrval_execute(
     Returns:
         NamedTuple of outputs (described in `FdrvalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fdrval_cargs(params, execution)
     ret = fdrval_outputs(params, execution)
     execution.run(cargs)

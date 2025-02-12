@@ -165,7 +165,6 @@ def mris_remove_intersection_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRemoveIntersectionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_remove_intersection_cargs(params, execution)
     ret = mris_remove_intersection_outputs(params, execution)
     execution.run(cargs)

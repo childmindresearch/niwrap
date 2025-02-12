@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "AFNI_Batch_R": afni_batch_r_outputs,
     }.get(t)
 
 
@@ -160,7 +159,6 @@ def afni_batch_r_execute(
     Returns:
         NamedTuple of outputs (described in `AfniBatchROutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_batch_r_cargs(params, execution)
     ret = afni_batch_r_outputs(params, execution)
     execution.run(cargs)

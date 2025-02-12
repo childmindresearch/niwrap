@@ -68,7 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@update.afni.binaries": v__update_afni_binaries_outputs,
     }.get(t)
 
 
@@ -298,7 +297,6 @@ def v__update_afni_binaries_execute(
     Returns:
         NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__update_afni_binaries_cargs(params, execution)
     ret = v__update_afni_binaries_outputs(params, execution)
     execution.run(cargs)

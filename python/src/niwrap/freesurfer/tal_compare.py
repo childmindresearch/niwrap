@@ -149,7 +149,6 @@ def tal_compare_execute(
     Returns:
         NamedTuple of outputs (described in `TalCompareOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tal_compare_cargs(params, execution)
     ret = tal_compare_outputs(params, execution)
     execution.run(cargs)

@@ -149,7 +149,6 @@ def mris_compute_layer_intensities_execute(
     Returns:
         NamedTuple of outputs (described in `MrisComputeLayerIntensitiesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_compute_layer_intensities_cargs(params, execution)
     ret = mris_compute_layer_intensities_outputs(params, execution)
     execution.run(cargs)

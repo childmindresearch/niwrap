@@ -449,7 +449,6 @@ def v__animal_warper_execute(
     Returns:
         NamedTuple of outputs (described in `VAnimalWarperOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__animal_warper_cargs(params, execution)
     ret = v__animal_warper_outputs(params, execution)
     execution.run(cargs)

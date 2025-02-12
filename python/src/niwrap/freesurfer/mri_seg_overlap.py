@@ -209,7 +209,6 @@ def mri_seg_overlap_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegOverlapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_seg_overlap_cargs(params, execution)
     ret = mri_seg_overlap_outputs(params, execution)
     execution.run(cargs)

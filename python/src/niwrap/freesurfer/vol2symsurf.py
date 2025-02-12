@@ -204,7 +204,6 @@ def vol2symsurf_execute(
     Returns:
         NamedTuple of outputs (described in `Vol2symsurfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vol2symsurf_cargs(params, execution)
     ret = vol2symsurf_outputs(params, execution)
     execution.run(cargs)

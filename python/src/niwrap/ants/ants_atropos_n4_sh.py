@@ -74,7 +74,6 @@ def dyn_outputs(
     """
     return {
         "antsAtroposN4.sh": ants_atropos_n4_sh_outputs,
-        "segmentation_priors": ants_atropos_n4_sh_segmentation_priors_outputs,
     }.get(t)
 
 
@@ -443,7 +442,6 @@ def ants_atropos_n4_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsAtroposN4ShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_atropos_n4_sh_cargs(params, execution)
     ret = ants_atropos_n4_sh_outputs(params, execution)
     execution.run(cargs)

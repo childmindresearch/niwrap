@@ -133,7 +133,6 @@ def create_lut_execute(
     Returns:
         NamedTuple of outputs (described in `CreateLutOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_lut_cargs(params, execution)
     ret = create_lut_outputs(params, execution)
     execution.run(cargs)

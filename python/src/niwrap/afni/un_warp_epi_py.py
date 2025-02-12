@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "unWarpEPI.py": un_warp_epi_py_outputs,
     }.get(t)
 
 
@@ -173,7 +172,6 @@ def un_warp_epi_py_execute(
     Returns:
         NamedTuple of outputs (described in `UnWarpEpiPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = un_warp_epi_py_cargs(params, execution)
     ret = un_warp_epi_py_outputs(params, execution)
     execution.run(cargs)

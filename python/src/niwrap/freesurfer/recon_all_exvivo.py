@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "recon-all-exvivo": recon_all_exvivo_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def recon_all_exvivo_execute(
     Returns:
         NamedTuple of outputs (described in `ReconAllExvivoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = recon_all_exvivo_cargs(params, execution)
     ret = recon_all_exvivo_outputs(params, execution)
     execution.run(cargs)

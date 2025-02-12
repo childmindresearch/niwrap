@@ -164,7 +164,6 @@ def v_1dnorm_execute(
     Returns:
         NamedTuple of outputs (described in `V1dnormOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dnorm_cargs(params, execution)
     ret = v_1dnorm_outputs(params, execution)
     execution.run(cargs)

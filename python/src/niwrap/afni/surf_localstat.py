@@ -182,7 +182,6 @@ def surf_localstat_execute(
     Returns:
         NamedTuple of outputs (described in `SurfLocalstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_localstat_cargs(params, execution)
     ret = surf_localstat_outputs(params, execution)
     execution.run(cargs)

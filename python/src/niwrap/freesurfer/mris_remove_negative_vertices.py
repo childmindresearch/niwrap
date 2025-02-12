@@ -143,7 +143,6 @@ def mris_remove_negative_vertices_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRemoveNegativeVerticesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_remove_negative_vertices_cargs(params, execution)
     ret = mris_remove_negative_vertices_outputs(params, execution)
     execution.run(cargs)

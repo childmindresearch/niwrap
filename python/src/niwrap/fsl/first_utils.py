@@ -76,7 +76,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "first_utils": first_utils_outputs,
     }.get(t)
 
 
@@ -363,7 +362,6 @@ def first_utils_execute(
     Returns:
         NamedTuple of outputs (described in `FirstUtilsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = first_utils_cargs(params, execution)
     ret = first_utils_outputs(params, execution)
     execution.run(cargs)

@@ -195,7 +195,6 @@ def v_3d_gen_feature_dist_execute(
     Returns:
         NamedTuple of outputs (described in `V3dGenFeatureDistOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_gen_feature_dist_cargs(params, execution)
     ret = v_3d_gen_feature_dist_outputs(params, execution)
     execution.run(cargs)

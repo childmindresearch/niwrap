@@ -139,7 +139,6 @@ def medianfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MedianfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = medianfilter_cargs(params, execution)
     ret = medianfilter_outputs(params, execution)
     execution.run(cargs)

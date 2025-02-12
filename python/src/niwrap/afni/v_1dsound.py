@@ -212,7 +212,6 @@ def v_1dsound_execute(
     Returns:
         NamedTuple of outputs (described in `V1dsoundOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dsound_cargs(params, execution)
     ret = v_1dsound_outputs(params, execution)
     execution.run(cargs)

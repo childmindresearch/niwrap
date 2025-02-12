@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "strblast": strblast_outputs,
     }.get(t)
 
 
@@ -176,7 +175,6 @@ def strblast_execute(
     Returns:
         NamedTuple of outputs (described in `StrblastOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = strblast_cargs(params, execution)
     ret = strblast_outputs(params, execution)
     execution.run(cargs)

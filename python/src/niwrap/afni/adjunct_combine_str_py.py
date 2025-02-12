@@ -146,7 +146,6 @@ def adjunct_combine_str_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctCombineStrPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_combine_str_py_cargs(params, execution)
     ret = adjunct_combine_str_py_outputs(params, execution)
     execution.run(cargs)

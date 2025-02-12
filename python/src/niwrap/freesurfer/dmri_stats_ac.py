@@ -170,7 +170,6 @@ def dmri_stats_ac_execute(
     Returns:
         NamedTuple of outputs (described in `DmriStatsAcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_stats_ac_cargs(params, execution)
     ret = dmri_stats_ac_outputs(params, execution)
     execution.run(cargs)

@@ -167,7 +167,6 @@ def fs_time_execute(
     Returns:
         NamedTuple of outputs (described in `FsTimeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_time_cargs(params, execution)
     ret = fs_time_outputs(params, execution)
     execution.run(cargs)

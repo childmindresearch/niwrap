@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "tcksample": tcksample_outputs,
-        "config": tcksample_config_outputs,
     }.get(t)
 
 
@@ -294,7 +293,6 @@ def tcksample_execute(
     Returns:
         NamedTuple of outputs (described in `TcksampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tcksample_cargs(params, execution)
     ret = tcksample_outputs(params, execution)
     execution.run(cargs)

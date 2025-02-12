@@ -185,7 +185,6 @@ def mris_refine_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRefineSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_refine_surfaces_cargs(params, execution)
     ret = mris_refine_surfaces_outputs(params, execution)
     execution.run(cargs)

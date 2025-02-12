@@ -186,7 +186,6 @@ def samp_bias_execute(
     Returns:
         NamedTuple of outputs (described in `SampBiasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = samp_bias_cargs(params, execution)
     ret = samp_bias_outputs(params, execution)
     execution.run(cargs)

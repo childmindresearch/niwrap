@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mkxsubjreg": mkxsubjreg_outputs,
     }.get(t)
 
 
@@ -195,7 +194,6 @@ def mkxsubjreg_execute(
     Returns:
         NamedTuple of outputs (described in `MkxsubjregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mkxsubjreg_cargs(params, execution)
     ret = mkxsubjreg_outputs(params, execution)
     execution.run(cargs)

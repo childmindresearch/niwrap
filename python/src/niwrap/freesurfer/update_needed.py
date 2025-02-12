@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "UpdateNeeded": update_needed_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def update_needed_execute(
     Returns:
         NamedTuple of outputs (described in `UpdateNeededOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = update_needed_cargs(params, execution)
     ret = update_needed_outputs(params, execution)
     execution.run(cargs)

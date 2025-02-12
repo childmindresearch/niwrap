@@ -339,7 +339,6 @@ def mri_sclimbic_seg_execute(
     Returns:
         NamedTuple of outputs (described in `MriSclimbicSegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_sclimbic_seg_cargs(params, execution)
     ret = mri_sclimbic_seg_outputs(params, execution)
     execution.run(cargs)

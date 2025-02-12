@@ -84,7 +84,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@RetinoProc": v__retino_proc_outputs,
     }.get(t)
 
 
@@ -505,7 +504,6 @@ def v__retino_proc_execute(
     Returns:
         NamedTuple of outputs (described in `VRetinoProcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__retino_proc_cargs(params, execution)
     ret = v__retino_proc_outputs(params, execution)
     execution.run(cargs)

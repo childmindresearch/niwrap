@@ -145,7 +145,6 @@ def fs_temp_dir_execute(
     Returns:
         NamedTuple of outputs (described in `FsTempDirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_temp_dir_cargs(params, execution)
     ret = fs_temp_dir_outputs(params, execution)
     execution.run(cargs)

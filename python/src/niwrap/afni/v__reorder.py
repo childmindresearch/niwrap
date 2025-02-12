@@ -166,7 +166,6 @@ def v__reorder_execute(
     Returns:
         NamedTuple of outputs (described in `VReorderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__reorder_cargs(params, execution)
     ret = v__reorder_outputs(params, execution)
     execution.run(cargs)

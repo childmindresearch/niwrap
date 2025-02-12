@@ -241,7 +241,6 @@ def v_3d_remlfit_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRemlfitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_remlfit_cargs(params, execution)
     ret = v_3d_remlfit_outputs(params, execution)
     execution.run(cargs)

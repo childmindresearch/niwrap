@@ -148,7 +148,6 @@ def hist2prob_execute(
     Returns:
         NamedTuple of outputs (described in `Hist2probOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = hist2prob_cargs(params, execution)
     ret = hist2prob_outputs(params, execution)
     execution.run(cargs)

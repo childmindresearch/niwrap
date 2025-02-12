@@ -220,7 +220,6 @@ def featquery_execute(
     Returns:
         NamedTuple of outputs (described in `FeatqueryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = featquery_cargs(params, execution)
     ret = featquery_outputs(params, execution)
     execution.run(cargs)

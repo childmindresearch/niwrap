@@ -148,7 +148,6 @@ def avi2talxfm_execute(
     Returns:
         NamedTuple of outputs (described in `Avi2talxfmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = avi2talxfm_cargs(params, execution)
     ret = avi2talxfm_outputs(params, execution)
     execution.run(cargs)

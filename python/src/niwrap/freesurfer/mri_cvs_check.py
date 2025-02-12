@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_cvs_check": mri_cvs_check_outputs,
     }.get(t)
 
 
@@ -168,7 +167,6 @@ def mri_cvs_check_execute(
     Returns:
         NamedTuple of outputs (described in `MriCvsCheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_cvs_check_cargs(params, execution)
     ret = mri_cvs_check_outputs(params, execution)
     execution.run(cargs)

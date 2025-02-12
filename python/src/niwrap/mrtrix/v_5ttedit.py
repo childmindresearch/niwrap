@@ -67,7 +67,6 @@ def dyn_outputs(
     """
     return {
         "5ttedit": v_5ttedit_outputs,
-        "config": v_5ttedit_config_outputs,
     }.get(t)
 
 
@@ -314,7 +313,6 @@ def v_5ttedit_execute(
     Returns:
         NamedTuple of outputs (described in `V5tteditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_5ttedit_cargs(params, execution)
     ret = v_5ttedit_outputs(params, execution)
     execution.run(cargs)

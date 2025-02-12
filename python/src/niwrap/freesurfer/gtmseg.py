@@ -276,7 +276,6 @@ def gtmseg_execute(
     Returns:
         NamedTuple of outputs (described in `GtmsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gtmseg_cargs(params, execution)
     ret = gtmseg_outputs(params, execution)
     execution.run(cargs)

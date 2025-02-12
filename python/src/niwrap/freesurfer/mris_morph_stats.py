@@ -150,7 +150,6 @@ def mris_morph_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMorphStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_morph_stats_cargs(params, execution)
     ret = mris_morph_stats_outputs(params, execution)
     execution.run(cargs)

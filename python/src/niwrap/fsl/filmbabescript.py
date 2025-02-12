@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "filmbabescript": filmbabescript_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def filmbabescript_execute(
     Returns:
         NamedTuple of outputs (described in `FilmbabescriptOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = filmbabescript_cargs(params, execution)
     ret = filmbabescript_outputs(params, execution)
     execution.run(cargs)

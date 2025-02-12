@@ -171,7 +171,6 @@ def v_3d_signatures_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSignaturesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_signatures_cargs(params, execution)
     ret = v_3d_signatures_outputs(params, execution)
     execution.run(cargs)

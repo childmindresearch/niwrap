@@ -165,7 +165,6 @@ def v_3d_tcat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tcat_cargs(params, execution)
     ret = v_3d_tcat_outputs(params, execution)
     execution.run(cargs)

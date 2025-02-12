@@ -223,7 +223,6 @@ def train_gcs_atlas_execute(
     Returns:
         NamedTuple of outputs (described in `TrainGcsAtlasOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = train_gcs_atlas_cargs(params, execution)
     ret = train_gcs_atlas_outputs(params, execution)
     execution.run(cargs)

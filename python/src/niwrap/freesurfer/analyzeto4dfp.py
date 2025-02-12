@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "analyzeto4dfp": analyzeto4dfp_outputs,
     }.get(t)
 
 
@@ -174,7 +173,6 @@ def analyzeto4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `Analyzeto4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = analyzeto4dfp_cargs(params, execution)
     ret = analyzeto4dfp_outputs(params, execution)
     execution.run(cargs)

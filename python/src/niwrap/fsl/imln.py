@@ -138,7 +138,6 @@ def imln_execute(
     Returns:
         NamedTuple of outputs (described in `ImlnOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imln_cargs(params, execution)
     ret = imln_outputs(params, execution)
     execution.run(cargs)

@@ -183,7 +183,6 @@ def v__djunct_modal_smoothing_with_rep_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctModalSmoothingWithRepOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_modal_smoothing_with_rep_cargs(params, execution)
     ret = v__djunct_modal_smoothing_with_rep_outputs(params, execution)
     execution.run(cargs)

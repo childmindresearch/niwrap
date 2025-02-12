@@ -142,7 +142,6 @@ def volume_fill_holes_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeFillHolesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_fill_holes_cargs(params, execution)
     ret = volume_fill_holes_outputs(params, execution)
     execution.run(cargs)

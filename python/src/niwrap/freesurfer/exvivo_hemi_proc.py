@@ -58,7 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "exvivo-hemi-proc": exvivo_hemi_proc_outputs,
     }.get(t)
 
 
@@ -228,7 +227,6 @@ def exvivo_hemi_proc_execute(
     Returns:
         NamedTuple of outputs (described in `ExvivoHemiProcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = exvivo_hemi_proc_cargs(params, execution)
     ret = exvivo_hemi_proc_outputs(params, execution)
     execution.run(cargs)

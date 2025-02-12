@@ -89,9 +89,6 @@ def dyn_outputs(
     """
     return {
         "tckmap": tckmap_outputs,
-        "VariousString": tckmap_various_string_outputs,
-        "VariousFile": tckmap_various_file_outputs,
-        "config": tckmap_config_outputs,
     }.get(t)
 
 
@@ -561,7 +558,6 @@ def tckmap_execute(
     Returns:
         NamedTuple of outputs (described in `TckmapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckmap_cargs(params, execution)
     ret = tckmap_outputs(params, execution)
     execution.run(cargs)

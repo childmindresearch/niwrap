@@ -71,7 +71,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "long_stats_slopes": long_stats_slopes_outputs,
     }.get(t)
 
 
@@ -367,7 +366,6 @@ def long_stats_slopes_execute(
     Returns:
         NamedTuple of outputs (described in `LongStatsSlopesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_stats_slopes_cargs(params, execution)
     ret = long_stats_slopes_outputs(params, execution)
     execution.run(cargs)

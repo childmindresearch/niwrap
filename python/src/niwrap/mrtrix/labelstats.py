@@ -61,8 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "labelstats": labelstats_outputs,
-        "config": labelstats_config_outputs,
     }.get(t)
 
 
@@ -258,7 +256,6 @@ def labelstats_execute(
     Returns:
         NamedTuple of outputs (described in `LabelstatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = labelstats_cargs(params, execution)
     ret = labelstats_outputs(params, execution)
     execution.run(cargs)

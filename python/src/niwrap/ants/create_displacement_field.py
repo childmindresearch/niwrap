@@ -160,7 +160,6 @@ def create_displacement_field_execute(
     Returns:
         NamedTuple of outputs (described in `CreateDisplacementFieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_displacement_field_cargs(params, execution)
     ret = create_displacement_field_outputs(params, execution)
     execution.run(cargs)

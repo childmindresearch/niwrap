@@ -158,7 +158,6 @@ def imstack_execute(
     Returns:
         NamedTuple of outputs (described in `ImstackOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imstack_cargs(params, execution)
     ret = imstack_outputs(params, execution)
     execution.run(cargs)

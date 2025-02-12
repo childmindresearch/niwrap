@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_pmake": mris_pmake_outputs,
     }.get(t)
 
 
@@ -246,7 +245,6 @@ def mris_pmake_execute(
     Returns:
         NamedTuple of outputs (described in `MrisPmakeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_pmake_cargs(params, execution)
     ret = mris_pmake_outputs(params, execution)
     execution.run(cargs)

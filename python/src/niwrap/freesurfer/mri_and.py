@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_and": mri_and_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def mri_and_execute(
     Returns:
         NamedTuple of outputs (described in `MriAndOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_and_cargs(params, execution)
     ret = mri_and_outputs(params, execution)
     execution.run(cargs)

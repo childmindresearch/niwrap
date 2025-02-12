@@ -54,7 +54,6 @@ def dyn_outputs(
     """
     return {
         "foci-create": foci_create_outputs,
-        "class": foci_create_class_outputs,
     }.get(t)
 
 
@@ -214,7 +213,6 @@ def foci_create_execute(
     Returns:
         NamedTuple of outputs (described in `FociCreateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = foci_create_cargs(params, execution)
     ret = foci_create_outputs(params, execution)
     execution.run(cargs)

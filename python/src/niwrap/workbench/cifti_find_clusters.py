@@ -91,11 +91,6 @@ def dyn_outputs(
     """
     return {
         "cifti-find-clusters": cifti_find_clusters_outputs,
-        "left_surface": cifti_find_clusters_left_surface_outputs,
-        "right_surface": cifti_find_clusters_right_surface_outputs,
-        "cerebellum_surface": cifti_find_clusters_cerebellum_surface_outputs,
-        "size_ratio": cifti_find_clusters_size_ratio_outputs,
-        "distance": cifti_find_clusters_distance_outputs,
     }.get(t)
 
 
@@ -511,7 +506,6 @@ def cifti_find_clusters_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiFindClustersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_find_clusters_cargs(params, execution)
     ret = cifti_find_clusters_outputs(params, execution)
     execution.run(cargs)

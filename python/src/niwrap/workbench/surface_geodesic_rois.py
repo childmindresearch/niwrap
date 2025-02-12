@@ -208,7 +208,6 @@ def surface_geodesic_rois_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceGeodesicRoisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_geodesic_rois_cargs(params, execution)
     ret = surface_geodesic_rois_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "smoothest": smoothest_outputs,
     }.get(t)
 
 
@@ -169,7 +168,6 @@ def smoothest_execute(
     Returns:
         NamedTuple of outputs (described in `SmoothestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = smoothest_cargs(params, execution)
     ret = smoothest_outputs(params, execution)
     execution.run(cargs)

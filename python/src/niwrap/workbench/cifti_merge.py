@@ -67,9 +67,6 @@ def dyn_outputs(
     """
     return {
         "cifti-merge": cifti_merge_outputs,
-        "cifti": cifti_merge_cifti_outputs,
-        "index": cifti_merge_index_outputs,
-        "up_to": cifti_merge_up_to_outputs,
     }.get(t)
 
 
@@ -327,7 +324,6 @@ def cifti_merge_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_merge_cargs(params, execution)
     ret = cifti_merge_outputs(params, execution)
     execution.run(cargs)

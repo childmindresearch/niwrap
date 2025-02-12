@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "abids_json_tool.py": abids_json_tool_py_outputs,
     }.get(t)
 
 
@@ -159,7 +158,6 @@ def abids_json_tool_py_execute(
     Returns:
         NamedTuple of outputs (described in `AbidsJsonToolPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = abids_json_tool_py_cargs(params, execution)
     ret = abids_json_tool_py_outputs(params, execution)
     execution.run(cargs)

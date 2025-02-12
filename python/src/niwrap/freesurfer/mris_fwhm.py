@@ -75,7 +75,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_fwhm": mris_fwhm_outputs,
     }.get(t)
 
 
@@ -386,7 +385,6 @@ def mris_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_fwhm_cargs(params, execution)
     ret = mris_fwhm_outputs(params, execution)
     execution.run(cargs)

@@ -202,7 +202,6 @@ def long_stats_combine_execute(
     Returns:
         NamedTuple of outputs (described in `LongStatsCombineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_stats_combine_cargs(params, execution)
     ret = long_stats_combine_outputs(params, execution)
     execution.run(cargs)

@@ -65,8 +65,6 @@ def dyn_outputs(
     """
     return {
         "surface-resample": surface_resample_outputs,
-        "area_surfs": surface_resample_area_surfs_outputs,
-        "area_metrics": surface_resample_area_metrics_outputs,
     }.get(t)
 
 
@@ -293,7 +291,6 @@ def surface_resample_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_resample_cargs(params, execution)
     ret = surface_resample_outputs(params, execution)
     execution.run(cargs)

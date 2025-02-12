@@ -215,7 +215,6 @@ def from3d_execute(
     Returns:
         NamedTuple of outputs (described in `From3dOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = from3d_cargs(params, execution)
     ret = from3d_outputs(params, execution)
     execution.run(cargs)

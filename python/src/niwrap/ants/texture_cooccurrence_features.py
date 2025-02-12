@@ -167,7 +167,6 @@ def texture_cooccurrence_features_execute(
     Returns:
         NamedTuple of outputs (described in `TextureCooccurrenceFeaturesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = texture_cooccurrence_features_cargs(params, execution)
     ret = texture_cooccurrence_features_outputs(params, execution)
     execution.run(cargs)

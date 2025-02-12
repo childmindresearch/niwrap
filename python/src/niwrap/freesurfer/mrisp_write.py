@@ -218,7 +218,6 @@ def mrisp_write_execute(
     Returns:
         NamedTuple of outputs (described in `MrispWriteOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrisp_write_cargs(params, execution)
     ret = mrisp_write_outputs(params, execution)
     execution.run(cargs)

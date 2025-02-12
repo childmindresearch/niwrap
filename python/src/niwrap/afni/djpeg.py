@@ -172,7 +172,6 @@ def djpeg_execute(
     Returns:
         NamedTuple of outputs (described in `DjpegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = djpeg_cargs(params, execution)
     ret = djpeg_outputs(params, execution)
     execution.run(cargs)

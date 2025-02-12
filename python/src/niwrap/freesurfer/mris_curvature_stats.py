@@ -140,7 +140,6 @@ def mris_curvature_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCurvatureStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_curvature_stats_cargs(params, execution)
     ret = mris_curvature_stats_outputs(params, execution)
     execution.run(cargs)

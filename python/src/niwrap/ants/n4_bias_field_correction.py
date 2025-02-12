@@ -76,9 +76,6 @@ def dyn_outputs(
     """
     return {
         "N4BiasFieldCorrection": n4_bias_field_correction_outputs,
-        "convergence": n4_bias_field_correction_convergence_outputs,
-        "bspline_fitting": n4_bias_field_correction_bspline_fitting_outputs,
-        "histogram_sharpening": n4_bias_field_correction_histogram_sharpening_outputs,
     }.get(t)
 
 
@@ -454,7 +451,6 @@ def n4_bias_field_correction_execute(
     Returns:
         NamedTuple of outputs (described in `N4BiasFieldCorrectionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = n4_bias_field_correction_cargs(params, execution)
     ret = n4_bias_field_correction_outputs(params, execution)
     execution.run(cargs)

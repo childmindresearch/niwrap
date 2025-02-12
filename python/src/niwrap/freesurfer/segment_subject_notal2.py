@@ -138,7 +138,6 @@ def segment_subject_notal2_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentSubjectNotal2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_subject_notal2_cargs(params, execution)
     ret = segment_subject_notal2_outputs(params, execution)
     execution.run(cargs)

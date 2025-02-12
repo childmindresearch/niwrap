@@ -175,7 +175,6 @@ def systemnoise_execute(
     Returns:
         NamedTuple of outputs (described in `SystemnoiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = systemnoise_cargs(params, execution)
     ret = systemnoise_outputs(params, execution)
     execution.run(cargs)

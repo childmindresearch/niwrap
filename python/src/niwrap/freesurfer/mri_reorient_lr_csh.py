@@ -175,7 +175,6 @@ def mri_reorient_lr_csh_execute(
     Returns:
         NamedTuple of outputs (described in `MriReorientLrCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_reorient_lr_csh_cargs(params, execution)
     ret = mri_reorient_lr_csh_outputs(params, execution)
     execution.run(cargs)

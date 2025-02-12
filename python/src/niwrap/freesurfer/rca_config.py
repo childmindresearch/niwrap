@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rca-config": rca_config_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def rca_config_execute(
     Returns:
         NamedTuple of outputs (described in `RcaConfigOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rca_config_cargs(params, execution)
     ret = rca_config_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_distance_to_label": mris_distance_to_label_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def mris_distance_to_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDistanceToLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_distance_to_label_cargs(params, execution)
     ret = mris_distance_to_label_outputs(params, execution)
     execution.run(cargs)

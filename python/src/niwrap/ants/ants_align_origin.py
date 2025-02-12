@@ -170,7 +170,6 @@ def ants_align_origin_execute(
     Returns:
         NamedTuple of outputs (described in `AntsAlignOriginOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_align_origin_cargs(params, execution)
     ret = ants_align_origin_outputs(params, execution)
     execution.run(cargs)

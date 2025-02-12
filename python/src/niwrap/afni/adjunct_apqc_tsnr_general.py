@@ -67,7 +67,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "adjunct_apqc_tsnr_general": adjunct_apqc_tsnr_general_outputs,
     }.get(t)
 
 
@@ -339,7 +338,6 @@ def adjunct_apqc_tsnr_general_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctApqcTsnrGeneralOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_apqc_tsnr_general_cargs(params, execution)
     ret = adjunct_apqc_tsnr_general_outputs(params, execution)
     execution.run(cargs)

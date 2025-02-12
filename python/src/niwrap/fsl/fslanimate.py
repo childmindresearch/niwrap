@@ -145,7 +145,6 @@ def fslanimate_execute(
     Returns:
         NamedTuple of outputs (described in `FslanimateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslanimate_cargs(params, execution)
     ret = fslanimate_outputs(params, execution)
     execution.run(cargs)

@@ -69,7 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "long_submit_jobs": long_submit_jobs_outputs,
     }.get(t)
 
 
@@ -346,7 +345,6 @@ def long_submit_jobs_execute(
     Returns:
         NamedTuple of outputs (described in `LongSubmitJobsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_submit_jobs_cargs(params, execution)
     ret = long_submit_jobs_outputs(params, execution)
     execution.run(cargs)

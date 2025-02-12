@@ -149,19 +149,8 @@ def dyn_outputs(
     """
     return {
         "mrconvert": mrconvert_outputs,
-        "coord": mrconvert_coord_outputs,
-        "clear_property": mrconvert_clear_property_outputs,
-        "set_property": mrconvert_set_property_outputs,
-        "append_property": mrconvert_append_property_outputs,
-        "VariousString": mrconvert_various_string_outputs,
-        "VariousFile": mrconvert_various_file_outputs,
-        "VariousString": mrconvert_various_string_outputs_,
-        "VariousFile": mrconvert_various_file_outputs_,
-        "fslgrad": mrconvert_fslgrad_outputs,
         "export_grad_fsl": mrconvert_export_grad_fsl_outputs,
-        "import_pe_eddy": mrconvert_import_pe_eddy_outputs,
         "export_pe_eddy": mrconvert_export_pe_eddy_outputs,
-        "config": mrconvert_config_outputs,
     }.get(t)
 
 
@@ -1162,7 +1151,6 @@ def mrconvert_execute(
     Returns:
         NamedTuple of outputs (described in `MrconvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrconvert_cargs(params, execution)
     ret = mrconvert_outputs(params, execution)
     execution.run(cargs)

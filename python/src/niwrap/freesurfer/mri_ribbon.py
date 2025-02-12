@@ -158,7 +158,6 @@ def mri_ribbon_execute(
     Returns:
         NamedTuple of outputs (described in `MriRibbonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_ribbon_cargs(params, execution)
     ret = mri_ribbon_outputs(params, execution)
     execution.run(cargs)

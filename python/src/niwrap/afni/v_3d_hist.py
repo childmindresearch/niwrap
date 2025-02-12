@@ -63,7 +63,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dHist": v_3d_hist_outputs,
     }.get(t)
 
 
@@ -304,7 +303,6 @@ def v_3d_hist_execute(
     Returns:
         NamedTuple of outputs (described in `V3dHistOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_hist_cargs(params, execution)
     ret = v_3d_hist_outputs(params, execution)
     execution.run(cargs)

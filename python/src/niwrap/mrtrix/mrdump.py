@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "mrdump": mrdump_outputs,
-        "config": mrdump_config_outputs,
     }.get(t)
 
 
@@ -263,7 +262,6 @@ def mrdump_execute(
     Returns:
         NamedTuple of outputs (described in `MrdumpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrdump_cargs(params, execution)
     ret = mrdump_outputs(params, execution)
     execution.run(cargs)

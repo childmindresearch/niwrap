@@ -217,7 +217,6 @@ def dmri_bset_execute(
     Returns:
         NamedTuple of outputs (described in `DmriBsetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_bset_cargs(params, execution)
     ret = dmri_bset_outputs(params, execution)
     execution.run(cargs)

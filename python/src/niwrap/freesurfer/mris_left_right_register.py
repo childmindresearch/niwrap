@@ -153,7 +153,6 @@ def mris_left_right_register_execute(
     Returns:
         NamedTuple of outputs (described in `MrisLeftRightRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_left_right_register_cargs(params, execution)
     ret = mris_left_right_register_outputs(params, execution)
     execution.run(cargs)

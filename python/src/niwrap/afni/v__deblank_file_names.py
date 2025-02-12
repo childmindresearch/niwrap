@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@DeblankFileNames": v__deblank_file_names_outputs,
     }.get(t)
 
 
@@ -156,7 +155,6 @@ def v__deblank_file_names_execute(
     Returns:
         NamedTuple of outputs (described in `VDeblankFileNamesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__deblank_file_names_cargs(params, execution)
     ret = v__deblank_file_names_outputs(params, execution)
     execution.run(cargs)

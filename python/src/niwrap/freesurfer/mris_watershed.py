@@ -165,7 +165,6 @@ def mris_watershed_execute(
     Returns:
         NamedTuple of outputs (described in `MrisWatershedOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_watershed_cargs(params, execution)
     ret = mris_watershed_outputs(params, execution)
     execution.run(cargs)

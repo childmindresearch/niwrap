@@ -139,7 +139,6 @@ def myget_execute(
     Returns:
         NamedTuple of outputs (described in `MygetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = myget_cargs(params, execution)
     ret = myget_outputs(params, execution)
     execution.run(cargs)

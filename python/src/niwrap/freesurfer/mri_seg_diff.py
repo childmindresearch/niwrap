@@ -204,7 +204,6 @@ def mri_seg_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_seg_diff_cargs(params, execution)
     ret = mri_seg_diff_outputs(params, execution)
     execution.run(cargs)

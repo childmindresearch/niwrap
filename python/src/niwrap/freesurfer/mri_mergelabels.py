@@ -154,7 +154,6 @@ def mri_mergelabels_execute(
     Returns:
         NamedTuple of outputs (described in `MriMergelabelsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_mergelabels_cargs(params, execution)
     ret = mri_mergelabels_outputs(params, execution)
     execution.run(cargs)

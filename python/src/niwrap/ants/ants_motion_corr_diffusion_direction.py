@@ -168,7 +168,6 @@ def ants_motion_corr_diffusion_direction_execute(
     Returns:
         NamedTuple of outputs (described in `AntsMotionCorrDiffusionDirectionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_motion_corr_diffusion_direction_cargs(params, execution)
     ret = ants_motion_corr_diffusion_direction_outputs(params, execution)
     execution.run(cargs)

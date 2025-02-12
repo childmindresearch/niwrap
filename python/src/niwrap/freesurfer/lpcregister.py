@@ -239,7 +239,6 @@ def lpcregister_execute(
     Returns:
         NamedTuple of outputs (described in `LpcregisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = lpcregister_cargs(params, execution)
     ret = lpcregister_outputs(params, execution)
     execution.run(cargs)

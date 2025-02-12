@@ -58,8 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "convert-matrix4-to-workbench-sparse": convert_matrix4_to_workbench_sparse_outputs,
-        "volume_seeds": convert_matrix4_to_workbench_sparse_volume_seeds_outputs,
     }.get(t)
 
 
@@ -228,7 +226,6 @@ def convert_matrix4_to_workbench_sparse_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertMatrix4ToWorkbenchSparseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_matrix4_to_workbench_sparse_cargs(params, execution)
     ret = convert_matrix4_to_workbench_sparse_outputs(params, execution)
     execution.run(cargs)

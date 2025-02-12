@@ -190,7 +190,6 @@ def mris_exvivo_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExvivoSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_exvivo_surfaces_cargs(params, execution)
     ret = mris_exvivo_surfaces_outputs(params, execution)
     execution.run(cargs)

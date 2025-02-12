@@ -248,7 +248,6 @@ def mris_make_average_surface_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMakeAverageSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_make_average_surface_cargs(params, execution)
     ret = mris_make_average_surface_outputs(params, execution)
     execution.run(cargs)

@@ -182,7 +182,6 @@ def dmri_project_end_points_execute(
     Returns:
         NamedTuple of outputs (described in `DmriProjectEndPointsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_project_end_points_cargs(params, execution)
     ret = dmri_project_end_points_outputs(params, execution)
     execution.run(cargs)

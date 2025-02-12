@@ -140,7 +140,6 @@ def fslpspec_execute(
     Returns:
         NamedTuple of outputs (described in `FslpspecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslpspec_cargs(params, execution)
     ret = fslpspec_outputs(params, execution)
     execution.run(cargs)

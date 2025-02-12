@@ -61,7 +61,6 @@ def dyn_outputs(
     """
     return {
         "maskdump": maskdump_outputs,
-        "config": maskdump_config_outputs,
     }.get(t)
 
 
@@ -252,7 +251,6 @@ def maskdump_execute(
     Returns:
         NamedTuple of outputs (described in `MaskdumpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = maskdump_cargs(params, execution)
     ret = maskdump_outputs(params, execution)
     execution.run(cargs)

@@ -153,7 +153,6 @@ def mri_probedicom_execute(
     Returns:
         NamedTuple of outputs (described in `MriProbedicomOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_probedicom_cargs(params, execution)
     ret = mri_probedicom_outputs(params, execution)
     execution.run(cargs)

@@ -233,7 +233,6 @@ def mri_easyreg_execute(
     Returns:
         NamedTuple of outputs (described in `MriEasyregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_easyreg_cargs(params, execution)
     ret = mri_easyreg_outputs(params, execution)
     execution.run(cargs)

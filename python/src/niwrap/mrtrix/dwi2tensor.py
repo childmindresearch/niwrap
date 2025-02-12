@@ -75,8 +75,6 @@ def dyn_outputs(
     """
     return {
         "dwi2tensor": dwi2tensor_outputs,
-        "fslgrad": dwi2tensor_fslgrad_outputs,
-        "config": dwi2tensor_config_outputs,
     }.get(t)
 
 
@@ -431,7 +429,6 @@ def dwi2tensor_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2tensorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwi2tensor_cargs(params, execution)
     ret = dwi2tensor_outputs(params, execution)
     execution.run(cargs)

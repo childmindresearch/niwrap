@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "scene-file-relocate": scene_file_relocate_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def scene_file_relocate_execute(
     Returns:
         NamedTuple of outputs (described in `SceneFileRelocateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = scene_file_relocate_cargs(params, execution)
     ret = scene_file_relocate_outputs(params, execution)
     execution.run(cargs)

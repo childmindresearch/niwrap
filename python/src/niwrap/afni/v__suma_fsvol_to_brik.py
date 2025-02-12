@@ -142,7 +142,6 @@ def v__suma_fsvol_to_brik_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaFsvolToBrikOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_fsvol_to_brik_cargs(params, execution)
     ret = v__suma_fsvol_to_brik_outputs(params, execution)
     execution.run(cargs)

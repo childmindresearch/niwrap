@@ -178,7 +178,6 @@ def volume_parcel_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeParcelSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_parcel_smoothing_cargs(params, execution)
     ret = volume_parcel_smoothing_outputs(params, execution)
     execution.run(cargs)

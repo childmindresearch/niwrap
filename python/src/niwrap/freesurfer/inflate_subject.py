@@ -135,7 +135,6 @@ def inflate_subject_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = inflate_subject_cargs(params, execution)
     ret = inflate_subject_outputs(params, execution)
     execution.run(cargs)

@@ -223,7 +223,6 @@ def applywarp_execute(
     Returns:
         NamedTuple of outputs (described in `ApplywarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = applywarp_cargs(params, execution)
     ret = applywarp_outputs(params, execution)
     execution.run(cargs)

@@ -202,7 +202,6 @@ def swi_preprocess_execute(
     Returns:
         NamedTuple of outputs (described in `SwiPreprocessOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = swi_preprocess_cargs(params, execution)
     ret = swi_preprocess_outputs(params, execution)
     execution.run(cargs)

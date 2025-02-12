@@ -199,7 +199,6 @@ def v__fat_tract_colorize_execute(
     Returns:
         NamedTuple of outputs (described in `VFatTractColorizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__fat_tract_colorize_cargs(params, execution)
     ret = v__fat_tract_colorize_outputs(params, execution)
     execution.run(cargs)

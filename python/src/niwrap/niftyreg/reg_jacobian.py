@@ -208,7 +208,6 @@ def reg_jacobian_execute(
     Returns:
         NamedTuple of outputs (described in `RegJacobianOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_jacobian_cargs(params, execution)
     ret = reg_jacobian_outputs(params, execution)
     execution.run(cargs)

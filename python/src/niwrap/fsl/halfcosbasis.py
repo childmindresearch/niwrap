@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "halfcosbasis": halfcosbasis_outputs,
     }.get(t)
 
 
@@ -206,7 +205,6 @@ def halfcosbasis_execute(
     Returns:
         NamedTuple of outputs (described in `HalfcosbasisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = halfcosbasis_cargs(params, execution)
     ret = halfcosbasis_outputs(params, execution)
     execution.run(cargs)

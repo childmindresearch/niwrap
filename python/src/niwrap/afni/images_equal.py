@@ -145,7 +145,6 @@ def images_equal_execute(
     Returns:
         NamedTuple of outputs (described in `ImagesEqualOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = images_equal_cargs(params, execution)
     ret = images_equal_outputs(params, execution)
     execution.run(cargs)

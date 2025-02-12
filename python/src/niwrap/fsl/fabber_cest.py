@@ -165,7 +165,6 @@ def fabber_cest_execute(
     Returns:
         NamedTuple of outputs (described in `FabberCestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_cest_cargs(params, execution)
     ret = fabber_cest_outputs(params, execution)
     execution.run(cargs)

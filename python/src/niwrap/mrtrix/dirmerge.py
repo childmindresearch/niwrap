@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "dirmerge": dirmerge_outputs,
-        "config": dirmerge_config_outputs,
     }.get(t)
 
 
@@ -271,7 +270,6 @@ def dirmerge_execute(
     Returns:
         NamedTuple of outputs (described in `DirmergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirmerge_cargs(params, execution)
     ret = dirmerge_outputs(params, execution)
     execution.run(cargs)

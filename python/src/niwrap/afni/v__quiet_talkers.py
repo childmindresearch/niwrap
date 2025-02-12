@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@Quiet_Talkers": v__quiet_talkers_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def v__quiet_talkers_execute(
     Returns:
         NamedTuple of outputs (described in `VQuietTalkersOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__quiet_talkers_cargs(params, execution)
     ret = v__quiet_talkers_outputs(params, execution)
     execution.run(cargs)

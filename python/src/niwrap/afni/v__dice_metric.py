@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@DiceMetric": v__dice_metric_outputs,
     }.get(t)
 
 
@@ -230,7 +229,6 @@ def v__dice_metric_execute(
     Returns:
         NamedTuple of outputs (described in `VDiceMetricOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__dice_metric_cargs(params, execution)
     ret = v__dice_metric_outputs(params, execution)
     execution.run(cargs)

@@ -359,7 +359,6 @@ def epi_b0_correct_execute(
     Returns:
         NamedTuple of outputs (described in `EpiB0CorrectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = epi_b0_correct_cargs(params, execution)
     ret = epi_b0_correct_outputs(params, execution)
     execution.run(cargs)

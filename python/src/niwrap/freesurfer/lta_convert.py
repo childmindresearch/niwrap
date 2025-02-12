@@ -204,7 +204,6 @@ def lta_convert_execute(
     Returns:
         NamedTuple of outputs (described in `LtaConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = lta_convert_cargs(params, execution)
     ret = lta_convert_outputs(params, execution)
     execution.run(cargs)

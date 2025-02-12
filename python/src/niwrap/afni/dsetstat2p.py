@@ -158,7 +158,6 @@ def dsetstat2p_execute(
     Returns:
         NamedTuple of outputs (described in `Dsetstat2pOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dsetstat2p_cargs(params, execution)
     ret = dsetstat2p_outputs(params, execution)
     execution.run(cargs)

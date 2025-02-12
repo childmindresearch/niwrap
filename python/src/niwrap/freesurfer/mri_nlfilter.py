@@ -215,7 +215,6 @@ def mri_nlfilter_execute(
     Returns:
         NamedTuple of outputs (described in `MriNlfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_nlfilter_cargs(params, execution)
     ret = mri_nlfilter_outputs(params, execution)
     execution.run(cargs)

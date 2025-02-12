@@ -67,7 +67,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "SurfaceMetrics": surface_metrics_outputs,
     }.get(t)
 
 
@@ -269,7 +268,6 @@ def surface_metrics_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceMetricsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_metrics_cargs(params, execution)
     ret = surface_metrics_outputs(params, execution)
     execution.run(cargs)

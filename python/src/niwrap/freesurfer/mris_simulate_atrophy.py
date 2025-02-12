@@ -173,7 +173,6 @@ def mris_simulate_atrophy_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSimulateAtrophyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_simulate_atrophy_cargs(params, execution)
     ret = mris_simulate_atrophy_outputs(params, execution)
     execution.run(cargs)

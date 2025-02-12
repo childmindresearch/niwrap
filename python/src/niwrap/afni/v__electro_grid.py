@@ -183,7 +183,6 @@ def v__electro_grid_execute(
     Returns:
         NamedTuple of outputs (described in `VElectroGridOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__electro_grid_cargs(params, execution)
     ret = v__electro_grid_outputs(params, execution)
     execution.run(cargs)

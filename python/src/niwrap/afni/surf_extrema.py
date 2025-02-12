@@ -212,7 +212,6 @@ def surf_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `SurfExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_extrema_cargs(params, execution)
     ret = surf_extrema_outputs(params, execution)
     execution.run(cargs)

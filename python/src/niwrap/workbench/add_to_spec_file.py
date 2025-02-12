@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "add-to-spec-file": add_to_spec_file_outputs,
     }.get(t)
 
 
@@ -180,7 +179,6 @@ def add_to_spec_file_execute(
     Returns:
         NamedTuple of outputs (described in `AddToSpecFileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = add_to_spec_file_cargs(params, execution)
     ret = add_to_spec_file_outputs(params, execution)
     execution.run(cargs)

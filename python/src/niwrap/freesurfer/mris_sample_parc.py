@@ -335,7 +335,6 @@ def mris_sample_parc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSampleParcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_sample_parc_cargs(params, execution)
     ret = mris_sample_parc_outputs(params, execution)
     execution.run(cargs)

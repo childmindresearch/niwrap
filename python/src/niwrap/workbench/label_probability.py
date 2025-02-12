@@ -152,7 +152,6 @@ def label_probability_execute(
     Returns:
         NamedTuple of outputs (described in `LabelProbabilityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_probability_cargs(params, execution)
     ret = label_probability_outputs(params, execution)
     execution.run(cargs)

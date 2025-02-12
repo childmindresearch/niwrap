@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_extractSurfaceMeasurements": dmri_extract_surface_measurements_outputs,
     }.get(t)
 
 
@@ -241,7 +240,6 @@ def dmri_extract_surface_measurements_execute(
     Returns:
         NamedTuple of outputs (described in `DmriExtractSurfaceMeasurementsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_extract_surface_measurements_cargs(params, execution)
     ret = dmri_extract_surface_measurements_outputs(params, execution)
     execution.run(cargs)

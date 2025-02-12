@@ -168,7 +168,6 @@ def isolate_labels_keeporigval_csh_execute(
     Returns:
         NamedTuple of outputs (described in `IsolateLabelsKeeporigvalCshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = isolate_labels_keeporigval_csh_cargs(params, execution)
     ret = isolate_labels_keeporigval_csh_outputs(params, execution)
     execution.run(cargs)

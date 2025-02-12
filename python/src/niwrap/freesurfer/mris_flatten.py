@@ -197,7 +197,6 @@ def mris_flatten_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFlattenOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_flatten_cargs(params, execution)
     ret = mris_flatten_outputs(params, execution)
     execution.run(cargs)

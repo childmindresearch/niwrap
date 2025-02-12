@@ -178,7 +178,6 @@ def fslascii2img_execute(
     Returns:
         NamedTuple of outputs (described in `Fslascii2imgOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslascii2img_cargs(params, execution)
     ret = fslascii2img_outputs(params, execution)
     execution.run(cargs)

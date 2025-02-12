@@ -178,7 +178,6 @@ def ants_registration_sy_nquick_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsRegistrationSyNquickShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_registration_sy_nquick_sh_cargs(params, execution)
     ret = ants_registration_sy_nquick_sh_outputs(params, execution)
     execution.run(cargs)

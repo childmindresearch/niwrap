@@ -192,7 +192,6 @@ def surf_qual_execute(
     Returns:
         NamedTuple of outputs (described in `SurfQualOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_qual_cargs(params, execution)
     ret = surf_qual_outputs(params, execution)
     execution.run(cargs)

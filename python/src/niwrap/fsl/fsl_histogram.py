@@ -253,7 +253,6 @@ def fsl_histogram_execute(
     Returns:
         NamedTuple of outputs (described in `FslHistogramOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_histogram_cargs(params, execution)
     ret = fsl_histogram_outputs(params, execution)
     execution.run(cargs)

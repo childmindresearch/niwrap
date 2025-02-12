@@ -209,7 +209,6 @@ def betsurf_execute(
     Returns:
         NamedTuple of outputs (described in `BetsurfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = betsurf_cargs(params, execution)
     ret = betsurf_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@FindAfniDsetPath": v__find_afni_dset_path_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def v__find_afni_dset_path_execute(
     Returns:
         NamedTuple of outputs (described in `VFindAfniDsetPathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__find_afni_dset_path_cargs(params, execution)
     ret = v__find_afni_dset_path_outputs(params, execution)
     execution.run(cargs)

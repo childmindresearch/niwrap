@@ -143,7 +143,6 @@ def mris_euler_number_execute(
     Returns:
         NamedTuple of outputs (described in `MrisEulerNumberOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_euler_number_cargs(params, execution)
     ret = mris_euler_number_outputs(params, execution)
     execution.run(cargs)

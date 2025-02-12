@@ -150,7 +150,6 @@ def mri_fslmat_to_lta_execute(
     Returns:
         NamedTuple of outputs (described in `MriFslmatToLtaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fslmat_to_lta_cargs(params, execution)
     ret = mri_fslmat_to_lta_outputs(params, execution)
     execution.run(cargs)

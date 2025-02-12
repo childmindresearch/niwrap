@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fix_subject": fix_subject_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def fix_subject_execute(
     Returns:
         NamedTuple of outputs (described in `FixSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fix_subject_cargs(params, execution)
     ret = fix_subject_outputs(params, execution)
     execution.run(cargs)

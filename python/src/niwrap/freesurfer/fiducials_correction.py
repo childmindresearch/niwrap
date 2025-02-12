@@ -137,7 +137,6 @@ def fiducials_correction_execute(
     Returns:
         NamedTuple of outputs (described in `FiducialsCorrectionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fiducials_correction_cargs(params, execution)
     ret = fiducials_correction_outputs(params, execution)
     execution.run(cargs)

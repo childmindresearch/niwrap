@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@GetAfniPrefix": v__get_afni_prefix_outputs,
     }.get(t)
 
 
@@ -137,7 +136,6 @@ def v__get_afni_prefix_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniPrefixOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_prefix_cargs(params, execution)
     ret = v__get_afni_prefix_outputs(params, execution)
     execution.run(cargs)

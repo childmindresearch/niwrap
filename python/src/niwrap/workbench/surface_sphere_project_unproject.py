@@ -205,7 +205,6 @@ def surface_sphere_project_unproject_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_sphere_project_unproject_cargs(params, execution)
     ret = surface_sphere_project_unproject_outputs(params, execution)
     execution.run(cargs)

@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fat_proc_map_to_dti": fat_proc_map_to_dti_outputs,
     }.get(t)
 
 
@@ -232,7 +231,6 @@ def fat_proc_map_to_dti_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcMapToDtiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_map_to_dti_cargs(params, execution)
     ret = fat_proc_map_to_dti_outputs(params, execution)
     execution.run(cargs)

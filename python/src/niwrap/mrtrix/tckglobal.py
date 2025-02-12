@@ -88,8 +88,6 @@ def dyn_outputs(
     """
     return {
         "tckglobal": tckglobal_outputs,
-        "riso": tckglobal_riso_outputs,
-        "config": tckglobal_config_outputs,
     }.get(t)
 
 
@@ -563,7 +561,6 @@ def tckglobal_execute(
     Returns:
         NamedTuple of outputs (described in `TckglobalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckglobal_cargs(params, execution)
     ret = tckglobal_outputs(params, execution)
     execution.run(cargs)

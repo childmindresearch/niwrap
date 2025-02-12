@@ -168,7 +168,6 @@ def mri_gcut_execute(
     Returns:
         NamedTuple of outputs (described in `MriGcutOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_gcut_cargs(params, execution)
     ret = mri_gcut_outputs(params, execution)
     execution.run(cargs)

@@ -70,10 +70,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-export-dense-mapping": cifti_export_dense_mapping_outputs,
-        "volume_all": cifti_export_dense_mapping_volume_all_outputs,
-        "surface": cifti_export_dense_mapping_surface_outputs,
-        "volume": cifti_export_dense_mapping_volume_outputs,
     }.get(t)
 
 
@@ -367,7 +363,6 @@ def cifti_export_dense_mapping_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiExportDenseMappingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_export_dense_mapping_cargs(params, execution)
     ret = cifti_export_dense_mapping_outputs(params, execution)
     execution.run(cargs)

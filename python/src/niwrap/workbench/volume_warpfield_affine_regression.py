@@ -55,8 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-warpfield-affine-regression": volume_warpfield_affine_regression_outputs,
-        "flirt_out": volume_warpfield_affine_regression_flirt_out_outputs,
     }.get(t)
 
 
@@ -224,7 +222,6 @@ def volume_warpfield_affine_regression_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeWarpfieldAffineRegressionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_warpfield_affine_regression_cargs(params, execution)
     ret = volume_warpfield_affine_regression_outputs(params, execution)
     execution.run(cargs)

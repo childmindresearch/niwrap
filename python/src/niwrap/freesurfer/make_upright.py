@@ -145,7 +145,6 @@ def make_upright_execute(
     Returns:
         NamedTuple of outputs (described in `MakeUprightOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_upright_cargs(params, execution)
     ret = make_upright_outputs(params, execution)
     execution.run(cargs)

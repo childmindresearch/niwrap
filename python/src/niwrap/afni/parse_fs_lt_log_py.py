@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "parse_fs_lt_log.py": parse_fs_lt_log_py_outputs,
     }.get(t)
 
 
@@ -163,7 +162,6 @@ def parse_fs_lt_log_py_execute(
     Returns:
         NamedTuple of outputs (described in `ParseFsLtLogPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = parse_fs_lt_log_py_cargs(params, execution)
     ret = parse_fs_lt_log_py_outputs(params, execution)
     execution.run(cargs)

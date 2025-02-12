@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "maskdyads": maskdyads_outputs,
     }.get(t)
 
 
@@ -145,7 +144,6 @@ def maskdyads_execute(
     Returns:
         NamedTuple of outputs (described in `MaskdyadsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = maskdyads_cargs(params, execution)
     ret = maskdyads_outputs(params, execution)
     execution.run(cargs)

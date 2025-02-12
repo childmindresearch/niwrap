@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "niml_feedme": niml_feedme_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def niml_feedme_execute(
     Returns:
         NamedTuple of outputs (described in `NimlFeedmeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = niml_feedme_cargs(params, execution)
     ret = niml_feedme_outputs(params, execution)
     execution.run(cargs)

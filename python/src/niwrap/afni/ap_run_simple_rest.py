@@ -223,7 +223,6 @@ def ap_run_simple_rest_execute(
     Returns:
         NamedTuple of outputs (described in `ApRunSimpleRestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ap_run_simple_rest_cargs(params, execution)
     ret = ap_run_simple_rest_outputs(params, execution)
     execution.run(cargs)

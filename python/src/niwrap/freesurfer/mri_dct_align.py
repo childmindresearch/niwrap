@@ -143,7 +143,6 @@ def mri_dct_align_execute(
     Returns:
         NamedTuple of outputs (described in `MriDctAlignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_dct_align_cargs(params, execution)
     ret = mri_dct_align_outputs(params, execution)
     execution.run(cargs)

@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "xhemireg": xhemireg_outputs,
     }.get(t)
 
 
@@ -218,7 +217,6 @@ def xhemireg_execute(
     Returns:
         NamedTuple of outputs (described in `XhemiregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = xhemireg_cargs(params, execution)
     ret = xhemireg_outputs(params, execution)
     execution.run(cargs)

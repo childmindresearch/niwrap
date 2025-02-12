@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-label-export-table": cifti_label_export_table_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def cifti_label_export_table_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelExportTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_export_table_cargs(params, execution)
     ret = cifti_label_export_table_outputs(params, execution)
     execution.run(cargs)

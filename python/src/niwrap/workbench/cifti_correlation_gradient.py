@@ -85,10 +85,6 @@ def dyn_outputs(
     """
     return {
         "cifti-correlation-gradient": cifti_correlation_gradient_outputs,
-        "left_surface": cifti_correlation_gradient_left_surface_outputs,
-        "right_surface": cifti_correlation_gradient_right_surface_outputs,
-        "cerebellum_surface": cifti_correlation_gradient_cerebellum_surface_outputs,
-        "double_correlation": cifti_correlation_gradient_double_correlation_outputs,
     }.get(t)
 
 
@@ -480,7 +476,6 @@ def cifti_correlation_gradient_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCorrelationGradientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_correlation_gradient_cargs(params, execution)
     ret = cifti_correlation_gradient_outputs(params, execution)
     execution.run(cargs)

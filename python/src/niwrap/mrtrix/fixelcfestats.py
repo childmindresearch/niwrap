@@ -100,11 +100,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fixelcfestats": fixelcfestats_outputs,
-        "column": fixelcfestats_column_outputs,
-        "config": fixelcfestats_config_outputs,
-        "VariousString": fixelcfestats_various_string_outputs,
-        "VariousFile": fixelcfestats_various_file_outputs,
     }.get(t)
 
 
@@ -655,7 +650,6 @@ def fixelcfestats_execute(
     Returns:
         NamedTuple of outputs (described in `FixelcfestatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelcfestats_cargs(params, execution)
     ret = fixelcfestats_outputs(params, execution)
     execution.run(cargs)

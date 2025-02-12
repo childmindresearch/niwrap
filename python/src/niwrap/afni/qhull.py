@@ -267,7 +267,6 @@ def qhull_execute(
     Returns:
         NamedTuple of outputs (described in `QhullOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = qhull_cargs(params, execution)
     ret = qhull_outputs(params, execution)
     execution.run(cargs)

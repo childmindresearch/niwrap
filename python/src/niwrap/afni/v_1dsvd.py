@@ -198,7 +198,6 @@ def v_1dsvd_execute(
     Returns:
         NamedTuple of outputs (described in `V1dsvdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dsvd_cargs(params, execution)
     ret = v_1dsvd_outputs(params, execution)
     execution.run(cargs)

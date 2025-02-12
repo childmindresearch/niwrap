@@ -179,7 +179,6 @@ def v__afni_r_package_install_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniRPackageInstallOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_r_package_install_cargs(params, execution)
     ret = v__afni_r_package_install_outputs(params, execution)
     execution.run(cargs)

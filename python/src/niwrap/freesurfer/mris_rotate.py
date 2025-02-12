@@ -170,7 +170,6 @@ def mris_rotate_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRotateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_rotate_cargs(params, execution)
     ret = mris_rotate_outputs(params, execution)
     execution.run(cargs)

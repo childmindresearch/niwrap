@@ -157,7 +157,6 @@ def mri_extract_execute(
     Returns:
         NamedTuple of outputs (described in `MriExtractOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_extract_cargs(params, execution)
     ret = mri_extract_outputs(params, execution)
     execution.run(cargs)

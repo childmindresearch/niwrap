@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "immv": immv_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def immv_execute(
     Returns:
         NamedTuple of outputs (described in `ImmvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = immv_cargs(params, execution)
     ret = immv_outputs(params, execution)
     execution.run(cargs)

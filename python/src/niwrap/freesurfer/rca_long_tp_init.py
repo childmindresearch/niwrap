@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "rca-long-tp-init": rca_long_tp_init_outputs,
     }.get(t)
 
 
@@ -174,7 +173,6 @@ def rca_long_tp_init_execute(
     Returns:
         NamedTuple of outputs (described in `RcaLongTpInitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rca_long_tp_init_cargs(params, execution)
     ret = rca_long_tp_init_outputs(params, execution)
     execution.run(cargs)

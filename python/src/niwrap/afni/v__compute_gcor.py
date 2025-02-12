@@ -185,7 +185,6 @@ def v__compute_gcor_execute(
     Returns:
         NamedTuple of outputs (described in `VComputeGcorOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__compute_gcor_cargs(params, execution)
     ret = v__compute_gcor_outputs(params, execution)
     execution.run(cargs)

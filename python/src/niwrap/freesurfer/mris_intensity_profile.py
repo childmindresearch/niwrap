@@ -247,7 +247,6 @@ def mris_intensity_profile_execute(
     Returns:
         NamedTuple of outputs (described in `MrisIntensityProfileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_intensity_profile_cargs(params, execution)
     ret = mris_intensity_profile_outputs(params, execution)
     execution.run(cargs)

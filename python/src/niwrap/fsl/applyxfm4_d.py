@@ -149,7 +149,6 @@ def applyxfm4_d_execute(
     Returns:
         NamedTuple of outputs (described in `Applyxfm4DOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = applyxfm4_d_cargs(params, execution)
     ret = applyxfm4_d_outputs(params, execution)
     execution.run(cargs)

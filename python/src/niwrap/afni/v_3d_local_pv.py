@@ -236,7 +236,6 @@ def v_3d_local_pv_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalPvOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_local_pv_cargs(params, execution)
     ret = v_3d_local_pv_outputs(params, execution)
     execution.run(cargs)

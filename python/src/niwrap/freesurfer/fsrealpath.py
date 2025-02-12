@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsrealpath": fsrealpath_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def fsrealpath_execute(
     Returns:
         NamedTuple of outputs (described in `FsrealpathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsrealpath_cargs(params, execution)
     ret = fsrealpath_outputs(params, execution)
     execution.run(cargs)

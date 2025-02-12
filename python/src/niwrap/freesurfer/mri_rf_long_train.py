@@ -202,7 +202,6 @@ def mri_rf_long_train_execute(
     Returns:
         NamedTuple of outputs (described in `MriRfLongTrainOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_rf_long_train_cargs(params, execution)
     ret = mri_rf_long_train_outputs(params, execution)
     execution.run(cargs)

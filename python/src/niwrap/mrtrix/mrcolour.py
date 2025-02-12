@@ -65,7 +65,6 @@ def dyn_outputs(
     """
     return {
         "mrcolour": mrcolour_outputs,
-        "config": mrcolour_config_outputs,
     }.get(t)
 
 
@@ -295,7 +294,6 @@ def mrcolour_execute(
     Returns:
         NamedTuple of outputs (described in `MrcolourOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrcolour_cargs(params, execution)
     ret = mrcolour_outputs(params, execution)
     execution.run(cargs)

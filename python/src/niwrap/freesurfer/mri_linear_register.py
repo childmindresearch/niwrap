@@ -143,7 +143,6 @@ def mri_linear_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriLinearRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_linear_register_cargs(params, execution)
     ret = mri_linear_register_outputs(params, execution)
     execution.run(cargs)

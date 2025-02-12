@@ -197,7 +197,6 @@ def mris_warp_execute(
     Returns:
         NamedTuple of outputs (described in `MrisWarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_warp_cargs(params, execution)
     ret = mris_warp_outputs(params, execution)
     execution.run(cargs)

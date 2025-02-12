@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "lta_diff": lta_diff_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def lta_diff_execute(
     Returns:
         NamedTuple of outputs (described in `LtaDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = lta_diff_cargs(params, execution)
     ret = lta_diff_outputs(params, execution)
     execution.run(cargs)

@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dABoverlap": v_3d_aboverlap_outputs,
     }.get(t)
 
 
@@ -155,7 +154,6 @@ def v_3d_aboverlap_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAboverlapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_aboverlap_cargs(params, execution)
     ret = v_3d_aboverlap_outputs(params, execution)
     execution.run(cargs)

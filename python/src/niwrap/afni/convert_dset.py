@@ -312,7 +312,6 @@ def convert_dset_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertDsetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_dset_cargs(params, execution)
     ret = convert_dset_outputs(params, execution)
     execution.run(cargs)

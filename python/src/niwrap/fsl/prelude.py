@@ -393,7 +393,6 @@ def prelude_execute(
     Returns:
         NamedTuple of outputs (described in `PreludeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = prelude_cargs(params, execution)
     ret = prelude_outputs(params, execution)
     execution.run(cargs)

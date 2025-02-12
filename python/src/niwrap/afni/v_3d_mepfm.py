@@ -196,7 +196,6 @@ def v_3d_mepfm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dMepfmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_mepfm_cargs(params, execution)
     ret = v_3d_mepfm_outputs(params, execution)
     execution.run(cargs)

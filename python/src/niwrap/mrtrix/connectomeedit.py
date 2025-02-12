@@ -61,8 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "connectomeedit": connectomeedit_outputs,
-        "config": connectomeedit_config_outputs,
     }.get(t)
 
 
@@ -252,7 +250,6 @@ def connectomeedit_execute(
     Returns:
         NamedTuple of outputs (described in `ConnectomeeditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = connectomeedit_cargs(params, execution)
     ret = connectomeedit_outputs(params, execution)
     execution.run(cargs)

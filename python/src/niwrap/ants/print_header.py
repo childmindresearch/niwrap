@@ -142,7 +142,6 @@ def print_header_execute(
     Returns:
         NamedTuple of outputs (described in `PrintHeaderOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = print_header_cargs(params, execution)
     ret = print_header_outputs(params, execution)
     execution.run(cargs)

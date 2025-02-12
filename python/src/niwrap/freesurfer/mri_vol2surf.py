@@ -215,7 +215,6 @@ def mri_vol2surf_execute(
     Returns:
         NamedTuple of outputs (described in `MriVol2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_vol2surf_cargs(params, execution)
     ret = mri_vol2surf_outputs(params, execution)
     execution.run(cargs)

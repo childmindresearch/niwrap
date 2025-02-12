@@ -163,7 +163,6 @@ def surface_apply_warpfield_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceApplyWarpfieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_apply_warpfield_cargs(params, execution)
     ret = surface_apply_warpfield_outputs(params, execution)
     execution.run(cargs)

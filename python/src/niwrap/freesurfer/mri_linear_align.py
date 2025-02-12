@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_linear_align": mri_linear_align_outputs,
     }.get(t)
 
 
@@ -140,7 +139,6 @@ def mri_linear_align_execute(
     Returns:
         NamedTuple of outputs (described in `MriLinearAlignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_linear_align_cargs(params, execution)
     ret = mri_linear_align_outputs(params, execution)
     execution.run(cargs)

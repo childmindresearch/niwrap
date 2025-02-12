@@ -248,7 +248,6 @@ def ants_joint_label_fusion_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsJointLabelFusionShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_joint_label_fusion_sh_cargs(params, execution)
     ret = ants_joint_label_fusion_sh_outputs(params, execution)
     execution.run(cargs)

@@ -59,7 +59,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_make_template": mris_make_template_outputs,
     }.get(t)
 
 
@@ -240,7 +239,6 @@ def mris_make_template_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMakeTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_make_template_cargs(params, execution)
     ret = mris_make_template_outputs(params, execution)
     execution.run(cargs)

@@ -148,7 +148,6 @@ def mris_surface_to_vol_distances_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSurfaceToVolDistancesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_surface_to_vol_distances_cargs(params, execution)
     ret = mris_surface_to_vol_distances_outputs(params, execution)
     execution.run(cargs)

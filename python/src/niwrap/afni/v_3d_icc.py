@@ -168,7 +168,6 @@ def v_3d_icc_execute(
     Returns:
         NamedTuple of outputs (described in `V3dIccOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_icc_cargs(params, execution)
     ret = v_3d_icc_outputs(params, execution)
     execution.run(cargs)

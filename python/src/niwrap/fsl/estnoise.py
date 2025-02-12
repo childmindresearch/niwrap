@@ -154,7 +154,6 @@ def estnoise_execute(
     Returns:
         NamedTuple of outputs (described in `EstnoiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = estnoise_cargs(params, execution)
     ret = estnoise_outputs(params, execution)
     execution.run(cargs)

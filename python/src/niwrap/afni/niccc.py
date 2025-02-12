@@ -223,7 +223,6 @@ def niccc_execute(
     Returns:
         NamedTuple of outputs (described in `NicccOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = niccc_cargs(params, execution)
     ret = niccc_outputs(params, execution)
     execution.run(cargs)

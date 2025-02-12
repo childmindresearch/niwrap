@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gifti-convert": gifti_convert_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def gifti_convert_execute(
     Returns:
         NamedTuple of outputs (described in `GiftiConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gifti_convert_cargs(params, execution)
     ret = gifti_convert_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_correct_segmentations": mri_correct_segmentations_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def mri_correct_segmentations_execute(
     Returns:
         NamedTuple of outputs (described in `MriCorrectSegmentationsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_correct_segmentations_cargs(params, execution)
     ret = mri_correct_segmentations_outputs(params, execution)
     execution.run(cargs)

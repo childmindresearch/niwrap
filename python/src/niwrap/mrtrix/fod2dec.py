@@ -68,7 +68,6 @@ def dyn_outputs(
     """
     return {
         "fod2dec": fod2dec_outputs,
-        "config": fod2dec_config_outputs,
     }.get(t)
 
 
@@ -338,7 +337,6 @@ def fod2dec_execute(
     Returns:
         NamedTuple of outputs (described in `Fod2decOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fod2dec_cargs(params, execution)
     ret = fod2dec_outputs(params, execution)
     execution.run(cargs)

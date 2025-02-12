@@ -72,7 +72,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_register_to_volume": mris_register_to_volume_outputs,
     }.get(t)
 
 
@@ -385,7 +384,6 @@ def mris_register_to_volume_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRegisterToVolumeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_register_to_volume_cargs(params, execution)
     ret = mris_register_to_volume_outputs(params, execution)
     execution.run(cargs)

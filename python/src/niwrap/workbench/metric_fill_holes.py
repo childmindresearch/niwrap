@@ -159,7 +159,6 @@ def metric_fill_holes_execute(
     Returns:
         NamedTuple of outputs (described in `MetricFillHolesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_fill_holes_cargs(params, execution)
     ret = metric_fill_holes_outputs(params, execution)
     execution.run(cargs)

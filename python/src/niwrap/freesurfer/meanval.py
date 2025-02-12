@@ -158,7 +158,6 @@ def meanval_execute(
     Returns:
         NamedTuple of outputs (described in `MeanvalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = meanval_cargs(params, execution)
     ret = meanval_outputs(params, execution)
     execution.run(cargs)

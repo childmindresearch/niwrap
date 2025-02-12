@@ -184,7 +184,6 @@ def convert_surface_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_surface_cargs(params, execution)
     ret = convert_surface_outputs(params, execution)
     execution.run(cargs)

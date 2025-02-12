@@ -67,8 +67,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mrmetric": mrmetric_outputs,
-        "config": mrmetric_config_outputs,
     }.get(t)
 
 
@@ -315,7 +313,6 @@ def mrmetric_execute(
     Returns:
         NamedTuple of outputs (described in `MrmetricOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrmetric_cargs(params, execution)
     ret = mrmetric_outputs(params, execution)
     execution.run(cargs)

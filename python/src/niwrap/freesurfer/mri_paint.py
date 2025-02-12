@@ -164,7 +164,6 @@ def mri_paint_execute(
     Returns:
         NamedTuple of outputs (described in `MriPaintOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_paint_cargs(params, execution)
     ret = mri_paint_outputs(params, execution)
     execution.run(cargs)

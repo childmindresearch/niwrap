@@ -66,7 +66,6 @@ def dyn_outputs(
     """
     return {
         "dwidenoise": dwidenoise_outputs,
-        "config": dwidenoise_config_outputs,
     }.get(t)
 
 
@@ -342,7 +341,6 @@ def dwidenoise_execute(
     Returns:
         NamedTuple of outputs (described in `DwidenoiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwidenoise_cargs(params, execution)
     ret = dwidenoise_outputs(params, execution)
     execution.run(cargs)

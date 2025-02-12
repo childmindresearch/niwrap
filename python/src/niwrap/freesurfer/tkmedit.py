@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tkmedit": tkmedit_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def tkmedit_execute(
     Returns:
         NamedTuple of outputs (described in `TkmeditOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tkmedit_cargs(params, execution)
     ret = tkmedit_outputs(params, execution)
     execution.run(cargs)

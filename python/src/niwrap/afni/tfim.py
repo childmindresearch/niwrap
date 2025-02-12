@@ -201,7 +201,6 @@ def tfim_execute(
     Returns:
         NamedTuple of outputs (described in `TfimOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tfim_cargs(params, execution)
     ret = tfim_outputs(params, execution)
     execution.run(cargs)

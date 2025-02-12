@@ -143,7 +143,6 @@ def label_subject_execute(
     Returns:
         NamedTuple of outputs (described in `LabelSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_subject_cargs(params, execution)
     ret = label_subject_outputs(params, execution)
     execution.run(cargs)

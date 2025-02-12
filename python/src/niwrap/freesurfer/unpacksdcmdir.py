@@ -141,7 +141,6 @@ def unpacksdcmdir_execute(
     Returns:
         NamedTuple of outputs (described in `UnpacksdcmdirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = unpacksdcmdir_cargs(params, execution)
     ret = unpacksdcmdir_outputs(params, execution)
     execution.run(cargs)

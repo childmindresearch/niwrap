@@ -146,7 +146,6 @@ def surfmaths_execute(
     Returns:
         NamedTuple of outputs (described in `SurfmathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surfmaths_cargs(params, execution)
     ret = surfmaths_outputs(params, execution)
     execution.run(cargs)

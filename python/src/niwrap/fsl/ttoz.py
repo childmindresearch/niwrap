@@ -159,7 +159,6 @@ def ttoz_execute(
     Returns:
         NamedTuple of outputs (described in `TtozOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ttoz_cargs(params, execution)
     ret = ttoz_outputs(params, execution)
     execution.run(cargs)

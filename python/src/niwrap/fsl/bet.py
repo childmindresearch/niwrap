@@ -346,7 +346,6 @@ def bet_execute(
     Returns:
         NamedTuple of outputs (described in `BetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bet_cargs(params, execution)
     ret = bet_outputs(params, execution)
     execution.run(cargs)

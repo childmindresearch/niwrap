@@ -400,7 +400,6 @@ def mri_glmfit_sim_execute(
     Returns:
         NamedTuple of outputs (described in `MriGlmfitSimOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_glmfit_sim_cargs(params, execution)
     ret = mri_glmfit_sim_outputs(params, execution)
     execution.run(cargs)

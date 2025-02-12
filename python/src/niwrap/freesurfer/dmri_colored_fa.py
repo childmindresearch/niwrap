@@ -138,7 +138,6 @@ def dmri_colored_fa_execute(
     Returns:
         NamedTuple of outputs (described in `DmriColoredFaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_colored_fa_cargs(params, execution)
     ret = dmri_colored_fa_outputs(params, execution)
     execution.run(cargs)

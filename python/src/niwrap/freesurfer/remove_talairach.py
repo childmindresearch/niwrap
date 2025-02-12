@@ -140,7 +140,6 @@ def remove_talairach_execute(
     Returns:
         NamedTuple of outputs (described in `RemoveTalairachOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = remove_talairach_cargs(params, execution)
     ret = remove_talairach_outputs(params, execution)
     execution.run(cargs)

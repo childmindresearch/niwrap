@@ -626,7 +626,6 @@ def recon_all_execute(
     Returns:
         NamedTuple of outputs (described in `ReconAllOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = recon_all_cargs(params, execution)
     ret = recon_all_outputs(params, execution)
     execution.run(cargs)

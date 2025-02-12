@@ -154,7 +154,6 @@ def tbss_fill_execute(
     Returns:
         NamedTuple of outputs (described in `TbssFillOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tbss_fill_cargs(params, execution)
     ret = tbss_fill_outputs(params, execution)
     execution.run(cargs)

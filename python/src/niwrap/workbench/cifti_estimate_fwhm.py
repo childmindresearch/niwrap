@@ -60,9 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-estimate-fwhm": cifti_estimate_fwhm_outputs,
-        "whole_file": cifti_estimate_fwhm_whole_file_outputs,
-        "surface": cifti_estimate_fwhm_surface_outputs,
     }.get(t)
 
 
@@ -296,7 +293,6 @@ def cifti_estimate_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiEstimateFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_estimate_fwhm_cargs(params, execution)
     ret = cifti_estimate_fwhm_outputs(params, execution)
     execution.run(cargs)

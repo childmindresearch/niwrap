@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "match_smoothing": match_smoothing_outputs,
     }.get(t)
 
 
@@ -148,7 +147,6 @@ def match_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `MatchSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = match_smoothing_cargs(params, execution)
     ret = match_smoothing_outputs(params, execution)
     execution.run(cargs)

@@ -57,7 +57,6 @@ def dyn_outputs(
     """
     return {
         "volume-math": volume_math_outputs,
-        "var": volume_math_var_outputs,
     }.get(t)
 
 
@@ -291,7 +290,6 @@ def volume_math_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeMathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_math_cargs(params, execution)
     ret = volume_math_outputs(params, execution)
     execution.run(cargs)

@@ -173,7 +173,6 @@ def tkregister2_execute(
     Returns:
         NamedTuple of outputs (described in `Tkregister2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tkregister2_cargs(params, execution)
     ret = tkregister2_outputs(params, execution)
     execution.run(cargs)

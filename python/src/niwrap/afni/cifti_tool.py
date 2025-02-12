@@ -204,7 +204,6 @@ def cifti_tool_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_tool_cargs(params, execution)
     ret = cifti_tool_outputs(params, execution)
     execution.run(cargs)

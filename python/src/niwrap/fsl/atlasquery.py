@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "atlasquery": atlasquery_outputs,
     }.get(t)
 
 
@@ -173,7 +172,6 @@ def atlasquery_execute(
     Returns:
         NamedTuple of outputs (described in `AtlasqueryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = atlasquery_cargs(params, execution)
     ret = atlasquery_outputs(params, execution)
     execution.run(cargs)

@@ -191,7 +191,6 @@ def volume_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_smoothing_cargs(params, execution)
     ret = volume_smoothing_outputs(params, execution)
     execution.run(cargs)

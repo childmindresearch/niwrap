@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "inspec": inspec_outputs,
     }.get(t)
 
 
@@ -192,7 +191,6 @@ def inspec_execute(
     Returns:
         NamedTuple of outputs (described in `InspecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = inspec_cargs(params, execution)
     ret = inspec_outputs(params, execution)
     execution.run(cargs)

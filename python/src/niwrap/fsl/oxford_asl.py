@@ -145,7 +145,6 @@ def oxford_asl_execute(
     Returns:
         NamedTuple of outputs (described in `OxfordAslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = oxford_asl_cargs(params, execution)
     ret = oxford_asl_outputs(params, execution)
     execution.run(cargs)

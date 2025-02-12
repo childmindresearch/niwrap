@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "backend-average-roi-correlation": backend_average_roi_correlation_outputs,
     }.get(t)
 
 
@@ -142,7 +141,6 @@ def backend_average_roi_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `BackendAverageRoiCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = backend_average_roi_correlation_cargs(params, execution)
     ret = backend_average_roi_correlation_outputs(params, execution)
     execution.run(cargs)

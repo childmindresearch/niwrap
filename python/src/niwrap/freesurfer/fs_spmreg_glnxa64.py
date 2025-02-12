@@ -129,7 +129,6 @@ def fs_spmreg_glnxa64_execute(
     Returns:
         NamedTuple of outputs (described in `FsSpmregGlnxa64Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fs_spmreg_glnxa64_cargs(params, execution)
     ret = fs_spmreg_glnxa64_outputs(params, execution)
     execution.run(cargs)

@@ -143,7 +143,6 @@ def histo_compute_joint_density_execute(
     Returns:
         NamedTuple of outputs (described in `HistoComputeJointDensityOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = histo_compute_joint_density_cargs(params, execution)
     ret = histo_compute_joint_density_outputs(params, execution)
     execution.run(cargs)

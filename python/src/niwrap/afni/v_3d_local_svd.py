@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dLocalSVD": v_3d_local_svd_outputs,
     }.get(t)
 
 
@@ -194,7 +193,6 @@ def v_3d_local_svd_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLocalSvdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_local_svd_cargs(params, execution)
     ret = v_3d_local_svd_outputs(params, execution)
     execution.run(cargs)

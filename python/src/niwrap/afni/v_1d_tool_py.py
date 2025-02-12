@@ -240,7 +240,6 @@ def v_1d_tool_py_execute(
     Returns:
         NamedTuple of outputs (described in `V1dToolPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1d_tool_py_cargs(params, execution)
     ret = v_1d_tool_py_outputs(params, execution)
     execution.run(cargs)

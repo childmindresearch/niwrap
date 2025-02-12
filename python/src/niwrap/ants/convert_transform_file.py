@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ConvertTransformFile": convert_transform_file_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def convert_transform_file_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertTransformFileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_transform_file_cargs(params, execution)
     ret = convert_transform_file_outputs(params, execution)
     execution.run(cargs)

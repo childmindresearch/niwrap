@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "spm_t_to_b": spm_t_to_b_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def spm_t_to_b_execute(
     Returns:
         NamedTuple of outputs (described in `SpmTToBOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spm_t_to_b_cargs(params, execution)
     ret = spm_t_to_b_outputs(params, execution)
     execution.run(cargs)

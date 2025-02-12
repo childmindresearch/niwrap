@@ -312,7 +312,6 @@ def make_color_map_execute(
     Returns:
         NamedTuple of outputs (described in `MakeColorMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_color_map_cargs(params, execution)
     ret = make_color_map_outputs(params, execution)
     execution.run(cargs)

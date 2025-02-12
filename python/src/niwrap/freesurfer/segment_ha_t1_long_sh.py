@@ -138,7 +138,6 @@ def segment_ha_t1_long_sh_execute(
     Returns:
         NamedTuple of outputs (described in `SegmentHaT1LongShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = segment_ha_t1_long_sh_cargs(params, execution)
     ret = segment_ha_t1_long_sh_outputs(params, execution)
     execution.run(cargs)

@@ -163,7 +163,6 @@ def mris_image2vtk_execute(
     Returns:
         NamedTuple of outputs (described in `MrisImage2vtkOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_image2vtk_cargs(params, execution)
     ret = mris_image2vtk_outputs(params, execution)
     execution.run(cargs)

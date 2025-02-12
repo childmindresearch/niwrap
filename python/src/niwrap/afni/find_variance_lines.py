@@ -267,7 +267,6 @@ def find_variance_lines_execute(
     Returns:
         NamedTuple of outputs (described in `FindVarianceLinesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = find_variance_lines_cargs(params, execution)
     ret = find_variance_lines_outputs(params, execution)
     execution.run(cargs)

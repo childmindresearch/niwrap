@@ -192,7 +192,6 @@ def mris_remesh_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRemeshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_remesh_cargs(params, execution)
     ret = mris_remesh_outputs(params, execution)
     execution.run(cargs)

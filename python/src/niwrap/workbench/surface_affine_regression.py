@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surface-affine-regression": surface_affine_regression_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def surface_affine_regression_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceAffineRegressionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_affine_regression_cargs(params, execution)
     ret = surface_affine_regression_outputs(params, execution)
     execution.run(cargs)

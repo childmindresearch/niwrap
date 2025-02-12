@@ -152,7 +152,6 @@ def v__script_check_execute(
     Returns:
         NamedTuple of outputs (described in `VScriptCheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__script_check_cargs(params, execution)
     ret = v__script_check_outputs(params, execution)
     execution.run(cargs)

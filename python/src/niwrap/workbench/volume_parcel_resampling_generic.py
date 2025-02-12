@@ -188,7 +188,6 @@ def volume_parcel_resampling_generic_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeParcelResamplingGenericOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_parcel_resampling_generic_cargs(params, execution)
     ret = volume_parcel_resampling_generic_outputs(params, execution)
     execution.run(cargs)

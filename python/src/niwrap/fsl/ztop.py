@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ztop": ztop_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def ztop_execute(
     Returns:
         NamedTuple of outputs (described in `ZtopOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ztop_cargs(params, execution)
     ret = ztop_outputs(params, execution)
     execution.run(cargs)

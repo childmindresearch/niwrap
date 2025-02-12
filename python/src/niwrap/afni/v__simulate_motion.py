@@ -259,7 +259,6 @@ def v__simulate_motion_execute(
     Returns:
         NamedTuple of outputs (described in `VSimulateMotionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__simulate_motion_cargs(params, execution)
     ret = v__simulate_motion_outputs(params, execution)
     execution.run(cargs)

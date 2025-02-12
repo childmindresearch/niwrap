@@ -61,7 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-capture-plane": volume_capture_plane_outputs,
     }.get(t)
 
 
@@ -221,7 +220,6 @@ def volume_capture_plane_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCapturePlaneOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_capture_plane_cargs(params, execution)
     ret = volume_capture_plane_outputs(params, execution)
     execution.run(cargs)

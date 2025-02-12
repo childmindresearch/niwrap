@@ -133,7 +133,6 @@ def v_3d_conformist_execute(
     Returns:
         NamedTuple of outputs (described in `V3dConformistOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_conformist_cargs(params, execution)
     ret = v_3d_conformist_outputs(params, execution)
     execution.run(cargs)

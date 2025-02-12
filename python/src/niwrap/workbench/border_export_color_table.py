@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "border-export-color-table": border_export_color_table_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def border_export_color_table_execute(
     Returns:
         NamedTuple of outputs (described in `BorderExportColorTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_export_color_table_cargs(params, execution)
     ret = border_export_color_table_outputs(params, execution)
     execution.run(cargs)

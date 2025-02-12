@@ -141,7 +141,6 @@ def v__center_distance_execute(
     Returns:
         NamedTuple of outputs (described in `VCenterDistanceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__center_distance_cargs(params, execution)
     ret = v__center_distance_outputs(params, execution)
     execution.run(cargs)

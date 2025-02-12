@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "aiv": aiv_outputs,
     }.get(t)
 
 
@@ -173,7 +172,6 @@ def aiv_execute(
     Returns:
         NamedTuple of outputs (described in `AivOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = aiv_cargs(params, execution)
     ret = aiv_outputs(params, execution)
     execution.run(cargs)

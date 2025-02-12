@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "afni_check_omp": afni_check_omp_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def afni_check_omp_execute(
     Returns:
         NamedTuple of outputs (described in `AfniCheckOmpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_check_omp_cargs(params, execution)
     ret = afni_check_omp_outputs(params, execution)
     execution.run(cargs)

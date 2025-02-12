@@ -201,7 +201,6 @@ def ants_n4_bias_field_correction_fs_execute(
     Returns:
         NamedTuple of outputs (described in `AntsN4BiasFieldCorrectionFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_n4_bias_field_correction_fs_cargs(params, execution)
     ret = ants_n4_bias_field_correction_fs_outputs(params, execution)
     execution.run(cargs)

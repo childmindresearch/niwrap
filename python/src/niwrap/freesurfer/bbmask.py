@@ -200,7 +200,6 @@ def bbmask_execute(
     Returns:
         NamedTuple of outputs (described in `BbmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bbmask_cargs(params, execution)
     ret = bbmask_outputs(params, execution)
     execution.run(cargs)

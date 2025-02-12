@@ -408,7 +408,6 @@ def dcm2niix_afni_execute(
     Returns:
         NamedTuple of outputs (described in `Dcm2niixAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcm2niix_afni_cargs(params, execution)
     ret = dcm2niix_afni_outputs(params, execution)
     execution.run(cargs)

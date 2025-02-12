@@ -358,7 +358,6 @@ def mri_compute_volume_fractions_execute(
     Returns:
         NamedTuple of outputs (described in `MriComputeVolumeFractionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_compute_volume_fractions_cargs(params, execution)
     ret = mri_compute_volume_fractions_outputs(params, execution)
     execution.run(cargs)

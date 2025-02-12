@@ -63,8 +63,6 @@ def dyn_outputs(
     """
     return {
         "metric-regression": metric_regression_outputs,
-        "remove": metric_regression_remove_outputs,
-        "keep": metric_regression_keep_outputs,
     }.get(t)
 
 
@@ -289,7 +287,6 @@ def metric_regression_execute(
     Returns:
         NamedTuple of outputs (described in `MetricRegressionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_regression_cargs(params, execution)
     ret = metric_regression_outputs(params, execution)
     execution.run(cargs)

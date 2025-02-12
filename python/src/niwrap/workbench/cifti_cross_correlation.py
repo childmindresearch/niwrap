@@ -182,7 +182,6 @@ def cifti_cross_correlation_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_cross_correlation_cargs(params, execution)
     ret = cifti_cross_correlation_outputs(params, execution)
     execution.run(cargs)

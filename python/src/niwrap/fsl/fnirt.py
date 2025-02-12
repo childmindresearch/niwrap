@@ -221,7 +221,6 @@ def fnirt_execute(
     Returns:
         NamedTuple of outputs (described in `FnirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fnirt_cargs(params, execution)
     ret = fnirt_outputs(params, execution)
     execution.run(cargs)

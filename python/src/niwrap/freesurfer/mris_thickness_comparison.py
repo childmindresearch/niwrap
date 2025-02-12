@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_thickness_comparison": mris_thickness_comparison_outputs,
     }.get(t)
 
 
@@ -151,7 +150,6 @@ def mris_thickness_comparison_execute(
     Returns:
         NamedTuple of outputs (described in `MrisThicknessComparisonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_thickness_comparison_cargs(params, execution)
     ret = mris_thickness_comparison_outputs(params, execution)
     execution.run(cargs)

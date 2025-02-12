@@ -330,7 +330,6 @@ def v_3dttest___execute(
     Returns:
         NamedTuple of outputs (described in `V3dttestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dttest___cargs(params, execution)
     ret = v_3dttest___outputs(params, execution)
     execution.run(cargs)

@@ -70,9 +70,6 @@ def dyn_outputs(
     """
     return {
         "foci-resample": foci_resample_outputs,
-        "left_surfaces": foci_resample_left_surfaces_outputs,
-        "right_surfaces": foci_resample_right_surfaces_outputs,
-        "cerebellum_surfaces": foci_resample_cerebellum_surfaces_outputs,
     }.get(t)
 
 
@@ -324,7 +321,6 @@ def foci_resample_execute(
     Returns:
         NamedTuple of outputs (described in `FociResampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = foci_resample_cargs(params, execution)
     ret = foci_resample_outputs(params, execution)
     execution.run(cargs)

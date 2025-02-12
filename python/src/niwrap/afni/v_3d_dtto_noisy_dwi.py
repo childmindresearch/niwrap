@@ -203,7 +203,6 @@ def v_3d_dtto_noisy_dwi_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDttoNoisyDwiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_dtto_noisy_dwi_cargs(params, execution)
     ret = v_3d_dtto_noisy_dwi_outputs(params, execution)
     execution.run(cargs)

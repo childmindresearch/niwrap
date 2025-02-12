@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ROI2dataset": roi2dataset_outputs,
     }.get(t)
 
 
@@ -229,7 +228,6 @@ def roi2dataset_execute(
     Returns:
         NamedTuple of outputs (described in `Roi2datasetOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = roi2dataset_cargs(params, execution)
     ret = roi2dataset_outputs(params, execution)
     execution.run(cargs)

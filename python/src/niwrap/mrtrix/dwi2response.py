@@ -145,8 +145,6 @@ def dyn_outputs(
         "msmt_5tt": dwi2response_msmt_5tt_outputs,
         "tax": dwi2response_tax_outputs,
         "tournier": dwi2response_tournier_outputs,
-        "fslgrad": dwi2response_fslgrad_outputs,
-        "config": dwi2response_config_outputs,
     }.get(t)
 
 
@@ -1144,7 +1142,6 @@ def dwi2response_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2responseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwi2response_cargs(params, execution)
     ret = dwi2response_outputs(params, execution)
     execution.run(cargs)

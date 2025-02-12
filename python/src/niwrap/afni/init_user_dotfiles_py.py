@@ -61,7 +61,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "init_user_dotfiles.py": init_user_dotfiles_py_outputs,
     }.get(t)
 
 
@@ -259,7 +258,6 @@ def init_user_dotfiles_py_execute(
     Returns:
         NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = init_user_dotfiles_py_cargs(params, execution)
     ret = init_user_dotfiles_py_outputs(params, execution)
     execution.run(cargs)

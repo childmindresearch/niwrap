@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bedpostx_datacheck": bedpostx_datacheck_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def bedpostx_datacheck_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxDatacheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bedpostx_datacheck_cargs(params, execution)
     ret = bedpostx_datacheck_outputs(params, execution)
     execution.run(cargs)

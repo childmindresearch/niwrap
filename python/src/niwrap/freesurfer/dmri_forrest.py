@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_forrest": dmri_forrest_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def dmri_forrest_execute(
     Returns:
         NamedTuple of outputs (described in `DmriForrestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_forrest_cargs(params, execution)
     ret = dmri_forrest_outputs(params, execution)
     execution.run(cargs)

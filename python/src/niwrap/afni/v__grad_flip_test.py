@@ -269,7 +269,6 @@ def v__grad_flip_test_execute(
     Returns:
         NamedTuple of outputs (described in `VGradFlipTestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__grad_flip_test_cargs(params, execution)
     ret = v__grad_flip_test_outputs(params, execution)
     execution.run(cargs)

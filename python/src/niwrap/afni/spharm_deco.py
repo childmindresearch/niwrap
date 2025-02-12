@@ -209,7 +209,6 @@ def spharm_deco_execute(
     Returns:
         NamedTuple of outputs (described in `SpharmDecoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spharm_deco_cargs(params, execution)
     ret = spharm_deco_outputs(params, execution)
     execution.run(cargs)

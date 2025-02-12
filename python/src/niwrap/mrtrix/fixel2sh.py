@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "fixel2sh": fixel2sh_outputs,
-        "config": fixel2sh_config_outputs,
     }.get(t)
 
 
@@ -265,7 +264,6 @@ def fixel2sh_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2shOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixel2sh_cargs(params, execution)
     ret = fixel2sh_outputs(params, execution)
     execution.run(cargs)

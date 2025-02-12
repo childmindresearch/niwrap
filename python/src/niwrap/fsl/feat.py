@@ -133,7 +133,6 @@ def feat_execute(
     Returns:
         NamedTuple of outputs (described in `FeatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = feat_cargs(params, execution)
     ret = feat_outputs(params, execution)
     execution.run(cargs)

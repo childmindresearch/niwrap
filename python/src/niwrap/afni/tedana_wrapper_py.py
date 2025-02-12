@@ -228,7 +228,6 @@ def tedana_wrapper_py_execute(
     Returns:
         NamedTuple of outputs (described in `TedanaWrapperPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tedana_wrapper_py_cargs(params, execution)
     ret = tedana_wrapper_py_outputs(params, execution)
     execution.run(cargs)

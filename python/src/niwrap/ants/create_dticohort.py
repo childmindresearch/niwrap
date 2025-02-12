@@ -225,7 +225,6 @@ def create_dticohort_execute(
     Returns:
         NamedTuple of outputs (described in `CreateDticohortOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = create_dticohort_cargs(params, execution)
     ret = create_dticohort_outputs(params, execution)
     execution.run(cargs)

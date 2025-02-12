@@ -44,7 +44,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fiducials_calibration": fiducials_calibration_outputs,
     }.get(t)
 
 
@@ -125,7 +124,6 @@ def fiducials_calibration_execute(
     Returns:
         NamedTuple of outputs (described in `FiducialsCalibrationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fiducials_calibration_cargs(params, execution)
     ret = fiducials_calibration_outputs(params, execution)
     execution.run(cargs)

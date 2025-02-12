@@ -323,7 +323,6 @@ def fsl_rigid_register_execute(
     Returns:
         NamedTuple of outputs (described in `FslRigidRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_rigid_register_cargs(params, execution)
     ret = fsl_rigid_register_outputs(params, execution)
     execution.run(cargs)

@@ -196,7 +196,6 @@ def threshold_image_execute(
     Returns:
         NamedTuple of outputs (described in `ThresholdImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = threshold_image_cargs(params, execution)
     ret = threshold_image_outputs(params, execution)
     execution.run(cargs)

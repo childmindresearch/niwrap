@@ -170,7 +170,6 @@ def split_parts_gpu_execute(
     Returns:
         NamedTuple of outputs (described in `SplitPartsGpuOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = split_parts_gpu_cargs(params, execution)
     ret = split_parts_gpu_outputs(params, execution)
     execution.run(cargs)

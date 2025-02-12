@@ -305,7 +305,6 @@ def timing_tool_py_execute(
     Returns:
         NamedTuple of outputs (described in `TimingToolPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = timing_tool_py_cargs(params, execution)
     ret = timing_tool_py_outputs(params, execution)
     execution.run(cargs)

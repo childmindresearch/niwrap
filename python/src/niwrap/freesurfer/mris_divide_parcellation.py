@@ -175,7 +175,6 @@ def mris_divide_parcellation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisDivideParcellationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_divide_parcellation_cargs(params, execution)
     ret = mris_divide_parcellation_outputs(params, execution)
     execution.run(cargs)

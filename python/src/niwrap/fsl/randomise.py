@@ -375,7 +375,6 @@ def randomise_execute(
     Returns:
         NamedTuple of outputs (described in `RandomiseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = randomise_cargs(params, execution)
     ret = randomise_outputs(params, execution)
     execution.run(cargs)

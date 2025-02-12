@@ -139,7 +139,6 @@ def mri_gca_ambiguous_execute(
     Returns:
         NamedTuple of outputs (described in `MriGcaAmbiguousOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_gca_ambiguous_cargs(params, execution)
     ret = mri_gca_ambiguous_outputs(params, execution)
     execution.run(cargs)

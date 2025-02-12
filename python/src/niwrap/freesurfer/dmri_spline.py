@@ -207,7 +207,6 @@ def dmri_spline_execute(
     Returns:
         NamedTuple of outputs (described in `DmriSplineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_spline_cargs(params, execution)
     ret = dmri_spline_outputs(params, execution)
     execution.run(cargs)

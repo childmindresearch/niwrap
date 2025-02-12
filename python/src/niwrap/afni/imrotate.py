@@ -159,7 +159,6 @@ def imrotate_execute(
     Returns:
         NamedTuple of outputs (described in `ImrotateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imrotate_cargs(params, execution)
     ret = imrotate_outputs(params, execution)
     execution.run(cargs)

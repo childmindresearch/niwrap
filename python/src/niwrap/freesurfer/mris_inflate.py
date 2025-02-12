@@ -203,7 +203,6 @@ def mris_inflate_execute(
     Returns:
         NamedTuple of outputs (described in `MrisInflateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_inflate_cargs(params, execution)
     ret = mris_inflate_outputs(params, execution)
     execution.run(cargs)

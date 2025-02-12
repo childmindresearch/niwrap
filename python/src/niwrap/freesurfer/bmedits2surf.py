@@ -213,7 +213,6 @@ def bmedits2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Bmedits2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bmedits2surf_cargs(params, execution)
     ret = bmedits2surf_outputs(params, execution)
     execution.run(cargs)

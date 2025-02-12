@@ -166,7 +166,6 @@ def smooth_image_execute(
     Returns:
         NamedTuple of outputs (described in `SmoothImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = smooth_image_cargs(params, execution)
     ret = smooth_image_outputs(params, execution)
     execution.run(cargs)

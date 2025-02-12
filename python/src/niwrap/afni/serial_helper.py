@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "serial_helper": serial_helper_outputs,
     }.get(t)
 
 
@@ -223,7 +222,6 @@ def serial_helper_execute(
     Returns:
         NamedTuple of outputs (described in `SerialHelperOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = serial_helper_cargs(params, execution)
     ret = serial_helper_outputs(params, execution)
     execution.run(cargs)

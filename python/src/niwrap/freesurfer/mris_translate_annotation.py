@@ -153,7 +153,6 @@ def mris_translate_annotation_execute(
     Returns:
         NamedTuple of outputs (described in `MrisTranslateAnnotationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_translate_annotation_cargs(params, execution)
     ret = mris_translate_annotation_outputs(params, execution)
     execution.run(cargs)

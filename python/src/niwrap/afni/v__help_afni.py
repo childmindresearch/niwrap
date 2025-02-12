@@ -44,7 +44,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@help.AFNI": v__help_afni_outputs,
     }.get(t)
 
 
@@ -126,7 +125,6 @@ def v__help_afni_execute(
     Returns:
         NamedTuple of outputs (described in `VHelpAfniOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__help_afni_cargs(params, execution)
     ret = v__help_afni_outputs(params, execution)
     execution.run(cargs)

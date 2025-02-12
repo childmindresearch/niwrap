@@ -142,7 +142,6 @@ def volume_components_to_frames_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeComponentsToFramesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_components_to_frames_cargs(params, execution)
     ret = volume_components_to_frames_outputs(params, execution)
     execution.run(cargs)

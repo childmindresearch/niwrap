@@ -152,7 +152,6 @@ def surface_smoothing_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSmoothingOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_smoothing_cargs(params, execution)
     ret = surface_smoothing_outputs(params, execution)
     execution.run(cargs)

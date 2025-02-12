@@ -232,7 +232,6 @@ def denoise_image_execute(
     Returns:
         NamedTuple of outputs (described in `DenoiseImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = denoise_image_cargs(params, execution)
     ret = denoise_image_outputs(params, execution)
     execution.run(cargs)

@@ -68,7 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@djunct_overlap_check": v__djunct_overlap_check_outputs,
     }.get(t)
 
 
@@ -319,7 +318,6 @@ def v__djunct_overlap_check_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunctOverlapCheckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_overlap_check_cargs(params, execution)
     ret = v__djunct_overlap_check_outputs(params, execution)
     execution.run(cargs)

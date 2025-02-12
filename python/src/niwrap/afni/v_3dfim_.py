@@ -262,7 +262,6 @@ def v_3dfim__execute(
     Returns:
         NamedTuple of outputs (described in `V3dfimOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dfim__cargs(params, execution)
     ret = v_3dfim__outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dcopy": v_3dcopy_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def v_3dcopy_execute(
     Returns:
         NamedTuple of outputs (described in `V3dcopyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dcopy_cargs(params, execution)
     ret = v_3dcopy_outputs(params, execution)
     execution.run(cargs)

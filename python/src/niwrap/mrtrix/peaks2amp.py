@@ -61,7 +61,6 @@ def dyn_outputs(
     """
     return {
         "peaks2amp": peaks2amp_outputs,
-        "config": peaks2amp_config_outputs,
     }.get(t)
 
 
@@ -250,7 +249,6 @@ def peaks2amp_execute(
     Returns:
         NamedTuple of outputs (described in `Peaks2ampOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = peaks2amp_cargs(params, execution)
     ret = peaks2amp_outputs(params, execution)
     execution.run(cargs)

@@ -185,7 +185,6 @@ def mri_map_cpdat_execute(
     Returns:
         NamedTuple of outputs (described in `MriMapCpdatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_map_cpdat_cargs(params, execution)
     ret = mri_map_cpdat_outputs(params, execution)
     execution.run(cargs)

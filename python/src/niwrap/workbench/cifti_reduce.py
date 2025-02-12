@@ -57,7 +57,6 @@ def dyn_outputs(
     """
     return {
         "cifti-reduce": cifti_reduce_outputs,
-        "exclude_outliers": cifti_reduce_exclude_outliers_outputs,
     }.get(t)
 
 
@@ -239,7 +238,6 @@ def cifti_reduce_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiReduceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_reduce_cargs(params, execution)
     ret = cifti_reduce_outputs(params, execution)
     execution.run(cargs)

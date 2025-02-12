@@ -247,7 +247,6 @@ def v_3d_tagalign_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTagalignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tagalign_cargs(params, execution)
     ret = v_3d_tagalign_outputs(params, execution)
     execution.run(cargs)

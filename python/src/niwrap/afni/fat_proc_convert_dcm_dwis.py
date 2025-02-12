@@ -272,7 +272,6 @@ def fat_proc_convert_dcm_dwis_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcConvertDcmDwisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_convert_dcm_dwis_cargs(params, execution)
     ret = fat_proc_convert_dcm_dwis_outputs(params, execution)
     execution.run(cargs)

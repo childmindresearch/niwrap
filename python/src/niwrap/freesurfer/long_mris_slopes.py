@@ -78,7 +78,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "long_mris_slopes": long_mris_slopes_outputs,
     }.get(t)
 
 
@@ -425,7 +424,6 @@ def long_mris_slopes_execute(
     Returns:
         NamedTuple of outputs (described in `LongMrisSlopesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_mris_slopes_cargs(params, execution)
     ret = long_mris_slopes_outputs(params, execution)
     execution.run(cargs)

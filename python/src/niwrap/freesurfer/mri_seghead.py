@@ -59,7 +59,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_seghead": mri_seghead_outputs,
     }.get(t)
 
 
@@ -263,7 +262,6 @@ def mri_seghead_execute(
     Returns:
         NamedTuple of outputs (described in `MriSegheadOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_seghead_cargs(params, execution)
     ret = mri_seghead_outputs(params, execution)
     execution.run(cargs)

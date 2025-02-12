@@ -204,7 +204,6 @@ def tsplot_execute(
     Returns:
         NamedTuple of outputs (described in `TsplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsplot_cargs(params, execution)
     ret = tsplot_outputs(params, execution)
     execution.run(cargs)

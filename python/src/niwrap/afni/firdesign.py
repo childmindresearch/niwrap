@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "FIRdesign": firdesign_outputs,
     }.get(t)
 
 
@@ -174,7 +173,6 @@ def firdesign_execute(
     Returns:
         NamedTuple of outputs (described in `FirdesignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = firdesign_cargs(params, execution)
     ret = firdesign_outputs(params, execution)
     execution.run(cargs)

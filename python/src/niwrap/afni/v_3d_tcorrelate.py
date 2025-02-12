@@ -259,7 +259,6 @@ def v_3d_tcorrelate_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTcorrelateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tcorrelate_cargs(params, execution)
     ret = v_3d_tcorrelate_outputs(params, execution)
     execution.run(cargs)

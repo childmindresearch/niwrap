@@ -186,7 +186,6 @@ def convert_cdiflist_to_grads_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertCdiflistToGradsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_cdiflist_to_grads_cargs(params, execution)
     ret = convert_cdiflist_to_grads_outputs(params, execution)
     execution.run(cargs)

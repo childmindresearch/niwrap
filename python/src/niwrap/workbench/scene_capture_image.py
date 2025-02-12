@@ -85,11 +85,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "scene-capture-image": scene_capture_image_outputs,
-        "size_width_height": scene_capture_image_size_width_height_outputs,
-        "resolution": scene_capture_image_resolution_outputs,
-        "set_map_yoke": scene_capture_image_set_map_yoke_outputs,
-        "conn_db_login": scene_capture_image_conn_db_login_outputs,
     }.get(t)
 
 
@@ -529,7 +524,6 @@ def scene_capture_image_execute(
     Returns:
         NamedTuple of outputs (described in `SceneCaptureImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = scene_capture_image_cargs(params, execution)
     ret = scene_capture_image_outputs(params, execution)
     execution.run(cargs)

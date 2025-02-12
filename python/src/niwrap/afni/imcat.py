@@ -362,7 +362,6 @@ def imcat_execute(
     Returns:
         NamedTuple of outputs (described in `ImcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imcat_cargs(params, execution)
     ret = imcat_outputs(params, execution)
     execution.run(cargs)

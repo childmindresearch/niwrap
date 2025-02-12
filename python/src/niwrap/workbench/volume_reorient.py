@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "volume-reorient": volume_reorient_outputs,
     }.get(t)
 
 
@@ -153,7 +152,6 @@ def volume_reorient_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeReorientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_reorient_cargs(params, execution)
     ret = volume_reorient_outputs(params, execution)
     execution.run(cargs)

@@ -134,7 +134,6 @@ def v__get_afni_view_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniViewOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_view_cargs(params, execution)
     ret = v__get_afni_view_outputs(params, execution)
     execution.run(cargs)

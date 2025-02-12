@@ -498,7 +498,6 @@ def samseg_execute(
     Returns:
         NamedTuple of outputs (described in `SamsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = samseg_cargs(params, execution)
     ret = samseg_outputs(params, execution)
     execution.run(cargs)

@@ -56,7 +56,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_concatenate_lta": mri_concatenate_lta_outputs,
     }.get(t)
 
 
@@ -214,7 +213,6 @@ def mri_concatenate_lta_execute(
     Returns:
         NamedTuple of outputs (described in `MriConcatenateLtaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_concatenate_lta_cargs(params, execution)
     ret = mri_concatenate_lta_outputs(params, execution)
     execution.run(cargs)

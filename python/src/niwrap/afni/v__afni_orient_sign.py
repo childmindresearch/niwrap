@@ -136,7 +136,6 @@ def v__afni_orient_sign_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniOrientSignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_orient_sign_cargs(params, execution)
     ret = v__afni_orient_sign_outputs(params, execution)
     execution.run(cargs)

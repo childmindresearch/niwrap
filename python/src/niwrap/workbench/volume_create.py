@@ -78,8 +78,6 @@ def dyn_outputs(
     """
     return {
         "volume-create": volume_create_outputs,
-        "plumb": volume_create_plumb_outputs,
-        "sform": volume_create_sform_outputs,
     }.get(t)
 
 
@@ -338,7 +336,6 @@ def volume_create_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCreateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_create_cargs(params, execution)
     ret = volume_create_outputs(params, execution)
     execution.run(cargs)

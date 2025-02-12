@@ -192,7 +192,6 @@ def ants_cortical_thickness_sh_execute(
     Returns:
         NamedTuple of outputs (described in `AntsCorticalThicknessShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_cortical_thickness_sh_cargs(params, execution)
     ret = ants_cortical_thickness_sh_outputs(params, execution)
     execution.run(cargs)

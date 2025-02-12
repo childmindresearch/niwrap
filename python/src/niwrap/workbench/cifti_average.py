@@ -61,8 +61,6 @@ def dyn_outputs(
     """
     return {
         "cifti-average": cifti_average_outputs,
-        "exclude_outliers": cifti_average_exclude_outliers_outputs,
-        "cifti": cifti_average_cifti_outputs,
     }.get(t)
 
 
@@ -268,7 +266,6 @@ def cifti_average_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_average_cargs(params, execution)
     ret = cifti_average_outputs(params, execution)
     execution.run(cargs)

@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@make_plug_diff": v__make_plug_diff_outputs,
     }.get(t)
 
 
@@ -177,7 +176,6 @@ def v__make_plug_diff_execute(
     Returns:
         NamedTuple of outputs (described in `VMakePlugDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__make_plug_diff_cargs(params, execution)
     ret = v__make_plug_diff_outputs(params, execution)
     execution.run(cargs)

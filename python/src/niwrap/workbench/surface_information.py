@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surface-information": surface_information_outputs,
     }.get(t)
 
 
@@ -134,7 +133,6 @@ def surface_information_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceInformationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_information_cargs(params, execution)
     ret = surface_information_outputs(params, execution)
     execution.run(cargs)

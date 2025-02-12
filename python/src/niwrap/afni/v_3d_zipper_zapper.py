@@ -286,7 +286,6 @@ def v_3d_zipper_zapper_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZipperZapperOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_zipper_zapper_cargs(params, execution)
     ret = v_3d_zipper_zapper_outputs(params, execution)
     execution.run(cargs)

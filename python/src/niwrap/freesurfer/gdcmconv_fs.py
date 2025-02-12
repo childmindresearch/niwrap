@@ -84,7 +84,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "gdcmconv.fs": gdcmconv_fs_outputs,
     }.get(t)
 
 
@@ -411,7 +410,6 @@ def gdcmconv_fs_execute(
     Returns:
         NamedTuple of outputs (described in `GdcmconvFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gdcmconv_fs_cargs(params, execution)
     ret = gdcmconv_fs_outputs(params, execution)
     execution.run(cargs)

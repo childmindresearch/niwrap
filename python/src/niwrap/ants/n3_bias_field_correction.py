@@ -257,7 +257,6 @@ def n3_bias_field_correction_execute(
     Returns:
         NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = n3_bias_field_correction_cargs(params, execution)
     ret = n3_bias_field_correction_outputs(params, execution)
     execution.run(cargs)

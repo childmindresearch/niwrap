@@ -156,7 +156,6 @@ def volume_copy_extensions_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeCopyExtensionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_copy_extensions_cargs(params, execution)
     ret = volume_copy_extensions_outputs(params, execution)
     execution.run(cargs)

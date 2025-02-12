@@ -193,7 +193,6 @@ def v_3dfractionize_execute(
     Returns:
         NamedTuple of outputs (described in `V3dfractionizeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dfractionize_cargs(params, execution)
     ret = v_3dfractionize_outputs(params, execution)
     execution.run(cargs)

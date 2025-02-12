@@ -141,7 +141,6 @@ def v_1dtranspose_execute(
     Returns:
         NamedTuple of outputs (described in `V1dtransposeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1dtranspose_cargs(params, execution)
     ret = v_1dtranspose_outputs(params, execution)
     execution.run(cargs)

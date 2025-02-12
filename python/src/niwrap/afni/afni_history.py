@@ -65,7 +65,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "afni_history": afni_history_outputs,
     }.get(t)
 
 
@@ -305,7 +304,6 @@ def afni_history_execute(
     Returns:
         NamedTuple of outputs (described in `AfniHistoryOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = afni_history_cargs(params, execution)
     ret = afni_history_outputs(params, execution)
     execution.run(cargs)

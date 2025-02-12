@@ -191,7 +191,6 @@ def gps_execute(
     Returns:
         NamedTuple of outputs (described in `GpsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gps_cargs(params, execution)
     ret = gps_outputs(params, execution)
     execution.run(cargs)

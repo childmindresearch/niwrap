@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dicom_hinfo": dicom_hinfo_outputs,
     }.get(t)
 
 
@@ -164,7 +163,6 @@ def dicom_hinfo_execute(
     Returns:
         NamedTuple of outputs (described in `DicomHinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dicom_hinfo_cargs(params, execution)
     ret = dicom_hinfo_outputs(params, execution)
     execution.run(cargs)

@@ -190,7 +190,6 @@ def label_erode_execute(
     Returns:
         NamedTuple of outputs (described in `LabelErodeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_erode_cargs(params, execution)
     ret = label_erode_outputs(params, execution)
     execution.run(cargs)

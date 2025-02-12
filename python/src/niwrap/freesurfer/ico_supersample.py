@@ -149,7 +149,6 @@ def ico_supersample_execute(
     Returns:
         NamedTuple of outputs (described in `IcoSupersampleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ico_supersample_cargs(params, execution)
     ret = ico_supersample_outputs(params, execution)
     execution.run(cargs)

@@ -63,7 +63,6 @@ def dyn_outputs(
     """
     return {
         "fixel2tsf": fixel2tsf_outputs,
-        "config": fixel2tsf_config_outputs,
     }.get(t)
 
 
@@ -266,7 +265,6 @@ def fixel2tsf_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2tsfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixel2tsf_cargs(params, execution)
     ret = fixel2tsf_outputs(params, execution)
     execution.run(cargs)

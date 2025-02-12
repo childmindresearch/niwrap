@@ -138,7 +138,6 @@ def fsl_fix_text_execute(
     Returns:
         NamedTuple of outputs (described in `FslFixTextOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl_fix_text_cargs(params, execution)
     ret = fsl_fix_text_outputs(params, execution)
     execution.run(cargs)

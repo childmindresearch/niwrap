@@ -193,7 +193,6 @@ def cifti_label_import_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiLabelImportOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_label_import_cargs(params, execution)
     ret = cifti_label_import_outputs(params, execution)
     execution.run(cargs)

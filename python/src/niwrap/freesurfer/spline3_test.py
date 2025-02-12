@@ -146,7 +146,6 @@ def spline3_test_execute(
     Returns:
         NamedTuple of outputs (described in `Spline3TestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spline3_test_cargs(params, execution)
     ret = spline3_test_outputs(params, execution)
     execution.run(cargs)

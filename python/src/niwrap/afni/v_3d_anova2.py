@@ -395,7 +395,6 @@ def v_3d_anova2_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAnova2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_anova2_cargs(params, execution)
     ret = v_3d_anova2_outputs(params, execution)
     execution.run(cargs)

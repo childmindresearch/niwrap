@@ -262,7 +262,6 @@ def align_epi_anat_execute(
     Returns:
         NamedTuple of outputs (described in `AlignEpiAnatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = align_epi_anat_cargs(params, execution)
     ret = align_epi_anat_outputs(params, execution)
     execution.run(cargs)

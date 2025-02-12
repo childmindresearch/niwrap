@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "tsfmult": tsfmult_outputs,
-        "config": tsfmult_config_outputs,
     }.get(t)
 
 
@@ -254,7 +253,6 @@ def tsfmult_execute(
     Returns:
         NamedTuple of outputs (described in `TsfmultOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfmult_cargs(params, execution)
     ret = tsfmult_outputs(params, execution)
     execution.run(cargs)

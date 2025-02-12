@@ -336,7 +336,6 @@ def atropos_execute(
     Returns:
         NamedTuple of outputs (described in `AtroposOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = atropos_cargs(params, execution)
     ret = atropos_outputs(params, execution)
     execution.run(cargs)

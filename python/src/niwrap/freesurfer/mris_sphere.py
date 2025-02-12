@@ -143,7 +143,6 @@ def mris_sphere_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSphereOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_sphere_cargs(params, execution)
     ret = mris_sphere_outputs(params, execution)
     execution.run(cargs)

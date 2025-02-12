@@ -141,7 +141,6 @@ def register_child_execute(
     Returns:
         NamedTuple of outputs (described in `RegisterChildOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = register_child_cargs(params, execution)
     ret = register_child_outputs(params, execution)
     execution.run(cargs)

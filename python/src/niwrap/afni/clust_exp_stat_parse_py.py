@@ -264,7 +264,6 @@ def clust_exp_stat_parse_py_execute(
     Returns:
         NamedTuple of outputs (described in `ClustExpStatParsePyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = clust_exp_stat_parse_py_cargs(params, execution)
     ret = clust_exp_stat_parse_py_outputs(params, execution)
     execution.run(cargs)

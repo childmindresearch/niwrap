@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "surf2surf": surf2surf_outputs,
     }.get(t)
 
 
@@ -218,7 +217,6 @@ def surf2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Surf2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf2surf_cargs(params, execution)
     ret = surf2surf_outputs(params, execution)
     execution.run(cargs)

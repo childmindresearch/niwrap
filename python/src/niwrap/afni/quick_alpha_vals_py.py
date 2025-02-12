@@ -143,7 +143,6 @@ def quick_alpha_vals_py_execute(
     Returns:
         NamedTuple of outputs (described in `QuickAlphaValsPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quick_alpha_vals_py_cargs(params, execution)
     ret = quick_alpha_vals_py_outputs(params, execution)
     execution.run(cargs)

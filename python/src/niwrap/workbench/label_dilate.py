@@ -190,7 +190,6 @@ def label_dilate_execute(
     Returns:
         NamedTuple of outputs (described in `LabelDilateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_dilate_cargs(params, execution)
     ret = label_dilate_outputs(params, execution)
     execution.run(cargs)

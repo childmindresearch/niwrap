@@ -224,7 +224,6 @@ def mri_stopmask_execute(
     Returns:
         NamedTuple of outputs (described in `MriStopmaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_stopmask_cargs(params, execution)
     ret = mri_stopmask_outputs(params, execution)
     execution.run(cargs)

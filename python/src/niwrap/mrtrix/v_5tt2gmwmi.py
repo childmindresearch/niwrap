@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "5tt2gmwmi": v_5tt2gmwmi_outputs,
-        "config": v_5tt2gmwmi_config_outputs,
     }.get(t)
 
 
@@ -266,7 +265,6 @@ def v_5tt2gmwmi_execute(
     Returns:
         NamedTuple of outputs (described in `V5tt2gmwmiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_5tt2gmwmi_cargs(params, execution)
     ret = v_5tt2gmwmi_outputs(params, execution)
     execution.run(cargs)

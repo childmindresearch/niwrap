@@ -60,8 +60,6 @@ def dyn_outputs(
     """
     return {
         "antsApplyTransformsToPoints": ants_apply_transforms_to_points_outputs,
-        "single_transform": ants_apply_transforms_to_points_single_transform_outputs,
-        "inverse_transform": ants_apply_transforms_to_points_inverse_transform_outputs,
     }.get(t)
 
 
@@ -271,7 +269,6 @@ def ants_apply_transforms_to_points_execute(
     Returns:
         NamedTuple of outputs (described in `AntsApplyTransformsToPointsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_apply_transforms_to_points_cargs(params, execution)
     ret = ants_apply_transforms_to_points_outputs(params, execution)
     execution.run(cargs)

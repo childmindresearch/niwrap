@@ -101,12 +101,7 @@ def dyn_outputs(
     """
     return {
         "dwiextract": dwiextract_outputs,
-        "fslgrad": dwiextract_fslgrad_outputs,
         "export_grad_fsl": dwiextract_export_grad_fsl_outputs,
-        "import_pe_eddy": dwiextract_import_pe_eddy_outputs,
-        "VariousString": dwiextract_various_string_outputs,
-        "VariousFile": dwiextract_various_file_outputs,
-        "config": dwiextract_config_outputs,
     }.get(t)
 
 
@@ -658,7 +653,6 @@ def dwiextract_execute(
     Returns:
         NamedTuple of outputs (described in `DwiextractOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwiextract_cargs(params, execution)
     ret = dwiextract_outputs(params, execution)
     execution.run(cargs)

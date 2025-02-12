@@ -186,7 +186,6 @@ def image_set_statistics_execute(
     Returns:
         NamedTuple of outputs (described in `ImageSetStatisticsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = image_set_statistics_cargs(params, execution)
     ret = image_set_statistics_outputs(params, execution)
     execution.run(cargs)

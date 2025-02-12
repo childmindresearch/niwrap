@@ -142,7 +142,6 @@ def run_segment_subject_sh_execute(
     Returns:
         NamedTuple of outputs (described in `RunSegmentSubjectShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_segment_subject_sh_cargs(params, execution)
     ret = run_segment_subject_sh_outputs(params, execution)
     execution.run(cargs)

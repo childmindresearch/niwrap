@@ -54,8 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "metric-estimate-fwhm": metric_estimate_fwhm_outputs,
-        "whole_file": metric_estimate_fwhm_whole_file_outputs,
     }.get(t)
 
 
@@ -213,7 +211,6 @@ def metric_estimate_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_estimate_fwhm_cargs(params, execution)
     ret = metric_estimate_fwhm_outputs(params, execution)
     execution.run(cargs)

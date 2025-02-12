@@ -157,7 +157,6 @@ def i_math_execute(
     Returns:
         NamedTuple of outputs (described in `IMathOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = i_math_cargs(params, execution)
     ret = i_math_outputs(params, execution)
     execution.run(cargs)

@@ -62,7 +62,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@diff.tree": v__diff_tree_outputs,
     }.get(t)
 
 
@@ -262,7 +261,6 @@ def v__diff_tree_execute(
     Returns:
         NamedTuple of outputs (described in `VDiffTreeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__diff_tree_cargs(params, execution)
     ret = v__diff_tree_outputs(params, execution)
     execution.run(cargs)

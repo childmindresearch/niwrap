@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "tsfsmooth": tsfsmooth_outputs,
-        "config": tsfsmooth_config_outputs,
     }.get(t)
 
 
@@ -260,7 +259,6 @@ def tsfsmooth_execute(
     Returns:
         NamedTuple of outputs (described in `TsfsmoothOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfsmooth_cargs(params, execution)
     ret = tsfsmooth_outputs(params, execution)
     execution.run(cargs)

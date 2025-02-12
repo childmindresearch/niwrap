@@ -175,7 +175,6 @@ def imcalc_execute(
     Returns:
         NamedTuple of outputs (described in `ImcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imcalc_cargs(params, execution)
     ret = imcalc_outputs(params, execution)
     execution.run(cargs)

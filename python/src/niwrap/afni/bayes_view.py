@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bayes_view": bayes_view_outputs,
     }.get(t)
 
 
@@ -147,7 +146,6 @@ def bayes_view_execute(
     Returns:
         NamedTuple of outputs (described in `BayesViewOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bayes_view_cargs(params, execution)
     ret = bayes_view_outputs(params, execution)
     execution.run(cargs)

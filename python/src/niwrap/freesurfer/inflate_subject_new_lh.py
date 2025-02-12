@@ -136,7 +136,6 @@ def inflate_subject_new_lh_execute(
     Returns:
         NamedTuple of outputs (described in `InflateSubjectNewLhOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = inflate_subject_new_lh_cargs(params, execution)
     ret = inflate_subject_new_lh_outputs(params, execution)
     execution.run(cargs)

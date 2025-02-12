@@ -359,7 +359,6 @@ def avw2fsl_execute(
     Returns:
         NamedTuple of outputs (described in `Avw2fslOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = avw2fsl_cargs(params, execution)
     ret = avw2fsl_outputs(params, execution)
     execution.run(cargs)

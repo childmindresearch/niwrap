@@ -143,7 +143,6 @@ def ventfix_execute(
     Returns:
         NamedTuple of outputs (described in `VentfixOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ventfix_cargs(params, execution)
     ret = ventfix_outputs(params, execution)
     execution.run(cargs)

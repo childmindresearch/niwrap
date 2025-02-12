@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "zip-scene-file": zip_scene_file_outputs,
     }.get(t)
 
 
@@ -173,7 +172,6 @@ def zip_scene_file_execute(
     Returns:
         NamedTuple of outputs (described in `ZipSceneFileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = zip_scene_file_cargs(params, execution)
     ret = zip_scene_file_outputs(params, execution)
     execution.run(cargs)

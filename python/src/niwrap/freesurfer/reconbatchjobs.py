@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "reconbatchjobs": reconbatchjobs_outputs,
     }.get(t)
 
 
@@ -135,7 +134,6 @@ def reconbatchjobs_execute(
     Returns:
         NamedTuple of outputs (described in `ReconbatchjobsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reconbatchjobs_cargs(params, execution)
     ret = reconbatchjobs_outputs(params, execution)
     execution.run(cargs)

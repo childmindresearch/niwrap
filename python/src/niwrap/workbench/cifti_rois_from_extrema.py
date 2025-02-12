@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "cifti-rois-from-extrema": cifti_rois_from_extrema_outputs,
-        "gaussian": cifti_rois_from_extrema_gaussian_outputs,
     }.get(t)
 
 
@@ -269,7 +268,6 @@ def cifti_rois_from_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiRoisFromExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_rois_from_extrema_cargs(params, execution)
     ret = cifti_rois_from_extrema_outputs(params, execution)
     execution.run(cargs)

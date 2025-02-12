@@ -227,7 +227,6 @@ def sienax_execute(
     Returns:
         NamedTuple of outputs (described in `SienaxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sienax_cargs(params, execution)
     ret = sienax_outputs(params, execution)
     execution.run(cargs)

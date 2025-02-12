@@ -153,7 +153,6 @@ def extracttxt_execute(
     Returns:
         NamedTuple of outputs (described in `ExtracttxtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = extracttxt_cargs(params, execution)
     ret = extracttxt_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslhd": fslhd_outputs,
     }.get(t)
 
 
@@ -136,7 +135,6 @@ def fslhd_execute(
     Returns:
         NamedTuple of outputs (described in `FslhdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslhd_cargs(params, execution)
     ret = fslhd_outputs(params, execution)
     execution.run(cargs)

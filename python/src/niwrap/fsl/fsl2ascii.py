@@ -138,7 +138,6 @@ def fsl2ascii_execute(
     Returns:
         NamedTuple of outputs (described in `Fsl2asciiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsl2ascii_cargs(params, execution)
     ret = fsl2ascii_outputs(params, execution)
     execution.run(cargs)

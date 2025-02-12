@@ -172,7 +172,6 @@ def run_mesh_utils_execute(
     Returns:
         NamedTuple of outputs (described in `RunMeshUtilsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_mesh_utils_cargs(params, execution)
     ret = run_mesh_utils_outputs(params, execution)
     execution.run(cargs)

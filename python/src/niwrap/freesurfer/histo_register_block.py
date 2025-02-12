@@ -169,7 +169,6 @@ def histo_register_block_execute(
     Returns:
         NamedTuple of outputs (described in `HistoRegisterBlockOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = histo_register_block_cargs(params, execution)
     ret = histo_register_block_outputs(params, execution)
     execution.run(cargs)

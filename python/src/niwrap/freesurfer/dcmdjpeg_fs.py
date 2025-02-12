@@ -388,7 +388,6 @@ def dcmdjpeg_fs_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdjpegFsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmdjpeg_fs_cargs(params, execution)
     ret = dcmdjpeg_fs_outputs(params, execution)
     execution.run(cargs)

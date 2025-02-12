@@ -359,7 +359,6 @@ def fugue_execute(
     Returns:
         NamedTuple of outputs (described in `FugueOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fugue_cargs(params, execution)
     ret = fugue_outputs(params, execution)
     execution.run(cargs)

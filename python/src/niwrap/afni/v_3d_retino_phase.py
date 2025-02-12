@@ -287,7 +287,6 @@ def v_3d_retino_phase_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRetinoPhaseOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_retino_phase_cargs(params, execution)
     ret = v_3d_retino_phase_outputs(params, execution)
     execution.run(cargs)

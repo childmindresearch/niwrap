@@ -278,7 +278,6 @@ def reg_feat2anat_execute(
     Returns:
         NamedTuple of outputs (described in `RegFeat2anatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = reg_feat2anat_cargs(params, execution)
     ret = reg_feat2anat_outputs(params, execution)
     execution.run(cargs)

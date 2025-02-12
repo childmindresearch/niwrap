@@ -282,7 +282,6 @@ def v_3d_re_ho_execute(
     Returns:
         NamedTuple of outputs (described in `V3dReHoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_re_ho_cargs(params, execution)
     ret = v_3d_re_ho_outputs(params, execution)
     execution.run(cargs)

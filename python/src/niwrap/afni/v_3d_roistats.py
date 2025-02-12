@@ -58,7 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dROIstats": v_3d_roistats_outputs,
     }.get(t)
 
 
@@ -268,7 +267,6 @@ def v_3d_roistats_execute(
     Returns:
         NamedTuple of outputs (described in `V3dRoistatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_roistats_cargs(params, execution)
     ret = v_3d_roistats_outputs(params, execution)
     execution.run(cargs, handle_stdout=lambda s: ret.stats.append(s))

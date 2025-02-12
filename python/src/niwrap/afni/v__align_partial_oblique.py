@@ -212,7 +212,6 @@ def v__align_partial_oblique_execute(
     Returns:
         NamedTuple of outputs (described in `VAlignPartialObliqueOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__align_partial_oblique_cargs(params, execution)
     ret = v__align_partial_oblique_outputs(params, execution)
     execution.run(cargs)

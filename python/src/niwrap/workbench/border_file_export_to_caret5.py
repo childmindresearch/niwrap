@@ -52,8 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "border-file-export-to-caret5": border_file_export_to_caret5_outputs,
-        "surface": border_file_export_to_caret5_surface_outputs,
     }.get(t)
 
 
@@ -212,7 +210,6 @@ def border_file_export_to_caret5_execute(
     Returns:
         NamedTuple of outputs (described in `BorderFileExportToCaret5Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_file_export_to_caret5_cargs(params, execution)
     ret = border_file_export_to_caret5_outputs(params, execution)
     execution.run(cargs)

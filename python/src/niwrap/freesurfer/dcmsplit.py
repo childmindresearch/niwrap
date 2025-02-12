@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dcmsplit": dcmsplit_outputs,
     }.get(t)
 
 
@@ -193,7 +192,6 @@ def dcmsplit_execute(
     Returns:
         NamedTuple of outputs (described in `DcmsplitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmsplit_cargs(params, execution)
     ret = dcmsplit_outputs(params, execution)
     execution.run(cargs)

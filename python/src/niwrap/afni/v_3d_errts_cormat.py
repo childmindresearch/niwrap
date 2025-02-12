@@ -184,7 +184,6 @@ def v_3d_errts_cormat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dErrtsCormatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_errts_cormat_cargs(params, execution)
     ret = v_3d_errts_cormat_outputs(params, execution)
     execution.run(cargs)

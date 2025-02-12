@@ -306,7 +306,6 @@ def v_3_droimaker_execute(
     Returns:
         NamedTuple of outputs (described in `V3DroimakerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3_droimaker_cargs(params, execution)
     ret = v_3_droimaker_outputs(params, execution)
     execution.run(cargs)

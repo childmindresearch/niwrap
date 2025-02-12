@@ -196,7 +196,6 @@ def susan_execute(
     Returns:
         NamedTuple of outputs (described in `SusanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = susan_cargs(params, execution)
     ret = susan_outputs(params, execution)
     execution.run(cargs)

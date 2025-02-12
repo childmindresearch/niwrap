@@ -189,7 +189,6 @@ def mergeseg_execute(
     Returns:
         NamedTuple of outputs (described in `MergesegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mergeseg_cargs(params, execution)
     ret = mergeseg_outputs(params, execution)
     execution.run(cargs)

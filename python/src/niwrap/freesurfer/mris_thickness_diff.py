@@ -251,7 +251,6 @@ def mris_thickness_diff_execute(
     Returns:
         NamedTuple of outputs (described in `MrisThicknessDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_thickness_diff_cargs(params, execution)
     ret = mris_thickness_diff_outputs(params, execution)
     execution.run(cargs)

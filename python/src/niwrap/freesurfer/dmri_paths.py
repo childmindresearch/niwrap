@@ -80,7 +80,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dmri_paths": dmri_paths_outputs,
     }.get(t)
 
 
@@ -481,7 +480,6 @@ def dmri_paths_execute(
     Returns:
         NamedTuple of outputs (described in `DmriPathsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dmri_paths_cargs(params, execution)
     ret = dmri_paths_outputs(params, execution)
     execution.run(cargs)

@@ -252,7 +252,6 @@ def compare_surfaces_execute(
     Returns:
         NamedTuple of outputs (described in `CompareSurfacesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = compare_surfaces_cargs(params, execution)
     ret = compare_surfaces_outputs(params, execution)
     execution.run(cargs)

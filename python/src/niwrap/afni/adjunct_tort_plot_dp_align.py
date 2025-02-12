@@ -187,7 +187,6 @@ def adjunct_tort_plot_dp_align_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctTortPlotDpAlignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_tort_plot_dp_align_cargs(params, execution)
     ret = adjunct_tort_plot_dp_align_outputs(params, execution)
     execution.run(cargs)

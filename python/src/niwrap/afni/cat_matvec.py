@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cat_matvec": cat_matvec_outputs,
     }.get(t)
 
 
@@ -138,7 +137,6 @@ def cat_matvec_execute(
     Returns:
         NamedTuple of outputs (described in `CatMatvecOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cat_matvec_cargs(params, execution)
     ret = cat_matvec_outputs(params, execution)
     execution.run(cargs)

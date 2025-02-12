@@ -151,7 +151,6 @@ def v__clust_exp_cat_lab_execute(
     Returns:
         NamedTuple of outputs (described in `VClustExpCatLabOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__clust_exp_cat_lab_cargs(params, execution)
     ret = v__clust_exp_cat_lab_outputs(params, execution)
     execution.run(cargs)

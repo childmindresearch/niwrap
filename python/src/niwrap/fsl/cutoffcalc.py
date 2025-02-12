@@ -176,7 +176,6 @@ def cutoffcalc_execute(
     Returns:
         NamedTuple of outputs (described in `CutoffcalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cutoffcalc_cargs(params, execution)
     ret = cutoffcalc_outputs(params, execution)
     execution.run(cargs)

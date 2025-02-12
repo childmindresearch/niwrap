@@ -79,10 +79,6 @@ def dyn_outputs(
     """
     return {
         "probtrackx-dot-convert": probtrackx_dot_convert_outputs,
-        "row_voxels": probtrackx_dot_convert_row_voxels_outputs,
-        "row_cifti": probtrackx_dot_convert_row_cifti_outputs,
-        "col_voxels": probtrackx_dot_convert_col_voxels_outputs,
-        "col_cifti": probtrackx_dot_convert_col_cifti_outputs,
     }.get(t)
 
 
@@ -443,7 +439,6 @@ def probtrackx_dot_convert_execute(
     Returns:
         NamedTuple of outputs (described in `ProbtrackxDotConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = probtrackx_dot_convert_cargs(params, execution)
     ret = probtrackx_dot_convert_outputs(params, execution)
     execution.run(cargs)

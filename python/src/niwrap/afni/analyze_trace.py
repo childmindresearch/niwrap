@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "AnalyzeTrace": analyze_trace_outputs,
     }.get(t)
 
 
@@ -213,7 +212,6 @@ def analyze_trace_execute(
     Returns:
         NamedTuple of outputs (described in `AnalyzeTraceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = analyze_trace_cargs(params, execution)
     ret = analyze_trace_outputs(params, execution)
     execution.run(cargs)

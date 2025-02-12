@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_rf_long_label": mri_rf_long_label_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def mri_rf_long_label_execute(
     Returns:
         NamedTuple of outputs (described in `MriRfLongLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_rf_long_label_cargs(params, execution)
     ret = mri_rf_long_label_outputs(params, execution)
     execution.run(cargs)

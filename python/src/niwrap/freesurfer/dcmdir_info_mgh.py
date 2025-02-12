@@ -162,7 +162,6 @@ def dcmdir_info_mgh_execute(
     Returns:
         NamedTuple of outputs (described in `DcmdirInfoMghOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dcmdir_info_mgh_cargs(params, execution)
     ret = dcmdir_info_mgh_outputs(params, execution)
     execution.run(cargs)

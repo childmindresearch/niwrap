@@ -160,7 +160,6 @@ def p2dsetstat_execute(
     Returns:
         NamedTuple of outputs (described in `P2dsetstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = p2dsetstat_cargs(params, execution)
     ret = p2dsetstat_outputs(params, execution)
     execution.run(cargs)

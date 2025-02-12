@@ -151,7 +151,6 @@ def surface_create_sphere_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceCreateSphereOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_create_sphere_cargs(params, execution)
     ret = surface_create_sphere_outputs(params, execution)
     execution.run(cargs)

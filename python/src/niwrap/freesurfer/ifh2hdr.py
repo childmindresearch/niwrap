@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ifh2hdr": ifh2hdr_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def ifh2hdr_execute(
     Returns:
         NamedTuple of outputs (described in `Ifh2hdrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ifh2hdr_cargs(params, execution)
     ret = ifh2hdr_outputs(params, execution)
     execution.run(cargs)

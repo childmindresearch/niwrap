@@ -148,7 +148,6 @@ def mri_remove_neck_execute(
     Returns:
         NamedTuple of outputs (described in `MriRemoveNeckOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_remove_neck_cargs(params, execution)
     ret = mri_remove_neck_outputs(params, execution)
     execution.run(cargs)

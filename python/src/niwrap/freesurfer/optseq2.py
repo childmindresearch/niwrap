@@ -445,7 +445,6 @@ def optseq2_execute(
     Returns:
         NamedTuple of outputs (described in `Optseq2Outputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = optseq2_cargs(params, execution)
     ret = optseq2_outputs(params, execution)
     execution.run(cargs)

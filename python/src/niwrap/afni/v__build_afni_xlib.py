@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@build_afni_Xlib": v__build_afni_xlib_outputs,
     }.get(t)
 
 
@@ -149,7 +148,6 @@ def v__build_afni_xlib_execute(
     Returns:
         NamedTuple of outputs (described in `VBuildAfniXlibOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__build_afni_xlib_cargs(params, execution)
     ret = v__build_afni_xlib_outputs(params, execution)
     execution.run(cargs)

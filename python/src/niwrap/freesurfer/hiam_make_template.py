@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "hiam_make_template": hiam_make_template_outputs,
     }.get(t)
 
 
@@ -145,7 +144,6 @@ def hiam_make_template_execute(
     Returns:
         NamedTuple of outputs (described in `HiamMakeTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = hiam_make_template_cargs(params, execution)
     ret = hiam_make_template_outputs(params, execution)
     execution.run(cargs)

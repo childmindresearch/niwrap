@@ -180,7 +180,6 @@ def mris_calc_execute(
     Returns:
         NamedTuple of outputs (described in `MrisCalcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_calc_cargs(params, execution)
     ret = mris_calc_outputs(params, execution)
     execution.run(cargs)

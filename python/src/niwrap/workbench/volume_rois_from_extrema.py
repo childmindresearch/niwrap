@@ -197,7 +197,6 @@ def volume_rois_from_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeRoisFromExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_rois_from_extrema_cargs(params, execution)
     ret = volume_rois_from_extrema_outputs(params, execution)
     execution.run(cargs)

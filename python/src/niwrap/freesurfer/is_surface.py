@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "is-surface": is_surface_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def is_surface_execute(
     Returns:
         NamedTuple of outputs (described in `IsSurfaceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = is_surface_cargs(params, execution)
     ret = is_surface_outputs(params, execution)
     execution.run(cargs)

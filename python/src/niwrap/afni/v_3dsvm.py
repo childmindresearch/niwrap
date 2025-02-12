@@ -385,7 +385,6 @@ def v_3dsvm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dsvmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dsvm_cargs(params, execution)
     ret = v_3dsvm_outputs(params, execution)
     execution.run(cargs)

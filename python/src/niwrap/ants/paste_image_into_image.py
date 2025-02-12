@@ -181,7 +181,6 @@ def paste_image_into_image_execute(
     Returns:
         NamedTuple of outputs (described in `PasteImageIntoImageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = paste_image_into_image_cargs(params, execution)
     ret = paste_image_into_image_outputs(params, execution)
     execution.run(cargs)

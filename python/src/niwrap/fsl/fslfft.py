@@ -145,7 +145,6 @@ def fslfft_execute(
     Returns:
         NamedTuple of outputs (described in `FslfftOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslfft_cargs(params, execution)
     ret = fslfft_outputs(params, execution)
     execution.run(cargs)

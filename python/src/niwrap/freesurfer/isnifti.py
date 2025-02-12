@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "isnifti": isnifti_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def isnifti_execute(
     Returns:
         NamedTuple of outputs (described in `IsniftiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = isnifti_cargs(params, execution)
     ret = isnifti_outputs(params, execution)
     execution.run(cargs)

@@ -138,7 +138,6 @@ def irepifitvol_execute(
     Returns:
         NamedTuple of outputs (described in `IrepifitvolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = irepifitvol_cargs(params, execution)
     ret = irepifitvol_outputs(params, execution)
     execution.run(cargs)

@@ -181,7 +181,6 @@ def mri_fuse_segmentations_execute(
     Returns:
         NamedTuple of outputs (described in `MriFuseSegmentationsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fuse_segmentations_cargs(params, execution)
     ret = mri_fuse_segmentations_outputs(params, execution)
     execution.run(cargs)

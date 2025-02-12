@@ -292,7 +292,6 @@ def mean_execute(
     Returns:
         NamedTuple of outputs (described in `MeanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mean_cargs(params, execution)
     ret = mean_outputs(params, execution)
     execution.run(cargs)

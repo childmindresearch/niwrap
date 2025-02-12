@@ -213,7 +213,6 @@ def v__fast_roi_execute(
     Returns:
         NamedTuple of outputs (described in `VFastRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__fast_roi_cargs(params, execution)
     ret = v__fast_roi_outputs(params, execution)
     execution.run(cargs)

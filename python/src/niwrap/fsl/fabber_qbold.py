@@ -442,7 +442,6 @@ def fabber_qbold_execute(
     Returns:
         NamedTuple of outputs (described in `FabberQboldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fabber_qbold_cargs(params, execution)
     ret = fabber_qbold_outputs(params, execution)
     execution.run(cargs)

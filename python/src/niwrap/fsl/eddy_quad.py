@@ -213,7 +213,6 @@ def eddy_quad_execute(
     Returns:
         NamedTuple of outputs (described in `EddyQuadOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = eddy_quad_cargs(params, execution)
     ret = eddy_quad_outputs(params, execution)
     execution.run(cargs)

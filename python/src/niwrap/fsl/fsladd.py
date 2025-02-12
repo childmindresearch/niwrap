@@ -150,7 +150,6 @@ def fsladd_execute(
     Returns:
         NamedTuple of outputs (described in `FsladdOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsladd_cargs(params, execution)
     ret = fsladd_outputs(params, execution)
     execution.run(cargs)

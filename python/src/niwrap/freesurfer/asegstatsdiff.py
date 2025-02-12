@@ -146,7 +146,6 @@ def asegstatsdiff_execute(
     Returns:
         NamedTuple of outputs (described in `AsegstatsdiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = asegstatsdiff_cargs(params, execution)
     ret = asegstatsdiff_outputs(params, execution)
     execution.run(cargs)

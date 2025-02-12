@@ -241,7 +241,6 @@ def v__t1scale_execute(
     Returns:
         NamedTuple of outputs (described in `VT1scaleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__t1scale_cargs(params, execution)
     ret = v__t1scale_outputs(params, execution)
     execution.run(cargs)

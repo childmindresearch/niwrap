@@ -242,7 +242,6 @@ def mri_synthseg_execute(
     Returns:
         NamedTuple of outputs (described in `MriSynthsegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_synthseg_cargs(params, execution)
     ret = mri_synthseg_outputs(params, execution)
     execution.run(cargs)

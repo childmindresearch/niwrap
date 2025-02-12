@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "label-export-table": label_export_table_outputs,
     }.get(t)
 
 
@@ -139,7 +138,6 @@ def label_export_table_execute(
     Returns:
         NamedTuple of outputs (described in `LabelExportTableOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_export_table_cargs(params, execution)
     ret = label_export_table_outputs(params, execution)
     execution.run(cargs)

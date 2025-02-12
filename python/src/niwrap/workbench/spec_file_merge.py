@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "spec-file-merge": spec_file_merge_outputs,
     }.get(t)
 
 
@@ -144,7 +143,6 @@ def spec_file_merge_execute(
     Returns:
         NamedTuple of outputs (described in `SpecFileMergeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spec_file_merge_cargs(params, execution)
     ret = spec_file_merge_outputs(params, execution)
     execution.run(cargs)

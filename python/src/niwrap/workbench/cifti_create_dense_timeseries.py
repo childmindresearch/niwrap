@@ -77,10 +77,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-dense-timeseries": cifti_create_dense_timeseries_outputs,
-        "volume": cifti_create_dense_timeseries_volume_outputs,
-        "left_metric": cifti_create_dense_timeseries_left_metric_outputs,
-        "right_metric": cifti_create_dense_timeseries_right_metric_outputs,
-        "cerebellum_metric": cifti_create_dense_timeseries_cerebellum_metric_outputs,
     }.get(t)
 
 
@@ -456,7 +452,6 @@ def cifti_create_dense_timeseries_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseTimeseriesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_dense_timeseries_cargs(params, execution)
     ret = cifti_create_dense_timeseries_outputs(params, execution)
     execution.run(cargs)

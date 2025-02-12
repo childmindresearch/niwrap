@@ -209,7 +209,6 @@ def quickspec_sl_execute(
     Returns:
         NamedTuple of outputs (described in `QuickspecSlOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quickspec_sl_cargs(params, execution)
     ret = quickspec_sl_outputs(params, execution)
     execution.run(cargs)

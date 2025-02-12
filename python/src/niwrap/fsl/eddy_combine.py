@@ -192,7 +192,6 @@ def eddy_combine_execute(
     Returns:
         NamedTuple of outputs (described in `EddyCombineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = eddy_combine_cargs(params, execution)
     ret = eddy_combine_outputs(params, execution)
     execution.run(cargs)

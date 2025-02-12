@@ -163,7 +163,6 @@ def v_3d_xyzcat_execute(
     Returns:
         NamedTuple of outputs (described in `V3dXyzcatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_xyzcat_cargs(params, execution)
     ret = v_3d_xyzcat_outputs(params, execution)
     execution.run(cargs)

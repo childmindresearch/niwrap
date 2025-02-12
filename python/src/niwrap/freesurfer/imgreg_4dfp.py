@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "imgreg_4dfp": imgreg_4dfp_outputs,
     }.get(t)
 
 
@@ -155,7 +154,6 @@ def imgreg_4dfp_execute(
     Returns:
         NamedTuple of outputs (described in `Imgreg4dfpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = imgreg_4dfp_cargs(params, execution)
     ret = imgreg_4dfp_outputs(params, execution)
     execution.run(cargs)

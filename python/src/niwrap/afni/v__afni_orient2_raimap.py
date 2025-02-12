@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@AfniOrient2RAImap": v__afni_orient2_raimap_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def v__afni_orient2_raimap_execute(
     Returns:
         NamedTuple of outputs (described in `VAfniOrient2RaimapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__afni_orient2_raimap_cargs(params, execution)
     ret = v__afni_orient2_raimap_outputs(params, execution)
     execution.run(cargs)

@@ -69,8 +69,6 @@ def dyn_outputs(
     """
     return {
         "metric-extrema": metric_extrema_outputs,
-        "presmooth": metric_extrema_presmooth_outputs,
-        "threshold": metric_extrema_threshold_outputs,
     }.get(t)
 
 
@@ -336,7 +334,6 @@ def metric_extrema_execute(
     Returns:
         NamedTuple of outputs (described in `MetricExtremaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = metric_extrema_cargs(params, execution)
     ret = metric_extrema_outputs(params, execution)
     execution.run(cargs)

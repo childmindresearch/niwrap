@@ -77,7 +77,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "qdelaunay": qdelaunay_outputs,
     }.get(t)
 
 
@@ -391,7 +390,6 @@ def qdelaunay_execute(
     Returns:
         NamedTuple of outputs (described in `QdelaunayOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = qdelaunay_cargs(params, execution)
     ret = qdelaunay_outputs(params, execution)
     execution.run(cargs)

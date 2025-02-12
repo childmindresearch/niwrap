@@ -73,9 +73,6 @@ def dyn_outputs(
     """
     return {
         "fixel2peaks": fixel2peaks_outputs,
-        "config": fixel2peaks_config_outputs,
-        "VariousString": fixel2peaks_various_string_outputs,
-        "VariousFile": fixel2peaks_various_file_outputs,
     }.get(t)
 
 
@@ -353,7 +350,6 @@ def fixel2peaks_execute(
     Returns:
         NamedTuple of outputs (described in `Fixel2peaksOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixel2peaks_cargs(params, execution)
     ret = fixel2peaks_outputs(params, execution)
     execution.run(cargs)

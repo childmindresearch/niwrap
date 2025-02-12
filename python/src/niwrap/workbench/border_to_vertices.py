@@ -157,7 +157,6 @@ def border_to_vertices_execute(
     Returns:
         NamedTuple of outputs (described in `BorderToVerticesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = border_to_vertices_cargs(params, execution)
     ret = border_to_vertices_outputs(params, execution)
     execution.run(cargs)

@@ -183,7 +183,6 @@ def cblumwmgyri_execute(
     Returns:
         NamedTuple of outputs (described in `CblumwmgyriOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cblumwmgyri_cargs(params, execution)
     ret = cblumwmgyri_outputs(params, execution)
     execution.run(cargs)

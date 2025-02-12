@@ -148,7 +148,6 @@ def mris_segmentation_stats_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSegmentationStatsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_segmentation_stats_cargs(params, execution)
     ret = mris_segmentation_stats_outputs(params, execution)
     execution.run(cargs)

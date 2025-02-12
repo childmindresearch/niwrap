@@ -168,7 +168,6 @@ def mni152reg_execute(
     Returns:
         NamedTuple of outputs (described in `Mni152regOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mni152reg_cargs(params, execution)
     ret = mni152reg_outputs(params, execution)
     execution.run(cargs)

@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fslnvols": fslnvols_outputs,
     }.get(t)
 
 
@@ -130,7 +129,6 @@ def fslnvols_execute(
     Returns:
         NamedTuple of outputs (described in `FslnvolsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fslnvols_cargs(params, execution)
     ret = fslnvols_outputs(params, execution)
     execution.run(cargs)

@@ -91,12 +91,6 @@ def dyn_outputs(
     """
     return {
         "cifti-create-dense-from-template": cifti_create_dense_from_template_outputs,
-        "series": cifti_create_dense_from_template_series_outputs,
-        "volume_all": cifti_create_dense_from_template_volume_all_outputs,
-        "cifti": cifti_create_dense_from_template_cifti_outputs,
-        "metric": cifti_create_dense_from_template_metric_outputs,
-        "label": cifti_create_dense_from_template_label_outputs,
-        "volume": cifti_create_dense_from_template_volume_outputs,
     }.get(t)
 
 
@@ -552,7 +546,6 @@ def cifti_create_dense_from_template_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiCreateDenseFromTemplateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_create_dense_from_template_cargs(params, execution)
     ret = cifti_create_dense_from_template_outputs(params, execution)
     execution.run(cargs)

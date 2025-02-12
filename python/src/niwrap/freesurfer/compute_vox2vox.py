@@ -143,7 +143,6 @@ def compute_vox2vox_execute(
     Returns:
         NamedTuple of outputs (described in `ComputeVox2voxOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = compute_vox2vox_cargs(params, execution)
     ret = compute_vox2vox_outputs(params, execution)
     execution.run(cargs)

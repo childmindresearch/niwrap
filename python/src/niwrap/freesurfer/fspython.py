@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fspython": fspython_outputs,
     }.get(t)
 
 
@@ -133,7 +132,6 @@ def fspython_execute(
     Returns:
         NamedTuple of outputs (described in `FspythonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fspython_cargs(params, execution)
     ret = fspython_outputs(params, execution)
     execution.run(cargs)

@@ -303,7 +303,6 @@ def fat_mat2d_plot_py_execute(
     Returns:
         NamedTuple of outputs (described in `FatMat2dPlotPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_mat2d_plot_py_cargs(params, execution)
     ret = fat_mat2d_plot_py_outputs(params, execution)
     execution.run(cargs)

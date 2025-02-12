@@ -230,7 +230,6 @@ def fat_proc_align_anat_pair_execute(
     Returns:
         NamedTuple of outputs (described in `FatProcAlignAnatPairOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fat_proc_align_anat_pair_cargs(params, execution)
     ret = fat_proc_align_anat_pair_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "calc_grad_perc_dev": calc_grad_perc_dev_outputs,
     }.get(t)
 
 
@@ -154,7 +153,6 @@ def calc_grad_perc_dev_execute(
     Returns:
         NamedTuple of outputs (described in `CalcGradPercDevOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = calc_grad_perc_dev_cargs(params, execution)
     ret = calc_grad_perc_dev_outputs(params, execution)
     execution.run(cargs)

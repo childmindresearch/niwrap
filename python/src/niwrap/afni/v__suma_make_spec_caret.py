@@ -140,7 +140,6 @@ def v__suma_make_spec_caret_execute(
     Returns:
         NamedTuple of outputs (described in `VSumaMakeSpecCaretOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__suma_make_spec_caret_cargs(params, execution)
     ret = v__suma_make_spec_caret_outputs(params, execution)
     execution.run(cargs)

@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dicom_hdr": dicom_hdr_outputs,
     }.get(t)
 
 
@@ -191,7 +190,6 @@ def dicom_hdr_execute(
     Returns:
         NamedTuple of outputs (described in `DicomHdrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dicom_hdr_cargs(params, execution)
     ret = dicom_hdr_outputs(params, execution)
     execution.run(cargs)

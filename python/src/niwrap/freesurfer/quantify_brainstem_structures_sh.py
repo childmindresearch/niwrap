@@ -143,7 +143,6 @@ def quantify_brainstem_structures_sh_execute(
     Returns:
         NamedTuple of outputs (described in `QuantifyBrainstemStructuresShOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = quantify_brainstem_structures_sh_cargs(params, execution)
     ret = quantify_brainstem_structures_sh_outputs(params, execution)
     execution.run(cargs)

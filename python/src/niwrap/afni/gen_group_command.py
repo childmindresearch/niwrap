@@ -246,7 +246,6 @@ def gen_group_command_execute(
     Returns:
         NamedTuple of outputs (described in `GenGroupCommandOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gen_group_command_cargs(params, execution)
     ret = gen_group_command_outputs(params, execution)
     execution.run(cargs)

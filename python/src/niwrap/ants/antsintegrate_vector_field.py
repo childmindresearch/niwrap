@@ -155,7 +155,6 @@ def antsintegrate_vector_field_execute(
     Returns:
         NamedTuple of outputs (described in `AntsintegrateVectorFieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = antsintegrate_vector_field_cargs(params, execution)
     ret = antsintegrate_vector_field_outputs(params, execution)
     execution.run(cargs)

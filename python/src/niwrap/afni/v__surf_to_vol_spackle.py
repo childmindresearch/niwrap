@@ -234,7 +234,6 @@ def v__surf_to_vol_spackle_execute(
     Returns:
         NamedTuple of outputs (described in `VSurfToVolSpackleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__surf_to_vol_spackle_cargs(params, execution)
     ret = v__surf_to_vol_spackle_outputs(params, execution)
     execution.run(cargs)

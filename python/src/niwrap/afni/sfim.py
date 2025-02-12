@@ -171,7 +171,6 @@ def sfim_execute(
     Returns:
         NamedTuple of outputs (described in `SfimOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sfim_cargs(params, execution)
     ret = sfim_outputs(params, execution)
     execution.run(cargs)

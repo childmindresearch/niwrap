@@ -253,7 +253,6 @@ def ccops_execute(
     Returns:
         NamedTuple of outputs (described in `CcopsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ccops_cargs(params, execution)
     ret = ccops_outputs(params, execution)
     execution.run(cargs)

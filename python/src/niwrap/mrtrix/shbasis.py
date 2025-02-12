@@ -60,8 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "shbasis": shbasis_outputs,
-        "config": shbasis_config_outputs,
     }.get(t)
 
 
@@ -271,7 +269,6 @@ def shbasis_execute(
     Returns:
         NamedTuple of outputs (described in `ShbasisOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = shbasis_cargs(params, execution)
     ret = shbasis_outputs(params, execution)
     execution.run(cargs)

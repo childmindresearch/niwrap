@@ -177,7 +177,6 @@ def mris_extract_values_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExtractValuesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_extract_values_cargs(params, execution)
     ret = mris_extract_values_outputs(params, execution)
     execution.run(cargs)

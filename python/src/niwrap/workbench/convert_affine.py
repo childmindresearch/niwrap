@@ -76,11 +76,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "convert-affine": convert_affine_outputs,
-        "from_world": convert_affine_from_world_outputs,
-        "from_flirt": convert_affine_from_flirt_outputs,
-        "to_world": convert_affine_to_world_outputs,
-        "to_flirt": convert_affine_to_flirt_outputs,
     }.get(t)
 
 
@@ -392,7 +387,6 @@ def convert_affine_execute(
     Returns:
         NamedTuple of outputs (described in `ConvertAffineOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = convert_affine_cargs(params, execution)
     ret = convert_affine_outputs(params, execution)
     execution.run(cargs)

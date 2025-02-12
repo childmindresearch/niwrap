@@ -209,7 +209,6 @@ def wmedits2surf_execute(
     Returns:
         NamedTuple of outputs (described in `Wmedits2surfOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = wmedits2surf_cargs(params, execution)
     ret = wmedits2surf_outputs(params, execution)
     execution.run(cargs)

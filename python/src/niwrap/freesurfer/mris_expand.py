@@ -181,7 +181,6 @@ def mris_expand_execute(
     Returns:
         NamedTuple of outputs (described in `MrisExpandOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_expand_cargs(params, execution)
     ret = mris_expand_outputs(params, execution)
     execution.run(cargs)

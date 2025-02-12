@@ -307,7 +307,6 @@ def trr_execute(
     Returns:
         NamedTuple of outputs (described in `TrrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = trr_cargs(params, execution)
     ret = trr_outputs(params, execution)
     execution.run(cargs)

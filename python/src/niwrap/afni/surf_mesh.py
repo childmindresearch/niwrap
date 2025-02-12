@@ -191,7 +191,6 @@ def surf_mesh_execute(
     Returns:
         NamedTuple of outputs (described in `SurfMeshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf_mesh_cargs(params, execution)
     ret = surf_mesh_outputs(params, execution)
     execution.run(cargs)

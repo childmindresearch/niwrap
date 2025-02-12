@@ -135,7 +135,6 @@ def v__np_execute(
     Returns:
         NamedTuple of outputs (described in `VNpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__np_cargs(params, execution)
     ret = v__np_outputs(params, execution)
     execution.run(cargs)

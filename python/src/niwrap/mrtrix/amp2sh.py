@@ -85,10 +85,6 @@ def dyn_outputs(
     """
     return {
         "amp2sh": amp2sh_outputs,
-        "fslgrad": amp2sh_fslgrad_outputs,
-        "VariousString": amp2sh_various_string_outputs,
-        "VariousFile": amp2sh_various_file_outputs,
-        "config": amp2sh_config_outputs,
     }.get(t)
 
 
@@ -500,7 +496,6 @@ def amp2sh_execute(
     Returns:
         NamedTuple of outputs (described in `Amp2shOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = amp2sh_cargs(params, execution)
     ret = amp2sh_outputs(params, execution)
     execution.run(cargs)

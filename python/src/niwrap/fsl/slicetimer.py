@@ -217,7 +217,6 @@ def slicetimer_execute(
     Returns:
         NamedTuple of outputs (described in `SlicetimerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slicetimer_cargs(params, execution)
     ret = slicetimer_outputs(params, execution)
     execution.run(cargs)

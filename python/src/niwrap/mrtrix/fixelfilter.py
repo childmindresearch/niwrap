@@ -87,12 +87,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fixelfilter": fixelfilter_outputs,
-        "config": fixelfilter_config_outputs,
-        "VariousString": fixelfilter_various_string_outputs,
-        "VariousFile": fixelfilter_various_file_outputs,
-        "VariousString": fixelfilter_various_string_outputs_,
-        "VariousFile": fixelfilter_various_file_outputs_,
     }.get(t)
 
 
@@ -489,7 +483,6 @@ def fixelfilter_execute(
     Returns:
         NamedTuple of outputs (described in `FixelfilterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fixelfilter_cargs(params, execution)
     ret = fixelfilter_outputs(params, execution)
     execution.run(cargs)

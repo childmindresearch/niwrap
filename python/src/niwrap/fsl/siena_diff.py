@@ -52,7 +52,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "siena_diff": siena_diff_outputs,
     }.get(t)
 
 
@@ -184,7 +183,6 @@ def siena_diff_execute(
     Returns:
         NamedTuple of outputs (described in `SienaDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = siena_diff_cargs(params, execution)
     ret = siena_diff_outputs(params, execution)
     execution.run(cargs)

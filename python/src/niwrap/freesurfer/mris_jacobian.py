@@ -161,7 +161,6 @@ def mris_jacobian_execute(
     Returns:
         NamedTuple of outputs (described in `MrisJacobianOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_jacobian_cargs(params, execution)
     ret = mris_jacobian_outputs(params, execution)
     execution.run(cargs)

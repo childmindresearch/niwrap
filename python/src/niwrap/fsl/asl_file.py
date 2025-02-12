@@ -354,7 +354,6 @@ def asl_file_execute(
     Returns:
         NamedTuple of outputs (described in `AslFileOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = asl_file_cargs(params, execution)
     ret = asl_file_outputs(params, execution)
     execution.run(cargs)

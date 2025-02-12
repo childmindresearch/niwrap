@@ -636,7 +636,6 @@ def mri_em_register_execute(
     Returns:
         NamedTuple of outputs (described in `MriEmRegisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_em_register_cargs(params, execution)
     ret = mri_em_register_outputs(params, execution)
     execution.run(cargs)

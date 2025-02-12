@@ -198,7 +198,6 @@ def v_1deval_execute(
     Returns:
         NamedTuple of outputs (described in `V1devalOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_1deval_cargs(params, execution)
     ret = v_1deval_outputs(params, execution)
     execution.run(cargs)

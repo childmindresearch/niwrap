@@ -219,7 +219,6 @@ def dimon_execute(
     Returns:
         NamedTuple of outputs (described in `DimonOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dimon_cargs(params, execution)
     ret = dimon_outputs(params, execution)
     execution.run(cargs)

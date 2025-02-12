@@ -74,7 +74,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "ScaleToMap": scale_to_map_outputs,
     }.get(t)
 
 
@@ -349,7 +348,6 @@ def scale_to_map_execute(
     Returns:
         NamedTuple of outputs (described in `ScaleToMapOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = scale_to_map_cargs(params, execution)
     ret = scale_to_map_outputs(params, execution)
     execution.run(cargs)

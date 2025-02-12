@@ -47,7 +47,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "GLTsymtest": gltsymtest_outputs,
     }.get(t)
 
 
@@ -143,7 +142,6 @@ def gltsymtest_execute(
     Returns:
         NamedTuple of outputs (described in `GltsymtestOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gltsymtest_cargs(params, execution)
     ret = gltsymtest_outputs(params, execution)
     execution.run(cargs)

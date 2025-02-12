@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "set-structure": set_structure_outputs,
     }.get(t)
 
 
@@ -217,7 +216,6 @@ def set_structure_execute(
     Returns:
         NamedTuple of outputs (described in `SetStructureOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = set_structure_cargs(params, execution)
     ret = set_structure_outputs(params, execution)
     execution.run(cargs)

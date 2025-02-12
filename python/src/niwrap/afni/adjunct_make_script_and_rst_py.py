@@ -177,7 +177,6 @@ def adjunct_make_script_and_rst_py_execute(
     Returns:
         NamedTuple of outputs (described in `AdjunctMakeScriptAndRstPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = adjunct_make_script_and_rst_py_cargs(params, execution)
     ret = adjunct_make_script_and_rst_py_outputs(params, execution)
     execution.run(cargs)

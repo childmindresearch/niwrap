@@ -291,7 +291,6 @@ def asl_mfree_execute(
     Returns:
         NamedTuple of outputs (described in `AslMfreeOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = asl_mfree_cargs(params, execution)
     ret = asl_mfree_outputs(params, execution)
     execution.run(cargs)

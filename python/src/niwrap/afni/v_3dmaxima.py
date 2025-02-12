@@ -270,7 +270,6 @@ def v_3dmaxima_execute(
     Returns:
         NamedTuple of outputs (described in `V3dmaximaOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dmaxima_cargs(params, execution)
     ret = v_3dmaxima_outputs(params, execution)
     execution.run(cargs)

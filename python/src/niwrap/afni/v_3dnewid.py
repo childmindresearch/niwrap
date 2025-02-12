@@ -50,7 +50,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dnewid": v_3dnewid_outputs,
     }.get(t)
 
 
@@ -177,7 +176,6 @@ def v_3dnewid_execute(
     Returns:
         NamedTuple of outputs (described in `V3dnewidOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3dnewid_cargs(params, execution)
     ret = v_3dnewid_outputs(params, execution)
     execution.run(cargs)

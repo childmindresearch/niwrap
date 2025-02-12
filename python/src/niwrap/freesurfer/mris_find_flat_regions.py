@@ -150,7 +150,6 @@ def mris_find_flat_regions_execute(
     Returns:
         NamedTuple of outputs (described in `MrisFindFlatRegionsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_find_flat_regions_cargs(params, execution)
     ret = mris_find_flat_regions_outputs(params, execution)
     execution.run(cargs)

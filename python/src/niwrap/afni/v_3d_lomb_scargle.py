@@ -225,7 +225,6 @@ def v_3d_lomb_scargle_execute(
     Returns:
         NamedTuple of outputs (described in `V3dLombScargleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_lomb_scargle_cargs(params, execution)
     ret = v_3d_lomb_scargle_outputs(params, execution)
     execution.run(cargs)

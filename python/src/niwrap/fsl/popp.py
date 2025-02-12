@@ -433,7 +433,6 @@ def popp_execute(
     Returns:
         NamedTuple of outputs (described in `PoppOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = popp_cargs(params, execution)
     ret = popp_outputs(params, execution)
     execution.run(cargs)

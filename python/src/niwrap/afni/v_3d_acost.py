@@ -158,7 +158,6 @@ def v_3d_acost_execute(
     Returns:
         NamedTuple of outputs (described in `V3dAcostOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_acost_cargs(params, execution)
     ret = v_3d_acost_outputs(params, execution)
     execution.run(cargs)

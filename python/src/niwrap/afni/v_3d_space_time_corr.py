@@ -196,7 +196,6 @@ def v_3d_space_time_corr_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSpaceTimeCorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_space_time_corr_cargs(params, execution)
     ret = v_3d_space_time_corr_outputs(params, execution)
     execution.run(cargs)

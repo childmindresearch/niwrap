@@ -143,7 +143,6 @@ def mri_edit_segmentation_execute(
     Returns:
         NamedTuple of outputs (described in `MriEditSegmentationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_edit_segmentation_cargs(params, execution)
     ret = mri_edit_segmentation_outputs(params, execution)
     execution.run(cargs)

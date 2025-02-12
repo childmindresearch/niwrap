@@ -69,8 +69,6 @@ def dyn_outputs(
     """
     return {
         "dwi2adc": dwi2adc_outputs,
-        "fslgrad": dwi2adc_fslgrad_outputs,
-        "config": dwi2adc_config_outputs,
     }.get(t)
 
 
@@ -328,7 +326,6 @@ def dwi2adc_execute(
     Returns:
         NamedTuple of outputs (described in `Dwi2adcOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dwi2adc_cargs(params, execution)
     ret = dwi2adc_outputs(params, execution)
     execution.run(cargs)

@@ -187,7 +187,6 @@ def pointflirt_execute(
     Returns:
         NamedTuple of outputs (described in `PointflirtOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pointflirt_cargs(params, execution)
     ret = pointflirt_outputs(params, execution)
     execution.run(cargs)

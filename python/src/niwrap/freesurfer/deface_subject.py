@@ -160,7 +160,6 @@ def deface_subject_execute(
     Returns:
         NamedTuple of outputs (described in `DefaceSubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = deface_subject_cargs(params, execution)
     ret = deface_subject_outputs(params, execution)
     execution.run(cargs)

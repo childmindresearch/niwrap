@@ -143,7 +143,6 @@ def mris_sample_label_execute(
     Returns:
         NamedTuple of outputs (described in `MrisSampleLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_sample_label_cargs(params, execution)
     ret = mris_sample_label_outputs(params, execution)
     execution.run(cargs)

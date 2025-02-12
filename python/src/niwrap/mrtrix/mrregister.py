@@ -139,7 +139,6 @@ def dyn_outputs(
         "transformed": mrregister_transformed_outputs,
         "transformed_midway": mrregister_transformed_midway_outputs,
         "nl_warp": mrregister_nl_warp_outputs,
-        "config": mrregister_config_outputs,
     }.get(t)
 
 
@@ -1255,7 +1254,6 @@ def mrregister_execute(
     Returns:
         NamedTuple of outputs (described in `MrregisterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mrregister_cargs(params, execution)
     ret = mrregister_outputs(params, execution)
     execution.run(cargs)

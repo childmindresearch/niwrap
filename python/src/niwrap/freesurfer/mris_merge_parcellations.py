@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mris_merge_parcellations": mris_merge_parcellations_outputs,
     }.get(t)
 
 
@@ -150,7 +149,6 @@ def mris_merge_parcellations_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMergeParcellationsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_merge_parcellations_cargs(params, execution)
     ret = mris_merge_parcellations_outputs(params, execution)
     execution.run(cargs)

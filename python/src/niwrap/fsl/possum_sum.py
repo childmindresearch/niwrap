@@ -161,7 +161,6 @@ def possum_sum_execute(
     Returns:
         NamedTuple of outputs (described in `PossumSumOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = possum_sum_cargs(params, execution)
     ret = possum_sum_outputs(params, execution)
     execution.run(cargs)

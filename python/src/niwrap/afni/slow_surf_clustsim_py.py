@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "slow_surf_clustsim.py": slow_surf_clustsim_py_outputs,
     }.get(t)
 
 
@@ -210,7 +209,6 @@ def slow_surf_clustsim_py_execute(
     Returns:
         NamedTuple of outputs (described in `SlowSurfClustsimPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slow_surf_clustsim_py_cargs(params, execution)
     ret = slow_surf_clustsim_py_outputs(params, execution)
     execution.run(cargs)

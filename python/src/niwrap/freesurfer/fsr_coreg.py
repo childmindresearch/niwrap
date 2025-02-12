@@ -184,7 +184,6 @@ def fsr_coreg_execute(
     Returns:
         NamedTuple of outputs (described in `FsrCoregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsr_coreg_cargs(params, execution)
     ret = fsr_coreg_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "make_exvivo_filled": make_exvivo_filled_outputs,
     }.get(t)
 
 
@@ -145,7 +144,6 @@ def make_exvivo_filled_execute(
     Returns:
         NamedTuple of outputs (described in `MakeExvivoFilledOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = make_exvivo_filled_cargs(params, execution)
     ret = make_exvivo_filled_outputs(params, execution)
     execution.run(cargs)

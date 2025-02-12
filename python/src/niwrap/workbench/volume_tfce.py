@@ -63,8 +63,6 @@ def dyn_outputs(
     """
     return {
         "volume-tfce": volume_tfce_outputs,
-        "presmooth": volume_tfce_presmooth_outputs,
-        "parameters": volume_tfce_parameters_outputs,
     }.get(t)
 
 
@@ -292,7 +290,6 @@ def volume_tfce_execute(
     Returns:
         NamedTuple of outputs (described in `VolumeTfceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = volume_tfce_cargs(params, execution)
     ret = volume_tfce_outputs(params, execution)
     execution.run(cargs)

@@ -329,7 +329,6 @@ def v_3d_seg_execute(
     Returns:
         NamedTuple of outputs (described in `V3dSegOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_seg_cargs(params, execution)
     ret = v_3d_seg_outputs(params, execution)
     execution.run(cargs)

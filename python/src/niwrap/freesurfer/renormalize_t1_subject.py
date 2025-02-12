@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "renormalize_T1_subject": renormalize_t1_subject_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def renormalize_t1_subject_execute(
     Returns:
         NamedTuple of outputs (described in `RenormalizeT1SubjectOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = renormalize_t1_subject_cargs(params, execution)
     ret = renormalize_t1_subject_outputs(params, execution)
     execution.run(cargs)

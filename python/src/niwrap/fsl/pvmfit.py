@@ -247,7 +247,6 @@ def pvmfit_execute(
     Returns:
         NamedTuple of outputs (described in `PvmfitOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pvmfit_cargs(params, execution)
     ret = pvmfit_outputs(params, execution)
     execution.run(cargs)

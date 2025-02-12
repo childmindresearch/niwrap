@@ -201,7 +201,6 @@ def v_3d_blur_to_fwhm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dBlurToFwhmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_blur_to_fwhm_cargs(params, execution)
     ret = v_3d_blur_to_fwhm_outputs(params, execution)
     execution.run(cargs)

@@ -160,7 +160,6 @@ def pairreg_execute(
     Returns:
         NamedTuple of outputs (described in `PairregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pairreg_cargs(params, execution)
     ret = pairreg_outputs(params, execution)
     execution.run(cargs)

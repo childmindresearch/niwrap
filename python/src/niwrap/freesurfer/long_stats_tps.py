@@ -193,7 +193,6 @@ def long_stats_tps_execute(
     Returns:
         NamedTuple of outputs (described in `LongStatsTpsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = long_stats_tps_cargs(params, execution)
     ret = long_stats_tps_outputs(params, execution)
     execution.run(cargs)

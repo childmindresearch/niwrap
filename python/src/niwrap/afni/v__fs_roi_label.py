@@ -53,7 +53,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "@FS_roi_label": v__fs_roi_label_outputs,
     }.get(t)
 
 
@@ -218,7 +217,6 @@ def v__fs_roi_label_execute(
     Returns:
         NamedTuple of outputs (described in `VFsRoiLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__fs_roi_label_cargs(params, execution)
     ret = v__fs_roi_label_outputs(params, execution)
     execution.run(cargs)

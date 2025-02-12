@@ -60,8 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tckinfo": tckinfo_outputs,
-        "config": tckinfo_config_outputs,
     }.get(t)
 
 
@@ -247,7 +245,6 @@ def tckinfo_execute(
     Returns:
         NamedTuple of outputs (described in `TckinfoOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tckinfo_cargs(params, execution)
     ret = tckinfo_outputs(params, execution)
     execution.run(cargs)

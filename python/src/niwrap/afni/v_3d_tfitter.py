@@ -318,7 +318,6 @@ def v_3d_tfitter_execute(
     Returns:
         NamedTuple of outputs (described in `V3dTfitterOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_tfitter_cargs(params, execution)
     ret = v_3d_tfitter_outputs(params, execution)
     execution.run(cargs)

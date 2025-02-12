@@ -195,7 +195,6 @@ def vecwarp_execute(
     Returns:
         NamedTuple of outputs (described in `VecwarpOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = vecwarp_cargs(params, execution)
     ret = vecwarp_outputs(params, execution)
     execution.run(cargs)

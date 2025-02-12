@@ -129,16 +129,10 @@ def dyn_outputs(
     """
     return {
         "cifti-convert": cifti_convert_outputs,
-        "to_gifti_ext": cifti_convert_to_gifti_ext_outputs,
         "from_gifti_ext": cifti_convert_from_gifti_ext_outputs,
-        "reset_timepoints": cifti_convert_reset_timepoints_outputs,
-        "replace_binary": cifti_convert_replace_binary_outputs,
         "to_nifti": cifti_convert_to_nifti_outputs,
         "from_nifti": cifti_convert_from_nifti_outputs,
-        "reset_timepoints": cifti_convert_reset_timepoints_outputs_,
-        "to_text": cifti_convert_to_text_outputs,
         "from_text": cifti_convert_from_text_outputs,
-        "reset_timepoints": cifti_convert_reset_timepoints_outputs_2,
     }.get(t)
 
 
@@ -957,7 +951,6 @@ def cifti_convert_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiConvertOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_convert_cargs(params, execution)
     ret = cifti_convert_outputs(params, execution)
     execution.run(cargs)

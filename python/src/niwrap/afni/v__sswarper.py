@@ -347,7 +347,6 @@ def v__sswarper_execute(
     Returns:
         NamedTuple of outputs (described in `VSswarperOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__sswarper_cargs(params, execution)
     ret = v__sswarper_outputs(params, execution)
     execution.run(cargs)

@@ -134,7 +134,6 @@ def v_3d_cm_execute(
     Returns:
         NamedTuple of outputs (described in `V3dCmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_cm_cargs(params, execution)
     ret = v_3d_cm_outputs(params, execution)
     execution.run(cargs)

@@ -48,7 +48,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bugr": bugr_outputs,
     }.get(t)
 
 
@@ -159,7 +158,6 @@ def bugr_execute(
     Returns:
         NamedTuple of outputs (described in `BugrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bugr_cargs(params, execution)
     ret = bugr_outputs(params, execution)
     execution.run(cargs)

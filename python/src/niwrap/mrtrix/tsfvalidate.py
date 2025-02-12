@@ -60,8 +60,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "tsfvalidate": tsfvalidate_outputs,
-        "config": tsfvalidate_config_outputs,
     }.get(t)
 
 
@@ -246,7 +244,6 @@ def tsfvalidate_execute(
     Returns:
         NamedTuple of outputs (described in `TsfvalidateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = tsfvalidate_cargs(params, execution)
     ret = tsfvalidate_outputs(params, execution)
     execution.run(cargs)

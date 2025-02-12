@@ -157,7 +157,6 @@ def talairach_execute(
     Returns:
         NamedTuple of outputs (described in `TalairachOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = talairach_cargs(params, execution)
     ret = talairach_outputs(params, execution)
     execution.run(cargs)

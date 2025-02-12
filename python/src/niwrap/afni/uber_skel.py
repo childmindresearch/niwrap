@@ -55,7 +55,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "uber_skel": uber_skel_outputs,
     }.get(t)
 
 
@@ -204,7 +203,6 @@ def uber_skel_execute(
     Returns:
         NamedTuple of outputs (described in `UberSkelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = uber_skel_cargs(params, execution)
     ret = uber_skel_outputs(params, execution)
     execution.run(cargs)

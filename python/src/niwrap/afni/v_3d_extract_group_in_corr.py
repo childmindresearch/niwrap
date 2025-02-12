@@ -146,7 +146,6 @@ def v_3d_extract_group_in_corr_execute(
     Returns:
         NamedTuple of outputs (described in `V3dExtractGroupInCorrOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_extract_group_in_corr_cargs(params, execution)
     ret = v_3d_extract_group_in_corr_outputs(params, execution)
     execution.run(cargs)

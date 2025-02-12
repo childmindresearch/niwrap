@@ -185,7 +185,6 @@ def smooth_displacement_field_execute(
     Returns:
         NamedTuple of outputs (described in `SmoothDisplacementFieldOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = smooth_displacement_field_cargs(params, execution)
     ret = smooth_displacement_field_outputs(params, execution)
     execution.run(cargs)

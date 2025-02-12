@@ -159,7 +159,6 @@ def label_mask_execute(
     Returns:
         NamedTuple of outputs (described in `LabelMaskOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label_mask_cargs(params, execution)
     ret = label_mask_outputs(params, execution)
     execution.run(cargs)

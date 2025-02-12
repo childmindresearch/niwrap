@@ -138,7 +138,6 @@ def mris_rescale_execute(
     Returns:
         NamedTuple of outputs (described in `MrisRescaleOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_rescale_cargs(params, execution)
     ret = mris_rescale_outputs(params, execution)
     execution.run(cargs)

@@ -189,7 +189,6 @@ def v_3d_diff_execute(
     Returns:
         NamedTuple of outputs (described in `V3dDiffOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_diff_cargs(params, execution)
     ret = v_3d_diff_outputs(params, execution)
     execution.run(cargs)

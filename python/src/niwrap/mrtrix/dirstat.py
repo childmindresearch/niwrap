@@ -69,9 +69,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "dirstat": dirstat_outputs,
-        "fslgrad": dirstat_fslgrad_outputs,
-        "config": dirstat_config_outputs,
     }.get(t)
 
 
@@ -384,7 +381,6 @@ def dirstat_execute(
     Returns:
         NamedTuple of outputs (described in `DirstatOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = dirstat_cargs(params, execution)
     ret = dirstat_outputs(params, execution)
     execution.run(cargs)

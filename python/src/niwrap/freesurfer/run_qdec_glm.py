@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "run-qdec-glm": run_qdec_glm_outputs,
     }.get(t)
 
 
@@ -132,7 +131,6 @@ def run_qdec_glm_execute(
     Returns:
         NamedTuple of outputs (described in `RunQdecGlmOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = run_qdec_glm_cargs(params, execution)
     ret = run_qdec_glm_outputs(params, execution)
     execution.run(cargs)

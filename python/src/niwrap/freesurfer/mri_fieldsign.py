@@ -68,7 +68,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "mri_fieldsign": mri_fieldsign_outputs,
     }.get(t)
 
 
@@ -319,7 +318,6 @@ def mri_fieldsign_execute(
     Returns:
         NamedTuple of outputs (described in `MriFieldsignOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_fieldsign_cargs(params, execution)
     ret = mri_fieldsign_outputs(params, execution)
     execution.run(cargs)

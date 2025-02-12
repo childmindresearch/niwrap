@@ -149,7 +149,6 @@ def mri_ca_label_execute(
     Returns:
         NamedTuple of outputs (described in `MriCaLabelOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_ca_label_cargs(params, execution)
     ret = mri_ca_label_outputs(params, execution)
     execution.run(cargs)

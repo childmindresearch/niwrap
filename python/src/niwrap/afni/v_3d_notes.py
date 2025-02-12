@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "3dNotes": v_3d_notes_outputs,
     }.get(t)
 
 
@@ -184,7 +183,6 @@ def v_3d_notes_execute(
     Returns:
         NamedTuple of outputs (described in `V3dNotesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_notes_cargs(params, execution)
     ret = v_3d_notes_outputs(params, execution)
     execution.run(cargs)

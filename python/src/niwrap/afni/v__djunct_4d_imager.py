@@ -172,7 +172,6 @@ def v__djunct_4d_imager_execute(
     Returns:
         NamedTuple of outputs (described in `VDjunct4dImagerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__djunct_4d_imager_cargs(params, execution)
     ret = v__djunct_4d_imager_outputs(params, execution)
     execution.run(cargs)

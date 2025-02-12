@@ -71,7 +71,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "sccan": sccan_outputs,
     }.get(t)
 
 
@@ -406,7 +405,6 @@ def sccan_execute(
     Returns:
         NamedTuple of outputs (described in `SccanOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sccan_cargs(params, execution)
     ret = sccan_outputs(params, execution)
     execution.run(cargs)

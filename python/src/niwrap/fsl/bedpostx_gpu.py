@@ -54,7 +54,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "bedpostx_gpu": bedpostx_gpu_outputs,
     }.get(t)
 
 
@@ -221,7 +220,6 @@ def bedpostx_gpu_execute(
     Returns:
         NamedTuple of outputs (described in `BedpostxGpuOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = bedpostx_gpu_cargs(params, execution)
     ret = bedpostx_gpu_outputs(params, execution)
     execution.run(cargs)

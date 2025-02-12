@@ -139,7 +139,6 @@ def v__get_afni_orient_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniOrientOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_orient_cargs(params, execution)
     ret = v__get_afni_orient_outputs(params, execution)
     execution.run(cargs)

@@ -232,7 +232,6 @@ def ants_slice_regularized_registration_execute(
     Returns:
         NamedTuple of outputs (described in `AntsSliceRegularizedRegistrationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = ants_slice_regularized_registration_cargs(params, execution)
     ret = ants_slice_regularized_registration_outputs(params, execution)
     execution.run(cargs)

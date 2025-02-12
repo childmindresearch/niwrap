@@ -58,9 +58,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "nifti-information": nifti_information_outputs,
-        "print_header": nifti_information_print_header_outputs,
-        "print_xml": nifti_information_print_xml_outputs,
     }.get(t)
 
 
@@ -246,7 +243,6 @@ def nifti_information_execute(
     Returns:
         NamedTuple of outputs (described in `NiftiInformationOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = nifti_information_cargs(params, execution)
     ret = nifti_information_outputs(params, execution)
     execution.run(cargs)

@@ -141,7 +141,6 @@ def v__grayplot_execute(
     Returns:
         NamedTuple of outputs (described in `VGrayplotOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__grayplot_cargs(params, execution)
     ret = v__grayplot_outputs(params, execution)
     execution.run(cargs)

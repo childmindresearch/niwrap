@@ -227,7 +227,6 @@ def surf2_vol_coord_execute(
     Returns:
         NamedTuple of outputs (described in `Surf2VolCoordOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surf2_vol_coord_cargs(params, execution)
     ret = surf2_vol_coord_outputs(params, execution)
     execution.run(cargs)

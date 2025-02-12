@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "sh2power": sh2power_outputs,
-        "config": sh2power_config_outputs,
     }.get(t)
 
 
@@ -261,7 +260,6 @@ def sh2power_execute(
     Returns:
         NamedTuple of outputs (described in `Sh2powerOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = sh2power_cargs(params, execution)
     ret = sh2power_outputs(params, execution)
     execution.run(cargs)

@@ -160,7 +160,6 @@ def oct_register_mosaic_execute(
     Returns:
         NamedTuple of outputs (described in `OctRegisterMosaicOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = oct_register_mosaic_cargs(params, execution)
     ret = oct_register_mosaic_outputs(params, execution)
     execution.run(cargs)

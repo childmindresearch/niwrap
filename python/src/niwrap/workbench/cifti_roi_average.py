@@ -51,7 +51,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "cifti-roi-average": cifti_roi_average_outputs,
     }.get(t)
 
 
@@ -195,7 +194,6 @@ def cifti_roi_average_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiRoiAverageOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_roi_average_cargs(params, execution)
     ret = cifti_roi_average_outputs(params, execution)
     execution.run(cargs)

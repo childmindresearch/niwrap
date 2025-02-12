@@ -70,8 +70,6 @@ def dyn_outputs(
     """
     return {
         "warp2metric": warp2metric_outputs,
-        "fc": warp2metric_fc_outputs,
-        "config": warp2metric_config_outputs,
     }.get(t)
 
 
@@ -349,7 +347,6 @@ def warp2metric_execute(
     Returns:
         NamedTuple of outputs (described in `Warp2metricOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = warp2metric_cargs(params, execution)
     ret = warp2metric_outputs(params, execution)
     execution.run(cargs)

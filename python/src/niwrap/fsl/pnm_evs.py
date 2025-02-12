@@ -319,7 +319,6 @@ def pnm_evs_execute(
     Returns:
         NamedTuple of outputs (described in `PnmEvsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pnm_evs_cargs(params, execution)
     ret = pnm_evs_outputs(params, execution)
     execution.run(cargs)

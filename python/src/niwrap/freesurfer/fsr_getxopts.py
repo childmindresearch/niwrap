@@ -45,7 +45,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "fsr-getxopts": fsr_getxopts_outputs,
     }.get(t)
 
 
@@ -131,7 +130,6 @@ def fsr_getxopts_execute(
     Returns:
         NamedTuple of outputs (described in `FsrGetxoptsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = fsr_getxopts_cargs(params, execution)
     ret = fsr_getxopts_outputs(params, execution)
     execution.run(cargs)

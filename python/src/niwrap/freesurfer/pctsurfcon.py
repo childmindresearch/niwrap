@@ -57,7 +57,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "pctsurfcon": pctsurfcon_outputs,
     }.get(t)
 
 
@@ -229,7 +228,6 @@ def pctsurfcon_execute(
     Returns:
         NamedTuple of outputs (described in `PctsurfconOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = pctsurfcon_cargs(params, execution)
     ret = pctsurfcon_outputs(params, execution)
     execution.run(cargs)

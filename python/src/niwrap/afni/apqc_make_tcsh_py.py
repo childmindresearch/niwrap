@@ -180,7 +180,6 @@ def apqc_make_tcsh_py_execute(
     Returns:
         NamedTuple of outputs (described in `ApqcMakeTcshPyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = apqc_make_tcsh_py_cargs(params, execution)
     ret = apqc_make_tcsh_py_outputs(params, execution)
     execution.run(cargs)

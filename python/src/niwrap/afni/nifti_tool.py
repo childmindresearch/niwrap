@@ -234,7 +234,6 @@ def nifti_tool_execute(
     Returns:
         NamedTuple of outputs (described in `NiftiToolOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = nifti_tool_cargs(params, execution)
     ret = nifti_tool_outputs(params, execution)
     execution.run(cargs)

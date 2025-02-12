@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "slices": slices_outputs,
     }.get(t)
 
 
@@ -169,7 +168,6 @@ def slices_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slices_cargs(params, execution)
     ret = slices_outputs(params, execution)
     execution.run(cargs)

@@ -133,7 +133,6 @@ def v__get_afni_dims_execute(
     Returns:
         NamedTuple of outputs (described in `VGetAfniDimsOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v__get_afni_dims_cargs(params, execution)
     ret = v__get_afni_dims_outputs(params, execution)
     execution.run(cargs)

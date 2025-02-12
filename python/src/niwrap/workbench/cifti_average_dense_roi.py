@@ -66,8 +66,6 @@ def dyn_outputs(
     """
     return {
         "cifti-average-dense-roi": cifti_average_dense_roi_outputs,
-        "cifti_roi": cifti_average_dense_roi_cifti_roi_outputs,
-        "cifti": cifti_average_dense_roi_cifti_outputs,
     }.get(t)
 
 
@@ -324,7 +322,6 @@ def cifti_average_dense_roi_execute(
     Returns:
         NamedTuple of outputs (described in `CiftiAverageDenseRoiOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = cifti_average_dense_roi_cargs(params, execution)
     ret = cifti_average_dense_roi_outputs(params, execution)
     execution.run(cargs)

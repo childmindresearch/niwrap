@@ -608,7 +608,6 @@ def mri_coreg_execute(
     Returns:
         NamedTuple of outputs (described in `MriCoregOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mri_coreg_cargs(params, execution)
     ret = mri_coreg_outputs(params, execution)
     execution.run(cargs)

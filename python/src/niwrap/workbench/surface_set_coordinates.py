@@ -150,7 +150,6 @@ def surface_set_coordinates_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceSetCoordinatesOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_set_coordinates_cargs(params, execution)
     ret = surface_set_coordinates_outputs(params, execution)
     execution.run(cargs)

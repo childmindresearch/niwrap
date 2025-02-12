@@ -142,7 +142,6 @@ def rotcom_execute(
     Returns:
         NamedTuple of outputs (described in `RotcomOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = rotcom_cargs(params, execution)
     ret = rotcom_outputs(params, execution)
     execution.run(cargs)

@@ -166,7 +166,6 @@ def mris_mesh_subdivide_execute(
     Returns:
         NamedTuple of outputs (described in `MrisMeshSubdivideOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = mris_mesh_subdivide_cargs(params, execution)
     ret = mris_mesh_subdivide_outputs(params, execution)
     execution.run(cargs)

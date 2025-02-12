@@ -49,7 +49,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "slicesdir": slicesdir_outputs,
     }.get(t)
 
 
@@ -166,7 +165,6 @@ def slicesdir_execute(
     Returns:
         NamedTuple of outputs (described in `SlicesdirOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = slicesdir_cargs(params, execution)
     ret = slicesdir_outputs(params, execution)
     execution.run(cargs)

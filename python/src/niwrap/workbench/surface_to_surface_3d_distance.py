@@ -162,7 +162,6 @@ def surface_to_surface_3d_distance_execute(
     Returns:
         NamedTuple of outputs (described in `SurfaceToSurface3dDistanceOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = surface_to_surface_3d_distance_cargs(params, execution)
     ret = surface_to_surface_3d_distance_outputs(params, execution)
     execution.run(cargs)

@@ -46,7 +46,6 @@ def dyn_outputs(
         Build outputs function.
     """
     return {
-        "spec-file-relocate": spec_file_relocate_outputs,
     }.get(t)
 
 
@@ -141,7 +140,6 @@ def spec_file_relocate_execute(
     Returns:
         NamedTuple of outputs (described in `SpecFileRelocateOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = spec_file_relocate_cargs(params, execution)
     ret = spec_file_relocate_outputs(params, execution)
     execution.run(cargs)

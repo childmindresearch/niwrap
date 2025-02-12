@@ -242,7 +242,6 @@ def gen_ss_review_table_py_execute(
     Returns:
         NamedTuple of outputs (described in `GenSsReviewTablePyOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = gen_ss_review_table_py_cargs(params, execution)
     ret = gen_ss_review_table_py_outputs(params, execution)
     execution.run(cargs)

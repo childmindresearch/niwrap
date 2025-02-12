@@ -277,7 +277,6 @@ def v_3d_zeropad_execute(
     Returns:
         NamedTuple of outputs (described in `V3dZeropadOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = v_3d_zeropad_cargs(params, execution)
     ret = v_3d_zeropad_outputs(params, execution)
     execution.run(cargs)

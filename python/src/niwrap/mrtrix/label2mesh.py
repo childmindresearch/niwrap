@@ -62,7 +62,6 @@ def dyn_outputs(
     """
     return {
         "label2mesh": label2mesh_outputs,
-        "config": label2mesh_config_outputs,
     }.get(t)
 
 
@@ -256,7 +255,6 @@ def label2mesh_execute(
     Returns:
         NamedTuple of outputs (described in `Label2meshOutputs`).
     """
-    # validate constraint checks (or after middlewares?)
     cargs = label2mesh_cargs(params, execution)
     ret = label2mesh_outputs(params, execution)
     execution.run(cargs)
