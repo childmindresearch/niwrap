@@ -35,7 +35,7 @@
               "name": "output",
               "value-key": "[OUTPUT]",
               "description": "The output 5TT image",
-              "type": "File",
+              "type": "String",
               "optional": false
             },
             {
@@ -76,7 +76,7 @@
               "name": "output",
               "value-key": "[OUTPUT]",
               "description": "The output 5TT image",
-              "type": "File",
+              "type": "String",
               "optional": false
             },
             {
@@ -135,7 +135,7 @@
               "name": "output",
               "value-key": "[OUTPUT]",
               "description": "The output 5TT image",
-              "type": "File",
+              "type": "String",
               "optional": false
             }
           ],
@@ -167,7 +167,7 @@
               "name": "output",
               "value-key": "[OUTPUT]",
               "description": "The output 5TT image",
-              "type": "File",
+              "type": "String",
               "optional": false
             },
             {
@@ -182,18 +182,28 @@
             {
               "id": "hippocampi",
               "name": "hippocampi",
+              "command-line-flag": "-hippocampi",
               "value-key": "[OPTIONS_HIPPOCAMPI]",
               "description": "Select method to be used for hippocampi (& amygdalae) segmentation; options are: subfields,first,aseg",
-              "value-choices": ["subfields", "first", "aseg"],
+              "value-choices": [
+                "subfields",
+                "first",
+                "aseg"
+              ],
               "type": "String",
               "optional": true
             },
             {
               "id": "thalami",
               "name": "thalami",
+              "command-line-flag": "-thalami",
               "value-key": "[OPTIONS_THALAMI]",
               "description": "Select method to be used for thalamic segmentation; options are: nuclei,first,aseg",
-              "value-choices": ["nuclei", "first", "aseg"],
+              "value-choices": [
+                "nuclei",
+                "first",
+                "aseg"
+              ],
               "type": "String",
               "optional": true
             },
