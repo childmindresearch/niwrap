@@ -6,7 +6,7 @@ import pathlib
 from styxdefs import *
 
 V_5TTGEN_METADATA = Metadata(
-    id="8d0c791a0a22a9714aac8b71be2ed57e61cce2de.boutiques",
+    id="59e0c6c60fd8800c29de96fdc82fefe3a0af3c55.boutiques",
     name="5ttgen",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -14,13 +14,13 @@ V_5TTGEN_METADATA = Metadata(
 V5ttgenFreesurferParameters = typing.TypedDict('V5ttgenFreesurferParameters', {
     "__STYX_TYPE__": typing.Literal["freesurfer"],
     "input": InputPathType,
-    "output": InputPathType,
+    "output": str,
     "lut": typing.NotRequired[InputPathType | None],
 })
 V5ttgenFslParameters = typing.TypedDict('V5ttgenFslParameters', {
     "__STYX_TYPE__": typing.Literal["fsl"],
     "input": InputPathType,
-    "output": InputPathType,
+    "output": str,
     "t2": typing.NotRequired[InputPathType | None],
     "mask": typing.NotRequired[InputPathType | None],
     "premasked": bool,
@@ -28,12 +28,12 @@ V5ttgenFslParameters = typing.TypedDict('V5ttgenFslParameters', {
 V5ttgenGifParameters = typing.TypedDict('V5ttgenGifParameters', {
     "__STYX_TYPE__": typing.Literal["gif"],
     "input": InputPathType,
-    "output": InputPathType,
+    "output": str,
 })
 V5ttgenHsvsParameters = typing.TypedDict('V5ttgenHsvsParameters', {
     "__STYX_TYPE__": typing.Literal["hsvs"],
     "input": InputPathType,
-    "output": InputPathType,
+    "output": str,
     "template": typing.NotRequired[InputPathType | None],
     "hippocampi": typing.NotRequired[typing.Literal["subfields", "first", "aseg"] | None],
     "thalami": typing.NotRequired[typing.Literal["nuclei", "first", "aseg"] | None],
@@ -116,7 +116,7 @@ class V5ttgenFreesurferOutputs(typing.NamedTuple):
 
 def v_5ttgen_freesurfer_params(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     lut: InputPathType | None = None,
 ) -> V5ttgenFreesurferParameters:
     """
@@ -157,7 +157,7 @@ def v_5ttgen_freesurfer_cargs(
     cargs = []
     cargs.append("freesurfer")
     cargs.append(execution.input_file(params.get("input")))
-    cargs.append(execution.input_file(params.get("output")))
+    cargs.append(params.get("output"))
     if params.get("lut") is not None:
         cargs.extend([
             "-lut",
@@ -181,7 +181,7 @@ def v_5ttgen_freesurfer_outputs(
     """
     ret = V5ttgenFreesurferOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(pathlib.Path(params.get("output")).name),
+        output=execution.output_file(params.get("output")),
     )
     return ret
 
@@ -198,7 +198,7 @@ class V5ttgenFslOutputs(typing.NamedTuple):
 
 def v_5ttgen_fsl_params(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     t2: InputPathType | None = None,
     mask: InputPathType | None = None,
     premasked: bool = False,
@@ -247,7 +247,7 @@ def v_5ttgen_fsl_cargs(
     cargs = []
     cargs.append("fsl")
     cargs.append(execution.input_file(params.get("input")))
-    cargs.append(execution.input_file(params.get("output")))
+    cargs.append(params.get("output"))
     if params.get("t2") is not None:
         cargs.extend([
             "-t2",
@@ -278,7 +278,7 @@ def v_5ttgen_fsl_outputs(
     """
     ret = V5ttgenFslOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(pathlib.Path(params.get("output")).name),
+        output=execution.output_file(params.get("output")),
     )
     return ret
 
@@ -295,7 +295,7 @@ class V5ttgenGifOutputs(typing.NamedTuple):
 
 def v_5ttgen_gif_params(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
 ) -> V5ttgenGifParameters:
     """
     Build parameters.
@@ -330,7 +330,7 @@ def v_5ttgen_gif_cargs(
     cargs = []
     cargs.append("gif")
     cargs.append(execution.input_file(params.get("input")))
-    cargs.append(execution.input_file(params.get("output")))
+    cargs.append(params.get("output"))
     return cargs
 
 
@@ -349,7 +349,7 @@ def v_5ttgen_gif_outputs(
     """
     ret = V5ttgenGifOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(pathlib.Path(params.get("output")).name),
+        output=execution.output_file(params.get("output")),
     )
     return ret
 
@@ -366,7 +366,7 @@ class V5ttgenHsvsOutputs(typing.NamedTuple):
 
 def v_5ttgen_hsvs_params(
     input_: InputPathType,
-    output: InputPathType,
+    output: str,
     template: InputPathType | None = None,
     hippocampi: typing.Literal["subfields", "first", "aseg"] | None = None,
     thalami: typing.Literal["nuclei", "first", "aseg"] | None = None,
@@ -419,16 +419,22 @@ def v_5ttgen_hsvs_cargs(
     cargs = []
     cargs.append("hsvs")
     cargs.append(execution.input_file(params.get("input")))
-    cargs.append(execution.input_file(params.get("output")))
+    cargs.append(params.get("output"))
     if params.get("template") is not None:
         cargs.extend([
             "-template",
             execution.input_file(params.get("template"))
         ])
     if params.get("hippocampi") is not None:
-        cargs.append(params.get("hippocampi"))
+        cargs.extend([
+            "-hippocampi",
+            params.get("hippocampi")
+        ])
     if params.get("thalami") is not None:
-        cargs.append(params.get("thalami"))
+        cargs.extend([
+            "-thalami",
+            params.get("thalami")
+        ])
     if params.get("white_stem"):
         cargs.append("-white_stem")
     return cargs
@@ -449,7 +455,7 @@ def v_5ttgen_hsvs_outputs(
     """
     ret = V5ttgenHsvsOutputs(
         root=execution.output_file("."),
-        output=execution.output_file(pathlib.Path(params.get("output")).name),
+        output=execution.output_file(params.get("output")),
     )
     return ret
 
